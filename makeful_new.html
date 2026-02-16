@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeful – FashionTech STEAM | STEM program for Young Innovators</title>
+    <meta name="description" content="Welcome to Makeful, where we nurture each student's unique strengths.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />    
+    <style>
+        /* --- 1. DESIGN TOKENS --- */
+        :root {
+            /* Palette */
+            --bg-cream: #fdf7f3;
+            --text-black: #1b1816;
+            --text-grey: #54504d;
+            
+            /* Accents - Electric Violet */
+            --violet: #605ffc;       
+            --light-violet-tint: #e3e2ff;
+            
+            /* Secondary colors */
+            --yellow: #ffd541;       
+            --red: #ff816f;          
+            
+            --brown: #5c3100;
+            --dark-red: #6f1609;     
+            --dark-yellow: #51420e;
+            --green: #23bc53;  
+            --dark-green: #197d39;
+            
+            /* Borders & Lines */
+            --border-color: rgba(27, 24, 22, 0.07);
+            
+            /* Typography */
+            --font-heading: "Roboto Serif", serif;
+            --font-body: "Inter", sans-serif;
+        }
+
+        /* --- 2. GLOBAL RESET --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-black);
+            font-family: var(--font-body);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; max-width: 100%; width: 100%; height: auto; object-fit: cover; }
+
+        /* Typography Defaults */
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; line-height: 1.1; }
+        
+        h1 { 
+            font-size: 3.75rem; 
+            letter-spacing: -0.02em;
+            margin-bottom: 32px; 
+        }
+        
+        h2 { 
+            font-size: 2.375rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px; 
+        }
+        
+        h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 12px; 
+            font-weight: 500; 
+        }
+        
+        p { 
+            color: var(--text-grey); 
+            font-size: 1.125rem; 
+            margin-bottom: 16px; 
+            line-height: 1.6;
+        }
+        .line-height-2 {
+            line-height: 2;
+        }
+
+        /* Chip Style */
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(27, 24, 22, 0.02);
+            border-radius: 0;
+            margin-bottom: 24px;
+            color: var(--text-black);
+        }
+        
+        .chip::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--violet);
+            display: block;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background-color: var(--violet); color: white; }
+        .btn-primary:hover { background-color: #4b4adb; }
+        .btn-secondary { background-color: var(--light-violet-tint); color: var(--violet); }
+        .btn-secondary:hover { background-color: #d1d0ff; }
+
+        /* Layout Helpers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        .section { padding: 100px 0; border-bottom: 1px solid var(--border-color); }
+        .grid { display: grid; gap: 24px; }
+
+        /* --- 3. NAVIGATION --- */
+        header {
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0;
+        }
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .nav-logo {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            border-right: 1px solid var(--border-color);
+            padding-right: 32px;
+        }
+        
+        /* Updated Logo Style for Image */
+        .nav-logo img {
+            height: 24px; /* Scaled to fit navbar */
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu { display: flex; height: 100%; }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            height: 100%;
+            border-left: 1px solid var(--border-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover { background-color: rgba(0,0,0,0.02); }
+        .nav-cta {
+            background-color: var(--light-violet-tint);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            font-weight: 600;
+            color: var(--violet);
+            position: relative;
+        }
+        .nav-cta::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--violet);
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            min-height: 80vh;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-content {
+            padding: 80px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid var(--border-color);
+        }
+        .testimonial-bubble {
+            background-color: rgba(27, 24, 22, 0.02);
+            padding: 24px;
+            margin-bottom: 40px;
+            border-left: 8px solid var(--violet);
+        }
+        .testimonial-bubble p { font-size: 0.95rem; font-style: italic; margin-bottom: 8px; }
+        .hero-img-container { position: relative; height: 100%; width: 100%; }
+        .hero-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- 5. ABOUT (History & Images) --- */
+        .about-split {
+            display: grid;
+            grid-template-columns: 40% 60%;
+        }
+        .about-text {
+            padding: 80px 40px;
+            border-right: 1px solid var(--border-color);
+        }
+        .about-images {
+            display: grid;
+            grid-template-rows: 1fr;
+        }
+        
+        /* --- 6. BENEFITS --- */
+        .benefits-wrapper {
+            background-color: var(--violet);
+            padding: 120px 32px;
+        }
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-cream);
+        }
+        .benefits-header {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .benefit-card {
+            padding: 40px 24px;
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .benefit-card:last-child { border-right: none; }
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            background-color: rgba(27,24,22,0.05);
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+        }
+        .material-symbols-outlined {
+            font-size: 28px;
+            color: var(--violet);
+        }
+
+        /* --- 7. NEWS & EVENTS --- */
+        .news-header {
+            text-align: center;
+            padding: 60px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border-color);
+        }
+        .news-card {
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .news-card:last-child { border-right: none; }
+        .news-cover {
+            height: 300px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .news-body {
+            padding: 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .news-date {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-black);
+            font-weight: 500;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* --- 8. STATISTICS SECTION --- */
+        .stats-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .stats-col-text {
+            padding: 80px 40px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .stat-block {
+            padding: 60px 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 400px;
+        }
+        .bg-violet { background-color: var(--violet); color: white; }
+        .bg-yellow { background-color: var(--yellow); }
+        .bg-red { background-color: var(--red); }
+        
+        .stat-num {
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .stat-label { font-size: 1.2rem; font-weight: 500; }
+        
+        .text-brown { color: var(--dark-red); }
+        .text-yellow-dark { color: var(--dark-yellow); }
+        .text-white { color: white; }
+
+        /* --- 9. PARTNERS (Ticker Animation) --- */
+        .partners-section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .partners-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            color: var(--text-grey);
+        }
+        .partners-container-scroll {
+            width: 100%;
+            overflow: hidden;
+        }
+        .partners-row {
+            display: flex;
+            gap: 80px;
+            animation: ticker 30s linear infinite;
+            width: max-content;
+            opacity: 0.5;
+        }
+        .partner-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            color: #ccc;
+            flex-shrink: 0;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- 10. GALLERY --- */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr; 
+            grid-template-rows: 400px 400px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .gallery-big {
+            grid-row: 1 / 2;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .gallery-text {
+            grid-row: 1 / 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .gallery-small-1 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            border-right: 1px solid var(--border-color);
+        }
+        .gallery-small-2 {
+            grid-column: 2 / 4;
+            grid-row: 2 / 3;
+        }
+
+        /* --- 11. PRINCIPAL TESTIMONIAL --- */
+        .principal-section {
+            padding: 100px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .principal-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ddd;
+        }
+        .principal-quote {
+            max-width: 800px;
+            font-size: 2rem;
+            font-family: var(--font-heading);
+            color: var(--text-black);
+            line-height: 1.2;
+        }
+        .principal-name { font-weight: 600; margin-bottom: 0; color: var(--text-black); }
+        .principal-role { font-size: 0.9rem; margin-top: 0; }
+        .principal-line { width: 40px; height: 4px; background-color: var(--violet); margin-top: 10px;}
+
+        /* --- 12. FOOTER --- */
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-col {
+            padding: 40px 32px;
+            border-right: 1px solid var(--border-color);
+        }
+        .footer-col:last-child { border-right: none; }
+        .footer-col h4 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            color: var(--text-grey);
+        }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { font-weight: 500; font-size: 1rem; }
+        .footer-links a:hover { text-decoration: underline; color: var(--violet); }
+        
+        .footer-bottom {
+            background-color: var(--violet);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* The giant background MS text */
+        .footer-bg-letter {
+            font-size: 15rem;
+            font-family: var(--font-heading);
+            color: white;
+            opacity: 0.1;
+            line-height: 0.8;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        /* The Logo in the footer needs to be white. 
+           Since the source image is blue/violet, we use a filter to invert it to white. */
+        .footer-logo-img {
+            height: 48px;
+            width: auto;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            /* Filter: Makes the #605ffc image white */
+            filter: brightness(0) invert(1);
+        }
+
+        .copyright {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--bg-cream);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-grey);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .hero, .about-split, .stats-wrapper { grid-template-columns: 1fr; }
+            .hero-content, .about-text, .stats-col-text { border-right: none; border-bottom: 1px solid var(--border-color); }
+            .benefits-grid, .news-grid, .footer-main { grid-template-columns: 1fr 1fr; }
+            .gallery-container { display: flex; flex-direction: column; height: auto; }
+            .gallery-big, .gallery-small-1, .gallery-small-2 { height: 300px; width: 100%; border-right: none; border-bottom: 1px solid var(--border-color);}
+            .nav-menu { display: none; } /* Simplified for mobile */
+        }
+        @media (max-width: 600px) {
+            .benefits-grid, .news-grid, .footer-main { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            .stat-num { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="nav-logo">
+                <img src="./img/makeful_logo_blue.png" alt="Makeful">
+            </a>
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#benefits" class="nav-link">Benefits</a>
+                <a href="#news" class="nav-link">Pricing</a>
+            </nav>
+            <div style="flex-grow:1; border-bottom: 1px solid transparent;"></div>
+            <a href="#contact" class="nav-cta">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="testimonial-bubble">
+                <p>“This program has been the best decision I've ever made. The supportive teachers and personalized attention have helped me excel on my 3D Printed Fashion Journey. I feel confident and well-prepared for the future.”</p>
+                <strong>Vittoria C., 14 y.o. student (alumni)</strong>
+            </div>
+            <h1>FashionTech Program for Young Innovators</h1>
+            <p>The ultimate program <strong>for students of 14 – 19 years old</strong>. Solve Creative Social Impact challenges, master 3D Printing and build a jaw-dropping portfolio that college admissions officers have never seen before.</p>
+            <div style="margin-top: 32px;">
+                <a href="#admissions" class="btn btn-primary">Enroll as Student</a>
+                <a href="#about" class="btn btn-secondary">For Schools</a>
+            </div>
+        </div>
+        <div class="hero-img-container">
+            
+            <!-- <img src="./img/hero_bg.jpg" alt="Makeful 3D Printed Fashion at Future Port"> -->
+            <video autoplay muted loop width="100%" height="100%" poster="./video/hana_thumb.png">
+                    <source src="./video/hana-valtova-transparent-corset-final-project (1).mp4" type="video/mp4">
+                    <source src="./video/hana-valtova-transparent-corset-final-project (1).mp4" type="video/webm">
+                    Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section class="about-split" id="about">
+        <div class="about-text">
+            <div class="chip">About the Program</div>
+            <h2>Solve Creative Social Impact Challenges</h2>
+            <p>In a world where sustainability and tech are reshaping style, you’ll be one of the few Young Innovators who can design meaningful garments that couldn’t exist before. Traditional fashion classes teach you to sketch. We teach you to engineer, 3D print and showcase.</p>
+            <a href="#about" class="btn btn-secondary" style="margin-top: 20px;">Request Info Pack</a>
+        </div>
+        <div class="about-images">
+            <div class="about-image-item">
+                <img src="./img/4 copy.jpg" alt="School activities">
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits-wrapper">
+        <div class="benefits-container">
+            <div class="benefits-header">
+                <div class="chip">Unique Benefits</div>
+                <h2>Your All-in-one Enrichment Program</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><span class="material-symbols-outlined">tools_power_drill</span></div>
+                    <h3>Get Full Equipment & Materials</h3>
+                    <p>Get your own FashionTech Lab, with a personal landed 3D printer and materials kit shipped directly to your school.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><span class="material-symbols-outlined">star_shine</span></div>
+                    <h3>Learn New Skills with Online Classes</h3>
+                    <p>Watch tutorial videos that build real skills step-by-step. Complete creative assignment that fit perfectly your schedule.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><span class="material-symbols-outlined">diamond_shine</span></div>
+                    <h3>Grow with Mentoring</h3>
+                    <p>Get supported by mentoring sessions (max 10 students) and inspirational talks from industry experts.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><span class="material-symbols-outlined">license</span></div>
+                    <h3>Earn Professional Badges</h3>
+                    <p>5 Professional badges and 1 certificate of completion with a porfolio of oustanding projects to show your skills.</p>
+                </div>
+            </div>
+            <div style="text-align: center; padding: 40px; border-top: 1px solid var(--border-color);">
+                <a href="#contact" class="btn btn-secondary">Get the program</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="news" style="padding: 0;">
+        <div class="news-header">
+            <div class="chip">Pricing & Offers</div>
+            <h2>Get the Program for Your School</h2>
+        </div>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-cover">
+                    <img src="./img/1.jpg" alt="Science">
+                </div>
+                <div class="news-body">
+                    <div>
+                        <div class="chip">Kit for Teachers</div>
+                        <h3>Self-paced Learning with Every Tool at Your Hand</h3>
+                        <h4 class="line-height-2">25 self-paced modules (70+ videos)</h4>
+                        <h4 class="line-height-2">Ready-to-use teaching materials</h4>
+                        <h4 class="line-height-2">8 inspirational talks</h4>
+                        <h4 class="line-height-2">Professional badges</h4>
+                        <h4 class="line-height-2">Certificate on completion</h4>
+                        <h4 class="line-height-2">Extensive support</h4>
+                    </div>
+                    <div class="news-date">£248 / $338 / €288</div>
+                    <div><a href="#news" class="btn btn-secondary">Request Info Pack</a></div>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-cover">
+                    <img src="./img/2.jpg" alt="School Fair">
+                </div>
+                <div class="news-body">
+                    <div>
+                        <div class="chip" style="border-color: var(--green); color: var(--dark-green); background: rgba(111, 255, 161, 0.1);">SummerCamp for Schools</div>
+                        <h3>Turn-key SummerCamp to Organize at Your School</h3>
+                        <h4 class="line-height-2">Loaned 3D printer + materials kit per student</h4>
+                        <h4 class="line-height-2">E-learning Platform</h4>
+                        <h4 class="line-height-2">8 inspirational talks from award-winning designer</h4>
+                        <h4 class="line-height-2">Free Training for your staff</h4>
+                        <h4 class="line-height-2">Certificate of completion for your studentds</h4>
+                        <h4 class="line-height-2">Creative Social Impact Challenge</h4>
+                    </div>
+                    <div class="news-date">£348 / $478 / €408 per student</div>
+                    <div><a href="#news" class="btn btn-secondary">Request Info Pack</a></div>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-cover">
+                    <img src="./img/3.jpg" alt="Conferences">
+                </div>
+                <div class="news-body">
+                    <div>
+                        <div class="chip">Extracurricular for Schools</div>
+                        <h3>Oustanding Enrichment Program for Your Students</h3>
+                        <h4 class="line-height-2">Loaned 3D printer + materials kit per student</h4>
+                        <h4 class="line-height-2">E-learning platform</h4>
+                        <h4 class="line-height-2">2 x 75‑minute group mentoring monthly (max 10 students)</h4>
+                        <h4 class="line-height-2">Monthly inspirational talks from designers</h4>
+                        <h4 class="line-height-2">5 Professional badges + 1 certificate of completion</h4>
+                        <h4 class="line-height-2">Creative Social Impact Portolio</h4>
+                    </div>
+                    <div class="news-date">£548 / $748 / €638 per student per year</div>
+                    <div><a href="#news" class="btn btn-secondary">Request Info Pack</a></div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 40px; border-top: 1px solid var(--border-color);">
+            <div class="news-header">
+                <div class="chip">References</div>
+                <h2>Our Alumni Love the Program ♥</h2>
+            </div>
+            <div>
+                <video width="75%" height="auto" max-height="590" controls poster="./video/vittoria_thumb.png">
+                    <source src="./video/vittoria_video_2.mp4" type="video/mp4">
+                    <source src="./video/vittoria_video_2.mp4" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="stats-wrapper">
+                <div class="stat-block">
+                    <div class="testimonial-bubble">
+                        <p>“I learnt a lot on the program, most of all I appreciated working with computer programs and the 3D printer. I am glad that I was able to try all the techniques that are associated with 3D Printed Fashion and also listen to all the interesting lectures.”</p>
+                        <strong>Hana V.</strong>
+                    </div>                    
+                </div>
+                <div class="stat-block">
+                    <div class="testimonial-bubble">
+                        <p>“This course has incredibly inspired me for future designs. I learned to work with different softwares and experimented with various techniques from to 3D printing to 3D pens. I was exceptionally satisfied with the entire program.”</p>
+                        <strong>Ema Z.</strong>
+                    </div>  
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="stats-wrapper">
+        <div class="stat-block bg-violet">
+            <div class="stat-num text-white">98%</div>
+            <div class="stat-label text-white">Student satisfaction with the program</div>
+        </div>
+        <div class="stat-block bg-yellow">
+            <div class="stat-num text-yellow-dark">100%</div>
+            <div class="stat-label text-yellow-dark">Report gaining new technical skills </div>
+        </div>
+        <div class="stat-block bg-red">
+            <div class="stat-num text-brown">90%</div>
+            <div class="stat-label text-brown">Students use 3D Printing and gained tech skills frequently</div>
+        </div>
+        <div class="stats-col-text">
+            <div class="chip">College Readiness</div>
+            <h2>Paving the Way to Future Success</h2>
+            <div class="grid" style="margin-top: 20px;">
+                <div>
+                    <strong>College Admissions</strong>
+                    <p>Your students create a jaw dropping portfolio for college admissons.</p>
+                </div>
+                <div>
+                    <strong>College-Ready Students</strong>
+                    <p>We prepare students with the skills needed to excel in college.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <h4 class="partners-title">Our Trusted Partners</h4>
+        <div class="partners-container-scroll">
+            <div class="partners-row">
+                <span class="partner-logo">ELEGOO</span>
+                <span class="partner-logo">Recreus</span>
+                <span class="partner-logo">H40</span>
+                <span class="partner-logo">SuperCreators</span>
+                <span class="partner-logo">Materialise</span>
+                <span class="partner-logo">ELEGOO</span>
+                <span class="partner-logo">Recreus</span>
+                <span class="partner-logo">H40</span>
+                <span class="partner-logo">Recreus</span>
+                <span class="partner-logo">Materialise</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-container">
+        <div class="gallery-big">
+            <img src="./img/8.png" alt="Large classroom">
+        </div>
+        <div class="gallery-text">
+            <div class="chip">Students Work</div>
+            <h2>Visual Story of Our STEAM+ Creative Program</h2>
+        </div>
+        <div class="gallery-small-1">
+            <img src="./img/6.png" alt="Gallery small 1">
+        </div>
+        <div class="gallery-small-2">
+            <img src="./img/7.png" alt="Gallery small 2">
+        </div>
+    </section>
+
+    <section class="principal-section">
+        <div class="principal-img">
+            <img src="./img/Linette Manuel.png" style="object-position: top;" alt="Principal"> 
+        </div>
+        <div class="principal-quote">
+            “It's amazing to see how students thrive and enjoy learning new skills through a program that looks simple, but impacts their engineering, tech and design skills profoundly.”
+        </div>
+        <div>
+            <p class="principal-name">Linette Manuel</p>
+            <p class="principal-role">Founder & Program Director</p>
+            <div class="principal-line"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <ul class="footer-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#benefits" class="nav-link">Benefits</a>
+                    <a href="#news" class="nav-link">Pricing</a>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Terms</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">GDPR & Data Conducts</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="border-right:none; grid-column: span 2;">
+                <h4>Get In Touch</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:hello@make-ful.com">hello@make-ful.com</a></li>
+                    <li><a href="tel:+420735820576">+420 735 820 576</a></li>
+                </ul>
+                <div style="margin-top: 40px;">
+                    <a href="#enroll" class="btn btn-secondary" style="width: 100%;">Request Info Pack</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bg-letter">M</div>
+            <img src="./img/makeful_logo_blue.png" alt="Makeful Academy" class="footer-logo-img">
+        </div>
+        <div class="copyright">
+            © 2026, Makeful 
+        </div>
+    </footer>
+
+</body>
+</html>
