@@ -66,196 +66,37 @@
         .btn-white { background: var(--white); color: var(--ink); border-color: var(--white); }
         .btn-white:hover { background: var(--off); }
 
-                        /* ─── NAV ─── */
-        header {
-            background: var(--white);
-            border-bottom: var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 200;
-        }
-        .nav-wrapper {
-            width: 100%;
-            display: flex;
-            align-items: stretch;
-            height: 72px;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            padding: 0 32px;
-            border-right: var(--border);
-            flex-shrink: 0;
-        }
+         /* ─── NAV ─── */
+        header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-logo { display: flex; align-items: center; padding: 0 22px; border-right: var(--border); flex-shrink: 0; }
         .nav-logo img { height: 22px; width: auto; }
-        .nav-links {
-            display: flex;
-            flex: 1;
-        }
-        .nav-link {
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            border-right: var(--border);
-            transition: background 0.15s;
-        }
+        .nav-links { display: flex; flex: 1; }
+        .nav-link { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-right: var(--border); transition: background 0.15s; }
         .nav-link:hover { background: var(--off); }
         .nav-link.active { background: var(--off); }
         .nav-spacer { flex: 1; }
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            padding: 0 40px;
-            background: var(--lavender);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            flex-shrink: 0;
-            transition: background 0.15s;
-            border-left: var(--border);
-        }
+        .nav-cta { display: flex; align-items: center; padding: 0 40px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
         .nav-cta:hover { background: #7e5ee0; color: var(--white); }
 
         /* ─── HAMBURGER ─── */
-        .nav-hamburger {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            width: 72px;
-            height: 72px;
-            flex-shrink: 0;
-            border-left: var(--border);
-            background: transparent;
-            border-top: none;
-            border-right: none;
-            border-bottom: none;
-            cursor: pointer;
-            padding: 0;
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--ink);
-            margin: 4px auto;
-            transition: transform 0.25s, opacity 0.25s;
-        }
-        .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-        .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+        .nav-hamburger:hover { background: var(--off); }
+        .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
+        .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
+        .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
+        .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
         /* ─── MOBILE DRAWER ─── */
-        .nav-drawer {
-            display: none;
-            position: fixed;
-            top: 72px;
-            left: 0; right: 0;
-            background: var(--white);
-            border-bottom: var(--border);
-            z-index: 199;
-            flex-direction: column;
-            box-shadow: 0 8px 32px rgba(18,16,14,0.12);
-        }
+        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
         .nav-drawer.open { display: flex; }
-        .nav-drawer a {
-            padding: 20px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            border-bottom: var(--border);
-            transition: background 0.15s;
-            color: var(--ink);
-            text-decoration: none;
-        }
-        .nav-drawer a:hover { background: var(--off); }
-        .nav-drawer a.active { background: var(--off); }
-        .nav-drawer .drawer-cta {
-            padding: 24px 32px;
-            background: var(--lavender);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-bottom: none;
-        }
-        .nav-drawer .drawer-cta:hover { background: #7e5ee0; color: var(--white); }
-        @media (max-width: 1100px) {
-            .nav-hamburger { display: flex; }
-        }
-
-        /* ─── HAMBURGER ─── */
-        .nav-hamburger {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            width: 72px;
-            height: 72px;
-            flex-shrink: 0;
-            border-left: var(--border);
-            background: transparent;
-            border-top: none;
-            border-right: none;
-            border-bottom: none;
-            cursor: pointer;
-            padding: 0;
-        }
-        .nav-hamburger span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--ink);
-            margin: 4px auto;
-            transition: transform 0.25s, opacity 0.25s;
-        }
-        .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-        .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-        /* ─── MOBILE DRAWER ─── */
-        .nav-drawer {
-            display: none;
-            position: fixed;
-            top: 72px;
-            left: 0; right: 0;
-            background: var(--white);
-            border-bottom: var(--border);
-            z-index: 199;
-            flex-direction: column;
-            box-shadow: 0 8px 32px rgba(18,16,14,0.12);
-        }
-        .nav-drawer.open { display: flex; }
-        .nav-drawer a {
-            padding: 20px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            border-bottom: var(--border);
-            transition: background 0.15s;
-            color: var(--ink);
-            text-decoration: none;
-        }
-        .nav-drawer a:hover { background: var(--off); }
-        .nav-drawer a.active { background: var(--off); }
-        .nav-drawer .drawer-cta {
-            padding: 24px 32px;
-            background: var(--lavender);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            border-bottom: none;
-        }
-        .nav-drawer .drawer-cta:hover { background: #7e5ee0; color: var(--white); }
-        @media (max-width: 1100px) {
-            .nav-hamburger { display: flex; }
-        }
+        .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; border-bottom: var(--border); transition: background 0.15s; }
+        .nav-drawer-link:hover { background: var(--off); }
+        .nav-drawer-link.active { background: var(--off); }
+        .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s; }
+        .nav-drawer-cta:hover { background: #7e5ee0; color: var(--white); }
 
         /* ─── PROGRAM CHOOSER HERO ─── */
         .chooser-hero {
@@ -479,12 +320,9 @@
             font-weight: 500;
         }
         @media (max-width: 1100px) {
-        }
-        @media (max-width: 640px) {
-            .footer-main { grid-template-columns: 1fr; }
-            .footer-col { padding: 40px 32px; }
-        }
-        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 640px) {
             .footer-main { grid-template-columns: 1fr; }
@@ -610,6 +448,9 @@
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
             /* Module panels */
             .mod-intro { grid-template-columns: 1fr; }
             .mod-intro-text { border-right: none; border-bottom: var(--border); padding: 60px 40px; }
