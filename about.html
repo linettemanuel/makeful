@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us – Makeful FashionTech STEAM</title>
+    <meta name="description" content="Meet Makeful — a FashionTech STEAM program built to prove that when you redesign the entry point, girls don't just learn STEM. They become inventors.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <style>
+        /* ─── TOKENS ─── */
+        :root {
+            --aqua:     #62D7F4;
+            --coral:    #FD7E8B;
+            --peach:    #FEB492;
+            --magenta:  #F996BF;
+            --lavender: #9A75F0;
+            --lilac:    #C386F8;
+            --ink:      #12100E;
+            --white:    #FEFEFE;
+            --off:      #F5F3F0;
+            --mid:      #5C5856;
+            --border:   1px solid rgba(18,16,14,0.10);
+            --font-display: "Playfair Display", serif;
+            --font-ui:      "DM Sans", sans-serif;
+        }
+
+        /* ─── RESET ─── */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--white); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.15s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
+        h4 { font-family: var(--font-ui); font-weight: 600; color: var(--ink); }
+        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
+        h2 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 20px; }
+        h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
+        p  { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 0; }
+
+        /* ─── LABELS ─── */
+        .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 20px; }
+        .label::before { content: ''; display: block; width: 20px; height: 3px; background: currentColor; flex-shrink: 0; }
+        .label-aqua     { color: #1a9ab8; }
+        .label-coral    { color: #d45060; }
+        .label-lavender { color: #6248c4; }
+        .label-lilac    { color: #8840c8; }
+        .label-peach    { color: #c4703a; }
+        .label-magenta  { color: #b8407a; }
+
+        /* ─── BUTTONS ─── */
+        .btn { display: inline-block; min-width: 200px; max-width: 225px; text-align: center; padding: 15px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent; transition: background 0.2s, color 0.2s, transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-ink { background: var(--ink); color: var(--white); border-color: var(--ink); }
+        .btn-ink:hover { background: #2a2824; }
+        .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+        .btn-outline:hover { background: var(--ink); color: var(--white); }
+        .btn-lavender { background: var(--lavender); color: var(--white); border-color: var(--lavender); }
+        .btn-lavender:hover { background: #7e5ee0; }
+        .btn-coral { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+        .btn-coral:hover { background: #f06070; }
+        .btn-white { background: var(--white); color: var(--ink); border-color: var(--white); }
+        .btn-white:hover { background: var(--off); }
+
+        /* ─── NAV ─── */
+        header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-logo { display: flex; align-items: center; padding: 0 32px; border-right: var(--border); flex-shrink: 0; }
+        .nav-logo img { height: 22px; width: auto; }
+        .nav-links { display: flex; flex: 1; }
+        .nav-link { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-right: var(--border); transition: background 0.15s; }
+        .nav-link:hover { background: var(--off); }
+        .nav-link.active { background: var(--off); }
+        .nav-spacer { flex: 1; }
+        .nav-cta { display: flex; align-items: center; padding: 0 40px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
+        .nav-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HAMBURGER ─── */
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+        .nav-hamburger:hover { background: var(--off); }
+        .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
+        .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
+        .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
+        .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+        /* ─── MOBILE DRAWER ─── */
+        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .nav-drawer.open { display: flex; }
+        .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; border-bottom: var(--border); transition: background 0.15s; }
+        .nav-drawer-link:hover { background: var(--off); }
+        .nav-drawer-link.active { background: var(--off); }
+        .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s; }
+        .nav-drawer-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HERO ─── */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(88vh - 72px); border-bottom: var(--border); }
+        .hero-left { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-right: var(--border); border-left: 6px solid var(--coral); }
+        .hero-left h1 { margin-bottom: 24px; }
+        .hero-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 48px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-right { background: var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; position: relative; overflow: hidden; }
+        .hero-right::before { content: '"'; font-family: var(--font-display); font-size: 34rem; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; top: -100px; left: -20px; line-height: 1; pointer-events: none; }
+        .hero-quote { position: relative; z-index: 1; }
+        .hero-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2vw, 2rem); color: var(--white); line-height: 1.45; font-weight: 400; margin-bottom: 24px; }
+        .hero-quote cite { font-style: normal; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); }
+        .hero-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+        .hero-stat { padding: 32px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+        .hero-stat:nth-child(even) { border-right: none; padding-left: 32px; }
+        .hero-stat:nth-child(odd)  { padding-right: 32px; }
+        .hero-stat:nth-child(n+3)  { border-top: 1px solid rgba(255,255,255,0.1); }
+        .stat-big { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+        .stat-big span { color: var(--peach); }
+        .stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; line-height: 1.4; }
+
+        /* ─── WHY WE EXIST ─── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .col-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .col-aside { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+        .col-aside.bg-off { background: var(--off); }
+
+        .pull-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 1.7vw, 1.65rem); font-weight: 400; color: var(--ink); line-height: 1.45; border-left: 5px solid var(--aqua); padding-left: 28px; }
+
+        .check-list { border: var(--border); }
+        .check-row { display: flex; align-items: center; gap: 14px; padding: 18px 24px; border-bottom: var(--border); font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+        .check-row:last-child { border-bottom: none; }
+        .check-icon { font-size: 18px; flex-shrink: 0; }
+
+        /* ─── PROBLEM ─── */
+        .problem-band { background: var(--ink); padding: 120px 80px; border-bottom: var(--border); }
+        .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .problem-band h2 { color: var(--white); margin-bottom: 24px; }
+        .problem-band p  { color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+        .problem-band p:last-child { margin-bottom: 0; }
+        .problem-callout { padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .problem-callout::before { content: 'But what if it\'s a design problem?'; display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--coral); margin-bottom: 20px; }
+        .problem-callout p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 1.4vw, 1.35rem); color: var(--white) !important; line-height: 1.55; font-weight: 400; margin: 0 !important; }
+        .problem-note { margin-top: 24px; color: rgba(255,255,255,0.3) !important; font-size: 0.85rem !important; }
+
+        /* ─── SOFT ENGINEERING ─── */
+        .soft-eng { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .soft-visual { background: var(--lavender); padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; border-right: var(--border); }
+        .soft-visual::after { content: 'SOFT'; font-family: var(--font-display); font-weight: 900; font-size: 12rem; color: rgba(255,255,255,0.07); position: absolute; bottom: -20px; left: -10px; line-height: 1; pointer-events: none; }
+        .soft-visual .label { color: rgba(255,255,255,0.6); }
+        .soft-visual .label::before { background: rgba(255,255,255,0.6); }
+        .soft-visual h2 { color: var(--white); position: relative; z-index: 1; margin-bottom: 20px; }
+        .soft-visual p  { color: rgba(255,255,255,0.75); position: relative; z-index: 1; margin-bottom: 14px; font-size: 0.95rem; }
+        .soft-principles { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .principle { display: flex; gap: 24px; align-items: flex-start; padding: 36px 0; border-bottom: var(--border); }
+        .principle:last-child { border-bottom: none; }
+        .p-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; line-height: 1; flex-shrink: 0; width: 52px; }
+        .p-body h4 { font-size: 1rem; margin-bottom: 8px; }
+        .p-body p  { font-size: 0.9rem; line-height: 1.7; }
+
+        /* ─── CHALLENGES ─── */
+        .challenges-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: var(--border); }
+        .ch-card { padding: 52px 48px; border-right: var(--border); }
+        .ch-card:last-child { border-right: none; }
+        .ch-card:nth-child(n+4) { border-top: var(--border); }
+        .ch-bar { width: 36px; height: 4px; margin-bottom: 28px; }
+        .ch-card h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+        .ch-card p { font-size: 0.88rem; line-height: 1.7; }
+
+        /* ─── FOUNDER ─── */
+        .founder-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .founder-visual { background: url(./img/Linette\ Manuel.png) center / cover no-repeat; position: relative; overflow: hidden; min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px 72px; border-right: var(--border); }
+        .founder-visual::before { content: 'L'; font-family: var(--font-display); font-size: 40rem; font-weight: 900; color: rgba(18,16,14,0.06); position: absolute; top: -80px; left: -20px; line-height: 1; pointer-events: none; }
+        .founder-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; pointer-events: none; }
+        .founder-ph span { font-size: 0.82rem; color: var(--mid); font-weight: 600; }
+        .founder-ph code { font-size: 0.72rem; color: var(--mid); opacity: 0.55; }
+        .founder-badge { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--white); padding: 14px 22px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; align-self: flex-start; }
+        .founder-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid var(--peach); }
+        .founder-text h2 { margin-bottom: 6px; }
+        .founder-role { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 32px; }
+        .founder-quote { background: var(--off); border-left: 4px solid var(--peach); padding: 28px 32px; margin-bottom: 28px; }
+        .founder-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 1.3vw, 1.2rem); color: var(--ink); line-height: 1.55; font-weight: 400; margin-bottom: 10px; }
+        .founder-quote cite { font-style: normal; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--mid); }
+        .founder-text p { font-size: 0.95rem; margin-bottom: 14px; line-height: 1.8; }
+        .founder-text p:last-of-type { margin-bottom: 0; }
+        .creds { margin-top: 36px; border-top: var(--border); }
+        .cred-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: var(--border); font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+        .cred-row:last-child { border-bottom: none; }
+        .cred-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+
+        /* ─── VALUES ─── */
+        .values-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .values-cols { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .val-col { padding: 80px; }
+        .val-col-not { border-right: var(--border); background: var(--off); }
+        .val-col h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0; padding-bottom: 24px; border-bottom: var(--border); }
+        .val-row { display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: var(--border); font-size: 0.9rem; line-height: 1.7; }
+        .val-row:last-child { border-bottom: none; }
+        .val-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+
+        /* ─── CULTURE ─── */
+        .culture-hd { background: var(--ink); padding: 100px 80px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .culture-hd h2 { color: var(--white); }
+        .culture-hd .label { color: var(--aqua); justify-content: center; }
+        .culture-hd .label::before { background: var(--aqua); }
+        .culture-hd p { color: rgba(255,255,255,0.45); max-width: 500px; margin: 10px auto 0; }
+        .culture-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--ink); border-bottom: var(--border); }
+        .cult-card { padding: 72px 56px; border-right: 1px solid rgba(255,255,255,0.08); }
+        .cult-card:last-child { border-right: none; }
+        .cult-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; border-radius: 50%; }
+        .cult-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 14px; }
+        .cult-card p { color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.75; margin-bottom: 14px; }
+        .cult-card p:last-child { margin-bottom: 0; }
+
+        /* ─── WHO THRIVES ─── */
+        .who-split { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .who-text { padding: 100px 80px; border-right: var(--border); border-left: 6px solid var(--magenta); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .who-aside { padding: 100px 80px; background: var(--off); display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+        .who-card { background: var(--white); border: var(--border); border-left: 4px solid var(--magenta); padding: 28px 32px; display: flex; gap: 16px; align-items: flex-start; }
+        .who-icon { width: 36px; height: 36px; background: var(--magenta); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .who-card p { font-size: 0.9rem; line-height: 1.65; color: var(--ink); }
+
+        /* ─── WHERE WE ARE ─── */
+        .today-hd { padding: 100px 80px 60px; border-bottom: var(--border); }
+        .today-hd h2 { margin-bottom: 12px; }
+        .today-hd p { max-width: 700px; }
+        .today-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: var(--border); }
+        .today-cell { padding: 72px 52px; border-right: var(--border); }
+        .today-cell:last-child { border-right: none; }
+        .today-num { font-family: var(--font-display); font-size: 4.5rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .today-num sup { font-size: 2rem; }
+        .today-cell h4 { font-size: 0.9rem; margin-bottom: 8px; }
+        .today-cell p { font-size: 0.85rem; line-height: 1.6; }
+
+        /* ─── PARTNERS ─── */
+        .partners-wrap { padding: 100px 80px; border-bottom: var(--border); display: flex; flex-direction: column; align-items: center; gap: 56px; }
+        .partners-hd { text-align: center; }
+        .partners-hd h2 { margin-bottom: 12px; }
+        .partners-hd p { max-width: 480px; margin: 0 auto; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: var(--border); width: 100%; max-width: 960px; }
+        .p-card { padding: 52px 48px; border-right: var(--border); }
+        .p-card:last-child { border-right: none; }
+        .p-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+        .p-role { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 14px; }
+        .p-card p { font-size: 0.88rem; line-height: 1.65; }
+
+        /* ─── VISION / CTA ─── */
+        .vision-split { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--border); }
+        .vision-text { padding: 120px 80px; border-right: var(--border); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .vision-text .closing { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink); margin-top: 8px; }
+        .vision-cta { background: var(--lavender); padding: 120px 80px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .vision-cta::after { content: 'Make.'; font-family: var(--font-display); font-weight: 900; font-size: 8rem; color: rgba(255,255,255,0.07); position: absolute; bottom: 20px; right: 20px; line-height: 1; pointer-events: none; }
+        .vision-cta .label { color: rgba(255,255,255,0.6); }
+        .vision-cta .label::before { background: rgba(255,255,255,0.6); }
+        .vision-cta h2 { color: var(--white); position: relative; z-index: 1; }
+        .vision-cta p  { color: rgba(255,255,255,0.65); position: relative; z-index: 1; font-size: 0.95rem; }
+        .vision-cta .btn { position: relative; z-index: 1; align-self: flex-start; margin-top: 44px; }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--white); }
+        .footer-main { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1.4fr; border-top: var(--border); width: 100%; }
+        .footer-col { padding: 64px 48px; border-right: var(--border); }
+        .footer-col:last-child { border-right: none; }
+        .footer-col h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 24px; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-weight: 600; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--lavender); }
+        .footer-bottom { background: var(--lavender); text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+        .footer-bg-letter { font-size: 22rem; font-family: var(--font-display); font-weight: 900; color: white; opacity: 0.1; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); line-height: 1; pointer-events: none; }
+        .footer-logo-img { height: 72px; width: auto; margin: 0 auto; position: relative; z-index: 1; filter: brightness(0) invert(1); }
+        .copyright { padding: 18px 32px; text-align: center; background: var(--off); border-top: var(--border); font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+
+            .hero { grid-template-columns: 1fr; min-height: unset; }
+            .hero-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .hero-right { padding: 72px 48px; min-height: 460px; }
+
+            .two-col { grid-template-columns: 1fr; }
+            .col-text, .col-aside { padding: 72px 48px; }
+
+            .problem-band { padding: 80px 48px; }
+            .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            .soft-eng { grid-template-columns: 1fr; }
+            .soft-visual { border-right: none; border-bottom: var(--border); padding: 72px 48px; min-height: 400px; }
+            .soft-principles { padding: 72px 48px; }
+
+            .challenges-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .challenges-grid { grid-template-columns: 1fr 1fr; }
+
+            .founder-section { grid-template-columns: 1fr; }
+            .founder-visual { border-right: none; border-bottom: var(--border); min-height: 360px; }
+            .founder-text { padding: 72px 48px; }
+
+            .values-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .values-cols { grid-template-columns: 1fr; }
+            .val-col-not { border-right: none; border-bottom: var(--border); }
+            .val-col { padding: 64px 48px; }
+
+            .culture-hd { padding: 72px 48px 48px; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .cult-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 64px 48px; }
+            .cult-card:last-child { border-bottom: none; }
+
+            .who-split { grid-template-columns: 1fr; }
+            .who-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .who-aside { padding: 72px 48px; }
+
+            .today-hd { padding: 72px 48px 48px; }
+            .today-grid { grid-template-columns: 1fr 1fr; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: var(--border); }
+
+            .partners-wrap { padding: 72px 48px; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .p-card { border-right: none; border-bottom: var(--border); }
+            .p-card:last-child { border-bottom: none; }
+
+            .vision-split { grid-template-columns: 1fr; }
+            .vision-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .vision-cta { padding: 72px 48px; }
+        }
+
+        @media (max-width: 640px) {
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-col { padding: 40px 32px; }
+            .hero-left, .hero-right { padding: 56px 28px; }
+            .col-text, .col-aside { padding: 56px 28px; }
+            .soft-visual, .soft-principles { padding: 56px 28px; }
+            .challenges-hd, .values-hd, .today-hd { padding: 56px 28px 40px; }
+            .challenges-grid { grid-template-columns: 1fr; }
+            .ch-card { border-right: none; border-bottom: var(--border); }
+            .ch-card:last-child { border-bottom: none; }
+            .ch-card:nth-child(n+4) { border-top: none; }
+            .founder-text, .who-text, .who-aside { padding: 56px 28px; }
+            .val-col { padding: 48px 28px; }
+            .culture-hd { padding: 56px 28px 40px; }
+            .cult-card { padding: 56px 28px; }
+            .today-grid { grid-template-columns: 1fr; }
+            .today-cell { border-right: none; border-bottom: var(--border); }
+            .today-cell:last-child { border-bottom: none; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: none; }
+            .partners-wrap { padding: 56px 28px; }
+            .vision-text, .vision-cta { padding: 56px 28px; }
+        }
+
+        /* ─── FULL-SCREEN PHOTO BREAK ─── */
+        .photo-break {
+            width: 100%;
+            min-height: 70vh;
+            background: var(--off);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-top: var(--border);
+            border-bottom: var(--border);
+        }
+        .photo-break img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-break-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .photo-break-placeholder .ph-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(18,16,14,0.07);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .photo-break-placeholder p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .photo-break-placeholder code {
+            font-size: 0.72rem;
+            color: var(--mid);
+            opacity: 0.55;
+        }
+        /* When image is present, hide placeholder */
+        .photo-break.has-image .photo-break-placeholder { display: none; }
+
+        /* ─── YOUTUBE / VIDEO SECTION ─── */
+        .video-section {
+            border-bottom: var(--border);
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+        .video-header {
+            padding: 80px 80px 48px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        .video-header h2 { color: var(--white); margin-bottom: 10px; }
+        .video-header p  { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.7; max-width: 540px; }
+        .video-embed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 1100px) {
+            .video-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 72px 48px 40px; }
+        }
+        @media (max-width: 640px) {
+            .video-header { padding: 56px 28px 32px; }
+        }
+
+        /* ─── PRESS QUOTE / BAMBULAB SECTION ─── */
+        .press-quote-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+        .press-quote-left {
+            padding: 100px 80px;
+            background: var(--ink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .press-quote-left::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 28rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.04);
+            position: absolute;
+            top: -80px; left: -10px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .press-quote-left blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+            color: var(--white);
+            line-height: 1.55;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-left cite {
+            font-style: normal;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--peach);
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-right {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            border-left: 6px solid var(--aqua);
+        }
+        .press-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--off);
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--ink);
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+        .press-quote-right h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .press-quote-right p { font-size: 0.95rem; line-height: 1.75; }
+        @media (max-width: 1100px) {
+            .press-quote-section { grid-template-columns: 1fr; }
+            .press-quote-left { padding: 72px 48px; }
+            .press-quote-right { border-left: none; border-top: var(--border); padding: 72px 48px; }
+        }
+        @media (max-width: 640px) {
+            .press-quote-left, .press-quote-right { padding: 56px 28px; }
+        }
+
+        /* ─── EXPERTS SECTION ─── */
+        .experts-section {
+            border-bottom: var(--border);
+        }
+        .experts-hd {
+            padding: 100px 80px 72px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            border-bottom: var(--border);
+        }
+        .experts-hd h2 { margin-bottom: 10px; }
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .expert-card {
+            padding: 56px 48px;
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .expert-card:last-child { border-right: none; }
+        .expert-card:nth-child(n+5) { border-top: var(--border); }
+        .expert-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--off);
+            border: 3px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .expert-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 50%;
+        }
+        .expert-photo-ph {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--mid);
+            text-align: center;
+            line-height: 1.3;
+            padding: 8px;
+        }
+        .expert-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--ink);
+        }
+        .expert-role {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--mid);
+            margin-bottom: 16px;
+        }
+        .expert-card p {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--mid);
+        }
+        @media (max-width: 1100px) {
+            .experts-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 56px; }
+            .experts-grid { grid-template-columns: repeat(2, 1fr); }
+            .expert-card:nth-child(even) { border-right: none; }
+            .expert-card:nth-child(n+5) { border-top: var(--border); }
+            .expert-card:nth-child(3), .expert-card:nth-child(4) { border-top: var(--border); }
+        }
+        @media (max-width: 640px) {
+            .experts-hd { padding: 56px 28px 40px; }
+            .experts-grid { grid-template-columns: 1fr; }
+            .expert-card { border-right: none; border-bottom: var(--border); padding: 48px 28px; }
+            .expert-card:last-child { border-bottom: none; }
+            .expert-card:nth-child(n+3) { border-top: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <div class="nav-wrapper">
+        <a href="index.html" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html#benefits" class="nav-link">Benefits</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="programs.html" class="nav-link">Programs</a>
+            <a href="index.html#news" class="nav-link">Pricing</a>
+            <a href="faq.html" class="nav-link">FAQs</a>
+            <div class="nav-spacer"></div>
+        </nav>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+<nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="index.html#benefits" class="nav-link">Benefits</a>
+    <a href="about.html" class="nav-link">About Us</a>
+    <a href="programs.html" class="nav-link">Programs</a>
+    <a href="index.html#news" class="nav-link">Pricing</a>
+    <a href="faq.html" class="nav-link">FAQs</a>
+    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+</nav>
+<script>
+    (function(){
+        var btn = document.getElementById('hamburger');
+        var drawer = document.getElementById('nav-drawer');
+        btn.addEventListener('click', function(){
+            btn.classList.toggle('open');
+            drawer.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+            if (!btn.contains(e.target) && !drawer.contains(e.target)) {
+                btn.classList.remove('open');
+                drawer.classList.remove('open');
+            }
+        });
+    })();
+</script>
+
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-left">
+        <div class="label label-coral">About Makeful</div>
+        <h1>Make things that<br>didn't exist before.</h1>
+        <p class="hero-lead">Makeful is a place where creativity meets technology — and where making something real is the whole point. We believe the joy of invention belongs to everyone.</p>
+        <div class="hero-btns">
+            <a href="https://tally.so/r/b57egg" class="btn btn-ink">Get in Touch</a>
+            <a href="curriculum.html" class="btn btn-outline">Explore Programs</a>
+        </div>
+    </div>
+    <div class="hero-right">
+        <div class="hero-quote">
+            <blockquote>"Imagine designing a jacket that doesn't just look incredible — it actually purifies the air while you wear it. That's the future of making."</blockquote>
+            <cite>— Linette Manuel, Founder of Makeful</cite>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="stat-big">500<span>+</span></div>
+                <div class="stat-lbl">Impacted by our programs</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-big">8<span>+</span></div>
+                <div class="stat-lbl">Countries reached</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-big">200<span>+</span></div>
+                <div class="stat-lbl">Teachers trained</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-big">20<span>+</span></div>
+                <div class="stat-lbl">Full project portfolios completed</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── PHOTO BREAK: Students at work ─── -->
+<div class="photo-break" id="photo-students-at-work">
+    <img src="./img/web_pic1.png" alt="Students at work"> 
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     WHY WE EXIST
+════════════════════════════════════════════ -->
+<section class="two-col" id="why">
+    <div class="col-text" style="border-right:var(--border); border-left:6px solid var(--aqua);">
+        <div class="label label-aqua">Why We Exist</div>
+        <h2>Because making things is one of the most human things you can do.</h2>
+        <p>Look at a city. The bridges, the lights, the buildings reaching toward the sky. The music coming from a window. The coat someone designed from scratch. All of it made by people who started with nothing and turned it into something.</p>
+        <p>That capacity — to imagine, to build, to bring something new into the world — is extraordinary. And it deserves to be celebrated, practiced, and passed on.</p>
+        <p>Makeful exists to put that experience in more hands. We combine fashion, technology, and design into programs where students don't just learn about innovation — they actually do it. They hold it. They wear it. They show it off.</p>
+        <div><a href="curriculum.html" class="btn btn-ink" style="margin-top:12px;">See Our Programs</a></div>
+    </div>
+    <div class="col-aside bg-off">
+        <p class="pull-quote">"The joy of making something that didn't exist before — that feeling is what we're here to give every single student."</p>
+        <p style="font-size:0.95rem;">From a 3D-printed dress that purifies air, to a garment that responds to sound — Makeful students don't just study technology. They make it wearable, beautiful, and theirs.</p>
+        <div class="check-list">
+            <div class="check-row">
+                <span class="material-symbols-outlined check-icon" style="color:var(--aqua);">check_circle</span>
+                Featured in Wired &amp; Czech national media
+            </div>
+            <div class="check-row">
+                <span class="material-symbols-outlined check-icon" style="color:var(--aqua);">check_circle</span>
+                Forbes Next Big Thing &amp; Future Port Youth speaker
+            </div>
+            <div class="check-row">
+                <span class="material-symbols-outlined check-icon" style="color:var(--aqua);">check_circle</span>
+                Headquartered in Prague &middot; Reaching 8+ countries
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHAT MAKES MAKEFUL DIFFERENT
+════════════════════════════════════════════ -->
+<section class="problem-band" id="approach-intro">
+    <div class="problem-inner">
+        <div>
+            <div class="label" style="color:var(--coral);">Our Approach</div>
+            <h2>Fashion is the entry point. Technology is what happens next.</h2>
+            <p>Makeful uses fashion design as a way into serious technical learning — 3D printing, materials science, AI tools, electronics, and sustainability — because fashion is a domain where creativity and engineering are inseparable.</p>
+            <p>When you design a garment that changes colour with temperature, you're doing chemistry. When you 3D-print a wearable structure, you're doing engineering. When you use AI to generate a pattern, you're doing digital design. The technology is real. The learning is deep. And the results are things you actually want to wear.</p>
+            <p>This is what we call soft engineering — not because it's easier, but because it starts from a place of beauty and meaning, and arrives at the same technical rigour as any other pathway.</p>
+        </div>
+        <div>
+            <div class="problem-callout">
+                <p>A student who designs an air-purifying ballet dress is doing materials science, 3D modelling, environmental engineering, and user-centred design — all at once. The magic is that it never feels like a test. It feels like making art.</p>
+            </div>
+            <p class="problem-note">Every Makeful project starts with a real question worth asking, and ends with something real worth keeping.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SOFT ENGINEERING
+════════════════════════════════════════════ -->
+<section class="soft-eng" id="approach">
+    <div class="soft-visual">
+        <div class="label">How We Teach</div>
+        <h2>Soft<br>Engineering</h2>
+        <p>Not because it's less rigorous — but because it starts from creativity, curiosity, and a genuine desire to make something worth making.</p>
+        <p>Students in Makeful programs work with 3D printers, conductive filaments, sublimation printing, AI design tools, and basic electronics. They sew. They model. They iterate. They fail, figure it out, and try again.</p>
+        <p>The technical demands are real. The difference is that every skill is learned in service of a project the student actually cares about — which means the learning sticks.</p>
+    </div>
+    <div class="soft-principles">
+        <div class="label label-lavender">Three Core Principles</div>
+        <div class="principle">
+            <div class="p-num" style="color:var(--lavender);">1</div>
+            <div class="p-body">
+                <h4>Meaning First, Skills Second</h4>
+                <p>Every Makeful project begins with a real question worth answering. Not "learn CAD so you can someday use it" — but "here's a challenge that matters, let's figure out what we need to solve it." The skills follow naturally from the purpose.</p>
+            </div>
+        </div>
+        <div class="principle">
+            <div class="p-num" style="color:var(--coral);">2</div>
+            <div class="p-body">
+                <h4>Make First, Theory Later</h4>
+                <p>We don't open with lectures. We open with materials. Students touch things, break things, print things, and figure things out on day one. Theory emerges from doing — which means it actually makes sense when it arrives.</p>
+            </div>
+        </div>
+        <div class="principle">
+            <div class="p-num" style="color:var(--peach);">3</div>
+            <div class="p-body">
+                <h4>You Leave as a Maker, Not a Student</h4>
+                <p>The most important thing Makeful changes isn't what students know — it's how they see themselves. Not as someone who might someday create, but as someone who already does. The portfolio is physical proof. The identity shift is permanent.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     REAL CHALLENGES
+════════════════════════════════════════════ -->
+<section id="challenges" style="border-top:var(--border);">
+    <div class="challenges-hd">
+        <div>
+            <div class="label label-magenta">What Students Make</div>
+            <h2>Real projects. Real technology. Real joy.</h2>
+        </div>
+        <p>Every Makeful project starts with a challenge that matters in the real world. Students don't simulate solutions — they build them, wear them, and present them. Here are some of the briefs they work with.</p>
+    </div>
+    <div class="challenges-grid">
+        <div class="ch-card">
+            <div class="ch-bar" style="background:var(--coral);"></div>
+            <h4>Wearables that Heal</h4>
+            <p>How might we design splints, braces, or therapeutic garments that are more comfortable, more beautiful, and more accessible than anything that exists today? Students explore materials science, ergonomics, and human-centred design.</p>
+        </div>
+        <div class="ch-card">
+            <div class="ch-bar" style="background:var(--aqua);"></div>
+            <h4>Glow in the City</h4>
+            <p>In cities where smog drops visibility and safety becomes critical, how might we design clothing that makes people glow — literally? Students work with photoluminescent filaments and wearable light design.</p>
+        </div>
+        <div class="ch-card">
+            <div class="ch-bar" style="background:var(--magenta);"></div>
+            <h4>Feel Better, Wear It</h4>
+            <p>How might we create garments using conductive filament that help people notice and respond to their own stress levels? Students explore biometrics, textile electronics, and the intersection of wellness and design.</p>
+        </div>
+        <div class="ch-card">
+            <div class="ch-bar" style="background:var(--peach);"></div>
+            <h4>Colour That Tells You Something</h4>
+            <p>How might we embed temperature-sensing technology into clothing using thermochromic filaments — creating wearables that change colour to communicate? Students work with materials science and user experience design.</p>
+        </div>
+        <div class="ch-card">
+            <div class="ch-bar" style="background:var(--lavender);"></div>
+            <h4>Fashion That Cleans the Air</h4>
+            <p>How might we design accessories or garments that actively purify the air around them — in clubs, on transit, in offices? Students combine environmental engineering with fashion design. Vittoria's ballet dress proved it's possible.</p>
+        </div>
+        <div class="ch-card" style="background:var(--off);">
+            <div class="ch-bar" style="background:var(--ink);"></div>
+            <h4>These Aren't Prototypes. They're Proof.</h4>
+            <p>Every project Makeful students complete is finished, functional, and genuinely impressive. Not proof that young people can learn technology — proof that they can invent with it.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── PHOTO BREAK: Workshop in action ─── -->
+<div class="photo-break" id="photo-workshop-in-action">
+    <img src="./img/web_pic3.png" alt="Workshop in action">
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     MEET THE FOUNDER
+════════════════════════════════════════════ -->
+<section class="founder-section" id="founder">
+    <div class="founder-visual" style="background-image: (url(./img/Linette\ Manuel.png));">
+        <div class="founder-ph">
+        
+        </div>
+        <div class="founder-badge">
+            <span class="material-symbols-outlined" style="font-size:15px;">star</span>
+            Forbes Next Big Thing Speaker
+        </div>
+    </div>
+    <div class="founder-text">
+        <div class="label label-peach">Meet the Founder</div>
+        <h2>Linette Manuel</h2>
+        <div class="founder-role">Fashion-Tech Designer &amp; STEAM Educator &amp; Founder of Makeful</div>
+
+        <div class="founder-quote">
+            <blockquote>"Imagine designing a jacket that is not just fashionable, but actually purifies the air while you wear it. That's the future of fashion."</blockquote>
+            <cite>— Forbes Next Big Thing Stage</cite>
+        </div>
+
+        <p>Linette's background spans <strong>7 years of K–12 STEAM teaching</strong>, a deep foundation in <strong>Textile Science and Engineering</strong>, and professional experience at companies including <strong>IBM</strong>. She's spent her career at the intersection of technology and humanity — and her life's mission is to bridge the gap between the two.</p>
+
+        <p>As a Fashion-Tech designer, she created an award-winning, sound-generating haptic suit that fuses 3D printing, AI, and wearable electronics. She was awarded the <strong>Dean's Prize from Czech Technical University</strong>, was a finalist for the <strong>2024 Creative Heroes Award</strong>, has been featured in <strong>Wired</strong>, and has spoken at Forbes Next Big Thing and Future Port Youth.</p>
+
+        <p>Beyond Makeful, Linette mentors makers worldwide through the <strong>"ELEGOO With Her" International Program</strong> and serves as an honorary mentor for <strong>Femme Palette</strong>. She believes, simply and deeply, that education and technology are key to building a better future for everyone.</p>
+
+        <div class="creds">
+            <div class="cred-row">
+                <div class="cred-icon" style="background:var(--lavender);">
+                    <span class="material-symbols-outlined" style="color:white;font-size:15px;">school</span>
+                </div>
+                Dean's Prize — Czech Technical University
+            </div>
+            <div class="cred-row">
+                <div class="cred-icon" style="background:var(--coral);">
+                    <span class="material-symbols-outlined" style="color:white;font-size:15px;">emoji_events</span>
+                </div>
+                Finalist — 2024 Creative Heroes Award
+            </div>
+            <div class="cred-row">
+                <div class="cred-icon" style="background:var(--aqua);">
+                    <span class="material-symbols-outlined" style="color:var(--ink);font-size:15px;">article</span>
+                </div>
+                Featured in Wired Magazine
+            </div>
+            <div class="cred-row">
+                <div class="cred-icon" style="background:var(--peach);">
+                    <span class="material-symbols-outlined" style="color:var(--ink);font-size:15px;">mic</span>
+                </div>
+                Forbes Next Big Thing &middot; Future Port Youth Speaker
+            </div>
+            <div class="cred-row">
+                <div class="cred-icon" style="background:var(--magenta);">
+                    <span class="material-symbols-outlined" style="color:white;font-size:15px;">favorite</span>
+                </div>
+                Honorary Mentor — Femme Palette &amp; ELEGOO With Her
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     LINETTE AT FUTURE PORT — VIDEO
+════════════════════════════════════════════ -->
+<section class="video-section" id="talk">
+    <div class="video-header">
+        <div>
+            <div class="label label-magenta" style="color:var(--magenta);">Watch the Talk</div>
+            <h2>Future of Education<br>at Future Port Youth</h2>
+        </div>
+        <div>
+            <p>Linette spoke at Future Port Youth about what it means to reimagine education through the lens of making — and what happens when you put real creative technology in the hands of young people who are ready for it. This talk captures the thinking behind Makeful: why fashion is the entry point, why joy is the measure of success, and why the future of learning is tangible.</p>
+            <a href="https://youtu.be/9pGt6suWkJk?si=BXBCjSDAm9iExUm6&t=720" target="_blank" class="btn btn-white" style="margin-top:20px;">Watch on YouTube ↗</a>
+        </div>
+    </div>
+    <div class="video-embed">
+        <iframe
+            src="https://www.youtube.com/embed/9pGt6suWkJk?start=720"
+            title="Linette Manuel — Future of Education at Future Port Youth"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     BAMBULAB PRESS QUOTE
+════════════════════════════════════════════ -->
+<section class="press-quote-section" id="press">
+    <div class="press-quote-left">
+        <blockquote>"3D printing technology transforms theoretical concepts into tangible experiences, enabling students to bring their ideas to life. It's not just about fashion; it's about empowering students to explore technical subjects, break down barriers, and spark a love for innovation."</blockquote>
+        <cite>— Linette Manuel, Co-founder of Makeful</cite>
+    </div>
+    <div class="press-quote-right">
+        <div class="label label-aqua">As Seen In</div>
+        <div class="press-logo">
+            <span class="material-symbols-outlined" style="font-size:16px;">newspaper</span>
+            BambuLab Blog
+        </div>
+        <h3>How Makeful is reimagining STEAM education through FashionTech and 3D printing</h3>
+        <p>BambuLab featured Makeful's approach to hands-on learning — and how equipping students with real tools transforms not just what they make, but how they see themselves as makers.</p>
+        <a href="https://blog.bambulab.com/how-makeful-is-reimagining-steam-education-through-fashion-tech-and-3d-printing-2/" target="_blank" class="btn btn-outline" style="margin-top:12px;">Read the Full Article ↗</a>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OUR VALUES
+════════════════════════════════════════════ -->
+<section id="values" style="border-top:var(--border);">
+    <div class="values-hd">
+        <div>
+            <div class="label">What We're About</div>
+            <h2>A few things we believe deeply.</h2>
+        </div>
+        <p>These aren't values we put on a wall. They're the things that actually shape how we design programs, choose partners, and show up for students.</p>
+    </div>
+    <div class="values-cols">
+        <div class="val-col val-col-not">
+            <h3 style="font-style:italic;">We don't do...</h3>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--coral);"></div>
+                <p><strong>Passive learning.</strong> We don't believe in sitting and listening. From day one, students are touching materials, making decisions, and figuring things out by doing them.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--coral);"></div>
+                <p><strong>Watered-down content.</strong> Makeful programs are genuinely challenging. The technology is real, the briefs are complex, and the standards are high — because students rise to meet real expectations.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--coral);"></div>
+                <p><strong>One-size-fits-all.</strong> The student obsessed with aesthetics and the student obsessed with engineering both belong here. We design for the full range of how creative minds work.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--coral);"></div>
+                <p><strong>Grades as the goal.</strong> Assessment anxiety kills curiosity. We care about what students make and how they think — not how they score on a test about what they once memorised.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--coral);"></div>
+                <p><strong>Playing it safe.</strong> The best projects at Makeful are ambitious. We'd rather students attempt something bold and iterate than aim low and finish first.</p>
+            </div>
+        </div>
+        <div class="val-col">
+            <h3>We are big on...</h3>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--aqua);"></div>
+                <p><strong>Joy as a design principle.</strong> If learning isn't delightful, something has gone wrong. Joy isn't a nice-to-have — it's what makes learning stick, what makes students come back, what makes the work matter.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--lavender);"></div>
+                <p><strong>Beauty with purpose.</strong> We believe the most powerful things humans make are both technically excellent and genuinely beautiful. Fashion is the perfect place to prove that.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--peach);"></div>
+                <p><strong>Making as identity.</strong> The shift from "I learned about making" to "I am a maker" is the most important thing Makeful delivers. A portfolio is proof. But the identity is what lasts.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--magenta);"></div>
+                <p><strong>Different kinds of brilliant.</strong> The designer and the engineer see the same problem differently — and that collision is exactly where the best ideas come from. We celebrate every kind of creative mind.</p>
+            </div>
+            <div class="val-row">
+                <div class="val-dot" style="background:var(--aqua);"></div>
+                <p><strong>Iteration over perfection.</strong> Things will break. Prints will fail. That's not a problem — that's the process. The student who has failed and learned is further ahead than the one who got lucky first time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     THE MAKEFUL CULTURE
+════════════════════════════════════════════ -->
+<section id="culture">
+    <div class="culture-hd">
+        <div class="label">The Experience</div>
+        <h2>What it actually feels like to be here.</h2>
+        <p>Culture is what happens in the room. At Makeful, three things are always present — whether you're in a two-week intensive or a year-long program.</p>
+    </div>
+    <div class="culture-grid">
+        <div class="cult-card">
+            <div class="cult-icon" style="background:var(--lavender);">
+                <span class="material-symbols-outlined" style="color:white;">lightbulb</span>
+            </div>
+            <h3>Innovation</h3>
+            <p>We try things. We ask "what if?" constantly. We don't treat the way something has always been done as a reason to keep doing it that way.</p>
+            <p>Innovation at Makeful isn't about technology for its own sake — it's about using every tool available to solve problems that actually matter and make things that actually exist.</p>
+        </div>
+        <div class="cult-card">
+            <div class="cult-icon" style="background:var(--aqua);">
+                <span class="material-symbols-outlined" style="color:var(--ink);">search</span>
+            </div>
+            <h3>Curiosity</h3>
+            <p>Questions are the point. Why does this material behave like this? What would happen if we combined these two approaches? What does this problem look like from a completely different angle?</p>
+            <p>We've found that the best creative breakthroughs come from students who bring wildly different perspectives to the same challenge. Curiosity is what keeps the room electric.</p>
+        </div>
+        <div class="cult-card">
+            <div class="cult-icon" style="background:var(--peach);">
+                <span class="material-symbols-outlined" style="color:var(--ink);">sentiment_very_satisfied</span>
+            </div>
+            <h3>Joy</h3>
+            <p>Not the forced, performative kind — the real kind. The satisfaction of holding something you made. The thrill of a print coming out right after three attempts. The look on someone's face when they realise what they just built.</p>
+            <p>Joy is the signal that something real is happening. We design for it, protect it, and take it seriously as a measure of whether a program is working.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── PHOTO BREAK: Students presenting work ─── -->
+<div class="photo-break" id="photo-students-presenting-work">
+    <img src="./img/makeful_photo.png" alt="Students presenting work">
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     WHO THRIVES HERE
+════════════════════════════════════════════ -->
+<section class="who-split" id="who">
+    <div class="who-text">
+        <div class="label label-magenta">Who This Is For</div>
+        <h2>If you love making, you belong here.</h2>
+        <p>Makeful is for anyone who gets excited by the idea of building something new — who looks at materials and sees possibilities, who wants their creative energy to turn into something real and tangible.</p>
+        <p>You don't need prior experience with technology. You don't need to know what 3D printing is. You just need to be curious enough to find out.</p>
+        <div><a href="https://tally.so/r/b57egg" class="btn btn-ink" style="margin-top:12px;">Request an Info Pack</a></div>
+    </div>
+    <div class="who-aside">
+        <div class="label label-magenta">Makeful is a great fit for</div>
+        <div class="who-card">
+            <div class="who-icon">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">brush</span>
+            </div>
+            <p><strong>Creative students who haven't found their way into technology yet.</strong> If you love design, art, or fashion — Makeful shows you how far those instincts can take you into engineering and innovation.</p>
+        </div>
+        <div class="who-card">
+            <div class="who-icon">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">merge</span>
+            </div>
+            <p><strong>Students who love both art and science and feel like they have to choose.</strong> You don't. Makeful is built exactly for the place where those two things meet.</p>
+        </div>
+        <div class="who-card">
+            <div class="who-icon">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">star</span>
+            </div>
+            <p><strong>Schools looking for something genuinely distinctive.</strong> Not another robotics club. A program that produces wearable, finished, portfolio-ready work — and students who call themselves makers.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHERE WE ARE TODAY
+════════════════════════════════════════════ -->
+<section id="today" style="border-top:var(--border);">
+    <div class="today-hd">
+        <div class="label label-coral">Where We Are Today</div>
+        <h2>Real programs. Real makers. Real results.</h2>
+        <p>Makeful is headquartered in Prague and operates globally, with programs reaching schools across the US, UK, and beyond. Here's where we are right now.</p>
+    </div>
+    <div class="today-grid">
+        <div class="today-cell">
+            <div class="today-num" style="color:var(--lavender);">200<sup>+</sup></div>
+            <h4>Teachers Trained</h4>
+            <p>Educators equipped to bring FashionTech STEAM into their own classrooms — multiplying Makeful's reach far beyond direct programs.</p>
+        </div>
+        <div class="today-cell">
+            <div class="today-num" style="color:var(--peach);">20<sup>+</sup></div>
+            <h4>Full Portfolios</h4>
+            <p>Students who've completed end-to-end projects — wearable, functional, genuinely impressive work they're proud to show the world.</p>
+        </div>
+        <div class="today-cell">
+            <div class="today-num" style="color:var(--aqua);">8<sup>+</sup></div>
+            <h4>Countries</h4>
+            <p>Schools and educators across 8+ countries bringing FashionTech STEAM to their students.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PARTNERS
+════════════════════════════════════════════ -->
+<section class="partners-wrap" id="partners">
+    <div class="partners-hd">
+        <div class="label label-lavender" style="justify-content:center;">Partners</div>
+        <h2>Who we build with</h2>
+        <p>Makeful partners with organisations that share a genuine belief in the power of making — and in the young people who do it.</p>
+    </div>
+    <div class="partners-grid">
+        <div class="p-card">
+            <div class="p-name">ELEGOO</div>
+            <div class="p-role">Main Partner</div>
+            <p>Provides hardware and materials support that makes hands-on making possible at scale. Linette also leads the ELEGOO With Her International Mentoring Program.</p>
+        </div>
+        <div class="p-card">
+            <div class="p-name">Recreus</div>
+            <div class="p-role">Materials Partner</div>
+            <p>Provides flexible filament materials and supports our program activities — ensuring every Makeful student has the right tools to bring their wearable ideas to life.</p>
+        </div>
+        <div class="p-card">
+            <div class="p-name">SuperCreators</div>
+            <div class="p-role">Sister Project</div>
+            <p>A sister project with a long-term vision: creating fascinating art-tech learning experiences for kids. Where Makeful builds the teachers and programs, SuperCreators is building the wider ecosystem of young makers.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── PHOTO BREAK: Finished pieces ─── -->
+<div class="photo-break" id="photo-finished-pieces">
+    <img src="./img/web_pic4.png" alt="Finished pieces"> 
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     EXPERTS WE COLLABORATE WITH
+════════════════════════════════════════════ -->
+<section class="experts-section" id="experts">
+    <div class="experts-hd">
+        <div>
+            <div class="label label-lavender">Our Expert Network</div>
+            <h2>The people who inspire our students.</h2>
+        </div>
+        <p>Makeful programs are enriched by a network of world-class practitioners — designers, researchers, engineers, and innovators who give inspirational talks and bring real-world expertise into the room. Students don't just learn about the cutting edge. They hear from the people pushing it.</p>
+    </div>
+    <div class="experts-grid">
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/kadian.png" alt="Dr. Kadian A. Gosler">
+            </div>
+            <h4>Dr. Kadian A. Gosler</h4>
+            <div class="expert-role">Wearable Technology Researcher · London</div>
+            <p>A PhD researcher from the University of the Arts London, Dr. Gosler specialises in smart bras, bra wearables, and experience-centred design. She founded KDN R&amp;D Atelier — a future-focused design lab bridging fashion, technology, and wearer experience — and brings over 15 years of industry expertise to every conversation.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/brigette.png" alt="Brigitte Kock">
+            </div>
+            <h4>Brigitte Kock</h4>
+            <div class="expert-role">Modular 3D Fashion Designer &amp; Educator · London</div>
+            <p>Founder of Variable Seams Studio, Brigitte is a London-based modular fashion designer and educator specialising in 3D-printed wearables made at home. Her Dezeen Award-longlisted collaboration with Balena Science using compostable filament is pushing the boundaries of what sustainable printed fashion can look like.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/anouk.png" alt="Anouk Wipprecht">
+            </div>
+            <h4>Anouk Wipprecht</h4>
+            <div class="expert-role">FashionTech Designer &amp; Innovator · Netherlands / USA</div>
+            <p>One of the most recognised names in FashionTech, Anouk creates robotic couture that moves, breathes, and responds to its wearer. Her iconic Spider Dress — built with Intel and 3D-printed using sensors and AI — has collaborated with Intel, Google, Audi, Cirque du Soleil, and Swarovski. She is proof that fashion can be an intelligent second skin.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/batoul.png" alt="Batoul Al-Rashdan">
+            </div>
+            <h4>Batoul Al-Rashdan</h4>
+            <div class="expert-role">Award-Winning Hi-Tech Designer · Jordan</div>
+            <p>An architectural engineer turned FashionTech innovator, Batoul is the founder of Studio B.O.R. — an avant-garde brand merging 3D printing, robotics, bio-based materials, and parametric design. Her work won the Taipei Design Awards and has been showcased at Paris Fashion Week and the Met Gala, rooted in Jordanian heritage and environmental advocacy.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/bruno.png" alt="Bruno Tognin">
+            </div>
+            <h4>Bruno Tognin</h4>
+            <div class="expert-role">Designer &amp; Educator</div>
+            <p>An expert collaborator in the Makeful network whose work and teaching bring depth to our students' understanding of design and technology. Add bio here once confirmed.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/lilach.png" alt="Lilach">
+            </div>
+            <h4>Lilach Porges</h4>
+            <div class="expert-role">Robotic Fashion Designer · New York</div>
+            <p>An Israeli fashion designer with a background in architecture, Lilach is the founder of Procode_Dress — a studio pioneering robot-arm 3D-printed garments. Winner of the Gucci Global Design Graduate Show sustainable fashion category at FIT, she has shown at New York Fashion Week and holds a patent-pending method for printing ready-to-wear collections.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/stephanie.png" alt="Stéphanie Santos">
+            </div>
+            <h4>Stéphanie Santos</h4>
+            <div class="expert-role">3D Couture Designer · Luxembourg / Portugal</div>
+            <p>A European FashionTech designer who trained at ESMOD Roubaix and interned at Iris van Herpen, Stéphanie creates entirely 3D-printed haute couture using recyclable materials. Specialising in biofabrication and computational design, she's one of the most compelling voices on the future of sustainable, printed fashion.</p>
+        </div>
+
+        <div class="expert-card">
+            <div class="expert-photo">
+                <img src="./img/speakers/susana.png" alt="Susana Marques">
+            </div>
+            <h4>Susana Marques</h4>
+            <div class="expert-role">Fashion Tech Researcher &amp; PhD Candidate · Portugal</div>
+            <p>A Fashion Tech designer, researcher, and lecturer specialising in 3D-printed textiles and additive manufacturing in fashion. Susana has spent years developing 100% 3D-printed textile structures and published research on the application of additive manufacturing to fashion — bridging the gap between academic research and real, wearable innovation.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     VISION / CTA
+════════════════════════════════════════════ -->
+<section class="vision-split">
+    <div class="vision-text">
+        <div class="label label-lavender">The Vision</div>
+        <h2>More makers in the world.</h2>
+        <p>Five or ten years from now, Makeful will have reached thousands of students globally. Each one will have completed at least one project — something physical, something functional, something they made themselves.</p>
+        <p>More importantly, each one will carry a different sense of what they're capable of. Not "I took a class once." But "I built that. I can build the next thing too."</p>
+        <p>That's what we're working toward. Not a valuation. Not market share. More people in the world who know — from experience — the joy of making something that didn't exist before.</p>
+        <p class="closing">"Full of making within yourself."</p>
+    </div>
+    <div class="vision-cta">
+        <div>
+            <div class="label">Join the Movement</div>
+            <h2>Ready to bring Makeful to your school?</h2>
+            <p>Whether you're a coordinator, a teacher, or a parent who wants something genuinely different for the young makers in your life — we'd love to hear from you.</p>
+        </div>
+        <a href="https://tally.so/r/b57egg" class="btn btn-white">Request an Info Pack</a>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+    <div class="footer-main">
+        <div class="footer-col">
+            <h4>Menu</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="./index.html#benefits">Benefits</a></li>
+                <li><a href="./index.html#news">Pricing</a></li>
+                <li><a href="./programs.html">Programs</a></li>
+                <li><a href="./faq.html">FAQs</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <ul class="footer-links">
+                <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
+                <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
+                <li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Discover</h4>
+            <ul class="footer-links">
+                <li><a href="./privacy.html">Privacy Terms</a></li>
+                <li><a href="./terms.html">Terms &amp; Conditions</a></li>
+                <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+            </ul>
+        </div>
+        <div class="footer-col" style="grid-column: span 2;">
+            <h4>Get In Touch</h4>
+            <ul class="footer-links">
+                <li><a href="mailto: info@make-ful.com"><span class="__cf_email__" data-cfemail="0c64696060634c616d6769216a7960226f6361">info@make-ful.com</span></a></li>
+                <li><a href="tel:+420735820576">+420 735 820 576</a></li>
+            </ul>
+            <div style="margin-top: 32px;">
+                <a href="https://tally.so/r/b57egg" class="btn btn-coral" style="width:100%; display:block; text-align:center;">Request Info Pack</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bg-letter">M</div>
+        <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+    </div>
+</footer>
+</body>
+</html>

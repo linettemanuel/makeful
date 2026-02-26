@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms &amp; Conditions – Makeful FashionTech STEAM</title>
+    <meta name="description" content="Terms and Conditions for Makeful FashionTech STEAM programs — for schools, educators, and program participants.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <style>
+        /* ─── TOKENS ─── */
+        :root {
+            --aqua:     #62D7F4;
+            --coral:    #FD7E8B;
+            --peach:    #FEB492;
+            --magenta:  #F996BF;
+            --lavender: #9A75F0;
+            --lilac:    #C386F8;
+            --ink:      #12100E;
+            --white:    #FEFEFE;
+            --off:      #F5F3F0;
+            --mid:      #5C5856;
+            --border:   1px solid rgba(18,16,14,0.10);
+            --font-display: "Playfair Display", serif;
+            --font-ui:      "DM Sans", sans-serif;
+        }
+
+        /* ─── RESET ─── */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--white); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.15s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
+        h4 { font-family: var(--font-ui); font-weight: 600; color: var(--ink); }
+        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
+        h2 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 20px; }
+        h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
+        p  { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 0; }
+
+        /* ─── LABELS ─── */
+        .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 20px; }
+        .label::before { content: ''; display: block; width: 20px; height: 3px; background: currentColor; flex-shrink: 0; }
+        .label-aqua     { color: #1a9ab8; }
+        .label-coral    { color: #d45060; }
+        .label-lavender { color: #6248c4; }
+        .label-lilac    { color: #8840c8; }
+        .label-peach    { color: #c4703a; }
+        .label-magenta  { color: #b8407a; }
+
+        /* ─── BUTTONS ─── */
+        .btn { display: inline-block; min-width: 200px; max-width: 225px; text-align: center; padding: 15px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent; transition: background 0.2s, color 0.2s, transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-ink { background: var(--ink); color: var(--white); border-color: var(--ink); }
+        .btn-ink:hover { background: #2a2824; }
+        .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+        .btn-outline:hover { background: var(--ink); color: var(--white); }
+        .btn-lavender { background: var(--lavender); color: var(--white); border-color: var(--lavender); }
+        .btn-lavender:hover { background: #7e5ee0; }
+        .btn-coral { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+        .btn-coral:hover { background: #f06070; }
+        .btn-white { background: var(--white); color: var(--ink); border-color: var(--white); }
+        .btn-white:hover { background: var(--off); }
+
+        /* ─── NAV ─── */
+        header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-logo { display: flex; align-items: center; padding: 0 32px; border-right: var(--border); flex-shrink: 0; }
+        .nav-logo img { height: 22px; width: auto; }
+        .nav-links { display: flex; flex: 1; }
+        .nav-link { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-right: var(--border); transition: background 0.15s; }
+        .nav-link:hover { background: var(--off); }
+        .nav-link.active { background: var(--off); }
+        .nav-spacer { flex: 1; }
+        .nav-cta { display: flex; align-items: center; padding: 0 40px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
+        .nav-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HAMBURGER ─── */
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+        .nav-hamburger:hover { background: var(--off); }
+        .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
+        .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
+        .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
+        .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+        /* ─── MOBILE DRAWER ─── */
+        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .nav-drawer.open { display: flex; }
+        .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; border-bottom: var(--border); transition: background 0.15s; }
+        .nav-drawer-link:hover { background: var(--off); }
+        .nav-drawer-link.active { background: var(--off); }
+        .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s; }
+        .nav-drawer-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HERO ─── */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(88vh - 72px); border-bottom: var(--border); }
+        .hero-left { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-right: var(--border); border-left: 6px solid var(--coral); }
+        .hero-left h1 { margin-bottom: 24px; }
+        .hero-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 48px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-right { background: var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; position: relative; overflow: hidden; }
+        .hero-right::before { content: '"'; font-family: var(--font-display); font-size: 34rem; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; top: -100px; left: -20px; line-height: 1; pointer-events: none; }
+        .hero-quote { position: relative; z-index: 1; }
+        .hero-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2vw, 2rem); color: var(--white); line-height: 1.45; font-weight: 400; margin-bottom: 24px; }
+        .hero-quote cite { font-style: normal; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); }
+        .hero-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+        .hero-stat { padding: 32px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+        .hero-stat:nth-child(even) { border-right: none; padding-left: 32px; }
+        .hero-stat:nth-child(odd)  { padding-right: 32px; }
+        .hero-stat:nth-child(n+3)  { border-top: 1px solid rgba(255,255,255,0.1); }
+        .stat-big { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+        .stat-big span { color: var(--peach); }
+        .stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; line-height: 1.4; }
+
+        /* ─── WHY WE EXIST ─── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .col-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .col-aside { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+        .col-aside.bg-off { background: var(--off); }
+
+        .pull-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 1.7vw, 1.65rem); font-weight: 400; color: var(--ink); line-height: 1.45; border-left: 5px solid var(--aqua); padding-left: 28px; }
+
+        .check-list { border: var(--border); }
+        .check-row { display: flex; align-items: center; gap: 14px; padding: 18px 24px; border-bottom: var(--border); font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+        .check-row:last-child { border-bottom: none; }
+        .check-icon { font-size: 18px; flex-shrink: 0; }
+
+        /* ─── PROBLEM ─── */
+        .problem-band { background: var(--ink); padding: 120px 80px; border-bottom: var(--border); }
+        .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .problem-band h2 { color: var(--white); margin-bottom: 24px; }
+        .problem-band p  { color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+        .problem-band p:last-child { margin-bottom: 0; }
+        .problem-callout { padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .problem-callout::before { content: 'But what if it\'s a design problem?'; display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--coral); margin-bottom: 20px; }
+        .problem-callout p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 1.4vw, 1.35rem); color: var(--white) !important; line-height: 1.55; font-weight: 400; margin: 0 !important; }
+        .problem-note { margin-top: 24px; color: rgba(255,255,255,0.3) !important; font-size: 0.85rem !important; }
+
+        /* ─── SOFT ENGINEERING ─── */
+        .soft-eng { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .soft-visual { background: var(--lavender); padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; border-right: var(--border); }
+        .soft-visual::after { content: 'SOFT'; font-family: var(--font-display); font-weight: 900; font-size: 12rem; color: rgba(255,255,255,0.07); position: absolute; bottom: -20px; left: -10px; line-height: 1; pointer-events: none; }
+        .soft-visual .label { color: rgba(255,255,255,0.6); }
+        .soft-visual .label::before { background: rgba(255,255,255,0.6); }
+        .soft-visual h2 { color: var(--white); position: relative; z-index: 1; margin-bottom: 20px; }
+        .soft-visual p  { color: rgba(255,255,255,0.75); position: relative; z-index: 1; margin-bottom: 14px; font-size: 0.95rem; }
+        .soft-principles { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .principle { display: flex; gap: 24px; align-items: flex-start; padding: 36px 0; border-bottom: var(--border); }
+        .principle:last-child { border-bottom: none; }
+        .p-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; line-height: 1; flex-shrink: 0; width: 52px; }
+        .p-body h4 { font-size: 1rem; margin-bottom: 8px; }
+        .p-body p  { font-size: 0.9rem; line-height: 1.7; }
+
+        /* ─── CHALLENGES ─── */
+        .challenges-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: var(--border); }
+        .ch-card { padding: 52px 48px; border-right: var(--border); }
+        .ch-card:last-child { border-right: none; }
+        .ch-card:nth-child(n+4) { border-top: var(--border); }
+        .ch-bar { width: 36px; height: 4px; margin-bottom: 28px; }
+        .ch-card h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+        .ch-card p { font-size: 0.88rem; line-height: 1.7; }
+
+        /* ─── FOUNDER ─── */
+        .founder-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .founder-visual { background: var(--peach); position: relative; overflow: hidden; min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px 72px; border-right: var(--border); }
+        .founder-visual::before { content: 'L'; font-family: var(--font-display); font-size: 40rem; font-weight: 900; color: rgba(18,16,14,0.06); position: absolute; top: -80px; left: -20px; line-height: 1; pointer-events: none; }
+        .founder-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; pointer-events: none; }
+        .founder-ph span { font-size: 0.82rem; color: var(--mid); font-weight: 600; }
+        .founder-ph code { font-size: 0.72rem; color: var(--mid); opacity: 0.55; }
+        .founder-badge { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--white); padding: 14px 22px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; align-self: flex-start; }
+        .founder-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid var(--peach); }
+        .founder-text h2 { margin-bottom: 6px; }
+        .founder-role { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 32px; }
+        .founder-quote { background: var(--off); border-left: 4px solid var(--peach); padding: 28px 32px; margin-bottom: 28px; }
+        .founder-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 1.3vw, 1.2rem); color: var(--ink); line-height: 1.55; font-weight: 400; margin-bottom: 10px; }
+        .founder-quote cite { font-style: normal; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--mid); }
+        .founder-text p { font-size: 0.95rem; margin-bottom: 14px; line-height: 1.8; }
+        .founder-text p:last-of-type { margin-bottom: 0; }
+        .creds { margin-top: 36px; border-top: var(--border); }
+        .cred-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: var(--border); font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+        .cred-row:last-child { border-bottom: none; }
+        .cred-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+
+        /* ─── VALUES ─── */
+        .values-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .values-cols { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .val-col { padding: 80px; }
+        .val-col-not { border-right: var(--border); background: var(--off); }
+        .val-col h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0; padding-bottom: 24px; border-bottom: var(--border); }
+        .val-row { display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: var(--border); font-size: 0.9rem; line-height: 1.7; }
+        .val-row:last-child { border-bottom: none; }
+        .val-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+
+        /* ─── CULTURE ─── */
+        .culture-hd { background: var(--ink); padding: 100px 80px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .culture-hd h2 { color: var(--white); }
+        .culture-hd .label { color: var(--aqua); justify-content: center; }
+        .culture-hd .label::before { background: var(--aqua); }
+        .culture-hd p { color: rgba(255,255,255,0.45); max-width: 500px; margin: 10px auto 0; }
+        .culture-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--ink); border-bottom: var(--border); }
+        .cult-card { padding: 72px 56px; border-right: 1px solid rgba(255,255,255,0.08); }
+        .cult-card:last-child { border-right: none; }
+        .cult-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; border-radius: 50%; }
+        .cult-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 14px; }
+        .cult-card p { color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.75; margin-bottom: 14px; }
+        .cult-card p:last-child { margin-bottom: 0; }
+
+        /* ─── WHO THRIVES ─── */
+        .who-split { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .who-text { padding: 100px 80px; border-right: var(--border); border-left: 6px solid var(--magenta); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .who-aside { padding: 100px 80px; background: var(--off); display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+        .who-card { background: var(--white); border: var(--border); border-left: 4px solid var(--magenta); padding: 28px 32px; display: flex; gap: 16px; align-items: flex-start; }
+        .who-icon { width: 36px; height: 36px; background: var(--magenta); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .who-card p { font-size: 0.9rem; line-height: 1.65; color: var(--ink); }
+
+        /* ─── WHERE WE ARE ─── */
+        .today-hd { padding: 100px 80px 60px; border-bottom: var(--border); }
+        .today-hd h2 { margin-bottom: 12px; }
+        .today-hd p { max-width: 700px; }
+        .today-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--border); }
+        .today-cell { padding: 72px 52px; border-right: var(--border); }
+        .today-cell:last-child { border-right: none; }
+        .today-num { font-family: var(--font-display); font-size: 4.5rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .today-num sup { font-size: 2rem; }
+        .today-cell h4 { font-size: 0.9rem; margin-bottom: 8px; }
+        .today-cell p { font-size: 0.85rem; line-height: 1.6; }
+
+        /* ─── PARTNERS ─── */
+        .partners-wrap { padding: 100px 80px; border-bottom: var(--border); display: flex; flex-direction: column; align-items: center; gap: 56px; }
+        .partners-hd { text-align: center; }
+        .partners-hd h2 { margin-bottom: 12px; }
+        .partners-hd p { max-width: 480px; margin: 0 auto; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: var(--border); width: 100%; max-width: 960px; }
+        .p-card { padding: 52px 48px; border-right: var(--border); }
+        .p-card:last-child { border-right: none; }
+        .p-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+        .p-role { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 14px; }
+        .p-card p { font-size: 0.88rem; line-height: 1.65; }
+
+        /* ─── VISION / CTA ─── */
+        .vision-split { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--border); }
+        .vision-text { padding: 120px 80px; border-right: var(--border); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .vision-text .closing { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink); margin-top: 8px; }
+        .vision-cta { background: var(--lavender); padding: 120px 80px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .vision-cta::after { content: 'Make.'; font-family: var(--font-display); font-weight: 900; font-size: 8rem; color: rgba(255,255,255,0.07); position: absolute; bottom: 20px; right: 20px; line-height: 1; pointer-events: none; }
+        .vision-cta .label { color: rgba(255,255,255,0.6); }
+        .vision-cta .label::before { background: rgba(255,255,255,0.6); }
+        .vision-cta h2 { color: var(--white); position: relative; z-index: 1; }
+        .vision-cta p  { color: rgba(255,255,255,0.65); position: relative; z-index: 1; font-size: 0.95rem; }
+        .vision-cta .btn { position: relative; z-index: 1; align-self: flex-start; margin-top: 44px; }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--white); }
+        .footer-main { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1.4fr; border-top: var(--border); width: 100%; }
+        .footer-col { padding: 64px 48px; border-right: var(--border); }
+        .footer-col:last-child { border-right: none; }
+        .footer-col h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 24px; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-weight: 600; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--lavender); }
+        .footer-bottom { background: var(--lavender); text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+        .footer-bg-letter { font-size: 22rem; font-family: var(--font-display); font-weight: 900; color: white; opacity: 0.1; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); line-height: 1; pointer-events: none; }
+        .footer-logo-img { height: 72px; width: auto; margin: 0 auto; position: relative; z-index: 1; filter: brightness(0) invert(1); }
+        .copyright { padding: 18px 32px; text-align: center; background: var(--off); border-top: var(--border); font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+
+            .hero { grid-template-columns: 1fr; min-height: unset; }
+            .hero-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .hero-right { padding: 72px 48px; min-height: 460px; }
+
+            .two-col { grid-template-columns: 1fr; }
+            .col-text, .col-aside { padding: 72px 48px; }
+
+            .problem-band { padding: 80px 48px; }
+            .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            .soft-eng { grid-template-columns: 1fr; }
+            .soft-visual { border-right: none; border-bottom: var(--border); padding: 72px 48px; min-height: 400px; }
+            .soft-principles { padding: 72px 48px; }
+
+            .challenges-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .challenges-grid { grid-template-columns: 1fr 1fr; }
+
+            .founder-section { grid-template-columns: 1fr; }
+            .founder-visual { border-right: none; border-bottom: var(--border); min-height: 360px; }
+            .founder-text { padding: 72px 48px; }
+
+            .values-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .values-cols { grid-template-columns: 1fr; }
+            .val-col-not { border-right: none; border-bottom: var(--border); }
+            .val-col { padding: 64px 48px; }
+
+            .culture-hd { padding: 72px 48px 48px; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .cult-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 64px 48px; }
+            .cult-card:last-child { border-bottom: none; }
+
+            .who-split { grid-template-columns: 1fr; }
+            .who-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .who-aside { padding: 72px 48px; }
+
+            .today-hd { padding: 72px 48px 48px; }
+            .today-grid { grid-template-columns: 1fr 1fr; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: var(--border); }
+
+            .partners-wrap { padding: 72px 48px; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .p-card { border-right: none; border-bottom: var(--border); }
+            .p-card:last-child { border-bottom: none; }
+
+            .vision-split { grid-template-columns: 1fr; }
+            .vision-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .vision-cta { padding: 72px 48px; }
+        }
+
+        @media (max-width: 640px) {
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-col { padding: 40px 32px; }
+            .hero-left, .hero-right { padding: 56px 28px; }
+            .col-text, .col-aside { padding: 56px 28px; }
+            .soft-visual, .soft-principles { padding: 56px 28px; }
+            .challenges-hd, .values-hd, .today-hd { padding: 56px 28px 40px; }
+            .challenges-grid { grid-template-columns: 1fr; }
+            .ch-card { border-right: none; border-bottom: var(--border); }
+            .ch-card:last-child { border-bottom: none; }
+            .ch-card:nth-child(n+4) { border-top: none; }
+            .founder-text, .who-text, .who-aside { padding: 56px 28px; }
+            .val-col { padding: 48px 28px; }
+            .culture-hd { padding: 56px 28px 40px; }
+            .cult-card { padding: 56px 28px; }
+            .today-grid { grid-template-columns: 1fr; }
+            .today-cell { border-right: none; border-bottom: var(--border); }
+            .today-cell:last-child { border-bottom: none; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: none; }
+            .partners-wrap { padding: 56px 28px; }
+            .vision-text, .vision-cta { padding: 56px 28px; }
+        }
+
+        /* ─── FULL-SCREEN PHOTO BREAK ─── */
+        .photo-break {
+            width: 100%;
+            min-height: 70vh;
+            background: var(--off);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-top: var(--border);
+            border-bottom: var(--border);
+        }
+        .photo-break img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-break-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .photo-break-placeholder .ph-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(18,16,14,0.07);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .photo-break-placeholder p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .photo-break-placeholder code {
+            font-size: 0.72rem;
+            color: var(--mid);
+            opacity: 0.55;
+        }
+        /* When image is present, hide placeholder */
+        .photo-break.has-image .photo-break-placeholder { display: none; }
+
+        /* ─── YOUTUBE / VIDEO SECTION ─── */
+        .video-section {
+            border-bottom: var(--border);
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+        .video-header {
+            padding: 80px 80px 48px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        .video-header h2 { color: var(--white); margin-bottom: 10px; }
+        .video-header p  { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.7; max-width: 540px; }
+        .video-embed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 1100px) {
+            .video-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 72px 48px 40px; }
+        }
+        @media (max-width: 640px) {
+            .video-header { padding: 56px 28px 32px; }
+        }
+
+        /* ─── PRESS QUOTE / BAMBULAB SECTION ─── */
+        .press-quote-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+        .press-quote-left {
+            padding: 100px 80px;
+            background: var(--ink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .press-quote-left::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 28rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.04);
+            position: absolute;
+            top: -80px; left: -10px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .press-quote-left blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+            color: var(--white);
+            line-height: 1.55;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-left cite {
+            font-style: normal;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--peach);
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-right {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            border-left: 6px solid var(--aqua);
+        }
+        .press-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--off);
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--ink);
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+        .press-quote-right h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .press-quote-right p { font-size: 0.95rem; line-height: 1.75; }
+        @media (max-width: 1100px) {
+            .press-quote-section { grid-template-columns: 1fr; }
+            .press-quote-left { padding: 72px 48px; }
+            .press-quote-right { border-left: none; border-top: var(--border); padding: 72px 48px; }
+        }
+        @media (max-width: 640px) {
+            .press-quote-left, .press-quote-right { padding: 56px 28px; }
+        }
+
+        /* ─── EXPERTS SECTION ─── */
+        .experts-section {
+            border-bottom: var(--border);
+        }
+        .experts-hd {
+            padding: 100px 80px 72px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            border-bottom: var(--border);
+        }
+        .experts-hd h2 { margin-bottom: 10px; }
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .expert-card {
+            padding: 56px 48px;
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .expert-card:last-child { border-right: none; }
+        .expert-card:nth-child(n+5) { border-top: var(--border); }
+        .expert-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--off);
+            border: 3px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .expert-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 50%;
+        }
+        .expert-photo-ph {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--mid);
+            text-align: center;
+            line-height: 1.3;
+            padding: 8px;
+        }
+        .expert-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--ink);
+        }
+        .expert-role {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--mid);
+            margin-bottom: 16px;
+        }
+        .expert-card p {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--mid);
+        }
+        @media (max-width: 1100px) {
+            .experts-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 56px; }
+            .experts-grid { grid-template-columns: repeat(2, 1fr); }
+            .expert-card:nth-child(even) { border-right: none; }
+            .expert-card:nth-child(n+5) { border-top: var(--border); }
+            .expert-card:nth-child(3), .expert-card:nth-child(4) { border-top: var(--border); }
+        }
+        @media (max-width: 640px) {
+            .experts-hd { padding: 56px 28px 40px; }
+            .experts-grid { grid-template-columns: 1fr; }
+            .expert-card { border-right: none; border-bottom: var(--border); padding: 48px 28px; }
+            .expert-card:last-child { border-bottom: none; }
+            .expert-card:nth-child(n+3) { border-top: none; }
+        }
+    </style>
+    <style>
+        /* ─── TERMS PAGE SPECIFIC ─── */
+        .terms-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+        .terms-hero-left {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+            border-left: 6px solid var(--coral);
+        }
+        .terms-hero-left h1 { margin-bottom: 16px; font-size: clamp(2.6rem, 4.5vw, 4rem); }
+        .terms-hero-left .hero-lead { margin-bottom: 0; }
+        .terms-hero-right {
+            background: var(--off);
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 32px;
+        }
+        .terms-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: var(--border);
+        }
+        .meta-row {
+            display: flex;
+            border-bottom: var(--border);
+        }
+        .meta-row:last-child { border-bottom: none; }
+        .meta-key {
+            padding: 18px 24px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+            border-right: var(--border);
+            width: 180px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .meta-val {
+            padding: 18px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            line-height: 1.5;
+        }
+        .toc-box {
+            border: var(--border);
+            padding: 32px 36px;
+        }
+        .toc-box h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+            margin-bottom: 20px;
+        }
+        .toc-list { list-style: none; }
+        .toc-list li {
+            border-bottom: var(--border);
+            padding: 10px 0;
+        }
+        .toc-list li:last-child { border-bottom: none; }
+        .toc-list a {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.15s;
+        }
+        .toc-list a:hover { color: var(--coral); }
+        .toc-num {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--coral);
+            width: 22px;
+            flex-shrink: 0;
+        }
+
+        /* ─── CONTENT LAYOUT ─── */
+        .terms-body {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            border-bottom: var(--border);
+            align-items: start;
+        }
+        .terms-sidebar {
+            position: sticky;
+            top: 72px;
+            border-right: var(--border);
+            height: calc(100vh - 72px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar-section-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 28px;
+            border-bottom: var(--border);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mid);
+            transition: background 0.15s, color 0.15s;
+            cursor: pointer;
+            text-decoration: none;
+            line-height: 1.35;
+        }
+        .sidebar-section-link:hover { background: var(--off); color: var(--ink); }
+        .sidebar-section-link.active { background: var(--coral); color: white; }
+        .sidebar-num {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 24px;
+            flex-shrink: 0;
+        }
+        .terms-content {
+            padding: 80px 80px 120px;
+        }
+
+        /* ─── SECTION BLOCKS ─── */
+        .terms-section {
+            padding-bottom: 72px;
+            border-bottom: var(--border);
+            margin-bottom: 72px;
+        }
+        .terms-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        .section-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--coral);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 56px;
+        }
+        .terms-section h2 {
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            margin-bottom: 0;
+            padding-top: 6px;
+        }
+        .terms-section p {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            margin-bottom: 18px;
+            color: var(--mid);
+        }
+        .terms-section p:last-child { margin-bottom: 0; }
+        .terms-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            color: var(--ink);
+        }
+        .terms-list {
+            list-style: none;
+            border: var(--border);
+            margin-bottom: 18px;
+        }
+        .terms-list li {
+            display: flex;
+            gap: 16px;
+            padding: 16px 24px;
+            border-bottom: var(--border);
+            font-size: 0.9rem;
+            color: var(--mid);
+            line-height: 1.7;
+        }
+        .terms-list li:last-child { border-bottom: none; }
+        .list-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+        .terms-callout {
+            background: var(--off);
+            border-left: 4px solid var(--coral);
+            padding: 28px 32px;
+            margin: 28px 0;
+        }
+        .terms-callout p {
+            font-size: 0.92rem;
+            color: var(--ink);
+            margin: 0;
+            line-height: 1.75;
+        }
+        .terms-callout.highlight {
+            background: var(--ink);
+            border-left-color: var(--peach);
+        }
+        .terms-callout.highlight p { color: rgba(255,255,255,0.85); }
+        .terms-callout.highlight strong { color: var(--peach); }
+
+        .hardware-banner {
+            background: var(--ink);
+            padding: 40px 48px;
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+            margin: 28px 0;
+        }
+        .hardware-banner-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--coral);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .hardware-banner h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .hardware-banner p {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin: 0 !important;
+        }
+
+        .contact-box {
+            background: var(--ink);
+            padding: 48px 56px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+        .contact-box h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 12px; }
+        .contact-box p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0; }
+        .contact-box .btn { flex-shrink: 0; align-self: center; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .terms-hero { grid-template-columns: 1fr; }
+            .terms-hero-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .terms-hero-right { padding: 64px 48px; }
+            .terms-body { grid-template-columns: 1fr; }
+            .terms-sidebar { position: static; height: auto; border-right: none; border-bottom: var(--border); flex-direction: row; flex-wrap: wrap; overflow: visible; }
+            .sidebar-section-link { width: 50%; border-right: var(--border); }
+            .terms-content { padding: 56px 48px 80px; }
+        }
+        @media (max-width: 640px) {
+            .terms-hero-left, .terms-hero-right { padding: 56px 28px; }
+            .terms-sidebar { flex-direction: column; }
+            .sidebar-section-link { width: 100%; border-right: none; }
+            .terms-content { padding: 48px 28px 72px; }
+            .section-header { flex-direction: column; gap: 8px; }
+            .section-num { font-size: 2rem; }
+            .contact-box, .hardware-banner { padding: 36px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <div class="nav-wrapper">
+        <a href="index.html" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html#benefits" class="nav-link">Benefits</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="programs.html" class="nav-link">Programs</a>
+            <a href="index.html#news" class="nav-link">Pricing</a>
+            <a href="faq.html" class="nav-link">FAQs</a>
+            <div class="nav-spacer"></div>
+        </nav>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+<nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="index.html#benefits" class="nav-link">Benefits</a>
+    <a href="about.html" class="nav-link">About Us</a>
+    <a href="programs.html" class="nav-link">Programs</a>
+    <a href="index.html#news" class="nav-link">Pricing</a>
+    <a href="faq.html" class="nav-link">FAQs</a>
+    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+</nav>
+<script>
+    (function(){
+        var btn = document.getElementById('hamburger');
+        var drawer = document.getElementById('nav-drawer');
+        btn.addEventListener('click', function(){
+            btn.classList.toggle('open');
+            drawer.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+            if (!btn.contains(e.target) && !drawer.contains(e.target)) {
+                btn.classList.remove('open');
+                drawer.classList.remove('open');
+            }
+        });
+    })();
+</script>
+
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="terms-hero">
+    <div class="terms-hero-left">
+        <div class="label label-coral">Legal</div>
+        <h1>Terms &amp;<br>Conditions</h1>
+        <p class="hero-lead">These terms govern all Makeful programs — for schools, educators, and participants. We've written them to be clear and fair, not to create loopholes. If something needs clarifying, just ask.</p>
+    </div>
+    <div class="terms-hero-right">
+        <div class="terms-meta">
+            <div class="meta-row">
+                <div class="meta-key">Effective Date</div>
+                <div class="meta-val">1 January 2025</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Last Updated</div>
+                <div class="meta-val">January 2025</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Applies To</div>
+                <div class="meta-val">All Makeful programs, licenses &amp; services</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Provider</div>
+                <div class="meta-val">Makeful s.r.o., Prague, Czech Republic</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Governing Law</div>
+                <div class="meta-val">Czech Republic &amp; applicable EU law</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Jurisdiction</div>
+                <div class="meta-val">Courts of Prague, Czech Republic</div>
+            </div>
+        </div>
+        <div class="toc-box">
+            <h4>Contents</h4>
+            <ul class="toc-list">
+                <li><a href="#definitions"><span class="toc-num">1</span> Definitions</a></li>
+                <li><a href="#programs"><span class="toc-num">2</span> Programs &amp; Services</a></li>
+                <li><a href="#enrollment"><span class="toc-num">3</span> Enrollment &amp; Registration</a></li>
+                <li><a href="#fees"><span class="toc-num">4</span> Fees &amp; Payment</a></li>
+                <li><a href="#cancellation"><span class="toc-num">5</span> Cancellation &amp; Refunds</a></li>
+                <li><a href="#hardware"><span class="toc-num">6</span> Hardware &amp; Equipment</a></li>
+                <li><a href="#school-obligations"><span class="toc-num">7</span> School Obligations</a></li>
+                <li><a href="#makeful-obligations"><span class="toc-num">8</span> Makeful Obligations</a></li>
+                <li><a href="#ip"><span class="toc-num">9</span> Intellectual Property</a></li>
+                <li><a href="#student-work"><span class="toc-num">10</span> Student Work &amp; Portfolios</a></li>
+                <li><a href="#safeguarding"><span class="toc-num">11</span> Safeguarding &amp; Conduct</a></li>
+                <li><a href="#liability"><span class="toc-num">12</span> Liability &amp; Indemnity</a></li>
+                <li><a href="#changes"><span class="toc-num">13</span> Changes to Programs</a></li>
+                <li><a href="#termination"><span class="toc-num">14</span> Termination</a></li>
+                <li><a href="#general"><span class="toc-num">15</span> General Provisions</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     BODY — SIDEBAR + CONTENT
+════════════════════════════════════════════ -->
+<div class="terms-body">
+
+    <aside class="terms-sidebar">
+        <a href="#definitions" class="sidebar-section-link"><span class="sidebar-num">1</span> Definitions</a>
+        <a href="#programs" class="sidebar-section-link"><span class="sidebar-num">2</span> Programs &amp; Services</a>
+        <a href="#enrollment" class="sidebar-section-link"><span class="sidebar-num">3</span> Enrollment</a>
+        <a href="#fees" class="sidebar-section-link"><span class="sidebar-num">4</span> Fees &amp; Payment</a>
+        <a href="#cancellation" class="sidebar-section-link"><span class="sidebar-num">5</span> Cancellation &amp; Refunds</a>
+        <a href="#hardware" class="sidebar-section-link"><span class="sidebar-num">6</span> Hardware &amp; Equipment</a>
+        <a href="#school-obligations" class="sidebar-section-link"><span class="sidebar-num">7</span> School Obligations</a>
+        <a href="#makeful-obligations" class="sidebar-section-link"><span class="sidebar-num">8</span> Makeful Obligations</a>
+        <a href="#ip" class="sidebar-section-link"><span class="sidebar-num">9</span> Intellectual Property</a>
+        <a href="#student-work" class="sidebar-section-link"><span class="sidebar-num">10</span> Student Work</a>
+        <a href="#safeguarding" class="sidebar-section-link"><span class="sidebar-num">11</span> Safeguarding</a>
+        <a href="#liability" class="sidebar-section-link"><span class="sidebar-num">12</span> Liability</a>
+        <a href="#changes" class="sidebar-section-link"><span class="sidebar-num">13</span> Changes to Programs</a>
+        <a href="#termination" class="sidebar-section-link"><span class="sidebar-num">14</span> Termination</a>
+        <a href="#general" class="sidebar-section-link"><span class="sidebar-num">15</span> General Provisions</a>
+    </aside>
+
+    <main class="terms-content">
+
+        <div class="terms-callout">
+            <p><strong>Written for schools, not lawyers.</strong> These terms are designed to give schools, teachers, and participants complete clarity about what Makeful commits to, what we ask of you, and how we handle every situation that might arise. Questions or concerns? Email us directly — we'd rather talk it through.</p>
+        </div>
+
+
+        <!-- 1. DEFINITIONS -->
+        <section class="terms-section" id="definitions">
+            <div class="section-header">
+                <div class="section-num">1</div>
+                <h2>Definitions</h2>
+            </div>
+            <p>Throughout these Terms &amp; Conditions, the following terms have specific meanings:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"Makeful" / "we" / "us"</strong> Makeful s.r.o., a company registered in Prague, Czech Republic, operating the Makeful FashionTech STEAM programs.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"School" / "you"</strong> The educational institution, organisation, or individual entering into an agreement with Makeful for program delivery.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"Program"</strong> Any Makeful educational offering, including Teacher Professional Development, Summer Camp Program, Full-Year Enrichment Program, or any future program format.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"Student" / "Participant"</strong> Any individual enrolled in or attending a Makeful program.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"Hardware"</strong> All 3D printers, tools, filaments, electronic components, and physical materials provided by Makeful for use during a program.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"Agreement"</strong> The enrollment form, order confirmation, or program contract, together with these Terms &amp; Conditions and any applicable program-specific addenda.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">"Content"</strong> All curriculum materials, videos, tutorials, templates, lesson plans, and any other educational materials produced by Makeful.</li>
+            </ul>
+        </section>
+
+
+        <!-- 2. PROGRAMS & SERVICES -->
+        <section class="terms-section" id="programs">
+            <div class="section-header">
+                <div class="section-num">2</div>
+                <h2>Programs &amp; Services</h2>
+            </div>
+            <p>Makeful offers three core program formats. All programs combine FashionTech design, 3D printing, and STEAM education into hands-on learning experiences.</p>
+
+            <h3>Teacher Professional Development</h3>
+            <p>A self-paced online program equipping teachers with the skills, confidence, and materials to bring FashionTech STEAM into their own classrooms. Includes 25 modules, 70+ video tutorials, inspirational talks, mentoring, and a complete 3D-printed fashion kit with materials. Delivered via the Esmerise platform.</p>
+
+            <h3>Summer Camp Program (School License)</h3>
+            <p>A complete 14-day program licensed to schools for delivery by their own trained staff. Makeful does not send instructors to schools. Instead, Makeful trains the school's designated staff members to deliver the program confidently and effectively. Makeful provides the full program structure, curriculum, training, loaned 3D printers, and all materials. Schools provide the venue, trained staff, supervision, and eligible students. Maximum class sizes apply as specified in the program agreement.</p>
+
+            <h3>Short-Term Programs</h3>
+            <p>Any other short-term programs, workshops, or holiday programs offered by Makeful follow the same model as the Summer Camp: Makeful trains the school's own staff to deliver the program. Makeful does not deploy its own instructors on-site. Trained school staff run all in-person sessions, supported by Makeful's curriculum and materials.</p>
+
+            <h3>Full-Year Enrichment Program</h3>
+            <p>An academic-year program running bi-weekly sessions in small groups (maximum 8 students). Students build a complete project portfolio over the year. Sessions are delivered online by Makeful-qualified instructors, with the school's designated guardian present at all times. Hardware is provided, delivered to the school, and managed by Makeful throughout.</p>
+
+            <div class="terms-callout">
+                <p>Specific program dates, group sizes, deliverables, and schedules are confirmed in writing at the point of enrollment. These form part of the Agreement and supersede any general descriptions on our website.</p>
+            </div>
+        </section>
+
+
+        <!-- 3. ENROLLMENT & REGISTRATION -->
+        <section class="terms-section" id="enrollment">
+            <div class="section-header">
+                <div class="section-num">3</div>
+                <h2>Enrollment &amp; Registration</h2>
+            </div>
+            <p>Enrollment is confirmed when Makeful issues a written confirmation (by email) following receipt of a completed registration form and, where applicable, payment of any required deposit. No place on a program is guaranteed until written confirmation is issued.</p>
+
+            <h3>School enrollment</h3>
+            <p>Schools enrolling students into Makeful programs take responsibility for:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Obtaining parental or guardian consent for each student to participate in the program and to have their basic data (name, age group, email address) processed by Makeful.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Ensuring that enrolled students meet any stated age or prerequisite requirements for the specific program.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Providing accurate student information at the point of registration, including any medical conditions, disabilities, or needs that may require Makeful to make reasonable adjustments.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Informing Makeful promptly of any changes to enrolled student details.</li>
+            </ul>
+
+            <h3>Individual enrollment</h3>
+            <p>Where individuals (teachers or parents) register directly, the registering adult takes on the responsibilities above in respect of any minors in their care.</p>
+
+            <h3>Waiting lists</h3>
+            <p>Where a program is fully subscribed, schools may be placed on a waiting list. Makeful will notify waiting-list applicants of availability as soon as it arises. Being on a waiting list does not constitute enrollment and carries no financial obligation.</p>
+        </section>
+
+
+        <!-- 4. FEES & PAYMENT -->
+        <section class="terms-section" id="fees">
+            <div class="section-header">
+                <div class="section-num">4</div>
+                <h2>Fees &amp; Payment</h2>
+            </div>
+            <p>Program fees are as stated in the relevant program offer or proposal communicated to the school at the time of enrollment. All fees are exclusive of VAT unless otherwise stated. VAT will be applied at the applicable rate where required by law.</p>
+
+            <h3>Payment schedule</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Deposit</strong> A non-refundable deposit (amount confirmed in the program proposal) is due upon enrollment to secure the school's place. The program is not confirmed until the deposit is received.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Balance</strong> The remaining balance is due no later than 14 days before the program start date, unless an alternative payment schedule has been agreed in writing.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Full-year programs</strong> Payment for full-year programs may be made in termly instalments as agreed at enrollment. Instalment schedules and due dates will be confirmed in writing.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Teacher development</strong> Online teacher development courses are payable in full at point of purchase before access to the platform is granted.</li>
+            </ul>
+
+            <h3>Late payment</h3>
+            <p>Where payment is not received by the due date, Makeful reserves the right to suspend or withhold program access until the outstanding balance is cleared. Makeful may charge statutory interest on overdue amounts at a rate of 8% above the Czech National Bank base rate. We will always contact you first to resolve payment issues before exercising these rights.</p>
+
+            <h3>Invoicing</h3>
+            <p>Makeful will issue a VAT invoice (or equivalent tax document) for all program fees. Schools requiring specific invoicing formats or purchase order references should notify Makeful at the point of registration.</p>
+        </section>
+
+
+        <!-- 5. CANCELLATION & REFUNDS -->
+        <section class="terms-section" id="cancellation">
+            <div class="section-header">
+                <div class="section-num">5</div>
+                <h2>Cancellation &amp; Refunds</h2>
+            </div>
+
+            <h3>Cancellation by the school</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">More than 30 days before start</strong> Full refund of any payments made, less the non-refundable deposit.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">15–30 days before start</strong> 50% of the total program fee is due (or retained if already paid). The deposit is non-refundable.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">Fewer than 15 days before start</strong> The full program fee is due and non-refundable. Makeful will have committed significant resources in preparation.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">During the program</strong> No refund is available for program sessions already delivered. Where a full-year program is cancelled mid-way, fees for completed terms are non-refundable; upcoming term fees will not be charged.</li>
+            </ul>
+
+            <h3>Cancellation by Makeful</h3>
+            <p>Makeful reserves the right to cancel a program where minimum enrollment thresholds are not met, where circumstances beyond our reasonable control prevent delivery, or where a school's conduct is in breach of these terms. In the event of cancellation by Makeful:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--peach);"></div>We will provide as much notice as possible.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div>A full refund of all fees paid will be issued within 14 days, including the deposit.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div>We will endeavour to offer an alternative date or program format wherever possible.</li>
+            </ul>
+
+            <h3>Individual student withdrawal</h3>
+            <p>Where a school withdraws an individual student from a group program after enrollment, no partial refund is available unless the withdrawal occurs more than 30 days before the program starts. Makeful will consider exceptional circumstances (such as serious illness) on a case-by-case basis.</p>
+
+            <div class="terms-callout">
+                <p>All cancellations must be submitted in writing by email to <a href="/cdn-cgi/l/email-protection#b2dbdcd4ddf2dfd3d9d7d4c7de9cd1dddf" style="color:var(--coral);font-weight:600;"><span class="__cf_email__" data-cfemail="244d4a424b6449454f414251480a474b49">[email&#160;protected]</span></a>. The cancellation date is the date Makeful receives and acknowledges the written notice.</p>
+            </div>
+        </section>
+
+
+        <!-- 6. HARDWARE & EQUIPMENT -->
+        <section class="terms-section" id="hardware">
+            <div class="section-header">
+                <div class="section-num">6</div>
+                <h2>Hardware &amp; Equipment</h2>
+            </div>
+
+            <div class="hardware-banner">
+                <div class="hardware-banner-icon">
+                    <span class="material-symbols-outlined" style="color:white;font-size:22px;">verified_user</span>
+                </div>
+                <div>
+                    <h4>Makeful is fully responsible for all hardware.</h4>
+                    <p>All 3D printers, tools, and equipment provided for Makeful programs are owned, maintained, insured, and fully managed by Makeful. Schools and students are never responsible for the cost of hardware repair, replacement, or failure — regardless of how damage occurs during normal program use.</p>
+                </div>
+            </div>
+
+            <h3>Provision of hardware</h3>
+            <p>For Summer Camp and Full-Year Enrichment programs, Makeful provides all necessary 3D printers and equipment on a loan basis for the duration of the program. Hardware is delivered to the school venue before the program start date and collected by Makeful after the program concludes.</p>
+            <p>All hardware provided is:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div>Fully tested and verified by Makeful before delivery.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Covered by Makeful's own insurance for the duration of the loan period.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Maintained and serviced by Makeful — schools do not need to arrange or pay for maintenance.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Replaced or repaired by Makeful at no additional cost to the school in the event of malfunction, breakdown, or normal wear during program use.</li>
+            </ul>
+
+            <h3>Materials and consumables</h3>
+            <p>All filaments, fabrics, electronic components, and consumable materials required for the program are included in the program fee and provided by Makeful. Schools are not required to source or purchase any materials separately unless a specific optional extension has been agreed.</p>
+
+            <h3>School responsibilities for hardware</h3>
+            <p>Whilst Makeful takes full responsibility for hardware, schools agree to:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Store hardware securely in a designated, lockable space when not in use during the program period.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Ensure hardware is only operated by enrolled students and Makeful-certified instructors during supervised program sessions.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Not move hardware between locations without Makeful's prior written consent.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Notify Makeful immediately (within 24 hours) of any hardware theft, loss, or accidental damage caused outside of normal program activity.</li>
+            </ul>
+
+            <div class="terms-callout">
+                <p><strong>Intentional damage or theft:</strong> In the exceptional event of hardware theft or intentional damage caused by the school's own negligence (for example, failure to secure equipment as agreed), Makeful reserves the right to recover the reasonable cost of replacement from the school. This does not apply to accidental breakage, normal wear and tear, or any hardware malfunction arising from the equipment itself.</p>
+            </div>
+
+            <h3>Hardware for Teacher Professional Development</h3>
+            <p>The Teacher Professional Development program includes a physical 3D-printed fashion kit and materials shipped directly to the registered teacher. This kit is provided as part of the course fee and becomes the property of the teacher upon receipt. Makeful is responsible for safe delivery; once received and acknowledged, the kit is the teacher's responsibility.</p>
+        </section>
+
+
+        <!-- 7. SCHOOL OBLIGATIONS -->
+        <section class="terms-section" id="school-obligations">
+            <div class="section-header">
+                <div class="section-num">7</div>
+                <h2>School Obligations</h2>
+            </div>
+            <p>To enable Makeful to deliver a safe, effective, and enjoyable program, schools agree to the following:</p>
+
+            <h3>Venue and facilities</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Provide a suitable, dedicated workspace for program delivery, with adequate power outlets (minimum one per 3D printer), reasonable ventilation, tables at an appropriate height, and sufficient space for materials and student work.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Ensure the workspace is accessible to Makeful instructors before and after sessions for setup and pack-down (minimum 30 minutes before and after each session).</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Provide reliable Wi-Fi access in the workspace for online resources, digital design tools, and program platform access.</li>
+            </ul>
+
+            <h3>Supervision and safeguarding</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Designate one or more qualified staff members to be trained by Makeful for Summer Camp and short-term program delivery. Designated staff must be available for all Makeful training sessions before the program begins.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Ensure that a school guardian — a school staff member with valid DBS (or equivalent local safeguarding clearance) — is present and actively supervising during all online Makeful sessions for the Full-Year Enrichment Program.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Follow the school's own safeguarding and child protection policies throughout all program activity.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Inform Makeful of any relevant safeguarding considerations relating to individual students prior to the program start.</li>
+            </ul>
+
+            <h3>Health, safety and conduct</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Ensure students comply with Makeful's safety guidelines for 3D printer operation and materials handling, as communicated by the Makeful instructor at program induction.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Notify Makeful of any known allergies or sensitivities to materials that may be used during the program (e.g. certain plastics, adhesives).</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Maintain appropriate student behaviour during sessions. Where persistent behavioural issues disrupt the program, the school should address these using its own disciplinary procedures.</li>
+            </ul>
+
+            <h3>Promotion and communications</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Promptly communicate Makeful's program information, schedules, and any required pre-work to enrolled students and parents.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Notify Makeful of any planned school events, closures, or timetable changes that may affect agreed program sessions with at least 7 days' notice.</li>
+            </ul>
+        </section>
+
+
+        <!-- 8. MAKEFUL OBLIGATIONS -->
+        <section class="terms-section" id="makeful-obligations">
+            <div class="section-header">
+                <div class="section-num">8</div>
+                <h2>Makeful Obligations</h2>
+            </div>
+            <p>Makeful commits to the following standards across all programs:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Staff training</strong> For Summer Camp and short-term programs, provide thorough training to the school's designated staff members so they can deliver the program confidently and to Makeful's standards. Training is included in the program fee.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Online instruction</strong> For the Full-Year Enrichment Program, deliver all live student sessions online with Makeful-qualified instructors. All online sessions are conducted with the school's designated guardian present.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Ongoing support</strong> Provide ongoing support to trained school staff throughout the program — answering questions, troubleshooting hardware, and providing additional guidance as needed.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Hardware provision</strong> Deliver all hardware in full working order before the program starts and maintain it throughout. See Section 6 for full detail.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Instructor qualifications</strong> Ensure that all Makeful online instructors hold appropriate credentials, relevant FashionTech and STEAM experience, and have completed safeguarding training for working with minors in an online environment.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Responsive communication</strong> Respond to school enquiries and concerns within 2 working days, and provide prompt notice of any changes to program delivery.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Materials included</strong> Provide all consumable materials required to complete the program as described. No hidden costs for materials.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Student outcomes</strong> Deliver programs in a way that enables every enrolled student to complete at least one finished, portfolio-quality project during the program period.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Data protection</strong> Handle all school and student data in accordance with our Privacy Policy and applicable data protection law. Never use student data for marketing purposes.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Insurance</strong> Maintain appropriate professional liability and public liability insurance for all on-site program delivery.</li>
+            </ul>
+        </section>
+
+
+        <!-- 9. INTELLECTUAL PROPERTY -->
+        <section class="terms-section" id="ip">
+            <div class="section-header">
+                <div class="section-num">9</div>
+                <h2>Intellectual Property</h2>
+            </div>
+
+            <h3>Makeful content</h3>
+            <p>All curriculum materials, video content, lesson plans, templates, design files, branding, and other content produced by Makeful remain the exclusive intellectual property of Makeful s.r.o. Schools and teachers are granted a limited, non-exclusive, non-transferable licence to use Makeful content solely for the delivery of the enrolled program.</p>
+            <p>This licence does not permit:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--magenta);"></div>Reproducing, copying, or distributing Makeful curriculum materials outside of the enrolled program.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div>Using Makeful content to develop, inform, or build a competing program or product.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div>Sharing Makeful platform credentials or course access with individuals not enrolled in the program.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div>Recording Makeful online sessions or downloading platform content for use outside the program.</li>
+            </ul>
+
+            <h3>Teacher professional development</h3>
+            <p>Teachers enrolled in the professional development program receive a licence to use the teaching materials and lesson plans within their own classroom, with their own students. This classroom use licence is personal to the enrolled teacher and does not extend to wider school distribution or commercial use.</p>
+
+            <div class="terms-callout">
+                <p>We are genuinely excited to see teachers and schools build on what they learn in Makeful programs. If you want to develop something further — a school-wide initiative, a cross-curricular project, a public showcase — please talk to us first. We love collaboration and are almost always happy to support it.</p>
+            </div>
+        </section>
+
+
+        <!-- 10. STUDENT WORK & PORTFOLIOS -->
+        <section class="terms-section" id="student-work">
+            <div class="section-header">
+                <div class="section-num">10</div>
+                <h2>Student Work &amp; Portfolios</h2>
+            </div>
+            <p>The physical and digital work created by students during Makeful programs belongs entirely to the students who made it. Makeful makes no claim of ownership over student projects, designs, or portfolios.</p>
+
+            <h3>Photography and showcasing</h3>
+            <p>Makeful may wish to photograph, film, or document student work and program sessions for use in our marketing materials, website, social media, press coverage, and educational publications. We will always:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--peach);"></div>Obtain specific consent from the school and — where minors are involved — from parents or guardians before photographing or filming students.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div>Focus on the work and the making process rather than identifiable individuals, wherever possible.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div>Honour any withdrawal of consent promptly and remove relevant images from active use.</li>
+            </ul>
+            <p>Consent for photography and media use is collected separately from program enrollment and is entirely optional — refusal will not affect a student's place or participation in the program.</p>
+
+            <h3>Student showcase and competitions</h3>
+            <p>Makeful may invite students to participate in showcases, exhibitions, or competitions. Participation is always voluntary and requires separate consent. Students retain full ownership of any work submitted.</p>
+        </section>
+
+
+        <!-- 11. SAFEGUARDING & CONDUCT -->
+        <section class="terms-section" id="safeguarding">
+            <div class="section-header">
+                <div class="section-num">11</div>
+                <h2>Safeguarding &amp; Conduct</h2>
+            </div>
+            <p>The safety and wellbeing of young people is Makeful's highest priority. We hold ourselves and our partners to a high standard.</p>
+
+            <h3>Makeful's safeguarding commitment</h3>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div>All Makeful online instructors working with minors have completed safeguarding training appropriate to working with young people in an online environment.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Makeful instructors never communicate with minor students one-to-one or without school supervision. All communication channels are structured so that a school guardian is always present or copied in.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Any safeguarding concern arising during a program will be immediately reported to the school's designated safeguarding lead, and to relevant authorities where legally required.</li>
+            </ul>
+
+            <h3>Communication with students — strict rules</h3>
+            <p>Makeful operates a zero-tolerance policy on unsupervised communication between Makeful instructors and minor students. The following rules apply without exception:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">Email</strong> Any email communication from a Makeful instructor to a student must always include the school guardian in copy (CC). Instructors will never email a minor student directly without a school guardian copied.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">Student forum</strong> Written communication between instructors and students takes place in the Esmerise platform's student forum, which is publicly visible to all enrolled participants and the school guardian. There are no private messages between instructors and individual students.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">Live online sessions</strong> All live sessions are conducted with the school guardian present in the call. Makeful instructors will not proceed with a live session if no school guardian is present.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">No private channels</strong> Makeful instructors will never contact students via personal social media, direct messaging apps, personal email, or any channel outside those listed above.</li>
+            </ul>
+
+            <div class="terms-callout highlight">
+                <p><strong>Schools are responsible for ensuring that their designated guardian is present and available for all scheduled online sessions.</strong> If a guardian cannot attend a session, the school must notify Makeful at least 24 hours in advance. Makeful reserves the right to reschedule the session rather than proceed without guardian supervision.</p>
+            </div>
+
+            <h3>Expected conduct — students</h3>
+            <p>Students are expected to treat equipment, materials, and fellow participants with care and respect. Makeful instructors have the right to pause or remove a student from an online session where their behaviour poses a safety risk or significantly disrupts the program. The school guardian will be notified immediately in such cases.</p>
+
+            <h3>Expected conduct — adults</h3>
+            <p>All adults involved in Makeful programs — school staff, guardians, and Makeful instructors alike — are expected to model respectful, positive behaviour and to support the program's ethos of curiosity, creativity, and joy.</p>
+
+            <h3>Online safety</h3>
+            <p>Students access the Esmerise platform using their assigned credentials. Schools are responsible for ensuring students access the platform in a supervised, school-managed environment and that login credentials are not shared. All student forum activity is visible to the school guardian and to Makeful at all times.</p>
+        </section>
+
+
+        <!-- 12. LIABILITY & INDEMNITY -->
+        <section class="terms-section" id="liability">
+            <div class="section-header">
+                <div class="section-num">12</div>
+                <h2>Liability &amp; Indemnity</h2>
+            </div>
+
+            <h3>Makeful's liability</h3>
+            <p>Makeful maintains appropriate professional indemnity and public liability insurance for all program activities. Makeful accepts liability for:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Personal injury or property damage caused by Makeful's negligence or the negligence of our instructors during program delivery.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Hardware malfunction or failure that results in harm, where the malfunction is due to Makeful's failure to maintain equipment adequately.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Any breach of Makeful's data protection obligations as described in our Privacy Policy.</li>
+            </ul>
+            <p>Makeful's total liability under these terms is limited to the total fees paid by the school for the specific program giving rise to the claim, except in cases of death, personal injury, or fraud where no such cap applies.</p>
+
+            <h3>Limitations</h3>
+            <p>Makeful is not liable for:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--mid);"></div>Loss or damage caused by the school's failure to comply with these terms (including failure to provide adequate supervision or secure storage).</li>
+                <li><div class="list-dot" style="background:var(--mid);"></div>Indirect or consequential losses, including loss of revenue, reputation, or opportunity arising from any program disruption.</li>
+                <li><div class="list-dot" style="background:var(--mid);"></div>Program disruptions caused by events outside Makeful's reasonable control, including illness, natural events, government restrictions, or force majeure events. In these cases, Makeful will make every reasonable effort to reschedule or offer an alternative.</li>
+            </ul>
+
+            <h3>School indemnity</h3>
+            <p>Schools agree to indemnify Makeful against any claims, losses, or damages arising from the school's breach of these terms, failure to obtain required consents, or the school's own negligence during the program.</p>
+        </section>
+
+
+        <!-- 13. CHANGES TO PROGRAMS -->
+        <section class="terms-section" id="changes">
+            <div class="section-header">
+                <div class="section-num">13</div>
+                <h2>Changes to Programs</h2>
+            </div>
+            <p>Makeful may occasionally need to make changes to program delivery. We distinguish between minor adjustments and material changes:</p>
+
+            <h3>Minor adjustments</h3>
+            <p>Makeful may make reasonable adjustments to session schedules, the order of curriculum modules, specific project briefs, or supporting materials without prior notice, provided these do not affect the overall program quality or duration. We will communicate such changes to enrolled schools as soon as practicable.</p>
+
+            <h3>Material changes</h3>
+            <p>A material change is one that significantly alters the program's nature, duration, location, or cost. In the event of a material change, Makeful will:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Give at least 14 days' written notice.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Explain the reason for the change clearly.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Offer the school the option to accept the change or receive a full refund of all fees paid.</li>
+            </ul>
+
+            <h3>Curriculum evolution</h3>
+            <p>Makeful continuously improves its curriculum based on feedback and new developments in FashionTech. Schools enrolling in future program years should expect to encounter updated or new content, projects, and materials. Core program commitments (duration, hardware provision, instructor quality) remain constant.</p>
+        </section>
+
+
+        <!-- 14. TERMINATION -->
+        <section class="terms-section" id="termination">
+            <div class="section-header">
+                <div class="section-num">14</div>
+                <h2>Termination</h2>
+            </div>
+            <p>Either party may terminate the Agreement in the following circumstances:</p>
+
+            <h3>Termination by the school</h3>
+            <p>Schools may terminate the Agreement by written notice at any time. Cancellation fees as set out in Section 5 will apply. Upon termination, all Makeful hardware must be made available for collection within 5 working days.</p>
+
+            <h3>Termination by Makeful</h3>
+            <p>Makeful may terminate the Agreement immediately and without financial penalty to the school in the following circumstances:</p>
+            <ul class="terms-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div>The school fails to pay outstanding fees within 30 days of a formal overdue notice.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>The school materially breaches these terms and fails to remedy the breach within 14 days of written notice.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Continuing the program would, in Makeful's reasonable assessment, place the safety or wellbeing of students or instructors at risk.</li>
+            </ul>
+            <p>In all cases of termination by Makeful, the school will receive a proportional refund for any paid program sessions not yet delivered.</p>
+
+            <h3>Effect of termination</h3>
+            <p>Upon termination: all access to Makeful's online platform will be suspended; hardware must be returned to Makeful within 5 working days; and any outstanding fees become immediately due. Sections 9 (Intellectual Property), 12 (Liability), and 15 (General Provisions) survive termination.</p>
+        </section>
+
+
+        <!-- 15. GENERAL PROVISIONS -->
+        <section class="terms-section" id="general">
+            <div class="section-header">
+                <div class="section-num">15</div>
+                <h2>General Provisions</h2>
+            </div>
+
+            <h3>Entire agreement</h3>
+            <p>These Terms &amp; Conditions, together with any program-specific agreement or confirmation issued by Makeful, constitute the entire agreement between the parties. They supersede all prior communications, representations, and understandings.</p>
+
+            <h3>Amendments</h3>
+            <p>Makeful may update these Terms &amp; Conditions from time to time. We will notify schools of material changes by email and post the revised version on our website with an updated effective date. Continued participation in a Makeful program after notification of changes constitutes acceptance of the updated terms.</p>
+
+            <h3>Severability</h3>
+            <p>If any provision of these terms is found to be unenforceable or invalid by a court of competent jurisdiction, the remaining provisions will continue in full force and effect.</p>
+
+            <h3>Waiver</h3>
+            <p>Failure by either party to enforce any provision of these terms at any time does not constitute a waiver of that provision or of the right to enforce it subsequently.</p>
+
+            <h3>Force majeure</h3>
+            <p>Neither party is liable for failure or delay in performance caused by circumstances beyond their reasonable control, including pandemics, natural disasters, government restrictions, war, or widespread infrastructure failure. Both parties will use reasonable efforts to mitigate the effect of such events and to resume normal program delivery as soon as possible.</p>
+
+            <h3>Governing law</h3>
+            <p>These terms are governed by the laws of the Czech Republic. Any dispute that cannot be resolved through direct negotiation will be submitted to the exclusive jurisdiction of the courts of Prague, Czech Republic. Schools based in other jurisdictions may also have rights under their local consumer or education law, which these terms do not seek to limit.</p>
+
+            <h3>Language</h3>
+            <p>These terms are written in English. Where translations are provided for convenience, the English version prevails in the event of any conflict.</p>
+
+            <div class="contact-box">
+                <div>
+                    <h3>Questions about these terms?</h3>
+                    <p>Makeful s.r.o. · Prague, Czech Republic<br>
+                    <a href="/cdn-cgi/l/email-protection#355c5b535a7558545e505340591b565a58" style="color:var(--aqua);"><span class="__cf_email__" data-cfemail="3a53545c557a575b515f5c4f5614595557">[email&#160;protected]</span></a> &nbsp;·&nbsp;
+                    <a href="tel:+420735820576" style="color:var(--aqua);">+420 735 820 576</a></p>
+                </div>
+                <a href="/cdn-cgi/l/email-protection#6d04030b022d000c06080b1801430e0200" class="btn btn-white">Email Us Directly</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="./index.html#benefits">Benefits</a></li>
+                    <li><a href="./index.html#news">Pricing</a></li>
+                    <li><a href="./programs.html">Programs</a></li>
+                    <li><a href="./faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul class="footer-links">
+                    <li><a href="./privacy.html">Privacy Terms</a></li>
+                    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="grid-column: span 2;">
+                <h4>Get In Touch</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto: info@make-ful.com"><span class="__cf_email__" data-cfemail="0c64696060634c616d6769216a7960226f6361">info@make-ful.com</span></a></li>
+                    <li><a href="tel:+420735820576">+420 735 820 576</a></li>
+                </ul>
+                <div style="margin-top: 32px;">
+                    <a href="https://tally.so/r/b57egg" class="btn btn-coral" style="width:100%; display:block; text-align:center;">Request Info Pack</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bg-letter">M</div>
+            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+        </div>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Highlight active sidebar link on scroll
+    /*
+    (function() {
+        const sections = document.querySelectorAll('.privacy-section');
+        const links = document.querySelectorAll('.sidebar-sec
+
+<script>
+function toggle(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+*/
+
+</script>
+</footer>
+</body>
+</html>
+              

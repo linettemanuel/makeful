@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Terms – Makeful FashionTech STEAM</title>
+    <meta name="description" content="Privacy Terms for Makeful FashionTech STEAM programs. How we collect, use, and protect your information.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <style>
+        /* ─── TOKENS ─── */
+        :root {
+            --aqua:     #62D7F4;
+            --coral:    #FD7E8B;
+            --peach:    #FEB492;
+            --magenta:  #F996BF;
+            --lavender: #9A75F0;
+            --lilac:    #C386F8;
+            --ink:      #12100E;
+            --white:    #FEFEFE;
+            --off:      #F5F3F0;
+            --mid:      #5C5856;
+            --border:   1px solid rgba(18,16,14,0.10);
+            --font-display: "Playfair Display", serif;
+            --font-ui:      "DM Sans", sans-serif;
+        }
+
+        /* ─── RESET ─── */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--white); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.15s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
+        h4 { font-family: var(--font-ui); font-weight: 600; color: var(--ink); }
+        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
+        h2 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 20px; }
+        h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
+        p  { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 0; }
+
+        /* ─── LABELS ─── */
+        .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 20px; }
+        .label::before { content: ''; display: block; width: 20px; height: 3px; background: currentColor; flex-shrink: 0; }
+        .label-aqua     { color: #1a9ab8; }
+        .label-coral    { color: #d45060; }
+        .label-lavender { color: #6248c4; }
+        .label-lilac    { color: #8840c8; }
+        .label-peach    { color: #c4703a; }
+        .label-magenta  { color: #b8407a; }
+
+        /* ─── BUTTONS ─── */
+        .btn { display: inline-block; min-width: 200px; max-width: 225px; text-align: center; padding: 15px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent; transition: background 0.2s, color 0.2s, transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-ink { background: var(--ink); color: var(--white); border-color: var(--ink); }
+        .btn-ink:hover { background: #2a2824; }
+        .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+        .btn-outline:hover { background: var(--ink); color: var(--white); }
+        .btn-lavender { background: var(--lavender); color: var(--white); border-color: var(--lavender); }
+        .btn-lavender:hover { background: #7e5ee0; }
+        .btn-coral { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+        .btn-coral:hover { background: #f06070; }
+        .btn-white { background: var(--white); color: var(--ink); border-color: var(--white); }
+        .btn-white:hover { background: var(--off); }
+
+        /* ─── NAV ─── */
+        header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-logo { display: flex; align-items: center; padding: 0 32px; border-right: var(--border); flex-shrink: 0; }
+        .nav-logo img { height: 22px; width: auto; }
+        .nav-links { display: flex; flex: 1; }
+        .nav-link { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-right: var(--border); transition: background 0.15s; }
+        .nav-link:hover { background: var(--off); }
+        .nav-link.active { background: var(--off); }
+        .nav-spacer { flex: 1; }
+        .nav-cta { display: flex; align-items: center; padding: 0 40px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
+        .nav-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HAMBURGER ─── */
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+        .nav-hamburger:hover { background: var(--off); }
+        .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
+        .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
+        .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
+        .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+        /* ─── MOBILE DRAWER ─── */
+        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .nav-drawer.open { display: flex; }
+        .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; border-bottom: var(--border); transition: background 0.15s; }
+        .nav-drawer-link:hover { background: var(--off); }
+        .nav-drawer-link.active { background: var(--off); }
+        .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s; }
+        .nav-drawer-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HERO ─── */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(88vh - 72px); border-bottom: var(--border); }
+        .hero-left { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-right: var(--border); border-left: 6px solid var(--coral); }
+        .hero-left h1 { margin-bottom: 24px; }
+        .hero-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 48px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-right { background: var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; position: relative; overflow: hidden; }
+        .hero-right::before { content: '"'; font-family: var(--font-display); font-size: 34rem; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; top: -100px; left: -20px; line-height: 1; pointer-events: none; }
+        .hero-quote { position: relative; z-index: 1; }
+        .hero-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2vw, 2rem); color: var(--white); line-height: 1.45; font-weight: 400; margin-bottom: 24px; }
+        .hero-quote cite { font-style: normal; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); }
+        .hero-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+        .hero-stat { padding: 32px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+        .hero-stat:nth-child(even) { border-right: none; padding-left: 32px; }
+        .hero-stat:nth-child(odd)  { padding-right: 32px; }
+        .hero-stat:nth-child(n+3)  { border-top: 1px solid rgba(255,255,255,0.1); }
+        .stat-big { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+        .stat-big span { color: var(--peach); }
+        .stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; line-height: 1.4; }
+
+        /* ─── WHY WE EXIST ─── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .col-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .col-aside { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+        .col-aside.bg-off { background: var(--off); }
+
+        .pull-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 1.7vw, 1.65rem); font-weight: 400; color: var(--ink); line-height: 1.45; border-left: 5px solid var(--aqua); padding-left: 28px; }
+
+        .check-list { border: var(--border); }
+        .check-row { display: flex; align-items: center; gap: 14px; padding: 18px 24px; border-bottom: var(--border); font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+        .check-row:last-child { border-bottom: none; }
+        .check-icon { font-size: 18px; flex-shrink: 0; }
+
+        /* ─── PROBLEM ─── */
+        .problem-band { background: var(--ink); padding: 120px 80px; border-bottom: var(--border); }
+        .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .problem-band h2 { color: var(--white); margin-bottom: 24px; }
+        .problem-band p  { color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+        .problem-band p:last-child { margin-bottom: 0; }
+        .problem-callout { padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .problem-callout::before { content: 'But what if it\'s a design problem?'; display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--coral); margin-bottom: 20px; }
+        .problem-callout p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 1.4vw, 1.35rem); color: var(--white) !important; line-height: 1.55; font-weight: 400; margin: 0 !important; }
+        .problem-note { margin-top: 24px; color: rgba(255,255,255,0.3) !important; font-size: 0.85rem !important; }
+
+        /* ─── SOFT ENGINEERING ─── */
+        .soft-eng { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .soft-visual { background: var(--lavender); padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; border-right: var(--border); }
+        .soft-visual::after { content: 'SOFT'; font-family: var(--font-display); font-weight: 900; font-size: 12rem; color: rgba(255,255,255,0.07); position: absolute; bottom: -20px; left: -10px; line-height: 1; pointer-events: none; }
+        .soft-visual .label { color: rgba(255,255,255,0.6); }
+        .soft-visual .label::before { background: rgba(255,255,255,0.6); }
+        .soft-visual h2 { color: var(--white); position: relative; z-index: 1; margin-bottom: 20px; }
+        .soft-visual p  { color: rgba(255,255,255,0.75); position: relative; z-index: 1; margin-bottom: 14px; font-size: 0.95rem; }
+        .soft-principles { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .principle { display: flex; gap: 24px; align-items: flex-start; padding: 36px 0; border-bottom: var(--border); }
+        .principle:last-child { border-bottom: none; }
+        .p-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; line-height: 1; flex-shrink: 0; width: 52px; }
+        .p-body h4 { font-size: 1rem; margin-bottom: 8px; }
+        .p-body p  { font-size: 0.9rem; line-height: 1.7; }
+
+        /* ─── CHALLENGES ─── */
+        .challenges-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: var(--border); }
+        .ch-card { padding: 52px 48px; border-right: var(--border); }
+        .ch-card:last-child { border-right: none; }
+        .ch-card:nth-child(n+4) { border-top: var(--border); }
+        .ch-bar { width: 36px; height: 4px; margin-bottom: 28px; }
+        .ch-card h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+        .ch-card p { font-size: 0.88rem; line-height: 1.7; }
+
+        /* ─── FOUNDER ─── */
+        .founder-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .founder-visual { background: var(--peach); position: relative; overflow: hidden; min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px 72px; border-right: var(--border); }
+        .founder-visual::before { content: 'L'; font-family: var(--font-display); font-size: 40rem; font-weight: 900; color: rgba(18,16,14,0.06); position: absolute; top: -80px; left: -20px; line-height: 1; pointer-events: none; }
+        .founder-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; pointer-events: none; }
+        .founder-ph span { font-size: 0.82rem; color: var(--mid); font-weight: 600; }
+        .founder-ph code { font-size: 0.72rem; color: var(--mid); opacity: 0.55; }
+        .founder-badge { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--white); padding: 14px 22px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; align-self: flex-start; }
+        .founder-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid var(--peach); }
+        .founder-text h2 { margin-bottom: 6px; }
+        .founder-role { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 32px; }
+        .founder-quote { background: var(--off); border-left: 4px solid var(--peach); padding: 28px 32px; margin-bottom: 28px; }
+        .founder-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 1.3vw, 1.2rem); color: var(--ink); line-height: 1.55; font-weight: 400; margin-bottom: 10px; }
+        .founder-quote cite { font-style: normal; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--mid); }
+        .founder-text p { font-size: 0.95rem; margin-bottom: 14px; line-height: 1.8; }
+        .founder-text p:last-of-type { margin-bottom: 0; }
+        .creds { margin-top: 36px; border-top: var(--border); }
+        .cred-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: var(--border); font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+        .cred-row:last-child { border-bottom: none; }
+        .cred-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+
+        /* ─── VALUES ─── */
+        .values-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .values-cols { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .val-col { padding: 80px; }
+        .val-col-not { border-right: var(--border); background: var(--off); }
+        .val-col h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0; padding-bottom: 24px; border-bottom: var(--border); }
+        .val-row { display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: var(--border); font-size: 0.9rem; line-height: 1.7; }
+        .val-row:last-child { border-bottom: none; }
+        .val-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+
+        /* ─── CULTURE ─── */
+        .culture-hd { background: var(--ink); padding: 100px 80px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .culture-hd h2 { color: var(--white); }
+        .culture-hd .label { color: var(--aqua); justify-content: center; }
+        .culture-hd .label::before { background: var(--aqua); }
+        .culture-hd p { color: rgba(255,255,255,0.45); max-width: 500px; margin: 10px auto 0; }
+        .culture-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--ink); border-bottom: var(--border); }
+        .cult-card { padding: 72px 56px; border-right: 1px solid rgba(255,255,255,0.08); }
+        .cult-card:last-child { border-right: none; }
+        .cult-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; border-radius: 50%; }
+        .cult-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 14px; }
+        .cult-card p { color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.75; margin-bottom: 14px; }
+        .cult-card p:last-child { margin-bottom: 0; }
+
+        /* ─── WHO THRIVES ─── */
+        .who-split { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .who-text { padding: 100px 80px; border-right: var(--border); border-left: 6px solid var(--magenta); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .who-aside { padding: 100px 80px; background: var(--off); display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+        .who-card { background: var(--white); border: var(--border); border-left: 4px solid var(--magenta); padding: 28px 32px; display: flex; gap: 16px; align-items: flex-start; }
+        .who-icon { width: 36px; height: 36px; background: var(--magenta); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .who-card p { font-size: 0.9rem; line-height: 1.65; color: var(--ink); }
+
+        /* ─── WHERE WE ARE ─── */
+        .today-hd { padding: 100px 80px 60px; border-bottom: var(--border); }
+        .today-hd h2 { margin-bottom: 12px; }
+        .today-hd p { max-width: 700px; }
+        .today-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--border); }
+        .today-cell { padding: 72px 52px; border-right: var(--border); }
+        .today-cell:last-child { border-right: none; }
+        .today-num { font-family: var(--font-display); font-size: 4.5rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .today-num sup { font-size: 2rem; }
+        .today-cell h4 { font-size: 0.9rem; margin-bottom: 8px; }
+        .today-cell p { font-size: 0.85rem; line-height: 1.6; }
+
+        /* ─── PARTNERS ─── */
+        .partners-wrap { padding: 100px 80px; border-bottom: var(--border); display: flex; flex-direction: column; align-items: center; gap: 56px; }
+        .partners-hd { text-align: center; }
+        .partners-hd h2 { margin-bottom: 12px; }
+        .partners-hd p { max-width: 480px; margin: 0 auto; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: var(--border); width: 100%; max-width: 960px; }
+        .p-card { padding: 52px 48px; border-right: var(--border); }
+        .p-card:last-child { border-right: none; }
+        .p-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+        .p-role { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 14px; }
+        .p-card p { font-size: 0.88rem; line-height: 1.65; }
+
+        /* ─── VISION / CTA ─── */
+        .vision-split { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--border); }
+        .vision-text { padding: 120px 80px; border-right: var(--border); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .vision-text .closing { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink); margin-top: 8px; }
+        .vision-cta { background: var(--lavender); padding: 120px 80px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .vision-cta::after { content: 'Make.'; font-family: var(--font-display); font-weight: 900; font-size: 8rem; color: rgba(255,255,255,0.07); position: absolute; bottom: 20px; right: 20px; line-height: 1; pointer-events: none; }
+        .vision-cta .label { color: rgba(255,255,255,0.6); }
+        .vision-cta .label::before { background: rgba(255,255,255,0.6); }
+        .vision-cta h2 { color: var(--white); position: relative; z-index: 1; }
+        .vision-cta p  { color: rgba(255,255,255,0.65); position: relative; z-index: 1; font-size: 0.95rem; }
+        .vision-cta .btn { position: relative; z-index: 1; align-self: flex-start; margin-top: 44px; }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--white); }
+        .footer-main { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1.4fr; border-top: var(--border); width: 100%; }
+        .footer-col { padding: 64px 48px; border-right: var(--border); }
+        .footer-col:last-child { border-right: none; }
+        .footer-col h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 24px; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-weight: 600; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--lavender); }
+        .footer-bottom { background: var(--lavender); text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+        .footer-bg-letter { font-size: 22rem; font-family: var(--font-display); font-weight: 900; color: white; opacity: 0.1; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); line-height: 1; pointer-events: none; }
+        .footer-logo-img { height: 72px; width: auto; margin: 0 auto; position: relative; z-index: 1; filter: brightness(0) invert(1); }
+        .copyright { padding: 18px 32px; text-align: center; background: var(--off); border-top: var(--border); font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+
+            .hero { grid-template-columns: 1fr; min-height: unset; }
+            .hero-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .hero-right { padding: 72px 48px; min-height: 460px; }
+
+            .two-col { grid-template-columns: 1fr; }
+            .col-text, .col-aside { padding: 72px 48px; }
+
+            .problem-band { padding: 80px 48px; }
+            .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            .soft-eng { grid-template-columns: 1fr; }
+            .soft-visual { border-right: none; border-bottom: var(--border); padding: 72px 48px; min-height: 400px; }
+            .soft-principles { padding: 72px 48px; }
+
+            .challenges-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .challenges-grid { grid-template-columns: 1fr 1fr; }
+
+            .founder-section { grid-template-columns: 1fr; }
+            .founder-visual { border-right: none; border-bottom: var(--border); min-height: 360px; }
+            .founder-text { padding: 72px 48px; }
+
+            .values-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .values-cols { grid-template-columns: 1fr; }
+            .val-col-not { border-right: none; border-bottom: var(--border); }
+            .val-col { padding: 64px 48px; }
+
+            .culture-hd { padding: 72px 48px 48px; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .cult-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 64px 48px; }
+            .cult-card:last-child { border-bottom: none; }
+
+            .who-split { grid-template-columns: 1fr; }
+            .who-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .who-aside { padding: 72px 48px; }
+
+            .today-hd { padding: 72px 48px 48px; }
+            .today-grid { grid-template-columns: 1fr 1fr; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: var(--border); }
+
+            .partners-wrap { padding: 72px 48px; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .p-card { border-right: none; border-bottom: var(--border); }
+            .p-card:last-child { border-bottom: none; }
+
+            .vision-split { grid-template-columns: 1fr; }
+            .vision-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .vision-cta { padding: 72px 48px; }
+        }
+
+        @media (max-width: 640px) {
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-col { padding: 40px 32px; }
+            .hero-left, .hero-right { padding: 56px 28px; }
+            .col-text, .col-aside { padding: 56px 28px; }
+            .soft-visual, .soft-principles { padding: 56px 28px; }
+            .challenges-hd, .values-hd, .today-hd { padding: 56px 28px 40px; }
+            .challenges-grid { grid-template-columns: 1fr; }
+            .ch-card { border-right: none; border-bottom: var(--border); }
+            .ch-card:last-child { border-bottom: none; }
+            .ch-card:nth-child(n+4) { border-top: none; }
+            .founder-text, .who-text, .who-aside { padding: 56px 28px; }
+            .val-col { padding: 48px 28px; }
+            .culture-hd { padding: 56px 28px 40px; }
+            .cult-card { padding: 56px 28px; }
+            .today-grid { grid-template-columns: 1fr; }
+            .today-cell { border-right: none; border-bottom: var(--border); }
+            .today-cell:last-child { border-bottom: none; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: none; }
+            .partners-wrap { padding: 56px 28px; }
+            .vision-text, .vision-cta { padding: 56px 28px; }
+        }
+
+        /* ─── FULL-SCREEN PHOTO BREAK ─── */
+        .photo-break {
+            width: 100%;
+            min-height: 70vh;
+            background: var(--off);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-top: var(--border);
+            border-bottom: var(--border);
+        }
+        .photo-break img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-break-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .photo-break-placeholder .ph-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(18,16,14,0.07);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .photo-break-placeholder p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .photo-break-placeholder code {
+            font-size: 0.72rem;
+            color: var(--mid);
+            opacity: 0.55;
+        }
+        /* When image is present, hide placeholder */
+        .photo-break.has-image .photo-break-placeholder { display: none; }
+
+        /* ─── YOUTUBE / VIDEO SECTION ─── */
+        .video-section {
+            border-bottom: var(--border);
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+        .video-header {
+            padding: 80px 80px 48px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        .video-header h2 { color: var(--white); margin-bottom: 10px; }
+        .video-header p  { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.7; max-width: 540px; }
+        .video-embed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 1100px) {
+            .video-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 72px 48px 40px; }
+        }
+        @media (max-width: 640px) {
+            .video-header { padding: 56px 28px 32px; }
+        }
+
+        /* ─── PRESS QUOTE / BAMBULAB SECTION ─── */
+        .press-quote-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+        .press-quote-left {
+            padding: 100px 80px;
+            background: var(--ink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .press-quote-left::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 28rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.04);
+            position: absolute;
+            top: -80px; left: -10px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .press-quote-left blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+            color: var(--white);
+            line-height: 1.55;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-left cite {
+            font-style: normal;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--peach);
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-right {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            border-left: 6px solid var(--aqua);
+        }
+        .press-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--off);
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--ink);
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+        .press-quote-right h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .press-quote-right p { font-size: 0.95rem; line-height: 1.75; }
+        @media (max-width: 1100px) {
+            .press-quote-section { grid-template-columns: 1fr; }
+            .press-quote-left { padding: 72px 48px; }
+            .press-quote-right { border-left: none; border-top: var(--border); padding: 72px 48px; }
+        }
+        @media (max-width: 640px) {
+            .press-quote-left, .press-quote-right { padding: 56px 28px; }
+        }
+
+        /* ─── EXPERTS SECTION ─── */
+        .experts-section {
+            border-bottom: var(--border);
+        }
+        .experts-hd {
+            padding: 100px 80px 72px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            border-bottom: var(--border);
+        }
+        .experts-hd h2 { margin-bottom: 10px; }
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .expert-card {
+            padding: 56px 48px;
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .expert-card:last-child { border-right: none; }
+        .expert-card:nth-child(n+5) { border-top: var(--border); }
+        .expert-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--off);
+            border: 3px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .expert-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 50%;
+        }
+        .expert-photo-ph {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--mid);
+            text-align: center;
+            line-height: 1.3;
+            padding: 8px;
+        }
+        .expert-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--ink);
+        }
+        .expert-role {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--mid);
+            margin-bottom: 16px;
+        }
+        .expert-card p {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--mid);
+        }
+        @media (max-width: 1100px) {
+            .experts-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 56px; }
+            .experts-grid { grid-template-columns: repeat(2, 1fr); }
+            .expert-card:nth-child(even) { border-right: none; }
+            .expert-card:nth-child(n+5) { border-top: var(--border); }
+            .expert-card:nth-child(3), .expert-card:nth-child(4) { border-top: var(--border); }
+        }
+        @media (max-width: 640px) {
+            .experts-hd { padding: 56px 28px 40px; }
+            .experts-grid { grid-template-columns: 1fr; }
+            .expert-card { border-right: none; border-bottom: var(--border); padding: 48px 28px; }
+            .expert-card:last-child { border-bottom: none; }
+            .expert-card:nth-child(n+3) { border-top: none; }
+        }
+    </style>
+    <style>
+        /* ─── PRIVACY PAGE SPECIFIC ─── */
+        .privacy-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+        .privacy-hero-left {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+            border-left: 6px solid var(--lavender);
+        }
+        .privacy-hero-left h1 { margin-bottom: 16px; font-size: clamp(2.6rem, 4.5vw, 4rem); }
+        .privacy-hero-left .hero-lead { margin-bottom: 0; }
+        .privacy-hero-right {
+            background: var(--off);
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 32px;
+        }
+        .privacy-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: var(--border);
+        }
+        .meta-row {
+            display: flex;
+            border-bottom: var(--border);
+        }
+        .meta-row:last-child { border-bottom: none; }
+        .meta-key {
+            padding: 18px 24px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+            border-right: var(--border);
+            width: 180px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .meta-val {
+            padding: 18px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+        }
+        .toc-box {
+            border: var(--border);
+            padding: 32px 36px;
+        }
+        .toc-box h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+            margin-bottom: 20px;
+        }
+        .toc-list { list-style: none; }
+        .toc-list li {
+            border-bottom: var(--border);
+            padding: 10px 0;
+        }
+        .toc-list li:last-child { border-bottom: none; }
+        .toc-list a {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.15s;
+        }
+        .toc-list a:hover { color: var(--lavender); }
+        .toc-num {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--lavender);
+            width: 22px;
+            flex-shrink: 0;
+        }
+
+        /* ─── CONTENT LAYOUT ─── */
+        .privacy-body {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            border-bottom: var(--border);
+            align-items: start;
+        }
+        .privacy-sidebar {
+            position: sticky;
+            top: 72px;
+            border-right: var(--border);
+            height: calc(100vh - 72px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar-section-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 28px;
+            border-bottom: var(--border);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--mid);
+            transition: background 0.15s, color 0.15s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .sidebar-section-link:hover { background: var(--off); color: var(--ink); }
+        .sidebar-section-link.active { background: var(--lavender); color: white; }
+        .sidebar-num {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 24px;
+            flex-shrink: 0;
+        }
+        .privacy-content {
+            padding: 80px 80px 120px;
+        }
+
+        /* ─── SECTION BLOCKS ─── */
+        .privacy-section {
+            padding-bottom: 72px;
+            border-bottom: var(--border);
+            margin-bottom: 72px;
+        }
+        .privacy-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+        .section-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--lavender);
+            line-height: 1;
+            flex-shrink: 0;
+            width: 56px;
+        }
+        .privacy-section h2 {
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            margin-bottom: 0;
+            padding-top: 6px;
+        }
+        .privacy-section p {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            margin-bottom: 18px;
+            color: var(--mid);
+        }
+        .privacy-section p:last-child { margin-bottom: 0; }
+        .privacy-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            color: var(--ink);
+        }
+        .privacy-list {
+            list-style: none;
+            border: var(--border);
+            margin-bottom: 18px;
+        }
+        .privacy-list li {
+            display: flex;
+            gap: 16px;
+            padding: 16px 24px;
+            border-bottom: var(--border);
+            font-size: 0.9rem;
+            color: var(--mid);
+            line-height: 1.7;
+        }
+        .privacy-list li:last-child { border-bottom: none; }
+        .list-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+        .privacy-callout {
+            background: var(--off);
+            border-left: 4px solid var(--lavender);
+            padding: 28px 32px;
+            margin: 28px 0;
+        }
+        .privacy-callout p {
+            font-size: 0.92rem;
+            color: var(--ink);
+            margin: 0;
+        }
+        .privacy-callout strong { color: var(--ink); }
+        .contact-box {
+            background: var(--ink);
+            padding: 48px 56px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+        .contact-box h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .contact-box p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0; }
+        .contact-box .btn { flex-shrink: 0; align-self: center; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .privacy-hero { grid-template-columns: 1fr; }
+            .privacy-hero-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .privacy-hero-right { padding: 64px 48px; }
+            .privacy-body { grid-template-columns: 1fr; }
+            .privacy-sidebar { position: static; height: auto; border-right: none; border-bottom: var(--border); flex-direction: row; flex-wrap: wrap; overflow: visible; }
+            .sidebar-section-link { width: 50%; border-right: var(--border); }
+            .privacy-content { padding: 56px 48px 80px; }
+        }
+        @media (max-width: 640px) {
+            .privacy-hero-left, .privacy-hero-right { padding: 56px 28px; }
+            .privacy-sidebar { flex-direction: column; }
+            .sidebar-section-link { width: 100%; border-right: none; }
+            .privacy-content { padding: 48px 28px 72px; }
+            .section-header { flex-direction: column; gap: 8px; }
+            .section-num { font-size: 2rem; }
+            .contact-box { padding: 36px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <div class="nav-wrapper">
+        <a href="index.html" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html#benefits" class="nav-link">Benefits</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="programs.html" class="nav-link">Programs</a>
+            <a href="index.html#news" class="nav-link">Pricing</a>
+            <a href="faq.html" class="nav-link">FAQs</a>
+            <div class="nav-spacer"></div>
+        </nav>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+<nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="index.html#benefits" class="nav-link">Benefits</a>
+    <a href="about.html" class="nav-link">About Us</a>
+    <a href="programs.html" class="nav-link">Programs</a>
+    <a href="index.html#news" class="nav-link">Pricing</a>
+    <a href="faq.html" class="nav-link">FAQs</a>
+    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+</nav>
+<script>
+    (function(){
+        var btn = document.getElementById('hamburger');
+        var drawer = document.getElementById('nav-drawer');
+        btn.addEventListener('click', function(){
+            btn.classList.toggle('open');
+            drawer.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+            if (!btn.contains(e.target) && !drawer.contains(e.target)) {
+                btn.classList.remove('open');
+                drawer.classList.remove('open');
+            }
+        });
+    })();
+</script>
+
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="privacy-hero">
+    <div class="privacy-hero-left">
+        <div class="label label-lavender">Legal</div>
+        <h1>Privacy Terms</h1>
+        <p class="hero-lead">We keep this simple, honest, and human. Here's exactly what data we collect, why we collect it, and what we never do with it.</p>
+    </div>
+    <div class="privacy-hero-right">
+        <div class="privacy-meta">
+            <div class="meta-row">
+                <div class="meta-key">Effective Date</div>
+                <div class="meta-val">1 January 2025</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Last Updated</div>
+                <div class="meta-val">January 2025</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Applies To</div>
+                <div class="meta-val">makeful.com and all Makeful programs</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Controller</div>
+                <div class="meta-val">Makeful s.r.o., Prague, Czech Republic</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-key">Jurisdiction</div>
+                <div class="meta-val">GDPR (EU) · applicable local laws</div>
+            </div>
+        </div>
+        <div class="toc-box">
+            <h4>Contents</h4>
+            <ul class="toc-list">
+                <li><a href="#who-we-are"><span class="toc-num">1</span> Who We Are</a></li>
+                <li><a href="#what-we-collect"><span class="toc-num">2</span> What We Collect</a></li>
+                <li><a href="#how-we-use"><span class="toc-num">3</span> How We Use Your Data</a></li>
+                <li><a href="#sharing"><span class="toc-num">4</span> Sharing &amp; Third Parties</a></li>
+                <li><a href="#cookies"><span class="toc-num">5</span> Cookies</a></li>
+                <li><a href="#your-rights"><span class="toc-num">6</span> Your Rights</a></li>
+                <li><a href="#children"><span class="toc-num">7</span> Children &amp; Minors</a></li>
+                <li><a href="#retention"><span class="toc-num">8</span> Data Retention</a></li>
+                <li><a href="#security"><span class="toc-num">9</span> Security</a></li>
+                <li><a href="#contact"><span class="toc-num">10</span> Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     BODY — SIDEBAR + CONTENT
+════════════════════════════════════════════ -->
+<div class="privacy-body">
+
+    <!-- Sticky sidebar nav -->
+    <aside class="privacy-sidebar">
+        <a href="#who-we-are" class="sidebar-section-link">
+            <span class="sidebar-num">1</span> Who We Are
+        </a>
+        <a href="#what-we-collect" class="sidebar-section-link">
+            <span class="sidebar-num">2</span> What We Collect
+        </a>
+        <a href="#how-we-use" class="sidebar-section-link">
+            <span class="sidebar-num">3</span> How We Use Your Data
+        </a>
+        <a href="#sharing" class="sidebar-section-link">
+            <span class="sidebar-num">4</span> Sharing &amp; Third Parties
+        </a>
+        <a href="#cookies" class="sidebar-section-link">
+            <span class="sidebar-num">5</span> Cookies
+        </a>
+        <a href="#your-rights" class="sidebar-section-link">
+            <span class="sidebar-num">6</span> Your Rights
+        </a>
+        <a href="#children" class="sidebar-section-link">
+            <span class="sidebar-num">7</span> Children &amp; Minors
+        </a>
+        <a href="#retention" class="sidebar-section-link">
+            <span class="sidebar-num">8</span> Data Retention
+        </a>
+        <a href="#security" class="sidebar-section-link">
+            <span class="sidebar-num">9</span> Security
+        </a>
+        <a href="#contact" class="sidebar-section-link">
+            <span class="sidebar-num">10</span> Contact Us
+        </a>
+    </aside>
+
+    <!-- Main content -->
+    <main class="privacy-content">
+
+        <div class="privacy-callout">
+            <p><strong>Plain language first.</strong> We've written this to actually be read, not to protect us from lawyers. If something is unclear, email us and we'll explain it in plain language. The goal is your trust — not our liability shield.</p>
+        </div>
+
+        <!-- 1. WHO WE ARE -->
+        <section class="privacy-section" id="who-we-are">
+            <div class="section-header">
+                <div class="section-num">1</div>
+                <h2>Who We Are</h2>
+            </div>
+            <p>Makeful is a FashionTech STEAM education program founded and operated by Linette Manuel, headquartered in Prague, Czech Republic. We run teacher professional development programs, summer camps, and school enrichment programs across multiple countries.</p>
+            <p>For the purposes of data protection law, Makeful s.r.o. is the data controller responsible for your personal information. When we say "we," "us," or "Makeful" in this document, we mean the organisation operating these programs and this website.</p>
+            <p>This Privacy Policy applies to our website at makeful.com, our registration and contact forms, our email communications, and all Makeful educational programs.</p>
+        </section>
+
+        <!-- 2. WHAT WE COLLECT -->
+        <section class="privacy-section" id="what-we-collect">
+            <div class="section-header">
+                <div class="section-num">2</div>
+                <h2>What We Collect</h2>
+            </div>
+            <p>We collect only what we genuinely need. Here's a clear breakdown:</p>
+
+            <h3>Information you give us directly</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Contact &amp; enquiry forms</strong> Name, email address, school or organisation name, country, and your message or question.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Program registration</strong> Name, email, school name, role (teacher / coordinator / parent), country, and program interest.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Student enrollment</strong> We collect student first name, age group, and email address. For full-year programs, we also collect a home address for administrative purposes. Student email addresses are used exclusively for enrollment and online class access — we do not send students any marketing, newsletters, or promotional content.</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div><strong style="color:var(--ink);margin-right:8px;">Newsletter sign-up</strong> Email address and (optionally) first name.</li>
+            </ul>
+
+            <h3>Information collected automatically</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Usage data</strong> Pages visited, time on page, browser type, and device type — collected in aggregate and anonymised form.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">IP address</strong> Stored temporarily for security purposes and to understand broad geographic reach. Not used to identify individuals.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Referral source</strong> How you found us (search engine, social link, direct). Helps us understand where our community is growing.</li>
+            </ul>
+
+            <div class="privacy-callout">
+                <p>We do not collect financial information. Any payments are processed through third-party providers (such as Stripe or equivalent) who handle all payment data directly. Makeful never sees your card details.</p>
+            </div>
+        </section>
+
+        <!-- 3. HOW WE USE YOUR DATA -->
+        <section class="privacy-section" id="how-we-use">
+            <div class="section-header">
+                <div class="section-num">3</div>
+                <h2>How We Use Your Data</h2>
+            </div>
+            <p>We use your information to run our programs and communicate clearly with you. Specifically:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div>To respond to enquiries and send you the information you've asked for (info packs, program details, pricing).</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>To enroll you or your students in Makeful programs and manage those programs effectively.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>To send program updates, schedules, and relevant educational content to enrolled participants.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>To send our newsletter if you've opted in — covering new programs, FashionTech insights, and Makeful updates.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>To improve our website and programs based on aggregate, anonymised usage data.</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>To comply with our legal obligations as an education provider operating across multiple countries.</li>
+            </ul>
+            <p>The legal basis for processing under GDPR is: <strong>legitimate interests</strong> (responding to your enquiry), <strong>contractual necessity</strong> (delivering enrolled programs), and <strong>consent</strong> (newsletter and optional marketing communications).</p>
+            <p>We do not use your data for automated decision-making or profiling. We don't sell it. We don't use it to target you with ads on other platforms.</p>
+        </section>
+
+        <!-- 4. SHARING & THIRD PARTIES -->
+        <section class="privacy-section" id="sharing">
+            <div class="section-header">
+                <div class="section-num">4</div>
+                <h2>Sharing &amp; Third Parties</h2>
+            </div>
+            <p>We do not sell, rent, or trade your personal information. Full stop.</p>
+            <p>We do share limited data with the following trusted service providers who help us operate. Each is bound by data processing agreements and cannot use your data for their own purposes:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">Tally</strong> Our contact and registration forms are built with Tally. Submission data is collected and stored on Tally's servers under their privacy policy. We use Tally solely to receive enquiries and program registrations.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">Esmerise</strong> Our online program content and classes are delivered through the Esmerise platform. Student account data — including name and email address — is stored on Esmerise's servers to provide access to course materials and online sessions.</li>
+                <li><div class="list-dot" style="background:var(--peach);"></div><strong style="color:var(--ink);margin-right:8px;">Google Services</strong> We use Google Workspace (including Google Drive and associated services) to store and manage program-related information internally. Data stored in Google's infrastructure is subject to Google's data processing terms and privacy policy.</li>
+            </ul>
+            <p>We may disclose information if required by law, court order, or regulatory authority. We will notify you where legally permitted to do so.</p>
+        </section>
+
+        <!-- 5. COOKIES -->
+        <section class="privacy-section" id="cookies">
+            <div class="section-header">
+                <div class="section-num">5</div>
+                <h2>Cookies</h2>
+            </div>
+            <p>Our website uses a minimal set of cookies. We do not use advertising cookies or cross-site tracking cookies.</p>
+
+            <h3>Strictly necessary cookies</h3>
+            <p>These keep the website functioning — session management, form security tokens, and basic preferences. These cannot be disabled without breaking core site functionality.</p>
+
+            <h3>Analytics cookies</h3>
+            <p>We use privacy-first analytics that do not set persistent tracking cookies or build individual profiles. Usage data is aggregated and anonymised. You can opt out via your browser settings at any time.</p>
+
+            <h3>Embedded content</h3>
+            <p>Our site includes an embedded YouTube video. YouTube may set cookies when you interact with the video player. This is governed by Google's Privacy Policy. You can prevent this by not interacting with embedded video, or by using a browser extension that blocks third-party cookies.</p>
+
+            <div class="privacy-callout">
+                <p>We do not use Facebook Pixel, Google Ads tracking, or any third-party advertising cookies. We are not building an advertising audience from your visit to our site.</p>
+            </div>
+        </section>
+
+        <!-- 6. YOUR RIGHTS -->
+        <section class="privacy-section" id="your-rights">
+            <div class="section-header">
+                <div class="section-num">6</div>
+                <h2>Your Rights</h2>
+            </div>
+            <p>Under GDPR and applicable data protection law, you have the following rights regarding your personal data:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right of access</strong> You can request a copy of all personal data we hold about you.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right to rectification</strong> You can ask us to correct any inaccurate or incomplete information.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right to erasure</strong> You can ask us to delete your personal data where we have no legal obligation to retain it.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right to restrict processing</strong> You can ask us to pause processing of your data while a query is resolved.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right to data portability</strong> You can request your data in a structured, machine-readable format.</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right to object</strong> You can object to processing based on legitimate interests, including for direct marketing (unsubscribe at any time — every email has a one-click unsubscribe link).</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div><strong style="color:var(--ink);margin-right:8px;">Right to withdraw consent</strong> Where processing is based on consent, you can withdraw it at any time without affecting the lawfulness of prior processing.</li>
+            </ul>
+            <p>To exercise any of these rights, email us at <a href="/cdn-cgi/l/email-protection#aec7c0c8c1eec3cfc5cbc8dbc280cdc1c3" style="color:var(--lavender);font-weight:600;"><span class="__cf_email__" data-cfemail="caa3a4aca58aa7aba1afacbfa6e4a9a5a7">[email&#160;protected]</span></a> with the subject line "Data Request." We will respond within 30 days.</p>
+            <p>You also have the right to lodge a complaint with your national data protection authority. In the Czech Republic, this is the <strong>Úřad pro ochranu osobních údajů (ÚOOÚ)</strong> at uoou.cz. UK residents may contact the ICO. US residents may have additional rights depending on their state.</p>
+        </section>
+
+        <!-- 7. CHILDREN & MINORS -->
+        <section class="privacy-section" id="children">
+            <div class="section-header">
+                <div class="section-num">7</div>
+                <h2>Children &amp; Minors</h2>
+            </div>
+            <p>Many Makeful participants are young people under 18. We take this seriously.</p>
+            <p>We do not collect personal data directly from students under 16. Student enrollment is always completed by a parent, guardian, or school administrator — never by the student themselves through our public website or forms.</p>
+            <p>For enrolled students, we collect first name, age group, and email address. For full-year programs, we also collect a home address. Student email addresses are used only for enrollment confirmation and online class access — never for marketing, newsletters, or any promotional communication. Home addresses are used solely for program administration and are never shared with third parties for commercial purposes.</p>
+            <p>Schools that enroll students take on responsibility (as data processors) for ensuring that appropriate consent has been obtained from parents or guardians in accordance with their local data protection requirements.</p>
+            <div class="privacy-callout">
+                <p>If you are a parent or guardian and believe your child's data has been collected without proper consent, please contact us immediately at <a href="/cdn-cgi/l/email-protection#fc95929a93bc919d97999a8990d29f9391" style="color:var(--lavender);font-weight:600;"><span class="__cf_email__" data-cfemail="9ef7f0f8f1def3fff5fbf8ebf2b0fdf1f3">[email&#160;protected]</span></a> and we will delete it promptly.</p>
+            </div>
+        </section>
+
+        <!-- 8. DATA RETENTION -->
+        <section class="privacy-section" id="retention">
+            <div class="section-header">
+                <div class="section-num">8</div>
+                <h2>Data Retention</h2>
+            </div>
+            <p>We keep your data only as long as necessary:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Enquiry &amp; contact data</strong> Retained for 2 years from last contact, then deleted or anonymised unless a program relationship develops.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Program participant data</strong> Retained for the duration of the program plus 3 years for administrative and legal purposes, then securely deleted.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Newsletter subscribers</strong> Retained until you unsubscribe. Unsubscribing removes you from all marketing lists within 7 days.</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div><strong style="color:var(--ink);margin-right:8px;">Anonymous analytics data</strong> Retained in aggregated form indefinitely as it cannot be used to identify individuals.</li>
+            </ul>
+            <p>You can request deletion of your data at any time by emailing us, regardless of the above timelines — unless we have a legal obligation to retain it (for example, financial records required by Czech tax law).</p>
+        </section>
+
+        <!-- 9. SECURITY -->
+        <section class="privacy-section" id="security">
+            <div class="section-header">
+                <div class="section-num">9</div>
+                <h2>Security</h2>
+            </div>
+            <p>We take reasonable and appropriate technical and organisational measures to protect your personal data against loss, misuse, unauthorised access, disclosure, alteration, or destruction.</p>
+            <p>This includes encrypted data transmission (HTTPS), access controls limiting who within our team can access personal data, and using reputable, security-vetted third-party service providers.</p>
+            <p>No method of internet transmission or electronic storage is 100% secure. If we become aware of a data breach that poses a risk to your rights and freedoms, we will notify you and the relevant supervisory authority within 72 hours as required by GDPR.</p>
+            <p>We review our security practices regularly and update them as technology and best practices evolve.</p>
+        </section>
+
+        <!-- 10. CONTACT -->
+        <section class="privacy-section" id="contact">
+            <div class="section-header">
+                <div class="section-num">10</div>
+                <h2>Contact Us</h2>
+            </div>
+            <p>Questions about this policy, your data, or how we operate? We'd genuinely rather you asked us directly than wondered.</p>
+            <p>This policy was last reviewed in January 2025. We will update it if our practices change and post the new version here with an updated date. Continued use of our website or programs after an update constitutes acceptance of the revised policy — but we'll always flag significant changes clearly.</p>
+            <div class="contact-box">
+                <div>
+                    <h3>Get in Touch</h3>
+                    <p>Makeful s.r.o. · Prague, Czech Republic<br>
+                    <a href="/cdn-cgi/l/email-protection#30595e565f705d515b5556455c1e535f5d" style="color:var(--aqua);"><span class="__cf_email__" data-cfemail="82ebece4edc2efe3e9e7e4f7eeace1edef">[email&#160;protected]</span></a> &nbsp;·&nbsp;
+                    <a href="tel:+420735820576" style="color:var(--aqua);">+420 735 820 576</a></p>
+                </div>
+                <a href="/cdn-cgi/l/email-protection#a0c9cec6cfe0cdc1cbc5c6d5cc8ec3cfcd" class="btn btn-white">Email Us Directly</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="./index.html#benefits">Benefits</a></li>
+                    <li><a href="./index.html#news">Pricing</a></li>
+                    <li><a href="./programs.html">Programs</a></li>
+                    <li><a href="./faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul class="footer-links">
+                    <li><a href="./privacy.html">Privacy Terms</a></li>
+                    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="grid-column: span 2;">
+                <h4>Get In Touch</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto: info@make-ful.com"><span class="__cf_email__" data-cfemail="0c64696060634c616d6769216a7960226f6361">info@make-ful.com</span></a></li>
+                    <li><a href="tel:+420735820576">+420 735 820 576</a></li>
+                </ul>
+                <div style="margin-top: 32px;">
+                    <a href="https://tally.so/r/b57egg" class="btn btn-coral" style="width:100%; display:block; text-align:center;">Request Info Pack</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bg-letter">M</div>
+            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+        </div>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Highlight active sidebar link on scroll
+    /*
+    (function() {
+        const sections = document.querySelectorAll('.privacy-section');
+        const links = document.querySelectorAll('.sidebar-sec
+
+<script>
+function toggle(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+*/
+
+</script>
+</footer>
+</body>
+</html>

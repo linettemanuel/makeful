@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safeguarding &amp; Child Protection – Makeful FashionTech STEAM</title>
+    <meta name="description" content="Makeful's Safeguarding and Child Protection Statement. How we keep young people safe in all programs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <style>
+        /* ─── TOKENS ─── */
+        :root {
+            --aqua:     #62D7F4;
+            --coral:    #FD7E8B;
+            --peach:    #FEB492;
+            --magenta:  #F996BF;
+            --lavender: #9A75F0;
+            --lilac:    #C386F8;
+            --ink:      #12100E;
+            --white:    #FEFEFE;
+            --off:      #F5F3F0;
+            --mid:      #5C5856;
+            --border:   1px solid rgba(18,16,14,0.10);
+            --font-display: "Playfair Display", serif;
+            --font-ui:      "DM Sans", sans-serif;
+        }
+
+        /* ─── RESET ─── */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--white); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.15s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
+        h4 { font-family: var(--font-ui); font-weight: 600; color: var(--ink); }
+        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
+        h2 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 20px; }
+        h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
+        p  { font-size: 1rem; line-height: 1.8; color: var(--mid); margin-bottom: 0; }
+
+        /* ─── LABELS ─── */
+        .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 20px; }
+        .label::before { content: ''; display: block; width: 20px; height: 3px; background: currentColor; flex-shrink: 0; }
+        .label-aqua     { color: #1a9ab8; }
+        .label-coral    { color: #d45060; }
+        .label-lavender { color: #6248c4; }
+        .label-lilac    { color: #8840c8; }
+        .label-peach    { color: #c4703a; }
+        .label-magenta  { color: #b8407a; }
+
+        /* ─── BUTTONS ─── */
+        .btn { display: inline-block; min-width: 200px; max-width: 225px; text-align: center; padding: 15px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent; transition: background 0.2s, color 0.2s, transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-ink { background: var(--ink); color: var(--white); border-color: var(--ink); }
+        .btn-ink:hover { background: #2a2824; }
+        .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+        .btn-outline:hover { background: var(--ink); color: var(--white); }
+        .btn-lavender { background: var(--lavender); color: var(--white); border-color: var(--lavender); }
+        .btn-lavender:hover { background: #7e5ee0; }
+        .btn-coral { background: var(--coral); color: var(--ink); border-color: var(--coral); }
+        .btn-coral:hover { background: #f06070; }
+        .btn-white { background: var(--white); color: var(--ink); border-color: var(--white); }
+        .btn-white:hover { background: var(--off); }
+
+        /* ─── NAV ─── */
+        header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-logo { display: flex; align-items: center; padding: 0 32px; border-right: var(--border); flex-shrink: 0; }
+        .nav-logo img { height: 22px; width: auto; }
+        .nav-links { display: flex; flex: 1; }
+        .nav-link { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-right: var(--border); transition: background 0.15s; }
+        .nav-link:hover { background: var(--off); }
+        .nav-link.active { background: var(--off); }
+        .nav-spacer { flex: 1; }
+        .nav-cta { display: flex; align-items: center; padding: 0 40px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
+        .nav-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HAMBURGER ─── */
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+        .nav-hamburger:hover { background: var(--off); }
+        .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
+        .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
+        .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
+        .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+        /* ─── MOBILE DRAWER ─── */
+        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .nav-drawer.open { display: flex; }
+        .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; border-bottom: var(--border); transition: background 0.15s; }
+        .nav-drawer-link:hover { background: var(--off); }
+        .nav-drawer-link.active { background: var(--off); }
+        .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--lavender); color: var(--white); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s; }
+        .nav-drawer-cta:hover { background: #7e5ee0; color: var(--white); }
+
+        /* ─── HERO ─── */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(88vh - 72px); border-bottom: var(--border); }
+        .hero-left { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-right: var(--border); border-left: 6px solid var(--coral); }
+        .hero-left h1 { margin-bottom: 24px; }
+        .hero-lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 48px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-right { background: var(--ink); display: flex; flex-direction: column; justify-content: space-between; padding: 80px; position: relative; overflow: hidden; }
+        .hero-right::before { content: '"'; font-family: var(--font-display); font-size: 34rem; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; top: -100px; left: -20px; line-height: 1; pointer-events: none; }
+        .hero-quote { position: relative; z-index: 1; }
+        .hero-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2vw, 2rem); color: var(--white); line-height: 1.45; font-weight: 400; margin-bottom: 24px; }
+        .hero-quote cite { font-style: normal; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); }
+        .hero-stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 1; }
+        .hero-stat { padding: 32px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+        .hero-stat:nth-child(even) { border-right: none; padding-left: 32px; }
+        .hero-stat:nth-child(odd)  { padding-right: 32px; }
+        .hero-stat:nth-child(n+3)  { border-top: 1px solid rgba(255,255,255,0.1); }
+        .stat-big { font-family: var(--font-display); font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+        .stat-big span { color: var(--peach); }
+        .stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; line-height: 1.4; }
+
+        /* ─── WHY WE EXIST ─── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .col-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .col-aside { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+        .col-aside.bg-off { background: var(--off); }
+
+        .pull-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 1.7vw, 1.65rem); font-weight: 400; color: var(--ink); line-height: 1.45; border-left: 5px solid var(--aqua); padding-left: 28px; }
+
+        .check-list { border: var(--border); }
+        .check-row { display: flex; align-items: center; gap: 14px; padding: 18px 24px; border-bottom: var(--border); font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+        .check-row:last-child { border-bottom: none; }
+        .check-icon { font-size: 18px; flex-shrink: 0; }
+
+        /* ─── PROBLEM ─── */
+        .problem-band { background: var(--ink); padding: 120px 80px; border-bottom: var(--border); }
+        .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .problem-band h2 { color: var(--white); margin-bottom: 24px; }
+        .problem-band p  { color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+        .problem-band p:last-child { margin-bottom: 0; }
+        .problem-callout { padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .problem-callout::before { content: 'But what if it\'s a design problem?'; display: block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--coral); margin-bottom: 20px; }
+        .problem-callout p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.1rem, 1.4vw, 1.35rem); color: var(--white) !important; line-height: 1.55; font-weight: 400; margin: 0 !important; }
+        .problem-note { margin-top: 24px; color: rgba(255,255,255,0.3) !important; font-size: 0.85rem !important; }
+
+        /* ─── SOFT ENGINEERING ─── */
+        .soft-eng { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .soft-visual { background: var(--lavender); padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; border-right: var(--border); }
+        .soft-visual::after { content: 'SOFT'; font-family: var(--font-display); font-weight: 900; font-size: 12rem; color: rgba(255,255,255,0.07); position: absolute; bottom: -20px; left: -10px; line-height: 1; pointer-events: none; }
+        .soft-visual .label { color: rgba(255,255,255,0.6); }
+        .soft-visual .label::before { background: rgba(255,255,255,0.6); }
+        .soft-visual h2 { color: var(--white); position: relative; z-index: 1; margin-bottom: 20px; }
+        .soft-visual p  { color: rgba(255,255,255,0.75); position: relative; z-index: 1; margin-bottom: 14px; font-size: 0.95rem; }
+        .soft-principles { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .principle { display: flex; gap: 24px; align-items: flex-start; padding: 36px 0; border-bottom: var(--border); }
+        .principle:last-child { border-bottom: none; }
+        .p-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; line-height: 1; flex-shrink: 0; width: 52px; }
+        .p-body h4 { font-size: 1rem; margin-bottom: 8px; }
+        .p-body p  { font-size: 0.9rem; line-height: 1.7; }
+
+        /* ─── CHALLENGES ─── */
+        .challenges-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .challenges-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: var(--border); }
+        .ch-card { padding: 52px 48px; border-right: var(--border); }
+        .ch-card:last-child { border-right: none; }
+        .ch-card:nth-child(n+4) { border-top: var(--border); }
+        .ch-bar { width: 36px; height: 4px; margin-bottom: 28px; }
+        .ch-card h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
+        .ch-card p { font-size: 0.88rem; line-height: 1.7; }
+
+        /* ─── FOUNDER ─── */
+        .founder-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .founder-visual { background: var(--peach); position: relative; overflow: hidden; min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px 72px; border-right: var(--border); }
+        .founder-visual::before { content: 'L'; font-family: var(--font-display); font-size: 40rem; font-weight: 900; color: rgba(18,16,14,0.06); position: absolute; top: -80px; left: -20px; line-height: 1; pointer-events: none; }
+        .founder-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; pointer-events: none; }
+        .founder-ph span { font-size: 0.82rem; color: var(--mid); font-weight: 600; }
+        .founder-ph code { font-size: 0.72rem; color: var(--mid); opacity: 0.55; }
+        .founder-badge { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--white); padding: 14px 22px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; align-self: flex-start; }
+        .founder-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid var(--peach); }
+        .founder-text h2 { margin-bottom: 6px; }
+        .founder-role { font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 32px; }
+        .founder-quote { background: var(--off); border-left: 4px solid var(--peach); padding: 28px 32px; margin-bottom: 28px; }
+        .founder-quote blockquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 1.3vw, 1.2rem); color: var(--ink); line-height: 1.55; font-weight: 400; margin-bottom: 10px; }
+        .founder-quote cite { font-style: normal; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--mid); }
+        .founder-text p { font-size: 0.95rem; margin-bottom: 14px; line-height: 1.8; }
+        .founder-text p:last-of-type { margin-bottom: 0; }
+        .creds { margin-top: 36px; border-top: var(--border); }
+        .cred-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: var(--border); font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+        .cred-row:last-child { border-bottom: none; }
+        .cred-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+
+        /* ─── VALUES ─── */
+        .values-hd { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; padding: 100px 80px 60px; border-bottom: var(--border); }
+        .values-cols { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .val-col { padding: 80px; }
+        .val-col-not { border-right: var(--border); background: var(--off); }
+        .val-col h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0; padding-bottom: 24px; border-bottom: var(--border); }
+        .val-row { display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: var(--border); font-size: 0.9rem; line-height: 1.7; }
+        .val-row:last-child { border-bottom: none; }
+        .val-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+
+        /* ─── CULTURE ─── */
+        .culture-hd { background: var(--ink); padding: 100px 80px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .culture-hd h2 { color: var(--white); }
+        .culture-hd .label { color: var(--aqua); justify-content: center; }
+        .culture-hd .label::before { background: var(--aqua); }
+        .culture-hd p { color: rgba(255,255,255,0.45); max-width: 500px; margin: 10px auto 0; }
+        .culture-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--ink); border-bottom: var(--border); }
+        .cult-card { padding: 72px 56px; border-right: 1px solid rgba(255,255,255,0.08); }
+        .cult-card:last-child { border-right: none; }
+        .cult-icon { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; border-radius: 50%; }
+        .cult-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 14px; }
+        .cult-card p { color: rgba(255,255,255,0.45); font-size: 0.9rem; line-height: 1.75; margin-bottom: 14px; }
+        .cult-card p:last-child { margin-bottom: 0; }
+
+        /* ─── WHO THRIVES ─── */
+        .who-split { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .who-text { padding: 100px 80px; border-right: var(--border); border-left: 6px solid var(--magenta); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .who-aside { padding: 100px 80px; background: var(--off); display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+        .who-card { background: var(--white); border: var(--border); border-left: 4px solid var(--magenta); padding: 28px 32px; display: flex; gap: 16px; align-items: flex-start; }
+        .who-icon { width: 36px; height: 36px; background: var(--magenta); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .who-card p { font-size: 0.9rem; line-height: 1.65; color: var(--ink); }
+
+        /* ─── WHERE WE ARE ─── */
+        .today-hd { padding: 100px 80px 60px; border-bottom: var(--border); }
+        .today-hd h2 { margin-bottom: 12px; }
+        .today-hd p { max-width: 700px; }
+        .today-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: var(--border); }
+        .today-cell { padding: 72px 52px; border-right: var(--border); }
+        .today-cell:last-child { border-right: none; }
+        .today-num { font-family: var(--font-display); font-size: 4.5rem; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .today-num sup { font-size: 2rem; }
+        .today-cell h4 { font-size: 0.9rem; margin-bottom: 8px; }
+        .today-cell p { font-size: 0.85rem; line-height: 1.6; }
+
+        /* ─── PARTNERS ─── */
+        .partners-wrap { padding: 100px 80px; border-bottom: var(--border); display: flex; flex-direction: column; align-items: center; gap: 56px; }
+        .partners-hd { text-align: center; }
+        .partners-hd h2 { margin-bottom: 12px; }
+        .partners-hd p { max-width: 480px; margin: 0 auto; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: var(--border); width: 100%; max-width: 960px; }
+        .p-card { padding: 52px 48px; border-right: var(--border); }
+        .p-card:last-child { border-right: none; }
+        .p-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+        .p-role { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 14px; }
+        .p-card p { font-size: 0.88rem; line-height: 1.65; }
+
+        /* ─── VISION / CTA ─── */
+        .vision-split { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--border); }
+        .vision-text { padding: 120px 80px; border-right: var(--border); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .vision-text .closing { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink); margin-top: 8px; }
+        .vision-cta { background: var(--lavender); padding: 120px 80px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+        .vision-cta::after { content: 'Make.'; font-family: var(--font-display); font-weight: 900; font-size: 8rem; color: rgba(255,255,255,0.07); position: absolute; bottom: 20px; right: 20px; line-height: 1; pointer-events: none; }
+        .vision-cta .label { color: rgba(255,255,255,0.6); }
+        .vision-cta .label::before { background: rgba(255,255,255,0.6); }
+        .vision-cta h2 { color: var(--white); position: relative; z-index: 1; }
+        .vision-cta p  { color: rgba(255,255,255,0.65); position: relative; z-index: 1; font-size: 0.95rem; }
+        .vision-cta .btn { position: relative; z-index: 1; align-self: flex-start; margin-top: 44px; }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--white); }
+        .footer-main { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1.4fr; border-top: var(--border); width: 100%; }
+        .footer-col { padding: 64px 48px; border-right: var(--border); }
+        .footer-col:last-child { border-right: none; }
+        .footer-col h4 { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 24px; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-weight: 600; font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--lavender); }
+        .footer-bottom { background: var(--lavender); text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+        .footer-bg-letter { font-size: 22rem; font-family: var(--font-display); font-weight: 900; color: white; opacity: 0.1; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); line-height: 1; pointer-events: none; }
+        .footer-logo-img { height: 72px; width: auto; margin: 0 auto; position: relative; z-index: 1; filter: brightness(0) invert(1); }
+        .copyright { padding: 18px 32px; text-align: center; background: var(--off); border-top: var(--border); font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: flex; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+
+            .hero { grid-template-columns: 1fr; min-height: unset; }
+            .hero-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .hero-right { padding: 72px 48px; min-height: 460px; }
+
+            .two-col { grid-template-columns: 1fr; }
+            .col-text, .col-aside { padding: 72px 48px; }
+
+            .problem-band { padding: 80px 48px; }
+            .problem-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            .soft-eng { grid-template-columns: 1fr; }
+            .soft-visual { border-right: none; border-bottom: var(--border); padding: 72px 48px; min-height: 400px; }
+            .soft-principles { padding: 72px 48px; }
+
+            .challenges-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .challenges-grid { grid-template-columns: 1fr 1fr; }
+
+            .founder-section { grid-template-columns: 1fr; }
+            .founder-visual { border-right: none; border-bottom: var(--border); min-height: 360px; }
+            .founder-text { padding: 72px 48px; }
+
+            .values-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 48px; }
+            .values-cols { grid-template-columns: 1fr; }
+            .val-col-not { border-right: none; border-bottom: var(--border); }
+            .val-col { padding: 64px 48px; }
+
+            .culture-hd { padding: 72px 48px 48px; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .cult-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 64px 48px; }
+            .cult-card:last-child { border-bottom: none; }
+
+            .who-split { grid-template-columns: 1fr; }
+            .who-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .who-aside { padding: 72px 48px; }
+
+            .today-hd { padding: 72px 48px 48px; }
+            .today-grid { grid-template-columns: 1fr 1fr; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: var(--border); }
+
+            .partners-wrap { padding: 72px 48px; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .p-card { border-right: none; border-bottom: var(--border); }
+            .p-card:last-child { border-bottom: none; }
+
+            .vision-split { grid-template-columns: 1fr; }
+            .vision-text { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .vision-cta { padding: 72px 48px; }
+        }
+
+        @media (max-width: 640px) {
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-col { padding: 40px 32px; }
+            .hero-left, .hero-right { padding: 56px 28px; }
+            .col-text, .col-aside { padding: 56px 28px; }
+            .soft-visual, .soft-principles { padding: 56px 28px; }
+            .challenges-hd, .values-hd, .today-hd { padding: 56px 28px 40px; }
+            .challenges-grid { grid-template-columns: 1fr; }
+            .ch-card { border-right: none; border-bottom: var(--border); }
+            .ch-card:last-child { border-bottom: none; }
+            .ch-card:nth-child(n+4) { border-top: none; }
+            .founder-text, .who-text, .who-aside { padding: 56px 28px; }
+            .val-col { padding: 48px 28px; }
+            .culture-hd { padding: 56px 28px 40px; }
+            .cult-card { padding: 56px 28px; }
+            .today-grid { grid-template-columns: 1fr; }
+            .today-cell { border-right: none; border-bottom: var(--border); }
+            .today-cell:last-child { border-bottom: none; }
+            .today-cell:nth-child(even) { border-right: none; }
+            .today-cell:nth-child(n+3) { border-top: none; }
+            .partners-wrap { padding: 56px 28px; }
+            .vision-text, .vision-cta { padding: 56px 28px; }
+        }
+
+        /* ─── FULL-SCREEN PHOTO BREAK ─── */
+        .photo-break {
+            width: 100%;
+            min-height: 70vh;
+            background: var(--off);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-top: var(--border);
+            border-bottom: var(--border);
+        }
+        .photo-break img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-break-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .photo-break-placeholder .ph-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(18,16,14,0.07);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .photo-break-placeholder p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .photo-break-placeholder code {
+            font-size: 0.72rem;
+            color: var(--mid);
+            opacity: 0.55;
+        }
+        /* When image is present, hide placeholder */
+        .photo-break.has-image .photo-break-placeholder { display: none; }
+
+        /* ─── YOUTUBE / VIDEO SECTION ─── */
+        .video-section {
+            border-bottom: var(--border);
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+        .video-header {
+            padding: 80px 80px 48px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        .video-header h2 { color: var(--white); margin-bottom: 10px; }
+        .video-header p  { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.7; max-width: 540px; }
+        .video-embed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 1100px) {
+            .video-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 72px 48px 40px; }
+        }
+        @media (max-width: 640px) {
+            .video-header { padding: 56px 28px 32px; }
+        }
+
+        /* ─── PRESS QUOTE / BAMBULAB SECTION ─── */
+        .press-quote-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+        .press-quote-left {
+            padding: 100px 80px;
+            background: var(--ink);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .press-quote-left::before {
+            content: '"';
+            font-family: var(--font-display);
+            font-size: 28rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.04);
+            position: absolute;
+            top: -80px; left: -10px;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .press-quote-left blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+            color: var(--white);
+            line-height: 1.55;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-left cite {
+            font-style: normal;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--peach);
+            position: relative;
+            z-index: 1;
+        }
+        .press-quote-right {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            border-left: 6px solid var(--aqua);
+        }
+        .press-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--off);
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--ink);
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+        .press-quote-right h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .press-quote-right p { font-size: 0.95rem; line-height: 1.75; }
+        @media (max-width: 1100px) {
+            .press-quote-section { grid-template-columns: 1fr; }
+            .press-quote-left { padding: 72px 48px; }
+            .press-quote-right { border-left: none; border-top: var(--border); padding: 72px 48px; }
+        }
+        @media (max-width: 640px) {
+            .press-quote-left, .press-quote-right { padding: 56px 28px; }
+        }
+
+        /* ─── EXPERTS SECTION ─── */
+        .experts-section {
+            border-bottom: var(--border);
+        }
+        .experts-hd {
+            padding: 100px 80px 72px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            border-bottom: var(--border);
+        }
+        .experts-hd h2 { margin-bottom: 10px; }
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .expert-card {
+            padding: 56px 48px;
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+        .expert-card:last-child { border-right: none; }
+        .expert-card:nth-child(n+5) { border-top: var(--border); }
+        .expert-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--off);
+            border: 3px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .expert-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 50%;
+        }
+        .expert-photo-ph {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--mid);
+            text-align: center;
+            line-height: 1.3;
+            padding: 8px;
+        }
+        .expert-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--ink);
+        }
+        .expert-role {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--mid);
+            margin-bottom: 16px;
+        }
+        .expert-card p {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: var(--mid);
+        }
+        @media (max-width: 1100px) {
+            .experts-hd { grid-template-columns: 1fr; gap: 20px; padding: 72px 48px 56px; }
+            .experts-grid { grid-template-columns: repeat(2, 1fr); }
+            .expert-card:nth-child(even) { border-right: none; }
+            .expert-card:nth-child(n+5) { border-top: var(--border); }
+            .expert-card:nth-child(3), .expert-card:nth-child(4) { border-top: var(--border); }
+        }
+        @media (max-width: 640px) {
+            .experts-hd { padding: 56px 28px 40px; }
+            .experts-grid { grid-template-columns: 1fr; }
+            .expert-card { border-right: none; border-bottom: var(--border); padding: 48px 28px; }
+            .expert-card:last-child { border-bottom: none; }
+            .expert-card:nth-child(n+3) { border-top: none; }
+        }
+    </style>
+    <style>
+        /* ─── SAFEGUARDING PAGE ─── */
+        .sg-hero {
+            background: var(--ink);
+            border-bottom: var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .sg-hero-left {
+            padding: 100px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            border-left: 6px solid var(--coral);
+            position: relative;
+            overflow: hidden;
+        }
+        .sg-hero-left::before {
+            content: '⚑';
+            font-size: 26rem;
+            color: rgba(255,255,255,0.03);
+            position: absolute;
+            top: -40px; right: -20px;
+            line-height: 1;
+            pointer-events: none;
+            font-family: var(--font-display);
+        }
+        .sg-hero-left .label { color: var(--coral); }
+        .sg-hero-left .label::before { background: var(--coral); }
+        .sg-hero-left h1 { color: var(--white); margin-bottom: 20px; font-size: clamp(2.4rem, 4vw, 3.8rem); position: relative; z-index: 1; }
+        .sg-hero-left p { color: rgba(255,255,255,0.55); font-size: 1rem; line-height: 1.8; position: relative; z-index: 1; }
+        .sg-hero-right {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+        }
+        .sg-commitment-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .sg-commitment-row:last-child { border-bottom: none; }
+        .sg-commitment-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-radius: 50%;
+        }
+        .sg-commitment-text h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 4px; }
+        .sg-commitment-text p { color: rgba(255,255,255,0.45); font-size: 0.85rem; line-height: 1.6; margin: 0; }
+
+        /* BODY */
+        .sg-body { border-bottom: var(--border); }
+        .sg-section {
+            border-bottom: var(--border);
+        }
+        .sg-section:last-child { border-bottom: none; }
+        .sg-section-inner {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+        .sg-section-label {
+            padding: 72px 56px;
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: var(--off);
+        }
+        .sg-section-label h2 { font-size: 1.4rem; margin-bottom: 0; }
+        .sg-section-label p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+        .sg-section-content {
+            padding: 72px 80px;
+        }
+        .sg-section-content p {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--mid);
+            margin-bottom: 18px;
+        }
+        .sg-section-content p:last-child { margin-bottom: 0; }
+        .sg-section-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+        .sg-list {
+            list-style: none;
+            border: var(--border);
+            margin-bottom: 18px;
+        }
+        .sg-list li {
+            display: flex;
+            gap: 16px;
+            padding: 16px 24px;
+            border-bottom: var(--border);
+            font-size: 0.9rem;
+            color: var(--mid);
+            line-height: 1.7;
+            align-items: flex-start;
+        }
+        .sg-list li:last-child { border-bottom: none; }
+        .sg-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+        .sg-callout {
+            background: var(--ink);
+            border-left: 4px solid var(--coral);
+            padding: 28px 32px;
+            margin: 24px 0;
+        }
+        .sg-callout p { color: rgba(255,255,255,0.8) !important; margin: 0 !important; font-size: 0.92rem; }
+        .sg-callout strong { color: var(--coral); }
+        .sg-rule-card {
+            border: var(--border);
+            border-left: 4px solid var(--coral);
+            padding: 24px 28px;
+            margin-bottom: 14px;
+        }
+        .sg-rule-card:last-child { margin-bottom: 0; }
+        .sg-rule-card h4 { font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink); margin-bottom: 8px; }
+        .sg-rule-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; margin: 0; }
+
+        /* CONTACT BAND */
+        .sg-contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: var(--border);
+        }
+        .sg-contact-left {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+            border-right: var(--border);
+            border-left: 6px solid var(--coral);
+        }
+        .sg-contact-left h2 { margin-bottom: 8px; }
+        .sg-contact-left p { font-size: 0.95rem; line-height: 1.75; }
+        .sg-contact-right {
+            background: var(--off);
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+        }
+        .sg-contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 24px 0;
+            border-bottom: var(--border);
+        }
+        .sg-contact-detail:last-child { border-bottom: none; }
+        .sg-contact-detail-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .sg-contact-detail-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); display: block; margin-bottom: 4px; }
+        .sg-contact-detail-value { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+        .sg-contact-detail-value a { color: var(--ink); }
+        .sg-contact-detail-value a:hover { color: var(--coral); }
+
+        @media (max-width: 1100px) {
+            .sg-hero { grid-template-columns: 1fr; }
+            .sg-hero-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 72px 48px; }
+            .sg-hero-right { padding: 64px 48px; }
+            .sg-section-inner { grid-template-columns: 1fr; }
+            .sg-section-label { border-right: none; border-bottom: var(--border); padding: 48px; }
+            .sg-section-content { padding: 56px 48px; }
+            .sg-contact { grid-template-columns: 1fr; }
+            .sg-contact-left { border-right: none; border-bottom: var(--border); padding: 72px 48px; }
+            .sg-contact-right { padding: 64px 48px; }
+        }
+        @media (max-width: 640px) {
+            .sg-hero-left, .sg-hero-right,
+            .sg-section-label, .sg-section-content,
+            .sg-contact-left, .sg-contact-right { padding: 48px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <div class="nav-wrapper">
+        <a href="index.html" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html#benefits" class="nav-link">Benefits</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="programs.html" class="nav-link">Programs</a>
+            <a href="index.html#news" class="nav-link">Pricing</a>
+            <a href="faq.html" class="nav-link">FAQs</a>
+            <div class="nav-spacer"></div>
+        </nav>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+<nav class="nav-drawer" id="nav-drawer">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="index.html#benefits" class="nav-link">Benefits</a>
+    <a href="about.html" class="nav-link">About Us</a>
+    <a href="programs.html" class="nav-link">Programs</a>
+    <a href="index.html#news" class="nav-link">Pricing</a>
+    <a href="faq.html" class="nav-link">FAQs</a>
+    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+</nav>
+<script>
+    (function(){
+        var btn = document.getElementById('hamburger');
+        var drawer = document.getElementById('nav-drawer');
+        btn.addEventListener('click', function(){
+            btn.classList.toggle('open');
+            drawer.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+            if (!btn.contains(e.target) && !drawer.contains(e.target)) {
+                btn.classList.remove('open');
+                drawer.classList.remove('open');
+            }
+        });
+    })();
+</script>
+
+
+
+<!-- HERO -->
+<section class="sg-hero">
+    <div class="sg-hero-left">
+        <div class="label">Safeguarding</div>
+        <h1>Child Protection &amp; Safeguarding Statement</h1>
+        <p>Makeful is committed to the safety and wellbeing of every young person in our programs. This statement sets out our commitments, our procedures, and what we expect from the schools we partner with. It is reviewed annually and updated whenever our practices change.</p>
+    </div>
+    <div class="sg-hero-right">
+        <div class="sg-commitment-row">
+            <div class="sg-commitment-icon" style="background:var(--coral);">
+                <span class="material-symbols-outlined" style="color:white;font-size:20px;">verified_user</span>
+            </div>
+            <div class="sg-commitment-text">
+                <h4>Zero unsupervised contact</h4>
+                <p>Makeful instructors never communicate with minor students without a school guardian present or copied in.</p>
+            </div>
+        </div>
+        <div class="sg-commitment-row">
+            <div class="sg-commitment-icon" style="background:var(--lavender);">
+                <span class="material-symbols-outlined" style="color:white;font-size:20px;">lock</span>
+            </div>
+            <div class="sg-commitment-text">
+                <h4>Supervised channels only</h4>
+                <p>All communication between instructors and students uses public, guardian-supervised channels — always.</p>
+            </div>
+        </div>
+        <div class="sg-commitment-row">
+            <div class="sg-commitment-icon" style="background:var(--aqua);">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:20px;">groups</span>
+            </div>
+            <div class="sg-commitment-text">
+                <h4>School guardian required</h4>
+                <p>A school guardian must be present for every online session. If no guardian is available, the session is rescheduled.</p>
+            </div>
+        </div>
+        <div class="sg-commitment-row">
+            <div class="sg-commitment-icon" style="background:var(--peach);">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:20px;">report</span>
+            </div>
+            <div class="sg-commitment-text">
+                <h4>Immediate concern reporting</h4>
+                <p>Any safeguarding concern is immediately reported to the school's designated safeguarding lead and relevant authorities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="sg-body">
+
+    <!-- 1. OUR COMMITMENT -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">1</div>
+                <h2>Our Commitment</h2>
+                <p>What Makeful stands for when it comes to the young people in our programs.</p>
+            </div>
+            <div class="sg-section-content">
+                <p>Makeful believes that every young person deserves to learn in a safe, supportive, and joyful environment. The safety and wellbeing of students in our programs is our highest priority — above program logistics, above schedules, above everything else.</p>
+                <p>We recognise that we have a duty of care to the young people who participate in our programs, and that this duty extends to the digital spaces in which we operate as well as the physical. We take this responsibility seriously and hold all adults involved in Makeful programs — our own instructors, trained school staff, and school guardians — to a high standard of conduct.</p>
+                <p>This statement applies to all Makeful program formats: Teacher Professional Development, Summer Camp programs, Full-Year Enrichment programs, and any future program offerings involving students under 18.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HOW OUR PROGRAMS WORK -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">2</div>
+                <h2>How Our Programs Work</h2>
+                <p>The safeguarding implications of each program format.</p>
+            </div>
+            <div class="sg-section-content">
+                <h3>Summer Camp &amp; Short-Term Programs</h3>
+                <p>Makeful does not send instructors to schools. For Summer Camp and short-term programs, Makeful trains the school's own designated staff to deliver the program on-site. This means that all in-person contact with students is managed by the school's own staff, operating under the school's own safeguarding policies and procedures.</p>
+                <p>Makeful's role in these programs is to train, support, and supply — not to be physically present with students.</p>
+
+                <h3>Full-Year Enrichment Program</h3>
+                <p>The Full-Year Enrichment Program is delivered online by Makeful-qualified instructors. Students attend live sessions via video call from their school premises. A school-designated guardian — a member of school staff with appropriate safeguarding clearance — must be present in the video call for the full duration of every session.</p>
+                <p>Makeful instructors facilitate learning; the school guardian is responsible for in-person supervision of students throughout.</p>
+
+                <div class="sg-callout">
+                    <p><strong>Key principle:</strong> In all Makeful programs, in-person supervision of students is always the responsibility of the school and its staff. Makeful instructors never have unsupervised physical or one-to-one digital access to minor students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. COMMUNICATION RULES -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">3</div>
+                <h2>Communication Rules</h2>
+                <p>Strict rules governing all contact between Makeful instructors and minor students.</p>
+            </div>
+            <div class="sg-section-content">
+                <p>Makeful operates a zero-tolerance policy on unsupervised communication between our instructors and minor students. The following rules apply without exception, in all circumstances.</p>
+
+                <div class="sg-rule-card">
+                    <h4>Live Online Sessions</h4>
+                    <p>All live video sessions are conducted with the school guardian present in the call for the full duration. Makeful instructors will not begin or continue a session if no school guardian is present. If a guardian leaves a session mid-way, the instructor will pause until they return or, if the guardian cannot return, end the session and reschedule.</p>
+                </div>
+                <div class="sg-rule-card">
+                    <h4>Email Communication</h4>
+                    <p>Any email from a Makeful instructor to a student must always have the school guardian in copy (CC). Instructors will never send an email to a minor student without a school guardian copied. Where a student emails a Makeful instructor directly, the instructor will reply-all to include the guardian, or will not reply until the guardian has been added.</p>
+                </div>
+                <div class="sg-rule-card">
+                    <h4>Platform Forum (Esmerise)</h4>
+                    <p>Written communication between instructors and students takes place in the Esmerise platform's student forum, which is fully public and visible to all enrolled participants and the school guardian. There are no private or direct messages between instructors and individual students on the platform.</p>
+                </div>
+                <div class="sg-rule-card">
+                    <h4>No Private Channels — Ever</h4>
+                    <p>Makeful instructors will never contact students via personal social media accounts, WhatsApp, Instagram, personal email, SMS, or any channel outside the three approved routes above. Any student or parent who receives a private communication from someone claiming to be a Makeful instructor should report it to their school and to Makeful immediately.</p>
+                </div>
+
+                <div class="sg-callout">
+                    <p><strong>Schools are responsible for ensuring their designated guardian is present for every scheduled online session.</strong> If a guardian cannot attend, the school must notify Makeful at least 24 hours in advance. Makeful will reschedule the session. Sessions will not proceed without guardian supervision.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. INSTRUCTOR STANDARDS -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">4</div>
+                <h2>Instructor Standards</h2>
+                <p>What we require from all Makeful instructors who work with young people.</p>
+            </div>
+            <div class="sg-section-content">
+                <p>All Makeful instructors who work with minor students in online programs are required to meet the following standards before working with students:</p>
+                <ul class="sg-list">
+                    <li><div class="sg-dot" style="background:var(--coral);"></div>Completion of safeguarding training appropriate to working with young people in an online environment, including recognition of signs of abuse or distress and understanding of reporting obligations.</li>
+                    <li><div class="sg-dot" style="background:var(--coral);"></div>Familiarity with and commitment to Makeful's communication rules — including the supervised-channels-only policy — before beginning any student-facing work.</li>
+                    <li><div class="sg-dot" style="background:var(--coral);"></div>Understanding that any concern about a student's safety or welfare must be reported immediately to Makeful's designated safeguarding contact and to the school's designated safeguarding lead.</li>
+                    <li><div class="sg-dot" style="background:var(--coral);"></div>Agreement to Makeful's Code of Conduct, which sets out expected professional behaviour in all interactions with students, parents, and school staff.</li>
+                </ul>
+                <p>For teachers trained by Makeful to deliver Summer Camp or short-term programs, their school's own safeguarding requirements and clearances apply, in addition to the training Makeful provides on program delivery.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. SCHOOL RESPONSIBILITIES -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">5</div>
+                <h2>School Responsibilities</h2>
+                <p>What we ask of partner schools to ensure students are safe.</p>
+            </div>
+            <div class="sg-section-content">
+                <p>When a school partners with Makeful, it takes on the following safeguarding responsibilities:</p>
+                <ul class="sg-list">
+                    <li><div class="sg-dot" style="background:var(--lavender);"></div>Designate a named guardian — a staff member with current DBS clearance (or local equivalent) — for all Full-Year Enrichment sessions. This guardian must be present for every session.</li>
+                    <li><div class="sg-dot" style="background:var(--lavender);"></div>For Summer Camp and short-term programs, ensure all staff trained by Makeful hold appropriate safeguarding clearances required by the school's own policies and local law.</li>
+                    <li><div class="sg-dot" style="background:var(--lavender);"></div>Follow the school's own safeguarding and child protection policies throughout all Makeful program activity.</li>
+                    <li><div class="sg-dot" style="background:var(--lavender);"></div>Inform Makeful prior to the program of any relevant safeguarding considerations or individual student needs that Makeful should be aware of.</li>
+                    <li><div class="sg-dot" style="background:var(--lavender);"></div>Ensure students access the Esmerise platform and video sessions in a supervised, school-managed environment — not from personal devices at home unsupervised.</li>
+                    <li><div class="sg-dot" style="background:var(--lavender);"></div>Act as the first point of contact for students or parents who have concerns about any aspect of the Makeful program, and escalate to Makeful and relevant authorities as appropriate.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. REPORTING CONCERNS -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">6</div>
+                <h2>Reporting Concerns</h2>
+                <p>What to do if a safeguarding concern arises during a Makeful program.</p>
+            </div>
+            <div class="sg-section-content">
+                <h3>If a concern arises during a session</h3>
+                <p>If a Makeful instructor has a concern about a student's safety or welfare during a session, they will immediately inform the school guardian present in the session. The school guardian will follow the school's own safeguarding procedures from that point.</p>
+                <p>Where a concern is serious and immediate, and a school guardian is not available, Makeful will contact the school's designated safeguarding lead directly.</p>
+
+                <h3>If you have a concern about a Makeful instructor</h3>
+                <p>If a school, parent, or student has a concern about the conduct of a Makeful instructor, contact Makeful's designated safeguarding contact immediately:</p>
+                <ul class="sg-list">
+                    <li><div class="sg-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">Email</strong> <a href="mailto:info@makeful.com" style="color:var(--coral);font-weight:600;">info@makeful.com</a> — mark the subject line "SAFEGUARDING CONCERN" for immediate attention.</li>
+                    <li><div class="sg-dot" style="background:var(--coral);"></div><strong style="color:var(--ink);margin-right:8px;">Phone</strong> <a href="tel:+420735820576" style="color:var(--coral);font-weight:600;">+420 735 820 576</a></li>
+                </ul>
+                <p>All concerns will be taken seriously, investigated promptly, and handled in confidence. Makeful will cooperate fully with any investigation by the school, local authority, or statutory agency.</p>
+
+                <h3>Escalation</h3>
+                <p>Where a concern involves a risk of immediate harm to a child, always contact the relevant emergency services or local child protection authority first. Do not wait to contact Makeful — student safety comes first.</p>
+
+                <div class="sg-callout">
+                    <p><strong>Makeful's Designated Safeguarding Contact is Linette Manuel.</strong> She can be reached directly at <a href="mailto:info@makeful.com" style="color:var(--coral);">info@makeful.com</a> or <a href="tel:+420735820576" style="color:var(--coral);">+420 735 820 576</a>. In cases of serious or immediate concern, please also contact your school's designated safeguarding lead and, where necessary, your local authority's children's services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. DATA & PRIVACY -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">7</div>
+                <h2>Data &amp; Privacy</h2>
+                <p>How we handle student data in the context of safeguarding.</p>
+            </div>
+            <div class="sg-section-content">
+                <p>Makeful collects minimal student data — first name, age group, and email address for program access. For full-year programs, we also collect a home address for administrative purposes. Student email addresses are used only for enrollment and online class access. We never send students marketing or promotional communications.</p>
+                <p>All student data is handled in accordance with our full <a href="privacy.html" style="color:var(--coral);font-weight:600;">Privacy Policy</a>. Schools that enroll students are responsible for obtaining appropriate parental or guardian consent for data processing before enrollment.</p>
+                <p>Safeguarding records — including any concerns raised or actions taken — are kept securely and separately from general program data, accessible only to Makeful's designated safeguarding contact and, where legally required, to relevant authorities.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. REVIEW -->
+    <div class="sg-section">
+        <div class="sg-section-inner">
+            <div class="sg-section-label">
+                <div class="label label-coral">8</div>
+                <h2>Review &amp; Updates</h2>
+                <p>How this statement is maintained.</p>
+            </div>
+            <div class="sg-section-content">
+                <p>This Safeguarding &amp; Child Protection Statement is reviewed by Makeful annually, and updated immediately whenever our practices, program formats, or relevant legislation changes. The current version is always the one published on this page.</p>
+                <p>Last reviewed: <strong>January 2025.</strong></p>
+                <p>Schools are welcome to use this statement in their own safeguarding records, procurement processes, or governance documentation. If you require a signed, dated version on Makeful letterhead, please contact us at <a href="mailto:info@makeful.com" style="color:var(--coral);font-weight:600;">info@makeful.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end sg-body -->
+
+
+<!-- CONTACT BAND -->
+<section class="sg-contact">
+    <div class="sg-contact-left">
+        <div class="label label-coral">Safeguarding Contact</div>
+        <h2>Have a concern? Get in touch immediately.</h2>
+        <p>All safeguarding concerns are treated as urgent. Mark your email subject line "SAFEGUARDING CONCERN" and we will respond as a priority.</p>
+        <a href="mailto:info@makeful.com?subject=SAFEGUARDING CONCERN" class="btn btn-ink" style="margin-top:8px;">Email Safeguarding Contact</a>
+    </div>
+    <div class="sg-contact-right">
+        <div class="sg-contact-detail">
+            <div class="sg-contact-detail-icon" style="background:var(--coral);">
+                <span class="material-symbols-outlined" style="color:white;font-size:18px;">person</span>
+            </div>
+            <div>
+                <span class="sg-contact-detail-label">Designated Safeguarding Contact</span>
+                <div class="sg-contact-detail-value">Linette Manuel, Founder</div>
+            </div>
+        </div>
+        <div class="sg-contact-detail">
+            <div class="sg-contact-detail-icon" style="background:var(--aqua);">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">mail</span>
+            </div>
+            <div>
+                <span class="sg-contact-detail-label">Email</span>
+                <div class="sg-contact-detail-value"><a href="mailto:info@makeful.com">info@makeful.com</a></div>
+            </div>
+        </div>
+        <div class="sg-contact-detail">
+            <div class="sg-contact-detail-icon" style="background:var(--peach);">
+                <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">phone</span>
+            </div>
+            <div>
+                <span class="sg-contact-detail-label">Phone</span>
+                <div class="sg-contact-detail-value"><a href="tel:+420735820576">+420 735 820 576</a></div>
+            </div>
+        </div>
+        <div class="sg-contact-detail">
+            <div class="sg-contact-detail-icon" style="background:var(--lavender);">
+                <span class="material-symbols-outlined" style="color:white;font-size:18px;">article</span>
+            </div>
+            <div>
+                <span class="sg-contact-detail-label">Related Documents</span>
+                <div class="sg-contact-detail-value">
+                    <a href="privacy.html" style="margin-right:12px;">Privacy Policy</a>
+                    <a href="terms.html">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+        <div class="footer-main">
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="./index.html#benefits">Benefits</a></li>
+                    <li><a href="./index.html#news">Pricing</a></li>
+                    <li><a href="./programs.html">Programs</a></li>
+                    <li><a href="./faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
+                    <li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul class="footer-links">
+                    <li><a href="./privacy.html">Privacy Terms</a></li>
+                    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="grid-column: span 2;">
+                <h4>Get In Touch</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto: info@make-ful.com"><span class="__cf_email__" data-cfemail="0c64696060634c616d6769216a7960226f6361">info@make-ful.com</span></a></li>
+                    <li><a href="tel:+420735820576">+420 735 820 576</a></li>
+                </ul>
+                <div style="margin-top: 32px;">
+                    <a href="https://tally.so/r/b57egg" class="btn btn-coral" style="width:100%; display:block; text-align:center;">Request Info Pack</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bg-letter">M</div>
+            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+        </div>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Highlight active sidebar link on scroll
+    /*
+    (function() {
+        const sections = document.querySelectorAll('.privacy-section');
+        const links = document.querySelectorAll('.sidebar-sec
+
+<script>
+function toggle(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+*/
+</script>
+</footer>
+</body>
+</html>
