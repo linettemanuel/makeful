@@ -818,7 +818,7 @@
             <a href="index.html#benefits" class="nav-link">Benefits</a>
             <a href="about.html" class="nav-link">About Us</a>
             <a href="programs.html" class="nav-link">Programs</a>
-            <a href="index.html#news" class="nav-link">Pricing</a>
+            <a href="index.html#pricing" class="nav-link">Pricing</a>
             <a href="faq.html" class="nav-link">FAQs</a>
             <div class="nav-spacer"></div>
         </nav>
@@ -831,12 +831,12 @@
     </div>
 </header>
 <nav class="nav-drawer" id="nav-drawer">
-    <a href="index.html" class="nav-link active">Home</a>
-    <a href="index.html#benefits" class="nav-link">Benefits</a>
-    <a href="about.html" class="nav-link">About Us</a>
-    <a href="programs.html" class="nav-link">Programs</a>
-    <a href="index.html#news" class="nav-link">Pricing</a>
-    <a href="faq.html" class="nav-link">FAQs</a>
+    <a href="index.html" class="nav-drawer-link active">Home</a>
+    <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
+    <a href="about.html" class="nav-drawer-link">About Us</a>
+    <a href="programs.html" class="nav-drawer-link">Programs</a>
+    <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
+    <a href="faq.html" class="nav-drawer-link">FAQs</a>
     <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
 </nav>
 <script>
@@ -1154,7 +1154,7 @@
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="./index.html#benefits">Benefits</a></li>
-                    <li><a href="./index.html#news">Pricing</a></li>
+                    <li><a href="./index.html#pricing">Pricing</a></li>
                     <li><a href="./programs.html">Programs</a></li>
                     <li><a href="./faq.html">FAQs</a></li>
                 </ul>
@@ -1192,19 +1192,36 @@
         </div>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Highlight active sidebar link on scroll
-    /*
-    (function() {
-        const sections = document.querySelectorAll('.privacy-section');
-        const links = document.querySelectorAll('.sidebar-sec
-
 <script>
-function toggle(el) {
-    const item = el.closest('.faq-item');
-    item.classList.toggle('open');
-}
-*/
+ // ── Active nav link ────────────────────────────────────
+(function() {
+    // Get the current page filename, e.g. "faq.html"
+    var path = window.location.pathname;
+    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+
+    // Set active on desktop nav links
+    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
+        var href = link.getAttribute('href');
+        // Match exact filename; ignore hash-only links like index.html#benefits
+        var linkPage = href.split('#')[0] || 'index.html';
+        if (linkPage === page) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    // Set active on mobile drawer links
+    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
+        var href = link.getAttribute('href');
+        var linkPage = href.split('#')[0] || 'index.html';
+        if (linkPage === page) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+})();
 </script>
 </footer>
 </body>
