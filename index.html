@@ -677,7 +677,7 @@
                 <img src="./img/makeful_logo_colours.png" alt="Makeful">
             </a>
             <nav class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#benefits" class="nav-link">Benefits</a>
                 <a href="about.html" class="nav-link">About Us</a>
                 <a href="programs.html" class="nav-link">Programs</a>
@@ -694,7 +694,7 @@
         </div>
     </header>
     <nav class="nav-drawer" id="nav-drawer">
-        <a href="index.html" class="nav-drawer-link active">Home</a>
+        <a href="index.html" class="nav-drawer-link">Home</a>
         <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
         <a href="about.html" class="nav-drawer-link">About Us</a>
         <a href="programs.html" class="nav-drawer-link">Programs</a>
@@ -1027,25 +1027,37 @@
         </div>
     <div class="copyright">&copy; 2026 Makeful - FashionTech STEAM Program. All rights reserved.</div>
 </footer>
+
 <script>
-    /*
 (function() {
-    var path = window.location.pathname;
-    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-
-    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        if (linkPage === page) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+    var sections = [
+        { id: 'pricing',  href: 'index.html#pricing'  },
+        { id: 'benefits', href: 'index.html#benefits' },
+        { id: 'about',    href: 'index.html'          }
+    ];
+    var allLinks = [];
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(l) {
+        allLinks.push(l);
     });
-
-    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-     */
+    function setActive(href) {
+        allLinks.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('href') === href);
+        });
+    }
+    function onScroll() {
+        var activeHref = 'index.html';
+        for (var i = 0; i < sections.length; i++) {
+            var el = document.getElementById(sections[i].id);
+            if (el && el.getBoundingClientRect().top <= 120) {
+                activeHref = sections[i].href;
+            }
+        }
+        setActive(activeHref);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
 </script>
+
 </body>
 </html>

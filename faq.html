@@ -923,7 +923,7 @@
                 <div class="faq-answer">
                     <p><strong>Teacher Professional Development</strong>, A self-paced online course that equips teachers with the skills, confidence, and physical kit to bring FashionTech STEAM into their own classrooms. No prior technical knowledge needed. Includes 25 modules, 70+ video tutorials, and a complete 3D-printed fashion kit shipped to the teacher.</p>
                     <p><strong>Summer Camp Program</strong>, A complete 14-day program licensed to schools. Makeful trains your school's staff to deliver it. All hardware and materials are provided by Makeful. Schools run the sessions themselves with Makeful's full curriculum support.</p>
-                    <p><strong>Full-Year Enrichment Program</strong>, Bi-weekly online sessions run by Makeful-qualified instructors, in small groups of maximum 8 students. A school guardian is present at all sessions. Students build a full project portfolio over the academic year. Hardware is delivered to and managed by Makeful.</p>
+                    <p><strong>Full-Year Enrichment Program</strong>, Bi-weekly online sessions run by Makeful-qualified instructors, in small groups of maximum 8 students. A school guardian is present at all sessions, or sessions are recorded and made accessible to the designated school guardian. Students build a full project portfolio over the academic year. Hardware is delivered to and managed by Makeful.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -933,7 +933,7 @@
                 </div>
                 <div class="faq-answer">
                     <p>No. For Summer Camp and short-term programs, Makeful trains the school's own staff to deliver the program. You use your own people, with Makeful's curriculum, materials and support behind them.</p>
-                    <p>For the Full-Year Enrichment Program, Makeful instructors run all sessions online. They never visit the school in person. A school guardian is always present in the online session.</p>
+                    <p>For the Full-Year Enrichment Program, Makeful instructors run all sessions online. They never visit the school in person. A school guardian is always present in the online session, or the session is recorded and made accessible to the designated school guardian.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -969,7 +969,7 @@
                     <span class="faq-chevron"><span class="material-symbols-outlined" style="font-size:18px;">expand_more</span></span>
                 </div>
                 <div class="faq-answer">
-                    <p>Sessions run every two weeks in small groups of up to 8 students. Each session is led live by a Makeful instructor via video call, with the school guardian present throughout. Sessions combine direct instruction, hands-on making time at students' workstations, and group discussion or feedback.</p>
+                    <p>Sessions run every two weeks in small groups of up to 8 students. Each session is led live by a Makeful instructor via video call. The school guardian is present throughout, or the session is recorded and made accessible to the designated school guardian. Sessions combine direct instruction, hands-on making time at students' workstations, and group discussion or feedback.</p>
                     <p>Between sessions, students can access the Esmerise platform for resources, tutorials and the student forum. The school guardian can see all activity there.</p>
                 </div>
             </div>
@@ -1126,7 +1126,7 @@
                     <span class="faq-chevron"><span class="material-symbols-outlined" style="font-size:18px;">expand_more</span></span>
                 </div>
                 <div class="faq-answer">
-                    <p>The school guardian must be present in the video call for the full duration of every session. Their role is supervisory. They do not need to teach or facilitate, but they must be visible and present. This is a firm safeguarding requirement. If a guardian cannot attend, the school must notify Makeful at least 24 hours in advance and Makeful will reschedule.</p>
+                    <p>The school guardian must be present in the video call for the full duration of every session. Their role is supervisory. They do not need to teach or facilitate, but they must be visible and engaged. If the guardian cannot attend, the school must notify Makeful at least 24 hours in advance. Makeful will either reschedule the session or record it and make the recording accessible to the designated school guardian.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -1253,7 +1253,7 @@
                 <div class="faq-answer">
                     <p>Yes, always. Makeful has strict supervision rules for all communication with students:</p>
                     <ul>
-                        <li>All live sessions have a school guardian present in the call</li>
+                        <li>All live sessions have a school guardian present in the call, or are recorded and made accessible to the designated school guardian</li>
                         <li>Email communication always includes the school guardian in copy</li>
                         <li>Written communication on the Esmerise platform is visible to all participants and the guardian. There are no private messages.</li>
                         <li>Makeful instructors will never contact students through social media, personal messages or any channel outside these supervised routes</li>
@@ -1286,7 +1286,7 @@
                     <span class="faq-chevron"><span class="material-symbols-outlined" style="font-size:18px;">expand_more</span></span>
                 </div>
                 <div class="faq-answer">
-                    <p>For the Full-Year Program, sessions are recorded and available on the Esmerise platform. Missing one session will not derail a student's project. The curriculum has some built-in flexibility. If a student misses several sessions, the school and Makeful will work together to find the best way forward.</p>
+                    <p>For the Full-Year Program, sessions are recorded and made accessible on the Esmerise platform to the designated school guardian. Missing one session will not derail a student's project. The curriculum has some built-in flexibility. If a student misses several sessions, the school and Makeful will work together to find the best way forward.</p>
                     <p>For Summer Camp sessions delivered by school staff, catch-up arrangements are at the school's discretion.</p>
                 </div>
             </div>
@@ -1363,41 +1363,27 @@
 </footer>
 
 <script>
-// ── FAQ accordion ──────────────────────────────────────
 function toggle(el) {
-    const item = el.closest('.faq-item');
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i) {
-        i.classList.remove('open');
-    });
-    if (!wasOpen) {
-        item.classList.add('open');
-    }
+    var item = el.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) { item.classList.add('open'); }
 }
+</script>
 
-// ── Active nav link ──────────────────────────────────
+<script>
 (function() {
     var path = window.location.pathname;
     var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-
     document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
         var href = link.getAttribute('href');
         var linkPage = href.split('#')[0] || 'index.html';
-        if (linkPage === page) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+        link.classList.toggle('active', linkPage === page);
     });
-
     document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
         var href = link.getAttribute('href');
         var linkPage = href.split('#')[0] || 'index.html';
-        if (linkPage === page) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+        link.classList.toggle('active', linkPage === page);
     });
 })();
 </script>
