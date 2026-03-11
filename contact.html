@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us – Makeful FashionTech STEAM</title>
-    <meta name="description" content="Get in touch with Makeful. Request an info pack, ask about programs, or start the conversation about bringing FashionTech STEAM to your school.">
+    <title>Contact Makeful – Get an Info Pack for Your School</title>
+    <meta name="theme-color" content="#12100E">
+    <!-- ── SEO ─────────────────────────────────────── -->
+    <meta name="description" content="Get in touch with Makeful. Request a program info pack, ask about pricing, or start the conversation about bringing FashionTech STEAM to your school.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://makeful.com/contact">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Contact Makeful – Get an Info Pack for Your School">
+    <meta property="og:description" content="Get in touch with Makeful. Request a program info pack, ask about pricing, or start the conversation about bringing FashionTech STEAM to your school.">
+    <meta property="og:url"        content="https://makeful.com/contact">
+    <meta property="og:image"       content="https://makeful.com/img/makeful_og.png">
+    <meta property="og:site_name"   content="Makeful">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Contact Makeful – Get an Info Pack for Your School">
+    <meta name="twitter:description" content="Get in touch with Makeful. Request a program info pack, ask about pricing, or start the conversation about bringing FashionTech STEAM to your school.">
+    <meta name="twitter:image"       content="https://makeful.com/img/makeful_og.png">
+
+    <!-- Favicon (update path once final icon is confirmed) -->
+    <link rel="icon"             type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon"             type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180"                  href="./img/apple-touch-icon.png">
+    <!-- ────────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -609,7 +633,14 @@
             .expert-card:last-child { border-bottom: none; }
             .expert-card:nth-child(n+3) { border-top: none; }
         }
-    </style>
+    
+        /* ── Image optimisation ── */
+        img {
+            max-width: 100%;
+            height: auto;
+            image-rendering: auto;
+        }
+        </style>
     <style>
         /* ─── CONTACT PAGE ─── */
         .contact-hero {
@@ -838,25 +869,39 @@
             .path-card { padding: 48px 28px; }
         }
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Makeful",
+  "url": "https://makeful.com/contact.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Makeful",
+    "email": "hello@make-ful.com"
+  }
+}
+    </script>
 </head>
 <body>
 
 <!-- NAV -->
 <header>
     <div class="nav-wrapper">
-        <a href="index.html" class="nav-logo">
-            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        <a href="/" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful" decoding="async">
         </a>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="index.html#benefits" class="nav-link">Benefits</a>
-            <a href="about.html" class="nav-link">About Us</a>
-            <a href="programs.html" class="nav-link">Programs</a>
-            <a href="index.html#pricing" class="nav-link">Pricing</a>
-            <a href="faq.html" class="nav-link">FAQs</a>
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/#benefits" class="nav-link">Benefits</a>
+            <a href="/about" class="nav-link">About Us</a>
+            <a href="/programs" class="nav-link">Programs</a>
+            <a href="/#pricing" class="nav-link">Pricing</a>
+            <a href="/faq" class="nav-link">FAQs</a>
             <div class="nav-spacer"></div>
         </nav>
-        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <a href="/contact" class="nav-cta">Contact Us</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -865,13 +910,13 @@
     </div>
 </header>
 <nav class="nav-drawer" id="nav-drawer">
-    <a href="index.html" class="nav-drawer-link active">Home</a>
-    <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
-    <a href="about.html" class="nav-drawer-link">About Us</a>
-    <a href="programs.html" class="nav-drawer-link">Programs</a>
-    <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
-    <a href="faq.html" class="nav-drawer-link">FAQs</a>
-    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+    <a href="/" class="nav-drawer-link active">Home</a>
+    <a href="/#benefits" class="nav-drawer-link">Benefits</a>
+    <a href="/about" class="nav-drawer-link">About Us</a>
+    <a href="/programs" class="nav-drawer-link">Programs</a>
+    <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+    <a href="/faq" class="nav-drawer-link">FAQs</a>
+    <a href="/contact" class="nav-drawer-cta">Contact Us</a>
 </nav>
 <script>
     (function(){
@@ -1014,7 +1059,7 @@
             </div>
             <h3>Teacher Training</h3>
             <p>A self-paced online program that equips your teachers with the skills and materials to run FashionTech STEAM themselves. A physical kit is included.</p>
-            <a href="curriculum.html" class="btn btn-outline">Learn More</a>
+            <a href="/programs" class="btn btn-outline">Learn More</a>
         </div>
         <div class="path-card">
             <div class="path-icon" style="background:var(--coral);">
@@ -1022,7 +1067,7 @@
             </div>
             <h3>Summer Camp</h3>
             <p>A complete 14-day FashionTech STEAM camp licensed to your school. Makeful trains your staff and provides all hardware and materials. You run it. Students make something real.</p>
-            <a href="curriculum.html" class="btn btn-outline">Learn More</a>
+            <a href="/programs" class="btn btn-outline">Learn More</a>
         </div>
         <div class="path-card">
             <div class="path-icon" style="background:var(--aqua);">
@@ -1030,7 +1075,7 @@
             </div>
             <h3>Full-Year Enrichment</h3>
             <p>Small groups, sessions every two weeks led by Makeful instructors, and a full portfolio by the end of the year. Hardware delivered to your school and fully covered by Makeful.</p>
-            <a href="curriculum.html" class="btn btn-outline">Learn More</a>
+            <a href="/programs" class="btn btn-outline">Learn More</a>
         </div>
     </div>
 </section>
@@ -1044,11 +1089,11 @@
             <div class="footer-col">
                 <h4>Menu</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="./index.html#benefits">Benefits</a></li>
-                    <li><a href="./index.html#pricing">Pricing</a></li>
-                    <li><a href="./programs.html">Programs</a></li>
-                    <li><a href="./faq.html">FAQs</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#benefits">Benefits</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/programs">Programs</a></li>
+                    <li><a href="/faq">FAQs</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1062,9 +1107,9 @@
             <div class="footer-col">
                 <h4>Discover</h4>
                 <ul class="footer-links">
-                    <li><a href="./privacy.html">Privacy Terms</a></li>
-                    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
-                    <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                    <li><a href="/privacy">Privacy Terms</a></li>
+                    <li><a href="/terms">Terms &amp; Conditions</a></li>
+                    <li><a href="/safeguarding">Child Protection &amp; Safeguarding Statements</a></li>
                 </ul>
             </div>
             <div class="footer-col" style="grid-column: span 2;">
@@ -1080,24 +1125,18 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-bg-letter">M</div>
-            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
         </div>
     <div class="copyright">&copy; 2026 Makeful - FashionTech STEAM Program. All rights reserved.</div>
 </footer>
 
 <script>
 (function() {
-    var path = window.location.pathname;
-    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
-    });
-    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
+    var path = window.location.pathname.replace(/\/+$/, '') || '/';
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(link) {
+        var href = link.getAttribute('href').replace(/\/+$/, '') || '/';
+        var linkPath = href.split('#')[0] || '/';
+        link.classList.toggle('active', linkPath === path);
     });
 })();
 </script>

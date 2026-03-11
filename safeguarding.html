@@ -810,19 +810,19 @@
 <!-- NAV -->
 <header>
     <div class="nav-wrapper">
-        <a href="index.html" class="nav-logo">
+        <a href="/" class="nav-logo">
             <img src="./img/makeful_logo_colours.png" alt="Makeful">
         </a>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="index.html#benefits" class="nav-link">Benefits</a>
-            <a href="about.html" class="nav-link">About Us</a>
-            <a href="programs.html" class="nav-link">Programs</a>
-            <a href="index.html#pricing" class="nav-link">Pricing</a>
-            <a href="faq.html" class="nav-link">FAQs</a>
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/#benefits" class="nav-link">Benefits</a>
+            <a href="/about" class="nav-link">About Us</a>
+            <a href="/programs" class="nav-link">Programs</a>
+            <a href="/#pricing" class="nav-link">Pricing</a>
+            <a href="/faq" class="nav-link">FAQs</a>
             <div class="nav-spacer"></div>
         </nav>
-        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <a href="/contact" class="nav-cta">Contact Us</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -831,13 +831,13 @@
     </div>
 </header>
 <nav class="nav-drawer" id="nav-drawer">
-    <a href="index.html" class="nav-drawer-link active">Home</a>
-    <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
-    <a href="about.html" class="nav-drawer-link">About Us</a>
-    <a href="programs.html" class="nav-drawer-link">Programs</a>
-    <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
-    <a href="faq.html" class="nav-drawer-link">FAQs</a>
-    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+    <a href="/" class="nav-drawer-link active">Home</a>
+    <a href="/#benefits" class="nav-drawer-link">Benefits</a>
+    <a href="/about" class="nav-drawer-link">About Us</a>
+    <a href="/programs" class="nav-drawer-link">Programs</a>
+    <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+    <a href="/faq" class="nav-drawer-link">FAQs</a>
+    <a href="/contact" class="nav-drawer-cta">Contact Us</a>
 </nav>
 <script>
     (function(){
@@ -1063,7 +1063,7 @@
             </div>
             <div class="sg-section-content">
                 <p>Makeful collects minimal student data: first name, age group and email address for program access. For full-year programs, we also collect a home address for administrative purposes. Student email addresses are used only for enrollment and online class access. We never send students marketing or promotional communications.</p>
-                <p>All student data is handled in accordance with our full <a href="privacy.html" style="color:var(--coral);font-weight:600;">Privacy Policy</a>. Schools that enroll students are responsible for obtaining appropriate parental or guardian consent for data processing before enrollment.</p>
+                <p>All student data is handled in accordance with our full <a href="/privacy" style="color:var(--coral);font-weight:600;">Privacy Policy</a>. Schools that enroll students are responsible for obtaining appropriate parental or guardian consent for data processing before enrollment.</p>
                 <p>Safeguarding records, including any concerns raised or actions taken, are kept securely and separately from general program data, accessible only to Makeful's designated safeguarding contact and, where legally required, to relevant authorities.</p>
             </div>
         </div>
@@ -1131,8 +1131,8 @@
             <div>
                 <span class="sg-contact-detail-label">Related Documents</span>
                 <div class="sg-contact-detail-value">
-                    <a href="privacy.html" style="margin-right:12px;">Privacy Policy</a>
-                    <a href="terms.html">Terms &amp; Conditions</a>
+                    <a href="/privacy" style="margin-right:12px;">Privacy Policy</a>
+                    <a href="/terms">Terms &amp; Conditions</a>
                 </div>
             </div>
         </div>
@@ -1148,7 +1148,7 @@
             <div class="footer-col">
                 <h4>Menu</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="./index.html#benefits">Benefits</a></li>
                     <li><a href="./index.html#pricing">Pricing</a></li>
                     <li><a href="./programs.html">Programs</a></li>
@@ -1191,17 +1191,11 @@
 
 <script>
 (function() {
-    var path = window.location.pathname;
-    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
-    });
-    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
+    var path = window.location.pathname.replace(/\/+$/, '') || '/';
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(link) {
+        var href = link.getAttribute('href').replace(/\/+$/, '') || '/';
+        var linkPath = href.split('#')[0] || '/';
+        link.classList.toggle('active', linkPath === path);
     });
 })();
 </script>

@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us, Makeful FashionTech STEAM</title>
-    <meta name="description" content="Meet Makeful, a FashionTech STEAM program built to prove that when you redesign the entry point, girls don't just learn STEM. They become inventors.">
+    <title>About Makeful – FashionTech STEAM Education</title>
+    <meta name="theme-color" content="#12100E">
+    <!-- ── SEO ─────────────────────────────────────── -->
+    <meta name="description" content="Meet Makeful and founder Linette Manuel. We run FashionTech STEAM programs for schools across the US, UK and beyond — combining 3D printing, fashion design and real hands-on making.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://makeful.com/about">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="About Makeful – FashionTech STEAM Education">
+    <meta property="og:description" content="Meet Makeful and founder Linette Manuel. We run FashionTech STEAM programs for schools across the US, UK and beyond — combining 3D printing, fashion design and real hands-on making.">
+    <meta property="og:url"        content="https://makeful.com/about">
+    <meta property="og:image"       content="https://makeful.com/img/makeful_og.png">
+    <meta property="og:site_name"   content="Makeful">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="About Makeful – FashionTech STEAM Education">
+    <meta name="twitter:description" content="Meet Makeful and founder Linette Manuel. We run FashionTech STEAM programs for schools across the US, UK and beyond — combining 3D printing, fashion design and real hands-on making.">
+    <meta name="twitter:image"       content="https://makeful.com/img/makeful_og.png">
+
+    <!-- Favicon (update path once final icon is confirmed) -->
+    <link rel="icon"             type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon"             type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180"                  href="./img/apple-touch-icon.png">
+    <!-- ────────────────────────────────────────────── -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -611,26 +635,48 @@
             .expert-card:last-child { border-bottom: none; }
             .expert-card:nth-child(n+3) { border-top: none; }
         }
-    </style>
+    
+        /* ── Image optimisation ── */
+        img {
+            max-width: 100%;
+            height: auto;
+            image-rendering: auto;
+        }
+        </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Makeful",
+  "url": "https://makeful.com/about.html",
+  "description": "Meet Makeful and founder Linette Manuel.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Makeful",
+    "url": "https://makeful.com"
+  }
+}
+    </script>
 </head>
 <body>
 
 <!-- NAV -->
 <header>
     <div class="nav-wrapper">
-        <a href="index.html" class="nav-logo">
-            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        <a href="/" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful" decoding="async">
         </a>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="index.html#benefits" class="nav-link">Benefits</a>
-            <a href="about.html" class="nav-link">About Us</a>
-            <a href="programs.html" class="nav-link">Programs</a>
-            <a href="index.html#pricing" class="nav-link">Pricing</a>
-            <a href="faq.html" class="nav-link">FAQs</a>
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/#benefits" class="nav-link">Benefits</a>
+            <a href="/about" class="nav-link">About Us</a>
+            <a href="/programs" class="nav-link">Programs</a>
+            <a href="/#pricing" class="nav-link">Pricing</a>
+            <a href="/faq" class="nav-link">FAQs</a>
             <div class="nav-spacer"></div>
         </nav>
-        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <a href="/contact" class="nav-cta">Contact Us</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -639,13 +685,13 @@
     </div>
 </header>
 <nav class="nav-drawer" id="nav-drawer">
-    <a href="index.html" class="nav-drawer-link active">Home</a>
-    <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
-    <a href="about.html" class="nav-drawer-link">About Us</a>
-    <a href="programs.html" class="nav-drawer-link">Programs</a>
-    <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
-    <a href="faq.html" class="nav-drawer-link">FAQs</a>
-    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+    <a href="/" class="nav-drawer-link active">Home</a>
+    <a href="/#benefits" class="nav-drawer-link">Benefits</a>
+    <a href="/about" class="nav-drawer-link">About Us</a>
+    <a href="/programs" class="nav-drawer-link">Programs</a>
+    <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+    <a href="/faq" class="nav-drawer-link">FAQs</a>
+    <a href="/contact" class="nav-drawer-cta">Contact Us</a>
 </nav>
 <script>
     (function(){
@@ -676,7 +722,7 @@
         <p class="hero-lead">Makeful is a place where creativity meets technology. The goal is simple. Students make real things.</p>
         <div class="hero-btns">
             <a href="https://tally.so/r/b57egg" class="btn btn-ink">Get in Touch</a>
-            <a href="curriculum.html" class="btn btn-outline">Explore Programs</a>
+            <a href="/programs" class="btn btn-outline">Explore Programs</a>
         </div>
     </div>
     <div class="hero-right">
@@ -708,7 +754,7 @@
 
 <!-- ─── PHOTO BREAK: Students at work ─── -->
 <div class="photo-break" id="photo-students-at-work">
-    <img src="./img/web_pic1.png" alt="Students at work"> 
+    <img src="./img/web_pic1.png" alt="Students at work" decoding="async"> 
 </div>
 
 
@@ -723,7 +769,7 @@
         <p>Look at any city. Bridges, buildings, clothing, music and tools all started as ideas. Someone imagined them and then built them.</p>
         <p>That ability to imagine and create is something people learn through practice.</p>
         <p>Makeful exists to give students that experience. We combine fashion, design and technology so students can build things themselves. They do not just study innovation. They practice it.</p>
-        <div><a href="curriculum.html" class="btn btn-ink" style="margin-top:12px;">See Our Programs</a></div>
+        <div><a href="/programs" class="btn btn-ink" style="margin-top:12px;">See Our Programs</a></div>
     </div>
     <div class="col-aside bg-off">
         <p class="pull-quote">Students finish with projects they can hold, wear and show.</p>
@@ -855,7 +901,7 @@
 
 <!-- ─── PHOTO BREAK: Workshop in action ─── -->
 <div class="photo-break" id="photo-workshop-in-action">
-    <img src="./img/web_pic3.png" alt="Workshop in action">
+    <img src="./img/web_pic3.png" alt="Workshop in action" loading="lazy" decoding="async">
 </div>
 
 
@@ -1069,7 +1115,7 @@
 
 <!-- ─── PHOTO BREAK: Students presenting work ─── -->
 <div class="photo-break" id="photo-students-presenting-work">
-    <img src="./img/makeful_photo.png" alt="Students presenting work">
+    <img src="./img/makeful_photo.png" alt="Students presenting work" loading="lazy" decoding="async">
 </div>
 
 
@@ -1168,7 +1214,7 @@
 
 <!-- ─── PHOTO BREAK: Finished pieces ─── -->
 <div class="photo-break" id="photo-finished-pieces">
-    <img src="./img/web_pic4.png" alt="Finished pieces"> 
+    <img src="./img/web_pic4.png" alt="Finished pieces" loading="lazy" decoding="async"> 
 </div>
 
 
@@ -1187,7 +1233,7 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/kadian.png" alt="Dr. Kadian A. Gosler">
+                <img src="./img/speakers/kadian.png" alt="Dr. Kadian A. Gosler" loading="lazy" decoding="async">
             </div>
             <h4>Dr. Kadian A. Gosler</h4>
             <div class="expert-role">Wearable Technology Researcher · London</div>
@@ -1196,7 +1242,7 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/brigette.png" alt="Brigitte Kock">
+                <img src="./img/speakers/brigette.png" alt="Brigitte Kock" loading="lazy" decoding="async">
             </div>
             <h4>Brigitte Kock</h4>
             <div class="expert-role">Modular 3D Fashion Designer &amp; Educator · London</div>
@@ -1205,7 +1251,7 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/anouk.png" alt="Anouk Wipprecht">
+                <img src="./img/speakers/anouk.png" alt="Anouk Wipprecht" loading="lazy" decoding="async">
             </div>
             <h4>Anouk Wipprecht</h4>
             <div class="expert-role">FashionTech Designer &amp; Innovator · Netherlands / USA</div>
@@ -1214,7 +1260,7 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/batoul.png" alt="Batoul Al-Rashdan">
+                <img src="./img/speakers/batoul.png" alt="Batoul Al-Rashdan" loading="lazy" decoding="async">
             </div>
             <h4>Batoul Al-Rashdan</h4>
             <div class="expert-role">Award-Winning Hi-Tech Designer · Jordan</div>
@@ -1223,16 +1269,16 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/bruno.png" alt="Bruno Tognin">
+                <img src="./img/speakers/bruno.png" alt="Bruno Tognin" loading="lazy" decoding="async">
             </div>
             <h4>Bruno Tognin</h4>
-            <div class="expert-role">Designer · France</div>
-            <p>Meet Bruno, designer, who masterfully integrates 3D printing and artificial intelligence into the realms of fashion and artistic creation. Bruno combines a passion for fashion with a strong commitment to sustainability. As a former Fablab manager with an expertise in industrial design, he is dedicated to pushing the boundaries of the fashion industry.</p>
+            <div class="expert-role">3D Print Artist &amp; Fashion Technologist · France</div>
+            <p>Bruno is a Brazilian artist based in France working at the intersection of 3D printing, AI and fashion. Self-taught in 3D modelling, he moved into fashion in 2021 and has since collaborated with musicians, digital artists and public institutions. His recent work includes a 3D printed samurai armour built from AI-generated illustrations.</p>
         </div>
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/lilach.png" alt="Lilach">
+                <img src="./img/speakers/lilach.png" alt="Lilach" loading="lazy" decoding="async">
             </div>
             <h4>Lilach Porges</h4>
             <div class="expert-role">Robotic Fashion Designer · New York</div>
@@ -1241,7 +1287,7 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/stephanie.png" alt="Stéphanie Santos">
+                <img src="./img/speakers/stephanie.png" alt="Stéphanie Santos" loading="lazy" decoding="async">
             </div>
             <h4>Stéphanie Santos</h4>
             <div class="expert-role">3D Couture Designer · Luxembourg / Portugal</div>
@@ -1250,7 +1296,7 @@
 
         <div class="expert-card">
             <div class="expert-photo">
-                <img src="./img/speakers/susana.png" alt="Susana Marques">
+                <img src="./img/speakers/susana.png" alt="Susana Marques" loading="lazy" decoding="async">
             </div>
             <h4>Susana Marques</h4>
             <div class="expert-role">Fashion Tech Researcher &amp; PhD Candidate · Portugal</div>
@@ -1292,11 +1338,11 @@
         <div class="footer-col">
             <h4>Menu</h4>
             <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="./index.html#benefits">Benefits</a></li>
-                <li><a href="./index.html#pricing">Pricing</a></li>
-                <li><a href="./programs.html">Programs</a></li>
-                <li><a href="./faq.html">FAQs</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#benefits">Benefits</a></li>
+                <li><a href="/#pricing">Pricing</a></li>
+                <li><a href="/programs">Programs</a></li>
+                <li><a href="/faq">FAQs</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -1310,9 +1356,9 @@
         <div class="footer-col">
             <h4>Discover</h4>
             <ul class="footer-links">
-                <li><a href="./privacy.html">Privacy Terms</a></li>
-                <li><a href="./terms.html">Terms &amp; Conditions</a></li>
-                <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                <li><a href="/privacy">Privacy Terms</a></li>
+                <li><a href="/terms">Terms &amp; Conditions</a></li>
+                <li><a href="/safeguarding">Child Protection &amp; Safeguarding Statements</a></li>
             </ul>
         </div>
         <div class="footer-col" style="grid-column: span 2;">
@@ -1328,24 +1374,18 @@
     </div>
     <div class="footer-bottom">
         <div class="footer-bg-letter">M</div>
-        <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+        <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
     </div>
     <div class="copyright">&copy; 2026 Makeful - FashionTech STEAM Program. All rights reserved.</div>
 </footer>
 
 <script>
 (function() {
-    var path = window.location.pathname;
-    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
-    });
-    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
+    var path = window.location.pathname.replace(/\/+$/, '') || '/';
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(link) {
+        var href = link.getAttribute('href').replace(/\/+$/, '') || '/';
+        var linkPath = href.split('#')[0] || '/';
+        link.classList.toggle('active', linkPath === path);
     });
 })();
 </script>

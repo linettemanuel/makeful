@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makeful – FashionTech STEAM | STEM program for Young Innovators</title>
-    <meta name="description" content="Welcome to Makeful, where we nurture each student's unique strengths.">
+    <title>Makeful – FashionTech STEAM Programs for Schools</title>
+    <meta name="theme-color" content="#12100E">
+    <!-- ── SEO ─────────────────────────────────────── -->
+    <meta name="description" content="Makeful brings FashionTech STEAM to schools worldwide. Students design and 3D print real fashion — building skills in engineering, AI design tools and sustainable thinking.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://makeful.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Makeful – FashionTech STEAM Programs for Schools">
+    <meta property="og:description" content="Makeful brings FashionTech STEAM to schools worldwide. Students design and 3D print real fashion — building skills in engineering, AI design tools and sustainable thinking.">
+    <meta property="og:url"        content="https://makeful.com/">
+    <meta property="og:image"       content="https://makeful.com/img/makeful_og.png">
+    <meta property="og:site_name"   content="Makeful">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Makeful – FashionTech STEAM Programs for Schools">
+    <meta name="twitter:description" content="Makeful brings FashionTech STEAM to schools worldwide. Students design and 3D print real fashion — building skills in engineering, AI design tools and sustainable thinking.">
+    <meta name="twitter:image"       content="https://makeful.com/img/makeful_og.png">
+
+    <!-- Favicon (update path once final icon is confirmed) -->
+    <link rel="icon"             type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon"             type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180"                  href="./img/apple-touch-icon.png">
+    <!-- ────────────────────────────────────────────── -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -666,26 +690,53 @@
             .stats-section, .partners-section, .gallery-container,
             .principal-section, footer { margin-top: 32px; }
         }
-    </style>
+    
+        /* ── Image optimisation ── */
+        img {
+            max-width: 100%;
+            height: auto;
+            image-rendering: auto;
+        }
+        </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Makeful",
+  "url": "https://makeful.com",
+  "logo": "https://makeful.com/img/makeful_logo_colours.png",
+  "description": "Makeful brings FashionTech STEAM to schools worldwide. Students design and 3D print real fashion.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Prague",
+    "addressCountry": "CZ"
+  },
+  "sameAs": [
+    "https://www.instagram.com/_makeful",
+    "https://www.linkedin.com/company/makeful"
+  ]
+}
+    </script>
 </head>
 <body>
 
     <!-- NAV -->
     <header>
         <div class="nav-wrapper">
-            <a href="index.html" class="nav-logo">
-                <img src="./img/makeful_logo_colours.png" alt="Makeful">
+            <a href="/" class="nav-logo">
+                <img src="./img/makeful_logo_colours.png" alt="Makeful" decoding="async">
             </a>
             <nav class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#benefits" class="nav-link">Benefits</a>
-                <a href="about.html" class="nav-link">About Us</a>
-                <a href="programs.html" class="nav-link">Programs</a>
-                <a href="index.html#pricing" class="nav-link">Pricing</a>
-                <a href="faq.html" class="nav-link">FAQs</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#benefits" class="nav-link">Benefits</a>
+                <a href="/about" class="nav-link">About Us</a>
+                <a href="/programs" class="nav-link">Programs</a>
+                <a href="/#pricing" class="nav-link">Pricing</a>
+                <a href="/faq" class="nav-link">FAQs</a>
                 <div class="nav-spacer"></div>
             </nav>
-            <a href="contact.html" class="nav-cta">Contact Us</a>
+            <a href="/contact" class="nav-cta">Contact Us</a>
             <button class="nav-hamburger" id="hamburger" aria-label="Menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -694,13 +745,13 @@
         </div>
     </header>
     <nav class="nav-drawer" id="nav-drawer">
-        <a href="index.html" class="nav-drawer-link">Home</a>
-        <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
-        <a href="about.html" class="nav-drawer-link">About Us</a>
-        <a href="programs.html" class="nav-drawer-link">Programs</a>
-        <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
-        <a href="faq.html" class="nav-drawer-link">FAQs</a>
-        <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+        <a href="/" class="nav-drawer-link">Home</a>
+        <a href="/#benefits" class="nav-drawer-link">Benefits</a>
+        <a href="/about" class="nav-drawer-link">About Us</a>
+        <a href="/programs" class="nav-drawer-link">Programs</a>
+        <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+        <a href="/faq" class="nav-drawer-link">FAQs</a>
+        <a href="/contact" class="nav-drawer-cta">Contact Us</a>
     </nav>
     <script>
         (function(){
@@ -753,7 +804,7 @@
                 <a href="https://tally.so/r/b57egg" class="btn btn-ink">Request Info Pack</a>
         </div>
         <div class="about-image">
-            <img src="./img/4 copy.jpg" alt="Students at work" style="height:100%; min-height: 480px;">
+            <img src="./img/4 copy.jpg" alt="Students at work" style="height:100%; min-height: 480px;" decoding="async">
         </div>
     </section>
 
@@ -804,7 +855,7 @@
         <div class="pricing-grid">
             <div class="pricing-card">
                 <div class="pricing-cover">
-                    <img src="./img/1.jpg" alt="Kit for Teachers">
+                    <img src="./img/1.jpg" alt="Kit for Teachers" loading="lazy" decoding="async">
                 </div>
                 <div class="pricing-body">
                     <div>
@@ -827,7 +878,7 @@
             </div>
             <div class="pricing-card">
                 <div class="pricing-cover">
-                    <img src="./img/2.jpg" alt="Summer Camp">
+                    <img src="./img/2.jpg" alt="Summer Camp" loading="lazy" decoding="async">
                 </div>
                 <div class="pricing-body">
                     <div>
@@ -850,7 +901,7 @@
             </div>
             <div class="pricing-card">
                 <div class="pricing-cover">
-                    <img src="./img/3.jpg" alt="Extracurricular">
+                    <img src="./img/3.jpg" alt="Extracurricular" loading="lazy" decoding="async">
                 </div>
                 <div class="pricing-body">
                     <div>
@@ -952,24 +1003,24 @@
     <!-- GALLERY -->
     <section class="gallery-container">
         <div class="gallery-big">
-            <img src="./img/8.png" alt="Classroom">
+            <img src="./img/8.png" alt="Classroom" loading="lazy" decoding="async">
         </div>
         <div class="gallery-text">
             <div class="label">Students Work</div>
             <h2>Visual Story of Our STEAM+ Creative Program</h2>
         </div>
         <div class="gallery-small-1">
-            <img src="./img/6.png" alt="Student work 1">
+            <img src="./img/6.png" alt="Student work 1" loading="lazy" decoding="async">
         </div>
         <div class="gallery-small-2">
-            <img src="./img/7.png" alt="Student work 2">
+            <img src="./img/7.png" alt="Student work 2" loading="lazy" decoding="async">
         </div>
     </section>
 
     <!-- PRINCIPAL -->
     <section class="principal-section">
         <div class="principal-img">
-            <img src="./img/Linette Manuel.png" alt="Linette Manuel" style="object-position: top;">
+            <img src="./img/Linette Manuel.png" alt="Linette Manuel" style="object-position: top;" loading="lazy" decoding="async">
         </div>
         <div class="principal-quote">
             "It's amazing to see how students thrive and enjoy learning new skills through a program that looks simple, but impacts their engineering, tech and design skills profoundly."
@@ -987,11 +1038,11 @@
             <div class="footer-col">
                 <h4>Menu</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="./index.html#benefits">Benefits</a></li>
-                    <li><a href="./index.html#pricing">Pricing</a></li>
-                    <li><a href="./programs.html">Programs</a></li>
-                    <li><a href="./faq.html">FAQs</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#benefits">Benefits</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/programs">Programs</a></li>
+                    <li><a href="/faq">FAQs</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1005,9 +1056,9 @@
             <div class="footer-col">
                 <h4>Discover</h4>
                 <ul class="footer-links">
-                    <li><a href="./privacy.html">Privacy Terms</a></li>
-                    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
-                    <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                    <li><a href="/privacy">Privacy Terms</a></li>
+                    <li><a href="/terms">Terms &amp; Conditions</a></li>
+                    <li><a href="/safeguarding">Child Protection &amp; Safeguarding Statements</a></li>
                 </ul>
             </div>
             <div class="footer-col" style="grid-column: span 2;">
@@ -1023,7 +1074,7 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-bg-letter">M</div>
-            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
         </div>
     <div class="copyright">&copy; 2026 Makeful - FashionTech STEAM Program. All rights reserved.</div>
 </footer>
@@ -1031,26 +1082,23 @@
 <script>
 (function() {
     var sections = [
-        { id: 'pricing',  href: 'index.html#pricing'  },
-        { id: 'benefits', href: 'index.html#benefits' },
-        { id: 'about',    href: 'index.html'          }
+        { id: 'pricing',  href: '/#pricing'  },
+        { id: 'benefits', href: '/#benefits' },
+        { id: 'about',    href: '/'          }
     ];
     var allLinks = [];
-    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(l) {
-        allLinks.push(l);
-    });
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(l) { allLinks.push(l); });
     function setActive(href) {
         allLinks.forEach(function(link) {
-            link.classList.toggle('active', link.getAttribute('href') === href);
+            var h = link.getAttribute('href').replace(/\/+$/, '') || '/';
+            link.classList.toggle('active', h === href.replace(/\/+$/, ''));
         });
     }
     function onScroll() {
-        var activeHref = 'index.html';
+        var activeHref = '/';
         for (var i = 0; i < sections.length; i++) {
             var el = document.getElementById(sections[i].id);
-            if (el && el.getBoundingClientRect().top <= 120) {
-                activeHref = sections[i].href;
-            }
+            if (el && el.getBoundingClientRect().top <= 120) { activeHref = sections[i].href; }
         }
         setActive(activeHref);
     }

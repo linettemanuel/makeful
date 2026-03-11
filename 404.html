@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found – Makeful FashionTech STEAM</title>
+    <meta name="theme-color" content="#12100E">
+    <!-- ── SEO ─────────────────────────────────────── -->
+    <meta name="description" content="This page does not exist. Return to Makeful to explore FashionTech STEAM programs for schools.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://makeful.com/404">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="Page Not Found – Makeful FashionTech STEAM">
+    <meta property="og:description" content="This page does not exist. Return to Makeful to explore FashionTech STEAM programs for schools.">
+    <meta property="og:url"        content="https://makeful.com/404">
+    <meta property="og:image"       content="https://makeful.com/img/makeful_og.png">
+    <meta property="og:site_name"   content="Makeful">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Page Not Found – Makeful FashionTech STEAM">
+    <meta name="twitter:description" content="This page does not exist. Return to Makeful to explore FashionTech STEAM programs for schools.">
+    <meta name="twitter:image"       content="https://makeful.com/img/makeful_og.png">
+
+    <!-- Favicon (update path once final icon is confirmed) -->
+    <link rel="icon"             type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon"             type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180"                  href="./img/apple-touch-icon.png">
+    <!-- ────────────────────────────────────────────── -->
     <style>
         /* ─── TOKENS ─── */
         :root {
@@ -604,7 +629,14 @@
             .expert-card:last-child { border-bottom: none; }
             .expert-card:nth-child(n+3) { border-top: none; }
         }
-    </style>
+    
+        /* ── Image optimisation ── */
+        img {
+            max-width: 100%;
+            height: auto;
+            image-rendering: auto;
+        }
+        </style>
     <style>
         /* ─── 404 PAGE ─── */
         .not-found {
@@ -729,25 +761,34 @@
             .nf-num { font-size: 5rem; }
         }
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Page Not Found \u2013 Makeful",
+  "url": "https://makeful.com/404.html"
+}
+    </script>
 </head>
 <body>
 
 <!-- NAV -->
 <header>
     <div class="nav-wrapper">
-        <a href="index.html" class="nav-logo">
-            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        <a href="/" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful" decoding="async">
         </a>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="index.html#benefits" class="nav-link">Benefits</a>
-            <a href="about.html" class="nav-link">About Us</a>
-            <a href="programs.html" class="nav-link">Programs</a>
-            <a href="index.html#pricing" class="nav-link">Pricing</a>
-            <a href="faq.html" class="nav-link">FAQs</a>
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/#benefits" class="nav-link">Benefits</a>
+            <a href="/about" class="nav-link">About Us</a>
+            <a href="/programs" class="nav-link">Programs</a>
+            <a href="/#pricing" class="nav-link">Pricing</a>
+            <a href="/faq" class="nav-link">FAQs</a>
             <div class="nav-spacer"></div>
         </nav>
-        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <a href="/contact" class="nav-cta">Contact Us</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -756,13 +797,13 @@
     </div>
 </header>
 <nav class="nav-drawer" id="nav-drawer">
-    <a href="index.html" class="nav-drawer-link active">Home</a>
-    <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
-    <a href="about.html" class="nav-drawer-link">About Us</a>
-    <a href="programs.html" class="nav-drawer-link">Programs</a>
-    <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
-    <a href="faq.html" class="nav-drawer-link">FAQs</a>
-    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+    <a href="/" class="nav-drawer-link active">Home</a>
+    <a href="/#benefits" class="nav-drawer-link">Benefits</a>
+    <a href="/about" class="nav-drawer-link">About Us</a>
+    <a href="/programs" class="nav-drawer-link">Programs</a>
+    <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+    <a href="/faq" class="nav-drawer-link">FAQs</a>
+    <a href="/contact" class="nav-drawer-cta">Contact Us</a>
 </nav>
 <script>
     (function(){
@@ -792,35 +833,35 @@
         <div>
             <h2>Where would you like to go?</h2>
             <div class="nf-links">
-                <a href="index.html" class="nf-link">
+                <a href="/" class="nf-link">
                     <div class="nf-link-icon" style="background:var(--lavender);">
                         <span class="material-symbols-outlined" style="color:white;font-size:18px;">home</span>
                     </div>
                     Home
                     <span class="nf-link-arrow">↗</span>
                 </a>
-                <a href="about.html" class="nf-link">
+                <a href="/about" class="nf-link">
                     <div class="nf-link-icon" style="background:var(--coral);">
                         <span class="material-symbols-outlined" style="color:white;font-size:18px;">info</span>
                     </div>
                     About Makeful
                     <span class="nf-link-arrow">↗</span>
                 </a>
-                <a href="curriculum.html" class="nf-link">
+                <a href="/programs" class="nf-link">
                     <div class="nf-link-icon" style="background:var(--peach);">
                         <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">school</span>
                     </div>
                     Programs
                     <span class="nf-link-arrow">↗</span>
                 </a>
-                <a href="faq.html" class="nf-link">
+                <a href="/faq" class="nf-link">
                     <div class="nf-link-icon" style="background:var(--aqua);">
                         <span class="material-symbols-outlined" style="color:var(--ink);font-size:18px;">help</span>
                     </div>
                     Frequently Asked Questions
                     <span class="nf-link-arrow">↗</span>
                 </a>
-                <a href="contact.html" class="nf-link">
+                <a href="/contact" class="nf-link">
                     <div class="nf-link-icon" style="background:var(--magenta);">
                         <span class="material-symbols-outlined" style="color:white;font-size:18px;">mail</span>
                     </div>
@@ -844,11 +885,11 @@
             <div class="footer-col">
                 <h4>Menu</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="./index.html#benefits">Benefits</a></li>
-                    <li><a href="./index.html#pricing">Pricing</a></li>
-                    <li><a href="./programs.html">Programs</a></li>
-                    <li><a href="./faq.html">FAQs</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#benefits">Benefits</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="/programs">Programs</a></li>
+                    <li><a href="/faq">FAQs</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -862,9 +903,9 @@
             <div class="footer-col">
                 <h4>Discover</h4>
                 <ul class="footer-links">
-                    <li><a href="./privacy.html">Privacy Terms</a></li>
-                    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
-                    <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                    <li><a href="/privacy">Privacy Terms</a></li>
+                    <li><a href="/terms">Terms &amp; Conditions</a></li>
+                    <li><a href="/safeguarding">Child Protection &amp; Safeguarding Statements</a></li>
                 </ul>
             </div>
             <div class="footer-col" style="grid-column: span 2;">
@@ -880,24 +921,18 @@
         </div>
         <div class="footer-bottom">
             <div class="footer-bg-letter">M</div>
-            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
         </div>
     <div class="copyright">&copy; 2026 Makeful - FashionTech STEAM Program. All rights reserved.</div>
 </footer>
 
 <script>
 (function() {
-    var path = window.location.pathname;
-    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
-    });
-    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
+    var path = window.location.pathname.replace(/\/+$/, '') || '/';
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(link) {
+        var href = link.getAttribute('href').replace(/\/+$/, '') || '/';
+        var linkPath = href.split('#')[0] || '/';
+        link.classList.toggle('active', linkPath === path);
     });
 })();
 </script>

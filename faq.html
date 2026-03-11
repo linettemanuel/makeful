@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ – Makeful FashionTech STEAM</title>
-    <meta name="description" content="Frequently asked questions about Makeful programs — for schools, teachers, and parents.">
+    <title>FAQ – Makeful FashionTech STEAM Programs</title>
+    <meta name="theme-color" content="#12100E">
+    <!-- ── SEO ─────────────────────────────────────── -->
+    <meta name="description" content="Answers to the questions schools, teachers and parents ask most about Makeful FashionTech STEAM programs — hardware, safeguarding, costs and more.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://makeful.com/faq">
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:title"       content="FAQ – Makeful FashionTech STEAM Programs">
+    <meta property="og:description" content="Answers to the questions schools, teachers and parents ask most about Makeful FashionTech STEAM programs — hardware, safeguarding, costs and more.">
+    <meta property="og:url"        content="https://makeful.com/faq">
+    <meta property="og:image"       content="https://makeful.com/img/makeful_og.png">
+    <meta property="og:site_name"   content="Makeful">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="FAQ – Makeful FashionTech STEAM Programs">
+    <meta name="twitter:description" content="Answers to the questions schools, teachers and parents ask most about Makeful FashionTech STEAM programs — hardware, safeguarding, costs and more.">
+    <meta name="twitter:image"       content="https://makeful.com/img/makeful_og.png">
+
+    <!-- Favicon (update path once final icon is confirmed) -->
+    <link rel="icon"             type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon"             type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180"                  href="./img/apple-touch-icon.png">
+    <!-- ────────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
@@ -609,7 +633,14 @@
             .expert-card:last-child { border-bottom: none; }
             .expert-card:nth-child(n+3) { border-top: none; }
         }
-    </style>
+    
+        /* ── Image optimisation ── */
+        img {
+            max-width: 100%;
+            height: auto;
+            image-rendering: auto;
+        }
+        </style>
     <style>
         /* ─── FAQ PAGE ─── */
         .faq-hero {
@@ -820,25 +851,58 @@
             .faq-cta-left, .faq-cta-right { padding: 56px 28px; }
         }
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Makeful send instructors to schools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For Summer Camp and short-term programs, Makeful trains the school's own staff. For Full-Year, instructors run sessions online."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the school need to buy any equipment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Makeful provides all 3D printers, tools, filaments and materials. Everything is included in the program fee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What age group are the programs designed for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Makeful programs work best for students aged 10\u201318. Teacher Professional Development is for adults."
+      }
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
 <!-- NAV -->
 <header>
     <div class="nav-wrapper">
-        <a href="index.html" class="nav-logo">
-            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        <a href="/" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful" decoding="async">
         </a>
         <nav class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="index.html#benefits" class="nav-link">Benefits</a>
-            <a href="about.html" class="nav-link">About Us</a>
-            <a href="programs.html" class="nav-link">Programs</a>
-            <a href="index.html#pricing" class="nav-link">Pricing</a>
-            <a href="faq.html" class="nav-link">FAQs</a>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/#benefits" class="nav-link">Benefits</a>
+            <a href="/about" class="nav-link">About Us</a>
+            <a href="/programs" class="nav-link">Programs</a>
+            <a href="/#pricing" class="nav-link">Pricing</a>
+            <a href="/faq" class="nav-link">FAQs</a>
             <div class="nav-spacer"></div>
         </nav>
-        <a href="contact.html" class="nav-cta">Contact Us</a>
+        <a href="/contact" class="nav-cta">Contact Us</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -847,13 +911,13 @@
     </div>
 </header>
 <nav class="nav-drawer" id="nav-drawer">
-    <a href="index.html" class="nav-drawer-link active">Home</a>
-    <a href="index.html#benefits" class="nav-drawer-link">Benefits</a>
-    <a href="about.html" class="nav-drawer-link">About Us</a>
-    <a href="programs.html" class="nav-drawer-link">Programs</a>
-    <a href="index.html#pricing" class="nav-drawer-link">Pricing</a>
-    <a href="faq.html" class="nav-drawer-link">FAQs</a>
-    <a href="contact.html" class="nav-drawer-cta">Contact Us</a>
+    <a href="/" class="nav-drawer-link active">Home</a>
+    <a href="/#benefits" class="nav-drawer-link">Benefits</a>
+    <a href="/about" class="nav-drawer-link">About Us</a>
+    <a href="/programs" class="nav-drawer-link">Programs</a>
+    <a href="/#pricing" class="nav-drawer-link">Pricing</a>
+    <a href="/faq" class="nav-drawer-link">FAQs</a>
+    <a href="/contact" class="nav-drawer-cta">Contact Us</a>
 </nav>
 <script>
     (function(){
@@ -878,7 +942,7 @@
     <div class="faq-hero-left">
         <div class="label label-peach">Frequently Asked Questions</div>
         <h1>Questions we get asked most.</h1>
-        <p class="hero-lead">We've tried to cover what schools, teachers and parents ask us most. If something isn't here, just get in touch. <a href="contact.html" style="color:var(--coral);font-weight:700;">Just ask us directly.</a></p>
+        <p class="hero-lead">We've tried to cover what schools, teachers and parents ask us most. If something isn't here, just get in touch. <a href="/contact" style="color:var(--coral);font-weight:700;">Just ask us directly.</a></p>
     </div>
     <div class="faq-hero-right">
         <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);margin-bottom:4px;">Jump to section</p>
@@ -1258,7 +1322,7 @@
                         <li>Written communication on the Esmerise platform is visible to all participants and the guardian. There are no private messages.</li>
                         <li>Makeful instructors will never contact students through social media, personal messages or any channel outside these supervised routes</li>
                     </ul>
-                    <p>For full details, see our <a href="safeguarding.html">Safeguarding &amp; Child Protection Statement</a>.</p>
+                    <p>For full details, see our <a href="/safeguarding">Safeguarding &amp; Child Protection Statement</a>.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -1277,7 +1341,7 @@
                     <span class="faq-chevron"><span class="material-symbols-outlined" style="font-size:18px;">expand_more</span></span>
                 </div>
                 <div class="faq-answer">
-                    <p>No. Student email addresses are only used for enrollment confirmation and online class access. We never send students newsletters, promotional emails or any marketing content. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+                    <p>No. Student email addresses are only used for enrollment confirmation and online class access. We never send students newsletters, promotional emails or any marketing content. See our <a href="/privacy">Privacy Policy</a> for full details.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -1302,12 +1366,12 @@
         <div class="label" style="color:var(--peach);">Still have questions?</div>
         <h2>We'll answer everything personally.</h2>
         <p>No automated responses. No generic brochures. Just a real conversation about whether Makeful is right for your school.</p>
-        <a href="contact.html" class="btn btn-white">Get in Touch</a>
+        <a href="/contact" class="btn btn-white">Get in Touch</a>
     </div>
     <div class="faq-cta-right">
         <div class="label label-peach">Useful Links</div>
         <h3>More information</h3>
-        <p>Read our <a href="terms.html" style="color:var(--coral);font-weight:600;">Terms &amp; Conditions</a> for full program policies. Read our <a href="privacy.html" style="color:var(--coral);font-weight:600;">Privacy Policy</a> for how we handle data. Read our <a href="safeguarding.html" style="color:var(--coral);font-weight:600;">Safeguarding Statement</a> for our child protection commitments.</p>
+        <p>Read our <a href="/terms" style="color:var(--coral);font-weight:600;">Terms &amp; Conditions</a> for full program policies. Read our <a href="/privacy" style="color:var(--coral);font-weight:600;">Privacy Policy</a> for how we handle data. Read our <a href="/safeguarding" style="color:var(--coral);font-weight:600;">Safeguarding Statement</a> for our child protection commitments.</p>
         <a href="https://tally.so/r/b57egg" class="btn btn-ink" style="margin-top:8px;">Request an Info Pack</a>
     </div>
 </section>
@@ -1321,11 +1385,11 @@
         <div class="footer-col">
             <h4>Menu</h4>
             <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="./index.html#benefits">Benefits</a></li>
-                <li><a href="./index.html#pricing">Pricing</a></li>
-                <li><a href="./programs.html">Programs</a></li>
-                <li><a href="./faq.html">FAQs</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#benefits">Benefits</a></li>
+                <li><a href="/#pricing">Pricing</a></li>
+                <li><a href="/programs">Programs</a></li>
+                <li><a href="/faq">FAQs</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -1339,9 +1403,9 @@
         <div class="footer-col">
             <h4>Discover</h4>
             <ul class="footer-links">
-                <li><a href="./privacy.html">Privacy Terms</a></li>
-                <li><a href="./terms.html">Terms &amp; Conditions</a></li>
-                <li><a href="./safeguarding.html">Child Protection &amp; Safeguarding Statements</a></li>
+                <li><a href="/privacy">Privacy Terms</a></li>
+                <li><a href="/terms">Terms &amp; Conditions</a></li>
+                <li><a href="/safeguarding">Child Protection &amp; Safeguarding Statements</a></li>
             </ul>
         </div>
         <div class="footer-col" style="grid-column: span 2;">
@@ -1357,7 +1421,7 @@
     </div>
     <div class="footer-bottom">
         <div class="footer-bg-letter">M</div>
-        <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img">
+        <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
     </div>    
     <div class="copyright">&copy; 2026 Makeful - FashionTech STEAM Program. All rights reserved.</div>
 </footer>
@@ -1370,20 +1434,13 @@ function toggle(el) {
     if (!wasOpen) { item.classList.add('open'); }
 }
 </script>
-
 <script>
 (function() {
-    var path = window.location.pathname;
-    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
-    document.querySelectorAll('.nav-links .nav-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
-    });
-    document.querySelectorAll('.nav-drawer .nav-drawer-link').forEach(function(link) {
-        var href = link.getAttribute('href');
-        var linkPage = href.split('#')[0] || 'index.html';
-        link.classList.toggle('active', linkPage === page);
+    var path = window.location.pathname.replace(/\/+$/, '') || '/';
+    document.querySelectorAll('.nav-links .nav-link, .nav-drawer .nav-drawer-link').forEach(function(link) {
+        var href = link.getAttribute('href').replace(/\/+$/, '') || '/';
+        var linkPath = href.split('#')[0] || '/';
+        link.classList.toggle('active', linkPath === path);
     });
 })();
 </script>
