@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letní módní kreativní laboratoř 2026 – Makeful</title>
+    <meta name="theme-color" content="#12100E">
+    <meta name="description" content="Letní fashiontech akademie – Příměstský kemp pro holky ve věku 14–19 let v Praze. Sedm dní plných kreativní tvorby, experimentů a objevování.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://makeful.com/summercamp">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Letní módní kreativní laboratoř 2026 – Makeful">
+    <meta property="og:description" content="Letní FashionTech Akademie – Program pro holky ve věku 14–19 let v Praze. Sedm dní plných kreativní tvorby, experimentů a objevování.">
+    <meta property="og:url" content="https://makeful.com/summercamp">
+    <meta property="og:image" content="https://makeful.com/img/makeful_og.png">
+    <meta property="og:site_name" content="Makeful">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <style>
+        :root {
+            /* Brand palette */
+            --aqua:     #62D7F4;
+            --coral:    #FD7E8B;
+            --peach:    #FEB492;
+            --magenta:  #F996BF;
+            --lavender: #9A75F0;
+            --lilac:    #C386F8;
+            --ink:      #12100E;
+            --white:    #FEFEFE;
+            --off:      #F5F3F0;
+            --mid:      #5C5856;
+            --border:   1px solid rgba(18,16,14,0.10);
+            /* Primary accent for this page = peach/orange */
+            --primary:      #FEB492;
+            --primary-dark: #d4713a;
+            --font-display: "Playfair Display", serif;
+            --font-ui:      "DM Sans", sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--white); color: var(--ink); font-family: var(--font-ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.15s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
+        h4 { font-family: var(--font-ui); font-weight: 600; color: var(--ink); }
+        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
+        h2 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 20px; }
+        h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
+        p  { font-size: 1rem; line-height: 1.8; color: var(--mid); }
+
+        /* LABELS */
+        .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 20px; }
+        .label::before { content: ''; display: block; width: 20px; height: 3px; background: currentColor; flex-shrink: 0; }
+        .label-primary  { color: var(--primary-dark); }
+        .label-coral    { color: #d45060; }
+        .label-lavender { color: #6248c4; }
+        .label-lilac    { color: #8840c8; }
+        .label-magenta  { color: #b8407a; }
+
+        /* BUTTONS */
+        .btn { display: inline-block; min-width: 200px; text-align: center; padding: 15px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid transparent; transition: background 0.2s, color 0.2s, transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-ink { background: var(--ink); color: var(--white); border-color: var(--ink); }
+        .btn-ink:hover { background: #2a2824; }
+        .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+        .btn-outline:hover { background: var(--ink); color: var(--white); }
+        .btn-primary { background: var(--lilac); color: var(--ink); border-color: var(--lilac); }
+        .btn-primary:hover { background: var(--lavender); }
+        .btn-lavender { background: var(--lavender); color: var(--white); border-color: var(--lavender); }
+        .btn-lavender:hover { background: #7e5ee0; }
+        .btn-coral { background: var(--coral); color: var(--ink); border-color: var(--lilac); }
+        .btn-coral:hover { background: #f06070; }
+
+        /* NAV */
+        header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-logo { display: flex; align-items: center; padding: 0 22px; border-right: var(--border); flex-shrink: 0; }
+        .nav-logo img { height: 22px; width: auto; }
+        .nav-links { display: flex; flex: 1; }
+        .nav-link { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-right: var(--border); transition: background 0.15s; }
+        .nav-link:hover, .nav-link.active { background: var(--off); }
+        .nav-spacer { flex: 1; }
+        .nav-cta { display: flex; align-items: center; padding: 0 30px; background: var(--lilac); color: var(--ink); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
+        .nav-cta:hover { background: var(--lavender); color: var(--ink); }
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; }
+        .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
+        .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
+        .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
+        .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .nav-drawer.open { display: flex; }
+        .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; border-bottom: var(--border); transition: background 0.15s; }
+        .nav-drawer-link:hover { background: var(--off); }
+        .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--primary); color: var(--ink); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+        /* HERO */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 72px); border-bottom: var(--border); }
+        .hero-left { background: var(--primary); padding: 100px 72px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
+        .hero-left::after { content: 'L'; font-family: var(--font-display); font-size: 40vw; font-weight: 900; color: rgba(255,255,255,0.22); position: absolute; top: -10%; right: -10%; line-height: 1; pointer-events: none; user-select: none; }
+        .hero-left h1 { color: var(--ink); position: relative; z-index: 1; }
+        .hero-left .hero-sub { color: rgba(18,16,14,0.78); position: relative; z-index: 1; font-size: 1.1rem; line-height: 1.75; }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; position: relative; z-index: 1; }
+        .hero-right { position: relative; overflow: hidden; border-left: var(--border); background: var(--ink); display: flex; align-items: stretch; }
+        .hero-right video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* PRESS BAR */
+        .press-bar { border-bottom: var(--border); padding: 24px 80px; display: flex; align-items: center; gap: 40px; overflow-x: auto; background: var(--white); }
+        .press-bar-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid); white-space: nowrap; flex-shrink: 0; }
+        .press-logos { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+        .press-logo-link { display: flex; align-items: center; transition: opacity 0.2s; }
+        .press-logo-link:hover { opacity: 0.6; }
+        .press-logo-text { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: rgba(18,16,14,0.35); white-space: nowrap; transition: color 0.2s; }
+        .press-logo-link:hover .press-logo-text { color: var(--ink); }
+        .press-divider { width: 1px; height: 20px; background: rgba(18,16,14,0.1); flex-shrink: 0; }
+
+        /* PRICE BANNER */
+        .price-banner { background: var(--ink); color: var(--white); display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; border-bottom: var(--border); }
+        .price-item { padding: 52px 56px; border-right: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 8px; }
+        .price-item:last-child { border-right: none; }
+        .price-item-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); }
+        .price-item-value { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; line-height: 1.1; color: var(--white); }
+        .price-item-value.highlight { color: var(--primary); }
+        .price-item-sub { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; margin-top: 4px; }
+
+        /* BENEFIT LOGOS inline */
+        .benefit-logos { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .benefit-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.18); padding: 4px 10px; }
+
+        /* FOR WHOM */
+        .forwhom-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .forwhom-text { padding: 120px 80px; border-right: var(--border); border-left: 6px solid var(--coral); display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .forwhom-text h2, .forwhom-text p { margin-bottom: 0; }
+        .forwhom-checks { display: flex; flex-direction: column; margin-top: 8px; }
+        .forwhom-check { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: var(--border); font-size: 0.95rem; color: var(--ink); line-height: 1.6; }
+        .forwhom-check:last-child { border-bottom: none; }
+        .forwhom-check .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--coral); flex-shrink: 0; margin-top: 7px; }
+        .forwhom-image { overflow: hidden; min-height: 520px; background: var(--off); }
+
+        /* IMG PLACEHOLDER */
+        .img-placeholder { width: 100%; height: 100%; background: var(--off); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 300px; color: rgba(18,16,14,0.25); border: 2px dashed rgba(18,16,14,0.12); }
+        .img-placeholder span.material-symbols-outlined { font-size: 40px; }
+        .img-placeholder p { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(18,16,14,0.25); margin: 0; }
+
+        /* TAKE HOME – module-style layout (matches programs.html) */
+        .create-section { border-bottom: var(--border); }
+        .create-intro { padding: 100px 80px 64px; border-left: 6px solid var(--magenta); }
+        .create-intro p { margin-top: 16px; max-width: 680px; }
+
+        /* mod-split styles (ported from programs.html) */
+        .mod-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: var(--border);
+            border-bottom: var(--border);
+            min-height: 480px;
+        }
+        .mod-split + .mod-split { border-top: none; }
+        .mod-text {
+            padding: 80px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mod-text h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 14px; }
+        .mod-text > p { margin-bottom: 0; font-size: 0.95rem; }
+        .mod-image {
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            background: var(--off);
+        }
+        .mod-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .mod-split-flip .mod-image { order: -1; border-right: var(--border); border-left: none; }
+        .mod-split:not(.mod-split-flip) .mod-image { border-left: var(--border); }
+        .mod-skills-block { margin-top: 28px; }
+        .mod-skills-heading { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 10px; }
+        .mod-skills-list { display: flex; flex-direction: column; gap: 0; list-style: none; }
+        .mod-skills-list li { font-size: 0.9rem; color: var(--ink); line-height: 1.5; padding: 9px 0; border-bottom: var(--border); display: flex; align-items: center; gap: 10px; }
+        .mod-skills-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--mid); flex-shrink: 0; opacity: 0.4; }
+        .mod-skills-list li:last-child { border-bottom: none; }
+        .mod-tech-block { margin-top: 24px; }
+        .mod-tech-heading { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 10px; }
+        .mod-tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .mod-tag { display: inline-block; padding: 5px 14px; font-size: 0.76rem; font-weight: 600; border: 1.5px solid var(--tc); color: var(--tc); border-radius: 100px; transition: background 0.15s, color 0.15s; }
+        .mod-tag:hover { background: var(--tc); color: var(--white); }
+        .mod-img-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 40px; min-height: 400px; }
+        .mod-img-num { font-family: var(--font-display); font-size: 5rem; font-weight: 900; line-height: 1; opacity: 0.2; color: var(--ink); }
+        .mod-img-label { font-size: 0.8rem; font-weight: 600; color: var(--mid); }
+
+        /* SKILLS */
+        .skills-section { background: var(--ink); border-bottom: var(--border); }
+        .skills-header { padding: 120px 80px 80px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+        .skills-header h2 { color: var(--white); margin: 0; max-width: 600px; }
+        .skills-header .label { color: var(--primary); margin: 0; }
+        .skills-header .label::before { background: var(--primary); }
+        .skills-header-left { display: flex; flex-direction: column; gap: 16px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+        .skill-card { padding: 64px 52px; border-right: 1px solid rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 20px; transition: background 0.2s; }
+        .skill-card:hover { background: rgba(255,255,255,0.04); }
+        .skill-card:nth-child(3n) { border-right: none; }
+        .skill-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .skill-card:nth-child(1) .skill-icon { background: var(--primary); color: var(--ink); }
+        .skill-card:nth-child(2) .skill-icon { background: var(--coral);   color: var(--ink); }
+        .skill-card:nth-child(3) .skill-icon { background: var(--magenta); color: var(--ink); }
+        .skill-card:nth-child(4) .skill-icon { background: var(--lavender);color: var(--white); }
+        .skill-card:nth-child(5) .skill-icon { background: var(--lilac);   color: var(--white); }
+        .skill-card:nth-child(6) .skill-icon { background: var(--aqua);    color: var(--ink); }
+        .material-symbols-outlined { font-size: 24px; color: inherit; }
+        .skill-card h3 { color: var(--white); font-size: 1.1rem; margin: 0; }
+        .skill-card p  { color: rgba(255,255,255,0.55); font-size: 0.93rem; margin: 0; line-height: 1.7; }
+
+        /* PROGRAM */
+        .program-section { border-bottom: var(--border); }
+        .program-header { padding: 120px 80px 0; text-align: center; }
+        .program-header .label { justify-content: center; }
+        .program-days { display: grid; grid-template-columns: repeat(7, 1fr); border-top: var(--border); margin-top: 64px; }
+        .day-card { border-right: var(--border); border-bottom: var(--border); display: flex; flex-direction: column; }
+        .day-card:last-child { border-right: none; }
+        .day-top { padding: 28px 32px 20px; border-bottom: var(--border); }
+        .day-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+        .day-num { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); }
+        .day-body { padding: 24px 32px 32px; flex: 1; }
+        .day-body p { font-size: 0.88rem; line-height: 1.7; color: var(--mid); margin: 0; }
+        .day-card:nth-child(1) .day-top { border-top: 4px solid var(--primary); }
+        .day-card:nth-child(2) .day-top { border-top: 4px solid var(--coral); }
+        .day-card:nth-child(3) .day-top { border-top: 4px solid var(--magenta); }
+        .day-card:nth-child(4) .day-top { border-top: 4px solid var(--lavender); }
+        .day-card:nth-child(5) .day-top { border-top: 4px solid var(--lilac); }
+        .day-card:nth-child(6) .day-top { border-top: 4px solid var(--aqua); }
+        .day-card:nth-child(7) .day-top { border-top: 4px solid var(--coral); }
+        .program-meta { padding: 48px 80px; border-top: var(--border); display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+        .program-meta-item { display: flex; gap: 12px; align-items: center; }
+        .program-meta-item span:last-child { font-size: 0.9rem; color: var(--mid); }
+        .program-meta-item strong { color: var(--ink); }
+
+        /* INCLUDED */
+        .included-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .included-col { padding: 100px 80px; border-right: var(--border); }
+        .included-col:last-child { border-right: none; background: var(--off); }
+        .included-list { margin-top: 32px; display: flex; flex-direction: column; }
+        .included-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: var(--border); font-size: 0.93rem; color: var(--ink); line-height: 1.5; }
+        .included-item:last-child { border-bottom: none; }
+        .included-item .check { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
+        .check-yes { background: var(--primary); color: var(--ink); }
+        .check-no  { background: var(--off); color: var(--mid); border: 1px solid rgba(18,16,14,0.12); }
+        .price-callout { margin-top: 40px; padding: 32px; background: var(--white); border: var(--border); border-left: 4px solid var(--primary); }
+        .price-callout-main { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 6px; }
+        .price-callout-sub { font-size: 0.85rem; color: var(--mid); line-height: 1.6; margin: 0; }
+        .benefits-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+        .benefit-chip { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); border: 1px solid rgba(18,16,14,0.18); padding: 5px 12px; }
+
+        /* DATES */
+        .dates-section { display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); }
+        .dates-col { padding: 100px 80px; border-right: var(--border); }
+        .dates-col:last-child { border-right: none; }
+        .dates-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 40px; border: var(--border); }
+        .date-item { padding: 24px 28px; border-right: var(--border); border-bottom: var(--border); }
+        .date-item:nth-child(2n) { border-right: none; }
+        .date-item:nth-last-child(-n+2) { border-bottom: none; }
+        .date-num { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--ink); line-height: 1.2; }
+        .date-year { font-size: 0.75rem; color: var(--mid); font-weight: 500; margin-top: 4px; }
+        .reg-steps { margin-top: 40px; display: flex; flex-direction: column; }
+        .reg-step { display: flex; align-items: flex-start; gap: 24px; padding: 24px 0; border-bottom: var(--border); }
+        .reg-step:last-child { border-bottom: none; }
+        .reg-step-num { width: 36px; height: 36px; background: var(--primary); color: var(--ink); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+        .reg-step-text strong { display: block; font-size: 0.95rem; margin-bottom: 4px; color: var(--ink); }
+        .reg-step-text span { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+
+        /* GALLERY */
+        .gallery-container { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; border-bottom: var(--border); min-height: 560px; }
+        .gallery-big { grid-row: span 2; overflow: hidden; border-right: var(--border); background: var(--off); }
+        .gallery-text { padding: 56px 48px; border-bottom: var(--border); border-right: var(--border); display: flex; flex-direction: column; justify-content: flex-end; }
+        .gallery-small-1 { overflow: hidden; background: var(--off); border-right: var(--border); }
+        .gallery-small-2 { overflow: hidden; background: var(--off); }
+
+        /* TESTIMONIALS */
+        .testimonials-section { background: var(--white); border-bottom: var(--border); }
+        .testimonials-top { padding: 100px 80px 0; text-align: center; }
+        .testimonials-top h2 { margin-bottom: 48px; }
+        .testimonials-video-main { padding: 80px 80px; border-bottom: var(--border); display: flex; justify-content: center; }
+        .testimonials-video-main video { width: 75%; max-width: 900px; }
+        .testimonials-quotes { display: grid; grid-template-columns: 1fr 1fr; }
+        .testimonial-card { padding: 80px 80px; border-right: var(--border); }
+        .testimonial-card:last-child { border-right: none; }
+        .testimonial-card p { font-size: 1.05rem; font-style: italic; color: var(--ink); line-height: 1.7; margin-bottom: 28px; }
+        .testimonial-card .t-attr { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary-dark); font-family: var(--font-ui); }
+        .testimonial-card:nth-child(1) { border-top: 4px solid var(--primary); }
+        .testimonial-card:nth-child(2) { border-top: 4px solid var(--magenta); }
+        .ref-placeholder { padding: 80px; border-top: var(--border); background: var(--off); }
+        .ref-placeholder-inner { border: 2px dashed rgba(18,16,14,0.12); padding: 60px 40px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        .ref-placeholder-inner .material-symbols-outlined { font-size: 36px; color: rgba(18,16,14,0.2); }
+        .ref-placeholder-inner p { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(18,16,14,0.25); margin: 0; }
+
+        /* CT VIDEO PROMO */
+        .ct-promo { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--border); border-bottom: var(--border); min-height: 340px; }
+        .ct-promo-img { overflow: hidden; border-right: var(--border); background: var(--ink); display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; }
+        .ct-promo-img video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .ct-promo-img .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(18,16,14,0.35); transition: background 0.2s; }
+        .ct-promo-img:hover .play-overlay { background: rgba(18,16,14,0.2); }
+        .play-btn { width: 72px; height: 72px; background: var(--primary); display: flex; align-items: center; justify-content: center; }
+        .play-btn .material-symbols-outlined { font-size: 36px; color: var(--ink); }
+        .ct-promo-text { padding: 72px 80px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .ct-promo-text .label { margin-bottom: 0; }
+        .ct-promo-text h2 { font-size: clamp(1.5rem, 2.5vw, 2.2rem); margin-bottom: 0; }
+        .ct-promo-text p { margin: 0; }
+        .ct-promo-link { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--primary-dark); margin-top: 8px; transition: gap 0.2s; }
+        .ct-promo-link:hover { gap: 16px; }
+
+        /* FOUNDER */
+        .founder-section { display: grid; grid-template-columns: 380px 1fr; border-bottom: var(--border); min-height: 520px; }
+        .founder-img { overflow: hidden; border-right: var(--border); background: var(--off); min-height: 520px; }
+        .founder-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+        .founder-quote { font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-style: italic; color: var(--ink); line-height: 1.45; border-left: 5px solid var(--primary); padding-left: 32px; }
+        .founder-name { font-weight: 700; font-size: 1rem; color: var(--ink); margin-bottom: 4px; font-family: var(--font-ui); }
+        .founder-role { font-size: 0.85rem; color: var(--mid); }
+        .founder-bio { font-size: 0.93rem; line-height: 1.8; color: var(--mid); }
+        .founder-media { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+        .media-badge { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); border: 1px solid rgba(18,16,14,0.18); padding: 6px 14px; transition: background 0.15s, color 0.15s; }
+        a.media-badge:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+        /* FAQ */
+        .faq-section { border-bottom: var(--border); }
+        .faq-header { padding: 100px 80px 0; text-align: center; }
+        .faq-header .label { justify-content: center; }
+        .faq-list { max-width: 900px; margin: 64px auto 0; border-top: var(--border); }
+        .faq-item { border-bottom: var(--border); overflow: hidden; }
+        .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 28px 40px; cursor: pointer; transition: background 0.15s; gap: 20px; }
+        .faq-question:hover { background: var(--off); }
+        .faq-question span:first-child { font-size: 1rem; font-weight: 600; color: var(--ink); line-height: 1.5; }
+        .faq-toggle { width: 32px; height: 32px; border: 1.5px solid rgba(18,16,14,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; font-size: 20px; color: var(--ink); }
+        .faq-item.open .faq-toggle { background: var(--primary); border-color: var(--primary); color: var(--ink); }
+        .faq-answer { display: none; padding: 0 40px 28px; }
+        .faq-answer p { font-size: 0.95rem; line-height: 1.8; color: var(--mid); margin: 0; }
+        .faq-item.open .faq-answer { display: block; }
+
+        /* CONTACT */
+        .contact-section { background: var(--ink); display: grid; grid-template-columns: 1fr 1fr; }
+        .contact-left { padding: 120px 80px; border-right: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+        .contact-left .label { color: var(--primary); }
+        .contact-left .label::before { background: var(--primary); }
+        .contact-left h2 { color: var(--white); margin-bottom: 8px; }
+        .contact-left p { color: rgba(255,255,255,0.55); font-size: 1rem; }
+        .contact-links { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+        .contact-link-item { display: flex; align-items: center; gap: 16px; color: var(--white); font-size: 0.95rem; font-weight: 500; transition: color 0.15s; }
+        .contact-link-item:hover { color: var(--primary); }
+        .contact-link-item .material-symbols-outlined { font-size: 20px; }
+        .contact-right { padding: 120px 80px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+        .contact-field { display: flex; flex-direction: column; gap: 8px; }
+        .contact-field label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
+        .contact-field input, .contact-field textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--white); font-family: var(--font-ui); font-size: 0.95rem; padding: 14px 18px; outline: none; transition: border-color 0.2s; resize: none; }
+        .contact-field input::placeholder, .contact-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+        .contact-field input:focus, .contact-field textarea:focus { border-color: var(--primary); }
+
+        /* FOOTER */
+        .footer-main { display: grid; grid-template-columns: repeat(5, 1fr); border-top: var(--border); }
+        .footer-col { padding: 64px 40px; border-right: var(--border); }
+        .footer-col:last-child { border-right: none; }
+        .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; }
+        .footer-links { display: flex; flex-direction: column; gap: 12px; }
+        .footer-links a { font-size: 0.88rem; color: var(--mid); transition: color 0.15s; }
+        .footer-links a:hover { color: var(--ink); }
+        .footer-bottom { background: var(--ink); position: relative; overflow: hidden; min-height: 220px; display: flex; align-items: center; justify-content: center; }
+        .footer-bg-letter { font-family: var(--font-display); font-size: 28vw; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; bottom: -10%; left: 50%; transform: translateX(-50%); line-height: 1; user-select: none; }
+        .footer-logo-img { height: 36px; width: auto; position: relative; z-index: 1; }
+        .copyright { text-align: center; background: var(--ink); color: rgba(255,255,255,0.3); font-size: 0.78rem; padding: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-links, .nav-spacer, .nav-cta { display: none; }
+            .nav-hamburger { display: flex; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-left { padding: 80px 40px; min-height: 60vw; }
+            .hero-right { min-height: 56vw; border-left: none; border-top: var(--border); }
+            .press-bar { padding: 20px 40px; gap: 20px; }
+            .price-banner { grid-template-columns: 1fr 1fr; }
+            .price-item:nth-child(2) { border-right: none; }
+            .price-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+            .forwhom-section { grid-template-columns: 1fr; }
+            .forwhom-text { padding: 80px 40px; border-right: none; }
+            .forwhom-image { min-height: 400px; }
+            .create-intro { padding: 80px 40px 48px; }
+            .create-grid { grid-template-columns: 1fr 1fr; }
+            .create-card:nth-child(2n) { border-right: none; }
+            .create-card:nth-child(3) { border-right: var(--border); }
+            .create-card:nth-last-child(-n+3) { border-bottom: var(--border); }
+            .create-card:last-child { border-bottom: none; }
+            .skills-header { padding: 80px 40px 60px; flex-direction: column; align-items: flex-start; }
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+            .skill-card:nth-child(2n) { border-right: none; }
+            .skill-card:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.08); }
+            .program-header { padding: 80px 40px 0; }
+            .program-days { grid-template-columns: 1fr 1fr 1fr 1fr; }
+            .day-card:nth-child(4n) { border-right: none; }
+            .program-meta { padding: 48px 40px; }
+            .included-section { grid-template-columns: 1fr; }
+            .included-col { padding: 80px 40px; border-right: none; border-bottom: var(--border); }
+            .dates-section { grid-template-columns: 1fr; }
+            .dates-col { padding: 80px 40px; border-right: none; border-bottom: var(--border); }
+            .dates-col:last-child { border-bottom: none; }
+            .gallery-container { grid-template-columns: 1fr 1fr; grid-template-rows: 300px auto auto; }
+            .gallery-big { grid-row: 1; grid-column: 1 / span 2; border-right: none; border-bottom: var(--border); }
+            .gallery-text { grid-row: 2; }
+            .testimonials-top { padding: 80px 40px 0; }
+            .testimonials-video-main { padding: 60px 40px; }
+            .testimonials-video-main video { width: 100%; }
+            .testimonials-quotes { grid-template-columns: 1fr; }
+            .testimonial-card { padding: 60px 40px; border-right: none; border-bottom: var(--border); }
+            .ref-placeholder { padding: 60px 40px; }
+            .ct-promo { grid-template-columns: 1fr; }
+            .ct-promo-img { min-height: 300px; border-right: none; border-bottom: var(--border); }
+            .ct-promo-text { padding: 60px 40px; }
+            .founder-section { grid-template-columns: 1fr; }
+            .founder-img { min-height: 400px; border-right: none; border-bottom: var(--border); }
+            .founder-content { padding: 80px 40px; }
+            .faq-header { padding: 80px 40px 0; }
+            .faq-list { margin: 48px 40px 0; }
+            .faq-question { padding: 24px 0; }
+            .faq-answer { padding: 0 0 24px; }
+            .contact-section { grid-template-columns: 1fr; }
+            .contact-left { padding: 80px 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .contact-right { padding: 80px 40px; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+            .footer-col:nth-child(2n) { border-right: none; }
+            .footer-col:nth-child(n+3) { border-top: var(--border); }
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.7rem; }
+            .hero-left { padding: 60px 28px; }
+            .price-banner { grid-template-columns: 1fr; }
+            .price-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .price-item:last-child { border-bottom: none; }
+            .create-grid { grid-template-columns: 1fr; }
+            .create-card { border-right: none !important; border-bottom: var(--border) !important; }
+            .create-card:last-child { border-bottom: none !important; }
+            .program-days { grid-template-columns: 1fr 1fr; }
+            .day-card:nth-child(2n) { border-right: none; }
+            .dates-grid { grid-template-columns: 1fr; }
+            .date-item { border-right: none; border-bottom: var(--border); }
+            .date-item:last-child { border-bottom: none; }
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-col { border-right: none; border-bottom: var(--border); }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-card { border-right: none !important; }
+            /* Gallery: stack all images vertically on mobile, show whole image */
+            .gallery-container {
+                display: flex !important;
+                flex-direction: column !important;
+                min-height: unset !important;
+            }
+            .gallery-big,
+            .gallery-text,
+            .gallery-small-1,
+            .gallery-small-2,
+            .gallery-small-3,
+            .gallery-small-4 {
+                width: 100% !important;
+                border-right: none !important;
+                border-bottom: var(--border) !important;
+                min-height: unset !important;
+                height: auto !important;
+            }
+            .gallery-big img,
+            .gallery-small-1 img,
+            .gallery-small-2 img,
+            .gallery-small-3 img,
+            .gallery-small-4 img {
+                object-fit: contain !important;
+                height: auto !important;
+                max-height: none !important;
+                min-height: unset !important;
+                width: 100% !important;
+            }
+            .img-placeholder { min-height: unset !important; }
+            .gallery-text { padding: 40px 28px; }
+        }
+
+        /* SC VIDEO SECTION (matches about.html #talk style) */
+        .sc-video-section {
+            border-bottom: var(--border);
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+        .sc-video-header {
+            padding: 80px 80px 48px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 60px;
+        }
+        .sc-video-header h2 { color: var(--white); margin-bottom: 10px; }
+        .sc-video-header p  { color: rgba(255,255,255,0.5); font-size: 0.95rem; line-height: 1.7; max-width: 540px; }
+        .sc-video-embed {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .sc-video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 1100px) {
+            .sc-video-header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 72px 48px 40px; }
+        }
+        @media (max-width: 640px) {
+            .sc-video-header { padding: 56px 28px 32px; }
+        }
+
+        /* mod-split responsive */
+        @media (max-width: 1024px) {
+            .mod-split { grid-template-columns: 1fr; min-height: unset; }
+            .mod-split-flip .mod-image { order: 0; border-right: none; border-left: none; border-bottom: var(--border); }
+            .mod-split:not(.mod-split-flip) .mod-image { border-left: none; border-bottom: var(--border); }
+            .mod-image { min-height: 320px; }
+            .mod-text { padding: 60px 40px; }
+        }
+
+        /* PRESS ARTICLES SECTION */
+        .press-articles-section {
+            border-bottom: var(--border);
+            background: var(--off);
+        }
+        .press-articles-header {
+            padding: 80px 80px 48px;
+            border-bottom: var(--border);
+        }
+        .press-articles-header h2 { margin-bottom: 0; }
+        .press-articles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .press-article-card {
+            border-right: var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        .press-article-card:last-child { border-right: none; }
+        .press-article-img {
+            overflow: hidden;
+            border-bottom: var(--border);
+            max-height: 380px;
+        }
+        .press-article-img img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .press-article-card:hover .press-article-img img { transform: scale(1.02); }
+        .press-article-body {
+            padding: 48px 56px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex: 1;
+        }
+        .press-article-source {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary-dark);
+        }
+        .press-article-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+            margin: 0;
+            flex: 1;
+        }
+        .press-article-btn {
+            align-self: flex-start;
+            margin-top: 8px;
+            min-width: unset;
+        }
+        @media (max-width: 1024px) {
+            .press-articles-header { padding: 60px 40px 40px; }
+            .press-article-body { padding: 40px; }
+        }
+        @media (max-width: 640px) {
+            .press-articles-grid { grid-template-columns: 1fr; }
+            .press-article-card { border-right: none; border-bottom: var(--border); }
+            .press-article-card:last-child { border-bottom: none; }
+            .press-article-img { max-height: 240px; }
+            .press-article-img img { height: 240px; }
+            .press-article-body { padding: 32px 28px; }
+            .press-articles-header { padding: 48px 28px 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <nav class="nav-wrapper">
+        <a class="nav-logo" href="#"><img src="./img/makeful_logo_colours.png" alt="Makeful logo"></a>
+        <div class="nav-links">
+            <a class="nav-link" href="#top">Domů</a>
+            <a class="nav-link" href="#program">Program</a>
+            <a class="nav-link" href="#cena">Cena</a>
+            <a class="nav-link" href="#onas">O nás</a>
+            <a class="nav-link" href="#faq">FAQ</a>
+            <a class="nav-link" href="#kontakt">Kontakt</a>
+        </div>
+        <div class="nav-spacer"></div>
+        <a class="nav-cta" href="./registrace">Přihlásit se</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </nav>
+    <nav class="nav-drawer" id="navDrawer">
+        <a class="nav-drawer-link" href="#top">Domů</a>
+        <a class="nav-drawer-link" href="#program">Program</a>
+        <a class="nav-drawer-link active" href="#cena">Cena</a>
+        <a class="nav-drawer-link" href="#onas">O nás</a>
+        <a class="nav-drawer-link" href="#faq">FAQ</a>
+        <a class="nav-drawer-link" href="#kontakt">Kontakt</a>
+        <a class="nav-drawer-cta" href="./registrace">Přihlásit se</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+    <div class="hero-left">
+        <div class="label label-primary">Léto 2026 · Praha</div>
+        <h1>Letní módní<br><em>kreativní laboratoř</em></h1>
+        <p class="hero-sub">Letní FashionTech akademie pro holky ve věku 14–19 let v Praze. Sedm dní plných kreativní tvorby, experimentů a objevování. Budeš tvořit módu, kterou jen tak nikdo neviděl. Propojíš módní design, 3D tisk a umělou inteligenci a zjistíš, že kreativita nemá hranice.</p>
+        <div class="hero-btns">
+            <a class="btn btn-ink" href="./registrace">Chci se přihlásit</a>
+            <a class="btn btn-outline" href="#program">Více o programu</a>
+        </div>
+    </div>
+    <div class="hero-right">
+        <video controls poster="./video/hana_thumb.png">
+            <source src="./video/hana-valtova-transparent-corset-final-project (1).mp4" type="video/mp4">
+            Tvůj prohlížeč nepodporuje přehrávání videa.
+        </video>
+    </div>
+</section>
+
+<!-- PRESS BAR -->
+<div class="press-bar">
+    <span class="press-bar-label">Mohli jste o nás slyšet z:</span>
+    <div class="press-logos">
+        <a class="press-logo-link" href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener" aria-label="Wired">
+            <span class="press-logo-text">Wired</span>
+        </a>
+        <a class="press-logo-link" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener" aria-label="ČT :D">
+            <span class="press-logo-text">ČT :D</span>
+        </a>
+        <a class="press-logo-link" href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener" aria-label="Hospodářské noviny">
+            <span class="press-logo-text">Hospodářské noviny</span>
+        </a>
+        <a class="press-logo-link" href="https://magazin.hrot24.cz/clanek/linette-manuel-navrharka-mody-budoucnosti-HpdXM-683c7446ab9ac80e9863b318" target="_blank" rel="noopener" aria-label="Hrot">
+            <span class="press-logo-text">Hrot</span>
+        </a>
+        <a class="press-logo-link" href="https://zpravy.aktualne.cz/domaci/3d-tisk-obleceni/r~32493ce2a66411ef80bfac1f6b220ee8/?lp=1" target="_blank" rel="noopener" aria-label="Aktuálně.cz">
+            <span class="press-logo-text">Aktuálně.cz</span>
+        </a>
+        <a class="press-logo-link" href="https://youtu.be/SF-NV1AnazM?si=2p3BfzGZL5_mpvZt&t=302" target="_blank" rel="noopener" aria-label="Abíčko">
+            <span class="press-logo-text">Abíčko</span>
+        </a>
+        <a class="press-logo-link" href="https://forbes.cz/svet-technologii-i-dobra-zabava-takovy-byl-forbes-next-big-thing/" target="_blank" rel="noopener" aria-label="Forbes Next Big Thing">
+            <span class="press-logo-text">Forbes Next Big Thing</span>
+        </a>
+    </div>
+</div>
+
+<!-- PRICE BANNER -->
+<section class="price-banner">
+    <div class="price-item">
+        <div class="price-item-label">Pro koho</div>
+        <div class="price-item-value">14–19 let</div>
+        <div class="price-item-sub">Holky z celé ČR · letní akademie · Praha 7</div>
+    </div>
+    <div class="price-item">
+        <div class="price-item-label">Celodenní program</div>
+        <div class="price-item-value">od pondělí do neděle</div>
+        <div class="price-item-sub">Po–So 9:00–17:00 · Ne 9:00–12:00</div>
+    </div>
+    <div class="price-item">
+        <div class="price-item-label">Velikost skupinky</div>
+        <div class="price-item-value">max. 10</div>
+        <div class="price-item-sub">Maximálně 10 účastnic na termín</div>
+    </div>
+        <div class="price-item">
+        <div class="price-item-label">Cena programu</div>
+        <div class="price-item-value highlight">8 888 Kč</div>
+        <div class="price-item-sub">45 hodin intenzivní tvorby · méně než 198 Kč/hod</div>
+        <div class="benefit-logos-img">
+            <img src="./img/benefit-logos.png" alt="Benefit Plus, Pluxee, Up Benefity, Edenred" style="width:100%;max-width:320px;height:auto;object-fit:contain;display:block;">
+        </div>
+    </div>
+</section>
+
+<!-- PRO KOHO -->
+<section class="forwhom-section">
+    <div class="forwhom-text">
+        <div class="label label-coral">Pro koho je laboratoř</div>
+        <h2>Přijď přesně taková, jaká jsi</h2>
+        <p>Nepotřebuješ žádné předchozí zkušenosti s módou, technologiemi ani s uměním. Stačí mít nadšení, chuť objevovat a experimentovat. Patříš k nám pokud:</p>
+        <div class="forwhom-checks">
+            <div class="forwhom-check"><span class="dot"></span>Baví tě móda a chceš zkusit, jaké to je tvořit ji jinak.</div>
+            <div class="forwhom-check"><span class="dot"></span>Lákají tě technologie a chceš si na vlastní kůži zažít, co umí 3D tiskárna nebo AI.</div>
+            <div class="forwhom-check"><span class="dot"></span>Přemýšlíš o studiu designu, umění nebo technické škole a potřebuješ skvělé portfólio.</div>
+            <div class="forwhom-check"><span class="dot"></span>Prostě chceš zažít něco, co tě pohltí, nadchne a co si budeš pamatovat roky.</div>
+        </div>
+    </div>
+    <div class="forwhom-image">
+        <!-- PLACEHOLDER: foto účastnic při práci -->
+        <div class="img-placeholder" style="min-height:520px;">
+            <img src="./img/1.jpg" alt="Makeful laboratoř">
+        </div>
+    </div>
+</section>
+
+<!-- CO SI ODNESEŠ – module-style (matches programs.html) -->
+<section class="create-section" id="program">
+    <div class="create-intro">
+        <div class="label label-magenta">Projekt</div>
+        <h2>Co si odneseš domů</h2>
+        <p>Za sedm dní vytvoříš kouzelné modní kousky, odneseš si nové dovednosti, sebevědomí a portfólio, které mluví za vše.</p>
+    </div>
+
+    <!-- Projekt 01 – tenisky -->
+    <div class="mod-split" style="border-top:var(--border);">
+        <div class="mod-text" style="border-left:6px solid var(--primary);">
+            <div class="label label-primary">Projekt 01</div>
+            <h2>Výšivka na boty</h2>
+            <p>Navrhneš a vytiskneš originální 3D tištěnou výšivku přímo na svůj pár bot. Unikát, který nikdo jiný nebude mít.</p>
+            <div class="mod-skills-block">
+                <div class="mod-skills-heading">Co se naučíš</div>
+                <ul class="mod-skills-list">
+                    <li>Základy 3D tisku na textil a obuv</li>
+                    <li>Navrhování vzorů a jejich export do tiskárny</li>
+                    <li>Pokročilé používání 3D tiskárny</li>
+                </ul>
+            </div>
+            <div class="mod-tech-block">
+                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-tags">
+                    <span class="mod-tag" style="--tc:var(--primary-dark)">FDM 3D tiskárna</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)">TinkerCAD</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)">Slicování</span>
+                </div>
+            </div>
+        </div>
+        <div class="mod-image">
+            <img src="./img/makeful_projekty_shoe.jpg" alt="Makeful 3D tištěná nášivka na boty">
+        </div>
+    </div>
+
+    <!-- Projekt 02 – tričko -->
+    <div class="mod-split mod-split-flip">
+        <div class="mod-image">
+            <img src="./img/makeful_projekty2.jpg" alt="Makeful 3D tištěné tričko">
+        </div>
+        <div class="mod-text" style="border-left:6px solid var(--coral);">
+            <div class="label label-coral">Projekt 02</div>
+            <h2>Vytuněné tričko</h2>
+            <p>Oživíš tričko 3D tištenými látkami a nášivkami, které sama vymyslíš.</p>
+            <div class="mod-skills-block">
+                <div class="mod-skills-heading">Co se naučíš</div>
+                <ul class="mod-skills-list">
+                    <li>Tvorba 3D tištěné látky</li>
+                    <li>Návrh jednoduchých nášivek</li>
+                    <li>Kombinace 3D tisku a klasického textilu</li>
+                </ul>
+            </div>
+            <div class="mod-tech-block">
+                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-tags">
+                    <span class="mod-tag" style="--tc:#d45060">TinkerCAD</span>
+                    <span class="mod-tag" style="--tc:#d45060">3D pero</span>
+                    <span class="mod-tag" style="--tc:#d45060">Textilní 3D tisk</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projekt 03 – oblečení budoucnosti -->
+    <div class="mod-split">
+        <div class="mod-text" style="border-left:6px solid var(--magenta);">
+            <div class="label label-magenta">Projekt 03</div>
+            <h2>Letní bunda budoucnosti</h2>
+            <p>Navrhneš a vytiskneš vlastní 3D tištěnou bundu z materiálu, který svítí ve tmě, měří teplotu nebo se dá dokonale recyklovat.</p>
+            <div class="mod-skills-block">
+                <div class="mod-skills-heading">Co se naučíš</div>
+                <ul class="mod-skills-list">
+                    <li>Celý proces od návrhu k hotovému výrobku</li>
+                    <li>Práce s pokročilými a chytrými materiály</li>
+                    <li>Sestavení a spájení 3D tištěných dílů</li>
+                </ul>
+            </div>
+            <div class="mod-tech-block">
+                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-tags">
+                    <span class="mod-tag" style="--tc:#b8407a">FDM 3D tiskárna</span>
+                    <span class="mod-tag" style="--tc:#b8407a">Krejčovská panna</span>
+                    <span class="mod-tag" style="--tc:#b8407a">Chytré materiály</span>
+                </div>
+            </div>
+        </div>
+        <div class="mod-image">
+            <img src="./img/makeful_projekty_jacket.jpg" alt="Makeful 3D tištěná bunda">
+        </div>
+    </div>
+
+    <!-- Projekt 04 – avatar -->
+    <div class="mod-split mod-split-flip">
+        <div class="mod-image">
+            <img src="./img/makeful_projekty4.jpg" alt="Virtuální modelka avatar">
+        </div>
+        <div class="mod-text" style="border-left:6px solid var(--lavender);">
+            <div class="label label-lavender">Projekt 04</div>
+            <h2>Virtuální modelka</h2>
+            <p>Móda v digitálním světě je tady a teď a ty si ji vyzkoušíš vytvořit. Vygeneruješ pomocí AI nástrojů digitální verzi modelky, která ukáže tvůj design ve virtuálním 3D prostoru.</p>
+            <div class="mod-skills-block">
+                <div class="mod-skills-heading">Co se naučíš</div>
+                <ul class="mod-skills-list">
+                    <li>Tvorba digitálních avatarů a modelek</li>
+                    <li>Virtuální styling a prezentace designu</li>
+                    <li>Základy AI promptování</li>
+                </ul>
+            </div>
+            <div class="mod-tech-block">
+                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-tags">
+                    <span class="mod-tag" style="--tc:#6248c4">ChatGPT</span>
+                    <span class="mod-tag" style="--tc:#6248c4">Style3D AI</span>
+                    <span class="mod-tag" style="--tc:#6248c4">Fashion Sketching</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projekt 05 – AI reklama -->
+    <div class="mod-split">
+        <div class="mod-text" style="border-left:6px solid var(--lilac);">
+            <div class="label label-lilac">Projekt 05</div>
+            <h2>AI reklamní video</h2>
+            <p>Vytvoříš profesionálně vypadající kampaň k tvému oblečení, na který budeš hrdá. Tvorba proběhne pomocí našeho jednoduchého AI nástroje.</p>
+            <div class="mod-skills-block">
+                <div class="mod-skills-heading">Co se naučíš</div>
+                <ul class="mod-skills-list">
+                    <li>Generování reklamního obsahu pomocí AI</li>
+                    <li>Základy video storytellingu v módě</li>
+                    <li>Prezentace vlastního designu publiku</li>
+                </ul>
+            </div>
+            <div class="mod-tech-block">
+                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-tags">
+                    <span class="mod-tag" style="--tc:#8840c8">AI Video tvorba</span>
+                    <span class="mod-tag" style="--tc:#8840c8">SuperCreators aplikace</span>
+                    <span class="mod-tag" style="--tc:#8840c8">Storytelling</span>
+                </div>
+            </div>
+        </div>
+        <div class="mod-image">
+            <img src="./img/video_avatar.gif" alt="AI reklamní video">
+        </div>
+    </div>
+
+    <!-- Projekt 06 – portfólio -->
+    <div class="mod-split mod-split-flip">
+        <div class="mod-image">
+            <img src="./img/makeful_projekty5.jpg" alt="Webové portfólio">
+        </div>
+        <div class="mod-text" style="border-left:6px solid var(--primary);">
+            <div class="label label-primary">Projekt 06</div>
+            <h2>Webové portfólio</h2>
+            <p>Všechnu svoji práci zdokumentuješ a přetvoříš na webové portfólio, které můžeš přiložit do přihlášky na školu nebo do soutěže.</p>
+            <div class="mod-skills-block">
+                <div class="mod-skills-heading">Co se naučíš</div>
+                <ul class="mod-skills-list">
+                    <li>Sestavení osobního webového portfolia</li>
+                    <li>Prezentace kreativní práce online</li>
+                    <li>Dokumentace celého tvůrčího procesu</li>
+                </ul>
+            </div>
+            <div class="mod-tech-block">
+                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-tags">
+                    <span class="mod-tag" style="--tc:var(--primary-dark)">Canva</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)">Dokumentace</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)">Prezentační skills</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRAKTICKÉ DOVEDNOSTI -->
+<section class="skills-section">
+    <div class="skills-header">
+        <div class="skills-header-left">
+            <div class="label label-primary">Dovednosti</div>
+            <h2>Praktické dovednosti<br>a kreativní tvorba každý den</h2>
+        </div>
+        <p style="color:rgba(255,255,255,0.5); max-width: 400px; font-size:0.95rem; line-height:1.7; margin:0;">Žádná zbytečná teorie navíc. Každá hodina je ruka v ruce s praxí. Učíš se tím, že tvoříš.</p>
+    </div>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon"><span class="material-symbols-outlined">view_in_ar</span></div>
+            <h3>Navrhuješ a tvoříš ve 3D</h3>
+            <p>Od prvního náčrtu až po fyzický výrobek v ruce. Zjistíš, že 3D tisk není raketová věda. Je to zabávný nástroj pro kreativní tvorbu.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><span class="material-symbols-outlined">texture</span></div>
+            <h3>Prozkoumáš svět materiálů</h3>
+            <p>Jak fungují obyčejné Filament, biofilamenty a chytré filamenty? Sáhneš na materiály, o jejichž existenci jsi možná ani nevěděla a naučíš se je kreativně kombinovat.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><span class="material-symbols-outlined">smart_toy</span></div>
+            <h3>Zkrotíš AI nástroje</h3>
+            <p>Vytvoříš potisky, reklamní video i webové portfólio pomocí nástrojů, které právě teď mění celý módní průmysl.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><span class="material-symbols-outlined">person_play</span></div>
+            <h3>Vytvoříš digitálního avatara</h3>
+            <p>Navrhneš digitální modelku, na které budeš, prezentovat své modná návrhy a virtuální kolekce.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><span class="material-symbols-outlined">lightbulb</span></div>
+            <h3>Rozvineš kreativní myšlení</h3>
+            <p>Každý den se necháš inspirovat tvůrci, kteří mění módu i technologie ve světovém měřítku. Přijdeš domů s jiným pohledem na to, co všechno je dnes možné.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><span class="material-symbols-outlined">web</span></div>
+            <h3>Sestavíš portfólio, na které jsi hrdá</h3>
+            <p>Z kempu si odneseš portfólio, které můžeš využít na přijímačkách na umělecké i technické školy.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program-section">
+    <div class="program-header">
+        <div class="label label-lavender">Týdenní program</div>
+        <h2>Jak vypadá program letní laboratoře</h2>
+        <p style="max-width:600px; margin: 16px auto 0;">Každý den vytvoříš konkrétní projekt a shledneš online přednášku od skutečného odborníka z oboru módy a technologií.</p>
+    </div>
+    <div class="program-days">
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Pondělí</div>
+                <div class="day-num">Den 1</div>
+            </div>
+            <div class="day-body">
+                <p>Poprvé sáhneš na 3D tiskárnu a objevíš, co všechno jde z plastového vlákna vytvořit. Vytvoříš si základní vzorník a vytiskneš nášivku na boty.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Úterý</div>
+                <div class="day-num">Den 2</div>
+            </div>
+            <div class="day-body">
+                <p>Vytvoříš si plně 3D tištěnou látku a naučíš se spojovat 3D tištěné díly dohromady a s textilem. Vyzkoušíš si 3D pero, šicí stroj i spojování pájením.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Středa</div>
+                <div class="day-num">Den 3</div>
+            </div>
+            <div class="day-body">
+                <p>Kreativní jádro týdne: brainstorming a navrhování módní přehlídky budoucnosti. Začneš s tiskem 3D tištěné bundy. </p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Čtvrtek</div>
+                <div class="day-num">Den 4</div>
+            </div>
+            <div class="day-body">
+                <p>Budeš pokračovat ve výrobě 3D tištěné bundy. 3D tiskárna pracuje na tvém oblečení a ty zároveň tvoříš digitální AI modelku. </p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Pátek</div>
+                <div class="day-num">Den 5</div>
+            </div>
+            <div class="day-body">
+                <p>Pokračuješ v 3D tisku bundy, spojuješ vytištěné díly, dokumentuješ svůj proces a připravuješ AI reklamu.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Sobota</div>
+                <div class="day-num">Den 6</div>
+            </div>
+            <div class="day-body">
+                <p>Poskládáš webové portfólio ze všech prací týdne, odprezentujeme si navzájem projekty a připravíš se na závěrečnou prezentaci.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name">Neděle</div>
+                <div class="day-num">Den 7 · 9–12</div>
+            </div>
+            <div class="day-body">
+                <p>Slavnostní závěrečná prezentace projektů. Odejdeš domů s diplomem, portfoliem a plnýma rukama vlastních výtvorů.</p>
+            </div>
+        </div>
+    </div>
+    <div class="program-meta">
+        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--primary-dark); font-size:20px;">schedule</span><span>Po–So <strong>9:00–17:00</strong> · Ne <strong>9:00–12:00</strong></span></div>
+        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--coral); font-size:20px;">groups</span><span>Max. <strong>10 účastnic</strong> na turnus</span></div>
+        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--magenta); font-size:20px;">restaurant</span><span><strong>40 min</strong> oběd + 2 × 10 min přestávka</span></div>
+    </div>
+</section>
+
+<!-- CO JE V CENĚ -->
+<section class="included-section" id="cena">
+    <div class="included-col">
+        <div class="label label-primary">Co je zahrnuto</div>
+        <h2>Vše, co potřebuješ je v ceně kempu</h2>
+        <p>Přijď jen s chutí tvořit, o zbytek se postaráme.</p>
+        <ul class="included-list">
+            <li class="included-item"><span class="check check-yes">✓</span>Plně vybavená dílna – 3D tiskárny, 3D pera, krejčovské panny, šicí stroje</li>
+            <li class="included-item"><span class="check check-yes">✓</span>Všechny materiály k výrobě (filamenty, textil, doplňky)</li>
+            <li class="included-item"><span class="check check-yes">✓</span>Tričko a boty, které si vlastnoručně upravíš a odneseš</li>
+            <li class="included-item"><span class="check check-yes">✓</span>Přístup k výukové platformě a studijním materiálům</li>
+            <li class="included-item"><span class="check check-yes">✓</span>Online inspirativní přednáška od futuristických návrhářů každý den</li>
+            <li class="included-item"><span class="check check-yes">✓</span>Občerstvení – čerstvé ovoce, oříšky, voda, čaje</li>
+            <li class="included-item"><span class="check check-yes">✓</span>Webové portfólio, diplom a slavnostní prezentace na závěr</li>
+        </ul>
+        <div class="price-callout">
+            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--primary-dark); margin-bottom:14px; display:flex; align-items:center; gap:8px;"><span style="display:block;width:18px;height:3px;background:var(--primary-dark);flex-shrink:0;"></span>Hodnota programu</div>
+            <div style="background:var(--primary); color:var(--ink); padding:16px 20px; margin-bottom:20px;">
+                <div style="font-family:var(--font-display); font-size:1.5rem; font-weight:900; line-height:1.1;">45 hodin intenzivní tvorby</div>
+                <div style="font-size:1rem; font-weight:700; margin-top:6px;">za méně než 198 Kč / hodinu</div>
+            </div>
+            <div class="price-callout-main">8 888 Kč</div>
+            <p class="price-callout-sub">Záloha pro rezervaci místa jen <strong>1 500 Kč</strong> · doplatek 14 dní před akademií</p>
+            <div class="benefits-row">
+                <img src="./img/benefit-logos.png" alt="Benefit Plus, Pluxee, Up Benefity, Edenred" style="width:100%;max-width:300px;height:auto;object-fit:contain;display:block;margin-top:4px;">
+            </div>
+        </div>
+    </div>
+    <div class="included-col">
+        <div class="label label-coral">Co si zajisti ty</div>
+        <h2>Jen jedno si vyřeš sama</h2>
+        <p>Ve studiu bude menší občerstvení, ovoce, oříšky, čaje a voda, ale oběd si každá řeší po svém. V okolí je spousta skvělých možností, kam se jít najíst.</p>
+        <ul class="included-list" style="margin-top: 40px;">
+            <li class="included-item"><span class="check check-no">✕</span>Obědy (kavárny, restaurace a bistra v docházkové vzdálenosti)</li>
+        </ul>
+        <div style="margin-top: 48px; padding: 32px; background: var(--white); border: var(--border);">
+            <div style="font-weight: 700; font-size:0.9rem; margin-bottom: 12px; color: var(--ink);">Vlastní notebook si můžeš vzít, ale není podmínkou.</div>
+            <p style="font-size:0.88rem; line-height:1.7; margin:0; color:var(--mid);">V dílně máme počítače pro všechny. Pokud vlastní notebook máš, přines ho. Můžeš pracovat v prostředí, které už znáš.</p>
+        </div>
+    </div>
+</section>
+
+<!-- GALERIE -->
+<section class="gallery-container">
+    <div class="gallery-big">
+        <!-- PLACEHOLDER: velké foto dílny nebo skupiny při práci -->
+        <div class="img-placeholder" style="min-height:560px;">
+            <img src="./img/7.png" alt="">
+        </div>
+    </div>
+    <div class="gallery-text">
+        <div class="label">Podívej se</div>
+        <h2>Jak to vypadá u nás v laboratoři</h2>
+    </div>
+    <div class="gallery-small-1">
+        <div class="img-placeholder" style="min-height:250px;">
+            <img src="./img/8.png" alt="">
+        </div>
+    </div>
+    <div class="gallery-small-2">
+        <div class="img-placeholder" style="min-height:250px;">
+            <img src="./img/3.jpg" alt="">
+        </div>
+    </div>
+    <div class="gallery-small-3" style="overflow:hidden; background:var(--off); border-top:var(--border);">
+        <div class="img-placeholder" style="min-height:250px;">
+            <img src="./img/web_pic3.png" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+    <div class="testimonials-top" style="padding-bottom:80px;">
+        <div class="label label-lilac" style="justify-content:center;">Co říkají absolventky</div>
+        <h2>Co říkají ty, které už program zažily ♥</h2>
+    </div>
+    <div class="testimonials-quotes">
+        <div class="testimonial-card">
+            <p>„Naučila jsem se toho opravdu hodně. Nejvíc jsem ocenila práci s počítačovými programy a 3D tiskárnou. Jsem ráda, že jsem si mohla vyzkoušet všechny techniky spojené s 3D tištěnou módou a poslouchat zajímavé přednášky."</p>
+            <div class="t-attr">Hana V.</div>
+        </div>
+        <div class="testimonial-card">
+            <p>„Tento kurz mě neuvěřitelně inspiroval pro budoucí tvorbu. Naučila jsem se pracovat s různými softwary a experimentovala s technikami od 3D tisku po 3D pera. Byla jsem naprosto spokojená s celým programem."</p>
+            <div class="t-attr">Ema Z.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ČT Rozhovor – video section (same as about.html #talk) -->
+<section class="sc-video-section">
+    <div class="sc-video-header">
+        <div>
+            <div class="label label-magenta" style="color:var(--magenta);">Pusť si rozhovor · Abíčko</div>
+            <h2>Rozhovor se zakladatelkou<br>o módě budnoucnosti</h2>
+        </div>
+        <div>
+            <p>Linette v rozhovoru pro Českou televizi vypráví, jak 3D tisk mění svět módy a proč by tuto dovednost měly ovládat i mladé ženy. Pusť si reportáž z ČT :D.</p>
+            <a href="https://youtu.be/SF-NV1AnazM?si=-7JkdFcXKMG8crxY&t=301" target="_blank" class="btn btn-primary" style="margin-top:20px;">Spustit reportáž ↗</a>
+        </div>
+    </div>
+    <div class="sc-video-embed">
+        <iframe
+            src="https://youtu.be/SF-NV1AnazM?si=-7JkdFcXKMG8crxY&t=301"
+            title="Makeful – reportáž pro časopic Abc o módě budoucnosti"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<!-- TERMÍNY & REGISTRACE -->
+<section class="dates-section" id="registrace">
+    <div class="dates-col">
+        <div class="label label-lavender">Termíny 2026</div>
+        <h2>Vyber si svůj termín</h2>
+        <p>Devět termínů od června do srpna, každá má max. 10 míst. Rezervuj si své místo rychle, ať ti akademie neuteče.</p>
+        <div class="dates-grid">
+            <div class="date-item"><div class="date-num">29. 6. – 5. 7.</div><div class="date-year">2026 · Akademie 1</div></div>
+            <div class="date-item"><div class="date-num">6. 7. – 12. 7.</div><div class="date-year">2026 · Akademie 2</div></div>
+            <div class="date-item"><div class="date-num">13. 7. – 19. 7.</div><div class="date-year">2026 · Akademie 3</div></div>
+            <div class="date-item"><div class="date-num">20. 7. – 26. 7.</div><div class="date-year">2026 · Akademie 4</div></div>
+            <div class="date-item"><div class="date-num">27. 7. – 2. 8.</div><div class="date-year">2026 · Akademie 5</div></div>
+            <div class="date-item"><div class="date-num">3. 8. – 9. 8.</div><div class="date-year">2026 · Akademie 6</div></div>
+            <div class="date-item"><div class="date-num">10. 8. – 16. 8.</div><div class="date-year">2026 · Akademie 7</div></div>
+            <div class="date-item"><div class="date-num">17. 8. – 23. 8.</div><div class="date-year">2026 · Akademie 8</div></div>
+            <div class="date-item"><div class="date-num">24. 8. – 30. 8.</div><div class="date-year">2026 · Akademie 9</div></div>
+        </div>
+    </div>
+    <div class="dates-col" style="background: var(--off);">
+        <div class="label label-lavender">Jak se přihlásit</div>
+        <h2>Rezervuj si své místo ve 3 krocích</h2>
+        <p>Rychlé, jednoduché přihlašování. Místo ti potvrdíme obratem.</p>
+        <div class="reg-steps">
+            <div class="reg-step">
+                <div class="reg-step-num">1</div>
+                <div class="reg-step-text">
+                    <strong>Vyplň přihlášku</strong>
+                    <span>Klikni níže, vyber termín a vyplň přihlášku. Celé to zabere dvě minuty.</span>
+                </div>
+            </div>
+            <div class="reg-step">
+                <div class="reg-step-num">2</div>
+                <div class="reg-step-text">
+                    <strong>Uhraď zálohu 1 500 Kč</strong>
+                    <span>Platební údaje ti dorazí na emailem. Záloha závazně drží tvoje místo.</span>
+                </div>
+            </div>
+            <div class="reg-step">
+                <div class="reg-step-num">3</div>
+                <div class="reg-step-text">
+                    <strong>Doplatek 14 dní před kempem</strong>
+                    <span>Zbytek kurzovného uhradíš nejpozději 14 dní před začátkem kempu.</span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <a class="btn btn-primary" href="./registrace" target="_blank" rel="noopener">Chci se přihlásit</a>
+            <a class="btn btn-outline" href="#kontakt">Mám otázku</a>
+        </div>
+    </div>
+</section>
+
+<!-- ZAKLADATELKA -->
+<section class="founder-section" id="onas">
+    <div class="founder-img">
+        <!-- PLACEHOLDER: foto Linette Manuel -->
+        <div class="img-placeholder" style="min-height:520px;">
+            <img src="./img/Linette Manuel.png" alt="Linette Manuel Makeful">
+        </div>
+    </div>
+    <div class="founder-content">
+        <div class="label label-primary">Kdo stojí za projektem</div>
+        <div class="founder-quote">"Je úžasné sledovat, jak holky rozkvétají, když objeví, že technologie a kreativita si nejenom neodporují, ale navzájem dovolují tvořit úžasné věci."</div>
+        <div>
+            <div class="founder-name">Linette Manuel</div>
+            <div class="founder-role">Zakladatelka programu Makeful</div>
+        </div>
+        <div class="founder-bio">
+            Linette přináší do Makeful 8 let zkušeností s výukou technologií a designu na základních a středních školách, odborné znalosti z textilního a materiálového inženýrství a zkušenosti ze společností jako IBM. Celou kariéru se pohybuje přesně tam, kde se setkávají technologie, udržitelnost a lidé. Na tomto propojení stojí i Makeful.
+            <br><br>
+            Jako designérka na pomezí módy a technologií vytvořila haptický oblek kombinující 3D tisk, AI a nositelnou elektroniku. Získala Cenu děkana na ČVUT, byla finalistkou Creative Heroes Award 2024, objevila se v magazínu Wired a vystoupila na konferencích Forbes Next Big Thing i Future Port Youth.
+            <br><br>
+            Je také mentorkou mezinárodního programu Elegoo with Her, který propojuje dívky a ženy po celém světě se světem 3D tisku a otevírá jim cestu k technologiím.
+        </div>
+        <div>
+            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--mid); margin-bottom:12px;">Mohli jste o nás slyšet z:</div>
+            <div class="founder-media">
+                <a class="media-badge" href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener">Wired</a>
+                <a class="media-badge" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">ČT :D</a>
+                <a class="media-badge" href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener">Hospodářské noviny</a>
+                <a class="media-badge" href="https://magazin.hrot24.cz/clanek/linette-manuel-navrharka-mody-budoucnosti-HpdXM-683c7446ab9ac80e9863b318" target="_blank" rel="noopener">Hrot</a>
+                <a class="media-badge" href="https://zpravy.aktualne.cz/domaci/3d-tisk-obleceni/r~32493ce2a66411ef80bfac1f6b220ee8/" target="_blank" rel="noopener">Aktuálně.cz</a>
+                <a class="media-badge" href="https://youtu.be/SF-NV1AnazM?si=2p3BfzGZL5_mpvZt&t=302" target="_blank" rel="noopener">Abíčko</a>
+                <a class="media-badge" href="https://forbes.cz/svet-technologii-i-dobra-zabava-takovy-byl-forbes-next-big-thing/" target="_blank" rel="noopener">Forbes Next Big Thing</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- PŘEČTĚTE SI VÍCE -->
+<section class="press-articles-section">
+    <div class="press-articles-header">
+        <div class="label label-coral">Média</div>
+        <h2>Přečtěte si více</h2>
+    </div>
+    <div class="press-articles-grid">
+        <div class="press-article-card">
+            <div class="press-article-img">
+                <img src="./img/shot-wired.png" alt="Wired – Tak co si dnes vytisknu na rande?">
+            </div>
+            <div class="press-article-body">
+                <div class="press-article-source">Wired</div>
+                <h3 class="press-article-title">Tak co si dnes vytisknu na rande? Nákup oblečení má šanci se zásadně změnit</h3>
+                <a href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener" class="btn btn-outline press-article-btn">Chci si přečíst více</a>
+            </div>
+        </div>
+        <div class="press-article-card">
+            <div class="press-article-img">
+                <img src="./img/shot-hospodarky.png" alt="Hospodářské noviny – Z kalhot udělají tričko">
+            </div>
+            <div class="press-article-body">
+                <div class="press-article-source">Hospodářské noviny</div>
+                <h3 class="press-article-title">Z kalhot udělají tričko, z něj kabelku. Mladá Češka učí studenty tisknout si oblečení</h3>
+                <a href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener" class="btn btn-outline press-article-btn">Chci si přečíst více</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+    <div class="faq-header">
+        <div class="label label-coral">Časté otázky</div>
+        <h2>Nejčastější dotazy</h2>
+    </div>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Musím mít předchozí zkušenosti s módou nebo technologiemi?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Vůbec ne. Laboratoř je navržená pro úplné začátečnice i pro ty, kdo s technologiemi trochu pracovaly. Naši lektoři tě provedou vším krok za krokem a tempo přizpůsobí skupině.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Může se kurzu účastnit kluk?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Ano, může! Kluci jsou v laboratoři vítáni stejně jako holky. Důležité je mít chuť tvořit, experimentovat a objevovat.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Co musím mít s sebou?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Přijď v pohodlném oblečení, ve kterém ti nevadí pracovat s materiály. Veškeré vybavení, nástroje i materiály jsou zahrnuty v ceně, opravdu nemusíš nic kupovat předem.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Potřebuji vlastní notebook?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Vlastní notebook si klidně přines, ale není podmínkou. V dílně máme zařízení pro všechny.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Kde se laboratoř koná?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Kemp probíhá v naší dílně na Praze 7 na Argentinské 1.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Lze kemp uhradit přes Benefit Plus, Pluxee, Up Benefity nebo Edenred?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Ano! Přijímáme platbu prostřednictvím systémů Benefit Plus, Pluxee, Up Benefity i Edenred. Detaily k tomuto způsobu úhrady ti zašleme spolu s potvrzením registrace. Pokud máš dotaz, napiš nám na hello@make-ful.com.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Jak funguje platba zálohou?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Po odeslání přihlášky ti dorazí platební údaje na email. Záloha 1 500 Kč závazně rezervuje tvoje místo. Zbývající částku doplatíš nejpozději 14 dní před začátkem akademie. Zbytek platby můžeš také rozdělit na 2 části.</p>
+            </div>
+        </div>
+        <div class="faq-item" style="padding-bottom: 64px;">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Co se stane, pokud nestihnu svůj turnus?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>V případě potřeby je možné přesunout registraci na jiný dostupný turnus nejpozději 14 dní před začátkem. Napiš nám na hello@make-ful.com a domluvíme se.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact-section" id="kontakt">
+    <div class="contact-left">
+        <div>
+            <div class="label label-primary">Kontaktuj nás</div>
+            <h2>Rádi ti pomůžeme</h2>
+        </div>
+        <p>Máš dotaz k programu, termínům nebo platbě? Zavolej nebo napiš a odpovíme ti do 24 hodin.</p>
+        <div class="contact-links">
+            <a class="contact-link-item" href="tel:+420735820576">
+                <span class="material-symbols-outlined">call</span>+420 735 820 576
+            </a>
+            <a class="contact-link-item" href="mailto:linette@make-ful.com">
+                <span class="material-symbols-outlined">mail</span>hello@make-ful.com
+            </a>
+            <a class="contact-link-item" href="https://www.instagram.com/_makeful/" target="_blank" rel="noopener">
+                <span class="material-symbols-outlined">open_in_new</span>@_makeful na Instagramu
+            </a>
+        </div>
+    </div>
+    <div class="contact-right">
+        <div class="label" style="color:rgba(255,255,255,0.4);">Zanech zprávu</div>
+        <div id="cf-success" style="display:none; background:rgba(255,255,255,0.08); border-left:4px solid var(--primary); padding:24px 28px; color:var(--white); font-size:0.95rem; line-height:1.6;">
+            Zpráva odeslána! Ozveme se ti do 24 hodin.
+        </div>
+        <div id="cf-form">
+            <div class="contact-field">
+                <label for="cf-name">Jméno</label>
+                <input id="cf-name" type="text" placeholder="Tvoje jméno">
+            </div>
+            <div class="contact-field" style="margin-top:16px;">
+                <label for="cf-email">Email</label>
+                <input id="cf-email" type="email" placeholder="tvuj@email.cz">
+            </div>
+            <div class="contact-field" style="margin-top:16px;">
+                <label for="cf-msg">Zpráva</label>
+                <textarea id="cf-msg" rows="4" placeholder="Jak ti můžeme pomoci?"></textarea>
+            </div>
+            <div id="cf-error" style="display:none; color:#ff8a8a; font-size:0.85rem; margin-top:8px;"></div>
+            <button class="btn btn-primary" id="cf-submit" type="button" onclick="sendContactForm()" style="margin-top:8px;">Odeslat zprávu</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-main">
+        <div class="footer-col">
+            <h4>Menu</h4>
+            <ul class="footer-links">
+                <li><a href="#top">Domů</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#cena">Cena</a></li>
+                <li><a href="#onas">O nás</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sleduj nás</h4>
+            <ul class="footer-links">
+                <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
+                <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
+                <li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Dokumenty</h4>
+            <ul class="footer-links">
+                <li><a href="./ochrana-osobnich-udaju">Ochrana osobních údajů</a></li>
+                <li><a href="./obchodni-podminky">Obchodní podmínky</a></li>
+            </ul>
+        </div>
+        <div class="footer-col" style="grid-column: span 2;">
+            <h4>Kontakt</h4>
+            <ul class="footer-links">
+                <li><a href="mailto:linette@make-ful.com">linette@make-ful.com</a></li>
+                <li><a href="tel:+420735820576">+420 735 820 576</a></li>
+            </ul>
+            <div style="margin-top: 32px;">
+                <a href="./registrace" class="btn btn-primary" style="width:100%; display:block; text-align:center;">Přihlásit se na laboratoř</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bg-letter">M</div>
+        <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
+    </div>
+    <div class="copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
+</footer>
+
+<script>
+(function() {
+    var btn = document.getElementById('hamburger');
+    var drawer = document.getElementById('navDrawer');
+    if (btn && drawer) {
+        btn.addEventListener('click', function() {
+            var open = drawer.classList.toggle('open');
+            btn.classList.toggle('open', open);
+        });
+    }
+})();
+
+function toggleFaq(el) {
+    var item = el.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+}
+
+function sendContactForm() {
+    var name    = document.getElementById('cf-name').value.trim();
+    var email   = document.getElementById('cf-email').value.trim();
+    var message = document.getElementById('cf-msg').value.trim();
+    var errEl   = document.getElementById('cf-error');
+    errEl.style.display = 'none';
+
+    if (!email) {
+        errEl.textContent = 'Zadej prosím svůj email.';
+        errEl.style.display = 'block';
+        document.getElementById('cf-email').focus();
+        return;
+    }
+    if (!message) {
+        errEl.textContent = 'Napiš prosím zprávu.';
+        errEl.style.display = 'block';
+        document.getElementById('cf-msg').focus();
+        return;
+    }
+
+    var btn = document.getElementById('cf-submit');
+    btn.textContent = 'Odesílám...';
+    btn.disabled = true;
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            access_key: '396dff62-d26b-4b26-bb2b-3144fe06a643',
+            subject: 'Dotaz na Letní akademii',
+            from_name: name || 'Web kontaktní formulář',
+            email: email,
+            message: message,
+            redirect: 'false'
+        })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+        if (data.success) {
+            document.getElementById('cf-form').style.display = 'none';
+            document.getElementById('cf-success').style.display = 'block';
+        } else {
+            throw new Error(data.message || 'Chyba při odesílání.');
+        }
+    })
+    .catch(function() {
+        errEl.textContent = 'Nepodařilo se odeslat zprávu. Zkus to prosím znovu nebo napiš přímo na hello@make-ful.com.';
+        errEl.style.display = 'block';
+        btn.textContent = 'Odeslat zprávu';
+        btn.disabled = false;
+    });
+}
+
+// Active nav link highlighting based on scroll position
+(function() {
+    var navLinks = document.querySelectorAll('.nav-link[href^="#"], .nav-drawer-link[href^="#"]');
+    var sections = [];
+    navLinks.forEach(function(link) {
+        var id = link.getAttribute('href').replace('#','');
+        var el = id === 'top' ? document.body : document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, links: document.querySelectorAll('[href="#' + id + '"]') });
+    });
+    function updateActive() {
+        var scrollY = window.scrollY + 100;
+        var active = sections[0];
+        sections.forEach(function(s) {
+            var top = s.id === 'top' ? 0 : s.el.offsetTop;
+            if (top <= scrollY) active = s;
+        });
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (active) active.links.forEach(function(l) { l.classList.add('active'); });
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+})();
+</script>
+</body>
+</html>

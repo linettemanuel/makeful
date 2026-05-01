@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Přihláška – Letní módní kreativní laboratoř 2026 · Makeful</title>
+<meta name="description" content="Přihláška na Makeful Letní módní kreativní laboratoř 2026. Letní módní kreativní laboratoř pro dívky 14–19 let v Praze.">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="120x120" href="./img/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<style>
+:root {
+    --aqua:         #62D7F4;
+    --coral:        #FD7E8B;
+    --peach:        #FEB492;
+    --magenta:      #F996BF;
+    --lavender:     #9A75F0;
+    --lilac:        #C386F8;
+    --ink:          #12100E;
+    --white:        #FEFEFE;
+    --off:          #F5F3F0;
+    --mid:          #5C5856;
+    --border:       1px solid rgba(18,16,14,0.10);
+    --primary:      #FEB492;
+    --primary-dark: #d4713a;
+    --font-display: "Playfair Display", serif;
+    --font-ui:      "DM Sans", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--off);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+a { text-decoration: none; color: inherit; transition: 0.15s; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
+h1 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.03em; }
+p  { font-size: 0.95rem; line-height: 1.8; color: var(--mid); }
+
+/* ── NAV (matches summercamp.html) ── */
+header {
+    background: var(--white);
+    border-bottom: var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+.nav-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    height: 72px;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    border-right: var(--border);
+    flex-shrink: 0;
+}
+.nav-logo img { height: 22px; width: auto; }
+.nav-back {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-right: var(--border);
+    color: var(--mid);
+    transition: background 0.15s, color 0.15s;
+    gap: 8px;
+}
+.nav-back:hover { background: var(--off); color: var(--ink); }
+.nav-back::before { content: '←'; font-size: 1rem; }
+.nav-spacer { flex: 1; }
+.nav-badge {
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mid);
+    border-left: var(--border);
+}
+.nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+}
+.nav-cta {
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    background: var(--lilac);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    border-left: var(--border);
+    transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--lavender); }
+
+/* ── PAGE LAYOUT ── */
+.page-outer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+}
+
+/* ── HERO BAND ── */
+.form-hero {
+    background: var(--primary);
+    padding: 60px 64px 56px;
+    position: relative;
+    overflow: hidden;
+    border-left: 6px solid var(--primary-dark);
+}
+.form-hero::after {
+    content: 'M';
+    font-family: var(--font-display);
+    font-size: 30rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.15);
+    position: absolute;
+    top: -20%;
+    right: -2%;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+.form-hero .label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--primary-dark);
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+}
+.form-hero .label::before {
+    content: '';
+    display: block;
+    width: 20px; height: 3px;
+    background: var(--primary-dark);
+}
+.form-hero h1 {
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 14px;
+}
+.form-hero p {
+    color: rgba(18,16,14,0.65);
+    position: relative;
+    z-index: 1;
+    font-size: 0.95rem;
+}
+
+/* ── INFO BAR ── */
+.info-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--ink);
+    margin-bottom: 2px;
+    border-bottom: 2px solid var(--primary);
+}
+.info-item {
+    padding: 22px 28px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+.info-item:last-child { border-right: none; }
+.info-item .il {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 6px;
+}
+.info-item .iv {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+}
+.iv.hl { color: var(--primary); }
+
+/* ── FORM CARD ── */
+.form-card {
+    background: var(--white);
+    border: var(--border);
+    border-top: none;
+    padding: 52px 64px 64px;
+}
+
+/* ── SECTION LABEL ── */
+.sec-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--primary-dark);
+    margin-bottom: 22px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sec-label::before {
+    content: '';
+    display: block;
+    width: 18px; height: 2.5px;
+    background: var(--primary-dark);
+}
+.sec-label:first-child { margin-top: 0; }
+
+/* ── DIVIDER ── */
+.divider {
+    border: none;
+    border-top: var(--border);
+    margin: 36px 0 32px;
+}
+
+/* ── FIELDS ── */
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.row.full { grid-template-columns: 1fr; }
+.row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+.field label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.field label .req { color: var(--coral); margin-left: 3px; }
+.field input,
+.field select,
+.field textarea {
+    font-family: var(--font-ui);
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--off);
+    border: 1px solid rgba(18,16,14,0.12);
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    border-radius: 0;
+    width: 100%;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--lavender);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(154,117,240,0.1);
+}
+.field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C5856' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-color: var(--off);
+    padding-right: 40px;
+    cursor: pointer;
+}
+.field textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
+.field-hint {
+    font-size: 0.75rem;
+    color: var(--mid);
+    margin-top: -12px;
+    margin-bottom: 4px;
+    line-height: 1.5;
+}
+
+/* ── PAYMENT CARDS ── */
+.pay-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 4px; }
+.pay-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 4px; }
+.pay-card {
+    border: 1.5px solid rgba(18,16,14,0.12);
+    padding: 18px 16px;
+    cursor: pointer;
+    background: var(--off);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.pay-card:hover { border-color: var(--lavender); background: var(--white); transform: translateY(-1px); }
+.pay-card.selected { border-color: var(--lavender); background: var(--white); border-width: 2px; }
+.pay-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 10px; right: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--lavender);
+}
+.pay-card input[type=radio] { position: absolute; opacity: 0; pointer-events: none; }
+.pay-icon { font-size: 1.4rem; line-height: 1; margin-bottom: 2px; }
+.pay-name { font-size: 0.85rem; font-weight: 700; color: var(--ink); }
+.pay-desc { font-size: 0.75rem; color: var(--mid); line-height: 1.5; }
+
+/* ── BENEFIT PANEL ── */
+.benefit-panel {
+    display: none;
+    margin-top: 16px;
+    background: var(--off);
+    border-left: 3px solid var(--lavender);
+    padding: 20px 24px;
+}
+.benefit-panel.open { display: block; }
+.prov-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mid);
+    margin-bottom: 10px;
+    margin-top: 4px;
+}
+.prov-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+}
+.prov-card {
+    border: 1.5px solid rgba(18,16,14,0.12);
+    padding: 12px 8px;
+    cursor: pointer;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: border-color 0.15s;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    min-height: 46px;
+}
+.prov-card:hover { border-color: var(--lavender); }
+.prov-card.selected { border-color: var(--lavender); border-width: 2px; }
+.prov-card.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 4px; right: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--lavender);
+}
+.prov-card input[type=radio] { position: absolute; opacity: 0; pointer-events: none; }
+.forma-row { display: flex; gap: 10px; }
+.fcard {
+    flex: 1;
+    border: 1.5px solid rgba(18,16,14,0.12);
+    padding: 13px 16px;
+    cursor: pointer;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.15s;
+}
+.fcard:hover { border-color: var(--lavender); }
+.fcard.selected { border-color: var(--lavender); border-width: 2px; }
+.fcard input[type=radio] { position: absolute; opacity: 0; pointer-events: none; }
+.fcard-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(18,16,14,0.25);
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+}
+.fcard.selected .fcard-dot { background: var(--lavender); border-color: var(--lavender); }
+.fcard-label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+
+/* ── PROMO ── */
+.promo-wrap { display: flex; }
+.promo-input {
+    flex: 1;
+    font-family: var(--font-ui);
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--off);
+    border: 1px solid rgba(18,16,14,0.12);
+    border-right: none;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+}
+.promo-input:focus { border-color: var(--lavender); background: var(--white); }
+.promo-btn {
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    padding: 13px 24px;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+.promo-btn:hover { background: #2a2824; }
+.promo-msg { font-size: 0.78rem; margin-top: 8px; display: none; line-height: 1.5; }
+.promo-msg.ok { color: #3B6D11; display: block; }
+.promo-msg.err { color: #A32D2D; display: block; }
+
+/* ── GDPR BOX ── */
+.gdpr-box {
+    background: var(--off);
+    border-left: 4px solid var(--lavender);
+    padding: 18px 22px;
+    margin-bottom: 22px;
+}
+.gdpr-box p { font-size: 0.82rem; line-height: 1.7; margin: 0; }
+
+/* ── CONSENT ── */
+.consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.consent-row input[type=checkbox] {
+    margin-top: 2px;
+    width: 16px; height: 16px;
+    accent-color: var(--lavender);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.consent-row label {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.65;
+    cursor: pointer;
+}
+.consent-row label a {
+    color: var(--primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.consent-row label a:hover { color: var(--ink); }
+
+/* ── SUBMIT ── */
+.submit-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    border-top: var(--border);
+}
+.btn-submit {
+    background: var(--lilac);
+    color: var(--ink);
+    border: 2px solid var(--lilac);
+    padding: 17px 48px;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    min-width: 260px;
+}
+.btn-submit:hover:not(:disabled) { background: var(--lavender); transform: translateY(-2px); }
+.btn-submit:disabled { opacity: 0.45; cursor: default; transform: none; }
+.submit-note { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
+
+/* ── ERROR / SUCCESS ── */
+.form-error-banner {
+    display: none;
+    background: #fff0f0;
+    border-left: 4px solid var(--coral);
+    padding: 16px 22px;
+    margin-top: 20px;
+    font-size: 0.88rem;
+    color: #8b1a1a;
+    line-height: 1.6;
+}
+.success-banner {
+    display: none;
+    background: #eaf3de;
+    border-left: 4px solid #639922;
+    padding: 22px 28px;
+    margin-top: 28px;
+}
+.success-banner p { font-size: 0.92rem; color: #27500a; margin: 0; line-height: 1.7; }
+
+.required-note { font-size: 0.78rem; color: var(--mid); margin-bottom: 32px; }
+
+/* ── FOOTER ── */
+footer {
+    border-top: var(--border);
+    background: var(--white);
+    margin-top: 0;
+}
+.footer-main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.footer-col {
+    padding: 48px 40px;
+    border-right: var(--border);
+}
+.footer-col:last-child { border-right: none; }
+.footer-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    font-family: var(--font-ui);
+    font-weight: 700;
+}
+.footer-links-list { display: flex; flex-direction: column; gap: 10px; }
+.footer-links-list a { font-size: 0.85rem; color: var(--mid); transition: color 0.15s; }
+.footer-links-list a:hover { color: var(--ink); }
+.footer-bottom {
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: var(--border);
+}
+.footer-bg-letter {
+    font-family: var(--font-display);
+    font-size: 24vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+    user-select: none;
+}
+.footer-logo-img { height: 30px; width: auto; position: relative; z-index: 1; }
+.copyright {
+    text-align: center;
+    background: var(--ink);
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75rem;
+    padding: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .nav-badge, .nav-cta { display: none; }
+    .form-hero { padding: 44px 32px; }
+    .form-card { padding: 36px 28px 48px; }
+    .info-bar { grid-template-columns: 1fr 1fr; }
+    .info-item:nth-child(2) { border-right: none; }
+    .info-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+    .row { grid-template-columns: 1fr; }
+    .row.three { grid-template-columns: 1fr 1fr; }
+    .pay-grid-2 { grid-template-columns: 1fr; }
+    .pay-grid-3 { grid-template-columns: 1fr 1fr; }
+    .prov-grid { grid-template-columns: repeat(2, 1fr); }
+    .forma-row { flex-direction: column; }
+    .footer-main { grid-template-columns: 1fr 1fr; }
+    .footer-col:nth-child(2) { border-right: none; }
+    .footer-col:nth-child(n+3) { border-top: var(--border); }
+}
+@media (max-width: 480px) {
+    .pay-grid-3 { grid-template-columns: 1fr; }
+    .form-hero { padding: 36px 24px; }
+    .form-card { padding: 28px 20px 40px; }
+    .footer-main { grid-template-columns: 1fr; }
+    .footer-col { border-right: none; border-bottom: var(--border); }
+    .footer-col:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <div class="nav-wrapper">
+        <a href="/" class="nav-logo">
+            <img src="./img/makeful_logo_colours.png" alt="Makeful">
+        </a>
+        <a class="nav-back" href="./summercamp">Zpět na web</a>
+        <div class="nav-spacer"></div>
+        <div class="nav-badge">
+            <div class="nav-dot"></div>
+            Přihlášky otevřeny · Léto 2026
+        </div>
+        <a href="./summercamp#kontakt" class="nav-cta">Dotaz</a>
+    </div>
+</header>
+
+<div class="page-outer">
+
+    <!-- HERO -->
+    <div class="form-hero">
+        <div class="label">Makeful · FashionTech Akademie 2026</div>
+        <h1>Přihláška na letní módní<br>kreativní laboratoř</h1>
+        <p style="margin-top:14px;">Letní módní kreativní laboratoř pro dívky ve věku 14–19 let · Praha 7 · 7 dní plných tvorby</p>
+    </div>
+
+    <!-- INFO BAR -->
+    <div class="info-bar">
+        <div class="info-item">
+            <div class="il">Věk účastnice</div>
+            <div class="iv">14 – 19 let</div>
+        </div>
+        <div class="info-item">
+            <div class="il">Délka programu</div>
+            <div class="iv">7 dní · Po – Ne</div>
+        </div>
+        <div class="info-item">
+            <div class="il">Velikost skupinky</div>
+            <div class="iv">max. 10 účastnic</div>
+        </div>
+        <div class="info-item">
+            <div class="il">Cena programu</div>
+            <div class="iv hl">8 888 Kč</div>
+        </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="form-card">
+        <p class="required-note">Pole označená <span style="color:var(--coral)">*</span> jsou povinná.</p>
+
+        <!-- 1. ÚČASTNICE -->
+        <div class="sec-label">Informace o účastnici</div>
+        <div class="row">
+            <div class="field">
+                <label>Jméno účastnice <span class="req">*</span></label>
+                <input id="f-jmeno" type="text" placeholder="Tereza" autocomplete="given-name">
+            </div>
+            <div class="field">
+                <label>Příjmení účastnice <span class="req">*</span></label>
+                <input id="f-prijmeni" type="text" placeholder="Nováková" autocomplete="family-name">
+            </div>
+        </div>
+        <div class="row full">
+            <div class="field">
+                <label>Datum narození <span class="req">*</span></label>
+                <input id="f-datum" type="date">
+            </div>
+        </div>
+        <div class="row full">
+            <div class="field">
+                <label>Email účastnice</label>
+                <input id="f-email-uc" type="email" placeholder="tereza@email.cz" autocomplete="email">
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 2. RODIČ -->
+        <div class="sec-label">Kontakt na rodiče / zákonného zástupce</div>
+        <div class="row">
+            <div class="field">
+                <label>Jméno rodiče <span class="req">*</span></label>
+                <input id="f-rodic-jmeno" type="text" placeholder="Jana" autocomplete="given-name">
+            </div>
+            <div class="field">
+                <label>Příjmení rodiče <span class="req">*</span></label>
+                <input id="f-rodic-prijmeni" type="text" placeholder="Nováková" autocomplete="family-name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="field">
+                <label>Telefon <span class="req">*</span></label>
+                <input id="f-tel" type="tel" placeholder="+420 777 123 456" autocomplete="tel">
+            </div>
+        </div>
+        <div class="row full">
+            <div class="field">
+                <label>Email rodiče <span class="req">*</span></label>
+                <input id="f-email" type="email" placeholder="jana.novakova@email.cz" autocomplete="email">
+            </div>
+        </div>
+        <div class="row full">
+            <div class="field">
+                <label>Fakturační adresa (ulice, město, PSČ) <span class="req">*</span></label>
+                <input id="f-adresa" type="text" placeholder="Mánesova 12, Praha 2, 120 00" autocomplete="street-address">
+            </div>
+        </div>
+        <div class="row full">
+            <div class="field">
+                <label>Zdravotní omezení, alergie nebo zvláštní potřeby</label>
+                <textarea id="f-zdravi" placeholder="Např. alergie na lepek, astma… Pokud žádné nejsou, nechte prázdné."></textarea>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 3. TERMÍN -->
+        <div class="sec-label">Výběr termínu</div>
+        <div class="row full">
+            <div class="field">
+                <label>Preferovaný termín <span class="req">*</span></label>
+                <select id="f-termin">
+                    <option value="" disabled selected>Vyberte termín…</option>
+                    <option>Akademie 1 · 29. 6. – 5. 7. 2026</option>
+                    <option>Akademie 2 · 6. 7. – 12. 7. 2026</option>
+                    <option>Akademie 3 · 13. 7. – 19. 7. 2026</option>
+                    <option>Akademie 4 · 20. 7. – 26. 7. 2026</option>
+                    <option>Akademie 5 · 27. 7. – 2. 8. 2026</option>
+                    <option>Akademie 6 · 3. 8. – 9. 8. 2026</option>
+                    <option>Akademie 7 · 10. 8. – 16. 8. 2026</option>
+                    <option>Akademie 8 · 17. 8. – 23. 8. 2026</option>
+                    <option>Akademie 9 · 24. 8. – 30. 8. 2026</option>
+                </select>
+            </div>
+        </div>
+        <div class="row full">
+            <div class="field">
+                <label>Náhradní termín (pokud bude preferovaný obsazen)</label>
+                <select id="f-termin2">
+                    <option value="" disabled selected>Vyberte termín…</option>
+                    <option>Akademie 1 · 29. 6. – 5. 7. 2026</option>
+                    <option>Akademie 2 · 6. 7. – 12. 7. 2026</option>
+                    <option>Akademie 3 · 13. 7. – 19. 7. 2026</option>
+                    <option>Akademie 4 · 20. 7. – 26. 7. 2026</option>
+                    <option>Akademie 5 · 27. 7. – 2. 8. 2026</option>
+                    <option>Akademie 6 · 3. 8. – 9. 8. 2026</option>
+                    <option>Akademie 7 · 10. 8. – 16. 8. 2026</option>
+                    <option>Akademie 8 · 17. 8. – 23. 8. 2026</option>
+                    <option>Akademie 9 · 24. 8. – 30. 8. 2026</option>
+                </select>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 4. PLATBA -->
+        <div class="sec-label">Výše platby <span style="color:var(--coral);font-weight:400;letter-spacing:0;text-transform:none;font-size:0.9em;">*</span></div>
+        <div class="pay-grid-2">
+            <div class="pay-card" id="vp-full" onclick="selectVyse('full')">
+                <input type="radio" name="vyse" value="Celý program najednou">
+                <div class="pay-icon">💳</div>
+                <div class="pay-name">Celý program najednou</div>
+                <div class="pay-desc">Uhradíte celou částku při přihlášení.</div>
+            </div>
+            <div class="pay-card" id="vp-zaloha" onclick="selectVyse('zaloha')">
+                <input type="radio" name="vyse" value="Záloha + doplatek">
+                <div class="pay-icon">📅</div>
+                <div class="pay-name">Záloha + doplatek</div>
+                <div class="pay-desc">Zálohu uhradíte nyní, doplatek nejpozději 14 dní před akademií.</div>
+            </div>
+        </div>
+
+        <div style="margin-top:28px;"></div>
+        <div class="sec-label">Způsob platby <span style="color:var(--coral);font-weight:400;letter-spacing:0;text-transform:none;font-size:0.9em;">*</span></div>
+        <div class="pay-grid-3">
+            <div class="pay-card" id="sp-bank" onclick="selectZpusob('bank')">
+                <input type="radio" name="zpusob" value="Bankovní převod">
+                <div class="pay-icon">🏦</div>
+                <div class="pay-name">Bankovní převod</div>
+                <div class="pay-desc">Platební údaje obdržíte emailem.</div>
+            </div>
+            <div class="pay-card" id="sp-benefit" onclick="selectZpusob('benefit')">
+                <input type="radio" name="zpusob" value="Benefity">
+                <div class="pay-icon">🎫</div>
+                <div class="pay-name">Benefity</div>
+                <div class="pay-desc">Karta nebo poukázky od zaměstnavatele.</div>
+            </div>
+            <div class="pay-card" id="sp-combo" onclick="selectZpusob('combo')">
+                <input type="radio" name="zpusob" value="Kombinace">
+                <div class="pay-icon">✦</div>
+                <div class="pay-name">Kombinace</div>
+                <div class="pay-desc">Část benefity, zbytek bankovním převodem.</div>
+            </div>
+        </div>
+
+        <!-- BENEFIT PANEL -->
+        <div class="benefit-panel" id="benefit-panel">
+            <div class="prov-label">Poskytovatel benefitů</div>
+            <div class="prov-grid">
+                <div class="prov-card" id="pr-benefitplus" onclick="selectProvider('benefitplus')">
+                    <input type="radio" name="provider" value="Benefit Plus">
+                    Benefit Plus
+                </div>
+                <div class="prov-card" id="pr-pluxee" onclick="selectProvider('pluxee')">
+                    <input type="radio" name="provider" value="Pluxee">
+                    Pluxee
+                </div>
+                <div class="prov-card" id="pr-up" onclick="selectProvider('up')">
+                    <input type="radio" name="provider" value="Up Benefity">
+                    Up Benefity
+                </div>
+                <div class="prov-card" id="pr-edenred" onclick="selectProvider('edenred')">
+                    <input type="radio" name="provider" value="Edenred">
+                    Edenred
+                </div>
+            </div>
+            <div class="prov-label">Forma benefitu</div>
+            <div class="forma-row">
+                <div class="fcard" id="fc-karta" onclick="selectForma('karta')">
+                    <input type="radio" name="forma" value="Benefitní karta">
+                    <div class="fcard-dot"></div>
+                    <div class="fcard-label">Benefitní karta</div>
+                </div>
+                <div class="fcard" id="fc-poukazky" onclick="selectForma('poukazky')">
+                    <input type="radio" name="forma" value="Papírové poukázky">
+                    <div class="fcard-dot"></div>
+                    <div class="fcard-label">Papírové poukázky</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 5. PROMOKÓD -->
+        <div class="sec-label">Promokód <span style="color:var(--mid);font-weight:400;letter-spacing:0;text-transform:none;font-size:0.9em;">(nepovinné)</span></div>
+        <div class="field">
+            <input id="promo-input" type="text" placeholder="Zadejte váš promokód" style="background:var(--off); border:1px solid rgba(18,16,14,0.12); padding:13px 16px; font-family:var(--font-ui); font-size:0.92rem; color:var(--ink); width:100%; outline:none;">
+        </div>
+
+        <hr class="divider">
+
+        <!-- 6. SOUHLAS -->
+        <div class="sec-label">Souhlas a podmínky</div>
+        <div class="gdpr-box">
+            <p>Vyplněním přihlášky souhlasíte se zpracováním osobních údajů pro účely organizace programu. Údaje nejsou předávány třetím stranám. Záloha závazně rezervuje vaše místo. Doplatek je splatný nejpozději 14 dní před zahájením akademie.</p>
+        </div>
+        <div class="consent-row">
+            <input type="checkbox" id="c1">
+            <label for="c1">Souhlasím se <a href="./ochrana-osobnich-udaju">zpracováním osobních údajů</a> a <a href="./obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label>
+        </div>
+        <div class="consent-row">
+            <input type="checkbox" id="c2">
+            <label for="c2">Beru na vědomí, že záloha je po uhrazení nevratná a závazně rezervuje místo na vybraném termínu. <span style="color:var(--coral)">*</span></label>
+        </div>
+        <div class="consent-row">
+            <input type="checkbox" id="c3">
+            <label for="c3">Souhlasím s pořizováním fotografií a videí během programu pro účely propagace Makeful. (nepovinné)</label>
+        </div>
+
+        <div id="form-error" class="form-error-banner"></div>
+
+        <div class="submit-row">
+            <button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()">Odeslat přihlášku →</button>
+            <p class="submit-note">Po odeslání obdržíte email<br>s pokyny pro úhradu zálohy.</p>
+        </div>
+
+        <div class="success-banner" id="success-banner">
+            <p>✓ <strong>Přihláška byla odeslána!</strong> Brzy vás kontaktujeme na zadaný email s platebními pokyny a potvrzením místa.</p>
+        </div>
+
+    </div><!-- /.form-card -->
+</div><!-- /.page-outer -->
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-main">
+        <div class="footer-col">
+            <h4>Makeful</h4>
+            <div class="footer-links-list">
+                <a href="./summercamp">Letní akademie</a>
+                <a href="./summercamp#program">O programu</a>
+                <a href="./summercamp#faq">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Sleduj nás</h4>
+            <div class="footer-links-list">
+                <a href="https://www.instagram.com/_makeful/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.facebook.com/makefulmakeful" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.linkedin.com/company/make-ful" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Právní dokumenty</h4>
+            <div class="footer-links-list">
+                <a href="./ochrana-osobnich-udaju">Zásady ochrany osobních údajů</a>
+                <a href="./obchodni-podminky">Obchodní podmínky</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Kontakt</h4>
+            <div class="footer-links-list">
+                <a href="mailto:hello@make-ful.com">hello@make-ful.com</a>
+                <a href="tel:+420735820576">+420 735 820 576</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bg-letter">M</div>
+        <img src="./img/makeful_logo_colours.png" alt="Makeful" class="footer-logo-img" decoding="async">
+    </div>
+    <div class="copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
+</footer>
+
+<script>
+/* ── UI helpers ── */
+function selectVyse(v) {
+    ['full','zaloha'].forEach(function(x) {
+        var el = document.getElementById('vp-'+x);
+        el.classList.toggle('selected', x === v);
+        el.querySelector('input').checked = x === v;
+    });
+}
+function selectZpusob(v) {
+    ['bank','benefit','combo'].forEach(function(x) {
+        var el = document.getElementById('sp-'+x);
+        el.classList.toggle('selected', x === v);
+        el.querySelector('input').checked = x === v;
+    });
+    document.getElementById('benefit-panel').classList.toggle('open', v === 'benefit' || v === 'combo');
+}
+function selectProvider(v) {
+    ['benefitplus','pluxee','up','edenred'].forEach(function(x) {
+        var el = document.getElementById('pr-'+x);
+        el.classList.toggle('selected', x === v);
+        el.querySelector('input').checked = x === v;
+    });
+}
+function selectForma(v) {
+    ['karta','poukazky'].forEach(function(x) {
+        var el = document.getElementById('fc-'+x);
+        el.classList.toggle('selected', x === v);
+        el.querySelector('input').checked = x === v;
+    });
+}
+/* ── Web3Forms submit ── */
+function handleSubmit() {
+    var errBanner = document.getElementById('form-error');
+    errBanner.style.display = 'none';
+
+    // Validate required checkboxes
+    if (!document.getElementById('c1').checked || !document.getElementById('c2').checked) {
+        errBanner.textContent = 'Prosím potvrďte povinné souhlasy před odesláním přihlášky.';
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+    // Validate required fields
+    var jmeno        = document.getElementById('f-jmeno').value.trim();
+    var prijmeni     = document.getElementById('f-prijmeni').value.trim();
+    var datum        = document.getElementById('f-datum').value.trim();
+    var rodicJmeno   = document.getElementById('f-rodic-jmeno').value.trim();
+    var rodicPrijmeni= document.getElementById('f-rodic-prijmeni').value.trim();
+    var tel          = document.getElementById('f-tel').value.trim();
+    var email   = document.getElementById('f-email').value.trim();
+    var adresa  = document.getElementById('f-adresa').value.trim();
+    var termin  = document.getElementById('f-termin').value;
+    var vyse    = document.querySelector('input[name="vyse"]:checked');
+    var zpusob  = document.querySelector('input[name="zpusob"]:checked');
+
+    if (!jmeno || !prijmeni || !datum || !rodicJmeno || !rodicPrijmeni || !tel || !email || !adresa || !termin) {
+        errBanner.textContent = 'Vyplňte prosím všechna povinná pole.';
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+    if (!vyse) {
+        errBanner.textContent = 'Vyberte prosím výši platby.';
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+    if (!zpusob) {
+        errBanner.textContent = 'Vyberte prosím způsob platby.';
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+
+    // Optional fields
+    var emailUc  = document.getElementById('f-email-uc').value.trim();
+    var zdravi   = document.getElementById('f-zdravi').value.trim();
+    var termin2  = document.getElementById('f-termin2').value;
+    var provider = document.querySelector('input[name="provider"]:checked');
+    var forma    = document.querySelector('input[name="forma"]:checked');
+    var promo    = document.getElementById('promo-input').value.trim();
+    var foto     = document.getElementById('c3').checked ? 'Ano' : 'Ne';
+
+    var btn = document.getElementById('submit-btn');
+    btn.textContent = 'Odesílám…';
+    btn.disabled = true;
+
+    var payload = {
+        access_key: '10b6c3eb-5397-4ee6-85fd-32a41350607c',
+        subject: 'Přihláška na Letní akademii – ' + jmeno + ' ' + prijmeni + ' | ' + rodicJmeno + ' ' + rodicPrijmeni,
+        from_name: rodicJmeno + ' ' + rodicPrijmeni,
+        email: email,
+        redirect: 'false',
+
+        'Jméno účastnice':              jmeno,
+        'Příjmení účastnice':           prijmeni,
+        'Datum narození':               datum,
+        'Email účastnice':              emailUc || '—',
+
+        'Jméno rodiče':                 rodicJmeno,
+        'Příjmení rodiče':              rodicPrijmeni,
+        'Telefon':                      tel,
+        'Fakturační adresa':            adresa,
+
+        'Zdravotní omezení / alergie':  zdravi || '—',
+
+        'Preferovaný termín':           termin,
+        'Náhradní termín':              termin2 || '—',
+
+        'Výše platby':                  vyse.value,
+        'Způsob platby':                zpusob.value,
+        'Poskytovatel benefitů':        provider ? provider.value : '—',
+        'Forma benefitu':               forma ? forma.value : '—',
+        'Promokód':                     promo || '—',
+
+        'Souhlas s fotografováním':     foto
+    };
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+        if (data.success) {
+            document.getElementById('form-card') && (document.getElementById('form-card').style.display = 'none');
+            var banner = document.getElementById('success-banner');
+            banner.style.display = 'block';
+            banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            btn.style.display = 'none';
+        } else {
+            throw new Error(data.message || 'Chyba');
+        }
+    })
+    .catch(function() {
+        errBanner.textContent = 'Nepodařilo se odeslat přihlášku. Zkuste to prosím znovu nebo nás kontaktujte na hello@make-ful.com.';
+        errBanner.style.display = 'block';
+        btn.textContent = 'Odeslat přihlášku →';
+        btn.disabled = false;
+    });
+}
+</script>
+</body>
+</html>

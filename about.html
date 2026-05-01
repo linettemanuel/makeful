@@ -1390,5 +1390,43 @@
 })();
 </script>
 
+
+<!-- ── CZ REDIRECT POPUP ── -->
+<div id="cz-popup" style="display:none; position:fixed; bottom:32px; left:50%; transform:translateX(-50%); z-index:9999; background:#FEFEFE; border:1px solid rgba(18,16,14,0.12); box-shadow:0 8px 40px rgba(0,0,0,0.18); padding:32px 40px; max-width:440px; width:calc(100% - 48px); font-family:'DM Sans',sans-serif;">
+    <div style="font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:#c4703a; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+        <span style="display:block;width:16px;height:2.5px;background:#c4703a;flex-shrink:0;"></span>
+        Makeful · Česká verze
+    </div>
+    <div style="font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; color:#12100E; line-height:1.2; margin-bottom:10px;">Vypadá to, že jsi z České republiky!</div>
+    <p style="font-size:0.88rem; color:#5C5856; line-height:1.7; margin-bottom:24px;">Máme pro tebe českou verzi stránek. Chceš přejít na českou verzi?</p>
+    <div style="display:flex; gap:12px;">
+        <button onclick="czGo()" style="flex:1; background:#FEB492; color:#12100E; border:2px solid #FEB492; padding:13px 20px; font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:background 0.15s;">🇨🇿 Česká verze</button>
+        <button onclick="czStay()" style="flex:1; background:#12100E; color:#FEFEFE; border:2px solid #12100E; padding:13px 20px; font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; transition:background 0.15s;">🌍 Stay on Global</button>
+    </div>
+</div>
+<script>
+(function() {
+    // Don't show if user already made a choice
+    if (localStorage.getItem('mf-lang-choice')) return;
+
+    fetch('https://ipapi.co/json/')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            if (d && d.country_code === 'CZ') {
+                document.getElementById('cz-popup').style.display = 'block';
+            }
+        })
+        .catch(function() { /* silently fail */ });
+})();
+
+function czGo() {
+    localStorage.setItem('mf-lang-choice', 'cz');
+    window.location.href = '/lab.html';
+}
+function czStay() {
+    localStorage.setItem('mf-lang-choice', 'global');
+    document.getElementById('cz-popup').style.display = 'none';
+}
+</script>
 </body>
 </html>

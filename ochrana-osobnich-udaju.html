@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zásady ochrany osobních údajů – Makeful Letní módní kreativní laboratoř</title>
+    <meta name="description" content="Zasady ochrany osobnich udaju programu Makeful v souladu s GDPR. Platne od 1. 1. 2026.">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="120x120" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <style>
+        :root {
+            --aqua:#62D7F4;--coral:#FD7E8B;--peach:#FEB492;--magenta:#F996BF;--lavender:#9A75F0;--lilac:#C386F8;
+            --ink:#12100E;--white:#FEFEFE;--off:#F5F3F0;--mid:#5C5856;--border:1px solid rgba(18,16,14,0.10);
+            --accent:#9A75F0;--accent-dark:#6248c4;
+            --font-display:"Playfair Display",serif;--font-ui:"DM Sans",sans-serif;
+        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{background:var(--white);color:var(--ink);font-family:var(--font-ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        a{text-decoration:none;color:inherit;transition:0.15s;cursor:pointer}
+        ul{list-style:none}
+        img{display:block;width:100%;height:100%;object-fit:cover}
+        h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05}
+        h4{font-family:var(--font-ui);font-weight:600;color:var(--ink)}
+        h1{font-size:clamp(2.8rem,5vw,4.5rem);letter-spacing:-0.03em}
+        p{font-size:1rem;line-height:1.8;color:var(--mid);margin-bottom:0}
+
+        .label{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-ui);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink);margin-bottom:20px}
+        .label::before{content:'';display:block;width:20px;height:3px;background:currentColor;flex-shrink:0}
+        .label-lavender{color:var(--accent-dark)}
+        .label-coral{color:#d45060}
+
+        .btn{display:inline-block;min-width:180px;text-align:center;padding:15px 32px;font-family:var(--font-ui);font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border:2px solid transparent;transition:background 0.2s,color 0.2s,transform 0.2s}
+        .btn:hover{transform:translateY(-2px)}
+        .btn-white{background:var(--white);color:var(--ink);border-color:var(--white)}
+        .btn-white:hover{background:var(--off)}
+        .btn-lavender{background:var(--accent);color:var(--white);border-color:var(--accent)}
+        .btn-lavender:hover{background:var(--accent-dark)}
+
+        header{background:var(--white);border-bottom:var(--border);position:sticky;top:0;z-index:200}
+        .nav-wrapper{width:100%;display:flex;align-items:stretch;height:72px}
+        .nav-logo{display:flex;align-items:center;padding:0 22px;border-right:var(--border);flex-shrink:0}
+        .nav-logo img{height:22px;width:auto}
+        .nav-links{display:flex;flex:1}
+        .nav-link{display:flex;align-items:center;padding:0 24px;font-size:0.85rem;font-weight:600;letter-spacing:0.04em;border-right:var(--border);transition:background 0.15s}
+        .nav-link:hover,.nav-link.active{background:var(--off)}
+        .nav-spacer{flex:1}
+        .nav-cta{display:flex;align-items:center;padding:0 30px;background:var(--accent);color:var(--white);font-weight:700;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;flex-shrink:0;border-left:var(--border);transition:background 0.15s}
+        .nav-cta:hover{background:var(--accent-dark)}
+        .nav-hamburger{display:none;align-items:center;justify-content:center;width:72px;height:72px;flex-shrink:0;border-left:var(--border);background:none;border-top:none;border-right:none;border-bottom:none;cursor:pointer;padding:0}
+        .nav-hamburger .bar{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.25s,opacity 0.25s;position:absolute}
+        .nav-hamburger .bar:nth-child(1){transform:translateY(-7px)}
+        .nav-hamburger .bar:nth-child(3){transform:translateY(7px)}
+        .nav-hamburger.open .bar:nth-child(1){transform:translateY(0) rotate(45deg)}
+        .nav-hamburger.open .bar:nth-child(2){opacity:0}
+        .nav-hamburger.open .bar:nth-child(3){transform:translateY(0) rotate(-45deg)}
+        .nav-drawer{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:var(--border);z-index:199;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,0.08)}
+        .nav-drawer.open{display:flex}
+        .nav-drawer-link{display:flex;align-items:center;padding:20px 32px;font-size:1rem;font-weight:600;border-bottom:var(--border);transition:background 0.15s}
+        .nav-drawer-link:hover{background:var(--off)}
+        .nav-drawer-cta{display:flex;align-items:center;justify-content:center;padding:22px 32px;background:var(--accent);color:var(--white);font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase}
+
+        .privacy-hero{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--border)}
+        .privacy-hero-left{padding:100px 80px;display:flex;flex-direction:column;justify-content:center;border-right:var(--border);border-left:6px solid var(--accent)}
+        .privacy-hero-left h1{margin-bottom:16px;font-size:clamp(2.6rem,4.5vw,4rem)}
+        .hero-lead{font-size:1.05rem;line-height:1.75;color:var(--mid)}
+        .privacy-hero-right{background:var(--off);padding:80px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+
+        .privacy-meta{display:flex;flex-direction:column;border:var(--border)}
+        .meta-row{display:flex;border-bottom:var(--border)}
+        .meta-row:last-child{border-bottom:none}
+        .meta-key{padding:18px 24px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);border-right:var(--border);width:180px;flex-shrink:0;display:flex;align-items:center}
+        .meta-val{padding:18px 24px;font-size:0.9rem;font-weight:500;color:var(--ink);display:flex;align-items:center;line-height:1.5}
+
+        .toc-box{border:var(--border);padding:32px 36px}
+        .toc-box h4{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);margin-bottom:20px}
+        .toc-list li{border-bottom:var(--border);padding:10px 0}
+        .toc-list li:last-child{border-bottom:none}
+        .toc-list a{font-size:0.88rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:10px;transition:color 0.15s}
+        .toc-list a:hover{color:var(--accent-dark)}
+        .toc-num{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--accent-dark);width:22px;flex-shrink:0}
+
+        .privacy-body{display:grid;grid-template-columns:280px 1fr;border-bottom:var(--border);align-items:start}
+        .privacy-sidebar{position:sticky;top:72px;border-right:var(--border);height:calc(100vh - 72px);overflow-y:auto;display:flex;flex-direction:column}
+        .sidebar-section-link{display:flex;align-items:center;gap:14px;padding:16px 28px;border-bottom:var(--border);font-size:0.8rem;font-weight:600;color:var(--mid);transition:background 0.15s,color 0.15s;text-decoration:none;line-height:1.35}
+        .sidebar-section-link:hover{background:var(--off);color:var(--ink)}
+        .sidebar-section-link.active{background:var(--accent);color:var(--white)}
+        .sidebar-num{font-family:var(--font-display);font-size:1.1rem;font-weight:700;width:24px;flex-shrink:0}
+        .privacy-content{padding:80px 80px 120px}
+
+        .privacy-section{padding-bottom:72px;border-bottom:var(--border);margin-bottom:72px}
+        .privacy-section:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+        .section-header{display:flex;align-items:flex-start;gap:24px;margin-bottom:36px}
+        .section-num{font-family:var(--font-display);font-size:3rem;font-weight:900;color:var(--accent);line-height:1;flex-shrink:0;width:56px}
+        .privacy-section h2{font-size:clamp(1.5rem,2vw,2rem);margin-bottom:0;padding-top:6px}
+        .privacy-section p{font-size:0.95rem;line-height:1.85;margin-bottom:18px;color:var(--mid)}
+        .privacy-section p:last-child{margin-bottom:0}
+        .privacy-section h3{font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin-top:36px;margin-bottom:14px;color:var(--ink)}
+
+        .privacy-list{list-style:none;border:var(--border);margin-bottom:18px}
+        .privacy-list li{display:flex;gap:16px;padding:16px 24px;border-bottom:var(--border);font-size:0.9rem;color:var(--mid);line-height:1.7}
+        .privacy-list li:last-child{border-bottom:none}
+        .list-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:8px}
+
+        .privacy-callout{background:var(--off);border-left:4px solid var(--accent);padding:28px 32px;margin:28px 0}
+        .privacy-callout p{font-size:0.92rem;color:var(--ink);margin:0;line-height:1.75}
+        .privacy-callout.highlight{background:var(--ink);border-left-color:var(--lavender)}
+        .privacy-callout.highlight p{color:rgba(255,255,255,0.85)}
+
+        .gdpr-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:0.88rem}
+        .gdpr-table th{background:var(--ink);color:var(--white);padding:14px 20px;text-align:left;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em}
+        .gdpr-table td{padding:14px 20px;border-bottom:var(--border);color:var(--mid);line-height:1.6;vertical-align:top}
+        .gdpr-table tr:last-child td{border-bottom:none}
+        .gdpr-table tr:nth-child(even) td{background:var(--off)}
+        .basis-tag{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;color:var(--accent-dark);background:rgba(154,117,240,0.1);padding:3px 10px;border-radius:100px;white-space:nowrap}
+
+        .rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--border);margin:24px 0}
+        .right-card{padding:28px 32px;border-right:var(--border);border-bottom:var(--border)}
+        .right-card:nth-child(2n){border-right:none}
+        .right-card:nth-last-child(-n+2){border-bottom:none}
+        .right-card h4{font-size:0.9rem;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+        .right-card h4::before{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0}
+        .right-card p{font-size:0.88rem;line-height:1.7;margin:0}
+        .right-art{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:6px;display:block}
+
+        .contact-box{background:var(--ink);padding:48px 56px;display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:36px}
+        .contact-box h3{color:var(--white);font-size:1.3rem;margin-bottom:12px;margin-top:0}
+        .contact-box p{color:rgba(255,255,255,0.5);font-size:0.9rem;margin:0}
+        .contact-box .btn{flex-shrink:0;align-self:center}
+
+        .footer-main{display:grid;grid-template-columns:repeat(5,1fr);border-top:var(--border)}
+        .footer-col{padding:64px 40px;border-right:var(--border)}
+        .footer-col:last-child{border-right:none}
+        .footer-col h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:24px}
+        .footer-links{display:flex;flex-direction:column;gap:12px}
+        .footer-links a{font-size:0.88rem;color:var(--mid);transition:color 0.15s}
+        .footer-links a:hover{color:var(--ink)}
+        .footer-bottom{background:var(--ink);position:relative;overflow:hidden;min-height:220px;display:flex;align-items:center;justify-content:center}
+        .footer-bg-letter{font-family:var(--font-display);font-size:28vw;font-weight:900;color:rgba(255,255,255,0.04);position:absolute;bottom:-10%;left:50%;transform:translateX(-50%);line-height:1;user-select:none}
+        .footer-logo-img{height:36px;width:auto;position:relative;z-index:1}
+        .copyright{text-align:center;background:var(--ink);color:rgba(255,255,255,0.3);font-size:0.78rem;padding:20px;border-top:1px solid rgba(255,255,255,0.06)}
+
+        @media (max-width:1100px){
+            .nav-links,.nav-spacer,.nav-cta{display:none}
+            .nav-hamburger{display:flex}
+            .privacy-hero{grid-template-columns:1fr}
+            .privacy-hero-left{border-right:none;border-bottom:var(--border);padding:72px 48px}
+            .privacy-hero-right{padding:64px 48px}
+            .privacy-body{grid-template-columns:1fr}
+            .privacy-sidebar{position:static;height:auto;border-right:none;border-bottom:var(--border);flex-direction:row;flex-wrap:wrap;overflow:visible}
+            .sidebar-section-link{width:50%;border-right:var(--border)}
+            .privacy-content{padding:56px 48px 80px}
+            .rights-grid{grid-template-columns:1fr}
+            .right-card{border-right:none}
+            .right-card:nth-last-child(-n+2){border-bottom:var(--border)}
+            .right-card:last-child{border-bottom:none}
+            .footer-main{grid-template-columns:1fr 1fr}
+            .footer-col:nth-child(2n){border-right:none}
+            .footer-col:nth-child(n+3){border-top:var(--border)}
+        }
+        @media (max-width:640px){
+            .privacy-hero-left,.privacy-hero-right{padding:56px 28px}
+            .privacy-sidebar{flex-direction:column}
+            .sidebar-section-link{width:100%;border-right:none}
+            .privacy-content{padding:48px 28px 72px}
+            .section-header{flex-direction:column;gap:8px}
+            .section-num{font-size:2rem}
+            .contact-box{padding:36px 28px}
+            .gdpr-table{font-size:0.8rem}
+            .gdpr-table th,.gdpr-table td{padding:10px 14px}
+            .footer-main{grid-template-columns:1fr}
+            .footer-col{border-right:none;border-bottom:var(--border)}
+            .footer-col:last-child{border-bottom:none}
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-wrapper">
+        <a href="/" class="nav-logo"><img src="./img/makeful_logo_colours.png" alt="Makeful"></a>
+        <nav class="nav-links">
+            <a href="/" class="nav-link">Dom&#367;</a>
+            <a href="/summercamp" class="nav-link">Summer Camp</a>
+            <a href="/about" class="nav-link">O n&#225;s</a>
+            <a href="/faq" class="nav-link">FAQ</a>
+            <a href="/contact" class="nav-link">Kontakt</a>
+            <div class="nav-spacer"></div>
+        </nav>
+        <a href="https://tally.so/r/b57egg" class="nav-cta">P&#345;ihl&#225;sit se</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </div>
+</header>
+<nav class="nav-drawer" id="nav-drawer">
+    <a href="/" class="nav-drawer-link">Dom&#367;</a>
+    <a href="/summercamp" class="nav-drawer-link">Summer Camp</a>
+    <a href="/about" class="nav-drawer-link">O n&#225;s</a>
+    <a href="/faq" class="nav-drawer-link">FAQ</a>
+    <a href="/contact" class="nav-drawer-link">Kontakt</a>
+    <a href="https://tally.so/r/b57egg" class="nav-drawer-cta">P&#345;ihl&#225;sit se</a>
+</nav>
+
+<section class="privacy-hero">
+    <div class="privacy-hero-left">
+        <div class="label label-lavender">Pr&#225;vn&#237; dokumenty &middot; GDPR</div>
+        <h1>Z&#225;sady ochrany<br>osobn&#237;ch &#250;daj&#367;</h1>
+        <p class="hero-lead">Tyto z&#225;sady vysvětluj&#237;, jak&#233; osobn&#237; &#250;daje sb&#237;r&#225;me v r&#225;mci programu <strong>Makeful &#8211; Letn&#237; m&#243;dn&#237; kreativn&#237; laborato&#345;</strong>, pro&#269; je zpracov&#225;v&#225;me a jak je chr&#225;n&#237;me &#8211; v souladu s na&#345;&#237;zen&#237;m (EU) 2016/679 (GDPR).</p>
+    </div>
+    <div class="privacy-hero-right">
+        <div class="privacy-meta">
+            <div class="meta-row"><div class="meta-key">Platn&#233; od</div><div class="meta-val">1. 1. 2026</div></div>
+            <div class="meta-row"><div class="meta-key">Spr&#225;vce</div><div class="meta-val">Linette Leandra Cabral Manuel, I&#268;O: 08487341, Roh&#225;&#269;ova 145/14, 130 00 Praha 3</div></div>
+            <div class="meta-row"><div class="meta-key">Tel.</div><div class="meta-val">+420 735 820 576</div></div>
+            <div class="meta-row"><div class="meta-key">E-mail</div><div class="meta-val"><a href="mailto:linette@make-ful.com" style="color:var(--accent-dark);">linette@make-ful.com</a></div></div>
+            <div class="meta-row"><div class="meta-key">Dozorov&#253; &#250;&#345;ad</div><div class="meta-val">&#218;OO&#218; &middot; Pplk. Sochora 27, Praha 7 &middot; <a href="https://www.uoou.cz" target="_blank" style="color:var(--accent-dark);">www.uoou.cz</a></div></div>
+            <div class="meta-row"><div class="meta-key">Pr&#225;vn&#237; r&#225;mec</div><div class="meta-val">Na&#345;&#237;zen&#237; (EU) 2016/679 (GDPR) &middot; z&#225;kon &#269;. 110/2019 Sb.</div></div>
+        </div>
+        <div class="toc-box">
+            <h4>Obsah</h4>
+            <ul class="toc-list">
+                <li><a href="#spravce"><span class="toc-num">1</span>Spr&#225;vce osobn&#237;ch &#250;daj&#367;</a></li>
+                <li><a href="#kategorie"><span class="toc-num">2</span>Jak&#233; osobn&#237; &#250;daje zpracov&#225;v&#225;me</a></li>
+                <li><a href="#ucely"><span class="toc-num">3</span>&#218;&#269;ely a pr&#225;vn&#237; z&#225;klady zpracov&#225;n&#237;</a></li>
+                <li><a href="#doba"><span class="toc-num">4</span>Doba uchov&#225;v&#225;n&#237; osobn&#237;ch &#250;daj&#367;</a></li>
+                <li><a href="#prijemci"><span class="toc-num">5</span>P&#345;&#237;jemci osobn&#237;ch &#250;daj&#367;</a></li>
+                <li><a href="#prava"><span class="toc-num">6</span>Va&#353;e pr&#225;va jako subjektu &#250;daj&#367;</a></li>
+                <li><a href="#uplatneni"><span class="toc-num">7</span>Jak uplatnit sv&#225; pr&#225;va</a></li>
+                <li><a href="#souhlas-foto"><span class="toc-num">8</span>Souhlas s fotografov&#225;n&#237;m a zve&#345;ej&#328;ov&#225;n&#237;m prac&#237;</a></li>
+                <li><a href="#zabezpeceni"><span class="toc-num">9</span>Zabezpe&#269;en&#237; osobn&#237;ch &#250;daj&#367;</a></li>
+                <li><a href="#cookies"><span class="toc-num">10</span>Cookies a webov&#233; str&#225;nky</a></li>
+                <li><a href="#zmeny"><span class="toc-num">11</span>Zm&#283;ny z&#225;sad ochrany osobn&#237;ch &#250;daj&#367;</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="privacy-body">
+    <aside class="privacy-sidebar">
+        <a href="#spravce"      class="sidebar-section-link"><span class="sidebar-num">1</span>Spr&#225;vce osobn&#237;ch &#250;daj&#367;</a>
+        <a href="#kategorie"    class="sidebar-section-link"><span class="sidebar-num">2</span>Jak&#233; &#250;daje zpracov&#225;v&#225;me</a>
+        <a href="#ucely"        class="sidebar-section-link"><span class="sidebar-num">3</span>&#218;&#269;ely a pr&#225;vn&#237; z&#225;klady</a>
+        <a href="#doba"         class="sidebar-section-link"><span class="sidebar-num">4</span>Doba uchov&#225;v&#225;n&#237;</a>
+        <a href="#prijemci"     class="sidebar-section-link"><span class="sidebar-num">5</span>P&#345;&#237;jemci osobn&#237;ch &#250;daj&#367;</a>
+        <a href="#prava"        class="sidebar-section-link"><span class="sidebar-num">6</span>Va&#353;e pr&#225;va</a>
+        <a href="#uplatneni"    class="sidebar-section-link"><span class="sidebar-num">7</span>Jak uplatnit sv&#225; pr&#225;va</a>
+        <a href="#souhlas-foto" class="sidebar-section-link"><span class="sidebar-num">8</span>Souhlas s fotografov&#225;n&#237;m</a>
+        <a href="#zabezpeceni"  class="sidebar-section-link"><span class="sidebar-num">9</span>Zabezpe&#269;en&#237; &#250;daj&#367;</a>
+        <a href="#cookies"      class="sidebar-section-link"><span class="sidebar-num">10</span>Cookies</a>
+        <a href="#zmeny"        class="sidebar-section-link"><span class="sidebar-num">11</span>Zm&#283;ny z&#225;sad</a>
+    </aside>
+
+    <main class="privacy-content">
+
+        <section class="privacy-section" id="spravce">
+            <div class="section-header"><div class="section-num">1</div><h2>Spr&#225;vce osobn&#237;ch &#250;daj&#367;</h2></div>
+            <p>Spr&#225;vcem osobn&#237;ch &#250;daj&#367; ve smyslu &#269;l. 4 odst. 7 GDPR je:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Linette Leandra Cabral Manuel</strong></li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Fyzick&#225; osoba podnikaj&#237;c&#237; na z&#225;kladě &#382;ivnostensk&#233;ho opr&#225;vn&#283;n&#237;</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Roh&#225;&#269;ova 145/14, 130 00 Praha 3</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>I&#268;O: 08487341</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Tel.: <a href="tel:+420735820576" style="color:var(--accent-dark);">735 820 576</a></li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>E-mail: <a href="mailto:linette@make-ful.com" style="color:var(--accent-dark);">linette@make-ful.com</a></li>
+            </ul>
+            <div class="privacy-callout"><p>Spr&#225;vce nen&#237; povinen jmenovat pov&#283;&#345;ence pro ochranu osobn&#237;ch &#250;daj&#367; (DPO). V p&#345;&#237;pad&#283; dotaz&#367; kontaktujte spr&#225;vce na v&#253;&#353;e uveden&#233;m e-mailu.</p></div>
+        </section>
+
+        <section class="privacy-section" id="kategorie">
+            <div class="section-header"><div class="section-num">2</div><h2>Jak&#233; osobn&#237; &#250;daje zpracov&#225;v&#225;me</h2></div>
+            <h3>Identifika&#269;n&#237; a kontaktn&#237; &#250;daje objednatele</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div>Jm&#233;no a p&#345;&#237;jmen&#237; z&#225;konn&#233;ho z&#225;stupce nebo zletil&#233;ho &#250;&#269;astn&#237;ka</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Adresa bydli&#353;t&#283; nebo doru&#269;ovac&#237; adresa</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>E-mailov&#225; adresa</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Telefonn&#237; &#269;&#237;slo</li>
+            </ul>
+            <h3>&#218;daje o &#250;&#269;astn&#237;kovi programu</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Jm&#233;no a p&#345;&#237;jmen&#237; &#250;&#269;astn&#237;ka</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Datum narozen&#237; (pro ov&#283;&#345;en&#237; v&#283;kov&#233; zp&#367;sobilosti 14&#8211;19 let)</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>Informace o zdravotn&#237;m stavu relevantn&#237; pro bezpe&#269;nou &#250;&#269;ast (alergie, omezen&#237;) &#8211; pouze pokud je objednatel dobrovoln&#283; sd&#283;l&#237;</li>
+                <li><div class="list-dot" style="background:var(--lavender);"></div>&#352;kola nebo vzd&#283;l&#225;vac&#237; instituce (nepovinn&#233;)</li>
+            </ul>
+            <h3>Platebn&#237; a smluvn&#237; &#250;daje</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--coral);"></div>&#268;&#237;slo bankovn&#237;ho &#250;&#269;tu (p&#345;i vr&#225;cen&#237; platby)</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Z&#225;znamy o platb&#225;ch a transakc&#237;ch</li>
+                <li><div class="list-dot" style="background:var(--coral);"></div>Obsah p&#345;ihl&#225;&#353;ky a smluvn&#237; dokumentace</li>
+            </ul>
+            <h3>&#218;daje z kontaktn&#237;ho formul&#225;&#345;e</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Jm&#233;no (nepovinn&#233;)</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>E-mailov&#225; adresa</li>
+                <li><div class="list-dot" style="background:var(--aqua);"></div>Text zpr&#225;vy</li>
+            </ul>
+            <p style="font-size:0.88rem;">Kontaktn&#237; formul&#225;&#345; na webu make-ful.com vyu&#382;&#237;v&#225; slu&#382;bu Web3Forms (web3forms.com) pro bezpe&#269;n&#233; doru&#269;en&#237; zpr&#225;vy. Web3Forms zpracov&#225;v&#225; odeslan&#233; &#250;daje jako zpracovatel na z&#225;klad&#283; smluvn&#237;ho ujedn&#225;n&#237; a data nepou&#382;&#237;v&#225; k jin&#253;m &#250;&#269;el&#367;m.</p>
+            <h3>Marketingov&#233; a dokumenta&#269;n&#237; materi&#225;ly</h3>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--magenta);"></div>Fotografie a videoz&#225;znamy po&#345;&#237;zen&#233; v pr&#367;b&#283;hu programu (pouze se souhlasem)</li>
+                <li><div class="list-dot" style="background:var(--magenta);"></div>V&#253;sledky tv&#367;r&#269;&#237; pr&#225;ce a webov&#225; portfolia (pouze se souhlasem)</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section" id="ucely">
+            <div class="section-header"><div class="section-num">3</div><h2>&#218;&#269;ely a pr&#225;vn&#237; z&#225;klady zpracov&#225;n&#237;</h2></div>
+            <p>Osobn&#237; &#250;daje zpracov&#225;v&#225;me na z&#225;kladě r&#367;zn&#253;ch pr&#225;vn&#237;ch titul&#367; podle &#269;l. 6 GDPR:</p>
+            <table class="gdpr-table">
+                <thead><tr><th>&#218;&#269;el zpracov&#225;n&#237;</th><th>Pr&#225;vn&#237; z&#225;klad</th></tr></thead>
+                <tbody>
+                    <tr><td>Uzav&#345;en&#237; a pln&#283;n&#237; smlouvy o &#250;&#269;asti (p&#345;ihl&#225;&#353;ka, potvrzen&#237;, komunikace)</td><td><span class="basis-tag">&#268;l. 6/1/b &#8211; pln&#283;n&#237; smlouvy</span></td></tr>
+                    <tr><td>Zaji&#353;t&#283;n&#237; bezpe&#269;nosti &#250;&#269;astn&#237;ka (zdravotn&#237; omezen&#237;, alergie)</td><td><span class="basis-tag">&#268;l. 6/1/b, f &#8211; smlouva / opr. z&#225;jem</span></td></tr>
+                    <tr><td>Zpracov&#225;n&#237; plateb a veden&#237; &#250;&#269;etn&#237; evidence</td><td><span class="basis-tag">&#268;l. 6/1/c &#8211; z&#225;konn&#225; povinnost</span></td></tr>
+                    <tr><td>Vy&#345;izov&#225;n&#237; reklamac&#237;, storno &#382;&#225;dost&#237; a spor&#367;</td><td><span class="basis-tag">&#268;l. 6/1/f &#8211; opr&#225;vn&#283;n&#253; z&#225;jem</span></td></tr>
+                    <tr><td>Zas&#237;l&#225;n&#237; informac&#237; o programu a novink&#225;ch (newsletter)</td><td><span class="basis-tag">&#268;l. 6/1/a &#8211; souhlas</span></td></tr>
+                    <tr><td>Po&#345;izov&#225;n&#237; a zve&#345;ej&#328;ov&#225;n&#237; fotografi&#237; a vide&#237; z programu</td><td><span class="basis-tag">&#268;l. 6/1/a &#8211; souhlas</span></td></tr>
+                    <tr><td>Prezentace prac&#237; &#250;&#269;astn&#237;k&#367; (portfolio, web, soci&#225;ln&#237; s&#237;t&#283;)</td><td><span class="basis-tag">&#268;l. 6/1/a &#8211; souhlas</span></td></tr>
+                    <tr><td>Vy&#345;&#237;zen&#237; dotaz&#367; z kontaktn&#237;ho formul&#225;&#345;e na webu</td><td><span class="basis-tag">&#268;l. 6/1/b, f &#8211; smlouva / opr. z&#225;jem</span></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="privacy-section" id="doba">
+            <div class="section-header"><div class="section-num">4</div><h2>Doba uchov&#225;v&#225;n&#237; osobn&#237;ch &#250;daj&#367;</h2></div>
+            <p>Osobn&#237; &#250;daje uchov&#225;v&#225;me pouze po dobu nezbytn&#283; nutnou pro spln&#283;n&#237; p&#345;&#237;slu&#353;n&#233;ho &#250;&#269;elu:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Smluvn&#237; a p&#345;ihl&#225;&#353;kovac&#237; dokumentace:</strong> po dobu trv&#225;n&#237; smluvn&#237;ho vztahu a d&#225;le 3 roky od jeho skon&#269;en&#237;.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>&#218;&#269;etn&#237; doklady a da&#328;ov&#233; z&#225;znamy:</strong> 10 let od konce p&#345;&#237;slu&#353;n&#233;ho &#250;&#269;etn&#237;ho obdob&#237;, v souladu se z&#225;konem &#269;. 563/1991 Sb., o &#250;&#269;etnictv&#237;.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Zdravotn&#237; informace:</strong> po dobu trv&#225;n&#237; programu, pot&#233; bezodkladn&#283; vymazov&#225;ny.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Fotografie a videa:</strong> po dobu trv&#225;n&#237; souhlasu nebo do jeho odvol&#225;n&#237;.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Marketingov&#233; kontakty (newsletter):</strong> do odvol&#225;n&#237; souhlasu.</li>
+            </ul>
+            <div class="privacy-callout"><p>Po uplynut&#237; doby uchov&#225;v&#225;n&#237; jsou osobn&#237; &#250;daje bezpe&#269;n&#283; vymaz&#225;ny nebo anonymizov&#225;ny.</p></div>
+        </section>
+
+        <section class="privacy-section" id="prijemci">
+            <div class="section-header"><div class="section-num">5</div><h2>P&#345;&#237;jemci osobn&#237;ch &#250;daj&#367;</h2></div>
+            <p>Osobn&#237; &#250;daje neprod&#225;v&#225;me ani nepron&#225;j&#237;m&#225;me t&#345;et&#237;m stran&#225;m. &#218;daje mohou b&#253;t sd&#237;leny pouze s t&#283;mito kategoriemi p&#345;&#237;jemc&#367;:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Web3Forms</strong> (web3forms.com) &#8211; zpracovatel kontaktn&#237;ho formul&#225;&#345;e; data jsou p&#345;epos&#237;l&#225;na na e-mail spr&#225;vce a uchov&#225;na po dobu nezbytn&#233; pro vy&#345;&#237;zen&#237; dotazu.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Zpracovatel&#233; plateb</strong> &#8211; banky, platebn&#237; br&#225;ny, oper&#225;to&#345;i syst&#233;m&#367; Benefit Plus, Pluxee, Up Benefity a Edenred &#8211; v rozsahu nezbytn&#233;m pro zpracov&#225;n&#237; transakce.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Poskytovatel&#233; IT slu&#382;eb a cloudov&#253;ch &#250;lo&#382;i&#353;&#357;</strong> &#8211; e-mailov&#253; server, spr&#225;va webu, v&#253;ukov&#225; platforma &#8211; na z&#225;kladě smlouvy o zpracov&#225;n&#237; osobn&#237;ch &#250;daj&#367;.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>&#218;&#269;etn&#237; a da&#328;ov&#253; poradce</strong> &#8211; v rozsahu nezbytn&#233;m pro veden&#237; &#250;&#269;etnictv&#237;.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>Org&#225;ny ve&#345;ejn&#233; moci</strong> &#8211; soudy, spr&#225;vn&#237; &#250;&#345;ady &#8211; pokud to vy&#382;aduje z&#225;kon nebo soudn&#237; p&#345;&#237;kaz.</li>
+            </ul>
+            <div class="privacy-callout"><p>Spr&#225;vce nevyu&#382;&#237;v&#225; &#382;&#225;dn&#233; zpracovatele se s&#237;dlem mimo Evropsk&#253; hospod&#225;&#345;sk&#253; prostor (EHP). Pokud by k takov&#233;mu p&#345;ed&#225;n&#237; do&#353;lo, zajist&#237; spr&#225;vce p&#345;im&#283;&#345;en&#233; z&#225;ruky v souladu s &#269;l. 44&#8211;49 GDPR.</p></div>
+        </section>
+
+        <section class="privacy-section" id="prava">
+            <div class="section-header"><div class="section-num">6</div><h2>Va&#353;e pr&#225;va jako subjektu &#250;daj&#367;</h2></div>
+            <p>Jako subjekt &#250;daj&#367; m&#225;te ve vztahu ke sv&#253;m osobn&#237;m &#250;daj&#367;m n&#225;sleduj&#237;c&#237; pr&#225;va:</p>
+            <div class="rights-grid">
+                <div class="right-card"><span class="right-art">&#268;l. 15 GDPR</span><h4>Pr&#225;vo na p&#345;&#237;stup</h4><p>M&#225;te pr&#225;vo z&#237;skat potvrzen&#237;, zda zpracov&#225;v&#225;me va&#353;e osobn&#237; &#250;daje, a pokud ano, obdr&#382;et jejich kopi&#283; spolu s informacemi o zp&#367;sobu zpracov&#225;n&#237;.</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 16 GDPR</span><h4>Pr&#225;vo na opravu</h4><p>M&#225;te pr&#225;vo po&#382;adovat opravu nep&#345;esn&#253;ch nebo doln&#283;n&#237; ne&#250;pln&#253;ch osobn&#237;ch &#250;daj&#367;.</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 17 GDPR</span><h4>Pr&#225;vo na v&#253;maz</h4><p>M&#225;te pr&#225;vo po&#382;&#225;dat o vymaz&#225;n&#237; sv&#253;ch osobn&#237;ch &#250;daj&#367;, pokud ji&#382; nejsou pot&#345;ebn&#233; nebo pokud odvol&#225;te souhlas.</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 18 GDPR</span><h4>Pr&#225;vo na omezen&#237; zpracov&#225;n&#237;</h4><p>M&#225;te pr&#225;vo po&#382;&#225;dat o omezen&#237; zpracov&#225;n&#237; sv&#253;ch &#250;daj&#367; v p&#345;&#237;padech stanoven&#253;ch GDPR (nap&#345;. po dobu ov&#283;&#345;ov&#225;n&#237; jejich p&#345;esnosti).</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 20 GDPR</span><h4>Pr&#225;vo na p&#345;enositelnost</h4><p>M&#225;te pr&#225;vo obdr&#382;et osobn&#237; &#250;daje ve strukturovan&#233;m, stroj&#243;v&#283; &#269;iteln&#233;m form&#225;tu a pr&#225;vo p&#345;edat je jin&#233;mu spr&#225;vci.</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 21 GDPR</span><h4>Pr&#225;vo vznest n&#225;mitku</h4><p>M&#225;te pr&#225;vo vznest n&#225;mitku proti zpracov&#225;n&#237; na z&#225;kladě opr&#225;vn&#283;n&#233;ho z&#225;jmu spr&#225;vce. Spr&#225;vce zpracov&#225;n&#237; ukon&#269;&#237;, pokud neprok&#225;&#382;e z&#225;va&#382;n&#233; d&#367;vody.</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 7/3 GDPR</span><h4>Pr&#225;vo odvol&#225;t souhlas</h4><p>Pokud je zpracov&#225;n&#237; zalo&#382;eno na va&#353;em souhlasu, m&#225;te pr&#225;vo jej kdykoliv odvol&#225;t &#8211; ani&#382; by t&#237;m byla dot&#269;ena z&#225;konnost zpracov&#225;n&#237; p&#345;ed odvol&#225;n&#237;m. Odvol&#225;n&#237; zasl&#225;n&#237;m na <a href="mailto:linette@make-ful.com" style="color:var(--accent-dark);">linette@make-ful.com</a>.</p></div>
+                <div class="right-card"><span class="right-art">&#268;l. 77 GDPR</span><h4>Pr&#225;vo podat st&#237;&#382;nost</h4><p>M&#225;te pr&#225;vo podat st&#237;&#382;nost u &#218;&#345;adu pro ochranu osobn&#237;ch &#250;daj&#367; (&#218;OO&#218;), Pplk. Sochora 27, Praha 7 &middot; <a href="https://www.uoou.cz" target="_blank" style="color:var(--accent-dark);">www.uoou.cz</a></p></div>
+            </div>
+            <div class="privacy-callout"><p>Doporu&#269;ujeme, abyste se s dotazem nebo st&#237;&#382;nost&#237; obr&#225;tili nejprve na n&#225;s &#8211; r&#225;di v&#353;e vy&#345;e&#353;&#237;me p&#345;&#237;mo a bez zbyte&#269;n&#253;ch pr&#367;tah&#367;.</p></div>
+        </section>
+
+        <section class="privacy-section" id="uplatneni">
+            <div class="section-header"><div class="section-num">7</div><h2>Jak uplatnit sv&#225; pr&#225;va</h2></div>
+            <p>&#381;&#225;dost o uplatn&#283;n&#237; pr&#225;v zas&#237;lejte na:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div>E-mail: <a href="mailto:linette@make-ful.com" style="color:var(--accent-dark);font-weight:600;">linette@make-ful.com</a></li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Po&#353;tou: Roh&#225;&#269;ova 145/14, 130 00 Praha 3</li>
+            </ul>
+            <p>Na &#382;&#225;dost odpov&#237;me bez zbyte&#269;n&#233;ho odkladu, nejpozd&#283;ji do <strong>30 dn&#367;</strong> od jej&#237;ho obdr&#382;en&#237;. Ve v&#253;jime&#269;n&#253;ch p&#345;&#237;padech lze tuto lh&#367;tu prodlou&#382;it o dal&#353;&#237;ch 60 dn&#237;; o prodlou&#382;en&#237; a jeho d&#367;vodech v&#225;s budeme informovat.</p>
+            <div class="privacy-callout"><p>Pro ov&#283;&#345;en&#237; toto&#382;nosti &#382;adatele m&#367;&#382;eme po&#382;&#225;dat o dopl&#328;uj&#237;c&#237; informace. Toto opat&#345;en&#237; slou&#382;&#237; k ochran&#283; va&#353;ich osobn&#237;ch &#250;daj&#367; p&#345;ed neopr&#225;vn&#283;n&#253;m p&#345;&#237;stupem.</p></div>
+        </section>
+
+        <section class="privacy-section" id="souhlas-foto">
+            <div class="section-header"><div class="section-num">8</div><h2>Souhlas s fotografov&#225;n&#237;m a zve&#345;ej&#328;ov&#225;n&#237;m prac&#237;</h2></div>
+            <p>V pr&#367;b&#283;hu programu mohou b&#253;t po&#345;izov&#225;ny fotografie a videoz&#225;znamy za &#250;&#269;elem dokumentace, prezentace programu a marketingov&#233; komunikace (web, soci&#225;ln&#237; s&#237;t&#283;, tiskov&#233; materi&#225;ly). Po&#345;izov&#225;n&#237; t&#283;chto materi&#225;l&#367; je podm&#237;n&#283;no v&#253;slovn&#253;m souhlasem:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>U nezletil&#233;ho &#250;&#269;astn&#237;ka (do 18 let):</strong> souhlas ud&#283;luje z&#225;konn&#253; z&#225;stupce p&#345;i pod&#225;n&#237; p&#345;ihl&#225;&#353;ky.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div><strong>U zletil&#233;ho &#250;&#269;astn&#237;ka:</strong> souhlas ud&#283;luje s&#225;m &#250;&#269;astn&#237;k p&#345;i pod&#225;n&#237; p&#345;ihl&#225;&#353;ky.</li>
+            </ul>
+            <div class="privacy-callout"><p>Souhlas je zcela dobrovoln&#253; a jeho neud&#283;len&#237; nem&#225; vliv na mo&#382;nost &#250;&#269;asti v programu. Souhlas lze kdykoliv odvol&#225;t p&#237;semn&#283; na <a href="mailto:linette@make-ful.com" style="color:var(--accent-dark);">linette@make-ful.com</a>.</p></div>
+            <p>Po odvol&#225;n&#237; souhlasu p&#345;estaneme nov&#233; materi&#225;ly zve&#345;ej&#328;ovat; materi&#225;ly ji&#382; zve&#345;ejn&#283;n&#233; (nap&#345;. na soci&#225;ln&#237;ch s&#237;t&#237;ch t&#345;et&#237;ch stran) nemus&#237; b&#253;t technicky mo&#382;n&#233; st&#225;hnout zp&#283;tn&#283;.</p>
+        </section>
+
+        <section class="privacy-section" id="zabezpeceni">
+            <div class="section-header"><div class="section-num">9</div><h2>Zabezpe&#269;en&#237; osobn&#237;ch &#250;daj&#367;</h2></div>
+            <p>Spr&#225;vce p&#345;ijal p&#345;im&#283;&#345;en&#225; technick&#225; a organiza&#269;n&#237; opat&#345;en&#237; k ochran&#283; osobn&#237;ch &#250;daj&#367; p&#345;ed neopr&#225;vn&#283;n&#253;m p&#345;&#237;stupem, ztr&#225;tou, zni&#269;en&#237;m nebo zve&#345;ejn&#283;n&#237;m:</p>
+            <ul class="privacy-list">
+                <li><div class="list-dot" style="background:var(--accent);"></div>P&#345;&#237;stup k osobn&#237;m &#250;daj&#367;m je omezen pouze na osoby, kter&#233; je pot&#345;ebuj&#237; pro v&#253;kon sv&#253;ch povinnost&#237;.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Elektronick&#233; dokumenty jsou uchov&#225;v&#225;ny v zaheslovan&#253;ch syst&#233;mech a cloudov&#253;ch &#250;lo&#382;i&#353;t&#237;ch se &#353;ifrov&#225;n&#237;m.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Listin&#233; dokumenty jsou uchov&#225;v&#225;ny v uzam&#269;en&#253;ch prostorech.</li>
+                <li><div class="list-dot" style="background:var(--accent);"></div>Spr&#225;vce pr&#367;b&#283;&#382;n&#283; vyhodnocuje bezpe&#269;nostn&#237; rizika a aktualizuje p&#345;ijat&#225; opat&#345;en&#237;.</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section" id="cookies">
+            <div class="section-header"><div class="section-num">10</div><h2>Cookies a webov&#233; str&#225;nky</h2></div>
+            <p>Webov&#233; str&#225;nky make-ful.com mohou vyu&#382;&#237;vat soubory cookies pro zaji&#353;t&#283;n&#237; funk&#269;nosti webu, anal&#253;zu n&#225;v&#353;t&#283;vnosti a marketingov&#233; &#250;&#269;ely. Podrobn&#233; informace o pou&#382;&#237;v&#225;n&#237; cookies a zp&#367;sobu jejich spr&#225;vy jsou dostupn&#233; v samostatn&#233; Cookie politice na webov&#253;ch str&#225;nk&#225;ch.</p>
+            <div class="privacy-callout"><p>Analytick&#233; a marketingov&#233; cookies jsou pou&#382;&#237;v&#225;ny pouze se souhlasem n&#225;v&#353;t&#283;vn&#237;ka, kter&#253; m&#367;&#382;e b&#253;t kdykoliv odvol&#225;n v nastaven&#237; souhlasu na webu.</p></div>
+        </section>
+
+        <section class="privacy-section" id="zmeny">
+            <div class="section-header"><div class="section-num">11</div><h2>Zm&#283;ny z&#225;sad ochrany osobn&#237;ch &#250;daj&#367;</h2></div>
+            <p>Spr&#225;vce si vyhrazuje pr&#225;vo tyto z&#225;sady aktualizovat v souladu s v&#253;vojem pr&#225;vn&#237; &#250;pravy nebo zm&#283;nami v provozu programu. O podstatn&#253;ch zm&#283;n&#225;ch budeme registrovan&#233; objednatele informovat e-mailem. Aktu&#225;ln&#237; verze z&#225;sad je v&#382;dy dostupn&#225; na webov&#253;ch str&#225;nk&#225;ch make-ful.com.</p>
+            <p>Tyto z&#225;sady ochrany osobn&#237;ch &#250;daj&#367; jsou platn&#233; a &#250;&#269;inn&#233; od <strong>1. 1. 2026</strong>.</p>
+            <div class="contact-box">
+                <div>
+                    <h3>Dotaz k ochran&#283; osobn&#237;ch &#250;daj&#367;?</h3>
+                    <p>Linette Leandra Cabral Manuel &middot; I&#268;O: 08487341 &middot; Roh&#225;&#269;ova 145/14, 130 00 Praha 3<br>
+                    <a href="mailto:linette@make-ful.com" style="color:var(--lavender);">linette@make-ful.com</a> &nbsp;&middot;&nbsp;
+                    <a href="tel:+420735820576" style="color:var(--lavender);">+420 735 820 576</a></p>
+                </div>
+                <a href="mailto:linette@make-ful.com" class="btn btn-white">Napsat p&#345;&#237;mo</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-col"><h4>Menu</h4><ul class="footer-links"><li><a href="/">Dom&#367;</a></li><li><a href="/summercamp">Summer Camp</a></li><li><a href="/about">O n&#225;s</a></li><li><a href="/faq">FAQ</a></li></ul></div>
+        <div class="footer-col"><h4>Sleduj n&#225;s</h4><ul class="footer-links"><li><a href="https://www.instagram.com/_makeful/">Instagram</a></li><li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li><li><a href="https://www.linkedin.com/company/make-ful">LinkedIn</a></li></ul></div>
+        <div class="footer-col"><h4>Pr&#225;vn&#237; dokumenty</h4><ul class="footer-links"><li><a href="/gdpr">Z&#225;sady ochrany osobn&#237;ch &#250;daj&#367;</a></li><li><a href="/obchodni-podminky">Obchodn&#237; podm&#237;nky</a></li><li><a href="/safeguarding">Ochrana d&#283;t&#237; &amp; Safeguarding</a></li></ul></div>
+        <div class="footer-col" style="grid-column:span 2;"><h4>Kontakt</h4><ul class="footer-links"><li><a href="mailto:linette@make-ful.com">linette@make-ful.com</a></li><li><a href="tel:+420735820576">+420 735 820 576</a></li></ul><div style="margin-top:32px;"><a href="https://tally.so/r/b57egg" class="btn btn-lavender" style="width:100%;display:block;text-align:center;">P&#345;ihl&#225;sit se na laborato&#345;</a></div></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-bg-letter">M</div><img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async"></div>
+    <div class="copyright">&copy; 2026 Makeful &#8211; FashionTech STEAM Program. V&#353;echna pr&#225;va vyhrazena.</div>
+</footer>
+
+<script>
+(function(){var btn=document.getElementById('hamburger');var drawer=document.getElementById('nav-drawer');if(btn&&drawer){btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});document.addEventListener('click',function(e){if(!btn.contains(e.target)&&!drawer.contains(e.target)){btn.classList.remove('open');drawer.classList.remove('open');}});}})();
+(function(){var links=document.querySelectorAll('.sidebar-section-link');var sections=[];links.forEach(function(l){var id=l.getAttribute('href').replace('#','');var el=document.getElementById(id);if(el)sections.push({el:el,link:l});});function onScroll(){var scrollY=window.scrollY+120;var active=null;sections.forEach(function(s){if(s.el.offsetTop<=scrollY)active=s;});links.forEach(function(l){l.classList.remove('active');});if(active)active.link.classList.add('active');}window.addEventListener('scroll',onScroll,{passive:true});onScroll();})();
+</script>
+</body>
+</html>
