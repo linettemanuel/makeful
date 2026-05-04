@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KGDFKB27');</script>
+<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Letní módní kreativní laboratoř 2026 – Makeful</title>
@@ -375,12 +382,16 @@
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .nav-links, .nav-spacer, .nav-cta { display: none; }
+            .nav-links, .nav-spacer { display: none; }
+            .nav-cta { display: flex; padding: 0 18px; font-size: 0.75rem; flex: 1; justify-content: center; }
             .nav-hamburger { display: flex; }
             .hero { grid-template-columns: 1fr; min-height: auto; }
             .hero-left { padding: 80px 40px; min-height: 60vw; }
             .hero-right { min-height: 56vw; border-left: none; border-top: var(--border); }
-            .press-bar { padding: 20px 40px; gap: 20px; }
+            .press-bar { padding: 20px 28px; gap: 16px; flex-direction: column; align-items: flex-start; }
+            .press-bar-label { white-space: normal; }
+            .press-logos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; width: 100%; }
+            .press-logo-link { justify-content: flex-start; }
             .price-banner { grid-template-columns: 1fr 1fr; }
             .price-item:nth-child(2) { border-right: none; }
             .price-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
@@ -605,11 +616,31 @@
             .press-article-body { padding: 32px 28px; }
             .press-articles-header { padding: 48px 28px 32px; }
         }
+
+        /* ANNOUNCEMENT BANNER */
+        .announce-banner {
+            background: #44e991;
+            color: #12100E;
+            text-align: center;
+            padding: 12px 24px;
+            font-family: var(--font-ui, 'DM Sans', sans-serif);
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            position: relative;
+            z-index: 201;
+        }
+        .announce-banner strong { color: #12100E; }
     </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- NAV -->
+<div class="announce-banner">Přihlášky do letní akademie přijímáme do <strong>31. května 2026</strong>, neváhej a zajisti si místo včas!</div>
 <header>
     <nav class="nav-wrapper">
         <a class="nav-logo" href="#"><img src="./img/makeful_logo_colours.png" alt="Makeful logo"></a>
@@ -622,10 +653,10 @@
             <a class="nav-link" href="#kontakt">Kontakt</a>
         </div>
         <div class="nav-spacer"></div>
-        <a class="nav-cta" href="./registrace">Přihlásit se</a>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
+        <a class="nav-cta" href="./registrace">Mám zájem</a>
     </nav>
     <nav class="nav-drawer" id="navDrawer">
         <a class="nav-drawer-link" href="#top">Domů</a>
@@ -634,7 +665,6 @@
         <a class="nav-drawer-link" href="#onas">O nás</a>
         <a class="nav-drawer-link" href="#faq">FAQ</a>
         <a class="nav-drawer-link" href="#kontakt">Kontakt</a>
-        <a class="nav-drawer-cta" href="./registrace">Přihlásit se</a>
     </nav>
 </header>
 
@@ -1159,6 +1189,7 @@
         <div class="label label-lavender">Termíny 2026</div>
         <h2>Vyber si svůj termín</h2>
         <p>Devět termínů od června do srpna, každá má max. 10 míst. Rezervuj si své místo rychle, ať ti akademie neuteče.</p>
+        <div style="display:inline-block; background:#44e991; color:#12100E; font-weight:700; font-size:0.88rem; padding:10px 20px; margin-top:16px; letter-spacing:0.02em;">📅 Přihlášky přijímáme do 31. května 2026</div>
         <div class="dates-grid">
             <div class="date-item"><div class="date-num">29. 6. – 5. 7.</div><div class="date-year">2026 · Akademie 1</div></div>
             <div class="date-item"><div class="date-num">6. 7. – 12. 7.</div><div class="date-year">2026 · Akademie 2</div></div>
@@ -1434,7 +1465,7 @@
                 <li><a href="tel:+420735820576">+420 735 820 576</a></li>
             </ul>
             <div style="margin-top: 32px;">
-                <a href="./registrace" class="btn btn-primary" style="width:100%; display:block; text-align:center;">Přihlásit se na laboratoř</a>
+                <a href="./registrace" class="btn btn-primary" style="width:100%; display:block; text-align:center;">Mám zájem</a>
             </div>
         </div>
     </div>

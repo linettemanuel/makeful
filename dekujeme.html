@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KGDFKB27');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Děkujeme za přihlášku – Makeful</title>
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --peach:    #FEB492;
+    --peach-dk: #d4713a;
+    --lavender: #9A75F0;
+    --ink:      #12100E;
+    --white:    #FEFEFE;
+    --off:      #F5F3F0;
+    --mid:      #5C5856;
+    --border:   1px solid rgba(18,16,14,0.10);
+    --font-display: "Playfair Display", serif;
+    --font-ui:      "DM Sans", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--off); font-family: var(--font-ui); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
+a { text-decoration: none; color: inherit; }
+
+/* NAV */
+header { background: var(--white); border-bottom: var(--border); }
+.nav-wrapper { display: flex; align-items: stretch; height: 72px; }
+.nav-logo { display: flex; align-items: center; padding: 0 22px; border-right: var(--border); }
+.nav-logo img { height: 22px; width: auto; }
+.nav-back { display: flex; align-items: center; padding: 0 24px; font-size: 0.85rem; font-weight: 600; color: var(--mid); border-right: var(--border); gap: 8px; transition: background 0.15s; }
+.nav-back:hover { background: var(--off); color: var(--ink); }
+.nav-back::before { content: '←'; }
+.nav-spacer { flex: 1; }
+
+/* MAIN */
+main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+.card { background: var(--white); border: var(--border); max-width: 640px; width: 100%; }
+
+.card-top { background: var(--ink); padding: 40px 48px; position: relative; overflow: hidden; }
+.card-top::after { content: '✓'; font-family: var(--font-display); font-size: 12rem; font-weight: 900; color: rgba(255,255,255,0.04); position: absolute; right: -10px; top: -20px; line-height: 1; }
+.card-top .label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--peach); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.card-top .label::before { content: ''; display: block; width: 18px; height: 2.5px; background: var(--peach); }
+.card-top h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--white); line-height: 1.1; position: relative; z-index: 1; }
+
+.accent-bar { height: 4px; background: var(--peach); }
+
+.card-body { padding: 40px 48px; }
+.card-body p { font-size: 0.95rem; color: var(--mid); line-height: 1.8; margin-bottom: 16px; }
+.card-body p:last-child { margin-bottom: 0; }
+.card-body strong { color: var(--ink); }
+
+/* INFO BOX */
+.info-box { background: var(--off); border-left: 4px solid var(--peach); padding: 18px 22px; margin: 24px 0; }
+.info-box p { font-size: 0.88rem; margin: 0; color: var(--ink); line-height: 1.75; }
+
+/* BUTTONS */
+.btn-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+.btn-stripe { display: block; text-align: center; background: var(--peach); color: var(--ink); padding: 16px 32px; font-family: var(--font-ui); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s, transform 0.15s; border: 2px solid var(--peach); }
+.btn-stripe:hover { background: #f0a070; transform: translateY(-2px); }
+.btn-secondary { display: block; text-align: center; background: transparent; color: var(--mid); padding: 14px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; border: 2px solid rgba(18,16,14,0.12); transition: border-color 0.15s, color 0.15s; }
+.btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 20px 32px; }
+footer p { font-size: 0.75rem; color: rgba(255,255,255,0.35); text-align: center; line-height: 1.7; }
+footer a { color: var(--peach); }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+    <div class="nav-wrapper">
+        <a href="/" class="nav-logo"><img src="./img/makeful_logo_colours.png" alt="Makeful"></a>
+        <a href="/summercamp" class="nav-back">Zpět na web</a>
+        <div class="nav-spacer"></div>
+    </div>
+</header>
+
+<main>
+    <div class="card">
+        <div class="card-top">
+            <div class="label">Makeful · Letní akademie 2026</div>
+            <h1 id="card-title">Přihláška přijata!</h1>
+        </div>
+        <div class="accent-bar"></div>
+        <div class="card-body">
+            <div id="content-email">
+                <!-- Varianta: email -->
+                <p>Vaše přihláška byla úspěšně odeslána.</p>
+<p style="font-size:1.8rem; margin:20px 0 8px;">📩</p>
+                <p>Všechny další kroky a platební instrukce najdete v emailu, který jsme vám právě odeslali. Pokud email do pár minut nedorazí, zkontrolujte složku se spamem.</p>
+                <p>V případě dotazů nás kontaktujte na <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> nebo +420 735 820 576.</p>
+                <div class="btn-wrap">
+                    <a href="/summercamp" class="btn-secondary">Zpět na web</a>
+                </div>
+            </div>
+
+            <div id="content-stripe" style="display:none;">
+                <!-- Varianta: Stripe platba -->
+                <p>Vaše přihláška byla úspěšně odeslána. Posledním krokem je uhrazení platby.</p>
+<p style="font-size:1.8rem; margin:20px 0 8px;" id="stripe-emoji">💳</p>
+                <p id="stripe-info">Klikněte na tlačítko níže pro bezpečnou platbu kartou přes Stripe.</p>
+                <p>Platební instrukce jsme vám také zaslali emailem. Po uhrazení platby vám zašleme potvrzení o rezervaci místa do 2 dnů.</p>
+                <div class="btn-wrap">
+                    <a id="stripe-btn" href="#" class="btn-stripe">Zaplatit celou akademii →</a>
+                    <a href="/summercamp" class="btn-secondary">Zpět na web</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>Makeful – Letní módní kreativní laboratoř · Argentinská 1, Praha 7 · <a href="https://make-ful.com">make-ful.com</a></p>
+</footer>
+
+<script>
+(function() {
+    var STRIPE_CELA  = 'https://buy.stripe.com/9B6dR9dLV5DV02NaMH67S06';
+    var STRIPE_ZALOHA = 'https://buy.stripe.com/5kQ00jbDNfevcPz4oj67S08';
+
+    // Parse URL params
+    var params = new URLSearchParams(window.location.search);
+    var stripe  = params.get('stripe') === '1';
+    var vyse    = params.get('vyse') || '';
+    var jmeno   = params.get('jmeno') || '';
+
+    if (stripe) {
+        // Show Stripe variant
+        document.getElementById('content-email').style.display  = 'none';
+        document.getElementById('content-stripe').style.display = 'block';
+        document.getElementById('card-title').textContent = 'Téměř hotovo!';
+
+        var isZaloha = vyse === 'Záloha 1 500 Kč';
+        var stripeLink = isZaloha ? STRIPE_ZALOHA : STRIPE_CELA;
+        var stripeBtn  = document.getElementById('stripe-btn');
+        stripeBtn.href = stripeLink;
+        stripeBtn.textContent = isZaloha ? 'Zaplatit zálohu →' : 'Zaplatit celou akademii →';
+
+        document.getElementById('stripe-info').textContent = isZaloha
+            ? 'Klikněte na tlačítko níže pro úhradu zálohy. Zbytek částky doplatíte nejpozději 14 dní před akademií.'
+            : 'Klikněte na tlačítko níže pro bezpečnou platbu kartou přes Stripe.';
+        document.getElementById('stripe-emoji').textContent = isZaloha ? '🗓️' : '💳';
+    }
+})();
+</script>
+</body>
+</html>
