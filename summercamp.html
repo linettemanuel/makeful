@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         img { display: block; width: 100%; height: 100%; object-fit: cover; }
         h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
         h4 { font-family: var(--font-ui); font-weight: 600; color: var(--ink); }
-        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
+        h1 { font-size: clamp(2.8rem, 3.5vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 32px; }
         h2 { font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; margin-bottom: 20px; }
         h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; }
         p  { font-size: 1rem; line-height: 1.8; color: var(--mid); }
@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         /* NAV */
         header { background: var(--white); border-bottom: var(--border); position: sticky; top: 0; z-index: 200; }
-        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 72px; }
+        .nav-wrapper { width: 100%; display: flex; align-items: stretch; height: 50px; }
         .nav-logo { display: flex; align-items: center; padding: 0 22px; border-right: var(--border); flex-shrink: 0; }
         .nav-logo img { height: 22px; width: auto; }
         .nav-links { display: flex; flex: 1; }
@@ -96,28 +96,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .nav-spacer { flex: 1; }
         .nav-cta { display: flex; align-items: center; padding: 0 30px; background: var(--lilac); color: var(--ink); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0; transition: background 0.15s; border-left: var(--border); }
         .nav-cta:hover { background: var(--lavender); color: var(--ink); }
-        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 72px; height: 72px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; }
+        .nav-hamburger { display: none; align-items: center; justify-content: center; width: 50px; height: 50px; flex-shrink: 0; border-left: var(--border); background: none; border-top: none; border-right: none; border-bottom: none; cursor: pointer; padding: 0; }
         .nav-hamburger .bar { display: block; width: 22px; height: 2px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; position: absolute; }
         .nav-hamburger .bar:nth-child(1) { transform: translateY(-7px); }
         .nav-hamburger .bar:nth-child(3) { transform: translateY(7px); }
         .nav-hamburger.open .bar:nth-child(1) { transform: translateY(0) rotate(45deg); }
         .nav-hamburger.open .bar:nth-child(2) { opacity: 0; }
         .nav-hamburger.open .bar:nth-child(3) { transform: translateY(0) rotate(-45deg); }
-        .nav-drawer { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+        .nav-drawer { display: none; position: fixed; top: 50px; left: 0; right: 0; background: var(--white); border-bottom: var(--border); z-index: 199; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
         .nav-drawer.open { display: flex; }
         .nav-drawer-link { display: flex; align-items: center; padding: 20px 32px; font-size: 1rem; font-weight: 600; border-bottom: var(--border); transition: background 0.15s; }
         .nav-drawer-link:hover { background: var(--off); }
         .nav-drawer-cta { display: flex; align-items: center; justify-content: center; padding: 22px 32px; background: var(--primary); color: var(--ink); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
 
         /* HERO */
-        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 72px); border-bottom: var(--border); }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 100px); border-bottom: var(--border); }
         .hero-left { background: var(--primary); padding: 100px 72px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
         .hero-left::after { content: 'L'; font-family: var(--font-display); font-size: 40vw; font-weight: 900; color: rgba(255,255,255,0.22); position: absolute; top: -10%; right: -10%; line-height: 1; pointer-events: none; user-select: none; }
         .hero-left h1 { color: var(--ink); position: relative; z-index: 1; }
         .hero-left .hero-sub { color: rgba(18,16,14,0.78); position: relative; z-index: 1; font-size: 1.1rem; line-height: 1.75; }
         .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; position: relative; z-index: 1; }
-        .hero-right { position: relative; overflow: hidden; border-left: var(--border); background: var(--ink); display: flex; align-items: stretch; }
-        .hero-right video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-right { position: relative; overflow: hidden; border-left: var(--border); background: var(--ink); display: flex; flex-direction: column; align-items: stretch; }
+        .hero-right video { width: 100%; height: auto; flex: 1; min-height: 0; object-fit: cover; display: block; }
+        .hanka-testimonial { background: var(--off); border-top: var(--border); padding: 30px 32px; display: flex; align-items: flex-start; gap: 28px; flex-shrink: 0; }
+        .hanka-testimonial-accent { flex-shrink: 0; width: 4px; background: var(--primary); align-self: stretch; border-radius: 2px; }
+        .hanka-testimonial p { font-family: var(--font-display); font-size: clamp(1rem, 1.4vw, 1.1rem); font-style: italic; color: var(--ink); line-height: 1.75; margin-bottom: 16px; }
+        .hanka-testimonial-attr { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-dark); font-family: var(--font-ui); }
 
         /* PRESS BAR */
         .press-bar { border-bottom: var(--border); padding: 24px 80px; display: flex; align-items: center; gap: 40px; overflow-x: auto; background: var(--white); }
@@ -387,7 +391,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .nav-hamburger { display: flex; }
             .hero { grid-template-columns: 1fr; min-height: auto; }
             .hero-left { padding: 80px 40px; min-height: 60vw; }
-            .hero-right { min-height: 56vw; border-left: none; border-top: var(--border); }
+            .hero-right { min-height: auto; border-left: none; border-top: var(--border); }
+            .hero-right video { height: clamp(360px, 70vw, 620px); flex: 0 0 auto; object-fit: cover; }
             .press-bar { padding: 20px 28px; gap: 16px; flex-direction: column; align-items: flex-start; }
             .press-bar-label { white-space: normal; }
             .press-logos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; width: 100%; }
@@ -447,6 +452,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
             .hero-left { padding: 60px 28px; }
+            .hero-right video { height: clamp(224px, 62.4vw, 336px); }
             .price-banner { grid-template-columns: 1fr; }
             .price-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
             .price-item:last-child { border-bottom: none; }
@@ -685,10 +691,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <source src="./video/hana-valtova-transparent-corset-final-project (1).mp4" type="video/mp4">
             Tvůj prohlížeč nepodporuje přehrávání videa.
         </video>
+        <div class="hanka-testimonial">
+            <div class="hanka-testimonial-accent"></div>
+            <div>
+                <p>&bdquo;Naučila jsem se toho opravdu hodně. Nejvíc jsem ocenila práci s počítačovými programy a 3D tiskárnou. Jsem ráda, že jsem si mohla vyzkoušet všechny techniky spojené s 3D tištěnou módou a poslouchat zajímavé přednášky.&ldquo;</p>
+                <div class="hanka-testimonial-attr">Hanka, absolventka akademie</div>
+            </div>
+        </div>
     </div>
 </section>
 
-<div style="background:var(--off);border-bottom:var(--border);padding:30px 0px;display:flex;align-items:flex-start;gap:28px;" class="hanka-testimonial"><div style="flex-shrink:0;width:4px;background:var(--primary);align-self:stretch;border-radius:2px;"></div><div><p style="font-family:var(--font-display);font-size:clamp(1rem,1.4vw,1.1rem);font-style:italic;color:var(--ink);line-height:1.75;margin-bottom:16px;">&bdquo;Naučila jsem se toho opravdu hodně. Nejvíc jsem ocenila práci s počítačovými programy a 3D tiskárnou. Jsem ráda, že jsem si mohla vyzkoušet všechny techniky spojené s 3D tištěnou módou a poslouchat zajímavé přednášky.&ldquo;</p><div style="font-weight:700;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary-dark);font-family:var(--font-ui);">Hanka, absolventka akademie</div></div></div>
 <!-- PRESS BAR -->
 <div class="press-bar">
     <span class="press-bar-label">Mohli jste o nás slyšet z:</span>
@@ -1490,6 +1502,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         btn.addEventListener('click', function() {
             var open = drawer.classList.toggle('open');
             btn.classList.toggle('open', open);
+        });
+        drawer.querySelectorAll('.nav-drawer-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                drawer.classList.remove('open');
+                btn.classList.remove('open');
+            });
         });
     }
 })();
