@@ -98,27 +98,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="accent-bar"></div>
         <div class="card-body">
-            <div id="content-email">
-                <!-- Varianta: email -->
-                <p>Vaše přihláška byla úspěšně odeslána.</p>
-<p style="font-size:1.8rem; margin:20px 0 8px;">📩</p>
-                <p>Všechny další kroky a platební instrukce najdete v emailu, který jsme vám právě odeslali. Pokud email do pár minut nedorazí, zkontrolujte složku se spamem.</p>
-                <p>V případě dotazů nás kontaktujte na <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> nebo +420 735 820 576.</p>
-                <div class="btn-wrap">
-                    <a href="/summercamp" class="btn-secondary">Zpět na web</a>
-                </div>
-            </div>
-
-            <div id="content-stripe" style="display:none;">
-                <!-- Varianta: Stripe platba -->
-                <p>Vaše přihláška byla úspěšně odeslána. Posledním krokem je uhrazení platby.</p>
-<p style="font-size:1.8rem; margin:20px 0 8px;" id="stripe-emoji">💳</p>
-                <p id="stripe-info">Klikněte na tlačítko níže pro bezpečnou platbu kartou přes Stripe.</p>
-                <p>Platební instrukce jsme vám také zaslali emailem. Po uhrazení platby vám zašleme potvrzení o rezervaci místa do 2 dnů.</p>
-                <div class="btn-wrap">
-                    <a id="stripe-btn" href="#" class="btn-stripe">Zaplatit celou akademii →</a>
-                    <a href="/summercamp" class="btn-secondary">Zpět na web</a>
-                </div>
+            <p>Vaše přihláška byla úspěšně odeslána.</p>
+            <p style="font-size:1.8rem; margin:20px 0 8px;">📩</p>
+            <p>Všechny další kroky najdete v emailu, který jsme vám právě odeslali. Pokud email do pár minut nedorazí, zkontrolujte složku se spamem.</p>
+            <p>V případě dotazů nás kontaktujte na <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> nebo +420 735 820 576.</p>
+            <div class="btn-wrap">
+                <a href="/summercamp" class="btn-secondary">Zpět na web</a>
             </div>
         </div>
     </div>
@@ -128,35 +113,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Makeful – Letní módní kreativní laboratoř · Argentinská 1, Praha 7 · <a href="https://make-ful.com">make-ful.com</a></p>
 </footer>
 
-<script>
-(function() {
-    var STRIPE_CELA  = 'https://buy.stripe.com/9B6dR9dLV5DV02NaMH67S06';
-    var STRIPE_ZALOHA = 'https://buy.stripe.com/5kQ00jbDNfevcPz4oj67S08';
-
-    // Parse URL params
-    var params = new URLSearchParams(window.location.search);
-    var stripe  = params.get('stripe') === '1';
-    var vyse    = params.get('vyse') || '';
-    var jmeno   = params.get('jmeno') || '';
-
-    if (stripe) {
-        // Show Stripe variant
-        document.getElementById('content-email').style.display  = 'none';
-        document.getElementById('content-stripe').style.display = 'block';
-        document.getElementById('card-title').textContent = 'Téměř hotovo!';
-
-        var isZaloha = vyse === 'Záloha 1 500 Kč';
-        var stripeLink = isZaloha ? STRIPE_ZALOHA : STRIPE_CELA;
-        var stripeBtn  = document.getElementById('stripe-btn');
-        stripeBtn.href = stripeLink;
-        stripeBtn.textContent = isZaloha ? 'Zaplatit zálohu →' : 'Zaplatit celou akademii →';
-
-        document.getElementById('stripe-info').textContent = isZaloha
-            ? 'Klikněte na tlačítko níže pro úhradu zálohy. Zbytek částky doplatíte nejpozději 14 dní před akademií.'
-            : 'Klikněte na tlačítko níže pro bezpečnou platbu kartou přes Stripe.';
-        document.getElementById('stripe-emoji').textContent = isZaloha ? '🗓️' : '💳';
-    }
-})();
-</script>
 </body>
 </html>

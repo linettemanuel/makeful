@@ -670,7 +670,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="info-item">
             <div class="il">Cena programu</div>
-            <div class="iv hl">8 888 Kč</div>
+            <div class="iv hl"><span style="color:#FEFEFE;">8 888 Kč</span></div>
+            <div class="iv hl" style="font-size:0.85em;margin-top:4px;"><span style="color:var(--primary);">záloha 1 500 Kč</span></div>
         </div>
     </div>
 
@@ -692,8 +693,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="row full">
             <div class="field">
-                <label>Datum narození <span class="req">*</span></label>
-                <input id="f-datum" type="date">
+                <label>Věk <span class="req">*</span></label>
+                <select id="f-datum" style="background:var(--off);border:1px solid rgba(18,16,14,0.12);padding:13px 16px;font-family:var(--font-ui);font-size:0.92rem;color:var(--ink);width:100%;outline:none;appearance:auto;">
+                    <option value="" disabled selected>Vyber věk…</option>
+                    <option value="14 let">14 let</option>
+                    <option value="15 let">15 let</option>
+                    <option value="16 let">16 let</option>
+                    <option value="17 let">17 let</option>
+                    <option value="18 let">18 let</option>
+                    <option value="19 let">19 let</option>
+                </select>
             </div>
         </div>
         <div class="row full">
@@ -729,19 +738,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <input id="f-email" type="email" placeholder="jana.novakova@email.cz" autocomplete="email">
             </div>
         </div>
-        <div class="row full">
-            <div class="field">
-                <label>Fakturační adresa (ulice, město, PSČ) <span class="req">*</span></label>
-                <input id="f-adresa" type="text" placeholder="Mánesova 12, Praha 2, 120 00" autocomplete="street-address">
-            </div>
-        </div>
-        <div class="row full">
-            <div class="field">
-                <label>Zdravotní omezení, alergie nebo zvláštní potřeby</label>
-                <textarea id="f-zdravi" placeholder="Např. alergie na lepek, astma… Pokud žádné nejsou, nechte prázdné."></textarea>
-            </div>
-        </div>
-
         <hr class="divider">
 
         <!-- 3. TERMÍN -->
@@ -781,126 +777,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
 
-        <hr class="divider">
-
-        <!-- 4. ZPŮSOB PLATBY -->
-        <div class="sec-label">Způsob platby <span style="color:var(--coral);font-weight:400;letter-spacing:0;text-transform:none;font-size:0.9em;">*</span></div>
-        <div class="pay-grid-2">
-            <div class="pay-card" id="sp-prevod" onclick="selectZpusob('prevod')">
-                <input type="radio" name="zpusob" value="Bankovní převod">
-                <div class="pay-icon">🏦</div>
-                <div class="pay-name">Bankovní převod</div>
-                <div class="pay-desc">Platební údaje obdržíte emailem.</div>
-            </div>
-            <div class="pay-card" id="sp-karta" onclick="selectZpusob('karta')">
-                <input type="radio" name="zpusob" value="Platební karta">
-                <div class="pay-icon">💳</div>
-                <div class="pay-name">Platební karta</div>
-                <div class="pay-desc">Zaplatíte bezpečně kartou přes Stripe.</div>
-            </div>
-            <div class="pay-card" id="sp-benefit" onclick="selectZpusob('benefit')">
-                <input type="radio" name="zpusob" value="Benefity">
-                <div class="pay-icon">🎫</div>
-                <div class="pay-name">Benefity</div>
-                <div class="pay-desc">Karta nebo poukázky od zaměstnavatele.</div>
-            </div>
-            <div class="pay-card" id="sp-kombinace" onclick="selectZpusob('kombinace')">
-                <input type="radio" name="zpusob" value="Část benefity">
-                <div class="pay-icon">✦</div>
-                <div class="pay-name">Část benefity</div>
-                <div class="pay-desc">Část uhradíte benefity, zbytek jiným způsobem.</div>
-            </div>
-        </div>
-
-        <!-- VÝŠE PLATBY (skryta pro část benefity) -->
-        <div id="vyse-panel" style="display:none; margin-top:20px;">
-            <div class="sec-label" style="margin-top:0;">Výše platby <span style="color:var(--coral);font-weight:400;letter-spacing:0;text-transform:none;font-size:0.9em;">*</span></div>
-            <div class="pay-grid-2">
-                <div class="pay-card" id="vp-cela" onclick="selectVyse('cela')">
-                    <input type="radio" name="vyse" value="Celá částka">
-                    <div class="pay-icon">💰</div>
-                    <div class="pay-name">Celá částka</div>
-                    <div class="pay-desc">Uhradíte 8 888 Kč najednou.</div>
-                </div>
-                <div class="pay-card" id="vp-zaloha" onclick="selectVyse('zaloha')">
-                    <input type="radio" name="vyse" value="Záloha 1 500 Kč">
-                    <div class="pay-icon">📅</div>
-                    <div class="pay-name">Záloha 1 500 Kč</div>
-                    <div class="pay-desc">Zbytek uhradíte nejpozději 14 dní před akademií.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BENEFIT PANEL -->
-        <div class="benefit-panel" id="benefit-panel">
-            <div class="prov-label">Poskytovatel benefitů</div>
-            <div class="prov-grid">
-                <div class="prov-card" id="pr-benefitplus" onclick="selectProvider('benefitplus')">
-                    <input type="radio" name="provider" value="Benefit Plus">
-                    Benefit Plus
-                </div>
-                <div class="prov-card" id="pr-pluxee" onclick="selectProvider('pluxee')">
-                    <input type="radio" name="provider" value="Pluxee">
-                    Pluxee
-                </div>
-                <div class="prov-card" id="pr-up" onclick="selectProvider('up')">
-                    <input type="radio" name="provider" value="Up Benefity">
-                    Up Benefity
-                </div>
-                <div class="prov-card" id="pr-edenred" onclick="selectProvider('edenred')">
-                    <input type="radio" name="provider" value="Edenred">
-                    Edenred
-                </div>
-            </div>
-            <div class="prov-label">Forma benefitu</div>
-            <div class="forma-row">
-                <div class="fcard" id="fc-karta" onclick="selectForma('karta')">
-                    <input type="radio" name="forma" value="Benefitní karta">
-                    <div class="fcard-dot"></div>
-                    <div class="fcard-label">Benefitní karta</div>
-                </div>
-                <div class="fcard" id="fc-poukazky" onclick="selectForma('poukazky')">
-                    <input type="radio" name="forma" value="Papírové poukázky">
-                    <div class="fcard-dot"></div>
-                    <div class="fcard-label">Papírové poukázky</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. PROMOKÓD (podmíněně viditelný) -->
-        <div id="promo-section" style="display:none;">
-            <hr class="divider">
-            <div class="sec-label">Promo kód <span style="color:var(--mid);font-weight:400;letter-spacing:0;text-transform:none;font-size:0.9em;">(nepovinné)</span></div>
-            <div class="field">
-                <input id="promo-input" type="text" placeholder="Zadejte váš promo kód" style="background:var(--off); border:1px solid rgba(18,16,14,0.12); padding:13px 16px; font-family:var(--font-ui); font-size:0.92rem; color:var(--ink); width:100%; outline:none;">
-            </div>
-        </div>
-
-        <hr class="divider">
+                <hr class="divider">
 
         <!-- 6. SOUHLAS -->
         <div class="sec-label">Souhlas a podmínky</div>
-        <div class="gdpr-box">
-            <p>Vyplněním přihlášky souhlasíte se zpracováním osobních údajů pro účely organizace programu. Údaje nejsou předávány třetím stranám. Platba kartou nebo benefity závazně rezervuje vaše místo v akademii.</p>
-        </div>
         <div class="consent-row">
             <input type="checkbox" id="c1">
             <label for="c1">Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label>
         </div>
-        <div class="consent-row">
-            <input type="checkbox" id="c2">
-            <label for="c2">Beru na vědomí, že záloha je po uhrazení nevratná a závazně rezervuje místo na vybraném termínu. <span style="color:var(--coral)">*</span></label>
-        </div>
-        <div class="consent-row">
-            <input type="checkbox" id="c3">
-            <label for="c3">Souhlasím s pořizováním fotografií a videí během programu pro účely propagace Makeful. (nepovinné)</label>
-        </div>
+
 
         <div id="form-error" class="form-error-banner"></div>
 
         <div class="submit-row">
             <button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()">Odeslat přihlášku →</button>
-            <p class="submit-note">Po odeslání obdržíte email<br>s pokyny pro platbu.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do konce května 2026.</span></p>
+            <p class="submit-note">Po odeslání vám zašleme email<br>s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do konce května 2026.</span></p>
         </div>
 
         <div class="success-banner" id="success-banner">
@@ -1002,60 +893,41 @@ function selectForma(v) {
     updatePromoVisibility();
 }
 
-function updatePromoVisibility() {
-    var promoSection = document.getElementById('promo-section');
-    var zpusobEl  = document.querySelector('input[name="zpusob"]:checked');
-    var providerEl = document.querySelector('input[name="provider"]:checked');
-    var formaEl   = document.querySelector('input[name="forma"]:checked');
 
-    var zpusob   = zpusobEl   ? zpusobEl.value   : '';
-    var provider = providerEl ? providerEl.value  : '';
-    var forma    = formaEl    ? formaEl.value     : '';
-
-    // Skrýt promo kód pro:
-    // 1. Platební karta
-    // 2. Edenred nebo Up Benefity + Benefitní karta
-    var hidePromo = false;
-    if (zpusob === 'Platební karta') hidePromo = true;
-    if (zpusob === 'Benefity' &&
-        (provider === 'Edenred' || provider === 'Up Benefity') &&
-        forma === 'Benefitní karta') hidePromo = true;
-
-    promoSection.style.display = hidePromo ? 'none' : 'block';
-}
 /* ── Web3Forms submit ── */
 function handleSubmit() {
     var errBanner = document.getElementById('form-error');
     errBanner.style.display = 'none';
 
-    // Validate required checkboxes
-    if (!document.getElementById('c1').checked || !document.getElementById('c2').checked) {
-        errBanner.textContent = 'Prosím potvrďte povinné souhlasy před odesláním přihlášky.';
+    // Validate required checkbox
+    if (!document.getElementById('c1').checked) {
+        errBanner.textContent = 'Prosím potvrďte souhlas se zpracováním osobních údajů.';
         errBanner.style.display = 'block';
         errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
     }
-    // Validate required fields
-    var jmeno        = document.getElementById('f-jmeno').value.trim();
-    var prijmeni     = document.getElementById('f-prijmeni').value.trim();
-    var datum        = document.getElementById('f-datum').value.trim();
-    var rodicJmeno   = document.getElementById('f-rodic-jmeno').value.trim();
-    var rodicPrijmeni= document.getElementById('f-rodic-prijmeni').value.trim();
-    var tel          = document.getElementById('f-tel').value.trim();
-    var email   = document.getElementById('f-email').value.trim();
-    var adresa  = document.getElementById('f-adresa').value.trim();
-    var termin  = document.getElementById('f-termin').value;
-    var zpusob  = document.querySelector('input[name="zpusob"]:checked');
 
+    // Collect field values
+    var jmeno         = document.getElementById('f-jmeno').value.trim();
+    var prijmeni      = document.getElementById('f-prijmeni').value.trim();
+    var datum         = document.getElementById('f-datum').value.trim();
+    var rodicJmeno    = document.getElementById('f-rodic-jmeno').value.trim();
+    var rodicPrijmeni = document.getElementById('f-rodic-prijmeni').value.trim();
+    var tel           = document.getElementById('f-tel').value.trim();
+    var email         = document.getElementById('f-email').value.trim();
+    var termin        = document.getElementById('f-termin').value;
+    var termin2       = document.getElementById('f-termin2').value;
+    var emailUc       = document.getElementById('f-email-uc').value.trim();
+
+    // Validate required fields
     var missingFields = [];
     if (!jmeno)         missingFields.push('Jméno účastnice');
     if (!prijmeni)      missingFields.push('Příjmení účastnice');
-    if (!datum)         missingFields.push('Datum narození');
+    if (!datum)         missingFields.push('Věk');
     if (!rodicJmeno)    missingFields.push('Jméno rodiče');
     if (!rodicPrijmeni) missingFields.push('Příjmení rodiče');
     if (!tel)           missingFields.push('Telefon');
     if (!email)         missingFields.push('Email rodiče');
-    if (!adresa)        missingFields.push('Fakturační adresa');
     if (!termin)        missingFields.push('Preferovaný termín');
     if (missingFields.length > 0) {
         errBanner.textContent = 'Vyplňte prosím: ' + missingFields.join(', ');
@@ -1063,45 +935,6 @@ function handleSubmit() {
         errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
     }
-    if (!zpusob) {
-        errBanner.textContent = 'Vyberte prosím způsob platby.';
-        errBanner.style.display = 'block';
-        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        return;
-    }
-    var vyse = document.querySelector('input[name="vyse"]:checked');
-    if (zpusob.value !== 'Část benefity' && !vyse) {
-        errBanner.textContent = 'Vyberte prosím výši platby.';
-        errBanner.style.display = 'block';
-        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        return;
-    }
-    // Validate provider and forma if benefit payment selected
-    if (zpusob.value === 'Benefity' || zpusob.value === 'Část benefity') {
-        var provider = document.querySelector('input[name="provider"]:checked');
-        var forma    = document.querySelector('input[name="forma"]:checked');
-        if (!provider) {
-            errBanner.textContent = 'Vyberte prosím poskytovatele benefitů.';
-            errBanner.style.display = 'block';
-            errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            return;
-        }
-        if (!forma) {
-            errBanner.textContent = 'Vyberte prosím formu benefitu (karta nebo poukázky).';
-            errBanner.style.display = 'block';
-            errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            return;
-        }
-    }
-
-    // Optional fields
-    var emailUc  = document.getElementById('f-email-uc').value.trim();
-    var zdravi   = document.getElementById('f-zdravi').value.trim();
-    var termin2  = document.getElementById('f-termin2').value;
-    var provider = document.querySelector('input[name="provider"]:checked');
-    var forma    = document.querySelector('input[name="forma"]:checked');
-    var promo    = document.getElementById('promo-input').value.trim();
-    var foto     = document.getElementById('c3').checked ? 'Ano' : 'Ne';
 
     var btn = document.getElementById('submit-btn');
     btn.textContent = 'Odesílám…';
@@ -1121,27 +954,16 @@ function handleSubmit() {
 
         'Jméno účastnice':              jmeno,
         'Příjmení účastnice':           prijmeni,
-        'Datum narození':               datum,
+        'Věk':                          datum,
         'Email účastnice':              emailUc || '—',
 
         'Jméno rodiče':                 rodicJmeno,
         'Příjmení rodiče':              rodicPrijmeni,
         'Telefon':                      tel,
         'Email rodiče':                 email,
-        'Fakturační adresa':            adresa,
-
-        'Zdravotní omezení / alergie':  zdravi || '—',
-
         'Preferovaný termín':           termin,
         'Náhradní termín':              termin2 || '—',
 
-        'Způsob platby':                zpusob.value,
-        'Výše platby':                  vyse ? vyse.value : 'Část benefity – individuálně',
-        'Poskytovatel benefitů':        provider ? provider.value : '—',
-        'Forma benefitu':               forma ? forma.value : '—',
-        'Promo kód':                     promo || 'EMPTY',
-
-        'Souhlas s fotografováním':     foto
     };
 
     fetch('https://hook.eu1.make.com/oyiz9y17pvcf36ncoa6x4ophaopk3y4p', {
@@ -1151,25 +973,7 @@ function handleSubmit() {
     })
     .then(function(res) {
         if (res.ok) {
-            // Determine redirect type
-            var zpusobVal = zpusob.value;
-            var provider  = document.querySelector('input[name="provider"]:checked');
-            var forma     = document.querySelector('input[name="forma"]:checked');
-            var vyseVal   = vyse ? vyse.value : '';
-
-            // Card redirect (Stripe) for: platební karta, Edenred karta, Up karta
-            var isKartaRedirect = false;
-            if (zpusobVal === 'Platební karta') isKartaRedirect = true;
-            if (zpusobVal === 'Benefity' && provider &&
-                (provider.value === 'Edenred' || provider.value === 'Up Benefity') &&
-                forma && forma.value === 'Benefitní karta') isKartaRedirect = true;
-
-            var params = '?zpusob=' + encodeURIComponent(zpusobVal) +
-                         '&vyse='   + encodeURIComponent(vyseVal) +
-                         '&jmeno='  + encodeURIComponent(jmeno + ' ' + prijmeni) +
-                         '&stripe=' + (isKartaRedirect ? '1' : '0');
-
-            window.location.href = './dekujeme' + params;
+            window.location.href = './dekujeme/';
         } else {
             throw new Error('Status: ' + res.status);
         }
