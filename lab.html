@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KGDFKB27');</script>
-<!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Letní módní kreativní laboratoř 2026 – Makeful</title>
     <meta name="theme-color" content="#12100E">
-    <meta name="description" content="Letní fashiontech akademie – Příměstský kemp pro holky ve věku 14–19 let v Praze. Sedm dní plných kreativní tvorby, experimentů a objevování.">
+    <meta name="description" content="Letní fashiontech akademie - Příměstský kemp pro holky ve věku 10-19 let v Praze. Tři věkové skupiny, česky i anglicky. Sedm dní plných kreativní tvorby, experimentů a objevování.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://makeful.com/summercamp">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Letní módní kreativní laboratoř 2026 – Makeful">
-    <meta property="og:description" content="Letní FashionTech Akademie – Program pro holky ve věku 14–19 let v Praze. Sedm dní plných kreativní tvorby, experimentů a objevování.">
+    <meta property="og:description" content="Letní FashionTech Akademie - Program pro holky ve věku 10-19 let v Praze. Tři věkové skupiny, česky i anglicky. Sedm dní plných kreativní tvorby, experimentů a objevování.">
     <meta property="og:url" content="https://makeful.com/summercamp">
     <meta property="og:image" content="https://makeful.com/img/makeful_og.png">
     <meta property="og:site_name" content="Makeful">
@@ -157,6 +155,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .forwhom-image { overflow: hidden; min-height: 520px; background: var(--off); }
 
         /* IMG PLACEHOLDER */
+        @media (max-width: 640px) { #registrace > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } }
         .img-placeholder { width: 100%; height: 100%; background: var(--off); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 300px; color: rgba(18,16,14,0.25); border: 2px dashed rgba(18,16,14,0.12); }
         .img-placeholder span.material-symbols-outlined { font-size: 40px; }
         .img-placeholder p { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(18,16,14,0.25); margin: 0; }
@@ -418,17 +417,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .day-card:nth-child(4n) { border-right: none; }
             .program-meta { padding: 48px 40px; }
             .included-section { grid-template-columns: 1fr; }
+            .included-list { grid-template-columns: 1fr !important; }
             .included-col { padding: 80px 40px; border-right: none; border-bottom: var(--border); }
             .dates-section { grid-template-columns: 1fr; }
             .dates-col { padding: 80px 40px; border-right: none; border-bottom: var(--border); }
             .dates-col:last-child { border-bottom: none; }
-            .gallery-container { grid-template-columns: 1fr 1fr; grid-template-rows: 300px auto auto; }
+            .gallery-container { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 300px auto auto; }
             .gallery-big { grid-row: 1; grid-column: 1 / span 2; border-right: none; border-bottom: var(--border); }
             .gallery-text { grid-row: 2; }
             .testimonials-top { padding: 80px 40px 0; }
             .testimonials-video-main { padding: 60px 40px; }
             .testimonials-video-main video { width: 100%; }
-            .testimonials-quotes { grid-template-columns: 1fr; }
+            .testimonials-quotes { display: grid; grid-template-columns: 1fr 1fr; }
             .testimonial-card { padding: 60px 40px; border-right: none; border-bottom: var(--border); }
             .ref-placeholder { padding: 60px 40px; }
             .ct-promo { grid-template-columns: 1fr; }
@@ -468,7 +468,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             .footer-col { border-right: none; border-bottom: var(--border); }
             .skills-grid { grid-template-columns: 1fr; }
             .skill-card { border-right: none !important; }
-            /* Gallery: stack all images vertically on mobile, show whole image */
+
+            /* Termíny — každá skupina full width, padding menší */
+            #registrace > div { padding: 32px 20px !important; }
+            #registrace > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+            #registrace div[style*="padding:48px 80px"] { padding: 28px 20px !important; }
+
+            /* Datum řádky — termín+badge+tlačítko na 1 řádku */
+            #registrace div[style*="display:flex;align-items:center;justify-content:space-between;padding:10px 0"] {
+                flex-wrap: nowrap !important;
+                align-items: center !important;
+                gap: 8px !important;
+                padding: 10px 0 !important;
+            }
+            #registrace div[style*="display:flex;align-items:center;gap:10px"] {
+                gap: 6px !important;
+                flex-shrink: 1 !important;
+                min-width: 0 !important;
+            }
+            #registrace span[style*="font-family:var(--font-display);font-size:1.05rem"] {
+                font-size: 1.05rem !important;
+            }
+            #registrace .btn.btn-ink[style*="font-size:0.7rem"] {
+                padding: 5px 8px !important;
+                font-size: 0.7rem !important;
+                white-space: nowrap !important;
+                flex-shrink: 0 !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Jak to funguje — stack */
+            #jak-to-funguje > div[style*="grid-template-columns:repeat(3"] {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+
+            /* Included list — 1 sloupec na mobilu */
+            .included-list { grid-template-columns: 1fr !important; }
+            .included-col { padding: 40px 24px !important; }
+            .included-section { padding: 0 !important; }
+
+            /* Cena — 3 dlaždice na 1 sloupec */
+            div[style*="grid-template-columns:repeat(3,1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Included two-col grid */
+            div[style*="grid-template-columns:1fr 1fr"][style*="gap:32px"] {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+
+            /* Forwhom section */
+            .forwhom-section { grid-template-columns: 1fr !important; }
+            .forwhom-text { padding: 48px 24px !important; }
+            .forwhom-image { display: none; }
+
+            /* Projekt 03 two cards */
+            div[style*="grid-template-columns:1fr 1fr"][style*="gap:12px"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Gallery mobile fix */
             .gallery-container {
                 display: flex !important;
                 flex-direction: column !important;
@@ -486,19 +547,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 min-height: unset !important;
                 height: auto !important;
             }
+            .img-placeholder { 
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+                min-height: unset !important;
+                border: none !important;
+            }
             .gallery-big img,
             .gallery-small-1 img,
             .gallery-small-2 img,
-            .gallery-small-3 img,
-            .gallery-small-4 img {
-                object-fit: contain !important;
-                height: auto !important;
-                max-height: none !important;
-                min-height: unset !important;
+            .gallery-small-3 img {
+                display: block !important;
                 width: 100% !important;
+                height: 260px !important;
+                object-fit: cover !important;
             }
-            .img-placeholder { min-height: unset !important; }
             .gallery-text { padding: 40px 28px; }
+
+            /* Hanka testimonial */
+            .hanka-testimonial { padding: 20px 0px; gap: 16px; }
         }
 
         /* SC VIDEO SECTION (matches about.html #talk style) */
@@ -637,53 +705,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             z-index: 201;
         }
         .announce-banner strong { color: #12100E; }
+        /* LANG SWITCHER */
+        .lang-toggle { display:flex; align-items:center; gap:6px; padding:8px 12px; border:1px solid rgba(18,16,14,0.15); background:var(--white); cursor:pointer; font-family:var(--font-ui); font-size:0.75rem; font-weight:700; letter-spacing:0.06em; color:var(--ink); transition:background 0.15s; white-space:nowrap; margin-left:8px; flex-shrink:0; }
+        .lang-toggle:hover { background:var(--off); }
+        .lang-toggle svg { flex-shrink:0; }
     </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<!-- NAV -->
-<div class="announce-banner">Přihlášky do letní akademie přijímáme do <strong>31. května 2026</strong>, neváhej a zajisti si místo včas!</div>
+<div class="announce-banner"><span data-i18n="banner">Přihlášky do letní akademie přijímáme do <strong>7. června 2026</strong>. Zajisti si své místo včas!</span></div>
 <header>
     <nav class="nav-wrapper">
         <a class="nav-logo" href="#"><img src="./img/makeful_logo_colours.png" alt="Makeful logo"></a>
         <div class="nav-links">
-            <a class="nav-link" href="#top">Domů</a>
-            <a class="nav-link" href="#program">Program</a>
-            <a class="nav-link" href="#cena">Cena</a>
-            <a class="nav-link" href="#onas">O nás</a>
+            <a class="nav-link" href="#top" data-i18n="nav_home">Domů</a>
+            <a class="nav-link" href="#program" data-i18n="nav_program">Program</a>
+            <a class="nav-link" href="#cena" data-i18n="nav_price">Cena</a>
+            <a class="nav-link" href="#registrace" data-i18n="nav_dates">Termíny</a>
+            <a class="nav-link" href="#onas" data-i18n="nav_about">O nás</a>
             <a class="nav-link" href="#faq">FAQ</a>
-            <a class="nav-link" href="#kontakt">Kontakt</a>
+            <a class="nav-link" href="#kontakt" data-i18n="nav_contact">Kontakt</a>
         </div>
         <div class="nav-spacer"></div>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
-        <a class="nav-cta" href="#cena">Mám zájem</a>
+        <a class="nav-cta" href="#cena" data-i18n="nav_cta">Mám zájem</a>
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            <span id="lang-label">CZ</span>
+        </button>
     </nav>
     <nav class="nav-drawer" id="navDrawer">
-        <a class="nav-drawer-link" href="#top">Domů</a>
-        <a class="nav-drawer-link" href="#program">Program</a>
-        <a class="nav-drawer-link active" href="#cena">Cena</a>
-        <a class="nav-drawer-link" href="#onas">O nás</a>
+        <a class="nav-drawer-link" href="#top" data-i18n="nav_home">Domů</a>
+        <a class="nav-drawer-link" href="#program" data-i18n="nav_program">Program</a>
+        <a class="nav-drawer-link" href="#cena" data-i18n="nav_price">Cena</a>
+        <a class="nav-drawer-link" href="#registrace" data-i18n="nav_dates">Termíny</a>
+        <a class="nav-drawer-link" href="#onas" data-i18n="nav_about">O nás</a>
         <a class="nav-drawer-link" href="#faq">FAQ</a>
-        <a class="nav-drawer-link" href="#kontakt">Kontakt</a>
+        <a class="nav-drawer-link" href="#kontakt" data-i18n="nav_contact">Kontakt</a>
     </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="top">
     <div class="hero-left">
-        <div class="label label-primary">Léto 2026 · Praha</div>
-        <h1>Staň se módní návrhářkou budoucnosti a vytvoř oblečení, které vyráží dech</h1>
-        <p class="hero-sub" style="font-weight:700; font-size:1.05rem; color:var(--ink); margin-bottom:12px;">I když jsi nikdy nic podobného netvořila, vše tě naučíme.</p>
-        <p class="hero-sub">Jediná letní akademie v Praze pro holky 14–19 let, kde proměníš své nápady v originální módní kousky pomocí AI, 3D tisku a digitálního designu. Nepotřebuješ žádné předchozí zkušenosti s technologiemi, módou ani navrhováním.</p>
+        <div class="label label-primary" data-i18n="hero_label">Léto 2026 · Praha</div>
+        <h1 data-i18n="hero_h1">Staň se módní navrhářkou budoucnosti.</h1>
+        <p class="hero-sub" style="font-weight:700; font-size:1.05rem; color:var(--ink); margin-bottom:12px;" data-i18n="hero_sub1">Zkušenosti nepotřebuješ. Vše tě naučíme od úplných základů.</p>
+        <p class="hero-sub" data-i18n="hero_sub2">Jediná FashionTech akademie v Praze pro holky od 10 do 19 let. Objev svět AI, 3D tisku a digitálního designu.</p>
         <div class="hero-btns">
-            <a class="btn btn-ink" href="./registrace">Chci se přihlásit</a>
-            <a class="btn btn-outline" href="#program">Více o programu</a>
+            <a class="btn btn-ink" href="./registrace" data-i18n="btn_register">Chci se přihlásit</a>
+            <a class="btn btn-outline" href="#program" data-i18n="btn_more">Více o programu</a>
         </div>
     </div>
     <div class="hero-right">
@@ -694,16 +767,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="hanka-testimonial">
             <div class="hanka-testimonial-accent"></div>
             <div>
-                <p>&bdquo;Naučila jsem se toho opravdu hodně. Nejvíc jsem ocenila práci s počítačovými programy a 3D tiskárnou. Jsem ráda, že jsem si mohla vyzkoušet všechny techniky spojené s 3D tištěnou módou a poslouchat zajímavé přednášky.&ldquo;</p>
-                <div class="hanka-testimonial-attr">Hanka, absolventka akademie</div>
+                <p data-i18n="hanka_quote">&bdquo;Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně. Je super, že jsem si mohla vyzkoušet moderní techniky a spojit je s módou.&ldquo;</p>
+                <div class="hanka-testimonial-attr" data-i18n="hanka_attr">Hanka, absolventka akademie</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PRESS BAR -->
 <div class="press-bar">
-    <span class="press-bar-label">Mohli jste o nás slyšet z:</span>
+    <span class="press-bar-label" data-i18n="press_label">Napsali o nás:</span>
     <div class="press-logos">
         <a class="press-logo-link" href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener" aria-label="Wired">
             <span class="press-logo-text">Wired</span>
@@ -717,7 +789,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="press-logo-link" href="https://magazin.hrot24.cz/clanek/linette-manuel-navrharka-mody-budoucnosti-HpdXM-683c7446ab9ac80e9863b318" target="_blank" rel="noopener" aria-label="Hrot">
             <span class="press-logo-text">Hrot</span>
         </a>
-        <a class="press-logo-link" href="https://zpravy.aktualne.cz/domaci/3d-tisk-obleceni/r~32493ce2a66411ef80bfac1f6b220ee8/?lp=1" target="_blank" rel="noopener" aria-label="Aktuálně.cz">
+        <a class="press-logo-link" href="https://zpravy.aktualne.cz/domaci/3d-tisk-obleceni/r~32493ce2a66411ef80bfac1f6b220ee8/" target="_blank" rel="noopener" aria-label="Aktuálně.cz">
             <span class="press-logo-text">Aktuálně.cz</span>
         </a>
         <a class="press-logo-link" href="https://youtu.be/SF-NV1AnazM?si=2p3BfzGZL5_mpvZt&t=302" target="_blank" rel="noopener" aria-label="Abíčko">
@@ -726,79 +798,154 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </div>
 
-<!-- PRICE BANNER -->
 <section class="price-banner">
     <div class="price-item">
-        <div class="price-item-label">Pro koho</div>
-        <div class="price-item-value">14–19 let</div>
-        <div class="price-item-sub">Holky z celé ČR · letní akademie · Praha 7</div>
+        <div class="price-item-label" data-i18n="pb_who_lbl">Pro koho</div>
+        <div class="price-item-value" data-i18n="pb_who_val">10-19 let</div>
+        <div class="price-item-sub" data-i18n="pb_who_sub">Tři věkové skupiny, holky z celé ČR, Praha 7</div>
     </div>
     <div class="price-item">
-        <div class="price-item-label">Celodenní program</div>
-        <div class="price-item-value">od pondělí do neděle</div>
-        <div class="price-item-sub">Po–So 9:00–17:00 · Ne 9:00–12:00</div>
+        <div class="price-item-label" data-i18n="pb_prog_lbl">Harmonogram</div>
+        <div class="price-item-value" data-i18n="pb_prog_val">Pondělí až neděle</div>
+        <div class="price-item-sub" data-i18n="pb_prog_sub">Po-So 9:00-17:00, Ne 9:00-12:00</div>
     </div>
     <div class="price-item">
-        <div class="price-item-label">Velikost skupinky</div>
-        <div class="price-item-value">max. 10</div>
-        <div class="price-item-sub">Maximálně 10 účastnic na termín</div>
+        <div class="price-item-label" data-i18n="pb_group_lbl">Skupiny</div>
+        <div class="price-item-value" data-i18n="pb_group_val">Max. 10 osob</div>
+        <div class="price-item-sub" data-i18n="pb_group_sub">Individuální přístup a komorní atmosféra</div>
     </div>
-            <div class="price-item">
-        <div class="price-item-label">Co odneseš domů</div>
-        <div class="price-item-value">6 projektů za 7 dní</div>
-        <div class="price-item-sub">Tvé jedinečné kreativní portfólio</div>
+    <div class="price-item">
+        <div class="price-item-label" data-i18n="pb_take_lbl">Co si odneseš</div>
+        <div class="price-item-value" data-i18n="pb_take_val">6 vlastních projektů</div>
+        <div class="price-item-sub" data-i18n="pb_take_sub">Jedinečné kreativní portfolio na papíře i webu</div>
     </div>
 </section>
 
-<!-- PRO KOHO -->
+<section class="program-section" id="program">
+    <div class="program-header">
+        <div class="label label-lavender" data-i18n="prog_label">Týdenní program</div>
+        <h2 data-i18n="prog_h2">Jak vypadá program v laboratoři</h2>
+        <p style="max-width:600px; margin: 16px auto 0;" data-i18n="prog_sub">Sedm dní, šest super projektů.</p>
+    </div>
+    <div class="program-days">
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_mon">Pondělí</div>
+                <div class="day-num" data-i18n="day_lbl_1">Den 1</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_1">Vytiskneš si originální nášivku na boty a zkusíš základní vzorník.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_tue">Úterý</div>
+                <div class="day-num" data-i18n="day_lbl_2">Den 2</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_2">Spojíš jednotlivé díly a vyzkoušíš si 3D pero i šicí stroj.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_wed">Středa</div>
+                <div class="day-num" data-i18n="day_lbl_3">Den 3</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_3">Mladší holky navrhnou klobouček, starší vestu budoucnosti. Startujeme tisk!</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_thu">Čtvrtek</div>
+                <div class="day-num" data-i18n="day_lbl_4">Den 4</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_4">Mezitím se pustíš do tvorby vlastní digitální AI modelky.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_fri">Pátek</div>
+                <div class="day-num" data-i18n="day_lbl_5">Den 5</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_5">Finální úpravy tvého hlavního projektu a natáčení vlastní AI videoreklamy.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_sat">Sobota</div>
+                <div class="day-num" data-i18n="day_lbl_6">Den 6</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_6">Všechno poskládáš do parádního webového portfolia a připravíš se na závěr.</p>
+            </div>
+        </div>
+        <div class="day-card">
+            <div class="day-top">
+                <div class="day-name" data-i18n="day_sun">Neděle</div>
+                <div class="day-num" data-i18n="day_lbl_7">Den 7, 9-12 hod</div>
+            </div>
+            <div class="day-body">
+                <p data-i18n="day_body_7">Slavnostní prezentace. Odcházíš s diplomem, portfoliem a vlastními výtvory.</p>
+            </div>
+        </div>
+    </div>
+    <div class="program-meta">
+        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--primary-dark); font-size:20px;">schedule</span><span data-i18n="prog_meta_time">Po-So <strong>9:00-17:00</strong>, Ne <strong>9:00-12:00</strong></span></div>
+        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--coral); font-size:20px;">groups</span><span data-i18n="prog_meta_group">Max. <strong>10 účastnic</strong> v turnusu</span></div>
+        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--magenta); font-size:20px;">restaurant</span><span data-i18n="prog_meta_lunch">Společný oběd a fajn přestávky na sváču</span></div>
+    </div>
+</section>
+
 <section class="forwhom-section">
     <div class="forwhom-text">
-        <div class="label label-coral">Pro koho je laboratoř</div>
-        <h2>Přijď přesně taková, jaká jsi</h2>
-        <p>Nepotřebuješ žádné předchozí zkušenosti s módou, technologiemi ani s uměním. Stačí mít nadšení, chuť objevovat a experimentovat. Patříš k nám pokud:</p>
+        <div class="label label-coral" data-i18n="forwhom_label">Pro koho je laboratoř</div>
+        <h2 data-i18n="forwhom_h2">Přijď přesně taková, jaká jsi</h2>
+        <p data-i18n="forwhom_p">Nepotřebuješ nic umět. Skvěle k nám zapadneš, pokud:</p>
         <div class="forwhom-checks">
-            <div class="forwhom-check"><span class="dot"></span>Baví tě móda a chceš zkusit, jaké to je tvořit ji jinak.</div>
-            <div class="forwhom-check"><span class="dot"></span>Lákají tě technologie a chceš si na vlastní kůži zažít, co umí 3D tiskárna nebo AI.</div>
-            <div class="forwhom-check"><span class="dot"></span>Přemýšlíš o studiu designu, umění nebo technické škole a potřebuješ skvělé portfólio.</div>
-            <div class="forwhom-check"><span class="dot"></span>Prostě chceš zažít něco, co tě pohltí, nadchne a co si budeš pamatovat roky.</div>
+            <div class="forwhom-check"><span class="dot"></span><span data-i18n="forwhom_check_1">Tě baví móda a chceš tvořit originální kousky.</span></div>
+            <div class="forwhom-check"><span class="dot"></span><span data-i18n="forwhom_check_2">Chceš vyzkoušet moderní technologie jako 3D tisk nebo AI.</span></div>
+            <div class="forwhom-check"><span class="dot"></span><span data-i18n="forwhom_check_3">Láká tě studium designu, umění nebo technologií.</span></div>
+            <div class="forwhom-check"><span class="dot"></span><span data-i18n="forwhom_check_4">Chceš si vytvořit jedinečné portfólio na přijímačky.</span></div>
+            <div class="forwhom-check"><span class="dot"></span><span data-i18n="forwhom_check_5">Ráda vymýšlíš nové věci a baví tě kreativní tvorba.</span></div>
+            <div class="forwhom-check"><span class="dot"></span><span data-i18n="forwhom_check_6">Chceš prožít super týden plný zážitků a najít nové kamarádky.</span></div>
         </div>
     </div>
     <div class="forwhom-image">
-        <!-- PLACEHOLDER: foto účastnic při práci -->
         <div class="img-placeholder" style="min-height:520px;">
             <img src="./img/1.jpg" alt="Makeful laboratoř">
         </div>
     </div>
 </section>
 
-<!-- CO SI ODNESEŠ – module-style (matches programs.html) -->
-<section class="create-section" id="program">
+<section class="create-section">
     <div class="create-intro">
-        <div class="label label-magenta">Projekt</div>
-        <h2>Co si odneseš domů</h2>
-        <p>Za sedm dní vytvoříš kouzelné módní kousky, odneseš si nové dovednosti, sebevědomí a portfólio, které mluví za vše.</p>
+        <div class="label label-magenta" data-i18n="projects_label">Výtvory</div>
+        <h2 data-i18n="projects_h2">Co si odneseš domů</h2>
+        <p data-i18n="projects_sub">Za sedm dní zvládneš vytvořit úžasné kousky. Získáš nové dovednosti, zdravé sebevědomí a portfolio, na které budeš hrdá.</p>
     </div>
 
-    <!-- Projekt 01 – tenisky -->
     <div class="mod-split" style="border-top:var(--border);">
         <div class="mod-text" style="border-left:6px solid var(--primary);">
-            <div class="label label-primary">Projekt 01</div>
-            <h2>Výšivka na boty</h2>
-            <p>Navrhneš a vytiskneš originální 3D tištěnou výšivku přímo na svůj pár bot. Unikát, který nikdo jiný nebude mít.</p>
+            <div class="label label-primary" data-i18n="proj1_label">Projekt 01</div>
+            <h2 data-i18n="proj1_title">3D výšivka na boty</h2>
+            <p data-i18n="proj1_desc">Navrhneš a vytiskneš si originální ozdobu přímo na své boty. Takové nikdo jiný na světě nemá.</p>
             <div class="mod-skills-block">
-                <div class="mod-skills-heading">Co se naučíš</div>
+                <div class="mod-skills-heading" data-i18n="proj_skills_lbl">Co se naučíš</div>
                 <ul class="mod-skills-list">
-                    <li>Základy 3D tisku na textil a obuv</li>
-                    <li>Navrhování vzorů a jejich export do tiskárny</li>
-                    <li>Pokročilé používání 3D tiskárny</li>
+                    <li data-i18n="proj1_skill1">Základy 3D tisku na textil a obuv</li>
+                    <li data-i18n="proj1_skill2">Kreslení vzorů v programu a jejich přípravu pro tisk</li>
+                    <li data-i18n="proj1_skill3">Samostatné ovládání moderní 3D tiskárny</li>
                 </ul>
             </div>
-            <div class="mod-tech-block">
-                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+            <div class="mod-tech-block" style="margin-top: 24px;">
+                <div class="mod-tech-heading" data-i18n="proj_tech_lbl">Nástroje a techniky</div>
                 <div class="mod-tech-tags">
-                    <span class="mod-tag" style="--tc:var(--primary-dark)">FDM 3D tiskárna</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)" data-i18n="tag_fdm">FDM 3D tisk</span>
                     <span class="mod-tag" style="--tc:var(--primary-dark)">TinkerCAD</span>
-                    <span class="mod-tag" style="--tc:var(--primary-dark)">Slicování</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)" data-i18n="tag_slicing">Slicování</span>
                 </div>
             </div>
         </div>
@@ -807,81 +954,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <!-- Projekt 02 – tričko -->
     <div class="mod-split mod-split-flip">
         <div class="mod-image">
             <img src="./img/makeful_projekty2.jpg" alt="Makeful 3D tištěné tričko">
         </div>
         <div class="mod-text" style="border-left:6px solid var(--coral);">
-            <div class="label label-coral">Projekt 02</div>
-            <h2>Vytuněné tričko</h2>
-            <p>Oživíš tričko 3D tištěnými látkami a nášivkami, které sama vymyslíš.</p>
+            <div class="label label-coral" data-i18n="proj2_label">Projekt 02</div>
+            <h2 data-i18n="proj2_title">Vytuněné tričko</h2>
+            <p data-i18n="proj2_desc">Oživíš obyčejné tričko plastickými 3D motivy a strukturami podle vlastního nápadu.</p>
             <div class="mod-skills-block">
-                <div class="mod-skills-heading">Co se naučíš</div>
+                <div class="mod-skills-heading" data-i18n="proj_skills_lbl">Co se naučíš</div>
                 <ul class="mod-skills-list">
-                    <li>Tvorba 3D tištěné látky</li>
-                    <li>Návrh jednoduchých nášivek</li>
-                    <li>Kombinace 3D tisku a klasického textilu</li>
+                    <li data-i18n="proj2_skill1">Jak vytvořit ohebnou 3D tištěnou látku</li>
+                    <li data-i18n="proj2_skill2">Navrhování vlastních plastických nášivek</li>
+                    <li data-i18n="proj2_skill3">Propojení 3D tisku s klasickým textilem</li>
                 </ul>
             </div>
             <div class="mod-tech-block">
-                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-heading" data-i18n="proj_tech_lbl">Nástroje a techniky</div>
                 <div class="mod-tech-tags">
                     <span class="mod-tag" style="--tc:#d45060">TinkerCAD</span>
-                    <span class="mod-tag" style="--tc:#d45060">3D pero</span>
-                    <span class="mod-tag" style="--tc:#d45060">Textilní 3D tisk</span>
+                    <span class="mod-tag" style="--tc:#d45060" data-i18n="tag_3dpen">3D pero</span>
+                    <span class="mod-tag" style="--tc:#d45060" data-i18n="tag_textile3d">Textilní 3D tisk</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Projekt 03 – oblečení budoucnosti -->
     <div class="mod-split">
         <div class="mod-text" style="border-left:6px solid var(--magenta);">
-            <div class="label label-magenta">Projekt 03</div>
-            <h2>Letní bunda budoucnosti</h2>
-            <p>Navrhneš a vytiskneš vlastní 3D tištěnou bundu z materiálu, který svítí ve tmě, měří teplotu nebo se dá dokonale recyklovat.</p>
+            <div class="label label-magenta" data-i18n="proj3_label">Projekt 03</div>
+            <h2 data-i18n="proj3_title_new">Oblečení budoucnosti</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;">
+                <div style="background:var(--off);padding:14px;border-left:3px solid var(--magenta);">
+                    <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);" data-i18n="proj3_age1_lbl">10-12 let</div>
+                    <div style="font-weight:700;font-size:0.88rem;" data-i18n="proj3_age1_val">Klobouček a doplňky</div>
+                </div>
+                <div style="background:var(--off);padding:14px;border-left:3px solid var(--magenta);">
+                    <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);" data-i18n="proj3_age2_lbl">13-19 let</div>
+                    <div style="font-weight:700;font-size:0.88rem;" data-i18n="proj3_age2_val">Vesta budoucnosti</div>
+                </div>
+            </div>
             <div class="mod-skills-block">
-                <div class="mod-skills-heading">Co se naučíš</div>
+                <div class="mod-skills-heading" data-i18n="proj_skills_lbl">Co se naučíš</div>
                 <ul class="mod-skills-list">
-                    <li>Celý proces od návrhu k hotovému výrobku</li>
-                    <li>Práce s pokročilými a chytrými materiály</li>
-                    <li>Sestavení a spájení 3D tištěných dílů</li>
+                    <li data-i18n="proj3_new_skill1">Navrhování oděvních prvků ve 3D prostoru</li>
+                    <li data-i18n="proj3_new_skill2">Práce s krejčovskou pannou a základy stylingu</li>
+                    <li data-i18n="proj3_new_skill3">Experimenty s netradičními a chytrými materiály</li>
                 </ul>
             </div>
             <div class="mod-tech-block">
-                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-heading" data-i18n="proj_tech_lbl">Nástroje a techniky</div>
                 <div class="mod-tech-tags">
-                    <span class="mod-tag" style="--tc:#b8407a">FDM 3D tiskárna</span>
-                    <span class="mod-tag" style="--tc:#b8407a">Krejčovská panna</span>
-                    <span class="mod-tag" style="--tc:#b8407a">Chytré materiály</span>
+                    <span class="mod-tag" style="--tc:#b8407a" data-i18n="tag_fdm">FDM 3D tisk</span>
+                    <span class="mod-tag" style="--tc:#b8407a" data-i18n="tag_mannequin">Krejčovská panna</span>
+                    <span class="mod-tag" style="--tc:#b8407a" data-i18n="tag_smartmat">Chytré materiály</span>
                 </div>
             </div>
         </div>
         <div class="mod-image">
-            <img src="./img/makeful_projekty_jacket.jpg" alt="Makeful 3D tištěná bunda">
+            <img src="./img/makeful_projekty_jacket.jpg" alt="Makeful 3D tištěná vesta nebo klobouček">
         </div>
     </div>
 
-    <!-- Projekt 04 – avatar -->
     <div class="mod-split mod-split-flip">
         <div class="mod-image">
             <img src="./img/makeful_projekty4.jpg" alt="Virtuální modelka avatar">
         </div>
         <div class="mod-text" style="border-left:6px solid var(--lavender);">
-            <div class="label label-lavender">Projekt 04</div>
-            <h2>Virtuální modelka</h2>
-            <p>Móda v digitálním světě je tady a teď a ty si ji vyzkoušíš vytvořit. Vygeneruješ pomocí AI nástrojů digitální verzi modelky, která ukáže tvůj design ve virtuálním 3D prostoru.</p>
+            <div class="label label-lavender" data-i18n="proj4_label">Projekt 04</div>
+            <h2 data-i18n="proj4_title">Virtuální modelka</h2>
+            <p data-i18n="proj4_desc">Digitální móda hýbe světem. Pomocí chytrých AI nástrojů si vytvoříš vlastní 3D modelku, která předvede tvé nápady ve virtuálním prostoru.</p>
             <div class="mod-skills-block">
-                <div class="mod-skills-heading">Co se naučíš</div>
+                <div class="mod-skills-heading" data-i18n="proj_skills_lbl">Co se naučíš</div>
                 <ul class="mod-skills-list">
-                    <li>Tvorba digitálních avatarů a modelek</li>
-                    <li>Virtuální styling a prezentace designu</li>
-                    <li>Základy AI promptování</li>
+                    <li data-i18n="proj4_skill1">Tvorbu digitálních avatarů a modelek</li>
+                    <li data-i18n="proj4_skill2">Virtuální styling a digitální prezentaci</li>
+                    <li data-i18n="proj4_skill3">Základy zadávání povelů pro generování (AI promptování)</li>
                 </ul>
             </div>
             <div class="mod-tech-block">
-                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-heading" data-i18n="proj_tech_lbl">Nástroje a techniky</div>
                 <div class="mod-tech-tags">
                     <span class="mod-tag" style="--tc:#6248c4">ChatGPT</span>
                     <span class="mod-tag" style="--tc:#6248c4">Style3D AI</span>
@@ -891,25 +1044,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <!-- Projekt 05 – AI reklama -->
     <div class="mod-split">
         <div class="mod-text" style="border-left:6px solid var(--lilac);">
-            <div class="label label-lilac">Projekt 05</div>
-            <h2>AI reklamní video</h2>
-            <p>Vytvoříš profesionálně vypadající kampaň k tvému oblečení, na který budeš hrdá. Tvorba proběhne pomocí našeho jednoduchého AI nástroje.</p>
+            <div class="label label-lilac" data-i18n="proj5_label">Projekt 05</div>
+            <h2 data-i18n="proj5_title">AI videoreklama</h2>
+            <p data-i18n="proj5_desc">Vytvoříš profesionální kampaň pro své oblečení. Použijeme jednoduchou aplikaci a AI, se kterou to zvládneš za chvilku.</p>
             <div class="mod-skills-block">
-                <div class="mod-skills-heading">Co se naučíš</div>
+                <div class="mod-skills-heading" data-i18n="proj_skills_lbl">Co se naučíš</div>
                 <ul class="mod-skills-list">
-                    <li>Generování reklamního obsahu pomocí AI</li>
-                    <li>Základy video storytellingu v módě</li>
-                    <li>Prezentace vlastního designu publiku</li>
+                    <li data-i18n="proj5_skill1">Generování video obsahu pomocí AI</li>
+                    <li data-i18n="proj5_skill2">Základy video příběhů (storytellingu) v módě</li>
+                    <li data-i18n="proj5_skill3">Jak zaujmout diváky a odprezentovat svůj nápad</li>
                 </ul>
             </div>
             <div class="mod-tech-block">
-                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-heading" data-i18n="proj_tech_lbl">Nástroje a techniky</div>
                 <div class="mod-tech-tags">
-                    <span class="mod-tag" style="--tc:#8840c8">AI Video tvorba</span>
-                    <span class="mod-tag" style="--tc:#8840c8">SuperCreators aplikace</span>
+                    <span class="mod-tag" style="--tc:#8840c8" data-i18n="tag_aivideo">AI Video tvorba</span>
+                    <span class="mod-tag" style="--tc:#8840c8" data-i18n="tag_supercreators">SuperCreators aplikace</span>
                     <span class="mod-tag" style="--tc:#8840c8">Storytelling</span>
                 </div>
             </div>
@@ -919,212 +1071,139 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <!-- Projekt 06 – portfólio -->
     <div class="mod-split mod-split-flip">
         <div class="mod-image">
             <img src="./img/makeful_projekty5.jpg" alt="Webové portfólio">
         </div>
         <div class="mod-text" style="border-left:6px solid var(--primary);">
-            <div class="label label-primary">Projekt 06</div>
-            <h2>Webové portfólio</h2>
-            <p>Všechnu svoji práci zdokumentuješ a přetvoříš na webové portfólio, které můžeš přiložit do přihlášky na školu nebo do soutěže.</p>
+            <div class="label label-primary" data-i18n="proj6_label">Projekt 06</div>
+            <h2 data-i18n="proj6_title">Osobní webové portfolio</h2>
+            <p data-i18n="proj6_desc">Všechny své projekty nafotíš a složíš do profi online portfolia. To pak můžeš ukázat u přijímaček na školu nebo v soutěžích.</p>
             <div class="mod-skills-block">
-                <div class="mod-skills-heading">Co se naučíš</div>
+                <div class="mod-skills-heading" data-i18n="proj_skills_lbl">Co se naučíš</div>
                 <ul class="mod-skills-list">
-                    <li>Sestavení osobního webového portfolia</li>
-                    <li>Prezentace kreativní práce online</li>
-                    <li>Dokumentace celého tvůrčího procesu</li>
+                    <li data-i18n="proj6_skill1">Sestavení vlastního moderního webu</li>
+                    <li data-i18n="proj6_skill2">Prezentaci své kreativní práce online</li>
+                    <li data-i18n="proj6_skill3">Jak správně dokumentovat tvůrčí proces</li>
                 </ul>
             </div>
             <div class="mod-tech-block">
-                <div class="mod-tech-heading">Nástroje &amp; techniky</div>
+                <div class="mod-tech-heading" data-i18n="proj_tech_lbl">Nástroje a techniky</div>
                 <div class="mod-tech-tags">
                     <span class="mod-tag" style="--tc:var(--primary-dark)">Canva</span>
-                    <span class="mod-tag" style="--tc:var(--primary-dark)">Dokumentace</span>
-                    <span class="mod-tag" style="--tc:var(--primary-dark)">Prezentační skills</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)" data-i18n="tag_docs">Dokumentace</span>
+                    <span class="mod-tag" style="--tc:var(--primary-dark)" data-i18n="tag_pres">Prezentační dovednosti</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PRAKTICKÉ DOVEDNOSTI -->
 <section class="skills-section">
     <div class="skills-header">
         <div class="skills-header-left">
-            <div class="label label-primary">Dovednosti</div>
-            <h2>Praktické dovednosti<br>a kreativní tvorba každý den</h2>
+            <div class="label label-primary" data-i18n="skills_label">Dovednosti</div>
+            <h2 data-i18n="skills_h2">Praktické dovednosti<br>a tvoření rukama každý den</h2>
         </div>
-        <p style="color:rgba(255,255,255,0.5); max-width: 400px; font-size:0.95rem; line-height:1.7; margin:0;">Žádná zbytečná teorie navíc. Každá hodina je ruka v ruce s praxí. Učíš se tím, že tvoříš.</p>
+        <p style="color:rgba(255,255,255,0.5); max-width: 400px; font-size:0.95rem; line-height:1.7; margin:0;" data-i18n="skills_sub">Žrádná nudná teorie. U nás se učíš přímo v praxi tím, že reálně vymýšlíš a tvoříš.</p>
     </div>
     <div class="skills-grid">
         <div class="skill-card">
             <div class="skill-icon"><span class="material-symbols-outlined">view_in_ar</span></div>
-            <h3>Navrhuješ a tvoříš ve 3D</h3>
-            <p>Od prvního náčrtu až po fyzický výrobek v ruce. Zjistíš, že 3D tisk není raketová věda. Je to zábavný nástroj pro kreativní tvorbu.</p>
+            <h3 data-i18n="skill1_title">Návrh a tvorba ve 3D</h3>
+            <p data-i18n="skill1_desc">Sleduješ, jak se tvůj nápad mění z náčrtu ve skutečnou věc.</p>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><span class="material-symbols-outlined">texture</span></div>
-            <h3>Prozkoumáš svět materiálů</h3>
-            <p>Jak fungují obyčejné filamenty, biofilamenty a chytré filamenty? Sáhneš na materiály, o jejichž existenci jsi možná ani nevěděla a naučíš se je kreativně kombinovat.</p>
+            <h3 data-i18n="skill2_title">Fascinující materiály</h3>
+            <p data-i18n="skill2_desc">Sáhneš si na moderní materiály, které se dnes v módě používají.</p>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><span class="material-symbols-outlined">smart_toy</span></div>
-            <h3>Zkrotíš AI nástroje</h3>
-            <p>Vytvoříš potisky, reklamní video i webové portfólio pomocí nástrojů, které právě teď mění celý módní průmysl.</p>
+            <h3 data-i18n="skill3_title">Využití AI nástrojů</h3>
+            <p data-i18n="skill3_desc">Vyzkouší si technologie, které právě teď mění celý svět.</p>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><span class="material-symbols-outlined">person_play</span></div>
-            <h3>Vytvoříš digitálního avatara</h3>
-            <p>Navrhneš digitální modelku, na které budeš prezentovat své módní návrhy a virtuální kolekce.</p>
+            <h3 data-i18n="skill4_title">Tvůj digitální avatar</h3>
+            <p data-i18n="skill4_desc">Vytvoříš si virtuální modelku přesně pro své návrhy.</p>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><span class="material-symbols-outlined">lightbulb</span></div>
-            <h3>Rozvineš kreativní myšlení</h3>
-            <p>Každý den se necháš inspirovat tvůrci, kteří mění módu i technologie ve světovém měřítku. Přijdeš domů s jiným pohledem na to, co všechno je dnes možné.</p>
+            <h3 data-i18n="skill5_title">Kreativní myšlení</h3>
+            <p data-i18n="skill5_desc">Získáš inspiraci a odvahu přemýšlet o designu jinak.</p>
         </div>
         <div class="skill-card">
             <div class="skill-icon"><span class="material-symbols-outlined">web</span></div>
-            <h3>Sestavíš portfólio, na které jsi hrdá</h3>
-            <p>Z kempu si odneseš portfólio, které můžeš využít na přijímačkách na umělecké i technické školy.</p>
+            <h3 data-i18n="skill6_title">Portfolio, na které jsi hrdá</h3>
+            <p data-i18n="skill6_desc">Získáš skvělý základ pro přijímačky na umělecké i technické školy.</p>
         </div>
     </div>
 </section>
 
-<!-- PROGRAM -->
-<section class="program-section">
-    <div class="program-header">
-        <div class="label label-lavender">Týdenní program</div>
-        <h2>Jak vypadá program letní laboratoře</h2>
-        <p style="max-width:600px; margin: 16px auto 0;">Každý den vytvoříš konkrétní projekt a zhlédneš online přednášku od skutečného odborníka z oboru módy a technologií.</p>
-    </div>
-    <div class="program-days">
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Pondělí</div>
-                <div class="day-num">Den 1</div>
-            </div>
-            <div class="day-body">
-                <p>Poprvé sáhneš na 3D tiskárnu a objevíš, co všechno jde z plastového vlákna vytvořit. Vytvoříš si základní vzorník a vytiskneš nášivku na boty.</p>
-            </div>
+<section class="included-section" id="cena" style="grid-template-columns:1fr;">
+    <div class="included-col" style="border-right:none;">
+        <div class="label label-primary" data-i18n="included_label">Vše v ceně</div>
+        <h2 data-i18n="included_h2">Žádné skryté poplatky</h2>
+        <p data-i18n="included_p">Stačí přijít s dobrou náladou a chutí tvořit.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;">
+            <ul class="included-list" style="margin-top:0;">
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_1">Všechny hotové projekty, které si vyrobíš</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_2">Materiál na výrobu (filamenty, látky, doplňky)</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_3">Boty a tričko, které si sama upravíš a necháš si</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_4">Přístup do online platformy k materiálům</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_5">Každodenní inspirativní přednášky tvůrců</span></li>
+            </ul>
+            <ul class="included-list" style="margin-top:0;">
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_6">Svačinky: čerstvé ovoce, oříšky, čaje a voda</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_7">Oběd každý den</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_8">Vlastní webové portfolio a diplom z akademie</span></li>
+                <li class="included-item"><span class="check check-yes">✓</span><span data-i18n="inc_item_9">Vybavená dílna: 3D tiskárny, 3D pera, stroje a panny</span></li>
+            </ul>
         </div>
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Úterý</div>
-                <div class="day-num">Den 2</div>
+        <div style="margin-top:40px;">
+            <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--primary-dark);margin-bottom:20px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:18px;height:3px;background:var(--primary-dark);flex-shrink:0;"></span><span data-i18n="inc_price_group_lbl">Cena podle věkové skupiny</span></div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+                <div style="border:var(--border);border-top:3px solid var(--peach);padding:20px;background:var(--white);display:flex;flex-direction:column;gap:8px;">
+                    <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);" data-i18n="age_group_1">10-12 let</div>
+                    <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1;" data-i18n="price_val_1">7 888 Kč</div>
+                    <div style="font-size:0.78rem;color:var(--primary-dark);font-weight:700;" data-i18n="deposit_lbl_1">záloha pouze 1 500 Kč</div>
+                    <div style="font-size:0.75rem;color:var(--mid);" data-i18n="hourly_lbl_1">cca 175 Kč / hodinu</div>
+                    <a href="./registrace" class="btn btn-ink" style="margin-top:16px;text-align:center;font-size:0.78rem;padding:10px 16px;" data-i18n="btn_register">Chci se přihlásit</a>
+                </div>
+                <div style="border:var(--border);border-top:3px solid var(--peach);padding:20px;background:var(--white);display:flex;flex-direction:column;gap:8px;">
+                    <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);" data-i18n="age_group_2">13-15 let</div>
+                    <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1;" data-i18n="price_val_2">8 888 Kč</div>
+                    <div style="font-size:0.78rem;color:var(--primary-dark);font-weight:700;" data-i18n="deposit_lbl_2">záloha pouze 1 500 Kč</div>
+                    <div style="font-size:0.75rem;color:var(--mid);" data-i18n="hourly_lbl_2">cca 198 Kč / hodinu</div>
+                    <a href="./registrace" class="btn btn-ink" style="margin-top:16px;text-align:center;font-size:0.78rem;padding:10px 16px;" data-i18n="btn_register">Chci se přihlásit</a>
+                </div>
+                <div style="border:var(--border);border-top:3px solid var(--peach);padding:20px;background:var(--white);display:flex;flex-direction:column;gap:8px;">
+                    <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);" data-i18n="age_group_3">16-19 let</div>
+                    <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--ink);line-height:1;" data-i18n="price_val_3">9 888 Kč</div>
+                    <div style="font-size:0.78rem;color:var(--primary-dark);font-weight:700;" data-i18n="deposit_lbl_3">záloha pouze 1 500 Kč</div>
+                    <div style="font-size:0.75rem;color:var(--mid);" data-i18n="hourly_lbl_3">cca 220 Kč / hodinu</div>
+                    <a href="./registrace" class="btn btn-ink" style="margin-top:16px;text-align:center;font-size:0.78rem;padding:10px 16px;" data-i18n="btn_register">Chci se přihlásit</a>
+                </div>
             </div>
-            <div class="day-body">
-                <p>Vytvoříš si plně 3D tištěnou látku a naučíš se spojovat 3D tištěné díly dohromady a s textilem. Vyzkoušíš si 3D pero, šicí stroj i spojování pájením.</p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Středa</div>
-                <div class="day-num">Den 3</div>
-            </div>
-            <div class="day-body">
-                <p>Kreativní jádro týdne: brainstorming a navrhování módní přehlídky budoucnosti. Začneš s tiskem 3D tištěné bundy. </p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Čtvrtek</div>
-                <div class="day-num">Den 4</div>
-            </div>
-            <div class="day-body">
-                <p>Budeš pokračovat ve výrobě 3D tištěné bundy. 3D tiskárna pracuje na tvém oblečení a ty zároveň tvoříš digitální AI modelku. </p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Pátek</div>
-                <div class="day-num">Den 5</div>
-            </div>
-            <div class="day-body">
-                <p>Pokračuješ v 3D tisku bundy, spojuješ vytištěné díly, dokumentuješ svůj proces a připravuješ AI reklamu.</p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Sobota</div>
-                <div class="day-num">Den 6</div>
-            </div>
-            <div class="day-body">
-                <p>Poskládáš webové portfólio ze všech prací týdne, odprezentujeme si navzájem projekty a připravíš se na závěrečnou prezentaci.</p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-top">
-                <div class="day-name">Neděle</div>
-                <div class="day-num">Den 7 · 9–12</div>
-            </div>
-            <div class="day-body">
-                <p>Slavnostní závěrečná prezentace projektů. Odejdeš domů s diplomem, portfoliem a s s plnýma rukama vlastních výtvorů.</p>
-            </div>
-        </div>
-    </div>
-    <div class="program-meta">
-        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--primary-dark); font-size:20px;">schedule</span><span>Po–So <strong>9:00–17:00</strong> · Ne <strong>9:00–12:00</strong></span></div>
-        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--coral); font-size:20px;">groups</span><span>Max. <strong>10 účastnic</strong> na turnus</span></div>
-        <div class="program-meta-item"><span class="material-symbols-outlined" style="color:var(--magenta); font-size:20px;">restaurant</span><span><strong>40 min</strong> oběd + 2 × 10 min přestávka</span></div>
-    </div>
-</section>
-
-<!-- CO JE V CENĚ -->
-<section class="included-section" id="cena">
-    <div class="included-col">
-        <div class="label label-primary">Co je zahrnuto</div>
-        <h2>Vše, co potřebuješ je v ceně kempu</h2>
-        <p>Přijď jen s chutí tvořit, o zbytek se postaráme.</p>
-        <ul class="included-list">
-            <li class="included-item"><span class="check check-yes">✓</span><strong>6 hotových projektů, které si odneseš domů</strong></li>
-            <li class="included-item"><span class="check check-yes">✓</span>Všechny materiály k výrobě (filamenty, textil, doplňky)</li>
-            <li class="included-item"><span class="check check-yes">✓</span>Tričko a boty, které si vlastnoručně upravíš a odneseš</li>
-            <li class="included-item"><span class="check check-yes">✓</span>Přístup k výukové platformě a studijním materiálům</li>
-            <li class="included-item"><span class="check check-yes">✓</span>Online inspirativní přednáška od futuristických návrhářů každý den</li>
-            <li class="included-item"><span class="check check-yes">✓</span>Občerstvení – čerstvé ovoce, oříšky, voda, čaje</li>
-            <li class="included-item"><span class="check check-yes">✓</span>Webové portfólio, diplom a slavnostní prezentace na závěr</li>
-            <li class="included-item"><span class="check check-yes">✓</span>Plně vybavená dílna – 3D tiskárny, 3D pera, krejčovské panny, šicí stroje</li>
-        </ul>
-        <div class="price-callout">
-            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--primary-dark); margin-bottom:14px; display:flex; align-items:center; gap:8px;"><span style="display:block;width:18px;height:3px;background:var(--primary-dark);flex-shrink:0;"></span>Hodnota programu</div>
-            <div style="background:var(--primary); color:var(--ink); padding:16px 20px; margin-bottom:20px;">
-                <div style="font-family:var(--font-display); font-size:1.5rem; font-weight:900; line-height:1.1;">45 hodin intenzivní tvorby</div>
-                <div style="font-size:1rem; font-weight:700; margin-top:6px;">za méně než 198 Kč / hodinu</div>
-            </div>
-            <div class="price-callout-main">8 888 Kč</div>
-            <p class="price-callout-sub">Záloha pro rezervaci místa jen <strong>1 500 Kč</strong> · doplatek 14 dní před akademií</p>
+            <p class="price-callout-sub" style="margin-bottom:6px;" data-i18n="price_callout_sub">Místo ti zarezervuje záloha pouze 1 500 Kč, zbytek doplatíš 14 dní před začátkem</p>
             <div class="benefits-row">
                 <img src="./img/benefit-logos.png" alt="Benefit Plus, Pluxee, Up Benefity, Edenred" style="width:100%;max-width:300px;height:auto;object-fit:contain;display:block;margin-top:4px;">
             </div>
-            <a href="./registrace" class="btn btn-ink" style="display:block;text-align:center;margin-top:24px;">Chci se přihlásit</a>
         </div>
     </div>
-    <div class="included-col">
-        <div class="label label-coral">Co si zajisti ty</div>
-        <h2>Jen jedno si vyřeš sama</h2>
-        <p>Ve studiu bude menší občerstvení, ovoce, oříšky, čaje a voda, ale oběd si každá řeší po svém. V okolí je spousta skvělých možností, kam se jít najíst.</p>
-        <ul class="included-list" style="margin-top: 40px;">
-            <li class="included-item"><span class="check check-no">✕</span>Obědy (kavárny, restaurace a bistra v docházkové vzdálenosti)</li>
-        </ul>
-        <div style="margin-top: 48px; padding: 32px; background: var(--white); border: var(--border);">
-            <div style="font-weight: 700; font-size:0.9rem; margin-bottom: 12px; color: var(--ink);">Vlastní notebook si můžeš vzít, ale není podmínkou.</div>
-            <p style="font-size:0.88rem; line-height:1.7; margin:0; color:var(--mid);">V dílně máme počítače pro všechny. Pokud vlastní notebook máš, přines ho. Můžeš pracovat v prostředí, které už znáš.</p>
-        </div>
-    </div>
+
 </section>
 
-<!-- GALERIE -->
 <section class="gallery-container">
     <div class="gallery-big">
-        <!-- PLACEHOLDER: velké foto dílny nebo skupiny při práci -->
         <div class="img-placeholder" style="min-height:560px;">
             <img src="./img/7.png" alt="">
         </div>
     </div>
     <div class="gallery-text">
-        <div class="label">Podívej se</div>
-        <h2>Jak to vypadá u nás v laboratoři</h2>
+        <div class="label" data-i18n="gallery_label">Nahlédni k nám</div>
+        <h2 data-i18n="gallery_h2">Jak to vypadá v naší laboratoři</h2>
     </div>
     <div class="gallery-small-1">
         <div class="img-placeholder" style="min-height:250px;">
@@ -1143,49 +1222,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials-section">
     <div class="testimonials-top" style="padding-bottom:80px;">
-        <div class="label label-lilac" style="justify-content:center;">Co říkají absolventky</div>
-        <h2>Co říkají ty, které už program zažily ♥</h2>
+        <div class="label label-lilac" style="justify-content:center;" data-i18n="testimonials_label">Ohlasy</div>
+        <h2 data-i18n="testimonials_h2">Co o nás říkají absolventky ♥</h2>
     </div>
     <div class="testimonials-quotes">
         <div class="testimonial-card">
-            <p>„Naučila jsem se toho opravdu hodně. Nejvíc jsem ocenila práci s počítačovými programy a 3D tiskárnou. Jsem ráda, že jsem si mohla vyzkoušet všechny techniky spojené s 3D tištěnou módou a poslouchat zajímavé přednášky."</p>
-            <div class="t-attr">Hana V.</div>
+            <p data-i18n="test1_quote">„Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně. Je super, že jsem si mohla vyzkoušet moderní techniky a spojit je s módou."</p>
+            <div class="t-attr" data-i18n="test1_attr">Hana V.</div>
         </div>
         <div class="testimonial-card">
-            <p>„Tento kurz mě neuvěřitelně inspiroval pro budoucí tvorbu. Naučila jsem se pracovat s různými softwary a experimentovala s technikami od 3D tisku po 3D pera. Byla jsem naprosto spokojená s celým programem."</p>
-            <div class="t-attr">Ema Z.</div>
+            <p data-i18n="test2_quote">„Tenhle týden mě neuvěřitelně nakopl do další tvorby. Naučila jsem se ovládat super programy a zkusila si všechno od 3D per až po velké tiskárny. Program byl naprosto boží."</p>
+            <div class="t-attr" data-i18n="test2_attr">Ema Z.</div>
         </div>
     </div>
 </section>
 
-<!-- ČT Rozhovor – video section (same as about.html #talk) -->
 <section class="sc-video-section">
     <div class="sc-video-header">
         <div>
-            <div class="label label-magenta" style="color:var(--magenta);">Pusť si rozhovor · Abíčko</div>
-            <h2>Rozhovor se zakladatelkou<br>o módě budoucnosti</h2>
+            <div class="label label-magenta" style="color:var(--magenta);" data-i18n="video_label">Reportáž časopisu ABC</div>
+            <h2 data-i18n="video_h2">Pusť si rozhovor<br>o módě budoucnosti</h2>
         </div>
         <div>
-            <p>Linette v rozhovoru pro časopis ABC vypráví, jak 3D tisk mění svět módy a jak se tvoří móda budoucnosti. Koukni na rozhovor.</p>
-            <a href="https://youtu.be/SF-NV1AnazM?si=-7JkdFcXKMG8crxY&t=301" target="_blank" class="btn btn-primary" style="margin-top:20px;">Spustit reportáž ↗</a>
+            <p data-i18n="video_desc">Zakladatelka Linette v rozhovoru pro časopis ABC ukazuje, jak 3D tisk a nové technologie mění svět designu. Podívej se na reportáž.</p>
+            <a href="https://youtu.be/SF-NV1AnazM?si=-7JkdFcXKMG8crxY&t=301" target="_blank" class="btn btn-primary" style="margin-top:20px;" data-i18n="video_btn">Spustit video ↗</a>
         </div>
     </div>
     <div class="sc-video-embed">
-        <!--
-        <iframe
-            src="https://youtu.be/SF-NV1AnazM?si=-7JkdFcXKMG8crxY&t=301"
-            title="Makeful – reportáž pro časopic Abc o módě budoucnosti"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            >
-        </iframe>
-        -->
         <iframe 
             src="https://www.youtube.com/embed/SF-NV1AnazM?si=L6wuaAq4bWFPyO5a&amp;start=300" 
-            title="Makeful – reportáž pro časopic Abc o módě budoucnosti" 
+            title="Makeful – reportáž pro časopis ABC o módě budoucnosti" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen
             >
@@ -1196,88 +1264,176 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div style="background:var(--off);border-top:var(--border);border-bottom:var(--border);padding:56px 80px;display:flex;align-items:flex-start;gap:32px;">
     <div style="flex-shrink:0;width:4px;background:var(--primary);align-self:stretch;border-radius:2px;"></div>
     <div>
-        <p style="font-family:var(--font-display);font-size:clamp(1rem,1.6vw,1.2rem);font-style:italic;color:var(--ink);line-height:1.75;margin-bottom:20px;">&#8222;Naučila jsem se toho opravdu hodně. Nejvíc jsem ocenila práci s počítačovými programy a 3D tiskárnou. Jsem ráda, že jsem si mohla vyzkoušet všechny techniky spojené s 3D tištěnou módou a poslouchat zajímavé přednášky.&#8220;</p>
-        <div style="font-weight:700;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary-dark);font-family:var(--font-ui);">Hanka, absolventka akademie</div>
+        <p style="font-family:var(--font-display);font-size:clamp(1rem,1.6vw,1.2rem);font-style:italic;color:var(--ink);line-height:1.75;margin-bottom:20px;" data-i18n="test_rep_quote">&#8222;Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně. Je super, že jsem si mohla vyzkoušet moderní techniky a spojit je s módou.&#8220;</p>
+        <div style="font-weight:700;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary-dark);font-family:var(--font-ui);" data-i18n="test_rep_attr">Hanka, absolventka akademie</div>
     </div>
 </div>
 
-<!-- TERMÍNY & REGISTRACE -->
-<section class="dates-section" id="registrace">
-    <div class="dates-col">
-        <div class="label label-lavender">Termíny 2026</div>
-        <h2>Vyber si svůj termín</h2>
-        <p>Devět termínů od června do srpna, každá má max. 10 míst. Rezervuj si své místo rychle, ať ti akademie neuteče.</p>
-        <div style="display:inline-block; background:#44e991; color:#12100E; font-weight:700; font-size:0.88rem; padding:10px 20px; margin-top:16px; letter-spacing:0.02em;">📅 Přihlášky přijímáme do 31. května 2026</div>
-        <div class="dates-grid">
-            <div class="date-item"><div class="date-num">29. 6. – 5. 7.</div><div class="date-year">2026 · Akademie 1</div></div>
-            <div class="date-item"><div class="date-num">6. 7. – 12. 7.</div><div class="date-year">2026 · Akademie 2</div></div>
-            <div class="date-item"><div class="date-num">13. 7. – 19. 7.</div><div class="date-year">2026 · Akademie 3</div></div>
-            <div class="date-item"><div class="date-num">20. 7. – 26. 7.</div><div class="date-year">2026 · Akademie 4</div></div>
-            <div class="date-item"><div class="date-num">27. 7. – 2. 8.</div><div class="date-year">2026 · Akademie 5</div></div>
-            <div class="date-item"><div class="date-num">3. 8. – 9. 8.</div><div class="date-year">2026 · Akademie 6</div></div>
-            <div class="date-item"><div class="date-num">10. 8. – 16. 8.</div><div class="date-year">2026 · Akademie 7</div></div>
-            <div class="date-item"><div class="date-num">17. 8. – 23. 8.</div><div class="date-year">2026 · Akademie 8</div></div>
-            <div class="date-item"><div class="date-num">24. 8. – 30. 8.</div><div class="date-year">2026 · Akademie 9</div></div>
+<section id="registrace" style="border-bottom:var(--border);">
+
+    <div style="padding:64px 80px 40px; border-bottom:var(--border); display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px;">
+        <div>
+            <div class="label label-lavender" data-i18n="dates_label">Termíny 2026</div>
+            <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:700;margin-bottom:10px;" data-i18n="dates_h2">Tři věkové skupiny, devět turnusů</h2>
+            <p style="font-size:0.95rem;color:var(--mid);" data-i18n="dates_p">Kapacita je jen 10 míst na turnus. Záloha 1 500 Kč ti bezpečně podrží místo.</p>
         </div>
+        <div style="background:#44e991; color:var(--ink); font-weight:700; font-size:0.85rem; padding:10px 18px; white-space:nowrap;" data-i18n="dates_deadline_banner">📅 Přihlášky přijímáme do 7. června 2026</div>
     </div>
-    <div class="dates-col" style="background: var(--off);">
-        <div class="label label-lavender">Jak se přihlásit</div>
-        <h2>Rezervuj si své místo ve 3 krocích</h2>
-        <p>Rychlé, jednoduché přihlašování. Místo ti potvrdíme obratem.</p>
-        <div class="reg-steps">
-            <div class="reg-step">
-                <div class="reg-step-num">1</div>
-                <div class="reg-step-text">
-                    <strong>Vyplň přihlášku</strong>
-                    <span>Klikni níže, vyber termín a vyplň přihlášku. Celé to zabere dvě minuty.</span>
-                </div>
+
+    <div style="border-bottom:var(--border);">
+        <div style="padding:48px 80px;">
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:16px;height:2px;background:var(--primary);"></span><span data-i18n="age_group_label">Věková skupina</span></div>
+            <h3 style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;margin-bottom:6px;" data-i18n="age_group_1">10-12 let</h3>
+            
+            <div style="background:var(--off);border-left:3px solid var(--primary);padding:14px 18px;margin-bottom:24px;display:inline-block;" data-i18n="date_price_1">
+                <span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">7 888 Kč</span>
+                <span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· záloha pouze 1 500 Kč</span>
             </div>
-            <div class="reg-step">
-                <div class="reg-step-num">2</div>
-                <div class="reg-step-text">
-                    <strong>Uhraď zálohu 1 500 Kč</strong>
-                    <span>Platební údaje ti dorazí e-mailem. Záloha závazně drží tvoje místo.</span>
+            <div style="margin-top:4px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_1">1. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_1">6. 7. – 12. 7. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:#44e991;color:var(--ink);">CZ</span>
+                    </div>
+                    <a href="./registrace?termin=10%E2%80%9312%20let%20%C2%B7%206.%207.%20%E2%80%93%2012.%207.%202026%20%C2%B7%20CZ" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
                 </div>
-            </div>
-            <div class="reg-step">
-                <div class="reg-step-num">3</div>
-                <div class="reg-step-text">
-                    <strong>Doplatek 14 dní před kempem</strong>
-                    <span>Zbytek kurzovného uhradíš nejpozději 14 dní před začátkem kempu.</span>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_2">2. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_2">27. 7. – 2. 8. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:#44e991;color:var(--ink);">CZ</span>
+                    </div>
+                    <a href="./registrace?termin=10%E2%80%9312%20let%20%C2%B7%2027.%207.%20%E2%80%93%202.%208.%202026%20%C2%B7%20CZ" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_3">3. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_3">10. 8. – 16. 8. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:var(--lavender);color:#fff;">EN</span>
+                    </div>
+                    <a href="./registrace?termin=10%E2%80%9312%20let%20%C2%B7%2010.%208.%20%E2%80%93%2016.%208.%202026%20%C2%B7%20ENG" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
                 </div>
             </div>
         </div>
-        <div style="margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;">
-            <a class="btn btn-primary" href="./registrace" target="_blank" rel="noopener">Chci se přihlásit</a>
-            <a class="btn btn-outline" href="#kontakt">Mám otázku</a>
+
+    </div>
+
+    <div style="border-bottom:var(--border);">
+        <div style="padding:48px 80px;">
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:16px;height:2px;background:var(--primary);"></span><span data-i18n="age_group_label">Věková skupina</span></div>
+            <h3 style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;margin-bottom:6px;" data-i18n="age_group_2">13-15 let</h3>
+            
+            <div style="background:var(--off);border-left:3px solid var(--primary);padding:14px 18px;margin-bottom:24px;display:inline-block;" data-i18n="date_price_2">
+                <span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">8 888 Kč</span>
+                <span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· záloha pouze 1 500 Kč</span>
+            </div>
+            <div style="margin-top:4px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_1">1. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_4">13. 7. – 19. 7. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:#44e991;color:var(--ink);">CZ</span>
+                    </div>
+                    <a href="./registrace?termin=13%E2%80%9315%20let%20%C2%B7%2013.%207.%20%E2%80%93%2019.%207.%202026%20%C2%B7%20CZ" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_2">2. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_5">3. 8. – 9. 8. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:#44e991;color:var(--ink);">CZ</span>
+                    </div>
+                    <a href="./registrace?termin=13%E2%80%9315%20let%20%C2%B7%203.%208.%20%E2%80%93%209.%208.%202026%20%C2%B7%20CZ" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_3">3. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_6">20. 7. – 26. 7. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:var(--lavender);color:#fff;">EN</span>
+                    </div>
+                    <a href="./registrace?termin=13%E2%80%9315%20let%20%C2%B7%2020.%207.%20%E2%80%93%2026.%207.%202026%20%C2%B7%20ENG" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <div style="padding:48px 80px;">
+            <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="display:block;width:16px;height:2px;background:var(--primary);"></span><span data-i18n="age_group_label">Věková skupina</span></div>
+            <h3 style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;margin-bottom:6px;" data-i18n="age_group_3">16-19 let</h3>
+            
+            <div style="background:var(--off);border-left:3px solid var(--primary);padding:14px 18px;margin-bottom:24px;display:inline-block;" data-i18n="date_price_3">
+                <span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">9 888 Kč</span>
+                <span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· záloha pouze 1 500 Kč</span>
+            </div>
+            <div style="margin-top:4px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_1">1. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_7">29. 6. – 5. 7. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:#44e991;color:var(--ink);">CZ</span>
+                    </div>
+                    <a href="./registrace?termin=16%E2%80%9319%20let%20%C2%B7%2029.%206.%20%E2%80%93%205.%207.%202026%20%C2%B7%20CZ" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_2">2. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_8">17. 8. – 23. 8. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:var(--lavender);color:#fff;">EN</span>
+                    </div>
+                    <a href="./registrace?termin=16%E2%80%9319%20let%20%C2%B7%2017.%208.%20%E2%80%93%2023.%208.%202026%20%C2%B7%20ENG" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,16,14,0.07);gap:12px;">
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div><span style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);display:block;margin-bottom:2px;" data-i18n="term_3">3. turnus</span><span style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--ink);" data-i18n="date_range_9">24. 8. – 30. 8. 2026</span></div>
+                        <span style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;background:var(--lavender);color:#fff;">EN</span>
+                    </div>
+                    <a href="./registrace?termin=16%E2%80%9319%20let%20%C2%B7%2024.%208.%20%E2%80%93%2030.%208.%202026%20%C2%B7%20ENG" class="btn btn-ink" style="font-size:0.7rem;padding:5px 10px;white-space:nowrap;min-width:0;letter-spacing:0.04em;" data-i18n="btn_register_short">Registrovat</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="jak-to-funguje" style="padding:80px 80px; background:var(--off); border-bottom:var(--border);">
+    <div style="max-width:1200px; margin:0 auto;">
+        <div class="label label-primary" data-i18n="how_works_label">Jak to funguje</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--primary);line-height:1;margin-bottom:12px;">01</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:var(--ink);" data-i18n="step1_title">Vyber turnus a klikni</div>
+                <div style="font-size:0.9rem;color:var(--mid);line-height:1.7;" data-i18n="step1_desc">Kliknutím na tlačítko u turnusu se ti formulář sám předvyplní.</div>
+            </div>
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--coral);line-height:1;margin-bottom:12px;">02</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:var(--ink);" data-i18n="step2_title">Vyplň krátkou přihlášku</div>
+                <div style="font-size:0.9rem;color:var(--mid);line-height:1.7;" data-i18n="step2_desc">Stačí zadat jméno, email a telefon. Nezabere to ani dvě minuty.</div>
+            </div>
+            <div>
+                <div style="font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--lavender);line-height:1;margin-bottom:12px;">03</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:var(--ink);" data-i18n="step3_title">Rezervuj místo zálohou</div>
+                <div style="font-size:0.9rem;color:var(--mid);line-height:1.7;" data-i18n="step3_desc">Instrukce dostaneš na email. Záloha pouze 1 500 Kč ti jistí místo, zbytek platby doladíme před kempem.</div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ZAKLADATELKA -->
 <section class="founder-section" id="onas">
     <div class="founder-img">
-        <!-- PLACEHOLDER: foto Linette Manuel -->
         <div class="img-placeholder" style="min-height:520px;">
             <img src="./img/Linette Manuel.png" alt="Linette Manuel Makeful">
         </div>
     </div>
     <div class="founder-content">
-        <div class="label label-primary">Kdo stojí za projektem</div>
-        <div class="founder-quote">"Je úžasné sledovat, jak holky rozkvétají, když objeví, že technologie a kreativita si nejenom neodporují, ale navzájem dovolují tvořit úžasné věci."</div>
+        <div class="label label-primary" data-i18n="founder_label">Kdo stojí za projektem</div>
+        <div class="founder-quote" data-i18n="founder_quote">"Baví mě sledovat jak holky rozkvetou, když zjistí, že technologie a kreativita k sobě perfektně patří a otevírají jim úplně nové možnosti tvoření."</div>
         <div>
-            <div class="founder-name">Linette Manuel</div>
-            <div class="founder-role">Zakladatelka programu Makeful</div>
+            <div class="founder-name" data-i18n="founder_name">Linette Manuel</div>
+            <div class="founder-role" data-i18n="founder_role">Zakladatelka programu Makeful</div>
         </div>
-        <div class="founder-bio">
-            Linette přináší do Makeful 8 let zkušeností s výukou technologií a designu na základních a středních školách, odborné znalosti z textilního a materiálového inženýrství a zkušenosti ze společností jako IBM. Celou kariéru se pohybuje přesně tam, kde se setkávají technologie, udržitelnost a lidé. Na tomto propojení stojí i Makeful.
+        <div class="founder-bio" data-i18n="founder_bio">
+            Linette propojuje technologie, design a udržitelnost. Má za sebou 8 let zkušeností s výukou technologií na školách, vystudovala textilní inženýrství a pracovala v IBM. 
             <br><br>
-            Jako designérka na pomezí módy a technologií vytvořila haptický oblek kombinující 3D tisk, AI a nositelnou elektroniku. Získala Cenu děkana na ČVUT, byla finalistkou Creative Heroes Award 2024, objevila se v magazínu Wired a vystoupila na konferencích Forbes Next Big Thing i Future Port Youth.
+            Jako designérka vytvořila unikátní haptický oblek spojující 3D tisk, AI a chytrou elektroniku. Získala Cenu děkana na ČVUT, dostala se do finále Creative Heroes Award 2024, psali o ní ve Wired a mluvila na konferencích Forbes Next Big Thing nebo Future Port Youth.
             <br><br>
-            Je také mentorkou mezinárodního programu Elegoo with Her, který propojuje dívky a ženy po celém světě se světem 3D tisku a otevírá jim cestu k technologiím.
+            Je také mentorkou mezinárodní platformy Elegoo with Her, kde pomáhá holkám a ženám z celého světa proniknout do fascinujícího světa 3D tisku.
         </div>
         <div>
-            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--mid); margin-bottom:12px;">Mohli jste o nás slyšet z:</div>
+            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--mid); margin-bottom:12px;" data-i18n="founder_media_lbl">Napsali o nás:</div>
             <div class="founder-media">
                 <a class="media-badge" href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener">Wired</a>
                 <a class="media-badge" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">ČT :D</a>
@@ -1292,11 +1448,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 
-<!-- PŘEČTĚTE SI VÍCE -->
 <section class="press-articles-section">
     <div class="press-articles-header">
-        <div class="label label-coral">Média</div>
-        <h2>Přečtěte si více</h2>
+        <div class="label label-coral" data-i18n="press_articles_label">Média</div>
+        <h2 data-i18n="press_articles_h2">Co se o nás píše</h2>
     </div>
     <div class="press-articles-grid">
         <div class="press-article-card">
@@ -1305,8 +1460,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="press-article-body">
                 <div class="press-article-source">Wired</div>
-                <h3 class="press-article-title">Tak co si dnes vytisknu na rande? Nákup oblečení má šanci se zásadně změnit</h3>
-                <a href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener" class="btn btn-outline press-article-btn">Chci si přečíst více</a>
+                <h3 class="press-article-title" data-i18n="art1_title">Tak co si dnes vytisknu na rande? Nákup oblečení má šanci se zásadně změnit</h3>
+                <a href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener" class="btn btn-outline press-article-btn" data-i18n="art_btn">Přečíst článek</a>
             </div>
         </div>
         <div class="press-article-card">
@@ -1315,103 +1470,119 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="press-article-body">
                 <div class="press-article-source">Hospodářské noviny</div>
-                <h3 class="press-article-title">Z kalhot udělají tričko, z něj kabelku. Mladá Češka učí studenty tisknout si oblečení</h3>
-                <a href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener" class="btn btn-outline press-article-btn">Chci si přečíst více</a>
+                <h3 class="press-article-title" data-i18n="art2_title">Z kalhot udělají tričko, z něj kabelku. Mladá Češka učí studenty tisknout si oblečení</h3>
+                <a href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener" class="btn btn-outline press-article-btn" data-i18n="art_btn">Přečíst článek</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq-section" id="faq">
     <div class="faq-header">
-        <div class="label label-coral">Časté otázky</div>
-        <h2>Nejčastější dotazy</h2>
+        <div class="label label-coral" data-i18n="faq_label">Odpovědi na otázky</div>
+        <h2 data-i18n="faq_h2">Časté dotazy</h2>
     </div>
     <div class="faq-list">
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Musím mít předchozí zkušenosti s módou nebo technologiemi?</span>
+                <span data-i18n="faq1_q">Jak jsou rozděleny věkové skupiny a proč?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Vůbec ne. Laboratoř je navržená pro úplné začátečnice i pro ty, kdo s technologiemi trochu pracovaly. Naši lektoři tě provedou vším krok za krokem a tempo přizpůsobí skupině.</p>
+                <p data-i18n="faq1_a">Máme tři skupiny: 10-12 let, 13-15 let a 16-19 let. Každá skupina pracuje svým tempem. Mladší holky navrhují klobouček a doplňky, starší se pustí do vesty budoucnosti. Ostatní projekty baví všechny věkové kategorie.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Může se kurzu účastnit kluk?</span>
+                <span data-i18n="faq2_q">V jakém jazyce akademie probíhá?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Ano, může! Kluci jsou v laboratoři vítáni stejně jako holky. Důležité je mít chuť tvořit, experimentovat a objevovat.</p>
+                <p data-i18n="faq2_a">Podle vybraného turnusu buď česky, nebo anglicky. Jazyk uvidíš jasně napsaný u každého data. Naši lektoři mluví oběma jazyky a rádi pomohou každému. Anglické termíny jsou super pro procvičení jazyka.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Co musím mít s sebou?</span>
+                <span data-i18n="faq3_q">Musím mít předchozí zkušenosti s módou nebo technologiemi?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Přijď v pohodlném oblečení, ve kterém ti nevadí pracovat s materiály. Veškeré vybavení, nástroje i materiály jsou zahrnuty v ceně, opravdu nemusíš nic kupovat předem.</p>
+                <p data-i18n="faq3_a">Vůbec ne! Laboratoř je vymyšlená pro úplné začátečnice. Vše si ukážeme krok za krokem, v pohodovém tempu a bez stresu.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Potřebuji vlastní notebook?</span>
+                <span data-i18n="faq4_q">Může se kurzu účastnit kluk?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Vlastní notebook si klidně přines, ale není podmínkou. V dílně máme zařízení pro všechny.</p>
+                <p data-i18n="faq4_a">Jasně, kluci jsou v laboratoři vítáni! Jedinou podmínkou je chuť experimentovat, zkoušet nové technologie a tvořit.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Kde se laboratoř koná?</span>
+                <span data-i18n="faq5_q">Co musím mít s sebou?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Kemp probíhá v naší dílně na Praze 7 na Argentinské 1.</p>
+                <p data-i18n="faq5_a">Stačí přijít v pohodlném oblečení, ve kterém se ti bude dobře pracovat. Veškeré vybavení, přístroje i materiály dostaneš přímo na místě.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Lze kemp uhradit přes Benefit Plus, Pluxee, Up Benefity nebo Edenred?</span>
+                <span data-i18n="faq6_q">Potřebuji vlastní notebook?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Ano! Přijímáme platbu prostřednictvím systémů Benefit Plus, Pluxee, Up Benefity i Edenred. Detaily k tomuto způsobu úhrady ti zašleme spolu s potvrzením registrace. Pokud máš dotaz, napiš nám na hello@make-ful.com.</p>
+                <p data-i18n="faq6_a">Vlastní notebook si klidně přines, pokud jsi na něj zvyklá. Pokud nemáš, nevadí, v dílně máme připravené notebooky pro všechny.</p>
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Jak funguje platba zálohou?</span>
+                <span data-i18n="faq7_q">Kde se laboratoř koná?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>Po odeslání přihlášky ti dorazí platební údaje na email. Záloha 1 500 Kč závazně rezervuje tvoje místo. Zbývající částku doplatíš nejpozději 14 dní před začátkem akademie. Zbytek platby můžeš také rozdělit na 2 části.</p>
+                <p data-i18n="faq7_a">Potkáme se v naší moderní dílně v Praze 7 na adrese Argentinská 1. Je to kousek od metra.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span data-i18n="faq8_q">Lze kemp uhradit přes Benefit Plus, Pluxee, Up Benefity nebo Edenred?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p data-i18n="faq8_a">Ano, zaměstnanecké benefity plně přijímáme. Přesné instrukce pro platbu kartami nebo poukázkami ti pošleme hned po registraci.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span data-i18n="faq9_q">Jak funguje platba zálohou?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                <p data-i18n="faq9_a">Po odeslání přihlášky zaplatíš zálohu 1 500 Kč, která ti závazně zajistí místo. Zbytek částky pak stačí doplatit do 14 dnů před začátkem kempu.</p>
             </div>
         </div>
         <div class="faq-item" style="padding-bottom: 64px;">
             <div class="faq-question" onclick="toggleFaq(this)">
-                <span>Co se stane, pokud nestihnu svůj turnus?</span>
+                <span data-i18n="faq10_q">Co se stane, když nebudu moct na vybraný turnus dorazit?</span>
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                <p>V případě potřeby je možné přesunout registraci na jiný dostupný turnus nejpozději 14 dní před začátkem. Napiš nám na hello@make-ful.com a domluvíme se.</p>
+                <p data-i18n="faq10_a">Pokud se plány změní, stačí nám dát vědět nejpozději 14 dní před začátkem. Rádi tě bezplatně přesuneme na jiný volný turnus.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- KONTAKT -->
 <section class="contact-section" id="kontakt">
     <div class="contact-left">
         <div>
-            <div class="label label-primary">Kontaktuj nás</div>
-            <h2>Rádi ti pomůžeme</h2>
+            <div class="label label-primary" data-i18n="contact_label">Kontakt</div>
+            <h2 data-i18n="contact_h2">Napiš nám nebo zavolej</h2>
         </div>
-        <p>Máš dotaz k programu, termínům nebo platbě? Zavolej nebo napiš a odpovíme ti do 24 hodin.</p>
+        <p data-i18n="contact_desc">Máš dotazy k programu, placení nebo turnusům? Ozvi se nám, rádi ti se vším pomůžeme a odpovíme co nejrychleji.</p>
         <div class="contact-links">
             <a class="contact-link-item" href="tel:+420735820576">
                 <span class="material-symbols-outlined">call</span>+420 735 820 576
@@ -1420,49 +1591,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="material-symbols-outlined">mail</span>hello@make-ful.com
             </a>
             <a class="contact-link-item" href="https://www.instagram.com/_makeful/" target="_blank" rel="noopener">
-                <span class="material-symbols-outlined">open_in_new</span>@_makeful na Instagramu
+                <span class="material-symbols-outlined">open_in_new</span><span data-i18n="contact_ig_lbl">@_makeful na Instagramu</span>
             </a>
         </div>
     </div>
     <div class="contact-right">
-        <div class="label" style="color:rgba(255,255,255,0.4);">Zanech zprávu</div>
-        <div id="cf-success" style="display:none; background:rgba(255,255,255,0.08); border-left:4px solid var(--primary); padding:24px 28px; color:var(--white); font-size:0.95rem; line-height:1.6;">
-            Zpráva odeslána! Ozveme se ti do 24 hodin.
+        <div class="label" style="color:rgba(255,255,255,0.4);" data-i18n="contact_form_lbl">Rychlá zpráva</div>
+        <div id="cf-success" style="display:none; background:rgba(255,255,255,0.08); border-left:4px solid var(--primary); padding:24px 28px; color:var(--white); font-size:0.95rem; line-height:1.6;" data-i18n="contact_success_msg">
+            Zpráva byla úspěšně odeslána. Ozveme se ti zpátky do 24 hodin!
         </div>
         <div id="cf-form">
             <div class="contact-field">
-                <label for="cf-name">Jméno</label>
-                <input id="cf-name" type="text" placeholder="Tvoje jméno">
+                <label for="cf-name" data-i18n="form_name_lbl">Jméno</label>
+                <input id="cf-name" type="text" placeholder="Tvoje jméno" data-i18n-placeholder="form_name_ph">
             </div>
             <div class="contact-field" style="margin-top:16px;">
-                <label for="cf-email">Email</label>
-                <input id="cf-email" type="email" placeholder="tvuj@email.cz">
+                <label for="cf-email" data-i18n="form_email_lbl">Email</label>
+                <input id="cf-email" type="email" placeholder="tvuj@email.cz" data-i18n-placeholder="form_email_ph">
             </div>
             <div class="contact-field" style="margin-top:16px;">
-                <label for="cf-msg">Zpráva</label>
-                <textarea id="cf-msg" rows="4" placeholder="Jak ti můžeme pomoci?"></textarea>
+                <label for="cf-msg" data-i18n="form_msg_lbl">Zpráva</label>
+                <textarea id="cf-msg" rows="4" placeholder="Co tě zajímá?" data-i18n-placeholder="form_msg_ph"></textarea>
             </div>
             <div id="cf-error" style="display:none; color:#ff8a8a; font-size:0.85rem; margin-top:8px;"></div>
-            <button class="btn btn-primary" id="cf-submit" type="button" onclick="sendContactForm()" style="margin-top:8px;">Odeslat zprávu</button>
+            <button class="btn btn-primary" id="cf-submit" type="button" onclick="sendContactForm()" style="margin-top:8px;" data-i18n="form_submit_btn">Odeslat zprávu</button>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-main">
         <div class="footer-col">
-            <h4>Menu</h4>
+            <h4 data-i18n="footer_menu_lbl">Menu</h4>
             <ul class="footer-links">
-                <li><a href="#top">Domů</a></li>
-                <li><a href="#program">Program</a></li>
-                <li><a href="#cena">Cena</a></li>
-                <li><a href="#onas">O nás</a></li>
+                <li><a href="#top" data-i18n="nav_home">Domů</a></li>
+                <li><a href="#program" data-i18n="nav_program">Program</a></li>
+                <li><a href="#cena" data-i18n="nav_price">Cena</a></li>
+                <li><a href="#onas" data-i18n="nav_about">O nás</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </div>
         <div class="footer-col">
-            <h4>Sleduj nás</h4>
+            <h4 data-i18n="footer_follow_lbl">Sleduj nás</h4>
             <ul class="footer-links">
                 <li><a href="https://www.instagram.com/_makeful/">Instagram</a></li>
                 <li><a href="https://www.facebook.com/makefulmakeful">Facebook</a></li>
@@ -1470,20 +1640,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
         </div>
         <div class="footer-col">
-            <h4>Dokumenty</h4>
+            <h4 data-i18n="footer_docs_lbl">Dokumenty</h4>
             <ul class="footer-links">
-                <li><a href="./ochrana-osobnich-udaju">Ochrana osobních údajů</a></li>
-                <li><a href="./obchodni-podminky">Obchodní podmínky</a></li>
+                <li><a href="./ochrana-osobnich-udaju" data-i18n="footer_privacy">Ochrana osobních údajů</a></li>
+                <li><a href="./obchodni-podminky" data-i18n="footer_terms">Obchodní podmínky</a></li>
             </ul>
         </div>
         <div class="footer-col" style="grid-column: span 2;">
-            <h4>Kontakt</h4>
+            <h4 data-i18n="footer_contact_lbl">Kontakt</h4>
             <ul class="footer-links">
                 <li><a href="mailto:linette@make-ful.com">linette@make-ful.com</a></li>
                 <li><a href="tel:+420735820576">+420 735 820 576</a></li>
             </ul>
             <div style="margin-top: 32px;">
-                <a href="./registrace" class="btn btn-primary" style="width:100%; display:block; text-align:center;">Mám zájem</a>
+                <a href="./registrace" class="btn btn-primary" style="width:100%; display:block; text-align:center;" data-i18n="nav_cta">Mám zájem</a>
             </div>
         </div>
     </div>
@@ -1491,7 +1661,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-bg-letter">M</div>
         <img src="./img/makeful_logo_colours.png" alt="Makeful Academy" class="footer-logo-img" decoding="async">
     </div>
-    <div class="copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
+    <div class="copyright" data-i18n="footer_copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
 </footer>
 
 <script>
@@ -1527,20 +1697,20 @@ function sendContactForm() {
     errEl.style.display = 'none';
 
     if (!email) {
-        errEl.textContent = 'Zadej prosím svůj email.';
+        errEl.textContent = translations[currentLang].js_err_email || 'Zadej prosím svůj email.';
         errEl.style.display = 'block';
         document.getElementById('cf-email').focus();
         return;
     }
     if (!message) {
-        errEl.textContent = 'Napiš prosím zprávu.';
+        errEl.textContent = translations[currentLang].js_err_msg || 'Napiš prosím zprávu.';
         errEl.style.display = 'block';
         document.getElementById('cf-msg').focus();
         return;
     }
 
     var btn = document.getElementById('cf-submit');
-    btn.textContent = 'Odesílám...';
+    btn.textContent = translations[currentLang].js_sending || 'Odesílám...';
     btn.disabled = true;
 
     fetch('https://api.web3forms.com/submit', {
@@ -1564,10 +1734,10 @@ function sendContactForm() {
             throw new Error(data.message || 'Chyba při odesílání.');
         }
     })
-    .catch(function() {
-        errEl.textContent = 'Nepodařilo se odeslat zprávu. Zkus to prosím znovu nebo napiš přímo na hello@make-ful.com.';
+    .catch(function(err) {
+        errEl.textContent = err.message || translations[currentLang].js_err_fail || 'Nepodařilo se odeslat zprávu. Zkus to prosím znovu nebo napiš přímo na hello@make-ful.com.';
         errEl.style.display = 'block';
-        btn.textContent = 'Odeslat zprávu';
+        btn.textContent = translations[currentLang].form_submit_btn || 'Odeslat zprávu';
         btn.disabled = false;
     });
 }
@@ -1596,5 +1766,287 @@ function sendContactForm() {
 })();
 </script>
 <script src="https://af56802f-0b99-4c46-9969-d78ea8a24e5e-00-1h5bm2cqgea53.kirk.replit.dev/api/widget.js?id=bd4551ad-9bf2-48b0-a98c-2341ffda8a06" async defer></script>
+
+<script>
+var translations = {
+  cs: {
+    banner: 'Přihlášky do letní akademie přijímáme do <strong>7. června 2026</strong>. Zajisti si své místo včas!',
+    nav_home: 'Domů', nav_program: 'Program', nav_price: 'Cena', nav_dates: 'Termíny',
+    nav_about: 'O nás', nav_contact: 'Kontakt', nav_cta: 'Mám zájem',
+    hero_label: 'Léto 2026 · Praha',
+    hero_h1: 'Staň se módní navrhářkou budoucnosti.',
+    hero_sub1: 'Zkušenosti nepotřebuješ. Vše tě naučíme od úplných základů.',
+    hero_sub2: 'Jediná FashionTech akademie v Praze pro holky od 10 do 19 let. Objev svět AI, 3D tisku a digitálního designu.',
+    btn_register: 'Chci se přihlásit', btn_more: 'Více o programu',
+    hanka_quote: '&bdquo;Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně. Je super, že jsem si mohla vyzkoušet moderní techniky a spojit je s módou.&ldquo;',
+    hanka_attr: 'Hanka, absolventka akademie',
+    press_label: 'Napsali o nás:',
+    pb_who_lbl: 'Pro koho', pb_who_val: '10-19 let', pb_who_sub: 'Tři věkové skupiny, holky z celé ČR, Praha 7',
+    pb_prog_lbl: 'Harmonogram', pb_prog_val: 'Pondělí až neděle', pb_prog_sub: 'Po-So 9:00-17:00, Ne 9:00-12:00',
+    pb_group_lbl: 'Skupiny', pb_group_val: 'Max. 10 osob', pb_group_sub: 'Individuální přístup a komorní atmosféra',
+    pb_take_lbl: 'Co si odneseš', pb_take_val: '6 vlastních projektů', pb_take_sub: 'Jedinečné kreativní portfolio na papíře i webu',
+    prog_label: 'Týdenní program',
+    prog_h2: 'Jak vypadá program v laboratoři',
+    prog_sub: 'Sedm dní, šest super projektů.',
+    day_mon: 'Pondělí', day_tue: 'Úterý', day_wed: 'Středa', day_thu: 'Čtvrtek', day_fri: 'Pátek', day_sat: 'Sobota', day_sun: 'Neděle',
+    day_lbl_1: 'Den 1', day_lbl_2: 'Den 2', day_lbl_3: 'Den 3', day_lbl_4: 'Den 4', day_lbl_5: 'Den 5', day_lbl_6: 'Den 6', day_lbl_7: 'Den 7, 9-12 hod',
+    day_body_1: 'Vytiskneš si originální nášivku na boty a zkusíš základní vzorník.',
+    day_body_2: 'Spojíš jednotlivé díly a vyzkoušíš si 3D pero i šicí stroj.',
+    day_body_3: 'Mladší holky navrhnou klobouček, starší vestu budoucnosti. Startujeme tisk!',
+    day_body_4: 'Mezitím se pustíš do tvorby vlastní digitální AI modelky.',
+    day_body_5: 'Finální úpravy tvého hlavního projektu a natáčení vlastní AI videoreklamy.',
+    day_body_6: 'Všechno poskládáš do parádního webového portfolia a připravíš se na závěr.',
+    day_body_7: 'Slavnostní prezentace. Odcházíš s diplomem, portfoliem a vlastními výtvory.',
+    prog_meta_time: 'Po-So <strong>9:00-17:00</strong>, Ne <strong>9:00-12:00</strong>',
+    prog_meta_group: 'Max. <strong>10 účastnic</strong> v turnusu',
+    prog_meta_lunch: 'Společný oběd a fajn přestávky na sváču',
+    forwhom_label: 'Pro koho je laboratoř',
+    forwhom_h2: 'Přijď přesně taková, jaká jsi',
+    forwhom_p: 'Nepotřebuješ nic umět. Skvěle k nám zapadneš, pokud:',
+    forwhom_check_1: 'Tě baví móda a chceš tvořit originální kousky.',
+    forwhom_check_2: 'Chceš vyzkoušet moderní technologie jako 3D tisk nebo AI.',
+    forwhom_check_3: 'Láká tě studium designu, umění nebo technologií.',
+    forwhom_check_4: 'Chceš si vytvořit jedinečné portfólio na přijímačky.',
+    forwhom_check_5: 'Ráda vymýšlíš nové věci a baví tě kreativní tvorba.',
+    forwhom_check_6: 'Chceš prožít super týden plný zážitků a najít nové kamarádky.',
+    projects_label: 'Výtvory',
+    projects_h2: 'Co si odneseš domů',
+    projects_sub: 'Za sedm dní zvládneš vytvořit úžasné kousky. Získáš nové dovednosti, zdravé sebevědomí a portfolio, na které budeš hrdá.',
+    proj1_label: 'Projekt 01', proj1_title: '3D výšivka na boty', proj1_desc: 'Navrhneš a vytiskneš si originální ozdobu přímo na své boty. Takové nikdo jiný na světě nemá.',
+    proj_skills_lbl: 'Co se naučíš',
+    proj1_skill1: 'Základy 3D tisku na textil a obuv', proj1_skill2: 'Kreslení vzorů v programu a jejich přípravu pro tisk', proj1_skill3: 'Samostatné ovládání moderní 3D tiskárny',
+    proj_tech_lbl: 'Nástroje a techniky',
+    tag_fdm: 'FDM 3D tisk', tag_slicing: 'Slicování',
+    proj2_label: 'Projekt 02', proj2_title: 'Vytuněné tričko', proj2_desc: 'Oživíš obyčejné tričko plastickými 3D motivy a strukturami podle vlastního nápadu.',
+    proj2_skill1: 'Jak vytvořit ohebnou 3D tištěnou látku', proj2_skill2: 'Navrhování vlastních plastických nášivek', proj2_skill3: 'Propojení 3D tisku s klasickým textilem',
+    tag_3dpen: '3D pero', tag_textile3d: 'Textilní 3D tisk',
+    proj3_label: 'Projekt 03', proj3_title_new: 'Oblečení budoucnosti', proj3_age1_lbl: '10-12 let', proj3_age1_val: 'Klobouček a doplňky', proj3_age2_lbl: '13-19 let', proj3_age2_val: 'Vesta budoucnosti',
+    proj3_new_skill1: 'Navrhování oděvních prvků ve 3D prostoru', proj3_new_skill2: 'Práce s krejčovskou pannou a základy stylingu', proj3_new_skill3: 'Experimenty s netradičními a chytrými materiály',
+    tag_mannequin: 'Krejčovská panna', tag_smartmat: 'Chytré materiály',
+    proj4_label: 'Projekt 04', proj4_title: 'Virtuální modelka', proj4_desc: 'Digitální móda hýbe světem. Pomocí chytrých AI nástrojů si vytvoříš vlastní 3D modelku, která předvede tvé nápady ve virtuálním prostoru.',
+    proj4_skill1: 'Tvorbu digitálních avatarů a modelek', proj4_skill2: 'Virtuální styling a digitální prezentaci', proj4_skill3: 'Základy zadávání povelů pro generování (AI promptování)',
+    proj5_label: 'Projekt 05', proj5_title: 'AI videoreklama', proj5_desc: 'Vytvoříš profesionální kampaň pro své oblečení. Použijeme jednoduchou aplikaci a AI, se kterou to zvládneš za chvilku.',
+    proj5_skill1: 'Generování video obsahu pomocí AI', proj5_skill2: 'Základy video příběhů (storytellingu) v módě', proj5_skill3: 'Jak zaujmout diváky a odprezentovat svůj nápad',
+    tag_aivideo: 'AI Video tvorba', tag_supercreators: 'SuperCreators aplikace',
+    proj6_label: 'Projekt 06', proj6_title: 'Osobní webové portfolio', proj6_desc: 'Všechny své projekty nafotíš a složíš do profi online portfolia. To pak můžeš ukázat u přijímaček na školu nebo v soutěžích.',
+    proj6_skill1: 'Sestavení vlastního moderního webu', proj6_skill2: 'Prezentaci své kreativní práce online', proj6_skill3: 'Jak správně dokumentovat tvůrčí proces',
+    tag_docs: 'Dokumentace', tag_pres: 'Prezentační dovednosti',
+    skills_label: 'Dovednosti', skills_h2: 'Praktické dovednosti<br>a tvoření rukama každý den', skills_sub: 'Žádná nudná teorie. U nás se učíš přímo v praxi tím, že reálně vymýšlíš a tvoříš.',
+    skill1_title: 'Návrh a tvorba ve 3D', skill1_desc: 'Sleduješ, jak se tvůj nápad mění z náčrtu ve skutečnou věc.',
+    skill2_title: 'Fascinující materiály', skill2_desc: 'Sáhneš si na moderní materiály, které se dnes v módě používají.',
+    skill3_title: 'Využití AI nástrojů', skill3_desc: 'Vyzkouší si technologie, které právě teď mění celý svět.',
+    skill4_title: 'Tvůj digitální avatar', skill4_desc: 'Vytvoříš si virtuální modelku přesně pro své návrhy.',
+    skill5_title: 'Kreativní myšlení', skill5_desc: 'Získáš inspiraci a odvahu přemýšlet o designu jinak.',
+    skill6_title: 'Portfolio, na které jsi hrdá', skill6_desc: 'Získáš skvělý základ pro přijímačky na umělecké i technické školy.',
+    included_label: 'Vše v ceně', included_h2: 'Žádné skryté poplatky', included_p: 'Stačí přijít s dobrou náladou a chutí tvořit.',
+    inc_item_1: 'Všechny hotové projekty, které si vyrobíš', inc_item_2: 'Materiál na výrobu (filamenty, látky, doplňky)', inc_item_3: 'Boty a tričko, které si sama upravíš a necháš si', inc_item_4: 'Přístup do online platformy k materiálům', inc_item_5: 'Každodenní inspirativní přednášky tvůrců',
+    inc_item_6: 'Svačinky: čerstvé ovoce, oříšky, čaje a voda', inc_item_7: 'Oběd každý den', inc_item_8: 'Vlastní webové portfolio a diplom z akademie', inc_item_9: 'Vybavená dílna: 3D tiskárny, 3D pera, stroje a panny',
+    inc_price_group_lbl: 'Cena podle věkové skupiny',
+    age_group_1: '10-12 let', age_group_2: '13-15 let', age_group_3: '16-19 let',
+    price_val_1: '7 888 Kč', price_val_2: '8 888 Kč', price_val_3: '9 888 Kč',
+    deposit_lbl_1: 'záloha pouze 1 500 Kč', deposit_lbl_2: 'záloha pouze 1 500 Kč', deposit_lbl_3: 'záloha pouze 1 500 Kč',
+    hourly_lbl_1: 'cca 175 Kč / hodinu', hourly_lbl_2: 'cca 198 Kč / hodinu', hourly_lbl_3: 'cca 220 Kč / hodinu',
+    price_callout_sub: 'Místo ti zarezervuje záloha pouze 1 500 Kč, zbytek doplatíš 14 dní před začátkem',
+    gallery_label: 'Nahlédni k nám', gallery_h2: 'Jak to vypadá v naší laboratoři',
+    testimonials_label: 'Ohlasy', testimonials_h2: 'Co o nás říkají absolventky ♥',
+    test1_quote: '„Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně. Je super, že jsem si mohla vyzkoušet moderní techniky a spojit je s módou."',
+    test1_attr: 'Hana V.',
+    test2_quote: '„Tenhle týden mě neuvěřitelně nakopl do další tvorby. Naučila jsem se ovládat super programy a zkusila si všechno od 3D per až po velké tiskárny. Program byl naprosto boží."',
+    test2_attr: 'Ema Z.',
+    video_label: 'Reportáž časopisu ABC', video_h2: 'Pusť si rozhovor<br>o módě budoucnosti', video_desc: 'Zakladatelka Linette v rozhovoru pro časopis ABC ukazuje, jak 3D tisk a nové technologie mění svět designu. Podívej se na reportáž.', video_btn: 'Spustit video ↗',
+    test_rep_quote: '&#8222;Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně. Je super, že jsem si mohla vyzkoušet moderní techniky a spojit je s módou.&#8220;',
+    test_rep_attr: 'Hanka, absolventka akademie',
+    dates_label: 'Termíny 2026', dates_h2: 'Tři věkové skupiny, devět turnusů', dates_p: 'Kapacita je jen 10 míst na turnus. Záloha pouze 1 500 Kč ti bezpečně podrží místo.', dates_deadline_banner: '📅 Přihlášky přijímáme do 7. června 2026',
+    age_group_label: 'Věková skupina',
+    date_price_1: '<span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">7 888 Kč</span><span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· záloha pouze 1 500 Kč</span>',
+    date_price_2: '<span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">8 888 Kč</span><span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· záloha pouze 1 500 Kč</span>',
+    date_price_3: '<span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">9 888 Kč</span><span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· záloha pouze 1 500 Kč</span>',
+    term_1: '1. turnus', term_2: '2. turnus', term_3: '3. turnus',
+    date_range_1: '6. 7. – 12. 7. 2026', date_range_2: '27. 7. – 2. 8. 2026', date_range_3: '10. 8. – 16. 8. 2026',
+    date_range_4: '13. 7. – 19. 7. 2026', date_range_5: '3. 8. – 9. 8. 2026', date_range_6: '20. 7. – 26. 7. 2026',
+    date_range_7: '29. 6. – 5. 7. 2026', date_range_8: '17. 8. – 23. 8. 2026', date_range_9: '24. 8. – 30. 8. 2026',
+    btn_register_short: 'Register',
+    how_works_label: 'Jak to funguje',
+    step1_title: 'Vyber turnus a klikni', step1_desc: 'Kliknutím na tlačítko u turnusu se ti formulář sám předvyplní.',
+    step2_title: 'Vyplň krátkou přihlášku', step2_desc: 'Stačí zadat jméno, email a telefon. Nezabere to ani dvě minuty.',
+    step3_title: 'Rezervuj místo zálohou', step3_desc: 'Instrukce dostaneš na email. Záloha pouze 1 500 Kč ti jistí místo, zbytek platby doladíme před kempem.',
+    founder_label: 'Kdo stojí za projektem',
+    founder_quote: '"Baví mě sledovat jak holky rozkvetou, když zjistí, že technologie a kreativita k sobě perfektně patří a otevírají jim úplně nové možnosti tvoření."',
+    founder_name: 'Linette Manuel', founder_role: 'Zakladatelka programu Makeful',
+    founder_bio: 'Linette propojuje technologie, design a udržitelnost. Má za sebou 8 let zkušeností s výukou technologií na školách, vystudovala textilní inženýrství a pracovala v IBM.<br><br>Jako designérka vytvořila unikátní haptický oblek spojující 3D tisk, AI a chytrou elektroniku. Získala Cenu děkana na ČVUT, dostala se do finále Creative Heroes Award 2024, psali o ní ve Wired a mluvila na konferencích Forbes Next Big Thing nebo Future Port Youth.<br><br>Je také mentorkou mezinárodní platformy Elegoo with Her, kde pomáhá holkám a ženám z celého světa proniknout do fascinujícího světa 3D tisku.',
+    founder_media_lbl: 'Napsali o nás:',
+    press_articles_label: 'Média', press_articles_h2: 'Co se o nás píše',
+    art1_title: 'Tak co si dnes vytisknu na rande? Nákup oblečení má šanci se zásadně změnit',
+    art2_title: 'Z kalhot udělají tričko, z něj kabelku. Mladá Češka učí studenty tisknout si oblečení',
+    art_btn: 'Přečíst článek',
+    faq_label: 'Odpovědi na otázky', faq_h2: 'Časté dotazy',
+    contact_label: 'Kontakt', contact_h2: 'Napiš nám nebo zavolej', contact_desc: 'Máš dotazy k programu, placení nebo turnusům? Ozvi se nám, rádi ti se vším pomůžeme a odpovíme co nejrychleji.',
+    contact_ig_lbl: '@_makeful na Instagramu', contact_form_lbl: 'Rychlá zpráva', contact_success_msg: 'Zpráva byla úspěšně odeslána. Ozveme se ti zpátky do 24 hodin!',
+    form_name_lbl: 'Jméno', form_email_lbl: 'Email', form_msg_lbl: 'Zpráva', form_submit_btn: 'Odeslat zprávu',
+    form_name_ph: 'Tvoje jméno', form_email_ph: 'tvuj@email.cz', form_msg_ph: 'Co tě zajímá?',
+    footer_menu_lbl: 'Menu', footer_follow_lbl: 'Sleduj nás', footer_docs_lbl: 'Dokumenty', footer_contact_lbl: 'Kontakt',
+    footer_privacy: 'Ochrana osobních údajů', footer_terms: 'Obchodní podmínky', footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.',
+    js_err_email: 'Zadej prosím svůj email.', js_err_msg: 'Napiš prosím zprávu.', js_sending: 'Odesílám...', js_err_fail: 'Nepodařilo se odeslat zprávu. Zkus to prosím znovu nebo napiš přímo na hello@make-ful.com.'
+  },
+  en: {
+    banner: 'Applications for our summer academy are open until <strong>June 7, 2026</strong>. Secure your spot today!',
+    nav_home: 'Home', nav_program: 'Programme', nav_price: 'Pricing', nav_dates: 'Dates',
+    nav_about: 'About', nav_contact: 'Contact', nav_cta: 'Apply now',
+    hero_label: 'Summer 2026 · Prague',
+    hero_h1: 'Become a fashion designer of the future.',
+    hero_sub1: 'No experience needed. We will teach you everything from the very basics.',
+    hero_sub2: 'The only FashionTech academy in Prague for girls aged 10 to 19. Discover the world of AI, 3D printing, and digital design.',
+    btn_register: 'Apply now', btn_more: 'Learn more',
+    hanka_quote: '&bdquo;I learned a truly great deal. Most of all, I enjoyed working with 3D software and printing. It is awesome that I could try modern tech and connect it with fashion.&ldquo;',
+    hanka_attr: 'Hanka, academy graduate',
+    press_label: 'As seen on:',
+    pb_who_lbl: 'For whom', pb_who_val: 'Ages 10-19', pb_who_sub: 'Three age groups, girls from all over the CR, Prague 7',
+    pb_prog_lbl: 'Schedule', pb_prog_val: 'Monday to Sunday', pb_prog_sub: 'Mon-Sat 9:00-17:00, Sun 9:00-12:00',
+    pb_group_lbl: 'Groups', pb_group_val: 'Max. 10 spots', pb_group_sub: 'Personalized approach and friendly atmosphere',
+    pb_take_lbl: 'Take-home', pb_take_val: '6 unique projects', pb_take_sub: 'An impressive creative portfolio on paper and web',
+    prog_label: 'Weekly Programme',
+    prog_h2: 'What does the schedule look like?',
+    prog_sub: 'Seven days, six amazing projects.',
+    day_mon: 'Monday', day_tue: 'Tuesday', day_wed: 'Wednesday', day_thu: 'Thursday', day_fri: 'Friday', day_sat: 'Saturday', day_sun: 'Sunday',
+    day_lbl_1: 'Day 1', day_lbl_2: 'Day 2', day_lbl_3: 'Day 3', day_lbl_4: 'Day 4', day_lbl_5: 'Day 5', day_lbl_6: 'Day 6', day_lbl_7: 'Day 7, 9-12 AM',
+    day_body_1: 'Print an original shoe patch and try out a basic sample collection.',
+    day_body_2: 'Assemble custom pieces and try out a 3D pen and a sewing machine.',
+    day_body_3: 'Ages 10-12: bucket hat design. Ages 13-19: future vest design. Printing starts!',
+    day_body_4: 'Meanwhile, create your very own digital AI model.',
+    day_body_5: 'Final project touches and filming your own AI-powered video commercial.',
+    day_body_6: 'Put everything together into a stunning web portfolio and get ready for the grand finale.',
+    day_body_7: 'Grand final presentation. Graduate with a diploma, portfolio, and amazing designs.',
+    prog_meta_time: 'Mon-Sat <strong>9:00-17:00</strong>, Sun <strong>9:00-12:00</strong>',
+    prog_meta_group: 'Max. <strong>10 participants</strong> per session',
+    prog_meta_lunch: 'Daily fresh lunch and cozy snack breaks included',
+    forwhom_label: 'Who is this for',
+    forwhom_h2: 'Come exactly as you are',
+    forwhom_p: 'You do not need to know anything. You will fit right in if:',
+    forwhom_check_1: 'You love fashion and want to create unique pieces.',
+    forwhom_check_2: 'You want to try cutting edge technologies like 3D printing or AI.',
+    forwhom_check_3: 'You are thinking about studying design, art, or engineering.',
+    forwhom_check_4: 'You want to build an outstanding portfolio for school exams.',
+    forwhom_check_5: 'You love inventing new things and enjoy being creative.',
+    forwhom_check_6: 'You want to experience an unforgettable week and make new friends.',
+    projects_label: 'Creations',
+    projects_h2: 'What you will take home',
+    projects_sub: 'In just seven days, you will design amazing pieces, gain tech skills, boost your confidence, and build a portfolio you will be proud to show.',
+    proj1_label: 'Project 01', proj1_title: '3D Shoe Customization', proj1_desc: 'Design and print an original ornament directly onto your shoes. No one else in the world will have anything like it.',
+    proj_skills_lbl: 'What you will learn',
+    proj1_skill1: 'Basics of 3D printing on textiles and footwear', proj1_skill2: 'Drawing custom patterns and preparing them for printing', proj1_skill3: 'Operating a modern 3D printer independently',
+    proj_tech_lbl: 'Tools and techniques',
+    tag_fdm: 'FDM 3D Printing', tag_slicing: 'Slicování',
+    proj2_label: 'Project 02', proj2_title: 'Upcycled T-Shirt', proj2_desc: 'Breathe new life into a T-shirt using flexible 3D printed fabrics and patterns designed entirely by you.',
+    proj2_skill1: 'How to create a flexible 3D printed fabric structure', proj2_skill2: 'Designing custom dimensional patches', proj2_skill3: 'Combining 3D prints with traditional materials',
+    tag_3dpen: '3D Pen', tag_textile3d: 'Textile 3D Printing',
+    proj3_label: 'Project 03', proj3_title_new: 'Garments of the Future', proj3_age1_lbl: 'Ages 10-12', proj3_age1_val: 'Bucket hat and accessories', proj3_age2_lbl: 'Ages 13-19', proj3_age2_val: 'Vest of the future',
+    proj3_new_skill1: 'Designing garment structures in 3D canvas environment', proj3_new_skill2: 'Working with a dress form mannequin and styling rulebooks', proj3_new_skill3: 'Experimenting with non traditional smart materials and items',
+    tag_mannequin: 'Dress form / Mannequin', tag_smartmat: 'Smart Materials',
+    proj4_label: 'Project 04', proj4_title: 'Virtual Model', proj4_desc: 'Digital fashion is taking over. Use AI tools to generate a custom 3D avatar to present your designs in a virtual space.',
+    proj4_skill1: 'Creating digital avatars and models', proj4_skill2: 'Virtual styling and digital lookbook presentation', proj4_skill3: 'Foundations of creative AI prompt engineering',
+    proj5_label: 'Project 05', proj5_title: 'AI Video Campaign', proj5_desc: 'Produce a high-end commercial for your clothing. We will use a simple app and AI to create it in no time.',
+    proj5_skill1: 'Generating marketing video content using AI tools', proj5_skill2: 'Foundations of video storytelling in fashion', proj5_skill3: 'How to pitch an idea and capture an audience',
+    tag_aivideo: 'AI Video Creation', tag_supercreators: 'SuperCreators App',
+    proj6_label: 'Project 06', proj6_title: 'Osobní webové portfolio', proj6_desc: 'Document your achievements and assemble a clean online portfolio. Perfect for school applications or design contests.',
+    proj6_skill1: 'Building your own modern landing page website', proj6_skill2: 'Presenting your creative work effectively online', proj6_skill3: 'Documenting the creative and technical process',
+    tag_docs: 'Documentation', tag_pres: 'Presentation Skills',
+    skills_label: 'Skills', skills_h2: 'Practical tech skills<br>and hands-on creating every day', skills_sub: 'No boring theory overhead. Learn directly by designing, hacking, and making.',
+    skill1_title: '3D Design and Creation', skill1_desc: 'Watch your ideas transform from a quick sketch into a real object.',
+    skill2_title: 'Materials Lab', skill2_desc: 'Get hands-on experience with modern materials shaping modern design.',
+    skill3_title: 'AI Mastering', skill3_desc: 'Try out technologies that are currently changing the entire world.',
+    skill4_title: 'Your Digital Avatar', skill4_desc: 'Bring a virtual model to life to showcase your tailored clothing.',
+    skill5_title: 'Creative Mindset', skill5_desc: 'Gain inspiration and the confidence to approach design from a fresh perspective.',
+    skill6_title: 'Outstanding Portfolio', skill6_desc: 'Build an impressive foundation for art, design, or technical school admissions.',
+    included_label: 'What\'s included', included_h2: 'Everything is covered', included_p: 'Just show up ready to explore and create.',
+    inc_item_1: 'All finished custom projects to take home with you', inc_item_2: 'All production materials (filaments, fabrics, accessories)', inc_item_3: 'A T-shirt and shoes that you will customize and keep', inc_item_4: 'Access to our digital learning platform and guides', inc_item_5: 'Daily inspiring talks with modern industry creators',
+    inc_item_6: 'Snacks: fresh fruits, nuts, selection of teas, and water', inc_item_7: 'Lunch included every day', inc_item_8: 'Your custom web portfolio website and graduation diploma', inc_item_9: 'Fully equipped studio: 3D printers, 3D pens, sewing machines',
+    inc_price_group_lbl: 'Pricing by age group',
+    age_group_1: 'Ages 10-12', age_group_2: 'Ages 13-15', age_group_3: 'Ages 16-19',
+    price_val_1: '7,888 CZK', price_val_2: '8,888 CZK', price_val_3: '9,888 CZK',
+    deposit_lbl_1: 'deposit only 1,500 CZK', deposit_lbl_2: 'deposit only 1,500 CZK', deposit_lbl_3: 'deposit only 1,500 CZK',
+    hourly_lbl_1: 'approx. 175 CZK / hour', hourly_lbl_2: 'approx. 198 CZK / hour', hourly_lbl_3: 'approx. 220 CZK / hour',
+    price_callout_sub: 'A deposit of only 1,500 CZK locks in your spot, the balance is due 14 days before start',
+    gallery_label: 'Take a peek', gallery_h2: 'Inside our creative studio laboratory',
+    testimonials_label: 'Reviews', testimonials_h2: 'What past participants say about us ♥',
+    test1_quote: '"I learned an incredible amount of things. I most enjoyed working with 3D software and printing. It is awesome that I could try modern tech and connect it with fashion."',
+    test1_attr: 'Hana V.',
+    test2_quote: '"This course inspired me immensely for my future work. I learned how to use various software programs and experimented with techniques from 3D printing to 3D pens. I was entirely satisfied with the schedule."',
+    test2_attr: 'Ema Z.',
+    video_label: 'ABC Magazine Feature', video_h2: 'Watch the interview<br>about the future of fashion', video_desc: 'Our founder Linette explains to ABC Magazine how 3D printing is disrupting design and how futuristic clothing is made today. Watch the report.', video_btn: 'Play video ↗',
+    test_rep_quote: '&#8222;I learned an incredible amount of things. I most enjoyed working with 3D software and printing. It is awesome that I could try modern tech and connect it with fashion.&#8220;',
+    test_rep_attr: 'Hanka, academy graduate',
+    dates_label: 'Dates 2026', dates_h2: 'Three age groups, nine sessions', dates_p: 'The capacity is limited to 10 spots per group. A deposit of only 1,500 CZK secures your placement.', dates_deadline_banner: '📅 Applications close on June 7, 2026',
+    age_group_label: 'Age group',
+    date_price_1: '<span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">7,888 CZK</span><span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· deposit only 1,500 CZK</span>',
+    date_price_2: '<span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">8,888 CZK</span><span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· deposit only 1,500 CZK</span>',
+    date_price_3: '<span style="font-size:1.5rem;font-weight:700;font-family:var(--font-display);color:var(--ink);">9,888 CZK</span><span style="font-size:0.78rem;color:var(--mid);margin-left:8px;">· deposit only 1,500 CZK</span>',
+    term_1: 'Session 1', term_2: 'Session 2', term_3: 'Session 3',
+    date_range_1: 'July 6 – July 12, 2026', date_range_2: 'July 27 – Aug 2, 2026', date_range_3: 'Aug 10 – Aug 16, 2026',
+    date_range_4: 'July 13 – July 19, 2026', date_range_5: 'Aug 3 – Aug 9, 2026', date_range_6: 'July 20 – July 26, 2026',
+    date_range_7: 'June 29 – July 5, 2026', date_range_8: 'Aug 17 – Aug 23, 2026', date_range_9: 'Aug 24 – Aug 30, 2026',
+    btn_register_short: 'Register',
+    how_works_label: 'How it works',
+    step1_title: 'Choose a date and click', step1_desc: 'Click on the registration button next to your chosen date, the form will pre-fill for you.',
+    step2_title: 'Fill out the short form', step2_desc: 'Just enter your name, email, and phone number. It takes less than two minutes.',
+    step3_title: 'Secure your spot', step3_desc: 'Payment instructions will arrive in your inbox. The deposit of only 1,500 CZK locks in your spot, balance due before start.',
+    founder_label: 'Who is behind the project',
+    founder_quote: '"I love watching girls blossom when they realize that technology and creativity belong together perfectly and open up completely new creative possibilities."',
+    founder_name: 'Linette Manuel', founder_role: 'Founder of Makeful',
+    founder_bio: 'Linette brings together technology, design, and sustainability. She has 8 years of experience teaching technology at schools, studied textile engineering, and worked at IBM. <br><br>As a designer pushing the boundaries between fashion and tech, she engineered a custom haptic suit combining 3D printing, AI, and smart electronics. She was honored with the Dean\'s Award at CTU (ČVUT), was a finalist for the Creative Heroes Award 2024, was featured in Wired, and has presented at prominent events like Forbes Next Big Thing or Future Port Youth.<br><br>She also serves as an official mentor for the international Elegoo with Her global initiative, connecting girls and women around the globe with the universe of additive manufacturing.',
+    founder_media_lbl: 'As seen on:',
+    press_articles_label: 'Media', press_articles_h2: 'What they say about us',
+    art1_title: 'What should I print for my date tonight? Clothing retail is on the verge of a fundamental transformation',
+    art2_title: 'Turning trousers into a shirt, then into a handbag. A young Czech designer teaches students how to print clothing',
+    art_btn: 'Read article',
+    faq_label: 'FAQ', faq_h2: 'Frequently Asked Questions',
+    contact_label: 'Contact', contact_h2: 'Drop us a line or call', contact_desc: 'Have questions about the schedule, payments, or sessions? Get in touch, we are here to help and reply as fast as possible.',
+    contact_ig_lbl: '@_makeful on Instagram', contact_form_lbl: 'Quick message', contact_success_msg: 'Message sent successfully! We will get back to you within 24 hours.',
+    form_name_lbl: 'Name', form_email_lbl: 'Email', form_msg_lbl: 'Message', form_submit_btn: 'Send message',
+    form_name_ph: 'Your name', form_email_ph: 'your@email.com', form_msg_ph: 'What are you interested in?',
+    footer_menu_lbl: 'Menu', footer_follow_lbl: 'Follow us', footer_docs_lbl: 'Documents', footer_contact_lbl: 'Contact',
+    footer_privacy: 'Privacy Policy', footer_terms: 'Terms & Conditions', footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. All rights reserved.',
+    js_err_email: 'Please enter your email address.', js_err_msg: 'Please enter your message.', js_sending: 'Sending...', js_err_fail: 'Failed to send the message. Please try again or email us directly at hello@make-ful.com.'
+  }
+};
+
+var currentLang = 'cs';
+
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'en' ? 'en' : 'cs';
+  
+  // Translate text content
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
+
+  document.getElementById('lang-label').textContent = lang === 'en' ? 'EN' : 'CZ';
+  var url = new URL(window.location);
+  if (lang === 'en') { url.searchParams.set('language', 'en'); }
+  else { url.searchParams.delete('language'); }
+  window.history.replaceState({}, '', url);
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'cs' ? 'en' : 'cs');
+}
+
+// Auto-detect from URL
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('language') === 'en') { applyLang('en'); }
+})();
+</script>
 </body>
 </html>
