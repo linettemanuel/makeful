@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KGDFKB27');</script>
-<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Děkujeme za přihlášku – Makeful</title>
+<title data-i18n="meta_title">Děkujeme za přihlášku · Makeful</title>
 <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,6 +40,11 @@ header { background: var(--white); border-bottom: var(--border); }
 .nav-back::before { content: '←'; }
 .nav-spacer { flex: 1; }
 
+/* LANG SWITCHER (matches registrace.html) */
+.lang-toggle { display:flex; align-items:center; gap:6px; padding:8px 12px; border:1px solid rgba(18,16,14,0.15); background:var(--white); cursor:pointer; font-family:var(--font-ui); font-size:0.75rem; font-weight:700; letter-spacing:0.06em; color:var(--ink); transition:background 0.15s; white-space:nowrap; margin-left:8px; flex-shrink:0; }
+.lang-toggle:hover { background:var(--off); }
+.lang-toggle svg { flex-shrink:0; }
+
 /* MAIN */
 main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
 .card { background: var(--white); border: var(--border); max-width: 640px; width: 100%; }
@@ -52,6 +55,10 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
 .card-top .label::before { content: ''; display: block; width: 18px; height: 2.5px; background: var(--peach); }
 .card-top h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--white); line-height: 1.1; position: relative; z-index: 1; }
 
+/* INFO BOX */
+.info-box { background: var(--off); border-left: 4px solid var(--peach); padding: 18px 22px; margin: 24px 0; }
+.info-box p { font-size: 0.88rem; margin: 0; color: var(--ink); line-height: 1.75; }
+
 .accent-bar { height: 4px; background: var(--peach); }
 
 .card-body { padding: 40px 48px; }
@@ -59,14 +66,8 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
 .card-body p:last-child { margin-bottom: 0; }
 .card-body strong { color: var(--ink); }
 
-/* INFO BOX */
-.info-box { background: var(--off); border-left: 4px solid var(--peach); padding: 18px 22px; margin: 24px 0; }
-.info-box p { font-size: 0.88rem; margin: 0; color: var(--ink); line-height: 1.75; }
-
 /* BUTTONS */
 .btn-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
-.btn-stripe { display: block; text-align: center; background: var(--peach); color: var(--ink); padding: 16px 32px; font-family: var(--font-ui); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.15s, transform 0.15s; border: 2px solid var(--peach); }
-.btn-stripe:hover { background: #f0a070; transform: translateY(-2px); }
 .btn-secondary { display: block; text-align: center; background: transparent; color: var(--mid); padding: 14px 32px; font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; border: 2px solid rgba(18,16,14,0.12); transition: border-color 0.15s, color 0.15s; }
 .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
 
@@ -77,41 +78,104 @@ footer a { color: var(--peach); }
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <header>
     <div class="nav-wrapper">
         <a href="/" class="nav-logo"><img src="./img/makeful_logo_colours.png" alt="Makeful"></a>
-        <a href="/summercamp" class="nav-back">Zpět na web</a>
+        <a href="/summercamp" class="nav-back" data-i18n="nav_back">Zpět na web</a>
         <div class="nav-spacer"></div>
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" style="margin-right:16px; margin-top: auto; margin-bottom: auto; height: fit-content;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            <span id="lang-label">CZ</span>
+        </button>
     </div>
 </header>
 
 <main>
     <div class="card">
         <div class="card-top">
-            <div class="label">Makeful · Letní akademie 2026</div>
-            <h1 id="card-title">Přihláška přijata!</h1>
+            <div class="label" data-i18n="hero_label">Makeful · Letní akademie 2026</div>
+            <h1 id="card-title" data-i18n="card_title">Přihláška přijata!</h1>
         </div>
         <div class="accent-bar"></div>
         <div class="card-body">
-            <p>Vaše přihláška byla úspěšně odeslána.</p>
+            <p data-i18n="success_msg1">Tvoje přihláška byla úspěšně odeslána.</p>
             <p style="font-size:1.8rem; margin:20px 0 8px;">📩</p>
-            <p>Všechny další kroky najdete v emailu, který jsme vám právě odeslali. Pokud email do pár minut nedorazí, zkontrolujte složku se spamem.</p>
-            <p>V případě dotazů nás kontaktujte na <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> nebo +420 735 820 576.</p>
+            <p data-i18n="success_msg2">Všechny další kroky najdeš v emailu, který jsme ti právě poslali. Pokud nedorazí do pár minut, raději zkontroluj i složku se spamem.</p>
+            <p data-i18n="success_msg3">Kdyby cokoliv, napiš nám na <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> nebo zavolej na +420 735 820 576.</p>
             <div class="btn-wrap">
-                <a href="/summercamp" class="btn-secondary">Zpět na web</a>
+                <a href="/summercamp" class="btn-secondary" data-i18n="btn_back">Zpět na web</a>
             </div>
         </div>
     </div>
 </main>
 
 <footer>
-    <p>Makeful – Letní módní kreativní laboratoř · Argentinská 1, Praha 7 · <a href="https://make-ful.com">make-ful.com</a></p>
+    <p data-i18n="footer_text">Makeful · Letní módní kreativní laboratoř · Argentinská 1, Praha 7 · <a href="https://make-ful.com">make-ful.com</a></p>
 </footer>
 
+<script>
+var translations = {
+  cs: {
+    meta_title: 'Děkujeme za přihlášku · Makeful',
+    nav_back: 'Zpět na web',
+    hero_label: 'Makeful · Letní akademie 2026',
+    card_title: 'Přihláška přijata!',
+    success_msg1: 'Tvoje přihláška byla úspěšně odeslána.',
+    success_msg2: 'Všechny další kroky najdeš v emailu, který jsme ti právě poslali. Pokud nedorazí do pár minut, raději zkontroluj i složku se spamem.',
+    success_msg3: 'Kdyby cokoliv, napiš nám na <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> nebo zavolej na +420 735 820 576.',
+    btn_back: 'Zpět na web',
+    footer_text: 'Makeful · Letní módní kreativní laboratoř · Argentinská 1, Praha 7 · <a href="https://make-ful.com">make-ful.com</a>'
+  },
+  en: {
+    meta_title: 'Thank you for your application · Makeful',
+    nav_back: 'Back to web',
+    hero_label: 'Makeful · Summer Academy 2026',
+    card_title: 'Application Received!',
+    success_msg1: 'Your application has been successfully submitted.',
+    success_msg2: 'You will find all next steps in the email we just sent you. If it does not arrive within a few minutes, please make sure to check your spam folder.',
+    success_msg3: 'If you have any questions, feel free to email us at <a href="mailto:hello@make-ful.com" style="color:var(--peach-dk);font-weight:600;">hello@make-ful.com</a> or call +420 735 820 576.',
+    btn_back: 'Back to web',
+    footer_text: 'Makeful · Summer Creative FashionTech Laboratory · Argentinská 1, Prague 7 · <a href="https://make-ful.com">make-ful.com</a>'
+  }
+};
+
+var currentLang = 'cs';
+
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'en' ? 'en' : 'cs';
+  
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  document.getElementById('lang-label').textContent = lang === 'en' ? 'EN' : 'CZ';
+  
+  var url = new URL(window.location);
+  if (lang === 'en') { url.searchParams.set('language', 'en'); }
+  else { url.searchParams.delete('language'); }
+  window.history.replaceState({}, '', url);
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'cs' ? 'en' : 'cs');
+}
+
+// Auto-detect lang from URL parameters or referrer context
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var ref = document.referrer.toLowerCase();
+  
+  if (params.get('language') === 'en' || ref.includes('language=en') || ref.includes('%c2%b7%20en') || ref.includes('%c2%b7%20eng')) {
+    applyLang('en');
+  } else {
+    applyLang('cs');
+  }
+})();
+</script>
 </body>
 </html>

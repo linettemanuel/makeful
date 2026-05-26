@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KGDFKB27');</script>
-<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Přihláška – Letní módní kreativní laboratoř 2026 · Makeful</title>
-<meta name="description" content="Přihláška na Makeful Letní módní kreativní laboratoř 2026. Letní módní kreativní laboratoř pro dívky 14–19 let v Praze.">
+<title data-i18n="meta_title">Přihláška – Letní módní kreativní laboratoř 2026 · Makeful</title>
+<meta name="description" content="Přihláška na Makeful Letní módní kreativní laboratoř 2026. Letní módní kreativní laboratoř pro dívky 10-19 let v Praze.">
 <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="120x120" href="./img/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
@@ -53,7 +51,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.
 h1 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.03em; }
 p  { font-size: 0.95rem; line-height: 1.8; color: var(--mid); }
 
-/* ── NAV (matches summercamp.html) ── */
+/* ── NAV ── */
 header {
     background: var(--white);
     border-bottom: var(--border);
@@ -256,7 +254,6 @@ header {
 /* ── FIELDS ── */
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .row.full { grid-template-columns: 1fr; }
-.row.three { grid-template-columns: 1fr 1fr 1fr; }
 
 .field {
     display: flex;
@@ -303,162 +300,6 @@ header {
     cursor: pointer;
 }
 .field textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
-.field-hint {
-    font-size: 0.75rem;
-    color: var(--mid);
-    margin-top: -12px;
-    margin-bottom: 4px;
-    line-height: 1.5;
-}
-
-/* ── PAYMENT CARDS ── */
-.pay-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 4px; }
-.pay-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 4px; }
-.pay-card {
-    border: 1.5px solid rgba(18,16,14,0.12);
-    padding: 18px 16px;
-    cursor: pointer;
-    background: var(--off);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    position: relative;
-    transition: border-color 0.15s, background 0.15s, transform 0.15s;
-}
-.pay-card:hover { border-color: var(--lavender); background: var(--white); transform: translateY(-1px); }
-.pay-card.selected { border-color: var(--lavender); background: var(--white); border-width: 2px; }
-.pay-card.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 10px; right: 12px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--lavender);
-}
-.pay-card input[type=radio] { position: absolute; opacity: 0; pointer-events: none; }
-.pay-icon { font-size: 1.4rem; line-height: 1; margin-bottom: 2px; }
-.pay-name { font-size: 0.85rem; font-weight: 700; color: var(--ink); }
-.pay-desc { font-size: 0.75rem; color: var(--mid); line-height: 1.5; }
-
-/* ── BENEFIT PANEL ── */
-.benefit-panel {
-    display: none;
-    margin-top: 16px;
-    background: var(--off);
-    border-left: 3px solid var(--lavender);
-    padding: 20px 24px;
-}
-.benefit-panel.open { display: block; }
-.prov-label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--mid);
-    margin-bottom: 10px;
-    margin-top: 4px;
-}
-.prov-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 18px;
-}
-.prov-card {
-    border: 1.5px solid rgba(18,16,14,0.12);
-    padding: 12px 8px;
-    cursor: pointer;
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: border-color 0.15s;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.3;
-    min-height: 46px;
-}
-.prov-card:hover { border-color: var(--lavender); }
-.prov-card.selected { border-color: var(--lavender); border-width: 2px; }
-.prov-card.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 4px; right: 6px;
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--lavender);
-}
-.prov-card input[type=radio] { position: absolute; opacity: 0; pointer-events: none; }
-.forma-row { display: flex; gap: 10px; }
-.fcard {
-    flex: 1;
-    border: 1.5px solid rgba(18,16,14,0.12);
-    padding: 13px 16px;
-    cursor: pointer;
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: border-color 0.15s;
-}
-.fcard:hover { border-color: var(--lavender); }
-.fcard.selected { border-color: var(--lavender); border-width: 2px; }
-.fcard input[type=radio] { position: absolute; opacity: 0; pointer-events: none; }
-.fcard-dot {
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(18,16,14,0.25);
-    flex-shrink: 0;
-    transition: background 0.15s, border-color 0.15s;
-}
-.fcard.selected .fcard-dot { background: var(--lavender); border-color: var(--lavender); }
-.fcard-label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
-
-/* ── PROMO ── */
-.promo-wrap { display: flex; }
-.promo-input {
-    flex: 1;
-    font-family: var(--font-ui);
-    font-size: 0.92rem;
-    color: var(--ink);
-    background: var(--off);
-    border: 1px solid rgba(18,16,14,0.12);
-    border-right: none;
-    padding: 13px 16px;
-    outline: none;
-    transition: border-color 0.15s, background 0.15s;
-}
-.promo-input:focus { border-color: var(--lavender); background: var(--white); }
-.promo-btn {
-    background: var(--ink);
-    color: var(--white);
-    border: none;
-    padding: 13px 24px;
-    font-family: var(--font-ui);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s;
-    white-space: nowrap;
-}
-.promo-btn:hover { background: #2a2824; }
-.promo-msg { font-size: 0.78rem; margin-top: 8px; display: none; line-height: 1.5; }
-.promo-msg.ok { color: #3B6D11; display: block; }
-.promo-msg.err { color: #A32D2D; display: block; }
-
-/* ── GDPR BOX ── */
-.gdpr-box {
-    background: var(--off);
-    border-left: 4px solid var(--lavender);
-    padding: 18px 22px;
-    margin-bottom: 22px;
-}
-.gdpr-box p { font-size: 0.82rem; line-height: 1.7; margin: 0; }
 
 /* ── CONSENT ── */
 .consent-row {
@@ -526,15 +367,6 @@ header {
     color: #8b1a1a;
     line-height: 1.6;
 }
-.success-banner {
-    display: none;
-    background: #eaf3de;
-    border-left: 4px solid #639922;
-    padding: 22px 28px;
-    margin-top: 28px;
-}
-.success-banner p { font-size: 0.92rem; color: #27500a; margin: 0; line-height: 1.7; }
-
 .required-note { font-size: 0.78rem; color: var(--mid); margin-bottom: 32px; }
 
 /* ── FOOTER ── */
@@ -604,98 +436,99 @@ footer {
     .info-item:nth-child(2) { border-right: none; }
     .info-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
     .row { grid-template-columns: 1fr; }
-    .row.three { grid-template-columns: 1fr 1fr; }
-    .pay-grid-2 { grid-template-columns: 1fr; }
-    .pay-grid-3 { grid-template-columns: 1fr 1fr; }
-    .prov-grid { grid-template-columns: repeat(2, 1fr); }
-    .forma-row { flex-direction: column; }
     .footer-main { grid-template-columns: 1fr 1fr; }
     .footer-col:nth-child(2) { border-right: none; }
     .footer-col:nth-child(n+3) { border-top: var(--border); }
 }
 @media (max-width: 480px) {
-    .pay-grid-3 { grid-template-columns: 1fr; }
     .form-hero { padding: 36px 24px; }
     .form-card { padding: 28px 20px 40px; }
     .footer-main { grid-template-columns: 1fr; }
     .footer-col { border-right: none; border-bottom: var(--border); }
     .footer-col:last-child { border-bottom: none; }
+    .info-bar { grid-template-columns: 1fr; }
+    .info-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .info-item:last-child { border-bottom: none; }
+    select, input[type="text"], input[type="email"], input[type="tel"] { font-size: 16px; }
 }
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
-<!-- NAV -->
 <header>
     <div class="nav-wrapper">
         <a href="/" class="nav-logo">
             <img src="./img/makeful_logo_colours.png" alt="Makeful">
         </a>
-        <a class="nav-back" href="/summercamp">Zpět na web</a>
+        <a class="nav-back" href="/summercamp" data-i18n="nav_back">Zpět na web</a>
         <div class="nav-spacer"></div>
-        <div class="nav-badge">
+        <div class="nav-badge" data-i18n="nav_badge">
             <div class="nav-dot"></div>
             Přihlášky otevřeny · Léto 2026
         </div>
-        <a href="mailto:hello@make-ful.com" class="nav-cta">Dotaz</a>
+        <a href="mailto:hello@make-ful.com" class="nav-cta" data-i18n="nav_cta">Dotaz</a>
+        <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" style="margin-right:16px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            <span id="lang-label">CZ</span>
+        </button>
     </div>
 </header>
 
 <div class="page-outer">
 
-    <!-- HERO -->
     <div class="form-hero">
-        <div class="label">Makeful · FashionTech Akademie 2026</div>
-        <h1>Přihláška na letní módní<br>kreativní laboratoř</h1>
-        <p style="margin-top:14px;">Letní módní kreativní laboratoř pro dívky ve věku 14–19 let · Praha 7 · 7 dní plných tvorby</p>
+        <div class="label" data-i18n="hero_label">Makeful · FashionTech Akademie 2026</div>
+        <h1 data-i18n="hero_title">Přihláška na letní módní<br>kreativní laboratoř</h1>
+        <p style="margin-top:14px;" data-i18n="hero_desc">Letní módní kreativní laboratoř pro holky ve věku 10-19 let · Praha 7 · 7 dní plných tvorby</p>
     </div>
 
-    <!-- INFO BAR -->
     <div class="info-bar">
         <div class="info-item">
-            <div class="il">Věk účastnice</div>
-            <div class="iv">14 – 19 let</div>
+            <div class="il" data-i18n="info_age_lbl">Věk účastnice</div>
+            <div class="iv" data-i18n="info_age_val">10 - 19 let</div>
         </div>
         <div class="info-item">
-            <div class="il">Délka programu</div>
-            <div class="iv">7 dní · Po – Ne</div>
+            <div class="il" data-i18n="info_len_lbl">Délka programu</div>
+            <div class="iv" data-i18n="info_len_val">7 dní · Po - Ne</div>
         </div>
         <div class="info-item">
-            <div class="il">Velikost skupinky</div>
-            <div class="iv">max. 10 účastnic</div>
+            <div class="il" data-i18n="info_group_lbl">Velikost skupinky</div>
+            <div class="iv" data-i18n="info_group_val">max. 10 účastnic</div>
         </div>
         <div class="info-item">
-            <div class="il">Cena programu</div>
-            <div class="iv hl"><span style="color:#FEFEFE;">8 888 Kč</span></div>
-            <div class="iv hl" style="font-size:0.85em;margin-top:4px;"><span style="color:var(--primary);">záloha 1 500 Kč</span></div>
+            <div class="il" data-i18n="info_price_lbl">Cena programu</div>
+            <div style="display:flex;flex-direction:column;gap:2px;margin-top:2px;">
+                <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);"><span data-i18n="age_group_1">10-12 let</span>: <span style="color:#FEFEFE;font-weight:700;">7 888 Kč</span></div>
+                <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);"><span data-i18n="age_group_2">13-15 let</span>: <span style="color:#FEFEFE;font-weight:700;">8 888 Kč</span></div>
+                <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);"><span data-i18n="age_group_3">16-19 let</span>: <span style="color:#FEFEFE;font-weight:700;">9 888 Kč</span></div>
+            </div>
+            <div class="iv hl" style="font-size:0.85em;margin-top:4px;"><span style="color:var(--primary);" data-i18n="deposit_highlight">záloha pouze 1 500 Kč</span></div>
         </div>
     </div>
 
-    <!-- FORM CARD -->
     <div class="form-card">
-        <p class="required-note">Pole označená <span style="color:var(--coral)">*</span> jsou povinná.</p>
+        <p class="required-note" data-i18n="required_note">Pole označená * jsou povinná.</p>
 
-        <!-- 1. ÚČASTNICE -->
-        <div class="sec-label">Informace o účastnici</div>
+        <div class="sec-label" data-i18n="sec_participant">Informace o účastnici</div>
         <div class="row">
             <div class="field">
-                <label>Jméno účastnice <span class="req">*</span></label>
-                <input id="f-jmeno" type="text" placeholder="Tereza" autocomplete="given-name">
+                <label data-i18n="field_p_name">Jméno účastnice <span class="req">*</span></label>
+                <input id="f-jmeno" type="text" placeholder="Tereza" data-i18n-placeholder="ph_p_name" autocomplete="given-name">
             </div>
             <div class="field">
-                <label>Příjmení účastnice <span class="req">*</span></label>
-                <input id="f-prijmeni" type="text" placeholder="Nováková" autocomplete="family-name">
+                <label data-i18n="field_p_surname">Příjmení účastnice <span class="req">*</span></label>
+                <input id="f-prijmeni" type="text" placeholder="Nováková" data-i18n-placeholder="ph_p_surname" autocomplete="family-name">
             </div>
         </div>
         <div class="row full">
             <div class="field">
-                <label>Věk <span class="req">*</span></label>
-                <select id="f-datum" style="background:var(--off);border:1px solid rgba(18,16,14,0.12);padding:13px 16px;font-family:var(--font-ui);font-size:0.92rem;color:var(--ink);width:100%;outline:none;appearance:auto;">
-                    <option value="" disabled selected>Vyber věk…</option>
+                <label data-i18n="field_p_age">Věk <span class="req">*</span></label>
+                <select id="f-datum" onchange="handleAgeChange(this.value)">
+                    <option value="" disabled selected data-i18n="opt_select_age">Vyber věk…</option>
+                    <option value="10 let">10 let</option>
+                    <option value="11 let">11 let</option>
+                    <option value="12 let">12 let</option>
+                    <option value="13 let">13 let</option>
                     <option value="14 let">14 let</option>
                     <option value="15 let">15 let</option>
                     <option value="16 let">16 let</option>
@@ -707,113 +540,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="row full">
             <div class="field">
-                <label>Email účastnice</label>
-                <input id="f-email-uc" type="email" placeholder="tereza@email.cz" autocomplete="email">
+                <label data-i18n="field_p_email">Email účastnice</label>
+                <input id="f-email-uc" type="email" placeholder="tereza@email.cz" data-i18n-placeholder="ph_p_email" autocomplete="email">
             </div>
         </div>
 
         <hr class="divider">
 
-        <!-- 2. RODIČ -->
-        <div class="sec-label">Kontakt na rodiče / zákonného zástupce</div>
+        <div class="sec-label" data-i18n="sec_parent">Kontakt na rodiče / zákonného zástupce</div>
         <div class="row">
             <div class="field">
-                <label>Jméno rodiče <span class="req">*</span></label>
-                <input id="f-rodic-jmeno" type="text" placeholder="Jana" autocomplete="given-name">
+                <label data-i18n="field_r_name">Jméno rodiče <span class="req">*</span></label>
+                <input id="f-rodic-jmeno" type="text" placeholder="Jana" data-i18n-placeholder="ph_r_name" autocomplete="given-name">
             </div>
             <div class="field">
-                <label>Příjmení rodiče <span class="req">*</span></label>
-                <input id="f-rodic-prijmeni" type="text" placeholder="Nováková" autocomplete="family-name">
+                <label data-i18n="field_r_surname">Příjmení rodiče <span class="req">*</span></label>
+                <input id="f-rodic-prijmeni" type="text" placeholder="Nováková" data-i18n-placeholder="ph_r_surname" autocomplete="family-name">
             </div>
         </div>
         <div class="row">
             <div class="field">
-                <label>Telefon <span class="req">*</span></label>
-                <input id="f-tel" type="tel" placeholder="+420 777 123 456" autocomplete="tel">
+                <label data-i18n="field_r_phone">Telefon <span class="req">*</span></label>
+                <input id="f-tel" type="tel" placeholder="+420 777 123 456" data-i18n-placeholder="ph_r_phone" autocomplete="tel">
             </div>
         </div>
         <div class="row full">
             <div class="field">
-                <label>Email rodiče <span class="req">*</span></label>
-                <input id="f-email" type="email" placeholder="jana.novakova@email.cz" autocomplete="email">
+                <label data-i18n="field_r_email">Email rodiče <span class="req">*</span></label>
+                <input id="f-email" type="email" placeholder="jana.novakova@email.cz" data-i18n-placeholder="ph_r_email" autocomplete="email">
             </div>
         </div>
         <hr class="divider">
 
-        <!-- 3. TERMÍN -->
-        <div class="sec-label">Výběr termínu</div>
+        <div class="sec-label" data-i18n="sec_date">Výběr termínu</div>
         <div class="row full">
             <div class="field">
-                <label>Preferovaný termín <span class="req">*</span></label>
+                <label data-i18n="field_term1">Preferovaný termín <span class="req">*</span></label>
                 <select id="f-termin">
-                    <option value="" disabled selected>Vyberte termín…</option>
-                    <option>Akademie 1 · 29. 6. – 5. 7. 2026</option>
-                    <option>Akademie 2 · 6. 7. – 12. 7. 2026</option>
-                    <option>Akademie 3 · 13. 7. – 19. 7. 2026</option>
-                    <option>Akademie 4 · 20. 7. – 26. 7. 2026</option>
-                    <option>Akademie 5 · 27. 7. – 2. 8. 2026</option>
-                    <option>Akademie 6 · 3. 8. – 9. 8. 2026</option>
-                    <option>Akademie 7 · 10. 8. – 16. 8. 2026</option>
-                    <option>Akademie 8 · 17. 8. – 23. 8. 2026</option>
-                    <option>Akademie 9 · 24. 8. – 30. 8. 2026</option>
+                    <option value="" disabled selected data-i18n="opt_select_term">Vyberte termín…</option>
                 </select>
             </div>
         </div>
         <div class="row full">
             <div class="field">
-                <label>Náhradní termín (pokud bude preferovaný obsazen)</label>
+                <label data-i18n="field_term2">Náhradní termín (pokud bude preferovaný obsazen)</label>
                 <select id="f-termin2">
-                    <option value="" disabled selected>Vyberte termín…</option>
-                    <option>Akademie 1 · 29. 6. – 5. 7. 2026</option>
-                    <option>Akademie 2 · 6. 7. – 12. 7. 2026</option>
-                    <option>Akademie 3 · 13. 7. – 19. 7. 2026</option>
-                    <option>Akademie 4 · 20. 7. – 26. 7. 2026</option>
-                    <option>Akademie 5 · 27. 7. – 2. 8. 2026</option>
-                    <option>Akademie 6 · 3. 8. – 9. 8. 2026</option>
-                    <option>Akademie 7 · 10. 8. – 16. 8. 2026</option>
-                    <option>Akademie 8 · 17. 8. – 23. 8. 2026</option>
-                    <option>Akademie 9 · 24. 8. – 30. 8. 2026</option>
+                    <option value="" disabled selected data-i18n="opt_select_term">Vyberte termín…</option>
                 </select>
             </div>
         </div>
 
-                <hr class="divider">
+        <hr class="divider">
 
-        <!-- 6. SOUHLAS -->
-        <div class="sec-label">Souhlas a podmínky</div>
+        <div class="sec-label" data-i18n="sec_consent">Souhlas a podmínky</div>
         <div class="consent-row">
             <input type="checkbox" id="c1">
-            <label for="c1">Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label>
+            <label for="c1" data-i18n="consent_text">Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label>
         </div>
-
 
         <div id="form-error" class="form-error-banner"></div>
 
         <div class="submit-row">
-            <button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()">Odeslat přihlášku →</button>
-            <p class="submit-note">Po odeslání vám zašleme email<br>s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do konce května 2026.</span></p>
+            <button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button>
+            <p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 7. června 2026.</span></p>
         </div>
 
-        <div class="success-banner" id="success-banner">
-            <p>✓ <strong>Přihláška byla odeslána!</strong> Brzy vás kontaktujeme na zadaný email s platebními pokyny a potvrzením místa.</p>
-        </div>
-
-    </div><!-- /.form-card -->
-</div><!-- /.page-outer -->
-
-<!-- FOOTER -->
-<footer>
+    </div></div><footer>
     <div class="footer-main">
         <div class="footer-col">
-            <h4>Makeful</h4>
+            <h4 data-i18n="footer_menu_lbl">Makeful</h4>
             <div class="footer-links-list">
-                <a href="/summercamp">Letní akademie</a>
-                <a href="/about">O programu</a>
+                <a href="/summercamp" data-i18n="nav_program">Letní akademie</a>
+                <a href="/about" data-i18n="nav_about">O programu</a>
                 <a href="/faq">FAQ</a>
             </div>
         </div>
         <div class="footer-col">
-            <h4>Sleduj nás</h4>
+            <h4 data-i18n="footer_follow_lbl">Sleduj nás</h4>
             <div class="footer-links-list">
                 <a href="https://www.instagram.com/_makeful/" target="_blank" rel="noopener">Instagram</a>
                 <a href="https://www.facebook.com/makefulmakeful" target="_blank" rel="noopener">Facebook</a>
@@ -821,14 +624,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
         <div class="footer-col">
-            <h4>Právní dokumenty</h4>
+            <h4 data-i18n="footer_docs_lbl">Právní dokumenty</h4>
             <div class="footer-links-list">
-                <a href="/gdpr">Zásady ochrany osobních údajů</a>
-                <a href="/obchodni-podminky">Obchodní podmínky</a>
+                <a href="/gdpr" data-i18n="footer_privacy">Zásady ochrany osobních údajů</a>
+                <a href="/obchodni-podminky" data-i18n="footer_terms">Obchodní podmínky</a>
             </div>
         </div>
         <div class="footer-col">
-            <h4>Kontakt</h4>
+            <h4 data-i18n="footer_contact_lbl">Kontakt</h4>
             <div class="footer-links-list">
                 <a href="mailto:hello@make-ful.com">hello@make-ful.com</a>
                 <a href="tel:+420735820576">+420 735 820 576</a>
@@ -839,75 +642,251 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-bg-letter">M</div>
         <img src="./img/makeful_logo_colours.png" alt="Makeful" class="footer-logo-img" decoding="async">
     </div>
-    <div class="copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
+    <div class="copyright" data-i18n="footer_copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
 </footer>
 
 <script>
-/* ── UI helpers ── */
+/* ── DATA FOR TERMS CONFIGURATION ── */
+var termOptionsData = [
+    { value: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 10, ageMax: 12, cs: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 10-12 · July 6 - July 12, 2026 · CZ" },
+    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
+    { value: "10-12 let · 10. 8. - 16. 8. 2026 · ENG", ageMin: 10, ageMax: 12, cs: "10-12 let · 10. 8. - 16. 8. 2026 · EN", en: "Ages 10-12 · Aug 10 - Aug 16, 2026 · EN" },
+    { value: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", ageMin: 13, ageMax: 15, cs: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", en: "Ages 13-15 · July 13 - July 19, 2026 · CZ" },
+    { value: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", ageMin: 13, ageMax: 15, cs: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", en: "Ages 13-15 · Aug 3 - Aug 9, 2026 · CZ" },
+    { value: "13-15 let · 20. 7. - 26. 7. 2026 · ENG", ageMin: 13, ageMax: 15, cs: "13-15 let · 20. 7. - 26. 7. 2026 · EN", en: "Ages 13-15 · July 20 - July 26, 2026 · EN" },
+    { value: "16-19 let · 29. 6. - 5. 7. 2026 · CZ", ageMin: 16, ageMax: 19, cs: "16-19 let · 29. 6. - 5. 7. 2026 · CZ", en: "Ages 16-19 · June 29 - July 5, 2026 · CZ" },
+    { value: "16-19 let · 17. 8. - 23. 8. 2026 · ENG", ageMin: 16, ageMax: 19, cs: "16-19 let · 17. 8. - 23. 8. 2026 · EN", en: "Ages 16-19 · Aug 17 - Aug 23, 2026 · EN" },
+    { value: "16-19 let · 24. 8. - 30. 8. 2026 · ENG", ageMin: 16, ageMax: 19, cs: "16-19 let · 24. 8. - 30. 8. 2026 · EN", en: "Ages 16-19 · Aug 24 - Aug 30, 2026 · EN" }
+];
 
-function selectVyse(v) {
-    ['cela','zaloha'].forEach(function(x) {
-        var el = document.getElementById('vp-'+x);
-        el.classList.toggle('selected', x === v);
-        el.querySelector('input').checked = x === v;
+/* ── TRANSLATIONS DICTIONARY ── */
+var translations = {
+  cs: {
+    banner: 'Přihlášky do letní akademie přijímáme do <strong>7. června 2026</strong>. Zajisti si své místo včas!',
+    nav_back: 'Zpět na web', nav_badge: '<div class="nav-dot"></div>Přihlášky otevřeny · Léto 2026', nav_cta: 'Dotaz',
+    nav_home: 'Domů', nav_program: 'Program', nav_price: 'Cena', nav_dates: 'Termíny', nav_about: 'O nás', nav_contact: 'Kontakt',
+    meta_title: 'Přihláška – Letní módní kreativní laboratoř 2026 · Makeful',
+    hero_label: 'Makeful · FashionTech Akademie 2026',
+    hero_title: 'Přihláška na letní módní<br>kreativní laboratoř',
+    hero_desc: 'Letní módní kreativní laboratoř pro holky ve věku 10-19 let · Praha 7 · 7 dní plných tvorby',
+    info_age_lbl: 'Věk účastnice', info_age_val: '10 - 19 let',
+    info_len_lbl: 'Délka programu', info_len_val: '7 dní · Po - Ne',
+    info_group_lbl: 'Velikost skupinky', info_group_val: 'max. 10 účastnic',
+    info_price_lbl: 'Cena programu', deposit_highlight: 'záloha pouze 1 500 Kč',
+    age_group_1: '10-12 let', age_group_2: '13-15 let', age_group_3: '16-19 let',
+    required_note: 'Pole označená * jsou povinná.',
+    sec_participant: 'Informace o účastnici',
+    field_p_name: 'Jméno účastnice *', field_p_surname: 'Příjmení účastnice *',
+    field_p_age: 'Věk *', field_p_email: 'Email účastnice',
+    ph_p_name: 'Tereza', ph_p_surname: 'Nováková', ph_p_email: 'tereza@email.cz',
+    opt_select_age: 'Vyber věk…',
+    sec_parent: 'Kontakt na rodiče / zákonného zástupce',
+    field_r_name: 'Jméno rodiče *', field_r_surname: 'Příjmení rodiče *',
+    field_r_phone: 'Telefon *', field_r_email: 'Email rodiče *',
+    ph_r_name: 'Jana', ph_r_surname: 'Nováková', ph_r_phone: '+420 777 123 456', ph_r_email: 'jana.novakova@email.cz',
+    sec_date: 'Výběr termínu',
+    field_term1: 'Preferovaný termín *', field_term2: 'Náhradní termín (pokud bude preferovaný obsazen)',
+    opt_select_term: 'Vyberte termín…',
+    sec_consent: 'Souhlas a podmínky',
+    consent_text: 'Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. *',
+    btn_submit: 'Odeslat přihlášku →',
+    submit_note: 'Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 7. června 2026.</span>',
+    footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Sleduj nás', footer_docs_lbl: 'Právní dokumenty', footer_contact_lbl: 'Kontakt',
+    footer_privacy: 'Zásady ochrany osobních údajů', footer_terms: 'Obchodní podmínky',
+    footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.',
+    js_err_gdpr: 'Prosím potvrďte souhlas se zpracováním osobních údajů.',
+    js_err_required: 'Vyplňte prosím: ',
+    js_sending: 'Odesílám…', js_err_fail: 'Nepodařilo se odeslat přihlášku. Zkuste to prosím znovu nebo nás kontaktujte na hello@make-ful.com.'
+  },
+  en: {
+    banner: 'Applications for our summer academy are open until <strong>June 7, 2026</strong>. Secure your spot today!',
+    nav_back: 'Back to web', nav_badge: '<div class="nav-dot"></div>Applications open · Summer 2026', nav_cta: 'Inquiry',
+    nav_home: 'Home', nav_program: 'Programme', nav_price: 'Pricing', nav_dates: 'Dates', nav_about: 'About', nav_contact: 'Contact',
+    meta_title: 'Application Form – Summer FashionTech Laboratory 2026 · Makeful',
+    hero_label: 'Makeful · FashionTech Academy 2026',
+    hero_title: 'Application Form for Summer Creative Laboratory',
+    hero_desc: 'Summer FashionTech laboratory for girls aged 10-19 · Prague 7 · 7 days full of creation',
+    info_age_lbl: 'Participant age', info_age_val: '10 - 19 years old',
+    info_len_lbl: 'Programme duration', info_len_val: '7 days · Mon - Sun',
+    info_group_lbl: 'Group size', info_group_val: 'max. 10 participants',
+    info_price_lbl: 'Programme price', deposit_highlight: 'deposit only 1,500 CZK',
+    age_group_1: 'Ages 10-12', age_group_2: 'Ages 13-15', age_group_3: 'Ages 16-19',
+    required_note: 'Fields marked with * are required.',
+    sec_participant: 'Participant Information',
+    field_p_name: 'First name *', field_p_surname: 'Surname *',
+    field_p_age: 'Age *', field_p_email: 'Participant email',
+    ph_p_name: 'Theresa', ph_p_surname: 'Smith', ph_p_email: 'theresa@email.com',
+    opt_select_age: 'Select age...',
+    sec_parent: 'Parent / Legal Guardian Contact',
+    field_r_name: 'First name *', field_r_surname: 'Surname *',
+    field_r_phone: 'Phone number *', field_r_email: 'Parent email *',
+    ph_r_name: 'Jane', ph_r_surname: 'Smith', ph_r_phone: '+420 777 123 456', ph_r_email: 'jane.smith@email.com',
+    sec_date: 'Date Selection',
+    field_term1: 'Preferred date *', field_term2: 'Alternative date (in case the preferred session is full)',
+    opt_select_term: 'Select date...',
+    sec_consent: 'Consent and terms',
+    consent_text: 'I agree to the <a href="/gdpr">privacy policy</a> and <a href="/obchodni-podminky">terms and conditions</a> of Makeful. *',
+    btn_submit: 'Submit application →',
+    submit_note: 'After submitting, we will send you an email with next steps.<br><span style="color:var(--coral);font-weight:600;">Applications close on June 7, 2026.</span>',
+    footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Follow us', footer_docs_lbl: 'Legal Documents', footer_contact_lbl: 'Contact',
+    footer_privacy: 'Privacy Policy', footer_terms: 'Terms & Conditions',
+    footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. All rights reserved.',
+    js_err_gdpr: 'Please confirm your consent to the personal data processing rules.',
+    js_err_required: 'Please fill in: ',
+    js_sending: 'Sending...', js_err_fail: 'Failed to submit application. Please try again or email us directly at hello@make-ful.com.'
+  }
+};
+
+var currentLang = 'cs';
+
+/* ── DYNAMIC DROPDOWN FILTERING FUNCTION ── */
+function handleAgeChange(selectedAgeString) {
+    var ageNum = parseInt(selectedAgeString);
+    var select1 = document.getElementById('f-termin');
+    var select2 = document.getElementById('f-termin2');
+    
+    var currentVal1 = select1.value;
+    var currentVal2 = select2.value;
+
+    var placeholderText = translations[currentLang].opt_select_term || 'Vyberte termín…';
+
+    select1.innerHTML = '<option value="" disabled selected>' + placeholderText + '</option>';
+    select2.innerHTML = '<option value="" disabled selected>' + placeholderText + '</option>';
+
+    var hasValidAge = !isNaN(ageNum);
+
+    termOptionsData.forEach(function(item) {
+        if (!hasValidAge || (ageNum >= item.ageMin && ageNum <= item.ageMax)) {
+            var labelText = currentLang === 'en' ? item.en : item.cs;
+            
+            var opt1 = document.createElement('option');
+            opt1.value = item.value;
+            opt1.textContent = labelText;
+            if(item.value === currentVal1) opt1.selected = true;
+            select1.appendChild(opt1);
+
+            var opt2 = document.createElement('option');
+            opt2.value = item.value;
+            opt2.textContent = labelText;
+            if(item.value === currentVal2) opt2.selected = true;
+            select2.appendChild(opt2);
+        }
     });
 }
 
-function selectZpusob(v) {
-    ['prevod','karta','benefit','kombinace'].forEach(function(x) {
-        var el = document.getElementById('sp-'+x);
-        el.classList.toggle('selected', x === v);
-        el.querySelector('input').checked = x === v;
-    });
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'en' ? 'en' : 'cs';
+  
+  // Translate texts using data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
 
-    // Výše platby — skrýt jen pro "kombinace"
-    document.getElementById('vyse-panel').style.display = (v === 'kombinace') ? 'none' : 'block';
+  // Translate input placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
 
-    // Benefit panel — pro "benefit" i "kombinace" (chceme vědět poskytovatele)
-    document.getElementById('benefit-panel').classList.toggle('open', v === 'benefit' || v === 'kombinace');
+  // Localize select options for age dropdown
+  var ageSelect = document.getElementById('f-datum');
+  if (ageSelect) {
+      ageSelect.options[0].textContent = translations[lang].opt_select_age;
+      for (var i = 1; i < ageSelect.options.length; i++) {
+          var valInt = parseInt(ageSelect.options[i].value);
+          ageSelect.options[i].textContent = valInt + (lang === 'en' ? ' years old' : ' let');
+      }
+  }
 
-    // Resetuj providera a formu při změně způsobu platby
-    document.querySelectorAll('input[name="provider"]').forEach(function(r) { r.checked = false; });
-    document.querySelectorAll('.prov-card').forEach(function(c) { c.classList.remove('selected'); });
-    document.querySelectorAll('input[name="forma"]').forEach(function(r) { r.checked = false; });
-    document.querySelectorAll('.fcard').forEach(function(c) { c.classList.remove('selected'); });
+  document.getElementById('lang-label').textContent = lang === 'en' ? 'EN' : 'CZ';
+  
+  // Rerender active options filtering in dropdowns
+  handleAgeChange(document.getElementById('f-datum').value);
 
-    updatePromoVisibility();
+  var url = new URL(window.location);
+  if (lang === 'en') { url.searchParams.set('language', 'en'); }
+  else { url.searchParams.delete('language'); }
+  window.history.replaceState({}, '', url);
 }
 
-function selectProvider(v) {
-    ['benefitplus','pluxee','up','edenred'].forEach(function(x) {
-        var el = document.getElementById('pr-'+x);
-        el.classList.toggle('selected', x === v);
-        el.querySelector('input').checked = x === v;
-    });
-    updatePromoVisibility();
+function toggleLang() {
+  applyLang(currentLang === 'cs' ? 'en' : 'cs');
 }
 
-function selectForma(v) {
-    ['karta','poukazky'].forEach(function(x) {
-        var el = document.getElementById('fc-'+x);
-        el.classList.toggle('selected', x === v);
-        el.querySelector('input').checked = x === v;
-    });
-    updatePromoVisibility();
+/* ── PREFILL LOGIC FROM URL PARAMETERS ── */
+function prefillFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var rawTermin = params.get('termin');
+    
+    // Auto translation checking logic if URL contains generic EN flags
+    var pathUrlString = window.location.search.toLowerCase();
+    if (params.get('language') === 'en' || pathUrlString.includes('language=en') || pathUrlString.includes('%c2%b7%20eng') || pathUrlString.includes('%c2%b7%20en')) {
+        applyLang('en');
+    } else {
+        applyLang('cs');
+    }
+
+    if (rawTermin) {
+        // Normalize dashes and formatting to match standard hyphens
+        var normalizedTermin = decodeURIComponent(rawTermin).replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
+        
+        // Match old ENG label to clean EN format if present
+        if (normalizedTermin.endsWith('ENG')) {
+            normalizedTermin = normalizedTermin.slice(0, -3) + 'EN';
+        }
+
+        // Auto select appropriate age filter to match incoming session group
+        var ageSelect = document.getElementById('f-datum');
+        if (normalizedTermin.startsWith('10-12')) {
+            ageSelect.value = "10 let";
+        } else if (normalizedTermin.startsWith('13-15')) {
+            ageSelect.value = "13 let";
+        } else if (normalizedTermin.startsWith('16-19')) {
+            ageSelect.value = "16 let";
+        }
+        
+        // Update values and bind options sets
+        handleAgeChange(ageSelect.value);
+
+        var sel = document.getElementById('f-termin');
+        for (var i = 0; i < sel.options.length; i++) {
+            var optValNormalized = sel.options[i].value.replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
+            if (optValNormalized === normalizedTermin || itemValuesPartialMatch(optValNormalized, normalizedTermin)) {
+                sel.selectedIndex = i;
+                break;
+            }
+        }
+    } else {
+        handleAgeChange("");
+    }
 }
 
+function itemValuesPartialMatch(val1, val2) {
+    // Fallback fuzzy matching check for shared range timestamps
+    var clean = function(s) { return s.replace(/[^0-9]/g, ''); };
+    return clean(val1).length > 5 && clean(val1) === clean(val2);
+}
 
-/* ── Web3Forms submit ── */
+window.addEventListener('DOMContentLoaded', prefillFromUrl);
+
+/* ── FORM HANDLING SUBMISSION ── */
 function handleSubmit() {
     var errBanner = document.getElementById('form-error');
     errBanner.style.display = 'none';
 
-    // Validate required checkbox
     if (!document.getElementById('c1').checked) {
-        errBanner.textContent = 'Prosím potvrďte souhlas se zpracováním osobních údajů.';
+        errBanner.textContent = translations[currentLang].js_err_gdpr || 'Prosím potvrďte souhlas se zpracováním osobních údajů.';
         errBanner.style.display = 'block';
         errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
     }
 
-    // Collect field values
     var jmeno         = document.getElementById('f-jmeno').value.trim();
     var prijmeni      = document.getElementById('f-prijmeni').value.trim();
     var datum         = document.getElementById('f-datum').value.trim();
@@ -919,51 +898,45 @@ function handleSubmit() {
     var termin2       = document.getElementById('f-termin2').value;
     var emailUc       = document.getElementById('f-email-uc').value.trim();
 
-    // Validate required fields
     var missingFields = [];
-    if (!jmeno)         missingFields.push('Jméno účastnice');
-    if (!prijmeni)      missingFields.push('Příjmení účastnice');
-    if (!datum)         missingFields.push('Věk');
-    if (!rodicJmeno)    missingFields.push('Jméno rodiče');
-    if (!rodicPrijmeni) missingFields.push('Příjmení rodiče');
-    if (!tel)           missingFields.push('Telefon');
-    if (!email)         missingFields.push('Email rodiče');
-    if (!termin)        missingFields.push('Preferovaný termín');
+    if (!jmeno)         missingFields.push(currentLang === 'en' ? 'First name' : 'Jméno účastnice');
+    if (!prijmeni)      missingFields.push(currentLang === 'en' ? 'Surname' : 'Příjmení účastnice');
+    if (!datum)         missingFields.push(currentLang === 'en' ? 'Age' : 'Věk');
+    if (!rodicJmeno)    missingFields.push(currentLang === 'en' ? 'Parent first name' : 'Jméno rodiče');
+    if (!rodicPrijmeni) missingFields.push(currentLang === 'en' ? 'Parent surname' : 'Příjmení rodiče');
+    if (!tel)           missingFields.push(currentLang === 'en' ? 'Phone' : 'Telefon');
+    if (!email)         missingFields.push(currentLang === 'en' ? 'Parent email' : 'Email rodiče');
+    if (!termin)        missingFields.push(currentLang === 'en' ? 'Preferred date' : 'Preferovaný termín');
+    
     if (missingFields.length > 0) {
-        errBanner.textContent = 'Vyplňte prosím: ' + missingFields.join(', ');
+        errBanner.textContent = (translations[currentLang].js_err_required || 'Vyplňte prosím: ') + missingFields.join(', ');
         errBanner.style.display = 'block';
         errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
     }
 
     var btn = document.getElementById('submit-btn');
-    btn.textContent = 'Odesílám…';
+    btn.textContent = translations[currentLang].js_sending || 'Odesílám…';
     btn.disabled = true;
 
-    // Generate ID and timestamp
     var now = new Date();
     var pad = function(n) { return n < 10 ? '0' + n : n; };
     var datumCas = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
-    var timestamp = now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
-    var id = timestamp;
+    var id = now.getFullYear().toString() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
 
     var payload = {
-
         'ID přihlášky':                 id,
         'Datum a čas přihlášky':        datumCas,
-
         'Jméno účastnice':              jmeno,
         'Příjmení účastnice':           prijmeni,
         'Věk':                          datum,
-        'Email účastnice':              emailUc || '—',
-
+        'Email účastnice':              emailUc || '-',
         'Jméno rodiče':                 rodicJmeno,
         'Příjmení rodiče':              rodicPrijmeni,
         'Telefon':                      tel,
         'Email rodiče':                 email,
         'Preferovaný termín':           termin,
-        'Náhradní termín':              termin2 || '—',
-
+        'Náhradní termín':              termin2 || '-'
     };
 
     fetch('https://hook.eu1.make.com/oyiz9y17pvcf36ncoa6x4ophaopk3y4p', {
@@ -978,10 +951,10 @@ function handleSubmit() {
             throw new Error('Status: ' + res.status);
         }
     })
-    .catch(function() {
-        errBanner.textContent = 'Nepodařilo se odeslat přihlášku. Zkuste to prosím znovu nebo nás kontaktujte na hello@make-ful.com.';
+    .catch(function(err) {
+        errBanner.textContent = err.message || translations[currentLang].js_err_fail || 'Nepodařilo se odeslat přihlášku. Zkuste to prosím znovu nebo nás kontaktujte na hello@make-ful.com.';
         errBanner.style.display = 'block';
-        btn.textContent = 'Odeslat přihlášku →';
+        btn.textContent = translations[currentLang].btn_submit || 'Odeslat přihlášku →';
         btn.disabled = false;
     });
 }
