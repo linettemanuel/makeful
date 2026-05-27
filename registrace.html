@@ -592,6 +592,16 @@ footer {
 
         <hr class="divider">
 
+        <div class="sec-label" data-i18n="sec_promo">Promo kód</div>
+        <div class="row full">
+            <div class="field">
+                <label data-i18n="field_promo">Máš promo kód? Zadej ho zde</label>
+                <input id="f-promo" type="text" data-i18n-placeholder="ph_promo" placeholder="např. MAKEFUL10" autocomplete="off" style="text-transform:uppercase;">
+            </div>
+        </div>
+
+        <hr class="divider">
+
         <div class="sec-label" data-i18n="sec_consent">Souhlas a podmínky</div>
         <div class="consent-row">
             <input type="checkbox" id="c1">
@@ -689,6 +699,9 @@ var translations = {
     opt_select_term: 'Vyberte termín…',
     sec_consent: 'Souhlas a podmínky',
     consent_text: 'Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. *',
+    sec_promo: 'Promo kód',
+    field_promo: 'Máš promo kód? Zadej ho zde',
+    ph_promo: 'např. MAKEFUL10',
     btn_submit: 'Odeslat přihlášku →',
     submit_note: 'Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 7. června 2026.</span>',
     footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Sleduj nás', footer_docs_lbl: 'Právní dokumenty', footer_contact_lbl: 'Kontakt',
@@ -726,6 +739,9 @@ var translations = {
     opt_select_term: 'Select date...',
     sec_consent: 'Consent and terms',
     consent_text: 'I agree to the <a href="/gdpr">privacy policy</a> and <a href="/obchodni-podminky">terms and conditions</a> of Makeful. *',
+    sec_promo: 'Promo code',
+    field_promo: 'Have a promo code? Enter it here',
+    ph_promo: 'e.g. MAKEFUL10',
     btn_submit: 'Submit application →',
     submit_note: 'After submitting, we will send you an email with next steps.<br><span style="color:var(--coral);font-weight:600;">Applications close on June 7, 2026.</span>',
     footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Follow us', footer_docs_lbl: 'Legal Documents', footer_contact_lbl: 'Contact',
@@ -897,6 +913,7 @@ function handleSubmit() {
     var termin        = document.getElementById('f-termin').value;
     var termin2       = document.getElementById('f-termin2').value;
     var emailUc       = document.getElementById('f-email-uc').value.trim();
+    var promo         = document.getElementById('f-promo') ? document.getElementById('f-promo').value.trim().toUpperCase() : 'EMPTY';
 
     var missingFields = [];
     if (!jmeno)         missingFields.push(currentLang === 'en' ? 'First name' : 'Jméno účastnice');
@@ -936,7 +953,8 @@ function handleSubmit() {
         'Telefon':                      tel,
         'Email rodiče':                 email,
         'Preferovaný termín':           termin,
-        'Náhradní termín':              termin2 || '-'
+        'Náhradní termín':              termin2 || '-',
+        'Promo kód':                    promo || 'EMPTY'
     };
 
     fetch('https://hook.eu1.make.com/oyiz9y17pvcf36ncoa6x4ophaopk3y4p', {
