@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -6,655 +6,83 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KGDFKB27');</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="meta_title">Přihláška – Letní módní kreativní laboratoř 2026 · Makeful</title>
-<meta name="description" content="Přihláška na Makeful Letní módní kreativní laboratoř 2026. Letní módní kreativní laboratoř pro dívky 10-19 let v Praze.">
-<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="120x120" href="./img/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
-<style>
-:root {
-    --aqua:         #62D7F4;
-    --coral:        #FD7E8B;
-    --peach:        #FEB492;
-    --magenta:      #F996BF;
-    --lavender:     #9A75F0;
-    --lilac:        #C386F8;
-    --ink:          #12100E;
-    --white:        #FEFEFE;
-    --off:          #F5F3F0;
-    --mid:          #5C5856;
-    --border:       1px solid rgba(18,16,14,0.10);
-    --primary:      #FEB492;
-    --primary-dark: #d4713a;
-    --font-display: "Playfair Display", serif;
-    --font-ui:      "DM Sans", sans-serif;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-    background: var(--off);
-    color: var(--ink);
-    font-family: var(--font-ui);
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-}
-a { text-decoration: none; color: inherit; transition: 0.15s; }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; }
-h1 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -0.03em; }
-p  { font-size: 0.95rem; line-height: 1.8; color: var(--mid); }
-
-/* ── NAV ── */
-header {
-    background: var(--white);
-    border-bottom: var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 200;
-}
-.nav-wrapper {
-    width: 100%;
-    display: flex;
-    align-items: stretch;
-    height: 72px;
-}
-.nav-logo {
-    display: flex;
-    align-items: center;
-    padding: 0 22px;
-    border-right: var(--border);
-    flex-shrink: 0;
-}
-.nav-logo img { height: 22px; width: auto; }
-.nav-back {
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    border-right: var(--border);
-    color: var(--mid);
-    transition: background 0.15s, color 0.15s;
-    gap: 8px;
-}
-.nav-back:hover { background: var(--off); color: var(--ink); }
-.nav-back::before { content: '←'; font-size: 1rem; }
-.nav-spacer { flex: 1; }
-.nav-badge {
-    display: flex;
-    align-items: center;
-    padding: 0 28px;
-    gap: 8px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--mid);
-    border-left: var(--border);
-}
-.nav-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--primary);
-    flex-shrink: 0;
-    animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(0.85); }
-}
-.nav-cta {
-    display: flex;
-    align-items: center;
-    padding: 0 28px;
-    background: var(--lilac);
-    color: var(--ink);
-    font-weight: 700;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    border-left: var(--border);
-    transition: background 0.15s;
-}
-.nav-cta:hover { background: var(--lavender); }
-
-/* ── PAGE LAYOUT ── */
-.page-outer {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 0 24px 100px;
-}
-
-/* ── HERO BAND ── */
-.form-hero {
-    background: var(--primary);
-    padding: 60px 64px 56px;
-    position: relative;
-    overflow: hidden;
-    border-left: 6px solid var(--primary-dark);
-}
-.form-hero::after {
-    content: 'M';
-    font-family: var(--font-display);
-    font-size: 30rem;
-    font-weight: 900;
-    color: rgba(255,255,255,0.15);
-    position: absolute;
-    top: -20%;
-    right: -2%;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-}
-.form-hero .label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--primary-dark);
-    margin-bottom: 18px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-    z-index: 1;
-}
-.form-hero .label::before {
-    content: '';
-    display: block;
-    width: 20px; height: 3px;
-    background: var(--primary-dark);
-}
-.form-hero h1 {
-    color: var(--ink);
-    position: relative;
-    z-index: 1;
-    margin-bottom: 14px;
-}
-.form-hero p {
-    color: rgba(18,16,14,0.65);
-    position: relative;
-    z-index: 1;
-    font-size: 0.95rem;
-}
-
-/* ── INFO BAR ── */
-.info-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background: var(--ink);
-    margin-bottom: 2px;
-    border-bottom: 2px solid var(--primary);
-}
-.info-item {
-    padding: 22px 28px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-}
-.info-item:last-child { border-right: none; }
-.info-item .il {
-    font-size: 0.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 6px;
-}
-.info-item .iv {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.2;
-}
-.iv.hl { color: var(--primary); }
-
-/* ── FORM CARD ── */
-.form-card {
-    background: var(--white);
-    border: var(--border);
-    border-top: none;
-    padding: 52px 64px 64px;
-}
-
-/* ── SECTION LABEL ── */
-.sec-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--primary-dark);
-    margin-bottom: 22px;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.sec-label::before {
-    content: '';
-    display: block;
-    width: 18px; height: 2.5px;
-    background: var(--primary-dark);
-}
-.sec-label:first-child { margin-top: 0; }
-
-/* ── DIVIDER ── */
-.divider {
-    border: none;
-    border-top: var(--border);
-    margin: 36px 0 32px;
-}
-
-/* ── FIELDS ── */
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.row.full { grid-template-columns: 1fr; }
-
-.field {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    margin-bottom: 20px;
-}
-.field label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-}
-.field label .req { color: var(--coral); margin-left: 3px; }
-.field input,
-.field select,
-.field textarea {
-    font-family: var(--font-ui);
-    font-size: 0.92rem;
-    color: var(--ink);
-    background: var(--off);
-    border: 1px solid rgba(18,16,14,0.12);
-    padding: 13px 16px;
-    outline: none;
-    transition: border-color 0.15s, background 0.15s;
-    border-radius: 0;
-    width: 100%;
-}
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-    border-color: var(--lavender);
-    background: var(--white);
-    box-shadow: 0 0 0 3px rgba(154,117,240,0.1);
-}
-.field select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C5856' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-color: var(--off);
-    padding-right: 40px;
-    cursor: pointer;
-}
-.field textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
-
-/* ── CONSENT ── */
-.consent-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-.consent-row input[type=checkbox] {
-    margin-top: 2px;
-    width: 16px; height: 16px;
-    accent-color: var(--lavender);
-    flex-shrink: 0;
-    cursor: pointer;
-}
-.consent-row label {
-    font-size: 0.85rem;
-    color: var(--mid);
-    line-height: 1.65;
-    cursor: pointer;
-}
-.consent-row label a {
-    color: var(--primary-dark);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-.consent-row label a:hover { color: var(--ink); }
-
-/* ── SUBMIT ── */
-.submit-row {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-    padding-top: 28px;
-    border-top: var(--border);
-}
-.btn-submit {
-    background: var(--lilac);
-    color: var(--ink);
-    border: 2px solid var(--lilac);
-    padding: 17px 48px;
-    font-family: var(--font-ui);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    min-width: 260px;
-}
-.btn-submit:hover:not(:disabled) { background: var(--lavender); transform: translateY(-2px); }
-.btn-submit:disabled { opacity: 0.45; cursor: default; transform: none; }
-.submit-note { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
-
-/* ── ERROR / SUCCESS ── */
-.form-error-banner {
-    display: none;
-    background: #fff0f0;
-    border-left: 4px solid var(--coral);
-    padding: 16px 22px;
-    margin-top: 20px;
-    font-size: 0.88rem;
-    color: #8b1a1a;
-    line-height: 1.6;
-}
-.required-note { font-size: 0.78rem; color: var(--mid); margin-bottom: 32px; }
-
-/* ── FOOTER ── */
-footer {
-    border-top: var(--border);
-    background: var(--white);
-    margin-top: 0;
-}
-.footer-main {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-.footer-col {
-    padding: 48px 40px;
-    border-right: var(--border);
-}
-.footer-col:last-child { border-right: none; }
-.footer-col h4 {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-    font-family: var(--font-ui);
-    font-weight: 700;
-}
-.footer-links-list { display: flex; flex-direction: column; gap: 10px; }
-.footer-links-list a { font-size: 0.85rem; color: var(--mid); transition: color 0.15s; }
-.footer-links-list a:hover { color: var(--ink); }
-.footer-bottom {
-    background: var(--ink);
-    position: relative;
-    overflow: hidden;
-    min-height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: var(--border);
-}
-.footer-bg-letter {
-    font-family: var(--font-display);
-    font-size: 24vw;
-    font-weight: 900;
-    color: rgba(255,255,255,0.04);
-    position: absolute;
-    bottom: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    line-height: 1;
-    user-select: none;
-}
-.footer-logo-img { height: 30px; width: auto; position: relative; z-index: 1; }
-.copyright {
-    text-align: center;
-    background: var(--ink);
-    color: rgba(255,255,255,0.3);
-    font-size: 0.75rem;
-    padding: 16px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-    .nav-badge, .nav-cta { display: none; }
-    .form-hero { padding: 44px 32px; }
-    .form-card { padding: 36px 28px 48px; }
-    .info-bar { grid-template-columns: 1fr 1fr; }
-    .info-item:nth-child(2) { border-right: none; }
-    .info-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
-    .row { grid-template-columns: 1fr; }
-    .footer-main { grid-template-columns: 1fr 1fr; }
-    .footer-col:nth-child(2) { border-right: none; }
-    .footer-col:nth-child(n+3) { border-top: var(--border); }
-}
-@media (max-width: 480px) {
-    .form-hero { padding: 36px 24px; }
-    .form-card { padding: 28px 20px 40px; }
-    .footer-main { grid-template-columns: 1fr; }
-    .footer-col { border-right: none; border-bottom: var(--border); }
-    .footer-col:last-child { border-bottom: none; }
-    .info-bar { grid-template-columns: 1fr; }
-    .info-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .info-item:last-child { border-bottom: none; }
-    select, input[type="text"], input[type="email"], input[type="tel"] { font-size: 16px; }
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta_title">Přihláška – Letní FashionTech Akademie 2026 · Makeful</title>
+  <meta name="description" content="Přihláška na Makeful Letní FashionTech Akademii 2026 pro dívky 10–19 let v Praze.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aqua:#62D7F4; --coral:#FD7E8B; --peach:#FEB492; --magenta:#F996BF; --lavender:#9A75F0; --lilac:#C386F8;
+      --ink:#111733; --text:#303853; --muted:#727991; --cream:#fffaf7; --white:#fff;
+      --line:rgba(36,42,78,.10); --soft:0 24px 70px rgba(82,50,120,.13);
+      --serif:'Playfair Display', Georgia, serif; --sans:'DM Sans', system-ui, -apple-system, Segoe UI, sans-serif; --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:var(--sans);color:var(--ink);background:radial-gradient(circle at 0% 0%,rgba(98,215,244,.24),transparent 32rem),radial-gradient(circle at 100% 8%,rgba(249,150,191,.18),transparent 32rem),radial-gradient(circle at 15% 90%,rgba(195,134,248,.16),transparent 30rem),linear-gradient(180deg,#fffaf7 0%,#fff4f8 44%,#fffaf6 100%);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none} img{display:block;max-width:100%}
+    .wrap{width:min(calc(100% - 64px),var(--max));margin-inline:auto}
+    .grad{background:linear-gradient(105deg,#6d74ff 0%,#a96cf7 34%,#f05aa0 68%,#ff8d6f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(82,50,120,.06)}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:18px}.brand img{width:164px;height:auto}
+    .nav-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:#6f7891;border:1px solid rgba(137,150,189,.18);background:rgba(255,255,255,.66);padding:10px 14px;border-radius:999px;transition:.18s ease}.nav-back:hover{transform:translateY(-1px);color:var(--ink);background:#fff}
+    .nav-right{display:flex;align-items:center;gap:12px}.nav-badge{display:inline-flex;align-items:center;gap:9px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(137,150,189,.18);color:#59627c;font-size:13px;font-weight:800}
+    .nav-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--aqua),var(--lilac),var(--magenta));box-shadow:0 0 0 5px rgba(195,134,248,.12)}
+    .lang-toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(137,150,189,.20);background:rgba(255,255,255,.82);color:var(--ink);border-radius:999px;padding:10px 12px;cursor:pointer;font-weight:900;letter-spacing:.04em}
+    .hero{padding:54px 0 24px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:stretch}
+    .hero-card{position:relative;overflow:hidden;border-radius:42px;background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,239,248,.76));border:1px solid rgba(255,255,255,.92);box-shadow:var(--soft);padding:48px;min-height:420px;display:flex;flex-direction:column;justify-content:center}
+    .hero-card::before{content:"";position:absolute;right:-110px;top:-110px;width:330px;height:330px;background:radial-gradient(circle,rgba(98,215,244,.22),rgba(195,134,248,0) 70%);border-radius:999px;pointer-events:none}
+    .hero-card::after{content:"M";position:absolute;right:10px;bottom:-98px;font-family:var(--serif);font-weight:900;font-size:280px;color:rgba(154,117,240,.06);line-height:1;pointer-events:none}
+    .eyebrow{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;width:max-content;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid rgba(137,150,189,.18);color:#737b93;text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:950;margin-bottom:18px}
+    h1{position:relative;z-index:1;margin:0 0 16px;font-family:var(--serif);font-size:clamp(42px,5.4vw,72px);line-height:.98;letter-spacing:-.05em;color:var(--ink)}
+    .hero-card p{position:relative;z-index:1;margin:0;color:#303853;font-size:18px;line-height:1.7;font-weight:650;max-width:58ch}
+    .side-panel{border-radius:42px;background:linear-gradient(135deg,rgba(17,23,51,.94),rgba(73,55,130,.92));box-shadow:var(--soft);overflow:hidden;position:relative;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.16)}
+    .side-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(98,215,244,.28),transparent 28%),radial-gradient(circle at 86% 18%,rgba(249,150,191,.28),transparent 30%);pointer-events:none}
+    .side-visual{height:250px;overflow:hidden;position:relative;z-index:1}.side-visual img{width:100%;height:100%;object-fit:cover;opacity:.9}
+    .side-content{position:relative;z-index:1;padding:30px;color:#fff}.side-content h2{font-family:var(--serif);font-size:34px;line-height:1.05;letter-spacing:-.03em;margin:0 0 12px}.side-content p{margin:0;color:rgba(255,255,255,.72);line-height:1.65;font-size:15.5px;font-weight:650}
+    .mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.mini-stat{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);border-radius:18px;padding:12px}.mini-stat b{display:block;font-family:var(--serif);font-size:24px;color:#fff;line-height:1}.mini-stat span{display:block;margin-top:4px;font-size:12px;color:rgba(255,255,255,.62);font-weight:800}
+    .info-row{padding:0 0 34px}.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .info-item{border-radius:24px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 34px rgba(82,50,120,.08);padding:20px}.info-item .il{font-size:12px;color:#777f98;text-transform:uppercase;letter-spacing:.1em;font-weight:900;margin-bottom:8px}.info-item .iv{font-family:var(--serif);font-size:23px;font-weight:800;line-height:1.1;color:var(--ink)}.info-item .tiny{font-size:13px;color:#5d6680;font-weight:800;line-height:1.55}
+    .form-shell{padding:18px 0 86px}.form-layout{display:block;max-width:900px;margin-inline:auto}
+    .form-card{border-radius:34px;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.95);box-shadow:var(--soft);padding:42px;overflow:hidden}.required-note{margin:0 0 24px;color:#727991;font-weight:750;font-size:14px}
+    .sec-label{display:flex;align-items:center;gap:10px;margin:34px 0 18px;font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;color:#8b62db}.sec-label:first-of-type{margin-top:0}.sec-label::before{content:"";width:26px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--aqua),var(--lilac),var(--magenta))}
+    .divider{border:0;border-top:1px solid var(--line);margin:30px 0}.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}.row.full{grid-template-columns:1fr}.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}.field label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:950;color:#303853}.field label .req{color:var(--coral);margin-left:3px}
+    .field input,.field select,.field textarea{width:100%;border:1px solid rgba(137,150,189,.22);background:rgba(255,255,255,.76);border-radius:18px;padding:15px 16px;color:var(--ink);font-family:var(--sans);font-size:15px;outline:none;transition:.18s ease;box-shadow:0 10px 20px rgba(82,50,120,.04)}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(154,117,240,.55);background:#fff;box-shadow:0 0 0 4px rgba(154,117,240,.10),0 14px 26px rgba(82,50,120,.08)}
+    .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1.5 1.5l5.5 5.5 5.5-5.5' stroke='%236f7891' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:46px;cursor:pointer}.field textarea{resize:vertical;min-height:100px;line-height:1.6}
+    .consent-row{display:flex;align-items:flex-start;gap:12px;margin:0 0 14px}.consent-row input{margin-top:4px;width:18px;height:18px;accent-color:var(--lilac);flex:0 0 auto}.consent-row label{font-size:14px;color:#59627c;line-height:1.65;font-weight:650;cursor:pointer}.consent-row a{color:#815ee9;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+    .form-error-banner{display:none;background:#fff0f3;color:#8b1a3b;border:1px solid rgba(253,126,139,.24);border-left:5px solid var(--coral);border-radius:18px;padding:14px 16px;margin-top:18px;font-size:14px;line-height:1.55;font-weight:700}
+    .submit-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:32px;padding-top:28px;border-top:1px solid var(--line)}.btn-submit{min-width:260px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:linear-gradient(105deg,var(--aqua),var(--lilac),var(--magenta),var(--peach));color:#fff;padding:17px 30px;font-family:var(--sans);font-size:14px;font-weight:950;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;box-shadow:0 16px 34px rgba(249,90,160,.22);transition:.18s ease}.btn-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 20px 42px rgba(249,90,160,.28)}.btn-submit:disabled{opacity:.55;cursor:default;transform:none}.submit-note{margin:0;color:#707991;font-size:14px;line-height:1.6;font-weight:650}
+    footer{padding:34px 0 42px;border-top:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.52)}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;color:#727991;font-size:14px;font-weight:700}.footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a:hover{color:var(--ink)}
+    @media(max-width:1024px){.hero-grid{grid-template-columns:1fr}.side-panel{min-height:auto}.info-grid{grid-template-columns:1fr 1fr}.nav-badge{display:none}}
+    @media(max-width:720px){.wrap{width:min(calc(100% - 36px),var(--max))}.nav{height:auto;padding:14px 0;align-items:flex-start}.brand{flex-direction:column;align-items:flex-start;gap:10px}.brand img{width:142px}.nav-right{align-self:flex-start}.hero{padding-top:30px}.hero-card{border-radius:30px;padding:28px;min-height:auto}.side-panel{border-radius:30px}.side-visual{height:190px}h1{font-size:38px}.hero-card p{font-size:16px}.info-grid{grid-template-columns:1fr}.form-card{border-radius:28px;padding:26px}.row{grid-template-columns:1fr}.submit-row{align-items:stretch}.btn-submit{width:100%;min-width:0}.footer-inner{flex-direction:column;align-items:flex-start}.lang-toggle span{display:inline}}
+    @media(max-width:440px){.wrap{width:min(calc(100% - 28px),var(--max))}.hero-card{padding:24px}.form-card{padding:22px}.side-content{padding:24px}.mini-stats{grid-template-columns:1fr}select,input[type="text"],input[type="email"],input[type="tel"]{font-size:16px}}
 </style>
 </head>
 <body>
-
-<header>
-    <div class="nav-wrapper">
-        <a href="/" class="nav-logo">
-            <img src="./img/makeful_logo_colours.png" alt="Makeful">
-        </a>
-        <a class="nav-back" href="/summercamp" data-i18n="nav_back">Zpět na web</a>
-        <div class="nav-spacer"></div>
-        <div class="nav-badge" data-i18n="nav_badge">
-            <div class="nav-dot"></div>
-            Přihlášky otevřeny · Léto 2026
-        </div>
-        <a href="mailto:hello@make-ful.com" class="nav-cta" data-i18n="nav_cta">Dotaz</a>
-        <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" style="margin-right:16px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
-            <span id="lang-label">CZ</span>
-        </button>
-    </div>
-</header>
-
-<div class="page-outer">
-
-    <div class="form-hero">
-        <div class="label" data-i18n="hero_label">Makeful · FashionTech Akademie 2026</div>
-        <h1 data-i18n="hero_title">Přihláška na letní módní<br>kreativní laboratoř</h1>
-        <p style="margin-top:14px;" data-i18n="hero_desc">Letní módní kreativní laboratoř pro holky ve věku 10-19 let · Praha 7 · 7 dní plných tvorby</p>
-    </div>
-
-    <div class="info-bar">
-        <div class="info-item">
-            <div class="il" data-i18n="info_age_lbl">Věk účastnice</div>
-            <div class="iv" data-i18n="info_age_val">10 - 19 let</div>
-        </div>
-        <div class="info-item">
-            <div class="il" data-i18n="info_len_lbl">Délka programu</div>
-            <div class="iv" data-i18n="info_len_val">7 dní · Po - Ne</div>
-        </div>
-        <div class="info-item">
-            <div class="il" data-i18n="info_group_lbl">Velikost skupinky</div>
-            <div class="iv" data-i18n="info_group_val">max. 10 účastnic</div>
-        </div>
-        <div class="info-item">
-            <div class="il" data-i18n="info_price_lbl">Cena programu</div>
-            <div style="display:flex;flex-direction:column;gap:2px;margin-top:2px;">
-                <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);"><span data-i18n="age_group_1">10-12 let</span>: <span style="color:#FEFEFE;font-weight:700;">7 888 Kč</span></div>
-                <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);"><span data-i18n="age_group_2">13-15 let</span>: <span style="color:#FEFEFE;font-weight:700;">8 888 Kč</span></div>
-                <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);"><span data-i18n="age_group_3">16-19 let</span>: <span style="color:#FEFEFE;font-weight:700;">9 888 Kč</span></div>
-            </div>
-            <div class="iv hl" style="font-size:0.85em;margin-top:4px;"><span style="color:var(--primary);" data-i18n="deposit_highlight">záloha pouze 1 500 Kč</span></div>
-        </div>
-    </div>
-
-    <div class="form-card">
-        <p class="required-note" data-i18n="required_note">Pole označená * jsou povinná.</p>
-
-        <div class="sec-label" data-i18n="sec_participant">Informace o účastnici</div>
-        <div class="row">
-            <div class="field">
-                <label data-i18n="field_p_name">Jméno účastnice <span class="req">*</span></label>
-                <input id="f-jmeno" type="text" placeholder="Tereza" data-i18n-placeholder="ph_p_name" autocomplete="given-name">
-            </div>
-            <div class="field">
-                <label data-i18n="field_p_surname">Příjmení účastnice <span class="req">*</span></label>
-                <input id="f-prijmeni" type="text" placeholder="Nováková" data-i18n-placeholder="ph_p_surname" autocomplete="family-name">
-            </div>
-        </div>
-        <div class="row full">
-            <div class="field">
-                <label data-i18n="field_p_age">Věk <span class="req">*</span></label>
-                <select id="f-datum" onchange="handleAgeChange(this.value)">
-                    <option value="" disabled selected data-i18n="opt_select_age">Vyber věk…</option>
-                    <option value="10 let">10 let</option>
-                    <option value="11 let">11 let</option>
-                    <option value="12 let">12 let</option>
-                    <option value="13 let">13 let</option>
-                    <option value="14 let">14 let</option>
-                    <option value="15 let">15 let</option>
-                    <option value="16 let">16 let</option>
-                    <option value="17 let">17 let</option>
-                    <option value="18 let">18 let</option>
-                    <option value="19 let">19 let</option>
-                </select>
-            </div>
-        </div>
-        <div class="row full">
-            <div class="field">
-                <label data-i18n="field_p_email">Email účastnice</label>
-                <input id="f-email-uc" type="email" placeholder="tereza@email.cz" data-i18n-placeholder="ph_p_email" autocomplete="email">
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <div class="sec-label" data-i18n="sec_parent">Kontakt na rodiče / zákonného zástupce</div>
-        <div class="row">
-            <div class="field">
-                <label data-i18n="field_r_name">Jméno rodiče <span class="req">*</span></label>
-                <input id="f-rodic-jmeno" type="text" placeholder="Jana" data-i18n-placeholder="ph_r_name" autocomplete="given-name">
-            </div>
-            <div class="field">
-                <label data-i18n="field_r_surname">Příjmení rodiče <span class="req">*</span></label>
-                <input id="f-rodic-prijmeni" type="text" placeholder="Nováková" data-i18n-placeholder="ph_r_surname" autocomplete="family-name">
-            </div>
-        </div>
-        <div class="row">
-            <div class="field">
-                <label data-i18n="field_r_phone">Telefon <span class="req">*</span></label>
-                <input id="f-tel" type="tel" placeholder="+420 777 123 456" data-i18n-placeholder="ph_r_phone" autocomplete="tel">
-            </div>
-        </div>
-        <div class="row full">
-            <div class="field">
-                <label data-i18n="field_r_email">Email rodiče <span class="req">*</span></label>
-                <input id="f-email" type="email" placeholder="jana.novakova@email.cz" data-i18n-placeholder="ph_r_email" autocomplete="email">
-            </div>
-        </div>
-        <hr class="divider">
-
-        <div class="sec-label" data-i18n="sec_date">Výběr termínu</div>
-        <div class="row full">
-            <div class="field">
-                <label data-i18n="field_term1">Preferovaný termín <span class="req">*</span></label>
-                <select id="f-termin">
-                    <option value="" disabled selected data-i18n="opt_select_term">Vyberte termín…</option>
-                </select>
-            </div>
-        </div>
-        <div class="row full">
-            <div class="field">
-                <label data-i18n="field_term2">Náhradní termín (pokud bude preferovaný obsazen)</label>
-                <select id="f-termin2">
-                    <option value="" disabled selected data-i18n="opt_select_term">Vyberte termín…</option>
-                </select>
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <div class="sec-label" data-i18n="sec_promo">Promo kód</div>
-        <div class="row full">
-            <div class="field">
-                <label data-i18n="field_promo">Máš promo kód? Zadej ho zde</label>
-                <input id="f-promo" type="text" data-i18n-placeholder="ph_promo" placeholder="např. MAKEFUL10" autocomplete="off" style="text-transform:uppercase;">
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <div class="sec-label" data-i18n="sec_consent">Souhlas a podmínky</div>
-        <div class="consent-row">
-            <input type="checkbox" id="c1">
-            <label for="c1" data-i18n="consent_text">Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label>
-        </div>
-
-        <div id="form-error" class="form-error-banner"></div>
-
-        <div class="submit-row">
-            <button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button>
-            <p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 7. června 2026.</span></p>
-        </div>
-
-    </div></div><footer>
-    <div class="footer-main">
-        <div class="footer-col">
-            <h4 data-i18n="footer_menu_lbl">Makeful</h4>
-            <div class="footer-links-list">
-                <a href="/summercamp" data-i18n="nav_program">Letní akademie</a>
-                <a href="/about" data-i18n="nav_about">O programu</a>
-                <a href="/faq">FAQ</a>
-            </div>
-        </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_follow_lbl">Sleduj nás</h4>
-            <div class="footer-links-list">
-                <a href="https://www.instagram.com/_makeful/" target="_blank" rel="noopener">Instagram</a>
-                <a href="https://www.facebook.com/makefulmakeful" target="_blank" rel="noopener">Facebook</a>
-                <a href="https://www.linkedin.com/company/make-ful" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-        </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_docs_lbl">Právní dokumenty</h4>
-            <div class="footer-links-list">
-                <a href="/gdpr" data-i18n="footer_privacy">Zásady ochrany osobních údajů</a>
-                <a href="/obchodni-podminky" data-i18n="footer_terms">Obchodní podmínky</a>
-            </div>
-        </div>
-        <div class="footer-col">
-            <h4 data-i18n="footer_contact_lbl">Kontakt</h4>
-            <div class="footer-links-list">
-                <a href="mailto:hello@make-ful.com">hello@make-ful.com</a>
-                <a href="tel:+420735820576">+420 735 820 576</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="footer-bg-letter">M</div>
-        <img src="./img/makeful_logo_colours.png" alt="Makeful" class="footer-logo-img" decoding="async">
-    </div>
-    <div class="copyright" data-i18n="footer_copyright">&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.</div>
-</footer>
-
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header><div class="wrap nav"><div class="brand"><a href="/" aria-label="Makeful homepage"><img src="assets/logo.png" alt="Makeful"></a><a class="nav-back" href="/summercamp" data-i18n="nav_back">← Zpět na web</a></div><div class="nav-right"><div class="nav-badge" data-i18n="nav_badge"><span class="nav-dot"></span>Přihlášky otevřeny · Léto 2026</div><button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Přepnout jazyk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span id="lang-label">CZ</span></button></div></div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid"><div class="hero-card"><div class="eyebrow" data-i18n="hero_label">✦ Makeful · FashionTech Akademie 2026</div><h1 data-i18n="hero_title">Přihláška na letní <span class="grad">FashionTech Akademii</span></h1><p data-i18n="hero_desc">Letní módní kreativní laboratoř pro holky ve věku 10–19 let · Praha 7 · 7 dní plných tvorby, AI, 3D tisku a módního designu.</p></div><aside class="side-panel"><div class="side-visual"><img src="assets/hero.png" alt="Kreativní módní laboratoř Makeful"></div><div class="side-content"><h2>7 dní. 6 projektů. Malá skupinka.</h2><p>Zarezervujte místo zálohou 1 500 Kč. Po odeslání přihlášky vám pošleme další kroky e-mailem.</p><div class="mini-stats"><div class="mini-stat"><b>10–19</b><span>let</span></div><div class="mini-stat"><b>max. 10</b><span>účastnic</span></div></div></div></aside></div></section>
+<section class="info-row"><div class="wrap info-grid"><div class="info-item"><div class="il" data-i18n="info_age_lbl">Věk účastnice</div><div class="iv" data-i18n="info_age_val">10–19 let</div></div><div class="info-item"><div class="il" data-i18n="info_len_lbl">Délka programu</div><div class="iv" data-i18n="info_len_val">7 dní · Po–Ne</div></div><div class="info-item"><div class="il" data-i18n="info_group_lbl">Velikost skupinky</div><div class="iv" data-i18n="info_group_val">max. 10 dívek</div></div><div class="info-item"><div class="il" data-i18n="info_price_lbl">Cena programu</div><div class="tiny"><span data-i18n="age_group_1">10–12 let</span>: <b>7 888 Kč</b><br><span data-i18n="age_group_2">13–15 let</span>: <b>8 888 Kč</b><br><span data-i18n="age_group_3">16–19 let</span>: <b>9 888 Kč</b></div><div class="tiny" style="margin-top:6px;color:#8b62db;font-weight:950" data-i18n="deposit_highlight">záloha pouze 1 500 Kč</div></div></div></section>
+<section class="form-shell"><div class="wrap form-layout"><div class="form-card">
+<p class="required-note" data-i18n="required_note">Pole označená * jsou povinná.</p>
+<div class="sec-label" data-i18n="sec_participant">Informace o účastnici</div><div class="row"><div class="field"><label for="f-jmeno">Jméno účastnice <span class="req">*</span></label><input id="f-jmeno" type="text" placeholder="Tereza" data-i18n-placeholder="ph_p_name" autocomplete="given-name"></div><div class="field"><label for="f-prijmeni">Příjmení účastnice <span class="req">*</span></label><input id="f-prijmeni" type="text" placeholder="Nováková" data-i18n-placeholder="ph_p_surname" autocomplete="family-name"></div></div>
+<div class="row full"><div class="field"><label for="f-datum">Věk <span class="req">*</span></label><select id="f-datum" onchange="handleAgeChange(this.value)"><option value="" disabled selected data-i18n="opt_select_age">Vyber věk…</option><option value="10 let">10 let</option><option value="11 let">11 let</option><option value="12 let">12 let</option><option value="13 let">13 let</option><option value="14 let">14 let</option><option value="15 let">15 let</option><option value="16 let">16 let</option><option value="17 let">17 let</option><option value="18 let">18 let</option><option value="19 let">19 let</option></select></div></div>
+<div class="row full"><div class="field"><label for="f-email-uc">Email účastnice</label><input id="f-email-uc" type="email" placeholder="tereza@email.cz" data-i18n-placeholder="ph_p_email" autocomplete="email"></div></div>
+<hr class="divider"><div class="sec-label" data-i18n="sec_parent">Kontakt na rodiče / zákonného zástupce</div>
+<div class="row"><div class="field"><label for="f-rodic-jmeno">Jméno rodiče <span class="req">*</span></label><input id="f-rodic-jmeno" type="text" placeholder="Jana" data-i18n-placeholder="ph_r_name" autocomplete="given-name"></div><div class="field"><label for="f-rodic-prijmeni">Příjmení rodiče <span class="req">*</span></label><input id="f-rodic-prijmeni" type="text" placeholder="Nováková" data-i18n-placeholder="ph_r_surname" autocomplete="family-name"></div></div>
+<div class="row"><div class="field"><label for="f-tel">Telefon <span class="req">*</span></label><input id="f-tel" type="tel" placeholder="+420 777 123 456" data-i18n-placeholder="ph_r_phone" autocomplete="tel"></div><div class="field"><label for="f-email">Email rodiče <span class="req">*</span></label><input id="f-email" type="email" placeholder="jana.novakova@email.cz" data-i18n-placeholder="ph_r_email" autocomplete="email"></div></div>
+<hr class="divider"><div class="sec-label" data-i18n="sec_date">Výběr termínu</div><div class="row full"><div class="field"><label for="f-termin">Preferovaný termín <span class="req">*</span></label><select id="f-termin"><option value="" disabled selected data-i18n="opt_select_term">Vyberte termín…</option></select></div></div><div class="row full"><div class="field"><label for="f-termin2">Náhradní termín, pokud bude preferovaný obsazen</label><select id="f-termin2"><option value="" disabled selected data-i18n="opt_select_term">Vyberte termín…</option></select></div></div>
+<hr class="divider"><div class="sec-label" data-i18n="sec_promo">Promo kód</div><div class="row full"><div class="field"><label for="f-promo">Máte promo kód? Zadejte ho zde</label><input id="f-promo" type="text" data-i18n-placeholder="ph_promo" placeholder="např. MAKEFUL10" autocomplete="off" style="text-transform:uppercase;"></div></div>
+<hr class="divider"><div class="sec-label" data-i18n="sec_consent">Souhlas a podmínky</div><div class="consent-row"><input type="checkbox" id="c1"><label for="c1" data-i18n="consent_text">Souhlasím se <a href="/ochrana-osobnich-udaju">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label></div>
+<div id="form-error" class="form-error-banner"></div>
+<div class="submit-row"><button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button><p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme e-mail s dalšími kroky.<br><span style="color:var(--coral);font-weight:900;">Přihlášky přijímáme do 7. června 2026.</span></p></div>
+</div></div></section></main>
+<footer><div class="wrap footer-inner"><div>© 2026 Makeful · FashionTech STEAM Program</div><div class="footer-links"><a href="/obchodni-podminky">Obchodní podmínky</a><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a><a href="mailto:hello@make-ful.com">hello@make-ful.com</a></div></div></footer>
 <script>
 /* ── DATA FOR TERMS CONFIGURATION ── */
 var termOptionsData = [
@@ -698,7 +126,7 @@ var translations = {
     field_term1: 'Preferovaný termín *', field_term2: 'Náhradní termín (pokud bude preferovaný obsazen)',
     opt_select_term: 'Vyberte termín…',
     sec_consent: 'Souhlas a podmínky',
-    consent_text: 'Souhlasím se <a href="/gdpr">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. *',
+    consent_text: 'Souhlasím se <a href="/ochrana-osobnich-udaju">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. *',
     sec_promo: 'Promo kód',
     field_promo: 'Máš promo kód? Zadej ho zde',
     ph_promo: 'např. MAKEFUL10',
@@ -738,7 +166,7 @@ var translations = {
     field_term1: 'Preferred date *', field_term2: 'Alternative date (in case the preferred session is full)',
     opt_select_term: 'Select date...',
     sec_consent: 'Consent and terms',
-    consent_text: 'I agree to the <a href="/gdpr">privacy policy</a> and <a href="/obchodni-podminky">terms and conditions</a> of Makeful. *',
+    consent_text: 'I agree to the <a href="/ochrana-osobnich-udaju">privacy policy</a> and <a href="/obchodni-podminky">terms and conditions</a> of Makeful. *',
     sec_promo: 'Promo code',
     field_promo: 'Have a promo code? Enter it here',
     ph_promo: 'e.g. MAKEFUL10',
@@ -978,5 +406,4 @@ function handleSubmit() {
 }
 </script>
 <script src="https://af56802f-0b99-4c46-9969-d78ea8a24e5e-00-1h5bm2cqgea53.kirk.replit.dev/api/widget.js?id=bd4551ad-9bf2-48b0-a98c-2341ffda8a06" async defer></script>
-</body>
-</html>
+</body></html>
