@@ -595,8 +595,13 @@
   ];
 
   const DATA_ENDPOINT = 'https://hook.eu1.make.com/hdn49k1s9quye8xbapn8k3p4auipxx1z';
-  const ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
-  const STARTED_AT = new Date().toISOString();
+  let ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+  let STARTED_AT = pragueTimestamp();
+
+  function pragueTimestamp() {
+    return new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Prague' }).replace('T', ' ');
+  }
+
 
   const state = { index: -1, answers: {}, pendingNext: null };
   const $ = (id) => document.getElementById(id);
@@ -667,7 +672,7 @@
         return 'Kapacita každého turnusu je max. 10 dívek. Na konci kvízu vám ukážeme aktuálně volná místa, abyste stihli zajistit termín včas.';
       }
       if (value.includes('probrat s dcerou')) {
-        return 'Pošleme vám shrnutí spolu s ukázkovým videem z laboratoře, ať se můžete podívat společně. Zároveň uvidíte přehled termínů pro letošní léto.';
+        return 'Pošleme vám shrnutí spolu s ukázkovým videem, ať se můžete podívat společně. Zároveň uvidíte přehled termínů pro letošní léto.';
       }
       if (value.includes('nezávazně')) {
         return 'Rádi vám zašleme nezávazné představení akademie a ukázky prací z minulých let, ať máte všechno pohromadě, až přijde čas se rozhodovat.';
@@ -701,8 +706,8 @@
       status,
       anonymous_id: ANONYMOUS_ID,
       started_at: STARTED_AT,
-      updated_at: new Date().toISOString(),
-      completed_at: status === 'lead_completed' ? new Date().toISOString() : '',
+      updated_at: pragueTimestamp(),
+      completed_at: status === 'lead_completed' ? pragueTimestamp() : '',
       source_url: window.location.href,
       email: contact.email || '',
       phone: contact.phone || '',
@@ -734,6 +739,8 @@
 
   function startQuiz() {
     localStorage.setItem('makeful_visited', '1');
+    ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+    STARTED_AT = pragueTimestamp();
     state.index = 0;
     renderQuestion();
   }
@@ -990,14 +997,14 @@
           <div class="claim-label" style="color:#128C7E;">Rychlá konzultace</div>
           
           <div class="mobile-only-block">
-            <p class="claim-text" style="font-size:14px;">Máte otázku k ubytování, stravě nebo náročnosti? Napište nám přímo přes WhatsApp. Odpovídáme obvykle do pár minut.</p>
+            <p class="claim-text" style="font-size:14px;">Máte otázku k akademii? Napište nám přímo přes WhatsApp. Odpovídáme obvykle do pár minut.</p>
             <a class="cta whatsapp" href="${waUrl}" target="_blank">Napište nám dotaz na WhatsApp →</a>
           </div>
 
           <div class="desktop-only-block" style="text-align:center;">
-            <p class="claim-text" style="font-size:14px; text-align:left;">Máte otázku k ubytování, stravě nebo náročnosti? Namiřte foťák mobilu na QR kód a napište nám na WhatsApp.</p>
+            <p class="claim-text" style="font-size:14px; text-align:left;">Máte otázku k akademii? Namiřte foťák mobilu na QR kód a napište nám na WhatsApp.</p>
             <img class="wa-qr" src="${qrUrl}" alt="WhatsApp QR kód" style="width:140px; height:140px; margin: 12px auto; display:block; border: 2px dashed #128C7E; padding: 4px; border-radius:12px; background: #fff;">
-            <a href="${waUrl}" target="_blank" style="font-size:11.5px; color:var(--muted); text-decoration:underline; font-weight:700;">Používáte na počítači WhatsApp Web? Klikněte zde</a>
+            <a href="${waUrl}" target="_blank" style="font-size:11.5px; color:var(--muted); text-decoration:underline; font-weight:700;">Jste na telefonu? Klikněte zde</a>
           </div>
 
           <a class="cta secondary" href="tel:+420735820576" style="text-align:center; margin-top:12px;">Nebo nám zavolejte: +420 735 820 576</a>

@@ -95,15 +95,16 @@
       overflow: hidden;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       margin: 0;
       font-family: Georgia, "Playfair Display", serif;
-      line-height: 1;
+      line-height: 1.1;
       letter-spacing: -.045em;
     }
 
     h1 { font-size: clamp(29px, 9vw, 38px); }
-    h2 { font-size: clamp(25px, 7.7vw, 32px); }
+    h2 { font-size: clamp(23px, 7.2vw, 29px); }
+    h3 { font-size: 19px; margin-top: 16px; margin-bottom: 8px; }
 
     .grad {
       background: linear-gradient(105deg, #6b4dff, #e35fb2, #ff806a);
@@ -113,15 +114,13 @@
     }
 
     .lead {
-      margin: 18px 0 0;
+      margin: 14px 0 0;
       color: var(--text);
       font-size: 14px;
       line-height: 1.55;
     }
 
-    .lead strong {
-      font-weight: 900;
-    }
+    .lead strong { font-weight: 900; }
 
     .sub {
       margin: 7px 0 10px;
@@ -129,8 +128,6 @@
       font-size: 12.5px;
       line-height: 1.3;
     }
-
-    .hero { display: none; }
 
     .facts {
       display: grid;
@@ -185,7 +182,7 @@
 
     .cta {
       width: 100%;
-      margin-top: 24px;
+      margin-top: 20px;
       border: 0;
       border-radius: 999px;
       padding: 13px 16px;
@@ -195,6 +192,14 @@
       font-weight: 950;
       background: linear-gradient(100deg, var(--aqua), var(--lilac), var(--pink), var(--peach));
       box-shadow: 0 12px 22px rgba(255,111,159,.22);
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cta.whatsapp {
+      background: linear-gradient(100deg, #25D366, #128C7E);
+      box-shadow: 0 12px 22px rgba(37,211,102,.22);
     }
 
     .cta.secondary {
@@ -206,7 +211,7 @@
     }
 
     .back {
-      margin-top: 6px;
+      margin-top: 12px;
       padding: 8px 0 0;
       border: 0;
       background: transparent;
@@ -217,40 +222,6 @@
     }
 
     .q-head { flex: 0 0 auto; }
-
-    .q-img {
-      height: 58px;
-      margin-bottom: 9px;
-      border-radius: 18px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 22% 70%, rgba(255,111,159,.45), transparent 25%),
-        radial-gradient(circle at 82% 25%, rgba(72,213,236,.45), transparent 28%),
-        linear-gradient(135deg, #fff0f8, #eee6ff, #ffe6d1);
-    }
-
-    .q-img::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 12px;
-      top: 10px;
-      font-size: 9.5px;
-      font-weight: 950;
-      letter-spacing: .08em;
-    }
-
-    .q-img::after {
-      content: "";
-      position: absolute;
-      right: 13px;
-      bottom: 10px;
-      width: 70px;
-      height: 39px;
-      border-radius: 12px;
-      background: #11152a;
-      transform: rotate(3deg);
-    }
 
     .answers {
       display: grid;
@@ -271,41 +242,15 @@
       color: var(--navy);
       text-align: left;
       font-size: 13.2px;
-      line-height: 1.14;
+      line-height: 1.2;
       font-weight: 850;
       cursor: pointer;
-    }
-
-    .answer small {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.15;
-      font-weight: 650;
     }
 
     .answer.selected {
       border-color: rgba(255,111,159,.55);
       background: linear-gradient(120deg, rgba(255,255,255,.94), rgba(255,240,248,.80));
     }
-
-    .yesno {
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      overflow: visible;
-    }
-
-    .yesno .answer {
-      min-height: 78px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .yn { font-size: 21px; margin-bottom: 4px; }
 
     .multi-note {
       display: none;
@@ -338,22 +283,28 @@
     .claim-text {
       margin: 0;
       color: var(--navy);
-      font-size: clamp(15.7px, 4.8vw, 18.5px);
-      line-height: 1.22;
-      letter-spacing: -.025em;
+      font-size: clamp(15px, 4.5vw, 17.5px);
+      line-height: 1.35;
+      letter-spacing: -.01em;
       font-weight: 850;
     }
 
     .claim-card .cta { margin-top: 22px; }
 
+    .lead-inline-form {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 2px dashed var(--line);
+    }
+
     label {
       display: block;
-      margin: 10px 0 5px;
+      margin: 12px 0 5px;
       font-size: 12px;
       font-weight: 850;
     }
 
-    input, select {
+    input {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -385,55 +336,34 @@
     .profile-card {
       border-radius: 20px;
       padding: 13px;
-      background:
-        radial-gradient(circle at top right, rgba(255,111,159,.18), transparent 36%),
-        linear-gradient(135deg, rgba(255,255,255,.86), rgba(246,240,255,.74));
+      background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(246,240,255,.74));
       border: 1px solid rgba(255,255,255,.82);
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 12px;
+      display: flex;
       align-items: center;
+      gap: 12px;
     }
 
     .avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
-      background:
-        radial-gradient(circle at 28% 26%, #fff 0 9%, transparent 10%),
-        radial-gradient(circle at 38% 36%, rgba(255,111,159,.42), transparent 30%),
-        radial-gradient(circle at 72% 30%, rgba(72,213,236,.42), transparent 32%),
-        linear-gradient(135deg, #ffd9ec, #dcd1ff 58%, #ffe1c7);
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ffd9ec, #dcd1ff 58%, #ffe1c7);
       box-shadow: 0 10px 22px rgba(84,55,132,.13);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .avatar::after {
-      content: "";
-      position: absolute;
-      left: 17px;
-      bottom: 10px;
-      width: 34px;
-      height: 34px;
-      border-radius: 16px 16px 10px 10px;
-      background: rgba(17,22,51,.82);
+      flex-shrink: 0;
     }
 
     .profile-name {
       display: block;
-      font-size: 17px;
-      line-height: 1.05;
+      font-size: 16px;
+      line-height: 1.1;
       font-weight: 950;
-      letter-spacing: -.025em;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     .profile-desc {
       color: var(--muted);
-      font-size: 12.2px;
-      line-height: 1.28;
-      font-weight: 680;
+      font-size: 12px;
+      line-height: 1.25;
     }
 
     .fit-score {
@@ -447,20 +377,16 @@
       border: 1px solid var(--line);
     }
 
-    .fit-score strong {
-      font-size: 13px;
-      line-height: 1.2;
-    }
+    .fit-score strong { font-size: 13px; }
 
     .score-circle {
-      width: 58px;
-      height: 58px;
+      width: 52px;
+      height: 52px;
       border-radius: 999px;
       display: grid;
       place-items: center;
-      color: white;
       font-weight: 950;
-      font-size: 16px;
+      font-size: 14px;
       background: conic-gradient(var(--pink) calc(var(--score) * 1%), rgba(17,22,51,.08) 0);
       position: relative;
     }
@@ -468,54 +394,68 @@
     .score-circle::before {
       content: "";
       position: absolute;
-      inset: 6px;
+      inset: 5px;
       border-radius: inherit;
       background: white;
     }
 
-    .score-circle span { position: relative; z-index: 1; }
+    .score-circle span { position: relative; z-index: 1; color: var(--navy); }
 
-    .next-card {
-      padding: 13px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,240,248,.88), rgba(239,232,255,.86));
-      border: 1px solid rgba(17,22,51,.08);
-      font-size: 12.8px;
-      line-height: 1.35;
-      font-weight: 760;
+    .turnusy-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .turnus-item {
+      padding: 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,.03);
+    }
+
+    .turnus-info {
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .turnus-badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(17,22,51,.06);
+      margin-left: 5px;
+    }
+
+    .turnus-item .cta {
+      margin-top: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .desktop-only-block { display: none; }
+    .mobile-only-block { display: block; }
+
+    @media (min-width: 768px) {
+      .desktop-only-block { display: block; }
+      .mobile-only-block { display: none; }
     }
 
     @media (max-height: 690px) {
-      .app { padding: 9px; }
-      .top { height: 40px; }
-      .brand-logo { width: 142px; max-width: 54vw; }
-      .card { padding: 15px; border-radius: 22px; }
-      .hero { display: none; }
-      h1 { font-size: 28px; }
-      h2 { font-size: 24px; }
-      .lead { font-size: 12.6px; line-height: 1.43; margin-top: 12px; }
-      .intro-note { font-size: 11.3px; line-height: 1.34; margin-top: 14px; padding: 10px 11px; }
-      .facts { gap: 8px; margin-top: 15px; }
-      .fact { min-height: 36px; padding: 8px 10px; font-size: 11.3px; line-height: 1.2; grid-template-columns: 22px 1fr; }
-      .fact-check { width: 22px; height: 22px; font-size: 12px; }
-      .q-img { height: 46px; margin-bottom: 7px; }
-      .sub { font-size: 11.5px; margin-bottom: 8px; }
-      .answer { min-height: 36px; padding: 8px 10px; font-size: 12.4px; }
-      .profile-card { grid-template-columns: 54px 1fr; padding: 10px; }
-      .avatar { width: 54px; height: 54px; border-radius: 17px; }
-      .profile-name { font-size: 15.5px; }
-      .profile-desc { font-size: 11.4px; }
-      .score-circle { width: 50px; height: 50px; font-size: 14px; }
-      .next-card { font-size: 11.7px; padding: 10px; }
-      .yesno .answer { min-height: 68px; }
-      .claim-card { padding: 16px; }
-      .claim-text { font-size: 15.5px; }
-      .cta { padding: 11px 14px; font-size: 14px; margin-top: 18px; }
+      .app { padding: 8px; }
+      .card { padding: 14px; border-radius: 20px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .lead { font-size: 12.5px; margin-top: 10px; }
+      .claim-text { font-size: 14px; }
+      .answer { min-height: 35px; padding: 7px 10px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="app">
   <div class="top">
@@ -528,13 +468,13 @@
   <section class="view active" id="intro">
     <div class="card">
       <h1>Is Makeful the right choice for <span class="grad">your daughter?</span></h1>
-      <p class="lead"><strong>Makeful is a summer Fashion Tech academy in Prague for girls aged 10–19.</strong> The program runs <strong>Monday to Sunday, 9 AM – 5 PM</strong>. In a welcoming girl-friendly environment, girls explore the connection between handmade fashion, digital creation, AI, and 3D printing.</p>
+      <p class="lead"><strong>Makeful is a summer Fashion Tech academy in Prague for girls aged 10–19.</strong> The program runs Monday to Sunday, 9 AM – 5 PM. In a welcoming girls-only environment, they explore the connection between handmade fashion, digital creation, AI, and 3D printing.</p>
       <div class="facts">
         <div class="fact"><span class="fact-check">✓</span><span>7 days in a creative lab</span></div>
-        <div class="fact"><span class="fact-check">✓</span><span>6 breathtaking projects</span></div>
-        <div class="fact"><span class="fact-check">✓</span><span>A welcoming girls’ community</span></div>
+        <div class="fact"><span class="fact-check">✓</span><span>45 hours of intensive hands-on creation</span></div>
+        <div class="fact"><span class="fact-check">✓</span><span>A welcoming girls-only community</span></div>
       </div>
-      <p class="intro-note">We care that every girl at Makeful feels she is in the right place. Let’s make sure the program makes sense for your daughter.</p>
+      <p class="intro-note">We care that every girl at Makeful feels she is in the right place. Let's make sure the program truly makes sense for your daughter.</p>
       <button class="cta" type="button" onclick="startQuiz()">Start the short quiz (1 min) →</button>
       <a id="academyBtn" href="./summercamp" class="cta secondary" style="display:none;text-decoration:none;text-align:center">Explore the academy →</a>
     </div>
@@ -551,8 +491,7 @@
   <section class="view" id="questionScreen">
     <div class="card">
       <div class="q-head">
-        <div id="imageSlot"></div>
-        <div id="multiNote" class="multi-note">Choose up to 3 options</div>
+        <div id="multiNote" class="multi-note">Select options</div>
         <h2 id="questionTitle"></h2>
         <p class="sub" id="questionSub"></p>
       </div>
@@ -562,43 +501,41 @@
     </div>
   </section>
 
-  <section class="view" id="leadScreen">
-    <div class="card">
-      <h2>Where should we send your recommendation?</h2>
-      <p class="lead">Based on your answers, we’ll show you whether Makeful makes sense for your daughter and what next step we recommend.</p>
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="your@email.com">
-      <label for="phone">Phone <span style="color:var(--muted);font-weight:600">optional</span></label>
-      <input id="phone" type="tel" placeholder="+420 ...">
-      <label for="preference">What would help you most?</label>
-      <select id="preference">
-        <option>Send the recommendation by email</option>
-        <option>Recommendation + option for a short consultation</option>
-        <option>Show available dates right away</option>
-      </select>
-      <button class="cta" type="button" onclick="submitLeadAndShowResult()">Show recommendation →</button>
-      <button class="back" type="button" onclick="goBack()">← Back</button>
-    </div>
-  </section>
-
   <section class="view" id="resultScreen">
-    <div class="card">
-      <div class="badge">Makeful recommendation</div>
-      <h2 id="resultTitle"></h2>
-      <p class="lead" id="resultText"></p>
+    <div class="card" style="overflow-y:auto">
+      <div class="badge">Makeful analysis</div>
+      <h2 id="resultTitle">Evaluating profile...</h2>
+
       <div id="profileOutput" class="profile-wrap"></div>
-      <button class="cta" id="resultCta" type="button" onclick="handleResultCta()">View available dates →</button>
-      <button class="cta secondary" id="resultSecondaryCta" type="button" onclick="handleResultSecondaryCta()">Message us →</button>
-      <button class="back" type="button" onclick="restartQuiz()">Retake the quiz</button>
+
+      <div class="lead-inline-form">
+        <h3 id="leadFormTitle">Where should we send your full recommendation?</h3>
+        <p class="sub" id="leadFormSub"></p>
+
+        <label for="email">Parent's email *</label>
+        <input id="email" type="email" placeholder="name@email.com" required>
+
+        <label for="phone">Parent's phone <span style="color:var(--muted);font-weight:600">(optional)</span></label>
+        <input id="phone" type="tel" placeholder="+420 ...">
+
+        <button class="cta" id="leadSubmitBtn" type="button" onclick="submitLeadForm()">Unlock next step →</button>
+      </div>
     </div>
   </section>
 
   <section class="view" id="confirmScreen">
-    <div class="claim-card">
-      <div class="claim-label" id="confirmLabel">Done</div>
-      <p class="claim-text" id="confirmText"></p>
-      <p class="sub" id="confirmPhone" style="display:none;margin-top:14px;font-size:14px;font-weight:850;color:var(--navy)"></p>
-      <button class="back" type="button" style="margin-top:18px" onclick="restartQuiz()">Retake the quiz</button>
+    <div class="card" style="overflow-y:auto">
+      <div class="badge" style="background:rgba(37,211,102,.1);color:#128C7E">Confirmation</div>
+      <h2 id="confirmTitle">Access granted</h2>
+      <p class="lead" id="confirmText"></p>
+
+      <div id="actionBlock" style="margin-top:16px;"></div>
+
+      <h3>Recommended summer sessions (2026):</h3>
+      <p class="sub">Filtered for your daughter's age group. Click to go to a pre-filled registration form.</p>
+      <div id="turnusyOutput" class="turnusy-list"></div>
+
+      <button class="back" type="button" style="margin-top:24px;" onclick="restartQuiz()">Retake the quiz</button>
     </div>
   </section>
 </main>
@@ -608,86 +545,152 @@
     {
       id: 'age',
       title: 'How old is your daughter?',
-      sub: 'The program is structured to match each girl’s age, pace, and type of projects.',
+      sub: 'We adapt the program to match each girl\'s age, pace, and type of projects.',
       type: 'single',
-      answers: ['She is not 10 yet', '10–12 years old', '13–15 years old', '16–19 years old', 'She is over 19'],
-      claim: 'We adapt the program to age. Younger girls create virtual collections and 3D accessories, while older girls work on a future vest, AI models, and a portfolio.'
+      answers: ['She is not 10 yet', '10–12 years old', '13–15 years old', '16–19 years old', 'She is over 19']
     },
     {
       id: 'interests',
       title: 'What does your daughter naturally enjoy the most?',
-      sub: 'Choose one or more areas she feels closest to — it does not have to be only fashion.',
+      sub: 'Select one or more areas she feels closest to.',
       type: 'multi',
       max: 6,
-      image: 'CREATIVITY + TECHNOLOGY',
-      answers: ['Fashion, styling, and clothing', 'Drawing, sketching, and illustration', 'Hands-on making and crafting', 'Digital creation, graphics, or video', 'AI, technology, or 3D printing', 'We are not sure yet, but she enjoys creating'],
-      claim: 'At Makeful, we connect a playful creative world with modern technologies. In the lab, girls sketch on paper, model in digital space, sew, and 3D print.'
+      answers: ['Fashion, styling and clothing', 'Drawing, sketching and illustration', 'Hands-on making and crafting', 'Digital creation, graphics or video', 'AI, technology or 3D printing', 'We are not sure yet, but she loves creating']
     },
     {
       id: 'goal',
       title: 'What would you like her to take away from the summer?',
-      sub: 'Choose up to 3 outcomes that would be most valuable to you.',
+      sub: 'Select the outcomes that would be most valuable to you.',
       type: 'multi',
       max: 3,
-      answers: ['Greater self-confidence', 'New creative and technological skills', 'Finished projects she can be proud of', 'Great memories and new friends', 'A meaningful week — an alternative to a traditional camp'],
-      claim: 'Makeful is not a traditional camp, but a creative-technological academy. We care that girls leave with useful skills, finished projects, a certificate, and the feeling that their ideas matter.'
+      answers: ['Greater self-confidence', 'New creative and technological skills', 'Finished projects she can be proud of', 'Great memories and new friends', 'A meaningful week, an alternative to a traditional camp']
     },
     {
       id: 'price',
       title: 'How do you look at the price of a program like this?',
-      sub: 'This question helps us present the value of the program in the right way.',
+      sub: 'This helps us show the value of the program in the right way.',
       type: 'single',
-      answers: ['We are mainly looking for quality and real value', 'Price matters, but we are happy to pay for a good program', 'We need to know exactly what is included in the price', 'We are interested in using employee benefits (Benefit Plus, Edenred...)', 'Price will be the main deciding factor'],
-      claim: 'The price covers absolutely everything, from materials and equipment to lunches, as well as the T-shirt and shoes we will customize. Bonus lectures by world-class designers are also included.'
+      answers: ['We are mainly looking for quality and real value', 'Price matters, but we are happy to pay for a good program', 'We need to know exactly what is included in the price', 'We are interested in using employee benefits (Benefit Plus, Edenred...)', 'Price will be the main deciding factor']
     },
     {
       id: 'timing',
-      title: 'How soon would you like to be clear?',
-      sub: 'Each session has only a small capacity.',
+      title: 'How soon would you like to have things sorted?',
+      sub: 'Each session has limited capacity.',
       type: 'single',
-      answers: ['We want to choose a date as soon as possible', 'This week / Within a few weeks', 'We need to discuss it with our daughter first', 'We are just gathering information with no commitment'],
-      claim: 'Each of our sessions has only 10 available spots so our mentors can give every girl maximum individual attention. Capacity fills up quickly.'
+      answers: ['We want to choose a date as soon as possible', 'This week / Within a few weeks', 'We need to discuss it with our daughter first', 'We are just gathering information, no commitment yet']
     }
   ];
 
-  const DATA_ENDPOINT = 'https://hook.eu1.make.com/letukt291j5ya6tplmm1avsfwpgin1d9'; // Make.com webhook. Make will create/update one Excel row by anonymous_id.
-  const ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
-  const STARTED_AT = new Date().toISOString();
+  const allTurnusy = [
+    { id: 1, date: '29 Jun – 5 Jul 2026',  lang: 'in Czech',    age: '16 – 19 years', cleanAge: '16–19 years', termin: '16-19 let · 29. 6. - 5. 7. 2026 · CZ' },
+    { id: 2, date: '6 – 12 Jul 2026',      lang: 'in Czech',    age: '10 – 12 years', cleanAge: '10–12 years', termin: '10-12 let · 6. 7. - 12. 7. 2026 · CZ' },
+    { id: 3, date: '13 – 19 Jul 2026',     lang: 'in Czech',    age: '13 – 15 years', cleanAge: '13–15 years', termin: '13-15 let · 13. 7. - 19. 7. 2026 · CZ' },
+    { id: 4, date: '20 – 26 Jul 2026',     lang: 'in English',  age: '13 – 15 years', cleanAge: '13–15 years', termin: '13-15 let · 20. 7. - 26. 7. 2026 · ENG' },
+    { id: 5, date: '27 Jul – 2 Aug 2026',  lang: 'in Czech',    age: '10 – 12 years', cleanAge: '10–12 years', termin: '10-12 let · 27. 7. - 2. 8. 2026 · CZ' },
+    { id: 6, date: '3 – 9 Aug 2026',       lang: 'in Czech',    age: '13 – 15 years', cleanAge: '13–15 years', termin: '13-15 let · 3. 8. - 9. 8. 2026 · CZ' },
+    { id: 7, date: '10 – 16 Aug 2026',     lang: 'in English',  age: '10 – 12 years', cleanAge: '10–12 years', termin: '10-12 let · 10. 8. - 16. 8. 2026 · ENG' },
+    { id: 8, date: '17 – 23 Aug 2026',     lang: 'in English',  age: '16 – 19 years', cleanAge: '16–19 years', termin: '16-19 let · 17. 8. - 23. 8. 2026 · ENG' },
+    { id: 9, date: '24 – 30 Aug 2026',     lang: 'in English',  age: '16 – 19 years', cleanAge: '16–19 years', termin: '16-19 let · 24. 8. - 30. 8. 2026 · ENG' }
+  ];
+
+  const DATA_ENDPOINT = 'https://hook.eu1.make.com/letukt291j5ya6tplmm1avsfwpgin1d9';
+  let ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+  let STARTED_AT = pragueTimestamp();
+
+  function pragueTimestamp() {
+    return new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Prague' }).replace('T', ' ');
+  }
+
 
   const state = { index: -1, answers: {}, pendingNext: null };
   const $ = (id) => document.getElementById(id);
-  const views = {
-    intro: $('intro'),
-    question: $('questionScreen'),
-    claim: $('claimScreen'),
-    lead: $('leadScreen'),
-    result: $('resultScreen'),
-    confirm: $('confirmScreen')
-  };
 
-
-
-
+  function getDynamicClaim(questionId, value) {
+    if (questionId === 'age') {
+      if (value.includes('not 10') || value.includes('over 19')) {
+        return 'Makeful is designed for girls aged 10–19. Since your daughter is outside this range, we will assess her participation individually to make sure the program is fully beneficial for her.';
+      }
+      if (value.includes('10–12')) {
+        return 'Perfect age! Younger girls create mainly in a playful way. They learn digital illustration basics, animate their own virtual models, and 3D print accessories. All guided by lovely patient mentors.';
+      }
+      if (value.includes('13–15')) {
+        return 'Teenagers love our program! At this age, girls connect fashion with technology, design virtual collections, work with AI, and create real design pieces that build their creative confidence.';
+      }
+      if (value.includes('16–19')) {
+        return 'Makeful has a huge impact for ladies on high schools. They work on complex projects (e.g. the vest of the future), go through the design process from A to Z, and take home professional portfolio outputs for future studies or a career.';
+      }
+    }
+    if (questionId === 'interests') {
+      const vals = Array.isArray(value) ? value : [value];
+      const hasTraditional = vals.some(v => v.includes('Fashion') || v.includes('Drawing') || v.includes('Hands-on'));
+      const hasTech = vals.some(v => v.includes('Digital') || v.includes('AI') || v.includes('3D'));
+      if (hasTraditional && hasTech) {
+        return 'Your daughter combines the best of both worlds. At Makeful we connect handmade creation with digital tools. She will learn to take an idea from paper into 3D space and refine it with AI.';
+      }
+      if (hasTraditional) {
+        return 'We take traditional making into the 21st century. Your daughter will try sketching on paper, then immediately transfer her idea into 3D space and refine it digitally. A natural bridge from drawing to modern skills.';
+      }
+      if (hasTech) {
+        return 'At Makeful, technology is not about passively staring at a screen, it is a tool for real creation. We will teach her to use AI as a creative partner and 3D printing for fashion design.';
+      }
+      return 'Makeful is an experimental lab. Over 7 days she will try 6 different projects, from sewing to AI. Your daughter will discover what she enjoys most and find her own direction.';
+    }
+    if (questionId === 'goal') {
+      const vals = Array.isArray(value) ? value : [value];
+      const wantsConfidence = vals.some(v => v.includes('confidence'));
+      const wantsSkills = vals.some(v => v.includes('skills') || v.includes('projects'));
+      const wantsFriends = vals.some(v => v.includes('friends') || v.includes('memories') || v.includes('alternative'));
+      if (wantsConfidence && wantsSkills) {
+        return 'Confidence and skills go hand in hand with us. In a safe girls-only environment without competition, girls create real projects: customised shoes, a T-shirt, and a digital collection. Every success builds their self-belief.';
+      }
+      if (wantsConfidence) {
+        return 'Confidence is our main goal. Makeful is a girls-only, safe environment free from competition and criticism. Mentors guide every girl so she experiences success and realises her ideas have real value.';
+      }
+      if (wantsSkills) {
+        return 'Over 7 days girls spend 45 hours in intensive creation. She will take home not just a diploma, but real hand-customised shoes, a T-shirt and a digital portfolio, things she will be genuinely proud of.';
+      }
+      if (wantsFriends) {
+        return 'There is no room for boredom. We build a community of girls with shared interests: shared lunches, a relaxed atmosphere, and an inspiring environment where friendships form that last well beyond the summer.';
+      }
+      return 'Makeful is a place where every girl takes away something special: new skills, confidence, and friendships. She will experience 7 beautiful summer days full of creation and unforgettable moments.';
+    }
+    if (questionId === 'price') {
+      if (value.includes('quality') || value.includes('happy to pay')) {
+        return 'Every investment shows in the details. We work in small groups (max. 10 girls per session) with individual mentor attention, top-of-the-line hardware, and premium materials. You will see the results for yourself.';
+      }
+      if (value.includes('exactly')) {
+        return 'The price is final and transparent. It covers 45 hours of premium program, hot lunches, snacks, drinks, access to cutting-edge technology, and all materials: including new shoes and a T-shirt your daughter will customise and take home.';
+      }
+      if (value.includes('benefits')) {
+        return 'Payments are easy. Makeful can be fully or partially paid via Benefit Plus, Edenred, Pluxee, or Up Benefits. We can also issue an invoice for an employer FKSP fund. We will help you arrange everything.';
+      }
+      return 'We believe talent should never be limited by finances. Because price is a key factor for you, we are happy to reserve a 900 CZK scholarship for your daughter. Details will appear at the end of the quiz.';
+    }
+    if (questionId === 'timing') {
+      if (value.includes('as soon as possible') || value.includes('This week')) {
+        return 'Each session has a maximum of 10 girls. At the end of the quiz we will show you currently available spots so you can secure a place in time.';
+      }
+      if (value.includes('discuss it')) {
+        return 'Understood. We will send you a summary along with a short video so you can watch it together with your daughter. You will also see an overview of this summer\'s sessions.';
+      }
+      if (value.includes('gathering information')) {
+        return 'No pressure at all. We will send you a no-commitment introduction to the Makeful academy and samples of work from previous years, so you have everything ready when the time comes to decide.';
+      }
+    }
+    return '';
+  }
 
   async function sendToDataEndpoint(eventName, row) {
     if (!DATA_ENDPOINT) return;
-
     try {
       await fetch(DATA_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          event_name: eventName,
-          ...row
-        })
+        body: JSON.stringify({ event_name: eventName, ...row })
       });
-    } catch (error) {
-      console.warn('Makeful quiz data was not sent:', error);
-    }
+    } catch (e) { console.warn(e); }
   }
 
-
-  // Serial send queue — guarantees session_update never arrives after lead_completed
   let _sendQueue = Promise.resolve();
   function queueSend(eventName, row) {
     _sendQueue = _sendQueue.then(() => sendToDataEndpoint(eventName, row));
@@ -697,65 +700,45 @@
     const arr = state.answers[id]; return Array.isArray(arr) ? arr.join(', ') : (arr || '');
   }
 
-  function buildExcelRow(status = 'anonymous_in_progress', result = {}, contact = {}) {
-
+  function buildExcelRow(status = 'anonymous_in_progress', contact = {}) {
     return {
       status,
       anonymous_id: ANONYMOUS_ID,
       started_at: STARTED_AT,
-      updated_at: new Date().toISOString(),
-      completed_at: status === 'lead_completed' ? new Date().toISOString() : '',
+      updated_at: pragueTimestamp(),
+      completed_at: status === 'lead_completed' ? pragueTimestamp() : '',
       source_url: window.location.href,
       language: 'en',
-      user_agent: navigator.userAgent,
-
       email: contact.email || '',
       phone: contact.phone || '',
-      contact_preference: contact.preference || '',
-
       q_age: getAnswer('age'),
       q_interests: getAnswer('interests'),
-      q_creative_tech: getAnswer('creative_tech'),
       q_goal: getAnswer('goal'),
-      q_experience: getAnswer('experience'),
       q_price: getAnswer('price'),
       q_timing: getAnswer('timing'),
-
-      // Kept for compatibility with the older Excel / Make scenario.
-      q_relationship: getAnswer('creative_tech'),
-      q_program_type: '',
-      q_tech: getAnswer('creative_tech'),
-      q_future: '',
-      q_blocker: '',
-
-      result_profile: (result.profile && result.profile.name) || '',
-      result_title: (result.profile && result.profile.title) || '',
-      result_fit_percent: result.fit || '',
-      result_cta: (result.profile && result.profile.cta) || '',
-      customer_segment: result.segment || ''
+      customer_segment: state.computedMakeSegment || 'MID',
+      result_profile: state.computedProfileName || '',
+      result_title: state.computedProfileName || '',
+      result_fit_percent: state.computedFitPct || '',
+      result_cta: state.computedGtmSegment || ''
     };
   }
 
-  function trackAnswer(question, value) {
-    queueSend('session_update', buildExcelRow('anonymous_in_progress'));
-  }
+  function setView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    $(id).classList.add('active');
 
-  function setView(name) {
-    Object.values(views).forEach(view => view.classList.remove('active'));
-    views[name].classList.add('active');
-    updateProgress(name);
-  }
-
-  function updateProgress(name) {
     let pct = 0;
-    if (name === 'lead') pct = 96;
-    else if (name === 'result') pct = 100;
-    else if (name !== 'intro') pct = Math.max(5, ((state.index + 1) / questions.length) * 92);
+    if (id === 'resultScreen') pct = 90;
+    else if (id === 'confirmScreen') pct = 100;
+    else if (id !== 'intro') pct = Math.max(5, ((state.index + 1) / questions.length) * 85);
     $('progress').style.width = pct + '%';
   }
 
   function startQuiz() {
     localStorage.setItem('makeful_visited', '1');
+    ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+    STARTED_AT = pragueTimestamp();
     state.index = 0;
     renderQuestion();
   }
@@ -765,36 +748,26 @@
     $('questionTitle').textContent = q.title;
     $('questionSub').textContent = q.sub || '';
     $('answers').innerHTML = '';
-    $('answers').className = 'answers' + (q.type === 'yesno' ? ' yesno' : '');
     $('multiNext').style.display = q.type === 'multi' ? 'block' : 'none';
     $('multiNote').style.display = q.type === 'multi' ? 'block' : 'none';
-    if (q.type === 'multi') {
-      $('multiNote').textContent = q.max && q.max < q.answers.length ? `Choose up to ${q.max} options` : 'Choose one or more options';
-    }
-    $('imageSlot').innerHTML = q.image ? `<div class="q-img" data-label="${q.image}"></div>` : '';
 
     const selected = state.answers[q.id] || [];
-    q.answers.forEach(item => {
-      const a = typeof item === 'string' ? { label: item } : item;
+    q.answers.forEach(val => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'answer';
-      btn.innerHTML = q.type === 'yesno'
-        ? `<span class="yn">${a.icon || '✓'}</span>${a.label}<small>${a.detail || ''}</small>`
-        : a.label;
-      if (selected.includes(a.label)) btn.classList.add('selected');
-      btn.addEventListener('click', () => chooseAnswer(q, a.label, btn));
+      btn.className = 'answer' + (selected.includes(val) ? ' selected' : '');
+      btn.textContent = val;
+      btn.addEventListener('click', () => chooseAnswer(q, val, btn));
       $('answers').appendChild(btn);
     });
-
-    setView('question');
+    setView('questionScreen');
   }
 
   function chooseAnswer(q, value, btn) {
     if (q.type === 'multi') {
       let arr = state.answers[q.id] || [];
       if (arr.includes(value)) {
-        arr = arr.filter(item => item !== value);
+        arr = arr.filter(i => i !== value);
         btn.classList.remove('selected');
       } else {
         if (arr.length >= (q.max || 3)) return;
@@ -802,31 +775,42 @@
         btn.classList.add('selected');
       }
       state.answers[q.id] = arr;
-      trackAnswer(q, arr.join(', '));
+      queueSend('session_update', buildExcelRow('anonymous_in_progress'));
       return;
     }
 
     state.answers[q.id] = [value];
-    trackAnswer(q, value);
+    queueSend('session_update', buildExcelRow('anonymous_in_progress'));
     btn.classList.add('selected');
-    window.setTimeout(() => showClaim(q.claim), 80);
+    setTimeout(() => {
+      const claim = getDynamicClaim(q.id, value);
+      state.pendingNext = state.index + 1;
+      if (claim) {
+        $('claimText').textContent = claim;
+        setView('claimScreen');
+      } else {
+        continueAfterClaim();
+      }
+    }, 80);
   }
 
   function submitMulti() {
     const q = questions[state.index];
-    if ((state.answers[q.id] || []).length === 0) return;
-    showClaim(q.claim);
-  }
-
-  function showClaim(text) {
-    $('claimText').textContent = text;
+    const selected = state.answers[q.id] || [];
+    if (selected.length === 0) return;
+    const claim = getDynamicClaim(q.id, selected);
     state.pendingNext = state.index + 1;
-    setView('claim');
+    if (claim) {
+      $('claimText').textContent = claim;
+      setView('claimScreen');
+    } else {
+      continueAfterClaim();
+    }
   }
 
   function continueAfterClaim() {
     if (state.pendingNext >= questions.length) {
-      setView('lead');
+      calculateEvaluationAndShow();
       return;
     }
     state.index = state.pendingNext;
@@ -834,203 +818,227 @@
   }
 
   function goBack() {
-    if (views.lead.classList.contains('active')) {
-      state.index = questions.length - 1;
-      renderQuestion();
-      return;
-    }
-    if (state.index <= 0) {
-      setView('intro');
-      return;
-    }
+    if (state.index <= 0) { setView('intro'); return; }
     state.index -= 1;
     renderQuestion();
   }
 
-  function flatAnswers() {
-    return Object.values(state.answers).flat();
-  }
+  function calculateEvaluationAndShow() {
+    const age = getAnswer('age');
+    const price = getAnswer('price');
+    const timing = getAnswer('timing');
 
-  function has(text) {
-    return flatAnswers().some(value => value.includes(text));
-  }
+    let gtmSegment = 'MOF_SONDUJE';
+    let makeSegment = 'MID';
 
-  function profileFromAnswers() {
-    const hasAny = (...parts) => parts.some(part => has(part));
+    const isUnqualified = age.includes('not 10') || age.includes('over 19');
+    const isHotTiming = timing.includes('as soon as possible') || timing.includes('This week');
+    const isPriceSensitive = price.includes('exactly') || price.includes('benefits') || price.includes('deciding factor');
 
-    const scores = {
-      fashion: 50,
-      digital: 45,
-      craft: 48,
-      confidence: 46,
-      portfolio: 42
-    };
-
-    if (hasAny('Fashion', 'styling', 'clothing')) scores.fashion += 28;
-    if (hasAny('Drawing', 'illustration')) { scores.fashion += 14; scores.portfolio += 12; }
-    if (hasAny('Hands-on', 'crafting')) scores.craft += 28;
-    if (hasAny('Digital', 'AI', 'technology', '3D printing')) scores.digital += 30;
-    if (hasAny('Greater self-confidence', 'lacks confidence')) scores.confidence += 28;
-    if (hasAny('Portfolio', 'admissions', 'creative direction', 'design')) scores.portfolio += 32;
-    if (hasAny('Finished projects', 'New creative')) scores.craft += 12;
-    if (hasAny('technology', 'AI')) scores.digital += 12;
-    if (hasAny('support her')) scores.confidence += 12;
-
-    Object.keys(scores).forEach(key => scores[key] = Math.min(96, scores[key]));
-
-    let profile = {
-      name: 'Creative Explorer',
-      title: 'Your daughter would probably feel at home with us.',
-      desc: 'Makeful can be a safe space for her to try new things, discover her own style, and gradually gain confidence in creating.',
-      next: 'Makeful can help her grow by guiding her from inspiration through design to a finished project. She gets space to create at her own pace, but she will not be on her own.',
-      cta: 'Choose a suitable date →'
-    };
-
-    if (scores.portfolio >= 68 || hasAny('Portfolio', 'admissions', 'design')) {
-      profile = {
-        name: 'Future Portfolio Creator',
-        title: 'Your daughter could grow significantly at Makeful.',
-        desc: 'For this type of girl, the value is not only the experience, but also concrete outcomes, her own creative voice, and work she can continue to show.',
-        next: 'Makeful can move her forward in presenting her work: she will create fashion projects, digital outputs, and a personal portfolio that can become her first stronger showcase.',
-        cta: 'Choose a date for her age →'
-      };
-    } else if (scores.digital >= 70) {
-      profile = {
-        name: 'Digital Fashion Creator',
-        title: 'Your daughter is close to the fashion-tech world.',
-        desc: 'Digital creation, AI, and technology can be a natural path to her own creativity — especially when connected with fashion, visuals, and materials.',
-        next: 'Makeful can develop her through AI models, virtual collections, 3D designs, and projects where technology is not theory, but a tool for creativity.',
-        cta: 'Explore the fashion-tech program →'
-      };
-    } else if (scores.craft >= 70 || hasAny('Hands-on')) {
-      profile = {
-        name: 'Fashion Experimenter',
-        title: 'Your daughter could feel completely in her element with us.',
-        desc: 'This is the profile of a girl who may love working with materials, trying new methods, and seeing an idea turn into a real fashion piece.',
-        next: 'Makeful can develop her through 3D patches, customizing a T-shirt and shoes, working with materials, and connecting handmade fashion with digital design.',
-        cta: 'Choose a creative session →'
-      };
-    } else if (scores.confidence >= 68) {
-      profile = {
-        name: 'Gentle Creative Soul',
-        title: 'Your daughter could fit beautifully with us.',
-        desc: 'For this profile, a safe environment, kind guidance, and the feeling that her ideas matter are especially important.',
-        next: 'Makeful can develop her in a small group where she receives individual support, time, and space to create without pressure to be perfect.',
-        cta: 'Get a recommended date →'
-      };
-    } else if (scores.fashion >= 68) {
-      profile = {
-        name: 'Fashion Visionary',
-        title: 'Your daughter is very close to what Makeful is about.',
-        desc: 'Fashion, style, and visual creation are exactly the areas that can connect beautifully with the digital world at Makeful. Here, a fashion idea becomes both a real and digital project.',
-        next: 'Makeful can develop her through fashion sketches, styling, virtual collections, 3D accessories, and a final presentation of her own idea.',
-        cta: 'Choose a suitable date →'
-      };
+    if (isUnqualified) {
+      gtmSegment = 'LOW';
+      makeSegment = 'LOW';
+    } else if (isHotTiming && !isPriceSensitive) {
+      gtmSegment = 'BOF_HOT';
+      makeSegment = 'HIGH';
+    } else if (isHotTiming && isPriceSensitive) {
+      gtmSegment = 'BOF_CENA';
+      makeSegment = 'HIGH';
+    } else if (timing.includes('discuss it')) {
+      gtmSegment = 'MOF_PROBRAT';
+      makeSegment = 'MID';
+    } else if (timing.includes('gathering information')) {
+      gtmSegment = 'MOF_SONDUJE';
+      makeSegment = 'MID';
+    } else {
+      gtmSegment = 'LOW';
+      makeSegment = 'LOW';
     }
 
-    if (hasAny('not 10 yet', 'over 19')) {
-      profile = {
-        name: 'Individual Recommendation',
-        title: 'Let’s first check whether Makeful is the right step.',
-        desc: 'Makeful is designed mainly for girls aged 10–19. If your daughter is outside this age range, it is better to briefly assess the fit individually.',
-        next: 'We will be happy to check the age, pace, and suitability of the program with you without any pressure to register.',
-        cta: 'Ask a question →'
-      };
-    } else if (hasAny('consultation', 'Price', 'date', 'Prague', 'enjoy it', 'experience')) {
-      profile.next += ' At the same time, it makes sense to clarify practical questions or uncertainties first, so registration feels like a good decision for both you and her.';
-      if (hasAny('consultation')) profile.cta = 'I would like advice →';
-    }
+    state.computedGtmSegment = gtmSegment;
+    state.computedMakeSegment = makeSegment;
 
-    const fit = hasAny('not 10 yet', 'over 19') ? 58 : Math.min(96, Math.round((scores.fashion + scores.digital + scores.craft + scores.confidence + scores.portfolio) / 5 + 10));
-    return { profile, scores, fit };
-  }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'quiz_evaluated',
+      anonymous_id: ANONYMOUS_ID,
+      segment: gtmSegment,
+      age_group: age,
+      price_bracket: price
+    });
 
-  function fitLabel(score, profileName) {
-    if (profileName === 'Individual Recommendation') return 'We recommend briefly checking the program fit personally first.';
-    if (score >= 88) return 'The program looks like a very good fit for her.';
-    if (score >= 78) return 'The program probably makes a lot of sense for her.';
-    return 'The program could be a good creative impulse, especially if she is drawn to discovering new things.';
-  }
+    let profileName = 'Creative Visionary';
+    let fitPct = 94;
+    if (age.includes('10–12')) profileName = 'Promising Creator';
+    if (age.includes('13–15')) profileName = 'Creative Visionary';
+    if (age.includes('16–19')) profileName = 'Future Designer';
+    if (isUnqualified) { profileName = 'Individual Profile'; fitPct = 75; }
 
-  function getSegment(readyToBook, needsConsultation, isIndividual) {
-    if (isIndividual) return 'LOW';
-    if (needsConsultation) return 'MID';
-    if (readyToBook) return 'HIGH';
-    return 'MID';
-  }
+    state.computedProfileName = profileName;
+    state.computedFitPct = fitPct;
 
-  async function submitLeadAndShowResult() {
-    const emailInput = $('email');
-    if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
-      emailInput.focus();
-      emailInput.style.borderColor = 'var(--pink)';
-      emailInput.placeholder = 'Please enter a valid email';
-      setTimeout(() => { emailInput.style.borderColor = ''; }, 2000);
-      return;
-    }
-
-    const result = profileFromAnswers();
-    const preference = $('preference').value;
-    const readyToBook = has('as soon as possible') || has('This week') || preference.includes('right away');
-    const needsConsultation = has('consultation') || preference.includes('consultation') || result.profile.name === 'Individual Recommendation';
-    const isIndividual = result.profile.name === 'Individual Recommendation';
-    const segment = getSegment(readyToBook, needsConsultation, isIndividual);
-    result.segment = segment;
-
-    const contact = {
-      email: $('email').value.trim(),
-      phone: $('phone') ? $('phone').value.trim() : '',
-      preference
-    };
-
-    await _sendQueue;
-    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', result, contact));
-    showResult(result);
-  }
-
-  function showResult(precomputedResult) {
-    const result = precomputedResult || profileFromAnswers();
-    const profile = result.profile;
-
-    $('resultTitle').textContent = profile.title;
-    $('resultText').textContent = profile.desc;
-    $('resultCta').textContent = 'View available dates →';
-    $('resultSecondaryCta').textContent = 'Message us →';
+    $('resultTitle').innerHTML = `Your daughter matches the profile: <span class="grad">${profileName}</span>`;
 
     $('profileOutput').innerHTML = `
       <div class="profile-card">
-        <div class="avatar" aria-hidden="true"></div>
+        <div class="avatar"></div>
         <div>
-          <span class="profile-name">${profile.name}</span>
-          <div class="profile-desc">Your daughter’s creative profile</div>
+          <span class="profile-name">${profileName}</span>
+          <div class="profile-desc">The program composition matches her strengths.</div>
         </div>
       </div>
       <div class="fit-score">
         <div>
-          <strong>Program fit</strong>
-          <div class="profile-desc">${fitLabel(result.fit, profile.name)}</div>
+          <strong>Overall program fit</strong>
+          <div class="profile-desc">${isUnqualified ? 'Makeful is designed for girls aged 10–19. We are happy to discuss your daughter\'s age and options individually.' : 'Makeful will be a great creative impulse for her. In a girls-only environment without competition, she will gain confidence in her ideas.'}</div>
         </div>
-        <div class="score-circle" style="--score:${result.fit}"><span>${result.fit}%</span></div>
+        <div class="score-circle" style="--score:${fitPct}"><span>${fitPct}%</span></div>
       </div>
-      <div class="next-card"><strong>How Makeful can help her grow</strong><br>${profile.next}</div>
     `;
 
-    setView('result');
+    const cleanAgeStr = age.replace(' years old', '').replace(' years', '');
+
+    let formTitle = 'Where should we send the complete analysis?';
+    let formSub = 'Enter your contact and we will immediately unlock the current available sessions.';
+    let btnText = 'Unlock available sessions →';
+
+    if (gtmSegment === 'BOF_CENA') {
+      formTitle = '🎁 We have activated a 900 CZK scholarship for you!';
+      formSub = `Because you want to choose a date as soon as possible and capacity is limited to max. 10 girls, enter your email to immediately unlock available spots for age ${cleanAgeStr}. We will also send you information on how to get additional support for the program.`;
+      btnText = 'Apply scholarship and get academy info →';
+    } else if (gtmSegment === 'BOF_HOT') {
+      formTitle = '🚨 Summer 2026 spots are filling up fast.';
+      formSub = `Since you want clarity as soon as possible, enter your email and we will send you all the information about the academy so you can make the best decision. We will also show you currently available dates for age ${cleanAgeStr}.`;
+      btnText = 'Get info and check available spots →';
+    } else if (gtmSegment === 'MOF_PROBRAT') {
+      formTitle = '🎬 Show Makeful to your daughter.';
+      formSub = 'Enter your email and we will immediately send you this assessment with info about our academy including a short video that you can watch together with your daughter. We will also show you an overview of summer sessions.';
+      btnText = 'Get materials and show sessions →';
+    } else if (gtmSegment === 'MOF_SONDUJE') {
+      formTitle = '📩 Save the information for later.';
+      formSub = `We respect that you are just exploring for now. We will send you a no-commitment introduction to the Makeful academy for age ${cleanAgeStr} with a short video, that you can watch together with your daughter.`;
+      btnText = 'Send no-commitment info by email →';
+    } else if (gtmSegment === 'LOW') {
+      formTitle = 'Let\'s first check whether Makeful is the right step.';
+      formSub = 'Makeful is primarily designed for girls aged 10–19. Enter your email and we will assess your daughter\'s participation individually to make sure the program is fully beneficial and manageable for her.';
+      btnText = 'Submit for individual assessment →';
+    }
+
+    $('leadFormTitle').innerHTML = formTitle;
+    $('leadFormSub').innerHTML = formSub;
+    $('leadSubmitBtn').textContent = btnText;
+    state.computedBtnText = btnText;
+
+    setView('resultScreen');
   }
 
-  function handleResultCta() {
-    $('confirmLabel').textContent = 'Email on its way 📩';
-    $('confirmText').textContent = 'We have sent you an email with current dates and all the information. Just open it and choose.';
-    $('confirmPhone').style.display = 'none';
-    setView('confirm');
+  async function submitLeadForm() {
+    const em = $('email').value.trim();
+    const ph = $('phone').value.trim();
+
+    if (!em || !em.includes('@')) {
+      $('email').focus();
+      $('email').style.borderColor = 'var(--pink)';
+      return;
+    }
+
+    const contact = { email: em, phone: ph };
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'lead_submitted',
+      email: em,
+      phone: ph
+    });
+
+    await _sendQueue;
+    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', contact));
+
+    renderFinalActionPage(em, ph);
   }
 
-  function handleResultSecondaryCta() {
-    $('confirmLabel').textContent = 'We will be happy to answer 📩';
-    $('confirmText').textContent = 'We have sent you an email with all the important information. Just reply with your question and we will get back to you as soon as possible.';
-    $('confirmPhone').textContent = 'You can also call us at 735 820 576.';
-    $('confirmPhone').style.display = 'block';
-    setView('confirm');
+  function renderFinalActionPage(email, phone) {
+    const gtmSegment = state.computedGtmSegment;
+    const age = getAnswer('age');
+
+    let confirmTitle = 'Access unlocked 📩';
+    let confirmText = `We have just sent the complete analysis and materials to <strong>${email}</strong>.`;
+    let actionHtml = '';
+
+    if (gtmSegment === 'BOF_CENA') {
+      confirmTitle = 'Everything is in your inbox! Scholarship activated.';
+      confirmText = `We sent you confirmation of the <strong>900 CZK scholarship</strong> and instructions on how to pay for the academy via benefits (Pluxee, Benefit Plus, Edenred, FKSP). You can choose your session below.`;
+    } else if (gtmSegment === 'BOF_HOT') {
+      confirmTitle = 'Details are on their way to your email.';
+      confirmText = 'Below you can see the current availability for your daughter\'s age group. We recommend securing a spot as soon as possible.';
+    } else if (gtmSegment === 'LOW') {
+      confirmTitle = 'Thank you! We have noted your request.';
+      confirmText = `We have sent details about the individual age assessment to <strong>${email}</strong>. We will get back to you personally as soon as possible.`;
+      actionHtml = `
+        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
+          <div class="claim-label" style="color:#128C7E;">Individual consultation</div>
+          <p class="claim-text" style="font-size:14px;">Would you like to discuss your daughter's age and options right away? Write to us on WhatsApp.</p>
+          <a class="cta whatsapp" href="https://wa.me/420735820576?text=${encodeURIComponent('Hello, my daughter is outside the standard Makeful age limit and I would like to ask about camp options...')}" target="_blank">Write to us on WhatsApp →</a>
+          <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Call us: +420 735 820 576</a>
+        </div>
+      `;
+    } else {
+      const waText = 'Hello, I have gone through the Makeful quiz and I would like to ask about the summer camp for my daughter...';
+      const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(waUrl)}`;
+
+      actionHtml = `
+        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
+          <div class="claim-label" style="color:#128C7E;">Quick consultation</div>
+
+          <div class="mobile-only-block">
+            <p class="claim-text" style="font-size:14px;">Have a question about the academy? Write to us on WhatsApp. We usually reply within a few minutes.</p>
+            <a class="cta whatsapp" href="${waUrl}" target="_blank">Send us a question on WhatsApp →</a>
+          </div>
+
+          <div class="desktop-only-block" style="text-align:center;">
+            <p class="claim-text" style="font-size:14px; text-align:left;">Have a question about the academy? Point your phone camera at the QR code and write to us on WhatsApp.</p>
+            <img class="wa-qr" src="${qrUrl}" alt="WhatsApp QR code" style="width:140px; height:140px; margin: 12px auto; display:block; border: 2px dashed #128C7E; padding: 4px; border-radius:12px; background: #fff;">
+            <a href="${waUrl}" target="_blank" style="font-size:11.5px; color:var(--muted); text-decoration:underline; font-weight:700;">On your phone? Click here</a>
+          </div>
+
+          <a class="cta secondary" href="tel:+420735820576" style="text-align:center; margin-top:12px;">Or call us: +420 735 820 576</a>
+        </div>
+      `;
+    }
+
+    $('confirmTitle').textContent = confirmTitle;
+    $('confirmText').innerHTML = confirmText;
+    $('actionBlock').innerHTML = actionHtml;
+
+    let matchedAgeGroup = '13 – 15 years';
+    if (age.includes('10–12')) matchedAgeGroup = '10 – 12 years';
+    if (age.includes('16–19')) matchedAgeGroup = '16 – 19 years';
+
+    const filtered = allTurnusy.filter(t => {
+      const ageMatch = age.includes('not 10') || age.includes('over 19') ? true : t.age === matchedAgeGroup;
+      return ageMatch && t.lang === 'in English';
+    });
+
+    $('turnusyOutput').innerHTML = '';
+    filtered.forEach(t => {
+      const item = document.createElement('div');
+      item.className = 'turnus-item';
+
+      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}&language=en`;
+
+      item.innerHTML = `
+        <div class="turnus-info">
+          <strong>${t.date}</strong>
+          <span class="turnus-badge">${t.lang}</span>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Age group: ${t.age}</div>
+        </div>
+        <a class="cta" href="${regUrl}" target="_blank">Reserve a spot for this session →</a>
+      `;
+      $('turnusyOutput').appendChild(item);
+    });
+
+    setView('confirmScreen');
   }
 
   // Returning visitor detection
