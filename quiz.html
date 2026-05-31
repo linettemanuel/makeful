@@ -809,6 +809,11 @@
   }
 
   function continueAfterClaim() {
+    // Pošli event když dokončí první otázku (přejde z otázky 0 na 1)
+    if (state.pendingNext === 1) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'quiz_first_answer', anonymous_id: ANONYMOUS_ID, language: 'en' });
+    }
     if (state.pendingNext >= questions.length) {
       calculateEvaluationAndShow();
       return;
