@@ -95,15 +95,16 @@
       overflow: hidden;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       margin: 0;
       font-family: Georgia, "Playfair Display", serif;
-      line-height: 1;
+      line-height: 1.1;
       letter-spacing: -.045em;
     }
 
     h1 { font-size: clamp(29px, 9vw, 38px); }
-    h2 { font-size: clamp(25px, 7.7vw, 32px); }
+    h2 { font-size: clamp(23px, 7.2vw, 29px); }
+    h3 { font-size: 19px; margin-top: 16px; margin-bottom: 8px; }
 
     .grad {
       background: linear-gradient(105deg, #6b4dff, #e35fb2, #ff806a);
@@ -113,7 +114,7 @@
     }
 
     .lead {
-      margin: 18px 0 0;
+      margin: 14px 0 0;
       color: var(--text);
       font-size: 14px;
       line-height: 1.55;
@@ -129,8 +130,6 @@
       font-size: 12.5px;
       line-height: 1.3;
     }
-
-    .hero { display: none; }
 
     .facts {
       display: grid;
@@ -185,7 +184,7 @@
 
     .cta {
       width: 100%;
-      margin-top: 24px;
+      margin-top: 20px;
       border: 0;
       border-radius: 999px;
       padding: 13px 16px;
@@ -195,6 +194,14 @@
       font-weight: 950;
       background: linear-gradient(100deg, var(--aqua), var(--lilac), var(--pink), var(--peach));
       box-shadow: 0 12px 22px rgba(255,111,159,.22);
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cta.whatsapp {
+      background: linear-gradient(100deg, #25D366, #128C7E);
+      box-shadow: 0 12px 22px rgba(37,211,102,.22);
     }
 
     .cta.secondary {
@@ -206,7 +213,7 @@
     }
 
     .back {
-      margin-top: 6px;
+      margin-top: 12px;
       padding: 8px 0 0;
       border: 0;
       background: transparent;
@@ -214,42 +221,6 @@
       font-weight: 850;
       cursor: pointer;
       align-self: flex-start;
-    }
-
-    .q-head { flex: 0 0 auto; }
-
-    .q-img {
-      height: 58px;
-      margin-bottom: 9px;
-      border-radius: 18px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 22% 70%, rgba(255,111,159,.45), transparent 25%),
-        radial-gradient(circle at 82% 25%, rgba(72,213,236,.45), transparent 28%),
-        linear-gradient(135deg, #fff0f8, #eee6ff, #ffe6d1);
-    }
-
-    .q-img::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 12px;
-      top: 10px;
-      font-size: 9.5px;
-      font-weight: 950;
-      letter-spacing: .08em;
-    }
-
-    .q-img::after {
-      content: "";
-      position: absolute;
-      right: 13px;
-      bottom: 10px;
-      width: 70px;
-      height: 39px;
-      border-radius: 12px;
-      background: #11152a;
-      transform: rotate(3deg);
     }
 
     .answers {
@@ -271,41 +242,15 @@
       color: var(--navy);
       text-align: left;
       font-size: 13.2px;
-      line-height: 1.14;
+      line-height: 1.2;
       font-weight: 850;
       cursor: pointer;
-    }
-
-    .answer small {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.15;
-      font-weight: 650;
     }
 
     .answer.selected {
       border-color: rgba(255,111,159,.55);
       background: linear-gradient(120deg, rgba(255,255,255,.94), rgba(255,240,248,.80));
     }
-
-    .yesno {
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      overflow: visible;
-    }
-
-    .yesno .answer {
-      min-height: 78px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .yn { font-size: 21px; margin-bottom: 4px; }
 
     .multi-note {
       display: none;
@@ -338,22 +283,28 @@
     .claim-text {
       margin: 0;
       color: var(--navy);
-      font-size: clamp(15.7px, 4.8vw, 18.5px);
-      line-height: 1.22;
-      letter-spacing: -.025em;
+      font-size: clamp(15px, 4.5vw, 17.5px);
+      line-height: 1.35;
+      letter-spacing: -.01em;
       font-weight: 850;
     }
 
     .claim-card .cta { margin-top: 22px; }
 
+    .lead-inline-form {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 2px dashed var(--line);
+    }
+
     label {
       display: block;
-      margin: 10px 0 5px;
+      margin: 12px 0 5px;
       font-size: 12px;
       font-weight: 850;
     }
 
-    input, select {
+    input {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -385,55 +336,33 @@
     .profile-card {
       border-radius: 20px;
       padding: 13px;
-      background:
-        radial-gradient(circle at top right, rgba(255,111,159,.18), transparent 36%),
-        linear-gradient(135deg, rgba(255,255,255,.86), rgba(246,240,255,.74));
+      background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(246,240,255,.74));
       border: 1px solid rgba(255,255,255,.82);
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 12px;
+      display: flex;
       align-items: center;
+      gap: 12px;
     }
 
     .avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 20px;
-      background:
-        radial-gradient(circle at 28% 26%, #fff 0 9%, transparent 10%),
-        radial-gradient(circle at 38% 36%, rgba(255,111,159,.42), transparent 30%),
-        radial-gradient(circle at 72% 30%, rgba(72,213,236,.42), transparent 32%),
-        linear-gradient(135deg, #ffd9ec, #dcd1ff 58%, #ffe1c7);
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ffd9ec, #dcd1ff 58%, #ffe1c7);
       box-shadow: 0 10px 22px rgba(84,55,132,.13);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .avatar::after {
-      content: "";
-      position: absolute;
-      left: 17px;
-      bottom: 10px;
-      width: 34px;
-      height: 34px;
-      border-radius: 16px 16px 10px 10px;
-      background: rgba(17,22,51,.82);
     }
 
     .profile-name {
       display: block;
-      font-size: 17px;
-      line-height: 1.05;
+      font-size: 16px;
+      line-height: 1.1;
       font-weight: 950;
-      letter-spacing: -.025em;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     .profile-desc {
       color: var(--muted);
-      font-size: 12.2px;
-      line-height: 1.28;
-      font-weight: 680;
+      font-size: 12px;
+      line-height: 1.25;
     }
 
     .fit-score {
@@ -447,20 +376,17 @@
       border: 1px solid var(--line);
     }
 
-    .fit-score strong {
-      font-size: 13px;
-      line-height: 1.2;
-    }
+    .fit-score strong { font-size: 13px; }
 
     .score-circle {
-      width: 58px;
-      height: 58px;
+      width: 52px;
+      height: 52px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       color: white;
       font-weight: 950;
-      font-size: 16px;
+      font-size: 14px;
       background: conic-gradient(var(--pink) calc(var(--score) * 1%), rgba(17,22,51,.08) 0);
       position: relative;
     }
@@ -468,54 +394,69 @@
     .score-circle::before {
       content: "";
       position: absolute;
-      inset: 6px;
+      inset: 5px;
       border-radius: inherit;
       background: white;
     }
 
-    .score-circle span { position: relative; z-index: 1; }
+    .score-circle span { position: relative; z-index: 1; color: var(--navy); }
 
-    .next-card {
-      padding: 13px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255,240,248,.88), rgba(239,232,255,.86));
-      border: 1px solid rgba(17,22,51,.08);
-      font-size: 12.8px;
-      line-height: 1.35;
-      font-weight: 760;
+    .turnusy-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .turnus-item {
+      padding: 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,.03);
+    }
+
+    .turnus-info {
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .turnus-badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(17,22,51,.06);
+      margin-left: 5px;
+    }
+
+    .turnus-item .cta {
+      margin-top: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE WHATSAPP DISPLAY CLASSES */
+    .desktop-only-block { display: none; }
+    .mobile-only-block { display: block; }
+
+    @media (min-width: 768px) {
+      .desktop-only-block { display: block; }
+      .mobile-only-block { display: none; }
     }
 
     @media (max-height: 690px) {
-      .app { padding: 9px; }
-      .top { height: 40px; }
-      .brand-logo { width: 142px; max-width: 54vw; }
-      .card { padding: 15px; border-radius: 22px; }
-      .hero { display: none; }
-      h1 { font-size: 28px; }
-      h2 { font-size: 24px; }
-      .lead { font-size: 12.6px; line-height: 1.43; margin-top: 12px; }
-      .intro-note { font-size: 11.3px; line-height: 1.34; margin-top: 14px; padding: 10px 11px; }
-      .facts { gap: 8px; margin-top: 15px; }
-      .fact { min-height: 36px; padding: 8px 10px; font-size: 11.3px; line-height: 1.2; grid-template-columns: 22px 1fr; }
-      .fact-check { width: 22px; height: 22px; font-size: 12px; }
-      .q-img { height: 46px; margin-bottom: 7px; }
-      .sub { font-size: 11.5px; margin-bottom: 8px; }
-      .answer { min-height: 36px; padding: 8px 10px; font-size: 12.4px; }
-      .profile-card { grid-template-columns: 54px 1fr; padding: 10px; }
-      .avatar { width: 54px; height: 54px; border-radius: 17px; }
-      .profile-name { font-size: 15.5px; }
-      .profile-desc { font-size: 11.4px; }
-      .score-circle { width: 50px; height: 50px; font-size: 14px; }
-      .next-card { font-size: 11.7px; padding: 10px; }
-      .yesno .answer { min-height: 68px; }
-      .claim-card { padding: 16px; }
-      .claim-text { font-size: 15.5px; }
-      .cta { padding: 11px 14px; font-size: 14px; margin-top: 18px; }
+      .app { padding: 8px; }
+      .card { padding: 14px; border-radius: 20px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .lead { font-size: 12.5px; margin-top: 10px; }
+      .claim-text { font-size: 14px; }
+      .answer { min-height: 35px; padding: 7px 10px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="app">
   <div class="top">
@@ -528,10 +469,10 @@
   <section class="view active" id="intro">
     <div class="card">
       <h1>Je Makeful dobrá volba pro <span class="grad">vaši dceru?</span></h1>
-      <p class="lead"><strong>Makeful je letní Fashion Tech akademie v Praze pro dívky 10–19 let.</strong> Program probíhá <strong>od pondělí do neděle 9 – 17 h</strong>. V příjemném holčičím prostředí dívky objevují spojení ruční módy s digitální tvorbou, AI a 3D tiskem.</p>
+      <p class="lead"><strong>Makeful je letní Fashion Tech akademie v Praze pro dívky 10–19 let.</strong> Program probíhá od pondělí do neděle 9 – 17 h. V příjemném holčičím prostředí dívky objevují spojení ruční módy s digitální tvorbou, AI a 3D tiskem.</p>
       <div class="facts">
         <div class="fact"><span class="fact-check">✓</span><span>7 dní v kreativní laboratoři</span></div>
-        <div class="fact"><span class="fact-check">✓</span><span>6 dechberoucích projektů</span></div>
+        <div class="fact"><span class="fact-check">✓</span><span>45 hodin čisté intenzivní tvorby</span></div>
         <div class="fact"><span class="fact-check">✓</span><span>Příjemný holčičí kolektiv</span></div>
       </div>
       <p class="intro-note">Záleží nám na tom, aby se v Makeful každá dívka cítila, že je na správném místě. Pojďme se ujistit, že bude program pro vaši dceru dávat smysl.</p>
@@ -551,8 +492,7 @@
   <section class="view" id="questionScreen">
     <div class="card">
       <div class="q-head">
-        <div id="imageSlot"></div>
-        <div id="multiNote" class="multi-note">Vyberte až 3 možnosti</div>
+        <div id="multiNote" class="multi-note">Vyberte možnosti</div>
         <h2 id="questionTitle"></h2>
         <p class="sub" id="questionSub"></p>
       </div>
@@ -562,43 +502,41 @@
     </div>
   </section>
 
-  <section class="view" id="leadScreen">
-    <div class="card">
-      <h2>Kam vám máme poslat doporučení?</h2>
-      <p class="lead">Na základě odpovědí vám ukážeme, jestli Makeful pro vaši dceru dává smysl a jaký další krok doporučujeme.</p>
-      <label for="email">E-mail</label>
-      <input id="email" type="email" placeholder="vas@email.cz">
-      <label for="phone">Telefon <span style="color:var(--muted);font-weight:600">volitelně</span></label>
-      <input id="phone" type="tel" placeholder="+420 ...">
-      <label for="preference">Co by vám pomohlo nejvíc?</label>
-      <select id="preference">
-        <option>Poslat doporučení e-mailem</option>
-        <option>Doporučení + možnost krátké konzultace</option>
-        <option>Rovnou zobrazit volné termíny</option>
-      </select>
-      <button class="cta" type="button" onclick="submitLeadAndShowResult()">Zobrazit doporučení →</button>
-      <button class="back" type="button" onclick="goBack()">← Zpět</button>
-    </div>
-  </section>
-
   <section class="view" id="resultScreen">
-    <div class="card">
-      <div class="badge">Doporučení Makeful</div>
-      <h2 id="resultTitle"></h2>
-      <p class="lead" id="resultText"></p>
+    <div class="card" style="overflow-y:auto">
+      <div class="badge">Analýza Makeful</div>
+      <h2 id="resultTitle">Vyhodnocujeme profil...</h2>
+      
       <div id="profileOutput" class="profile-wrap"></div>
-      <button class="cta" id="resultCta" type="button" onclick="handleResultCta()">Podívat se na volné termíny →</button>
-      <button class="cta secondary" id="resultSecondaryCta" type="button" onclick="handleResultSecondaryCta()">Napsat nám →</button>
-      <button class="back" type="button" onclick="restartQuiz()">Projít kvíz znovu</button>
+
+      <div class="lead-inline-form">
+        <h3 id="leadFormTitle">Kam vám máme odeslat kompletní doporučení?</h3>
+        <p class="sub" id="leadFormSub"></p>
+        
+        <label for="email">E-mail rodiče *</label>
+        <input id="email" type="email" placeholder="jmeno@seznam.cz" required>
+        
+        <label for="phone">Telefon rodiče <span style="color:var(--muted);font-weight:600">(volitelně)</span></label>
+        <input id="phone" type="tel" placeholder="+420 ...">
+        
+        <button class="cta" id="leadSubmitBtn" type="button" onclick="submitLeadForm()">Odemknout další krok →</button>
+      </div>
     </div>
   </section>
 
   <section class="view" id="confirmScreen">
-    <div class="claim-card">
-      <div class="claim-label" id="confirmLabel">Hotovo</div>
-      <p class="claim-text" id="confirmText"></p>
-      <p class="sub" id="confirmPhone" style="display:none;margin-top:14px;font-size:14px;font-weight:850;color:var(--navy)"></p>
-      <button class="back" type="button" style="margin-top:18px" onclick="restartQuiz()">Projít kvíz znovu</button>
+    <div class="card" style="overflow-y:auto">
+      <div class="badge" style="background:rgba(37,211,102,.1);color:#128C7E">Potvrzení</div>
+      <h2 id="confirmTitle">Přístup byl udělen</h2>
+      <p class="lead" id="confirmText"></p>
+      
+      <div id="actionBlock" style="margin-top:16px;"></div>
+
+      <h3>Doporučené letní turnusy (2026):</h3>
+      <p class="sub">Vyfiltrováno přesně pro věkovou skupinu vaší dcery. Kliknutím přejdete na předvyplněný registrační formulář.</p>
+      <div id="turnusyOutput" class="turnusy-list"></div>
+
+      <button class="back" type="button" style="margin-top:24px;" onclick="restartQuiz()">Projít kvíz znovu</button>
     </div>
   </section>
 </main>
@@ -608,86 +546,147 @@
     {
       id: 'age',
       title: 'Kolik je vaší dceři let?',
-      sub: 'Program je rozdělený tak, aby odpovídal věku, tempu i typu projektů.',
+      sub: 'Program přizpůsobujeme věku, tempu i typu fashion-tech projektů.',
       type: 'single',
-      answers: ['Ještě jí není 10', '10–12 let', '13–15 let', '16–19 let', 'Je jí více než 19'],
-      claim: 'Program přizpůsobujeme věku. Mladší dívky tvoří virtuální kolekce a 3D doplňky, starší pracují na vestě budoucnosti, AI modelkách a portfoliu.'
+      answers: ['Ještě jí není 10', '10–12 let', '13–15 let', '16–19 let', 'Je jí více než 19']
     },
     {
       id: 'interests',
       title: 'Co vaši dceru přirozeně nejvíc baví?',
-      sub: 'Vyberte jednu nebo více oblastí, ke kterým má nejblíž — nemusí to být jen móda.',
+      sub: 'Vyberte jednu nebo více oblastí, ke kterým má nejblíž.',
       type: 'multi',
       max: 6,
-      image: 'KREATIVITA + TECHNOLOGIE',
-      answers: ['Móda, styling a oblečení', 'Kreslení, skicování a ilustrace', 'Tvoření rukama a vyrábění', 'Digitální tvorba, grafika nebo video', 'AI, technologie nebo 3D tisk', 'Zatím nevíme, ale ráda tvoří'],
-      claim: 'V Makeful propojujeme hravý kreativní svět a moderní technologie. V laboratoři holky skicují na papír, modelují v digitálním prostoru, šijí i 3D tisknou.'
+      answers: ['Móda, styling a oblečení', 'Kreslení, skicování a ilustrace', 'Tvoření rukama a vyrábění', 'Digitální tvorba, grafika nebo video', 'AI, technologie nebo 3D tisk', 'Zatím nevíme, ale ráda tvoří']
     },
     {
       id: 'goal',
       title: 'Co byste si přáli, aby si z léta odnesla?',
-      sub: 'Vyberte maximálně 3 výsledky, které by pro vás měly největší hodnotu.',
+      sub: 'Vyberte výsledky, které by pro vás měly největší hodnotu.',
       type: 'multi',
       max: 3,
-      answers: ['Větší sebevědomí', 'Nové kreativní a technologické dovednosti', 'Hotové projekty, na které bude pyšná', 'Skvělé vzpomínky a nové kamarádky', 'Smysluplně strávený týden (alternativa k běžnému táboru)'],
-      claim: 'Makeful není klasický tábor, ale kreativně-technologická akademie. Záleží nám na tom, aby si dívky odnesly užitečné dovednosti, hotové projekty, diplom a pocit, že jejich nápady mají hodnotu.'
+      answers: ['Větší sebevědomí', 'Nové kreativní a technologické dovednosti', 'Hotové projekty, na které bude pyšná', 'Skvělé vzpomínky a nové kamarádky', 'Smysluplně strávený týden (alternativa k běžnému táboru)']
     },
     {
       id: 'price',
       title: 'Jak se díváte na cenu podobného programu?',
-      sub: 'Tahle otázka nám pomůže ukázat hodnotu programu správným způsobem.',
+      sub: 'Tato otázka nám pomůže ukázat hodnotu programu správným způsobem.',
       type: 'single',
-      answers: ['Hledáme hlavně kvalitu a skutečný přínos', 'Cena je důležitá, ale za dobrý program rádi zaplatíme', 'Potřebujeme vědět, co přesně je v ceně', 'Zajímá nás možnost využití benefitů (Benefit Plus, Edenred...)', 'Cena bude hlavní rozhodovací faktor'],
-      claim: 'Cena pokrývá kompletně vše, od materiálů a vybavení přes obědy až po tričko a boty, které budeme upravovat. Součástí jsou i bonusové přednášky od světových designérů.'
+      answers: ['Hledáme hlavně kvalitu a skutečný přínos', 'Cena je důležitá, ale za dobrý program rádi zaplatíme', 'Potřebujeme vědět, co přesně je v ceně', 'Zajímá nás možnost využití benefitů (Benefit Plus, Edenred...)', 'Cena bude hlavní rozhodovací faktor']
     },
     {
       id: 'timing',
       title: 'Jak rychle byste chtěli mít jasno?',
-      sub: 'Každý turnus má jen malou kapacitu.',
+      sub: 'Každý turnus má kapacitu omezenu na maximum individuální pozornosti.',
       type: 'single',
-      answers: ['Chceme vybrat termín co nejdřív', 'Tento týden / Do pár týdnů', 'Potřebujeme to nejdřív probrat s dcerou', 'Jen nezávazně sbíráme informace'],
-      claim: 'Každý náš termín má pouze 10 volných míst z důvodu maximální individuální pozornosti lektorek. Kapacita mizí rychle.'
+      answers: ['Chceme vybrat termín co nejdřív', 'Tento týden / Do pár týdnů', 'Potřebujeme to nejdřív probrat s dcerou', 'Jen nezávazně sbíráme informace']
     }
   ];
 
-  const DATA_ENDPOINT = 'https://hook.eu1.make.com/hdn49k1s9quye8xbapn8k3p4auipxx1z'; // Make.com webhook. Make bude podle anonymous_id vytvářet/aktualizovat jeden řádek v Excelu.
+  const allTurnusy = [
+    { id: 1, date: '29. 6. – 5. 7. 2026',  lang: 'česky',    age: '16 – 19 let', cleanAge: '16–19 let', termin: '16-19 let · 29. 6. - 5. 7. 2026 · CZ' },
+    { id: 2, date: '6. 7. – 12. 7. 2026',  lang: 'česky',    age: '10 – 12 let', cleanAge: '10–12 let', termin: '10-12 let · 6. 7. - 12. 7. 2026 · CZ' },
+    { id: 3, date: '13. 7. – 19. 7. 2026', lang: 'česky',    age: '13 – 15 let', cleanAge: '13–15 let', termin: '13-15 let · 13. 7. - 19. 7. 2026 · CZ' },
+    { id: 4, date: '20. 7. – 26. 7. 2026', lang: 'anglicky', age: '13 – 15 let', cleanAge: '13–15 let', termin: '13-15 let · 20. 7. - 26. 7. 2026 · ENG' },
+    { id: 5, date: '27. 7. – 2. 8. 2026',  lang: 'česky',    age: '10 – 12 let', cleanAge: '10–12 let', termin: '10-12 let · 27. 7. - 2. 8. 2026 · CZ' },
+    { id: 6, date: '3. 8. – 9. 8. 2026',   lang: 'česky',    age: '13 – 15 let', cleanAge: '13–15 let', termin: '13-15 let · 3. 8. - 9. 8. 2026 · CZ' },
+    { id: 7, date: '10. 8. – 16. 8. 2026', lang: 'anglicky', age: '10 – 12 let', cleanAge: '10–12 let', termin: '10-12 let · 10. 8. - 16. 8. 2026 · ENG' },
+    { id: 8, date: '17. 8. – 23. 8. 2026', lang: 'anglicky', age: '16 – 19 let', cleanAge: '16–19 let', termin: '16-19 let · 17. 8. - 23. 8. 2026 · ENG' },
+    { id: 9, date: '24. 8. – 30. 8. 2026', lang: 'anglicky', age: '16 – 19 let', cleanAge: '16–19 let', termin: '16-19 let · 24. 8. - 30. 8. 2026 · ENG' }
+  ];
+
+  const DATA_ENDPOINT = 'https://hook.eu1.make.com/hdn49k1s9quye8xbapn8k3p4auipxx1z';
   const ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
   const STARTED_AT = new Date().toISOString();
 
   const state = { index: -1, answers: {}, pendingNext: null };
   const $ = (id) => document.getElementById(id);
-  const views = {
-    intro: $('intro'),
-    question: $('questionScreen'),
-    claim: $('claimScreen'),
-    lead: $('leadScreen'),
-    result: $('resultScreen'),
-    confirm: $('confirmScreen')
-  };
 
-
-
-
+  function getDynamicClaim(questionId, value) {
+    if (questionId === 'age') {
+      if (value.includes('Ještě') || value.includes('více')) {
+        return 'Makeful je program vyladěný pro věk 10–19 let, kdy dívky dokáží naplno využít AI a 3D modelovací nástroje. Protože je vaše dcera mimo toto rozmezí, posoudíme její zapojení individuálně, aby pro ni byl program stoprocentně přínosný a zvládala ho.';
+      }
+      if (value.includes('10–12')) {
+        return 'Ideální věk! Mladší dívky u nás tvoří hlavně hravou formou. Naučí se základy digitální ilustrace, rozpohybují své vlastní virtuální modelky a vytisknou si 3D doplňky. Vše v doprovodu trpělivých lektorek.';
+      }
+      if (value.includes('13–15')) {
+        return 'Teenegarky jsou z našeho programu nadšené! V tomto věku holky v Makeful propojují módu s technologiemi, navrhují virtuální kolekce, pracují s AI a vytvářejí reálné designové kousky, které jim zvednou kreativní sebevědomí.';
+      }
+      if (value.includes('16–19')) {
+        return 'Pro středoškolačky má Makeful obrovský přesah. Pracují na komplexním projektu (např. vesta budoucnosti), zkouší si designérský proces od A do Z a odnášejí si profi výstupy do svého portfolia pro budoucí studium či kariéru.';
+      }
+    }
+    if (questionId === 'interests') {
+      const vals = Array.isArray(value) ? value : [value];
+      const hasTraditional = vals.some(v => v.includes('Móda') || v.includes('Kreslení') || v.includes('Tvoření'));
+      const hasTech = vals.some(v => v.includes('Digitální') || v.includes('AI') || v.includes('3D'));
+      if (hasTraditional && hasTech) {
+        return 'Vaše dcera kombinuje to nejlepší z obou světů. V Makeful propojujeme ruční tvorbu s digitálními nástroji. S námi se naučí přenést nápad z papíru do 3D prostoru a dotvoří ho pomocí AI.';
+      }
+      if (hasTraditional) {
+        return 'Tradiční tvoření u nás posouváme do 21. století. Vaše dcera si vyzkouší skicování na papír, a hned potom přenese svůj nápad do 3D prostoru a digitálně ho doladí. Je to přirozený most od kreslení k moderním dovednostem.';
+      }
+      if (hasTech) {
+        return 'V Makeful technologie neslouží k pasivnímu koukání do displeje, ale jako nástroj pro reálnou tvorbu. Naučíme ji využít AI jako kreativního parťáka a 3D tisk pro módní tvorbu.';
+      }
+      return 'Makeful je experimentální laboratoř. Během 7 dní si vyzkouší 6 různých projektů, od šití po AI. Vaše dcera si sama otestuje, co ji baví nejvíc, a najde svůj směr.';
+    }
+    if (questionId === 'goal') {
+      const vals = Array.isArray(value) ? value : [value];
+      const wantsConfidence = vals.some(v => v.includes('sebevědomí'));
+      const wantsSkills = vals.some(v => v.includes('dovednosti') || v.includes('projekty'));
+      const wantsFriends = vals.some(v => v.includes('kamarádky') || v.includes('vzpomínky') || v.includes('alternativa'));
+      if (wantsConfidence && wantsSkills) {
+        return 'Sebevědomí a dovednosti jdou u nás ruku v ruce. V bezpečném dívčím prostředí bez soutěžení holky tvoří reálné projekty, vlastnoručně upravené boty, tričko a digitální kolekci. Každý úspěch posiluje jejich jistotu.';
+      }
+      if (wantsConfidence) {
+        return 'Sebevědomí je náš hlavní cíl. Makeful je čistě dívčí, bezpečné prostředí bez soutěžení a kritiky. Lektorky vedou holky tak, aby každá zažila úspěch a zjistila, že její nápady mají obrovskou hodnotu.';
+      }
+      if (wantsSkills) {
+        return 'Za 7 dní holky stráví 45 hodin intenzivní tvorbou. Domů si odnese nejen diplom, ale reálné vlastnoručně upravené boty, tričko a digitální portfolio věcí, na které bude pyšná.';
+      }
+      if (wantsFriends) {
+        return 'Nuda u nás nehrozí. Vytváříme komunitu holek se stejnými zájmy. Čekají je společné obědy, neformální atmosféra a inspirativní prostředí, kde vznikají přátelství na celé léto.';
+      }
+      return 'Makeful je místo, kde si každá holka odnese něco svého: nové dovednosti, sebevědomí i přátelství. Zažije krásných 7 letních dní plných tvorby a příjemných zážitků.';
+    }
+    if (questionId === 'price') {
+      if (value.includes('kvalitu') || value.includes('zaplatíme')) {
+        return 'Investice do vzdělání dcery se u nás propisuje do každého detailu. Pracujeme v malých skupinkách (max. 10 holek na turnus) s individuální pozorností lektorek, špičkovým hardwarem a prémiovými materiály. Výsledky uvidíte sami.';
+      }
+      if (value.includes('přesně')) {
+        return 'Cena je konečná a transparentní. Zahrnuje 45 hodin prémiového programu, teplé obědy, svačiny, pitný režim, práci se špičkovými technologií a všechen materiál, včetně nových bot a trička, které si dcera sama dotvoří a odnese domů.';
+      }
+      if (value.includes('benefitů')) {
+        return 'Platby máme v malíčku. Makeful můžete kompletně nebo částečně uhradit přes Benefit Plus, Edenred, Pluxee nebo Up Benefity, případně vám vystavíme fakturu pro zaměstnavatele z fondu FKSP. Vše vám pomůžeme zařídit.';
+      }
+      return 'Věříme, že talent by neměl narazit na finance. Protože je pro vás cena klíčová, rádi pro vaši dceru rezervujeme stipendium ve výši 900 Kč, které vám z ceny akademie odečteme. Detaily vám zobrazíme na konci kvízu.';
+    }
+    if (questionId === 'timing') {
+      if (value.includes('co nejdřív') || value.includes('Tento týden')) {
+        return 'Kapacita každého turnusu je max. 10 dívek. Na konci kvízu vám ukážeme aktuálně volná místa, abyste stihli zajistit termín včas.';
+      }
+      if (value.includes('probrat s dcerou')) {
+        return 'Pošleme vám shrnutí spolu s ukázkovým videem z laboratoře, ať se můžete podívat společně. Zároveň uvidíte přehled termínů pro letošní léto.';
+      }
+      if (value.includes('nezávazně')) {
+        return 'Rádi vám zašleme nezávazné představení akademie a ukázky prací z minulých let, ať máte všechno pohromadě, až přijde čas se rozhodovat.';
+      }
+    }
+    return '';
+  }
 
   async function sendToDataEndpoint(eventName, row) {
     if (!DATA_ENDPOINT) return;
-
     try {
       await fetch(DATA_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          event_name: eventName,
-          ...row
-        })
+        body: JSON.stringify({ event_name: eventName, ...row })
       });
-    } catch (error) {
-      console.warn('Makeful quiz data was not sent:', error);
-    }
+    } catch (e) { console.warn(e); }
   }
 
-
-  // Serial send queue — guarantees session_update never arrives after lead_completed
   let _sendQueue = Promise.resolve();
   function queueSend(eventName, row) {
     _sendQueue = _sendQueue.then(() => sendToDataEndpoint(eventName, row));
@@ -697,8 +696,7 @@
     const arr = state.answers[id]; return Array.isArray(arr) ? arr.join(', ') : (arr || '');
   }
 
-  function buildExcelRow(status = 'anonymous_in_progress', result = {}, contact = {}) {
-
+  function buildExcelRow(status = 'anonymous_in_progress', contact = {}) {
     return {
       status,
       anonymous_id: ANONYMOUS_ID,
@@ -706,51 +704,31 @@
       updated_at: new Date().toISOString(),
       completed_at: status === 'lead_completed' ? new Date().toISOString() : '',
       source_url: window.location.href,
-      language: 'cs',
-      user_agent: navigator.userAgent,
-
       email: contact.email || '',
       phone: contact.phone || '',
-      contact_preference: contact.preference || '',
-
       q_age: getAnswer('age'),
       q_interests: getAnswer('interests'),
-      q_creative_tech: getAnswer('creative_tech'),
       q_goal: getAnswer('goal'),
-      q_experience: getAnswer('experience'),
       q_price: getAnswer('price'),
       q_timing: getAnswer('timing'),
-
-      // Ponecháno kvůli kompatibilitě se starším Excelem / Make scénářem.
-      q_relationship: getAnswer('creative_tech'),
-      q_program_type: '',
-      q_tech: getAnswer('creative_tech'),
-      q_future: '',
-      q_blocker: '',
-
-      result_profile: (result.profile && result.profile.name) || '',
-      result_title: (result.profile && result.profile.title) || '',
-      result_fit_percent: result.fit || '',
-      result_cta: (result.profile && result.profile.cta) || '',
-      customer_segment: result.segment || ''
+      // DO MAKU POSÍLÁME ZÁKLADNÍ ROZDĚLENÍ (HIGH, MID, LOW)
+      customer_segment: state.computedMakeSegment || 'MID',
+      // VÝSLEDEK KVÍZU
+      result_profile: state.computedProfileName || '',
+      result_title: state.computedProfileName || '',
+      result_fit_percent: state.computedFitPct || '',
+      result_cta: state.computedGtmSegment || ''
     };
   }
 
-  function trackAnswer(question, value) {
-    queueSend('session_update', buildExcelRow('anonymous_in_progress'));
-  }
-
-  function setView(name) {
-    Object.values(views).forEach(view => view.classList.remove('active'));
-    views[name].classList.add('active');
-    updateProgress(name);
-  }
-
-  function updateProgress(name) {
+  function setView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    $(id).classList.add('active');
+    
     let pct = 0;
-    if (name === 'lead') pct = 96;
-    else if (name === 'result') pct = 100;
-    else if (name !== 'intro') pct = Math.max(5, ((state.index + 1) / questions.length) * 92);
+    if (id === 'resultScreen') pct = 90;
+    else if (id === 'confirmScreen') pct = 100;
+    else if (id !== 'intro') pct = Math.max(5, ((state.index + 1) / questions.length) * 85);
     $('progress').style.width = pct + '%';
   }
 
@@ -765,36 +743,26 @@
     $('questionTitle').textContent = q.title;
     $('questionSub').textContent = q.sub || '';
     $('answers').innerHTML = '';
-    $('answers').className = 'answers' + (q.type === 'yesno' ? ' yesno' : '');
     $('multiNext').style.display = q.type === 'multi' ? 'block' : 'none';
     $('multiNote').style.display = q.type === 'multi' ? 'block' : 'none';
-    if (q.type === 'multi') {
-      $('multiNote').textContent = q.max && q.max < q.answers.length ? `Vyberte až ${q.max} možnosti` : 'Vyberte jednu nebo více možností';
-    }
-    $('imageSlot').innerHTML = q.image ? `<div class="q-img" data-label="${q.image}"></div>` : '';
 
     const selected = state.answers[q.id] || [];
-    q.answers.forEach(item => {
-      const a = typeof item === 'string' ? { label: item } : item;
+    q.answers.forEach(val => {
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'answer';
-      btn.innerHTML = q.type === 'yesno'
-        ? `<span class="yn">${a.icon || '✓'}</span>${a.label}<small>${a.detail || ''}</small>`
-        : a.label;
-      if (selected.includes(a.label)) btn.classList.add('selected');
-      btn.addEventListener('click', () => chooseAnswer(q, a.label, btn));
+      btn.className = 'answer' + (selected.includes(val) ? ' selected' : '');
+      btn.textContent = val;
+      btn.addEventListener('click', () => chooseAnswer(q, val, btn));
       $('answers').appendChild(btn);
     });
-
-    setView('question');
+    setView('questionScreen');
   }
 
   function chooseAnswer(q, value, btn) {
     if (q.type === 'multi') {
       let arr = state.answers[q.id] || [];
       if (arr.includes(value)) {
-        arr = arr.filter(item => item !== value);
+        arr = arr.filter(i => i !== value);
         btn.classList.remove('selected');
       } else {
         if (arr.length >= (q.max || 3)) return;
@@ -802,31 +770,42 @@
         btn.classList.add('selected');
       }
       state.answers[q.id] = arr;
-      trackAnswer(q, arr.join(', '));
+      queueSend('session_update', buildExcelRow('anonymous_in_progress'));
       return;
     }
 
     state.answers[q.id] = [value];
-    trackAnswer(q, value);
+    queueSend('session_update', buildExcelRow('anonymous_in_progress'));
     btn.classList.add('selected');
-    window.setTimeout(() => showClaim(q.claim), 80);
+    setTimeout(() => {
+      const claim = getDynamicClaim(q.id, value);
+      state.pendingNext = state.index + 1;
+      if (claim) {
+        $('claimText').textContent = claim;
+        setView('claimScreen');
+      } else {
+        continueAfterClaim();
+      }
+    }, 80);
   }
 
   function submitMulti() {
     const q = questions[state.index];
-    if ((state.answers[q.id] || []).length === 0) return;
-    showClaim(q.claim);
-  }
-
-  function showClaim(text) {
-    $('claimText').textContent = text;
+    const selected = state.answers[q.id] || [];
+    if (selected.length === 0) return;
+    const claim = getDynamicClaim(q.id, selected);
     state.pendingNext = state.index + 1;
-    setView('claim');
+    if (claim) {
+      $('claimText').textContent = claim;
+      setView('claimScreen');
+    } else {
+      continueAfterClaim();
+    }
   }
 
   function continueAfterClaim() {
     if (state.pendingNext >= questions.length) {
-      setView('lead');
+      calculateEvaluationAndShow();
       return;
     }
     state.index = state.pendingNext;
@@ -834,206 +813,232 @@
   }
 
   function goBack() {
-    if (views.lead.classList.contains('active')) {
-      state.index = questions.length - 1;
-      renderQuestion();
-      return;
-    }
-    if (state.index <= 0) {
-      setView('intro');
-      return;
-    }
+    if (state.index <= 0) { setView('intro'); return; }
     state.index -= 1;
     renderQuestion();
   }
 
-  function flatAnswers() {
-    return Object.values(state.answers).flat();
-  }
+  function calculateEvaluationAndShow() {
+    const age = getAnswer('age');
+    const price = getAnswer('price');
+    const timing = getAnswer('timing');
 
-  function has(text) {
-    return flatAnswers().some(value => value.includes(text));
-  }
+    let gtmSegment = 'MOF_SONDUJE';
+    let makeSegment = 'MID';
 
-  function profileFromAnswers() {
-    const hasAny = (...parts) => parts.some(part => has(part));
+    const isUnqualified = age.includes('Ještě') || age.includes('více');
+    const isHotTiming = timing.includes('co nejdřív') || timing.includes('Tento týden');
+    const isPriceSensitive = price.includes('přesně') || price.includes('benefitů') || price.includes('faktor');
 
-    const scores = {
-      fashion: 50,
-      digital: 45,
-      craft: 48,
-      confidence: 46,
-      portfolio: 42
-    };
-
-    if (hasAny('Móda', 'styling', 'oblečení')) scores.fashion += 28;
-    if (hasAny('Kreslení', 'ilustrace')) { scores.fashion += 14; scores.portfolio += 12; }
-    if (hasAny('Tvoření rukama', 'Spíš ji baví móda')) scores.craft += 28;
-    if (hasAny('Digitální', 'AI', 'technologie', '3D tisk')) scores.digital += 30;
-    if (hasAny('Větší sebevědomí', 'často si nevěří')) scores.confidence += 28;
-    if (hasAny('Portfolio', 'přijímačky', 'kreativním směru', 'design')) scores.portfolio += 32;
-    if (hasAny('Hotové projekty', 'Nové kreativní')) scores.craft += 12;
-    if (hasAny('Technologie ji baví', 'Zajímá ji AI')) scores.digital += 12;
-    if (hasAny('Chceme ji podpořit')) scores.confidence += 12;
-
-    Object.keys(scores).forEach(key => scores[key] = Math.min(96, scores[key]));
-
-    let profile = {
-      name: 'Kreativní objevitelka',
-      title: 'Vaše dcera mezi nás pravděpodobně patří.',
-      desc: 'Makeful pro ni může být bezpečný prostor, kde může zkoušet nové věci, objevovat vlastní styl a postupně získávat jistotu v tvorbě.',
-      next: 'Makeful ji může rozvíjet tím, že ji provede od inspirace přes návrh až po hotový projekt. Získá prostor tvořit vlastním tempem, ale nebude na to sama.',
-      cta: 'Vybrat vhodný termín →'
-    };
-
-    if (scores.portfolio >= 68 || hasAny('Portfolio', 'přijímačky', 'design, móda')) {
-      profile = {
-        name: 'Budoucí portfolio tvůrkyně',
-        title: 'Vaše dcera by v Makeful mohla výrazně vyrůst.',
-        desc: 'Pro tento typ dívky má velkou hodnotu nejen zážitek, ale hlavně konkrétní výstupy, vlastní rukopis a práce, kterou může dál ukázat.',
-        next: 'Makeful ji může posunout v prezentaci tvorby: vytvoří módní projekty, digitální výstupy a osobní portfolio, které může využít jako první silnější ukázku své práce.',
-        cta: 'Vybrat termín pro její věk →'
-      };
-    } else if (scores.digital >= 70) {
-      profile = {
-        name: 'Digitální fashion tvůrkyně',
-        title: 'Vaše dcera má blízko k fashion-tech světu.',
-        desc: 'Digitální tvorba, AI a technologie pro ni mohou být přirozenou cestou k vlastní kreativitě — zvlášť když jsou propojené s módou, obrazem a materiály.',
-        next: 'Makeful ji může rozvíjet přes AI modelky, virtuální kolekce, 3D návrhy a projekty, kde se technologie nestávají teorií, ale nástrojem pro kreativitu.',
-        cta: 'Podívat se na fashion-tech program →'
-      };
-    } else if (scores.craft >= 70 || hasAny('Tvoření rukama')) {
-      profile = {
-        name: 'Módní experimentátorka',
-        title: 'Vaše dcera by se u nás mohla cítit jako ve svém živlu.',
-        desc: 'Je to profil dívky, která může milovat práci s materiály, zkoušení nových postupů a moment, kdy se z nápadu stává skutečný módní kousek.',
-        next: 'Makeful ji může rozvíjet přes 3D nášivky, úpravy trička a bot, práci s materiály i propojení ruční módy s digitálním návrhem.',
-        cta: 'Vybrat kreativní turnus →'
-      };
-    } else if (scores.confidence >= 68) {
-      profile = {
-        name: 'Jemná kreativní duše',
-        title: 'Vaše dcera mezi nás může krásně zapadnout.',
-        desc: 'Pro tento profil je důležité bezpečné prostředí, laskavé vedení a pocit, že její nápady mají hodnotu.',
-        next: 'Makeful ji může rozvíjet v malé skupině, kde dostane individuální podporu, čas a prostor tvořit bez tlaku na dokonalost.',
-        cta: 'Nechat si doporučit termín →'
-      };
-    } else if (scores.fashion >= 68) {
-      profile = {
-        name: 'Módní vizionářka',
-        title: 'Vaše dcera má k Makeful velmi blízko.',
-        desc: 'Móda, styl a vizuální tvorba jsou přesně oblasti, které se v Makeful mohou krásně propojit s digitálním světem. Módní nápad se tu mění v reálný i digitální projekt.',
-        next: 'Makeful ji může rozvíjet přes módní skici, styling, virtuální kolekce, 3D doplňky a závěrečnou prezentaci vlastního nápadu.',
-        cta: 'Vybrat vhodný termín →'
-      };
+    // SEGMENTAČNÍ MATRICE PODLE ZADÁNÍ
+    if (isUnqualified) {
+      gtmSegment = 'LOW';
+      makeSegment = 'LOW';
+    } else if (isHotTiming && !isPriceSensitive) {
+      gtmSegment = 'BOF_HOT';
+      makeSegment = 'HIGH';
+    } else if (isHotTiming && isPriceSensitive) {
+      gtmSegment = 'BOF_CENA';
+      makeSegment = 'HIGH';
+    } else if (timing.includes('probrat s dcerou')) {
+      gtmSegment = 'MOF_PROBRAT';
+      makeSegment = 'MID';
+    } else if (timing.includes('nezávazně')) {
+      gtmSegment = 'MOF_SONDUJE';
+      makeSegment = 'MID';
+    } else {
+      gtmSegment = 'LOW';
+      makeSegment = 'LOW';
     }
 
-    if (hasAny('Ještě jí není 10', 'více než 19')) {
-      profile = {
-        name: 'Individuální doporučení',
-        title: 'Nejdřív ověřme, jestli je Makeful správný krok.',
-        desc: 'Makeful je připravený hlavně pro dívky 10–19 let. Pokud je vaše dcera mimo tento věk, bude lepší vše krátce posoudit individuálně.',
-        next: 'Rádi s vámi ověříme věk, tempo a vhodnost programu bez tlaku na přihlášku.',
-        cta: 'Napsat dotaz →'
-      };
-    } else if (hasAny('Chci si nejdřív promluvit', 'Cena', 'Termín', 'Doprava do Prahy', 'jestli ji to bude bavit', 'dost zkušeností')) {
-      profile.next += ' Zároveň dává smysl nejdřív doladit praktické otázky nebo nejistoty, aby přihláška byla dobré rozhodnutí pro vás i pro ni.';
-      if (hasAny('Chci si nejdřív promluvit')) profile.cta = 'Chci se poradit →';
-    }
+    state.computedGtmSegment = gtmSegment;
+    state.computedMakeSegment = makeSegment;
 
-    const fit = hasAny('Ještě jí není 10', 'více než 19') ? 58 : Math.min(96, Math.round((scores.fashion + scores.digital + scores.craft + scores.confidence + scores.portfolio) / 5 + 10));
-    return { profile, scores, fit };
-  }
+    // DO GTM POSÍLÁME PODROBNÝ POPISEK PRO REKLAMNÍ PUBLIKA
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'quiz_evaluated',
+      anonymous_id: ANONYMOUS_ID,
+      segment: gtmSegment,
+      age_group: age,
+      price_bracket: price
+    });
 
-  function fitLabel(score, profileName) {
-    if (profileName === 'Individuální doporučení') return 'Doporučujeme nejdřív krátce ověřit vhodnost programu osobně.';
-    if (score >= 88) return 'Program pro ni vypadá jako velmi vhodný.';
-    if (score >= 78) return 'Program pro ni pravděpodobně dává velký smysl.';
-    return 'Program může být dobrý kreativní impuls, hlavně pokud ji láká objevování nových věcí.';
-  }
+    // Vizuální nastavení profilu podle věku
+    let profileName = 'Kreativní vizionářka';
+    let fitPct = 94;
+    if (age.includes('10–12')) profileName = 'Nadějná tvůrkyně';
+    if (age.includes('13–15')) profileName = 'Kreativní vizionářka';
+    if (age.includes('16–19')) profileName = 'Budoucí designérka';
+    if (isUnqualified) { profileName = 'Individuální profil'; fitPct = 75; }
+    state.computedProfileName = profileName;
+    state.computedFitPct = fitPct;
 
-  function getSegment(readyToBook, needsConsultation, isIndividual) {
-    if (isIndividual) return 'LOW';
-    if (needsConsultation) return 'MID';
-    if (readyToBook) return 'HIGH';
-    return 'MID';
-  }
-
-  async function submitLeadAndShowResult() {
-    const emailInput = $('email');
-    if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
-      emailInput.focus();
-      emailInput.style.borderColor = 'var(--pink)';
-      emailInput.placeholder = 'Prosím zadejte platný e-mail';
-      setTimeout(() => { emailInput.style.borderColor = ''; }, 2000);
-      return;
-    }
-
-    const result = profileFromAnswers();
-    const preference = $('preference').value;
-    const readyToBook = has('Chceme vybrat termín co nejdřív') || has('Tento týden') || preference.includes('Rovnou');
-    const needsConsultation = has('Chci si nejdřív promluvit') || preference.includes('konzultace') || result.profile.name === 'Individuální doporučení';
-    const isIndividual = result.profile.name === 'Individuální doporučení';
-    const segment = getSegment(readyToBook, needsConsultation, isIndividual);
-    result.segment = segment;
-
-    const contact = {
-      email: $('email').value.trim(),
-      phone: $('phone') ? $('phone').value.trim() : '',
-      preference
-    };
-
-    await _sendQueue;
-    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', result, contact));
-    showResult(result);
-  }
-
-  function showResult(precomputedResult) {
-    const result = precomputedResult || profileFromAnswers();
-    const profile = result.profile;
-
-    $('resultTitle').textContent = profile.title;
-    $('resultText').textContent = profile.desc;
-    $('resultCta').textContent = 'Podívat se na volné termíny →';
-    $('resultSecondaryCta').textContent = 'Napsat nám →';
-
+    $('resultTitle').innerHTML = `Vaše dcera odpovídá profilu: <span class="grad">${profileName}</span>`;
+    
     $('profileOutput').innerHTML = `
       <div class="profile-card">
-        <div class="avatar" aria-hidden="true"></div>
+        <div class="avatar"></div>
         <div>
-          <span class="profile-name">${profile.name}</span>
-          <div class="profile-desc">Kreativní profil vaší dcery</div>
+          <span class="profile-name">${profileName}</span>
+          <div class="profile-desc">Složení programu odpovídá jejím předpokladům.</div>
         </div>
       </div>
       <div class="fit-score">
         <div>
-          <strong>Vhodnost programu</strong>
-          <div class="profile-desc">${fitLabel(result.fit, profile.name)}</div>
+          <strong>Celková shoda s programem</strong>
+          <div class="profile-desc">${isUnqualified ? 'Makeful je navržen pro dívky 10–19 let. Věk vaší dcery s vámi rádi probereme individuálně.' : 'Makeful pro ni bude skvělým kreativním impulsem. V dívčím prostředí bez soutěžení získá jistotu ve svých nápadech.'}</div>
         </div>
-        <div class="score-circle" style="--score:${result.fit}"><span>${result.fit}%</span></div>
+        <div class="score-circle" style="--score:${fitPct}"><span>${fitPct}%</span></div>
       </div>
-      <div class="next-card"><strong>Jak ji může Makeful rozvíjet</strong><br>${profile.next}</div>
     `;
 
-    setView('result');
+    // Nastavení textu formuláře na základě detailního GTM segmentu
+    let formTitle = 'Kam vám máme odeslat kompletní analýzu?';
+    let formSub = 'Zadejte kontakt a obratem vám odemkneme aktuální volné termíny.';
+    let btnText = 'Odemknout volné termíny →';
+
+    const cleanAgeStr = age.replace(' let', '');
+
+    if (gtmSegment === 'BOF_CENA') {
+      formTitle = '🎁 Aktivovali jsme pro vás stipendium 900 Kč!';
+      formSub = `Protože chcete vybrat termín co nejdříve a kapacita je omezena na max. 10 dívek, zadejte e-mail pro okamžité odemčení volných míst pro věk ${cleanAgeStr}. Pošleme vám podklady o akademii a možnosti, jak získat další podporu na program.`;
+      btnText = 'Uplatnit stipendium a získat info o akademii →';
+    } else if (gtmSegment === 'BOF_HOT') {
+      formTitle = '🚨 Místa pro léto 2026 se rychle plní.';
+      formSub = `Vzhledem k tomu, že chcete mít jasno co nejdříve, zadejte e-mail a my vám zašleme všechny podklady o akademii, abyste se mohli co nejlépe rozhodnout. Také vám zobrazíme aktuálně volné turnusy určené pro věk ${cleanAgeStr}.`;
+      btnText = 'Získat info a zkontrolovat volná místa →';
+    } else if (gtmSegment === 'MOF_PROBRAT') {
+      formTitle = '🎬 Ukažte Makeful vaší dceři.';
+      formSub = 'Zadejte svůj e-mail a my vám obratem pošleme toto hodnocení spolu s podklady o akademii s ukázkovým videem, na které se můžete s dcerou podívat společně. Níže otevřeme i přehled letních turnusů.';
+      btnText = 'Získat podklady a ukázat termíny →';
+    } else if (gtmSegment === 'MOF_SONDUJE') {
+      formTitle = '📩 Uložte si informace na později.';
+      formSub = `Respektujeme, že zatím pouze mapujete terén. Zašleme vám nezávazné představení akademie Makeful pro věk ${cleanAgeStr} s ukázkovým videem, na které se můžete s dcerou podívat společně.`;
+      btnText = 'Poslat nezávazné info na e-mail →';
+    } else if (gtmSegment === 'LOW') {
+      formTitle = 'Nejdřív ověřme, jestli je Makeful správný krok.';
+      formSub = 'Makeful je primárně vyladěný pro dívky 10–19 let. Zadejte e-mail a posoudíme zapojení vaší dcery individuálně, aby pro ni byl program stoprocentně přínosný a zvládala ho.';
+      btnText = 'Odeslat k individuálnímu posouzení →';
+    }
+
+    $('leadFormTitle').innerHTML = formTitle;
+    $('leadFormSub').innerHTML = formSub;
+    $('leadSubmitBtn').textContent = btnText;
+    state.computedBtnText = btnText;
+
+    setView('resultScreen');
   }
 
-  function handleResultCta() {
-    $('confirmLabel').textContent = 'E-mail na cestě 📩';
-    $('confirmText').textContent = 'Poslali jsme vám e-mail s aktuálními termíny a všemi informacemi. Stačí otevřít a vybrat.';
-    $('confirmPhone').style.display = 'none';
-    setView('confirm');
+  async function submitLeadForm() {
+    const em = $('email').value.trim();
+    const ph = $('phone').value.trim();
+
+    if (!em || !em.includes('@')) {
+      $('email').focus();
+      $('email').style.borderColor = 'var(--pink)';
+      return;
+    }
+
+    const contact = { email: em, phone: ph };
+    
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'lead_submitted',
+      email: em,
+      phone: ph
+    });
+
+    await _sendQueue;
+    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', contact));
+
+    renderFinalActionPage(em, ph);
   }
 
-  function handleResultSecondaryCta() {
-    $('confirmLabel').textContent = 'Rádi vám odpovíme 📩';
-    $('confirmText').textContent = 'Poslali jsme vám e-mail se všemi důležitými informacemi. Stačí na něj odpovědět s vaší otázkou, ozveme se co nejdřív.';
-    $('confirmPhone').textContent = 'Případně můžete zavolat na 735 820 576.';
-    $('confirmPhone').style.display = 'block';
-    setView('confirm');
+  function renderFinalActionPage(email, phone) {
+    const gtmSegment = state.computedGtmSegment;
+    const age = getAnswer('age');
+
+    let confirmTitle = 'Přístup byl odemčen 📩';
+    let confirmText = `Kompletní analýzu a podklady jsme vám právě odeslali na adresu <strong>${email}</strong>.`;
+    let actionHtml = '';
+
+    if (gtmSegment === 'BOF_CENA') {
+      confirmTitle = 'Vše máte ve schránce! Stipendium je aktivováno.';
+      confirmText = `Na e-mail jsme vám poslali potvrzení o <strong>stipendiu 900 Kč</strong> a instrukce, jak proplatit akademii přes benefity (Pluxee, Benefit Plus, Edenred, FKSP). Níže si můžete rovnou vybrat turnus.`;
+    } else if (gtmSegment === 'BOF_HOT') {
+      confirmTitle = 'Detaily jsou na cestě do e-mailu!';
+      confirmText = 'Níže vidíte aktuální stav volných míst pro věkovou skupinu vaší dcery. Doporučujeme zajistit místo co nejdříve.';
+    } else if (gtmSegment === 'LOW') {
+      confirmTitle = 'Děkujeme! Vaši žádost jsme zaznamenali.';
+      confirmText = `Detaily o individuálním posouzení věku jsme vám odeslali na <strong>${email}</strong>. Ozveme se vám co nejdříve osobně.`;
+      actionHtml = `
+        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
+          <div class="claim-label" style="color:#128C7E;">Individuální konzultace</div>
+          <p class="claim-text" style="font-size:14px;">Chcete věk dcery a možnosti jejího zapojení probrat ihned? Napište nám bleskově na WhatsApp.</p>
+          <a class="cta whatsapp" href="https://wa.me/420735820576?text=${encodeURIComponent('Dobrý den, moje dcera nesplňuje standardní věkový limit Makeful, chci se zeptat na možnosti kempu...')}" target="_blank">Napište nám na WhatsApp →</a>
+          <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Zavolat lektorce: +420 735 820 576</a>
+        </div>
+      `;
+    } else {
+      const waText = 'Dobrý den, prošel jsem si váš kvíz Makeful a chci se zeptat na letní kemp pro dceru...';
+      const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(waUrl)}`;
+
+      actionHtml = `
+        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
+          <div class="claim-label" style="color:#128C7E;">Rychlá konzultace</div>
+          
+          <div class="mobile-only-block">
+            <p class="claim-text" style="font-size:14px;">Máte otázku k ubytování, stravě nebo náročnosti? Napište nám přímo přes WhatsApp. Odpovídáme obvykle do pár minut.</p>
+            <a class="cta whatsapp" href="${waUrl}" target="_blank">Napište nám dotaz na WhatsApp →</a>
+          </div>
+
+          <div class="desktop-only-block" style="text-align:center;">
+            <p class="claim-text" style="font-size:14px; text-align:left;">Máte otázku k ubytování, stravě nebo náročnosti? Namiřte foťák mobilu na QR kód a napište nám na WhatsApp.</p>
+            <img class="wa-qr" src="${qrUrl}" alt="WhatsApp QR kód" style="width:140px; height:140px; margin: 12px auto; display:block; border: 2px dashed #128C7E; padding: 4px; border-radius:12px; background: #fff;">
+            <a href="${waUrl}" target="_blank" style="font-size:11.5px; color:var(--muted); text-decoration:underline; font-weight:700;">Používáte na počítači WhatsApp Web? Klikněte zde</a>
+          </div>
+
+          <a class="cta secondary" href="tel:+420735820576" style="text-align:center; margin-top:12px;">Nebo nám zavolejte: +420 735 820 576</a>
+        </div>
+      `;
+    }
+
+    $('confirmTitle').textContent = confirmTitle;
+    $('confirmText').innerHTML = confirmText;
+    $('actionBlock').innerHTML = actionHtml;
+
+    // Filtrování turnusů podle věku
+    let matchedAgeGroup = '13 – 15 let';
+    if (age.includes('10–12')) matchedAgeGroup = '10 – 12 let';
+    if (age.includes('16–19')) matchedAgeGroup = '16 – 19 let';
+
+    // Pokud je věk mimo limit (LOW), zobrazíme raději pro jistotu všechny turnusy
+    const filtered = allTurnusy.filter(t => age.includes('Ještě') || age.includes('více') ? true : t.age === matchedAgeGroup);
+
+    $('turnusyOutput').innerHTML = '';
+    filtered.forEach(t => {
+      const item = document.createElement('div');
+      item.className = 'turnus-item';
+      
+      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}`;
+
+      item.innerHTML = `
+        <div class="turnus-info">
+          <strong>${t.date}</strong>
+          <span class="turnus-badge">${t.lang}</span>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Věková skupina: ${t.age}</div>
+        </div>
+        <a class="cta" href="${regUrl}" target="_blank">Rezervovat místo na tomto turnusu →</a>
+      `;
+      $('turnusyOutput').appendChild(item);
+    });
+
+    setView('confirmScreen');
   }
 
-  // Returning visitor detection
+  // Detekce vracejícího se návštěvníka
   if (localStorage.getItem('makeful_visited')) {
     const btn = document.getElementById('academyBtn');
     if (btn) btn.style.display = 'block';

@@ -309,6 +309,18 @@ function prefillFromUrl() {
     } else {
         handleAgeChange("");
     }
+
+    // Prefill email a telefon z kvízu
+    var emailParam = params.get('email');
+    var telefonParam = params.get('telefon');
+    if (emailParam) {
+        var emailField = document.getElementById('f-email');
+        if (emailField) emailField.value = decodeURIComponent(emailParam);
+    }
+    if (telefonParam) {
+        var telField = document.getElementById('f-tel');
+        if (telField) telField.value = decodeURIComponent(telefonParam);
+    }
 }
 
 function itemValuesPartialMatch(val1, val2) {
