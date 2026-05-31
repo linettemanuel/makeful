@@ -651,6 +651,8 @@
   ];
 
   const DATA_ENDPOINT = 'https://hook.eu1.make.com/letukt291j5ya6tplmm1avsfwpgin1d9'; // Make.com webhook. Make will create/update one Excel row by anonymous_id.
+  const ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+  const STARTED_AT = new Date().toISOString();
 
   const state = { index: -1, answers: {}, pendingNext: null };
   const $ = (id) => document.getElementById(id);
@@ -684,18 +686,23 @@
     }
   }
 
+
+  // Serial send queue — guarantees session_update never arrives after lead_completed
+  let _sendQueue = Promise.resolve();
+  function queueSend(eventName, row) {
+    _sendQueue = _sendQueue.then(() => sendToDataEndpoint(eventName, row));
+  }
+
   function getAnswer(id) {
     const arr = state.answers[id]; return Array.isArray(arr) ? arr.join(', ') : (arr || '');
   }
 
-  function buildExcelRow(status = 'anonymous_in_progress') {
-    const result = {};
-    const contact = {};
+  function buildExcelRow(status = 'anonymous_in_progress', result = {}, contact = {}) {
 
     return {
       status,
-      anonymous_id: 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36),
-      started_at: new Date().toISOString(),
+      anonymous_id: ANONYMOUS_ID,
+      started_at: STARTED_AT,
       updated_at: new Date().toISOString(),
       completed_at: status === 'lead_completed' ? new Date().toISOString() : '',
       source_url: window.location.href,
@@ -721,16 +728,16 @@
       q_future: '',
       q_blocker: '',
 
-      result_profile: result.profileName || '',
-      result_title: result.title || '',
+      result_profile: (result.profile && result.profile.name) || '',
+      result_title: (result.profile && result.profile.title) || '',
       result_fit_percent: result.fit || '',
-      result_cta: result.cta || '',
+      result_cta: (result.profile && result.profile.cta) || '',
       customer_segment: result.segment || ''
     };
   }
 
   function trackAnswer(question, value) {
-    sendToDataEndpoint('session_update', buildExcelRow('anonymous_in_progress'));
+    queueSend('session_update', buildExcelRow('anonymous_in_progress'));
   }
 
   function setView(name) {
@@ -968,9 +975,16 @@
     const needsConsultation = has('consultation') || preference.includes('consultation') || result.profile.name === 'Individual Recommendation';
     const isIndividual = result.profile.name === 'Individual Recommendation';
     const segment = getSegment(readyToBook, needsConsultation, isIndividual);
+    result.segment = segment;
 
+    const contact = {
+      email: $('email').value.trim(),
+      phone: $('phone') ? $('phone').value.trim() : '',
+      preference
+    };
 
-    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed'));
+    await _sendQueue;
+    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', result, contact));
     showResult(result);
   }
 
