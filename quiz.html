@@ -536,6 +536,7 @@
       </div>
       <p class="intro-note">We care that every girl at Makeful feels she is in the right place. Let’s make sure the program makes sense for your daughter.</p>
       <button class="cta" type="button" onclick="startQuiz()">Start the short quiz (1 min) →</button>
+      <a id="academyBtn" href="./summercamp" class="cta secondary" style="display:none;text-decoration:none;text-align:center">Explore the academy →</a>
     </div>
   </section>
 
@@ -623,15 +624,6 @@
       claim: 'At Makeful, we connect a playful creative world with modern technologies. In the lab, girls sketch on paper, model in digital space, sew, and 3D print.'
     },
     {
-      id: 'creative_tech',
-      title: 'What is your daughter’s relationship with creative work?',
-      sub: 'Choose one or more options that describe her.',
-      type: 'multi',
-      max: 4,
-      answers: ['She creates all the time — it is her world', 'She enjoys it, but needs guidance', 'She has ideas, but often lacks confidence', 'She is still looking for what truly excites her'],
-      claim: 'We believe every girl finds her own path to technology in a different way. We support both girls who naturally lean toward technology and those who want to discover it creatively instead of through programming alone.'
-    },
-    {
       id: 'goal',
       title: 'What would you like her to take away from the summer?',
       sub: 'Choose up to 3 outcomes that would be most valuable to you.',
@@ -639,14 +631,6 @@
       max: 3,
       answers: ['Greater self-confidence', 'New creative and technological skills', 'Finished projects she can be proud of', 'Great memories and new friends', 'A meaningful week — an alternative to a traditional camp'],
       claim: 'Makeful is not a traditional camp, but a creative-technological academy. We care that girls leave with useful skills, finished projects, a certificate, and the feeling that their ideas matter.'
-    },
-    {
-      id: 'experience',
-      title: 'Does your daughter have experience with fashion, design, AI, or 3D printing?',
-      sub: 'It is not required. We ask only to better understand her starting point.',
-      type: 'single',
-      answers: ['Yes, she is already actively involved in it', 'She has tried a little', 'She is interested, but has not had the opportunity yet', 'No, but I think she might enjoy it'],
-      claim: 'No experience is needed. We teach everything from the basics and approach each girl individually so she can work at her own pace.'
     },
     {
       id: 'price',
@@ -667,10 +651,8 @@
   ];
 
   const DATA_ENDPOINT = 'https://hook.eu1.make.com/letukt291j5ya6tplmm1avsfwpgin1d9'; // Make.com webhook. Make will create/update one Excel row by anonymous_id.
-  const STORAGE_KEY = 'makeful_quiz_session_v1';
 
   const state = { index: -1, answers: {}, pendingNext: null };
-  const quizSession = loadOrCreateSession();
   const $ = (id) => document.getElementById(id);
   const views = {
     intro: $('intro'),
@@ -681,34 +663,9 @@
     confirm: $('confirmScreen')
   };
 
-  function loadOrCreateSession() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // If the session has already been completed, start a new one
-      if (parsed.contact !== null || parsed.result !== null) {
-        localStorage.removeItem(STORAGE_KEY);
-      } else {
-        return parsed;
-      }
-    }
 
-    const session = {
-      anonymousId: 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36),
-      startedAt: new Date().toISOString(),
-      source: window.location.href,
-      userAgent: navigator.userAgent,
-      answers: {},
-      contact: null,
-      result: null
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-    return session;
-  }
 
-  function saveSession() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(quizSession));
-  }
+
 
   async function sendToDataEndpoint(eventName, row) {
     if (!DATA_ENDPOINT) return;
@@ -728,22 +685,22 @@
   }
 
   function getAnswer(id) {
-    return quizSession.answers[id]?.answer || '';
+    const arr = state.answers[id]; return Array.isArray(arr) ? arr.join(', ') : (arr || '');
   }
 
   function buildExcelRow(status = 'anonymous_in_progress') {
-    const result = quizSession.result || {};
-    const contact = quizSession.contact || {};
+    const result = {};
+    const contact = {};
 
     return {
       status,
-      anonymous_id: quizSession.anonymousId,
-      started_at: quizSession.startedAt,
+      anonymous_id: 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36),
+      started_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       completed_at: status === 'lead_completed' ? new Date().toISOString() : '',
-      source_url: quizSession.source,
+      source_url: window.location.href,
       language: 'en',
-      user_agent: quizSession.userAgent,
+      user_agent: navigator.userAgent,
 
       email: contact.email || '',
       phone: contact.phone || '',
@@ -773,14 +730,6 @@
   }
 
   function trackAnswer(question, value) {
-    quizSession.answers[question.id] = {
-      question: question.title,
-      answer: value,
-      step: state.index + 1,
-      answeredAt: new Date().toISOString()
-    };
-    saveSession();
-
     sendToDataEndpoint('session_update', buildExcelRow('anonymous_in_progress'));
   }
 
@@ -799,6 +748,7 @@
   }
 
   function startQuiz() {
+    localStorage.setItem('makeful_visited', '1');
     state.index = 0;
     renderQuestion();
   }
@@ -1019,20 +969,6 @@
     const isIndividual = result.profile.name === 'Individual Recommendation';
     const segment = getSegment(readyToBook, needsConsultation, isIndividual);
 
-    quizSession.contact = {
-      email: $('email').value.trim(),
-      phone: $('phone').value.trim(),
-      preference,
-      submittedAt: new Date().toISOString()
-    };
-    quizSession.result = {
-      profileName: result.profile.name,
-      title: result.profile.title,
-      fit: result.fit,
-      cta: result.profile.cta,
-      segment
-    };
-    saveSession();
 
     await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed'));
     showResult(result);
@@ -1083,11 +1019,16 @@
     setView('confirm');
   }
 
+  // Returning visitor detection
+  if (localStorage.getItem('makeful_visited')) {
+    const btn = document.getElementById('academyBtn');
+    if (btn) btn.style.display = 'block';
+  }
+
   function restartQuiz() {
     state.index = -1;
     state.answers = {};
     state.pendingNext = null;
-    localStorage.removeItem(STORAGE_KEY);
     window.location.reload();
   }
 </script>

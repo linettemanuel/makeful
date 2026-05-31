@@ -536,6 +536,7 @@
       </div>
       <p class="intro-note">Záleží nám na tom, aby se v Makeful každá dívka cítila, že je na správném místě. Pojďme se ujistit, že bude program pro vaši dceru dávat smysl.</p>
       <button class="cta" type="button" onclick="startQuiz()">Začít krátký kvíz (1 min) →</button>
+      <a id="academyBtn" href="./summercamp" class="cta secondary" style="display:none;text-decoration:none;text-align:center">Prozkoumat akademii →</a>
     </div>
   </section>
 
@@ -623,15 +624,6 @@
       claim: 'V Makeful propojujeme hravý kreativní svět a moderní technologie. V laboratoři holky skicují na papír, modelují v digitálním prostoru, šijí i 3D tisknou.'
     },
     {
-      id: 'creative_tech',
-      title: 'Jaký vztah má vaše dcera ke kreativní tvorbě?',
-      sub: 'Vyberte jednu nebo více možností, které ji vystihují.',
-      type: 'multi',
-      max: 4,
-      answers: ['Tvoří pořád, je to její svět', 'Baví ji to, ale potřebuje vedení', 'Má nápady, ale často si nevěří', 'Zatím hledá, co ji opravdu chytne'],
-      claim: 'Věříme, že každá dívka si hledá cestu k technologiím jinak. Podporujeme ty, které k nim tíhnou, i ty, které je chtějí objevovat kreativně místo samotného programování.'
-    },
-    {
       id: 'goal',
       title: 'Co byste si přáli, aby si z léta odnesla?',
       sub: 'Vyberte maximálně 3 výsledky, které by pro vás měly největší hodnotu.',
@@ -639,14 +631,6 @@
       max: 3,
       answers: ['Větší sebevědomí', 'Nové kreativní a technologické dovednosti', 'Hotové projekty, na které bude pyšná', 'Skvělé vzpomínky a nové kamarádky', 'Smysluplně strávený týden (alternativa k běžnému táboru)'],
       claim: 'Makeful není klasický tábor, ale kreativně-technologická akademie. Záleží nám na tom, aby si dívky odnesly užitečné dovednosti, hotové projekty, diplom a pocit, že jejich nápady mají hodnotu.'
-    },
-    {
-      id: 'experience',
-      title: 'Má vaše dcera zkušenost s módou, designem, AI nebo 3D tiskem?',
-      sub: 'Není to podmínka. Ptáme se jen proto, abychom lépe odhadli její výchozí bod.',
-      type: 'single',
-      answers: ['Ano, už se tomu aktivně věnuje', 'Něco málo zkoušela', 'Zajímá ji to, ale zatím neměla příležitost', 'Ne, ale myslím, že by ji to mohlo bavit'],
-      claim: 'Zkušenosti nejsou potřeba. Učíme vše od základů a ke každé dívce přistupujeme individuálně tak, aby mohla pracovat svým vlastním tempem.'
     },
     {
       id: 'price',
@@ -667,10 +651,8 @@
   ];
 
   const DATA_ENDPOINT = 'https://hook.eu1.make.com/hdn49k1s9quye8xbapn8k3p4auipxx1z'; // Make.com webhook. Make bude podle anonymous_id vytvářet/aktualizovat jeden řádek v Excelu.
-  const STORAGE_KEY = 'makeful_quiz_session_v1';
 
   const state = { index: -1, answers: {}, pendingNext: null };
-  const quizSession = loadOrCreateSession();
   const $ = (id) => document.getElementById(id);
   const views = {
     intro: $('intro'),
@@ -681,34 +663,9 @@
     confirm: $('confirmScreen')
   };
 
-  function loadOrCreateSession() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Pokud session již byla dokončena, začni novou
-      if (parsed.contact !== null || parsed.result !== null) {
-        localStorage.removeItem(STORAGE_KEY);
-      } else {
-        return parsed;
-      }
-    }
 
-    const session = {
-      anonymousId: 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36),
-      startedAt: new Date().toISOString(),
-      source: window.location.href,
-      userAgent: navigator.userAgent,
-      answers: {},
-      contact: null,
-      result: null
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-    return session;
-  }
 
-  function saveSession() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(quizSession));
-  }
+
 
   async function sendToDataEndpoint(eventName, row) {
     if (!DATA_ENDPOINT) return;
@@ -728,22 +685,22 @@
   }
 
   function getAnswer(id) {
-    return quizSession.answers[id]?.answer || '';
+    const arr = state.answers[id]; return Array.isArray(arr) ? arr.join(', ') : (arr || '');
   }
 
   function buildExcelRow(status = 'anonymous_in_progress') {
-    const result = quizSession.result || {};
-    const contact = quizSession.contact || {};
+    const result = {};
+    const contact = {};
 
     return {
       status,
-      anonymous_id: quizSession.anonymousId,
-      started_at: quizSession.startedAt,
+      anonymous_id: 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36),
+      started_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       completed_at: status === 'lead_completed' ? new Date().toISOString() : '',
-      source_url: quizSession.source,
+      source_url: window.location.href,
       language: 'cs',
-      user_agent: quizSession.userAgent,
+      user_agent: navigator.userAgent,
 
       email: contact.email || '',
       phone: contact.phone || '',
@@ -773,14 +730,6 @@
   }
 
   function trackAnswer(question, value) {
-    quizSession.answers[question.id] = {
-      question: question.title,
-      answer: value,
-      step: state.index + 1,
-      answeredAt: new Date().toISOString()
-    };
-    saveSession();
-
     sendToDataEndpoint('session_update', buildExcelRow('anonymous_in_progress'));
   }
 
@@ -799,6 +748,7 @@
   }
 
   function startQuiz() {
+    localStorage.setItem('makeful_visited', '1');
     state.index = 0;
     renderQuestion();
   }
@@ -1019,20 +969,6 @@
     const isIndividual = result.profile.name === 'Individuální doporučení';
     const segment = getSegment(readyToBook, needsConsultation, isIndividual);
 
-    quizSession.contact = {
-      email: $('email').value.trim(),
-      phone: $('phone').value.trim(),
-      preference,
-      submittedAt: new Date().toISOString()
-    };
-    quizSession.result = {
-      profileName: result.profile.name,
-      title: result.profile.title,
-      fit: result.fit,
-      cta: result.profile.cta,
-      segment
-    };
-    saveSession();
 
     await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed'));
     showResult(result);
@@ -1083,11 +1019,16 @@
     setView('confirm');
   }
 
+  // Returning visitor detection
+  if (localStorage.getItem('makeful_visited')) {
+    const btn = document.getElementById('academyBtn');
+    if (btn) btn.style.display = 'block';
+  }
+
   function restartQuiz() {
     state.index = -1;
     state.answers = {};
     state.pendingNext = null;
-    localStorage.removeItem(STORAGE_KEY);
     window.location.reload();
   }
 </script>
