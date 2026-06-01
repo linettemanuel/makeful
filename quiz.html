@@ -426,6 +426,74 @@
       font-weight: 850;
     }
 
+
+
+    .return-lead-entry {
+      justify-content: center;
+    }
+
+    .return-lead-block.standalone {
+      margin-top: 18px;
+    }
+
+    .return-lead-block {
+      margin-top: 16px;
+      padding: 15px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,245,250,.74));
+      border: 1px solid rgba(255,255,255,.86);
+      box-shadow: 0 8px 20px rgba(84,55,132,.07);
+    }
+
+    .return-lead-block h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .return-lead-block p {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 12.8px;
+      line-height: 1.45;
+      font-weight: 720;
+    }
+
+    .quick-contact {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 8px;
+    }
+
+    .quick-contact p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .quick-contact-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 10px 13px;
+      color: var(--navy);
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .quick-contact-btn.whatsapp {
+      color: white;
+      background: linear-gradient(100deg, #25D366, #128C7E);
+      border-color: transparent;
+    }
+
     .lead-inline-form {
       margin-top: 20px;
       padding-top: 16px;
@@ -600,7 +668,24 @@
   </div>
   <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
 
-  <section class="view active" id="intro">
+  
+  
+  
+  
+  <section class="view" id="returnLeadScreen">
+    <div class="card return-lead-entry">
+      <h1>Leave us your email and we will send you <span class="grad">information</span></h1>
+      <p class="sub" style="margin-top:10px;font-size:13.5px;font-weight:850;color:var(--text);">Summer Fashion Tech Academy for girls aged 10–19</p>
+      <p class="lead">Enter your email address and we will send you all information about our Summer Fashion Tech Academy with no commitment, including the program, price and project examples.</p>
+      <div class="return-lead-block standalone">
+        <label for="introEmail">Parent's email *</label>
+        <input id="introEmail" type="email" placeholder="name@email.com" required>
+        <button class="cta" type="button" onclick="submitIntroLead()">Send information by email →</button>
+      </div>
+    </div>
+  </section>
+
+<section class="view active" id="intro">
     <div class="card">
       <h1>Is Makeful the right choice for <span class="grad">your daughter?</span></h1>
       <p class="lead"><strong>Makeful is a summer Fashion Tech academy in Prague for girls aged 10–19.</strong> The program runs Monday to Sunday, 9 AM – 5 PM. In a welcoming girls-only environment, they explore the connection between handmade fashion, digital creation, AI, and 3D printing.</p>
@@ -1071,6 +1156,74 @@
     return 'If you leave your phone number, we can recommend the most suitable next step more personally, without a long email exchange.';
   }
 
+
+  function saveCompletedNoEmailState() {
+    try {
+      localStorage.setItem('makeful_quiz_completed_no_email', '1');
+      localStorage.setItem('makeful_last_answers', JSON.stringify(state.answers || {}));
+      localStorage.setItem('makeful_last_computed', JSON.stringify({
+        computedGtmSegment: state.computedGtmSegment || '',
+        computedMakeSegment: state.computedMakeSegment || '',
+        computedProfileName: state.computedProfileName || '',
+        computedFitPct: state.computedFitPct || ''
+      }));
+    } catch (e) { console.warn(e); }
+  }
+
+  function clearCompletedNoEmailState() {
+    try {
+      localStorage.removeItem('makeful_quiz_completed_no_email');
+      localStorage.removeItem('makeful_last_answers');
+      localStorage.removeItem('makeful_last_computed');
+    } catch (e) { console.warn(e); }
+  }
+
+  function restoreLastQuizState() {
+    try {
+      const savedAnswers = localStorage.getItem('makeful_last_answers');
+      const savedComputed = localStorage.getItem('makeful_last_computed');
+      if (savedAnswers) state.answers = JSON.parse(savedAnswers) || {};
+      if (savedComputed) {
+        const computed = JSON.parse(savedComputed) || {};
+        state.computedGtmSegment = computed.computedGtmSegment || state.computedGtmSegment || 'MID';
+        state.computedMakeSegment = computed.computedMakeSegment || state.computedMakeSegment || 'MID';
+        state.computedProfileName = computed.computedProfileName || state.computedProfileName || '';
+        state.computedFitPct = computed.computedFitPct || state.computedFitPct || '';
+      }
+    } catch (e) { console.warn(e); }
+  }
+
+  async function submitIntroLead() {
+    const em = $('introEmail').value.trim();
+
+    if (!em || !em.includes('@')) {
+      $('introEmail').focus();
+      $('introEmail').style.borderColor = 'var(--pink)';
+      return;
+    }
+
+    restoreLastQuizState();
+
+    state.leadEmail = em;
+    state.leadPhone = '';
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'lead_email_submitted',
+      email: em,
+      segment: state.computedGtmSegment || ''
+    });
+
+    await _sendQueue;
+    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', { email: em, phone: '' }));
+
+    clearCompletedNoEmailState();
+
+    $('phoneClaimText').textContent = getPhoneClaimText(state.computedGtmSegment || '');
+    setView('phoneScreen');
+  }
+
+
   function calculateEvaluationAndShow() {
     const age = getAnswer('age');
     const price = getAnswer('price');
@@ -1209,6 +1362,7 @@
     $('leadSubmitBtn').textContent = btnText;
     state.computedBtnText = btnText;
 
+    saveCompletedNoEmailState();
     setView('resultScreen');
   }
 
@@ -1223,6 +1377,7 @@
 
     state.leadEmail = em;
     state.leadPhone = '';
+    clearCompletedNoEmailState();
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -1253,6 +1408,8 @@
       await sendToDataEndpoint('lead_phone_added', buildExcelRow('lead_completed', { email: state.leadEmail || '', phone: ph }));
     }
 
+    clearCompletedNoEmailState();
+
     renderFinalActionPage(state.leadEmail || '', ph);
   }
 
@@ -1263,6 +1420,7 @@
       email: state.leadEmail || '',
       segment: state.computedGtmSegment || ''
     });
+    clearCompletedNoEmailState();
     renderFinalActionPage(state.leadEmail || '', '');
   }
 
@@ -1349,7 +1507,15 @@
     if (btn) btn.style.display = 'block';
   }
 
-  function restartQuiz() {
+  const returnLeadScreen = document.getElementById('returnLeadScreen');
+  if (returnLeadScreen && localStorage.getItem('makeful_quiz_completed_no_email')) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    returnLeadScreen.classList.add('active');
+    const progress = document.getElementById('progress');
+    if (progress) progress.style.width = '0%';
+  }
+
+function restartQuiz() {
     state.index = -1;
     state.answers = {};
     state.pendingNext = null;
