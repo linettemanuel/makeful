@@ -259,6 +259,20 @@
       font-size: 11px;
       font-weight: 950;
     }
+.multi-note.question-counter {
+      display: block;
+      width: max-content;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #5b48d9;
+      background: rgba(155,108,255,.11);
+      font-size: 10.5px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
     .claim-card {
       width: 100%;
@@ -701,13 +715,13 @@
   
   <section class="view" id="returnLeadScreen">
     <div class="card return-lead-entry">
-      <h1>Zanechte nám váš e-mail a my vám pošleme <span class="grad">informace</span></h1>
+      <h1>Zanechte nám váš email a my vám pošleme <span class="grad">informace</span></h1>
       <p class="sub" style="margin-top:10px;font-size:13.5px;font-weight:850;color:var(--text);">Letní Fashion Tech akademie pro dívky ve věku 10 – 19 let</p>
-      <p class="lead">Vyplňte svoji e-mailovou adresu a my vám zcela nezávazně pošleme všechny informace o naší Letní Fashion Tech akademii, včetně programu, ceny a ukázek projektů.</p>
+      <p class="lead">Vyplňte svoji emailovou adresu a my vám zcela nezávazně pošleme všechny informace o naší Letní Fashion Tech akademii, včetně programu, ceny a ukázek projektů.</p>
       <div class="return-lead-block standalone">
-        <label for="introEmail">E-mail rodiče *</label>
+        <label for="introEmail">Email rodiče *</label>
         <input id="introEmail" type="email" placeholder="např. jmeno@seznam.cz" required>
-        <button class="cta" type="button" onclick="submitIntroLead()">Poslat informace na e-mail →</button>
+        <button class="cta" type="button" onclick="submitIntroLead()">Poslat informace na email →</button>
       </div>
     </div>
   </section>
@@ -760,7 +774,7 @@
         <h3 id="leadFormTitle">Kam vám máme odeslat kompletní doporučení?</h3>
         <p class="sub" id="leadFormSub"></p>
         
-        <label for="email">E-mail, kam pošleme shrnutí *</label>
+        <label for="email">Email, kam pošleme shrnutí *</label>
         <input id="email" type="email" placeholder="např. jmeno@seznam.cz" required>
         
         <button class="cta" id="leadSubmitBtn" type="button" onclick="submitLeadForm()">Poslat doporučení →</button>
@@ -772,11 +786,11 @@
     <div class="card" style="overflow-y:auto">
       <div class="badge">Ještě jeden volitelný krok</div>
       <h2>Chcete rychlejší doporučení?</h2>
-      <p class="lead">E-mail máme uložený. Telefon není povinný — hodí se jen v případě, že chcete rychle ověřit vhodný termín, cenu nebo otázku k programu.</p>
+      <p class="lead">Email máme uložený. Telefon není povinný. Hodí se jen v případě, že chcete rychle ověřit vhodný termín, cenu nebo otázku k programu.</p>
 
       <div class="phone-claim">
         <div class="claim-label">Proč se ptáme</div>
-        <p class="claim-text" id="phoneClaimText">Když nám necháte telefon, můžeme vám doporučit nejvhodnější další krok osobněji — bez dlouhého hledání v e-mailu.</p>
+        <p class="claim-text" id="phoneClaimText">Když nám necháte telefon, můžeme vám doporučit nejvhodnější další krok osobněji, bez dlouhého hledání v emailu.</p>
         <label for="phone">Telefon rodiče <span style="color:var(--muted);font-weight:600">(volitelně)</span></label>
         <input id="phone" type="tel" placeholder="+420 ...">
         <button class="cta" type="button" onclick="submitPhoneStep()">Pokračovat s telefonem →</button>
@@ -806,38 +820,36 @@
   const questions = [
     {
       id: 'age',
-      title: 'Kolik je vaší dceři let?',
-      sub: 'Program přizpůsobujeme věku, tempu i typu fashion-tech projektů.',
+      title: 'Kolik je vaší dceři?',
+      sub: 'Program přizpůsobujeme věku, tempu i typu projektů.',
       type: 'single',
       answers: ['Ještě jí není 10', '10–12 let', '13–15 let', '16–19 let', 'Je jí více než 19']
     },
     {
       id: 'interests',
       title: 'Co vaši dceru přirozeně nejvíc baví?',
-      sub: 'Vyberte jednu nebo více oblastí, ke kterým má nejblíž.',
-      type: 'multi',
-      max: 6,
+      sub: 'Vyberte oblast, ke které má nejblíž.',
+      type: 'single',
       answers: ['Móda, styling a oblečení', 'Kreslení, skicování a ilustrace', 'Tvoření rukama a vyrábění', 'Digitální tvorba, grafika nebo video', 'AI, technologie nebo 3D tisk', 'Zatím nevíme, ale ráda tvoří']
     },
     {
       id: 'goal',
-      title: 'Co byste si přáli, aby si z léta odnesla?',
-      sub: 'Vyberte výsledky, které by pro vás měly největší hodnotu.',
-      type: 'multi',
-      max: 3,
-      answers: ['Větší sebevědomí', 'Nové kreativní a technologické dovednosti', 'Hotové projekty, na které bude pyšná', 'Skvělé vzpomínky a nové kamarádky', 'Smysluplně strávený týden (alternativa k běžnému táboru)']
+      title: 'Co byste si přáli nejvíce, aby si z léta odnesla?',
+      sub: 'Vyberte, co pro vás má největší hodnotu.',
+      type: 'single',
+      answers: ['Větší sebevědomí', 'Nové kreativní a technologické dovednosti', 'Hotové projekty, na které bude pyšná', 'Skvělé vzpomínky a nové kamarádky', 'Smysluplně strávený týden jako alternativa k běžnému táboru']
     },
     {
       id: 'price',
       title: 'Jak se díváte na cenu podobného programu?',
-      sub: 'Tato otázka nám pomůže ukázat hodnotu programu správným způsobem.',
+      sub: 'Pomůže nám to ukázat hodnotu programu správným způsobem.',
       type: 'single',
       answers: ['Hledáme hlavně kvalitu a skutečný přínos', 'Cena je důležitá, ale za dobrý program rádi zaplatíme', 'Potřebujeme vědět, co přesně je v ceně', 'Zajímá nás možnost využití benefitů (Benefit Plus, Edenred...)', 'Cena bude hlavní rozhodovací faktor']
     },
     {
       id: 'timing',
-      title: 'Jak rychle byste chtěli mít jasno?',
-      sub: 'Každý turnus má kapacitu omezenu na maximum individuální pozornosti.',
+      title: 'A poslední otázka: Jak rychle byste chtěli mít jasno?',
+      sub: 'Kapacita jednotlivých turnusů je omezená.',
       type: 'single',
       answers: ['Chceme vybrat termín co nejdřív', 'Tento týden / Do pár týdnů', 'Potřebujeme to nejdřív probrat s dcerou', 'Jen nezávazně sbíráme informace']
     }
@@ -1009,11 +1021,17 @@
 
   function renderQuestion() {
     const q = questions[state.index];
-    $('questionTitle').textContent = q.title;
+    if (q.id === 'timing') {
+      $('questionTitle').innerHTML = '<span class="grad">A poslední otázka:</span> Jak rychle byste chtěli mít jasno?';
+    } else {
+      $('questionTitle').textContent = q.title;
+    }
     $('questionSub').textContent = q.sub || '';
     $('answers').innerHTML = '';
-    $('multiNext').style.display = q.type === 'multi' ? 'block' : 'none';
-    $('multiNote').style.display = q.type === 'multi' ? 'block' : 'none';
+        $('multiNext').style.display = 'none';
+    $('multiNote').className = 'multi-note question-counter';
+    $('multiNote').textContent = (state.index + 1) + '/' + questions.length;
+    $('multiNote').style.display = 'block';
 
     const selected = state.answers[q.id] || [];
     q.answers.forEach(val => {
@@ -1105,7 +1123,7 @@
 
   function getAgeDevelopmentLine(age) {
     if (age.includes('10–12')) return 'U mladších dívek stavíme na hravém objevování: od 3D nášivky na boty přes 3D pero a šití až po klobouček a doplňky, aby si bezpečně vyzkoušela více druhů tvorby.';
-    if (age.includes('13–15')) return 'U teenagerek už můžeme víc rozvíjet vlastní styl, návrhářské přemýšlení a odvahu prezentovat své nápady — od vesty budoucnosti přes AI modelku až po portfolio.';
+    if (age.includes('13–15')) return 'U teenagerek už můžeme víc rozvíjet vlastní styl, návrhářské přemýšlení a odvahu prezentovat své nápady, od vesty budoucnosti přes AI modelku až po portfolio.';
     if (age.includes('16–19')) return 'U starších dívek dává smysl větší důraz na komplexnější projekt, osobní vizuální směr, digitální prezentaci a portfolio, které může využít i pro další studium.';
     return 'Nejdřív bychom individuálně ověřili, jestli je pro ni tempo a náplň programu vhodná. Program je primárně stavěný pro dívky 10–19 let.';
   }
@@ -1134,9 +1152,9 @@
     if (interests.includes('Kreslení')) return `${ageLine} Kreslení můžeme posunout směrem k designérskému procesu: od skici a fashion sketchingu přes návrh kolekce až po digitální prezentaci výsledku.`;
     if (interests.includes('Tvoření rukama')) return `${ageLine} Ruční tvoření můžeme rozvíjet prakticky: 3D pero, šití, práce s textilem, 3D tištěné prvky a dokončení vlastního výtvoru, který si odnese domů.`;
     if (interests.includes('Digitální')) return `${ageLine} Digitální tvorbu můžeme propojit s módou: AI fashion kolekce, virtuální modelka, AI videoreklama a webové portfolio, kde představí své projekty.`;
-    if (interests.includes('AI')) return `${ageLine} Zájem o technologie můžeme rozvíjet přes kreativní využití AI, 3D tisku a digitálních nástrojů — tak, aby technologie nebyly cíl, ale prostředek k vlastní tvorbě.`;
+    if (interests.includes('AI')) return `${ageLine} Zájem o technologie můžeme rozvíjet přes kreativní využití AI, 3D tisku a digitálních nástrojů, tak, aby technologie nebyly cíl, ale prostředek k vlastní tvorbě.`;
     if (goal.includes('sebevědomí')) return `${ageLine} Pomůžeme jí najít oblast, ve které rychle zažije úspěch, a postupně ji vést k tomu, aby dokázala vlastní nápady dokončit a představit ostatním.`;
-    return `${ageLine} Pomůžeme jí vyzkoušet několik směrů — 3D, textil, AI, video i portfolio — a podle toho přirozeně objevit, co ji baví nejvíc.`;
+    return `${ageLine} Pomůžeme jí vyzkoušet několik směrů, 3D, textil, AI, video i portfolio, a podle toho přirozeně objevit, co ji baví nejvíc.`;
   }
 
   function getProjectExample(interests, age) {
@@ -1380,22 +1398,22 @@
 
     // Nastavení textu formuláře na základě detailního GTM segmentu
     let formTitle = 'Kam vám můžeme poslat detaily programu?';
-    let formSub = 'Na e-mail vám pošleme kompletní informace o programu, včetně ceny, ukázek projektů a videoukázky pro dceru, které můžete společně probrat.';
+    let formSub = 'Na email vám pošleme kompletní informace o programu, včetně ceny, ukázek projektů a videoukázky pro dceru, které můžete společně probrat.';
     let btnText = 'Získat kompletní informace o programu →';
 
     const cleanAgeStr = age.replace(' let', '');
 
     if (gtmSegment === 'BOF_CENA') {
       formTitle = '🎁 Poslat cenu, stipendium a vhodné termíny';
-      formSub = `Na e-mail vám pošleme kompletní informace o programu, včetně ceny, co přesně je v ní, možnosti benefitů/stipendia a vhodné termíny pro věk ${cleanAgeStr}.`;
+      formSub = `Na email vám pošleme kompletní informace o programu, včetně ceny, co přesně je v ní, možnosti benefitů/stipendia a vhodné termíny pro věk ${cleanAgeStr}.`;
       btnText = 'Získat kompletní informace o programu →';
     } else if (gtmSegment === 'BOF_HOT') {
       formTitle = '🚨 Poslat vhodné termíny pro věk dcery';
-      formSub = `Na e-mail vám pošleme kompletní informace o programu, včetně přehledu volných turnusů pro věk ${cleanAgeStr}, cenu a další krok k rezervaci, abyste se k tomu mohli v klidu vrátit.`;
+      formSub = `Na email vám pošleme kompletní informace o programu, včetně přehledu volných turnusů pro věk ${cleanAgeStr}, cenu a další krok k rezervaci, abyste se k tomu mohli v klidu vrátit.`;
       btnText = 'Získat kompletní informace o programu →';
     } else if (gtmSegment === 'MOF_PROBRAT') {
       formTitle = '🎬 Poslat ukázky, které můžete ukázat dceři';
-      formSub = 'Na e-mail vám pošleme kompletní informace o programu, včetně ukázek projektů, videem a termíny, abyste si to mohli doma projít společně s dcerou.';
+      formSub = 'Na email vám pošleme kompletní informace o programu, včetně ukázek projektů, videem a termíny, abyste si to mohli doma projít společně s dcerou.';
       btnText = 'Získat kompletní informace o programu →';
     } else if (gtmSegment === 'MOF_SONDUJE') {
       formTitle = '📩 Poslat shrnutí na později';
@@ -1403,7 +1421,7 @@
       btnText = 'Získat informace o programu nezávazně →';
     } else if (gtmSegment === 'LOW') {
       formTitle = 'Nejdřív ověřme, jestli je Makeful správný krok';
-      formSub = 'Makeful je primárně vyladěný pro dívky 10–19 let. Zadejte e-mail a posoudíme zapojení vaší dcery individuálně, aby pro ni byl program stoprocentně přínosný a zvládala ho.';
+      formSub = 'Makeful je primárně vyladěný pro dívky 10–19 let. Zadejte email a posoudíme zapojení vaší dcery individuálně, aby pro ni byl program stoprocentně přínosný a zvládala ho.';
       btnText = 'Poslat k individuálnímu posouzení →';
     }
 
@@ -1484,9 +1502,9 @@
 
     if (gtmSegment === 'BOF_CENA') {
       confirmTitle = 'Vše máte ve schránce! Stipendium je aktivováno.';
-      confirmText = `Na e-mail jsme vám poslali potvrzení o <strong>stipendiu 900 Kč</strong> a instrukce, jak proplatit akademii přes benefity (Pluxee, Benefit Plus, Edenred, FKSP). Níže si můžete rovnou vybrat turnus.`;
+      confirmText = `Na email jsme vám poslali potvrzení o <strong>stipendiu 900 Kč</strong> a instrukce, jak proplatit akademii přes benefity (Pluxee, Benefit Plus, Edenred, FKSP). Níže si můžete rovnou vybrat turnus.`;
     } else if (gtmSegment === 'BOF_HOT') {
-      confirmTitle = 'Detaily jsou na cestě do e-mailu!';
+      confirmTitle = 'Detaily jsou na cestě do emailu!';
       confirmText = 'Níže vidíte aktuální stav volných míst pro věkovou skupinu vaší dcery. Doporučujeme zajistit místo co nejdříve.';
     } else if (gtmSegment === 'LOW') {
       confirmTitle = 'Děkujeme! Vaši žádost jsme zaznamenali.';

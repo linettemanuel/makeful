@@ -259,6 +259,20 @@
       font-size: 11px;
       font-weight: 950;
     }
+.multi-note.question-counter {
+      display: block;
+      width: max-content;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #5b48d9;
+      background: rgba(155,108,255,.11);
+      font-size: 10.5px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
     .claim-card {
       width: 100%;
@@ -780,24 +794,22 @@
     {
       id: 'age',
       title: 'How old is your daughter?',
-      sub: 'We adapt the program to match each girl\'s age, pace, and type of projects.',
+      sub: 'We adapt the program to match each girl\'s age, pace and type of projects.',
       type: 'single',
       answers: ['She is not 10 yet', '10–12 years old', '13–15 years old', '16–19 years old', 'She is over 19']
     },
     {
       id: 'interests',
       title: 'What does your daughter naturally enjoy the most?',
-      sub: 'Select one or more areas she feels closest to.',
-      type: 'multi',
-      max: 6,
+      sub: 'Choose the area she feels closest to.',
+      type: 'single',
       answers: ['Fashion, styling and clothing', 'Drawing, sketching and illustration', 'Hands-on making and crafting', 'Digital creation, graphics or video', 'AI, technology or 3D printing', 'We are not sure yet, but she loves creating']
     },
     {
       id: 'goal',
-      title: 'What would you like her to take away from the summer?',
-      sub: 'Select the outcomes that would be most valuable to you.',
-      type: 'multi',
-      max: 3,
+      title: 'What would you most like her to take away from the summer?',
+      sub: 'Choose what matters most to you.',
+      type: 'single',
       answers: ['Greater self-confidence', 'New creative and technological skills', 'Finished projects she can be proud of', 'Great memories and new friends', 'A meaningful week, an alternative to a traditional camp']
     },
     {
@@ -809,7 +821,7 @@
     },
     {
       id: 'timing',
-      title: 'How soon would you like to have things sorted?',
+      title: 'And the last question: How soon would you like to have clarity?',
       sub: 'Each session has limited capacity.',
       type: 'single',
       answers: ['We want to choose a date as soon as possible', 'This week / Within a few weeks', 'We need to discuss it with our daughter first', 'We are just gathering information, no commitment yet']
@@ -981,11 +993,17 @@
 
   function renderQuestion() {
     const q = questions[state.index];
-    $('questionTitle').textContent = q.title;
+    if (q.id === 'timing') {
+      $('questionTitle').innerHTML = '<span class="grad">And the last question:</span> How soon would you like to have clarity?';
+    } else {
+      $('questionTitle').textContent = q.title;
+    }
     $('questionSub').textContent = q.sub || '';
     $('answers').innerHTML = '';
-    $('multiNext').style.display = q.type === 'multi' ? 'block' : 'none';
-    $('multiNote').style.display = q.type === 'multi' ? 'block' : 'none';
+        $('multiNext').style.display = 'none';
+    $('multiNote').className = 'multi-note question-counter';
+    $('multiNote').textContent = (state.index + 1) + '/' + questions.length;
+    $('multiNote').style.display = 'block';
 
     const selected = state.answers[q.id] || [];
     q.answers.forEach(val => {
