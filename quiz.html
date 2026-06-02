@@ -521,6 +521,59 @@
       font-weight: 850;
     }
 
+
+    #phoneAgeBlock {
+      margin-top: 14px;
+    }
+
+    .select-wrap {
+      position: relative;
+      margin-top: 5px;
+    }
+
+    .select-wrap::after {
+      content: "⌄";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-58%);
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 950;
+      pointer-events: none;
+    }
+
+    #phoneAge {
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      border: 2px solid transparent;
+      border-radius: 18px;
+      padding: 13px 45px 13px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      font-weight: 850;
+      line-height: 1.2;
+      outline: none;
+      color: var(--navy);
+      background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(105deg, var(--aqua), var(--lilac), var(--pink)) border-box;
+      box-shadow: 0 8px 20px rgba(84,55,132,.08);
+      cursor: pointer;
+    }
+
+    #phoneAge:focus {
+      box-shadow: 0 0 0 4px rgba(155,108,255,.13), 0 8px 20px rgba(84,55,132,.08);
+    }
+
+    #phoneAge option {
+      color: var(--navy);
+      font-weight: 750;
+      background: white;
+    }
+
     input {
       width: 100%;
       border: 1px solid var(--line);
@@ -699,6 +752,22 @@
     </div>
   </section>
 
+
+  <section class="view" id="leadCompleteScreen">
+    <div class="card" style="overflow-y:auto">
+      <div class="badge">Quiz already completed</div>
+      <h1>Your quiz is already <span class="grad">completed</span></h1>
+      <p class="lead">Please check the information in your email and choose a suitable date. We only have a few spots left.</p>
+
+      <h3>Available dates for your daughter:</h3>
+      <div id="leadCompleteTurnusyOutput" class="turnusy-list"></div>
+
+      <a class="cta whatsapp" href="https://wa.me/420735820576?text=Hello%2C%20I%20have%20completed%20the%20Makeful%20quiz%20and%20would%20like%20to%20ask%20about%20the%20summer%20program%20for%20my%20daughter." target="_blank">Message us on WhatsApp →</a>
+      <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Call: +420 735 820 576</a>
+      <button class="back" type="button" style="margin-top:18px;" onclick="restartQuiz()">Retake the quiz</button>
+    </div>
+  </section>
+
 <section class="view active" id="intro">
     <div class="card">
       <h1>Is Makeful the right choice for <span class="grad">your daughter?</span></h1>
@@ -710,7 +779,7 @@
       </div>
       <p class="intro-note">We care that every girl at Makeful feels she is in the right place. Let's make sure the program truly makes sense for your daughter.</p>
       <button class="cta" type="button" onclick="startQuiz()">Start the short quiz (1 min) →</button>
-      <a id="academyBtn" href="./summercamp" class="cta secondary" style="display:none;text-decoration:none;text-align:center">Explore the academy →</a>
+      <button class="cta secondary" type="button" onclick="startNoQuizFlow()">I don’t have time for the quiz</button>
     </div>
   </section>
 
@@ -759,11 +828,25 @@
     <div class="card" style="overflow-y:auto">
       <div class="badge">One optional step</div>
       <h2>Would you like a faster recommendation?</h2>
-      <p class="lead">We have saved your email. A phone number is optional, it is useful only if you want to quickly check a suitable date, price or a question about the program.</p>
+      <p class="lead">We understand that you may have a lot on your plate. Leave us your contact and we will quickly help you sort everything out by phone.</p>
 
       <div class="phone-claim">
         <div class="claim-label">Why we ask</div>
-        <p class="claim-text" id="phoneClaimText">If you leave your phone number, we can recommend the most suitable next step more personally, without a long email exchange.</p>
+        <p class="claim-text" id="phoneClaimText">We will call you and answer all your questions by phone in a few minutes. You do not need to search through everything or feel unsure.</p>
+        
+        <div id="phoneAgeBlock" style="display:none">
+          <label for="phoneAge">Daughter's age *</label>
+          <div class="select-wrap">
+            <select id="phoneAge">
+              <option value="">Select age</option>
+              <option value="She is not 10 yet">She is not 10 yet</option>
+              <option value="10–12 years old">10–12 years old</option>
+              <option value="13–15 years old">13–15 years old</option>
+              <option value="16–19 years old">16–19 years old</option>
+              <option value="She is over 19">She is over 19</option>
+            </select>
+          </div>
+        </div>
         <label for="phone">Parent's phone <span style="color:var(--muted);font-weight:600">(optional)</span></label>
         <input id="phone" type="tel" placeholder="+420 ...">
         <button class="cta" type="button" onclick="submitPhoneStep()">Continue with phone →</button>
@@ -849,7 +932,7 @@
   }
 
 
-  const state = { index: -1, answers: {}, pendingNext: null, leadEmail: '', leadPhone: '' };
+  const state = { index: -1, answers: {}, pendingNext: null, noQuizFlow: false, leadEmail: '', leadPhone: '' };
   const $ = (id) => document.getElementById(id);
 
   function getDynamicClaim(questionId, value) {
@@ -989,6 +1072,62 @@
     STARTED_AT = pragueTimestamp();
     state.index = 0;
     renderQuestion();
+  }
+
+
+
+  function getAgeSegmentFromPhone(age) {
+    const outOfRange = age.includes('Ještě') || age.includes('více') || age.includes('not 10') || age.includes('over 19');
+    return outOfRange ? 'LOW' : 'BOF_HOT';
+  }
+
+  function getMakeSegmentFromPhone(age) {
+    const outOfRange = age.includes('Ještě') || age.includes('více') || age.includes('not 10') || age.includes('over 19');
+    return outOfRange ? 'LOW' : 'HIGH';
+  }
+
+  function preparePhoneScreenForNoQuizFlow() {
+    const ageBlock = $('phoneAgeBlock');
+    const skipButton = document.querySelector('#phoneScreen .skip-btn');
+    if (ageBlock) ageBlock.style.display = state.noQuizFlow ? 'block' : 'none';
+    if (skipButton) skipButton.textContent = state.noQuizFlow ? 'I would rather take the quiz' : 'Skip and show the next results';
+    $('phoneClaimText').textContent = 'We will call you and answer all your questions by phone in a few minutes. You do not need to search through everything or feel unsure.';
+  }
+
+
+  function startNoQuizFlow() {
+    localStorage.setItem('makeful_visited', '1');
+    ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+    STARTED_AT = pragueTimestamp();
+
+    state.index = -1;
+    state.answers = {
+      age: ['zjistit'],
+      timing: ['No time for quiz']
+    };
+    state.pendingNext = null;
+    state.noQuizFlow = true;
+    state.leadEmail = '';
+    state.leadPhone = '';
+
+    state.computedGtmSegment = 'BOF_HOT';
+    state.computedMakeSegment = 'HIGH';
+    state.computedProfileName = 'Quick contact';
+    state.computedFitPct = '';
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'quiz_evaluated',
+      anonymous_id: ANONYMOUS_ID,
+      segment: 'BOF_HOT',
+      age_group: 'zjistit',
+      price_bracket: ''
+    });
+
+    const phoneAge = $('phoneAge');
+    if (phoneAge) phoneAge.value = '';
+    preparePhoneScreenForNoQuizFlow();
+    setView('phoneScreen');
   }
 
   function renderQuestion() {
@@ -1166,12 +1305,12 @@
   }
 
   function getPhoneClaimText(gtmSegment) {
-    if (gtmSegment === 'BOF_HOT') return 'Because you want clarity as soon as possible, a phone number helps us quickly check the date, age group and next step toward reservation.';
-    if (gtmSegment === 'BOF_CENA') return 'If price or benefits are important, a phone number helps us quickly explain what is included, how benefits work and what support options may be available.';
-    if (gtmSegment === 'MOF_PROBRAT') return 'If you want to discuss it with your daughter first, a phone number is not necessary. It is only useful if you want us to help you choose what to show her first.';
-    if (gtmSegment === 'MOF_SONDUJE') return 'If you are just gathering information, you can safely skip this step. The email summary is enough for now.';
-    if (gtmSegment === 'LOW') return 'Because your daughter is outside the standard age range, a phone number can help us assess the situation more quickly and personally.';
-    return 'If you leave your phone number, we can recommend the most suitable next step more personally, without a long email exchange.';
+    if (gtmSegment === 'BOF_HOT') return 'We will call you and answer all your questions by phone in a few minutes. You do not need to search through everything or feel unsure.';
+    if (gtmSegment === 'BOF_CENA') return 'We will gladly talk you through benefit payment options and answer all your questions by phone in a few minutes. You do not need to search through everything or feel unsure.';
+    if (gtmSegment === 'MOF_PROBRAT') return 'Discuss the details with your daughter first. We understand that you may have a lot going on. Leave us your contact and we will remind you by SMS. We will not call you.';
+    if (gtmSegment === 'MOF_SONDUJE') return 'Gathering information about different programs takes energy. Leave us your contact and we will remind you by SMS. We will not call you.';
+    if (gtmSegment === 'LOW') return 'If you want, leave us your contact and we will go through the potential fit of the Makeful program individually.';
+    return 'We will call you and answer all your questions by phone in a few minutes. You do not need to search through everything or feel unsure.';
   }
 
 
@@ -1234,11 +1373,82 @@
 
     await _sendQueue;
     await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', { email: em, phone: '' }));
+    saveLeadCompleteState(em, '');
 
     clearCompletedNoEmailState();
 
+    state.noQuizFlow = false;
+    const ageBlock = $('phoneAgeBlock');
+    if (ageBlock) ageBlock.style.display = 'none';
+    const skipButton = document.querySelector('#phoneScreen .skip-btn');
+    if (skipButton) skipButton.textContent = 'Skip and show the next results';
     $('phoneClaimText').textContent = getPhoneClaimText(state.computedGtmSegment || '');
     setView('phoneScreen');
+  }
+
+
+
+  function saveLeadCompleteState(email, phone) {
+    try {
+      localStorage.setItem('makeful_lead_completed', '1');
+      localStorage.setItem('makeful_lead_email', email || '');
+      localStorage.setItem('makeful_lead_phone', phone || '');
+      localStorage.setItem('makeful_last_answers', JSON.stringify(state.answers || {}));
+      localStorage.setItem('makeful_last_computed', JSON.stringify({
+        computedGtmSegment: state.computedGtmSegment || '',
+        computedMakeSegment: state.computedMakeSegment || '',
+        computedProfileName: state.computedProfileName || '',
+        computedFitPct: state.computedFitPct || ''
+      }));
+    } catch (e) { console.warn(e); }
+  }
+
+  function clearLeadCompleteState() {
+    try {
+      localStorage.removeItem('makeful_lead_completed');
+      localStorage.removeItem('makeful_lead_email');
+      localStorage.removeItem('makeful_lead_phone');
+    } catch (e) { console.warn(e); }
+  }
+
+  function getReturnMatchedTurnusy(age) {
+    let matchedAgeGroup = '13 – 15 years';
+    if (age.includes('10–12')) matchedAgeGroup = '10 – 12 years';
+    if (age.includes('16–19')) matchedAgeGroup = '16 – 19 years';
+
+    return allTurnusy.filter(t => {
+      const ageMatch = age.includes('not 10') || age.includes('over 19') ? true : t.age === matchedAgeGroup;
+      return ageMatch && t.lang === 'in English';
+    });
+  }
+
+  function renderLeadCompleteScreen() {
+    restoreLastQuizState();
+    const email = localStorage.getItem('makeful_lead_email') || '';
+    const phone = localStorage.getItem('makeful_lead_phone') || '';
+    const age = getAnswer('age');
+    const filtered = getReturnMatchedTurnusy(age);
+
+    const output = $('leadCompleteTurnusyOutput');
+    if (!output) return;
+    output.innerHTML = '';
+
+    filtered.forEach(t => {
+      const item = document.createElement('div');
+      item.className = 'turnus-item';
+      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}&language=en`;
+      item.innerHTML = `
+        <div class="turnus-info">
+          <strong>${t.date}</strong>
+          <span class="turnus-badge">${t.lang}</span>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Age group: ${t.age}</div>
+        </div>
+        <a class="cta" href="${regUrl}" target="_blank">Reserve a spot for this session →</a>
+      `;
+      output.appendChild(item);
+    });
+
+    setView('leadCompleteScreen');
   }
 
 
@@ -1407,6 +1617,11 @@
     await _sendQueue;
     await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', { email: em, phone: '' }));
 
+    state.noQuizFlow = false;
+    const ageBlock = $('phoneAgeBlock');
+    if (ageBlock) ageBlock.style.display = 'none';
+    const skipButton = document.querySelector('#phoneScreen .skip-btn');
+    if (skipButton) skipButton.textContent = 'Skip and show the next results';
     $('phoneClaimText').textContent = getPhoneClaimText(state.computedGtmSegment || '');
     setView('phoneScreen');
   }
@@ -1414,6 +1629,52 @@
   async function submitPhoneStep() {
     const ph = $('phone').value.trim();
     state.leadPhone = ph;
+
+    if (state.noQuizFlow) {
+      const ageValue = $('phoneAge') ? $('phoneAge').value : '';
+
+      if (!ageValue) {
+        if ($('phoneAge')) {
+          $('phoneAge').focus();
+          $('phoneAge').style.borderColor = 'var(--pink)';
+        }
+        return;
+      }
+
+      if (!ph) {
+        $('phone').focus();
+        $('phone').style.borderColor = 'var(--pink)';
+        return;
+      }
+
+      const gtmSegment = getAgeSegmentFromPhone(ageValue);
+      const makeSegment = getMakeSegmentFromPhone(ageValue);
+
+      state.computedGtmSegment = gtmSegment;
+      state.computedMakeSegment = makeSegment;
+      state.computedProfileName = 'Quick contact';
+      state.computedFitPct = '';
+      state.answers = {
+        age: [ageValue],
+        timing: ['No time for quiz']
+      };
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'lead_phone_added',
+        email: '',
+        phone: ph,
+        segment: gtmSegment
+      });
+
+      await _sendQueue;
+      await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', { email: '', phone: ph }));
+      saveLeadCompleteState('', ph);
+      clearCompletedNoEmailState();
+
+      renderNoQuizFinalPage('', ph, gtmSegment, makeSegment);
+      return;
+    }
 
     if (ph) {
       window.dataLayer = window.dataLayer || [];
@@ -1424,6 +1685,7 @@
         segment: state.computedGtmSegment || ''
       });
       await sendToDataEndpoint('lead_phone_added', buildExcelRow('lead_completed', { email: state.leadEmail || '', phone: ph }));
+      saveLeadCompleteState(state.leadEmail || '', ph);
     }
 
     clearCompletedNoEmailState();
@@ -1432,15 +1694,67 @@
   }
 
   function skipPhoneStep() {
+    if (state.noQuizFlow) {
+      state.noQuizFlow = false;
+      const ageBlock = $('phoneAgeBlock');
+      if (ageBlock) ageBlock.style.display = 'none';
+      startQuiz();
+      return;
+    }
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'lead_phone_skipped',
       email: state.leadEmail || '',
       segment: state.computedGtmSegment || ''
     });
+    saveLeadCompleteState(state.leadEmail || '', '');
     clearCompletedNoEmailState();
     renderFinalActionPage(state.leadEmail || '', '');
   }
+
+
+  function renderNoQuizFinalPage(email, phone, gtmSegment, makeSegment) {
+    state.computedGtmSegment = gtmSegment;
+    state.computedMakeSegment = makeSegment;
+
+    $('confirmTitle').textContent = gtmSegment === 'LOW' ? 'We will contact you soon!' : 'We will contact you soon!';
+    $('confirmText').innerHTML = gtmSegment === 'LOW' ? 'Thank you, we have saved your phone number. We will contact you and go through individually whether Makeful is the right step for your daughter.' : 'Thank you, we have saved your phone number. We will contact you as soon as possible and help you choose a suitable date.';
+
+    const waText = 'Hello, I used the quick contact option in the Makeful quiz and would like to ask about the summer program for my daughter.';
+    const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
+    $('actionBlock').innerHTML = `
+      <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
+        <div class="claim-label" style="color:#128C7E;">Quick contact</div>
+        <p class="claim-text" style="font-size:14px;">If you want to add anything right away, you can message us on WhatsApp or call us.</p>
+        <a class="cta whatsapp" href="${waUrl}" target="_blank">Message us on WhatsApp →</a>
+        <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Call: +420 735 820 576</a>
+      </div>
+    `;
+
+    $('turnusyOutput').innerHTML = '';
+    if (gtmSegment !== 'LOW') {
+      const age = getAnswer('age');
+      const filtered = getReturnMatchedTurnusy(age);
+      filtered.forEach(t => {
+        const item = document.createElement('div');
+        item.className = 'turnus-item';
+        const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=&telefon=${encodeURIComponent(phone)}&language=en`;
+        item.innerHTML = `
+          <div class="turnus-info">
+            <strong>${t.date}</strong>
+            <span class="turnus-badge">${t.lang}</span>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px;">Age group: ${t.age}</div>
+          </div>
+          <a class="cta" href="${regUrl}" target="_blank">Reserve a spot for this session →</a>
+        `;
+        $('turnusyOutput').appendChild(item);
+      });
+    }
+
+    state.noQuizFlow = false;
+    setView('confirmScreen');
+  }
+
 
   function renderFinalActionPage(email, phone) {
     const gtmSegment = state.computedGtmSegment;
@@ -1520,20 +1834,23 @@
   }
 
   // Returning visitor detection
-  if (localStorage.getItem('makeful_visited')) {
-    const btn = document.getElementById('academyBtn');
-    if (btn) btn.style.display = 'block';
-  }
-
-  const returnLeadScreen = document.getElementById('returnLeadScreen');
-  if (returnLeadScreen && localStorage.getItem('makeful_quiz_completed_no_email')) {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    returnLeadScreen.classList.add('active');
-    const progress = document.getElementById('progress');
-    if (progress) progress.style.width = '0%';
+const leadCompleteScreen = document.getElementById('leadCompleteScreen');
+  if (leadCompleteScreen && localStorage.getItem('makeful_lead_completed')) {
+    renderLeadCompleteScreen();
+  } else {
+    const returnLeadScreen = document.getElementById('returnLeadScreen');
+    if (returnLeadScreen && localStorage.getItem('makeful_quiz_completed_no_email')) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      returnLeadScreen.classList.add('active');
+      const progress = document.getElementById('progress');
+      if (progress) progress.style.width = '0%';
+    }
   }
 
 function restartQuiz() {
+    state.noQuizFlow = false;
+    clearCompletedNoEmailState();
+    clearLeadCompleteState();
     state.index = -1;
     state.answers = {};
     state.pendingNext = null;
