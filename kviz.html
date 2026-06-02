@@ -1114,6 +1114,35 @@
     return outOfRange ? 'LOW' : 'HIGH';
   }
 
+
+  function resetNoQuizFlowState() {
+    state.noQuizFlow = false;
+    state.index = -1;
+    state.answers = {};
+    state.pendingNext = null;
+    state.leadEmail = '';
+    state.leadPhone = '';
+    state.computedGtmSegment = '';
+    state.computedMakeSegment = '';
+    state.computedProfileName = '';
+    state.computedFitPct = '';
+
+    const phone = $('phone');
+    if (phone) {
+      phone.value = '';
+      phone.style.borderColor = '';
+    }
+
+    const phoneAge = $('phoneAge');
+    if (phoneAge) {
+      phoneAge.value = '';
+      phoneAge.style.borderColor = '';
+    }
+
+    const ageBlock = $('phoneAgeBlock');
+    if (ageBlock) ageBlock.style.display = 'none';
+  }
+
   function preparePhoneScreenForNoQuizFlow() {
     const ageBlock = $('phoneAgeBlock');
     const skipButton = document.querySelector('#phoneScreen .skip-btn');
@@ -1142,17 +1171,7 @@
     state.computedMakeSegment = 'HIGH';
     state.computedProfileName = 'Rychlý kontakt';
     state.computedFitPct = '';
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'quiz_evaluated',
-      anonymous_id: ANONYMOUS_ID,
-      segment: 'BOF_HOT',
-      age_group: 'zjistit',
-      price_bracket: ''
-    });
-
-    const phoneAge = $('phoneAge');
+const phoneAge = $('phoneAge');
     if (phoneAge) phoneAge.value = '';
     preparePhoneScreenForNoQuizFlow();
     setView('phoneScreen');
@@ -1712,6 +1731,14 @@
 
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
+        event: 'quiz_evaluated',
+        anonymous_id: ANONYMOUS_ID,
+        segment: gtmSegment,
+        age_group: ageValue,
+        price_bracket: ''
+      });
+
+      window.dataLayer.push({
         event: 'lead_phone_added',
         email: '',
         phone: ph,
@@ -1746,9 +1773,7 @@
 
   function skipPhoneStep() {
     if (state.noQuizFlow) {
-      state.noQuizFlow = false;
-      const ageBlock = $('phoneAgeBlock');
-      if (ageBlock) ageBlock.style.display = 'none';
+      resetNoQuizFlowState();
       startQuiz();
       return;
     }
