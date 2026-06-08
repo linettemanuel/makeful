@@ -80,27 +80,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <hr class="divider"><div class="sec-label" data-i18n="sec_promo">Promo kód</div><div class="row full"><div class="field"><label for="f-promo" data-i18n="field_promo_label">Máte promo kód? Zadejte ho zde</label><input id="f-promo" type="text" data-i18n-placeholder="ph_promo" placeholder="např. MAKEFUL10" autocomplete="off" style="text-transform:uppercase;"></div></div>
 <hr class="divider"><div class="sec-label" data-i18n="sec_consent">Souhlas a podmínky</div><div class="consent-row"><input type="checkbox" id="c1"><label for="c1" data-i18n="consent_text">Souhlasím se <a href="/ochrana-osobnich-udaju">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label></div>
 <div id="form-error" class="form-error-banner"></div>
-<div class="submit-row"><button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button><p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme e-mail s dalšími kroky.<br><span style="color:var(--coral);font-weight:900;">Přihlášky přijímáme do 7. června 2026.</span></p></div>
+<div class="submit-row"><button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button><p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme e-mail s dalšími kroky.<br><span style="color:var(--coral);font-weight:900;">Přihlášky přijímáme do 20. června 2026.</span></p></div>
 </div></div></section></main>
 <footer><div class="wrap footer-inner"><div>© 2026 Makeful · FashionTech STEAM Program</div><div class="footer-links"><a href="/obchodni-podminky">Obchodní podmínky</a><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a><a href="mailto:hello@make-ful.com">hello@make-ful.com</a></div></div></footer>
 <script>
 /* ── DATA FOR TERMS CONFIGURATION ── */
 var termOptionsData = [
-    { value: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 10, ageMax: 12, cs: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 10-12 · July 6 - July 12, 2026 · CZ" },
-    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
-    { value: "10-12 let · 10. 8. - 16. 8. 2026 · ENG", ageMin: 10, ageMax: 12, cs: "10-12 let · 10. 8. - 16. 8. 2026 · EN", en: "Ages 10-12 · Aug 10 - Aug 16, 2026 · EN" },
-    { value: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", ageMin: 13, ageMax: 15, cs: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", en: "Ages 13-15 · July 13 - July 19, 2026 · CZ" },
-    { value: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", ageMin: 13, ageMax: 15, cs: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", en: "Ages 13-15 · Aug 3 - Aug 9, 2026 · CZ" },
-    { value: "13-15 let · 20. 7. - 26. 7. 2026 · ENG", ageMin: 13, ageMax: 15, cs: "13-15 let · 20. 7. - 26. 7. 2026 · EN", en: "Ages 13-15 · July 20 - July 26, 2026 · EN" },
-    { value: "16-19 let · 29. 6. - 5. 7. 2026 · CZ", ageMin: 16, ageMax: 19, cs: "16-19 let · 29. 6. - 5. 7. 2026 · CZ", en: "Ages 16-19 · June 29 - July 5, 2026 · CZ" },
-    { value: "16-19 let · 17. 8. - 23. 8. 2026 · ENG", ageMin: 16, ageMax: 19, cs: "16-19 let · 17. 8. - 23. 8. 2026 · EN", en: "Ages 16-19 · Aug 17 - Aug 23, 2026 · EN" },
-    { value: "16-19 let · 24. 8. - 30. 8. 2026 · ENG", ageMin: 16, ageMax: 19, cs: "16-19 let · 24. 8. - 30. 8. 2026 · EN", en: "Ages 16-19 · Aug 24 - Aug 30, 2026 · EN" }
+    { value: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 10-12 · July 6 - July 12, 2026 · CZ" },
+    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 4, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
+    { value: "10-12 let · 10. 8. - 16. 8. 2026 · ENG", ageMin: 10, ageMax: 12, spots: 3, cs: "10-12 let · 10. 8. - 16. 8. 2026 · EN", en: "Ages 10-12 · Aug 10 - Aug 16, 2026 · EN" },
+    { value: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", en: "Ages 10-12 · Aug 17 - Aug 23, 2026 · CZ" },
+    { value: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", ageMin: 13, ageMax: 15, spots: 4, cs: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", en: "Ages 13-15 · July 13 - July 19, 2026 · CZ" },
+    { value: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", ageMin: 13, ageMax: 15, spots: 2, cs: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", en: "Ages 13-15 · Aug 3 - Aug 9, 2026 · CZ" },
+    { value: "13-15 let · 20. 7. - 26. 7. 2026 · ENG", ageMin: 13, ageMax: 15, spots: 3, cs: "13-15 let · 20. 7. - 26. 7. 2026 · EN", en: "Ages 13-15 · July 20 - July 26, 2026 · EN" },
+    { value: "13-15 let · 24. 8. - 30. 8. 2026 · ENG", ageMin: 13, ageMax: 15, spots: 4, cs: "13-15 let · 24. 8. - 30. 8. 2026 · EN", en: "Ages 13-15 · Aug 24 - Aug 30, 2026 · EN" },
+    { value: "16-19 let · 29. 6. - 5. 7. 2026 · CZ", ageMin: 16, ageMax: 19, spots: 3, cs: "16-19 let · 29. 6. - 5. 7. 2026 · CZ", en: "Ages 16-19 · June 29 - July 5, 2026 · CZ" },
+    { value: "16-19 let · 17. 8. - 23. 8. 2026 · ENG", ageMin: 16, ageMax: 19, isFull: true, cs: "16-19 let · 17. 8. - 23. 8. 2026 · EN", en: "Ages 16-19 · Aug 17 - Aug 23, 2026 · EN" },
+    { value: "16-19 let · 24. 8. - 30. 8. 2026 · ENG", ageMin: 16, ageMax: 19, isFull: true, cs: "16-19 let · 24. 8. - 30. 8. 2026 · EN", en: "Ages 16-19 · Aug 24 - Aug 30, 2026 · EN" }
 ];
 
 /* ── TRANSLATIONS DICTIONARY ── */
 var translations = {
   cs: {
-    banner: 'Přihlášky do letní akademie přijímáme do <strong>7. června 2026</strong>. Zajisti si své místo včas!',
+    banner: 'Přihlášky do letní akademie přijímáme do <strong>20. června 2026</strong>. Zajisti si své místo včas!',
     nav_back: 'Zpět na web', nav_badge: '<div class="nav-dot"></div>Přihlášky otevřeny · Léto 2026', nav_cta: 'Dotaz',
     nav_home: 'Domů', nav_program: 'Program', nav_price: 'Cena', nav_dates: 'Termíny', nav_about: 'O nás', nav_contact: 'Kontakt',
     meta_title: 'Přihláška – Letní módní kreativní laboratoř 2026 · Makeful',
@@ -131,7 +133,7 @@ var translations = {
     field_promo: 'Máš promo kód? Zadej ho zde',
     ph_promo: 'např. MAKEFUL10',
     btn_submit: 'Odeslat přihlášku →',
-    submit_note: 'Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 7. června 2026.</span>',
+    submit_note: 'Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 20. června 2026.</span>',
     footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Sleduj nás', footer_docs_lbl: 'Právní dokumenty', footer_contact_lbl: 'Kontakt',
     footer_privacy: 'Zásady ochrany osobních údajů', footer_terms: 'Obchodní podmínky',
     footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.',
@@ -149,7 +151,7 @@ var translations = {
     field_r_phone_label: 'Telefon', field_r_email_label: 'Email rodiče'
   },
   en: {
-    banner: 'Applications for our summer academy are open until <strong>June 7, 2026</strong>. Secure your spot today!',
+    banner: 'Applications for our summer academy are open until <strong>June 20, 2026</strong>. Secure your spot today!',
     nav_back: 'Back to web', nav_badge: '<div class="nav-dot"></div>Applications open · Summer 2026', nav_cta: 'Inquiry',
     nav_home: 'Home', nav_program: 'Programme', nav_price: 'Pricing', nav_dates: 'Dates', nav_about: 'About', nav_contact: 'Contact',
     meta_title: 'Application Form – Summer FashionTech Laboratory 2026 · Makeful',
@@ -180,7 +182,7 @@ var translations = {
     field_promo: 'Have a promo code? Enter it here',
     ph_promo: 'e.g. MAKEFUL10',
     btn_submit: 'Submit application →',
-    submit_note: 'After submitting, we will send you an email with next steps.<br><span style="color:var(--coral);font-weight:600;">Applications close on June 7, 2026.</span>',
+    submit_note: 'After submitting, we will send you an email with next steps.<br><span style="color:var(--coral);font-weight:600;">Applications close on June 20, 2026.</span>',
     footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Follow us', footer_docs_lbl: 'Legal Documents', footer_contact_lbl: 'Contact',
     footer_privacy: 'Privacy Policy', footer_terms: 'Terms & Conditions',
     footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. All rights reserved.',
@@ -206,7 +208,7 @@ function handleAgeChange(selectedAgeString) {
     var ageNum = parseInt(selectedAgeString);
     var select1 = document.getElementById('f-termin');
     var select2 = document.getElementById('f-termin2');
-    
+
     var currentVal1 = select1.value;
     var currentVal2 = select2.value;
 
@@ -220,16 +222,24 @@ function handleAgeChange(selectedAgeString) {
     termOptionsData.forEach(function(item) {
         if (!hasValidAge || (ageNum >= item.ageMin && ageNum <= item.ageMax)) {
             var labelText = currentLang === 'en' ? item.en : item.cs;
-            
+
+            if (item.isFull) {
+                labelText += currentLang === 'en' ? ' (full session)' : ' (plný termín)';
+            } else if (item.spots) {
+                labelText += currentLang === 'en' ? ' (' + item.spots + ' spots left)' : ' (zbývají ' + item.spots + ' místa)';
+            }
+
             var opt1 = document.createElement('option');
             opt1.value = item.value;
             opt1.textContent = labelText;
+            if (item.isFull) opt1.disabled = true;
             if(item.value === currentVal1) opt1.selected = true;
             select1.appendChild(opt1);
 
             var opt2 = document.createElement('option');
             opt2.value = item.value;
             opt2.textContent = labelText;
+            if (item.isFull) opt2.disabled = true;
             if(item.value === currentVal2) opt2.selected = true;
             select2.appendChild(opt2);
         }
