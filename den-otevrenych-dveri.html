@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KGDFKB27");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Online den otevřených dveří · Makeful</title>
+  <meta name="description" content="Pozvánka na online den otevřených dveří Makeful letní kreativní akademie." />
+  <style>
+    :root {
+      --navy: #111633;
+      --text: #26304f;
+      --muted: #6d7289;
+      --pink: #ff6f9f;
+      --peach: #ffb26b;
+      --aqua: #48d5ec;
+      --lilac: #9b6cff;
+      --card: rgba(255,255,255,.84);
+      --line: rgba(17,22,51,.10);
+      --shadow: 0 16px 42px rgba(84,55,132,.14);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--navy);
+      background:
+        radial-gradient(circle at 0 0, rgba(72,213,236,.22), transparent 28%),
+        radial-gradient(circle at 100% 0, rgba(255,111,159,.22), transparent 30%),
+        linear-gradient(180deg, #fffaf7 0%, #fff1f8 58%, #f7f1ff 100%);
+    }
+
+    .app {
+      width: min(100%, 430px);
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top {
+      height: 46px;
+      display: flex;
+      align-items: flex-start;
+      flex: 0 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: flex-start;
+      line-height: 0;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 162px;
+      max-width: 58vw;
+      height: auto;
+    }
+
+    .progress-wrap {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(17,22,51,.08);
+      overflow: hidden;
+      margin-bottom: 10px;
+      flex: 0 0 auto;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--aqua), var(--lilac), var(--pink), var(--peach));
+      transition: width .25s ease;
+    }
+
+    .view { display: none; flex: 1 1 auto; min-height: 0; }
+    .view.active { display: flex; }
+
+    .card {
+      width: 100%;
+      min-height: 0;
+      border-radius: 24px;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.78);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: Georgia, "Playfair Display", serif;
+      line-height: 1.1;
+      letter-spacing: -.045em;
+    }
+
+    h1 { font-size: clamp(29px, 9vw, 38px); }
+    h2 { font-size: clamp(23px, 7.2vw, 29px); }
+    h3 { font-size: 19px; margin-top: 16px; margin-bottom: 8px; }
+
+    .grad {
+      background: linear-gradient(105deg, #6b4dff, #e35fb2, #ff806a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin: 14px 0 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .lead strong {
+      font-weight: 900;
+    }
+
+    .sub {
+      margin: 7px 0 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.3;
+    }
+
+    .facts {
+      display: grid;
+      gap: 11px;
+      margin-top: 22px;
+    }
+
+    .fact {
+      min-height: 42px;
+      padding: 10px 12px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,245,250,.74));
+      border: 1px solid rgba(255,255,255,.82);
+      box-shadow: 0 8px 20px rgba(84,55,132,.07);
+      font-size: 12.8px;
+      line-height: 1.28;
+      font-weight: 850;
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .fact:nth-child(2n) {
+      background: linear-gradient(135deg, rgba(246,240,255,.88), rgba(239,252,255,.72));
+    }
+
+    .fact-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 13px;
+      font-weight: 950;
+      background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink));
+      box-shadow: 0 6px 13px rgba(155,108,255,.24);
+    }
+
+    .intro-note {
+      margin: 22px 0 0;
+      padding: 13px 14px;
+      color: var(--text);
+      font-size: 12.8px;
+      line-height: 1.45;
+      font-weight: 720;
+      border-radius: 18px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(17,22,51,.07);
+    }
+
+    .cta {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 16px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 14.5px;
+      font-weight: 950;
+      background: linear-gradient(100deg, var(--aqua), var(--lilac), var(--pink), var(--peach));
+      box-shadow: 0 12px 22px rgba(255,111,159,.22);
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cta.whatsapp {
+      background: linear-gradient(100deg, #25D366, #128C7E);
+      box-shadow: 0 12px 22px rgba(37,211,102,.22);
+    }
+
+    .cta.secondary {
+      margin-top: 8px;
+      color: var(--navy);
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .back {
+      margin-top: 12px;
+      padding: 8px 0 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 850;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .answers {
+      display: grid;
+      gap: 7px;
+      min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 1px;
+    }
+
+    .answer {
+      width: 100%;
+      min-height: 39px;
+      padding: 9px 11px;
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: var(--navy);
+      text-align: left;
+      font-size: 13.2px;
+      line-height: 1.2;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .answer.selected {
+      border-color: rgba(255,111,159,.55);
+      background: linear-gradient(120deg, rgba(255,255,255,.94), rgba(255,240,248,.80));
+    }
+
+    .multi-note {
+      display: none;
+      margin-bottom: 7px;
+      color: #7652e8;
+      font-size: 11px;
+      font-weight: 950;
+    }
+.multi-note.question-counter {
+      display: block;
+      width: max-content;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #5b48d9;
+      background: rgba(155,108,255,.11);
+      font-size: 10.5px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .claim-card {
+      width: 100%;
+      margin: auto 0;
+      border-radius: 25px;
+      padding: 18px;
+      background: linear-gradient(150deg, rgba(255,255,255,.94), rgba(255,255,255,.70));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.86);
+    }
+
+    .claim-label {
+      margin-bottom: 9px;
+      color: #8b5cf6;
+      font-size: 10.5px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .claim-text {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(15px, 4.5vw, 17.5px);
+      line-height: 1.35;
+      letter-spacing: -.01em;
+      font-weight: 850;
+    }
+
+    .claim-card .cta { margin-top: 22px; }
+
+
+    .value-section {
+      margin-top: 14px;
+      display: grid;
+      gap: 11px;
+    }
+
+    .value-card {
+      border-radius: 20px;
+      padding: 13px;
+      background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,245,250,.72));
+      border: 1px solid rgba(255,255,255,.86);
+      box-shadow: 0 8px 20px rgba(84,55,132,.07);
+    }
+
+    .value-card.alt {
+      background: linear-gradient(135deg, rgba(246,240,255,.88), rgba(239,252,255,.72));
+    }
+
+    .value-title {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: 13.5px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .value-text {
+      margin: 0;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.42;
+      font-weight: 650;
+    }
+
+    .value-list {
+      margin: 8px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 7px;
+      list-style: none;
+    }
+
+    .value-list li {
+      display: grid;
+      grid-template-columns: 19px 1fr;
+      gap: 7px;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 720;
+    }
+
+    .value-list li::before {
+      content: "✓";
+      width: 19px;
+      height: 19px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink));
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .preview-turnusy {
+      display: grid;
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .preview-turnus {
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+      color: var(--navy);
+      font-size: 12.5px;
+      line-height: 1.3;
+      font-weight: 850;
+    }
+
+    .soft-note {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .project-preview {
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.86);
+      box-shadow: 0 8px 20px rgba(84,55,132,.07);
+    }
+
+    .project-preview img {
+      width: 100%;
+      aspect-ratio: 1.45 / 1;
+      object-fit: cover;
+      background: rgba(255,255,255,.6);
+    }
+
+    .project-preview p {
+      margin: 0;
+      padding: 11px 12px 13px;
+      color: var(--text);
+      font-size: 12.6px;
+      line-height: 1.38;
+      font-weight: 760;
+    }
+
+
+    .phone-claim {
+      margin-top: 16px;
+      border-radius: 25px;
+      padding: 18px;
+      background: linear-gradient(150deg, rgba(255,255,255,.94), rgba(255,255,255,.70));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.86);
+    }
+
+    .phone-claim label {
+      margin-top: 14px;
+    }
+
+    .skip-btn {
+      width: 100%;
+      margin-top: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 850;
+      cursor: pointer;
+      padding: 10px 6px;
+    }
+
+    .locked-turnus-summary {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .locked-turnus-item {
+      padding: 10px 11px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--navy);
+      font-size: 12.6px;
+      line-height: 1.32;
+      font-weight: 850;
+    }
+
+
+
+    .return-lead-entry {
+      justify-content: center;
+    }
+
+    .return-lead-block.standalone {
+      margin-top: 18px;
+    }
+
+    .return-lead-block {
+      margin-top: 16px;
+      padding: 15px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,245,250,.74));
+      border: 1px solid rgba(255,255,255,.86);
+      box-shadow: 0 8px 20px rgba(84,55,132,.07);
+    }
+
+    .return-lead-block h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .return-lead-block p {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 12.8px;
+      line-height: 1.45;
+      font-weight: 720;
+    }
+
+    .quick-contact {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 8px;
+    }
+
+    .quick-contact p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .quick-contact-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 10px 13px;
+      color: var(--navy);
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .quick-contact-btn.whatsapp {
+      color: white;
+      background: linear-gradient(100deg, #25D366, #128C7E);
+      border-color: transparent;
+    }
+
+    .lead-inline-form {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 2px dashed var(--line);
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+
+    #phoneAgeBlock {
+      margin-top: 14px;
+    }
+
+    .select-wrap {
+      position: relative;
+      margin-top: 5px;
+    }
+
+    .select-wrap::after {
+      content: "⌄";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-58%);
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 950;
+      pointer-events: none;
+    }
+
+    #phoneAge {
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      border: 2px solid transparent;
+      border-radius: 18px;
+      padding: 13px 45px 13px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      font-weight: 850;
+      line-height: 1.2;
+      outline: none;
+      color: var(--navy);
+      background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(105deg, var(--aqua), var(--lilac), var(--pink)) border-box;
+      box-shadow: 0 8px 20px rgba(84,55,132,.08);
+      cursor: pointer;
+    }
+
+    #phoneAge:focus {
+      box-shadow: 0 0 0 4px rgba(155,108,255,.13), 0 8px 20px rgba(84,55,132,.08);
+    }
+
+    #phoneAge option {
+      color: var(--navy);
+      font-weight: 750;
+      background: white;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 11px;
+      font: inherit;
+      color: var(--navy);
+      background: rgba(255,255,255,.76);
+    }
+
+    .badge {
+      width: max-content;
+      margin-bottom: 9px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #5b48d9;
+      background: rgba(155,108,255,.11);
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .profile-wrap {
+      margin-top: 12px;
+      min-height: 0;
+      overflow-y: auto;
+      display: grid;
+      gap: 11px;
+    }
+
+    .profile-card {
+      border-radius: 20px;
+      padding: 13px;
+      background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(246,240,255,.74));
+      border: 1px solid rgba(255,255,255,.82);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #ffd9ec, #dcd1ff 58%, #ffe1c7);
+      box-shadow: 0 10px 22px rgba(84,55,132,.13);
+    }
+
+    .profile-name {
+      display: block;
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 950;
+      margin-bottom: 3px;
+    }
+
+    .profile-desc {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .fit-score {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid var(--line);
+    }
+
+    .fit-score strong { font-size: 13px; }
+
+    .score-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 950;
+      font-size: 14px;
+      background: conic-gradient(var(--pink) calc(var(--score) * 1%), rgba(17,22,51,.08) 0);
+      position: relative;
+    }
+
+    .score-circle::before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: inherit;
+      background: white;
+    }
+
+    .score-circle span { position: relative; z-index: 1; color: var(--navy); }
+
+    .turnusy-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .turnus-item {
+      padding: 12px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(0,0,0,.03);
+    }
+
+    .turnus-info {
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .turnus-badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(17,22,51,.06);
+      margin-left: 5px;
+    }
+
+
+    .spots-badge {
+      display: inline-block;
+      width: max-content;
+      margin-left: 5px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(90deg, #ff1744, #ff2d7a);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 950;
+      vertical-align: middle;
+    }
+
+    .spots-badge.full {
+      background: #dedee6;
+      color: #777b8f;
+    }
+
+    .cta.disabled {
+      color: #777b8f;
+      background: #dedee6;
+      box-shadow: none;
+      cursor: not-allowed;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .turnus-item .cta {
+      margin-top: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE WHATSAPP DISPLAY CLASSES */
+    .desktop-only-block { display: none; }
+    .mobile-only-block { display: block; }
+
+    @media (min-width: 768px) {
+      .desktop-only-block { display: block; }
+      .mobile-only-block { display: none; }
+    }
+
+    @media (max-height: 690px) {
+      .app { padding: 8px; }
+      .card { padding: 14px; border-radius: 20px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .lead { font-size: 12.5px; margin-top: 10px; }
+      .claim-text { font-size: 14px; }
+      .answer { min-height: 35px; padding: 7px 10px; font-size: 12px; }
+    }
+  
+
+    .choice-group {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .choice-card {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.74);
+      color: var(--navy);
+      text-align: left;
+      font-size: 13.2px;
+      line-height: 1.25;
+      font-weight: 850;
+      cursor: pointer;
+      display: grid;
+      gap: 3px;
+    }
+
+    .choice-card.selected {
+      border-color: rgba(255,111,159,.62);
+      background: linear-gradient(120deg, rgba(255,255,255,.96), rgba(255,237,248,.82));
+      box-shadow: 0 8px 20px rgba(255,111,159,.12);
+    }
+
+    .choice-card small {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .error-text {
+      display: none;
+      margin: 9px 0 0;
+      color: #d81b60;
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .open-summary {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .summary-pill {
+      padding: 10px 11px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      color: var(--navy);
+      font-size: 12.8px;
+      line-height: 1.35;
+      font-weight: 850;
+    }
+
+    .sms-note {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(239,252,255,.72));
+      border: 1px solid rgba(255,255,255,.86);
+      color: var(--text);
+      font-size: 12.8px;
+      line-height: 1.45;
+      font-weight: 750;
+    }
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="app">
+  <div class="top">
+    <div class="brand">
+      <img class="brand-logo" src="./img/makeful_logo_colours.png" alt="MAKEFUL">
+    </div>
+  </div>
+  <div class="progress-wrap" aria-hidden="true"><div class="progress" id="progress"></div></div>
+
+  <section class="view active" id="intro">
+    <div class="card">
+      <h1>Zveme vás na <span class="grad">online den otevřených dveří Makeful</span></h1>
+      <p class="lead"><strong>Makeful je letní Fashion Tech akademie v Praze pro dívky 10–19 let.</strong> Program probíhá od pondělí do neděle 9 – 17 h. V příjemném holčičím prostředí dívky objevují spojení ruční módy s digitální tvorbou, AI a 3D tiskem.</p>
+      <div class="facts">
+        <div class="fact"><span class="fact-check">✓</span><span>7 dní v kreativní laboratoři</span></div>
+        <div class="fact"><span class="fact-check">✓</span><span>45 hodin čisté intenzivní tvorby</span></div>
+        <div class="fact"><span class="fact-check">✓</span><span>Příjemný holčičí kolektiv</span></div>
+      </div>
+      <p class="intro-note">Přijďte se s dcerou podívat, jak Makeful funguje v praxi. Ukážeme projekty, představíme lektory i možnosti financování. Dostanete prostor zeptat se na vše, co potřebujete vědět.</p>
+      <button class="cta" type="button" onclick="startOpenDays()">Ukázat termíny dnů otevřených dveří →</button>
+    </div>
+  </section>
+
+  <section class="view" id="ageScreen">
+    <div class="card">
+      <div class="multi-note question-counter">1/2</div>
+      <h2>Vyberte věk dcery</h2>
+      <p class="sub">Pomůže nám poslat vám relevantní informace k programu.</p>
+      <div class="choice-group" id="ageChoices">
+        <button class="choice-card" type="button" data-value="Ještě jí není 10">Ještě jí není 10</button>
+        <button class="choice-card" type="button" data-value="10–12 let">10–12 let</button>
+        <button class="choice-card" type="button" data-value="13–15 let">13–15 let</button>
+        <button class="choice-card" type="button" data-value="16–19 let">16–19 let</button>
+        <button class="choice-card" type="button" data-value="Je jí více než 19">Je jí více než 19</button>
+      </div>
+      <p class="error-text" id="ageError">Vyberte prosím věk dcery.</p>
+      <button class="cta" type="button" onclick="goToTermEmail()">Pokračovat →</button>
+      <button class="back" type="button" onclick="setView('intro')">← Zpět</button>
+    </div>
+  </section>
+
+  <section class="view" id="termEmailScreen">
+    <div class="card" style="overflow-y:auto">
+      <div class="multi-note question-counter">2/2</div>
+      <h2>Vyberte termín a zadejte email</h2>
+      <p class="sub">Zobrazujeme vždy nejbližší dostupné termíny. Přihlásit se dá nejpozději 30 minut před začátkem.</p>
+      <div class="choice-group" id="termChoices"></div>
+
+      <label for="email">Email rodiče *</label>
+      <input id="email" type="email" placeholder="např. jmeno@seznam.cz" autocomplete="email" required>
+
+      <p class="error-text" id="termEmailError">Vyberte prosím termín a vyplňte platný email.</p>
+      <button class="cta" type="button" onclick="submitEmailStep()">Poslat pozvánku na email →</button>
+      <button class="back" type="button" onclick="setView('ageScreen')">← Zpět</button>
+    </div>
+  </section>
+
+  <section class="view" id="phoneScreen">
+    <div class="card" style="overflow-y:auto">
+      <div class="badge">Pozvánka je připravená</div>
+      <h2 id="phoneTitle">Ještě telefon pro připomenutí přes SMS</h2>
+      <p class="lead" id="phoneLead">Pozvánku vám pošleme na email. Pro jistotu prosíme i o telefon, protože pozvánka může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong></p>
+
+
+      <div class="phone-claim">
+        <div class="claim-label">Volitelné, ale doporučené</div>
+        <p class="claim-text" style="font-size:15px;">Telefon použijeme jen pro SMS připomenutí online dne otevřených dveří.</p>
+        <label for="phone">Telefon rodiče <span style="color:var(--muted);font-weight:600">(volitelně)</span></label>
+        <input id="phone" type="tel" placeholder="+420 ...">
+        <button class="cta" type="button" onclick="submitPhoneStep()">Dokončit registraci →</button>
+        <button class="skip-btn" type="button" onclick="skipPhoneStep()">Přeskočit telefon</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="confirmScreen">
+    <div class="card" style="overflow-y:auto">
+      <div class="badge" style="background:rgba(37,211,102,.1);color:#128C7E">Hotovo</div>
+      <h2>Děkujeme, zkontrolujte prosím váš email!</h2>
+      <p class="lead" id="confirmText">Informace jsme uložili. Pozvánku vám pošleme na email.</p>
+      <div class="open-summary" id="confirmSummary"></div>
+      <div class="sms-note">Kdyby email nedorazil, zkontrolujte prosím složku SPAM nebo hromadné zprávy.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const DATA_ENDPOINT = 'https://hook.eu1.make.com/hdn49k1s9quye8xbapn8k3p4auipxx1z';
+  let ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+  let STARTED_AT = pragueTimestamp();
+
+  const state = {
+    selectedTerm: '',
+    selectedAge: '',
+    leadEmail: '',
+    leadPhone: '',
+    computedGtmSegment: 'OPEN',
+    computedMakeSegment: 'MID',
+    computedProfileName: 'Online den otevřených dveří',
+    computedFitPct: ''
+  };
+
+  const openDayTerms = [
+    { id: 'open-2026-06-14', dateKey: '2026-06-14T18:30:00+02:00', label: 'Neděle 14. 6. 2026', time: '18:30 – 19:20', language: 'CZ' },
+    { id: 'open-2026-06-17', dateKey: '2026-06-17T18:30:00+02:00', label: 'Středa 17. 6. 2026', time: '18:30 – 19:20', language: 'CZ' },
+    { id: 'open-2026-06-21', dateKey: '2026-06-21T18:30:00+02:00', label: 'Neděle 21. 6. 2026', time: '18:30 – 19:20', language: 'CZ' },
+    { id: 'open-2026-06-24', dateKey: '2026-06-24T18:30:00+02:00', label: 'Středa 24. 6. 2026', time: '18:30 – 19:20', language: 'CZ' }
+  ];
+
+  const fallbackTerm = 'Termíny mi nevyhovují, pošlete mi záznam';
+
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  function pragueTimestamp() {
+    return new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Prague' }).replace('T', ' ');
+  }
+
+  function pragueNow() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Prague',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).formatToParts(new Date()).reduce((acc, part) => {
+      acc[part.type] = part.value;
+      return acc;
+    }, {});
+    return new Date(`${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}+02:00`);
+  }
+
+  function getVisibleTerms() {
+    const now = pragueNow().getTime();
+    return openDayTerms
+      .filter(term => new Date(term.dateKey).getTime() - now > 30 * 60 * 1000)
+      .slice(0, 2);
+  }
+
+  function renderTermChoices() {
+    const box = $('termChoices');
+    box.innerHTML = '';
+
+    getVisibleTerms().forEach(term => {
+      const btn = document.createElement('button');
+      btn.className = 'choice-card';
+      btn.type = 'button';
+      btn.dataset.value = `${term.label} · ${term.time} · ${term.language}`;
+      btn.innerHTML = `<span>${term.label}</span><small>${term.time} · ${term.language}</small>`;
+      btn.addEventListener('click', () => selectChoice('termChoices', btn, 'selectedTerm'));
+      box.appendChild(btn);
+    });
+
+    const fallback = document.createElement('button');
+    fallback.className = 'choice-card';
+    fallback.type = 'button';
+    fallback.dataset.value = fallbackTerm;
+    fallback.innerHTML = `<span>${fallbackTerm}</span><small>Pošleme vám záznam, jakmile bude k dispozici.</small>`;
+    fallback.addEventListener('click', () => selectChoice('termChoices', fallback, 'selectedTerm'));
+    box.appendChild(fallback);
+  }
+
+  function selectChoice(groupId, button, stateKey) {
+    document.querySelectorAll('#' + groupId + ' .choice-card').forEach(el => el.classList.remove('selected'));
+    button.classList.add('selected');
+    state[stateKey] = button.dataset.value || button.textContent.trim();
+    const ageErr = $('ageError');
+    const termErr = $('termEmailError');
+    if (ageErr) ageErr.style.display = 'none';
+    if (termErr) termErr.style.display = 'none';
+  }
+
+  document.querySelectorAll('#ageChoices .choice-card').forEach(btn => {
+    btn.addEventListener('click', () => selectChoice('ageChoices', btn, 'selectedAge'));
+  });
+
+  function setView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    $(id).classList.add('active');
+
+    let pct = 0;
+    if (id === 'ageScreen') pct = 35;
+    if (id === 'termEmailScreen') pct = 65;
+    if (id === 'phoneScreen') pct = 85;
+    if (id === 'confirmScreen') pct = 100;
+    $('progress').style.width = pct + '%';
+  }
+
+  function startOpenDays() {
+    ANONYMOUS_ID = 'mf_' + Math.random().toString(36).slice(2) + '_' + Date.now().toString(36);
+    STARTED_AT = pragueTimestamp();
+    setView('ageScreen');
+  }
+
+  function goToTermEmail() {
+    if (!state.selectedAge) {
+      $('ageError').style.display = 'block';
+      return;
+    }
+    renderTermChoices();
+    setView('termEmailScreen');
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  async function sendToDataEndpoint(eventName, row) {
+    if (!DATA_ENDPOINT) return;
+    try {
+      await fetch(DATA_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event_name: eventName, ...row })
+      });
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+
+  function buildExcelRow(status = 'anonymous_in_progress', contact = {}) {
+    return {
+      status,
+      anonymous_id: ANONYMOUS_ID,
+      started_at: STARTED_AT,
+      updated_at: pragueTimestamp(),
+      completed_at: status === 'lead_completed' ? pragueTimestamp() : '',
+      source_url: window.location.href,
+      email: contact.email || state.leadEmail || '',
+      phone: contact.phone || state.leadPhone || '',
+      q_age: state.selectedAge || '',
+      q_interests: 'Online den otevřených dveří',
+      q_goal: 'Pozvánka na online den otevřených dveří',
+      q_price: '',
+      q_timing: state.selectedTerm || '',
+      customer_segment: state.computedMakeSegment || 'MID',
+      result_profile: state.computedProfileName || '',
+      result_title: state.computedProfileName || '',
+      result_fit_percent: '',
+      result_cta: 'OPEN'
+    };
+  }
+
+  function renderSummary(targetId) {
+    const target = $(targetId);
+    if (!target) return;
+    target.innerHTML = `
+      <div class="summary-pill"><strong>Věk dcery:</strong> ${state.selectedAge || ''}</div>
+      <div class="summary-pill"><strong>Termín:</strong> ${state.selectedTerm || fallbackTerm}</div>
+      <div class="summary-pill"><strong>Email:</strong> ${state.leadEmail || ''}</div>
+    `;
+  }
+
+
+  function wantsRecording() {
+    return (state.selectedTerm || '').includes('pošlete mi záznam');
+  }
+
+  function updatePhoneScreenText() {
+    const title = $('phoneTitle');
+    const lead = $('phoneLead');
+    const claim = document.querySelector('#phoneScreen .claim-text');
+    if (wantsRecording()) {
+      if (title) title.textContent = 'Ještě telefon pro připomenutí přes SMS';
+      if (lead) lead.innerHTML = 'Záznam vám pošleme na email. Pro jistotu prosíme i o telefon, protože email se záznamem může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong>';
+      if (claim) claim.textContent = 'Telefon použijeme jen pro SMS připomenutí, že jsme vám poslali záznam dne otevřených dveří.';
+    } else {
+      if (title) title.textContent = 'Ještě telefon pro připomenutí přes SMS';
+      if (lead) lead.innerHTML = 'Pozvánku vám pošleme na email. Pro jistotu prosíme i o telefon, protože pozvánka může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong>';
+      if (claim) claim.textContent = 'Telefon použijeme jen pro SMS připomenutí online dne otevřených dveří.';
+    }
+  }
+
+  function submitEmailStep() {
+    const email = $('email').value.trim();
+
+    if (!state.selectedTerm || !isValidEmail(email)) {
+      $('termEmailError').style.display = 'block';
+      return;
+    }
+
+    state.leadEmail = email;
+    state.computedGtmSegment = 'OPEN';
+    state.computedMakeSegment = 'MID';
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'lead_email_submitted',
+      email: state.leadEmail,
+      segment: 'OPEN'
+    });
+
+    updatePhoneScreenText();
+    setView('phoneScreen');
+  }
+
+  async function completeLead(phone) {
+    state.leadPhone = phone || '';
+
+    window.dataLayer = window.dataLayer || [];
+    if (phone) {
+      window.dataLayer.push({
+        event: 'lead_phone_added',
+        email: state.leadEmail || '',
+        phone: state.leadPhone,
+        segment: 'OPEN'
+      });
+    } else {
+      window.dataLayer.push({
+        event: 'lead_phone_skipped',
+        email: state.leadEmail || '',
+        segment: 'OPEN'
+      });
+    }
+
+    await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', {
+      email: state.leadEmail,
+      phone: state.leadPhone
+    }));
+
+    if (wantsRecording()) {
+      $('confirmText').innerHTML = state.leadPhone
+        ? 'Záznam vám pošleme na email a připomeneme se přes SMS. Volat vám nebudeme.'
+        : 'Záznam vám pošleme na email. Telefon jste přeskočili, proto prosím zkontrolujte i SPAM.';
+    } else {
+      $('confirmText').innerHTML = state.leadPhone
+        ? 'Pozvánku pošleme na email a připomeneme se přes SMS. Volat vám nebudeme.'
+        : 'Pozvánku pošleme na email. Telefon jste přeskočili, proto prosím zkontrolujte i SPAM.';
+    }
+    renderSummary('confirmSummary');
+    setView('confirmScreen');
+  }
+
+  function submitPhoneStep() {
+    completeLead($('phone').value.trim());
+  }
+
+  function skipPhoneStep() {
+    completeLead('');
+  }
+</script>
+</body>
+</html>
