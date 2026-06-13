@@ -306,6 +306,24 @@
     .claim-card .cta { margin-top: 22px; }
 
 
+    .claim-visual {
+      margin: 0 0 14px;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, rgba(246,240,255,.92), rgba(239,252,255,.88));
+      box-shadow: 0 10px 24px rgba(82,50,120,.08);
+      border: 1px solid rgba(255,255,255,.85);
+    }
+
+    .claim-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
     .value-section {
       margin-top: 14px;
       display: grid;
@@ -782,6 +800,996 @@
       .claim-text { font-size: 14px; }
       .answer { min-height: 35px; padding: 7px 10px; font-size: 12px; }
     }
+  
+    .post-cta-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .program-step {
+      display: none;
+      margin-top: 14px;
+    }
+    .program-step.active {
+      display: block;
+    }
+    .program-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .program-card {
+      border: 1px solid rgba(155,108,255,.18);
+      background: linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,245,250,.72));
+      border-radius: 20px;
+      padding: 15px 16px;
+      margin-top: 12px;
+    }
+    .program-card h4 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+    .program-card p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .scholarship-box {
+      margin-top: 14px;
+      border-radius: 20px;
+      padding: 16px;
+      border: 1px solid rgba(255,111,159,.25);
+      background: linear-gradient(135deg,rgba(255,111,159,.12),rgba(155,108,255,.10));
+    }
+    .scholarship-code {
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.84);
+      font-weight: 950;
+      color: var(--navy);
+      letter-spacing: .06em;
+    }
+    .inline-reservation-form {
+      display: grid;
+      gap: 11px;
+      margin-top: 16px;
+    }
+    .inline-reservation-form label {
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .inline-reservation-form input,
+    .inline-reservation-form select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.82);
+      border-radius: 16px;
+      padding: 13px 14px;
+      color: var(--navy);
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+    .inline-error {
+      display: none;
+      color: #d81b60;
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.35;
+      margin-top: 6px;
+    }
+    .consent-mini {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--text);
+      font-weight: 650;
+    }
+    .consent-mini input {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      flex: 0 0 auto;
+    }
+
+  
+    .embedded-email-program {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    .embedded-email-program table {
+      max-width: 100% !important;
+    }
+    .embedded-email-program img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .embedded-email-program a,
+    .embedded-email-program button {
+      box-sizing: border-box;
+    }
+
+  
+    .open-day-choice-group {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .open-day-choice {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.74);
+      color: var(--navy);
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 850;
+      cursor: pointer;
+      display: grid;
+      gap: 3px;
+      font-family: inherit;
+    }
+    .open-day-choice.selected {
+      border-color: rgba(255,111,159,.62);
+      background: linear-gradient(120deg, rgba(255,255,255,.96), rgba(255,237,248,.82));
+      box-shadow: 0 8px 20px rgba(255,111,159,.12);
+    }
+    .open-day-choice small {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+  
+    .program-guide {
+      margin: 0 0 12px;
+    }
+    .embedded-email-program {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    .embedded-email-program table {
+      max-width: 100% !important;
+    }
+    .embedded-email-program img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .embedded-email-program a,
+    .embedded-email-program button {
+      box-sizing: border-box;
+    }
+    .program-step {
+      display: none;
+      margin-top: 14px;
+      animation: fadeIn .22s ease;
+    }
+    .program-step.active {
+      display: block;
+    }
+    .program-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .program-nav .cta,
+    .program-nav .cta.secondary {
+      flex: 1 1 180px;
+      text-align: center;
+    }
+
+  
+    .program-step-title {
+      margin: 0 0 10px;
+      font-family: Georgia, serif;
+      font-size: 22px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+    .program-step-lead {
+      margin: 0 0 12px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.55;
+      font-weight: 650;
+    }
+    .program-hero-img {
+      display: block;
+      width: 100%;
+      max-height: 245px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+      margin: 0 0 12px;
+    }
+    .program-small-img {
+      display: block;
+      width: 100%;
+      max-height: 210px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 18px;
+      margin: 10px 0;
+    }
+    .program-mini-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .program-mini-card {
+      border: 1px solid rgba(155,108,255,.16);
+      background: linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,245,250,.72));
+      border-radius: 18px;
+      padding: 12px 13px;
+    }
+    .program-mini-card b {
+      display: block;
+      color: var(--navy);
+      font-size: 13.5px;
+      margin-bottom: 3px;
+    }
+    .program-mini-card span {
+      display: block;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.42;
+      font-weight: 650;
+    }
+    .program-quote {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,rgba(255,240,248,.9),rgba(255,245,230,.7));
+      border: 1px solid rgba(255,111,159,.15);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.55;
+      font-style: italic;
+    }
+    .program-benefits-img {
+      display: block;
+      width: 100%;
+      max-height: 82px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: rgba(255,255,255,.8);
+      padding: 10px;
+      margin: 12px 0;
+      border: 1px solid rgba(155,108,255,.14);
+    }
+    .program-final-ctas {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+  
+    .program-press-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      margin: 12px 0 14px;
+    }
+    .program-press-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(137,150,189,.18);
+      color: rgba(17,23,51,.58);
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: 850;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .program-tv-block {
+      margin-top: 12px;
+      border-radius: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(239,252,255,.74));
+      border: 1px solid rgba(72,213,236,.20);
+    }
+    .program-tv-block img {
+      display: block;
+      width: 100%;
+      max-height: 210px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      margin-top: 10px;
+    }
+
+  
+    .reservation-shell {
+      display: grid;
+      gap: 14px;
+    }
+    .reservation-header {
+      border-radius: 24px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 0 0, rgba(98,215,244,.18), transparent 45%),
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,239,248,.78));
+      border: 1px solid rgba(255,255,255,.94);
+      box-shadow: 0 12px 30px rgba(82,50,120,.08);
+    }
+    .reservation-eyebrow {
+      margin: 0 0 6px;
+      font-size: 11px;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 850;
+    }
+    .reservation-title {
+      margin: 0 0 8px;
+      font-family: Georgia, serif;
+      font-size: 24px;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      color: var(--navy);
+    }
+    .reservation-copy {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.52;
+      font-weight: 600;
+    }
+    .reservation-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .summary-box {
+      border-radius: 18px;
+      padding: 12px 13px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(137,150,189,.16);
+    }
+    .summary-box span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .summary-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+    .reservation-form-card {
+      border-radius: 24px;
+      padding: 18px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.94);
+      box-shadow: 0 16px 36px rgba(82,50,120,.10);
+    }
+    .reservation-form-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .reservation-field {
+      display: grid;
+      gap: 7px;
+    }
+    .reservation-field label {
+      font-size: 12px;
+      font-weight: 760;
+      color: #4a526c;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .reservation-field input,
+    .reservation-field select {
+      width: 100%;
+      border: 1px solid rgba(137,150,189,.22);
+      background: rgba(255,255,255,.9);
+      border-radius: 16px;
+      padding: 13px 14px;
+      color: var(--navy);
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+      transition: .18s ease;
+    }
+    .reservation-field input:focus,
+    .reservation-field select:focus {
+      border-color: rgba(155,108,255,.55);
+      box-shadow: 0 0 0 4px rgba(155,108,255,.10);
+      background: #fff;
+    }
+    .reservation-consent {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin-top: 2px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(246,240,255,.48);
+      border: 1px solid rgba(155,108,255,.14);
+    }
+    .reservation-consent input {
+      width: 18px;
+      height: 18px;
+      margin: 1px 0 0;
+      accent-color: var(--lilac);
+    }
+    .reservation-consent span {
+      color: #515a75;
+      font-size: 12.5px;
+      line-height: 1.45;
+      font-weight: 560;
+    }
+    .reservation-consent a {
+      color: #7657e8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 800;
+    }
+    .reservation-actions {
+      display: grid;
+      gap: 9px;
+      margin-top: 4px;
+    }
+    .reservation-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.42;
+      font-weight: 620;
+      text-align: center;
+    }
+    @media (max-width: 520px) {
+      .reservation-summary { grid-template-columns: 1fr; }
+    }
+
+  
+    .guided-card {
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.94);
+      box-shadow: 0 18px 42px rgba(82,50,120,.11);
+    }
+    .guided-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: linear-gradient(105deg, rgba(98,215,244,.22), rgba(155,108,255,.18), rgba(240,90,160,.16));
+      color: #7b58e8;
+      font-size: 12px;
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+    .guided-title {
+      margin: 0 0 12px;
+      font-family: Georgia, serif;
+      font-size: 25px;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      color: var(--navy);
+    }
+    .guided-copy {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 14.5px;
+      line-height: 1.58;
+      font-weight: 500;
+    }
+    .guided-copy strong {
+      font-weight: 760;
+      color: var(--navy);
+    }
+    .guided-sparkles {
+      color: #a46ff1;
+      font-size: 18px;
+      letter-spacing: 14px;
+      margin: 0 0 12px 2px;
+      opacity: .8;
+      white-space: nowrap;
+    }
+    .guided-program-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .guided-day {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 11px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,245,250,.68));
+      border: 1px solid rgba(155,108,255,.13);
+    }
+    .guided-day-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink));
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .guided-day b {
+      display: block;
+      color: var(--navy);
+      font-size: 13.5px;
+      line-height: 1.22;
+      font-weight: 760;
+      margin-bottom: 2px;
+    }
+    .guided-day span {
+      display: block;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.38;
+      font-weight: 500;
+    }
+    .guided-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 12px;
+      margin: 14px 0 16px;
+    }
+    .guided-logo {
+      border: 0;
+      background: rgba(255,255,255,.78);
+      color: rgba(17,23,51,.55);
+      font-family: Georgia, serif;
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 850;
+      padding: 9px 10px;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(82,50,120,.05);
+      text-decoration: none !important;
+    }
+    .guided-media-feature {
+      border-radius: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(239,252,255,.78), rgba(255,245,250,.72));
+      border: 1px solid rgba(72,213,236,.18);
+    }
+    .guided-media-feature img {
+      display: block;
+      width: 100%;
+      max-height: 215px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      margin-top: 10px;
+    }
+    .guided-price-list {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .guided-price-item {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      color: var(--text);
+      font-size: 13.5px;
+      line-height: 1.42;
+      font-weight: 500;
+    }
+    .guided-price-item::before {
+      content: "✓";
+      display: inline-grid;
+      place-items: center;
+      width: 21px;
+      height: 21px;
+      min-width: 21px;
+      border-radius: 999px;
+      color: white;
+      background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink));
+      font-size: 12px;
+      font-weight: 850;
+      margin-top: -1px;
+    }
+    .guided-stipendium {
+      border-radius: 24px;
+      padding: 20px;
+      background: linear-gradient(135deg,#111633,#1e1550);
+      color: white;
+      border: 1px solid rgba(155,108,255,.3);
+    }
+    .guided-stipendium .guided-count {
+      background: rgba(255,255,255,.10);
+      color: #ffb26b;
+    }
+    .guided-stipendium .guided-title {
+      color: white;
+    }
+    .guided-stipendium .guided-copy {
+      color: rgba(255,255,255,.76);
+    }
+    .guided-stipendium .guided-copy strong {
+      color: white;
+    }
+    .limited-box {
+      margin: 13px 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.13);
+      color: rgba(255,255,255,.86);
+      font-size: 13.5px;
+      line-height: 1.48;
+      font-weight: 500;
+    }
+    .limited-box strong {
+      color: #ffb26b;
+      font-weight: 780;
+    }
+
+  
+    .section-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: linear-gradient(105deg, rgba(98,215,244,.22), rgba(155,108,255,.18), rgba(240,90,160,.16));
+      color: #7b58e8;
+      font-size: 12px;
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+    .section-dots {
+      color: #a46ff1;
+      font-size: 18px;
+      letter-spacing: 14px;
+      margin: 0 0 12px 2px;
+      opacity: .8;
+      white-space: nowrap;
+    }
+    .program-line-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 12px;
+    }
+    .program-line {
+      padding: 11px 12px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,245,250,.68));
+      border: 1px solid rgba(155,108,255,.13);
+    }
+    .program-line b {
+      display: block;
+      color: var(--navy);
+      font-size: 13.5px;
+      line-height: 1.22;
+      font-weight: 760;
+      margin-bottom: 2px;
+    }
+    .program-line span {
+      display: block;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.38;
+      font-weight: 500;
+    }
+
+  
+    .title-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: linear-gradient(105deg, rgba(98,215,244,.22), rgba(155,108,255,.18), rgba(240,90,160,.16));
+      color: #7b58e8;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0;
+      margin: 0 0 12px;
+    }
+    .program-top-title {
+      display: block;
+    }
+
+  
+    /* Program průvodce: 1:1 spacing a typografie jako kvíz */
+    #confirmScreen .card > .badge {
+      display: none !important;
+    }
+    #confirmScreen #confirmTitle {
+      font-size: clamp(23px, 7.2vw, 29px);
+      line-height: 1.1;
+      letter-spacing: -.045em;
+      margin: 0;
+    }
+    #confirmScreen #confirmText {
+      margin: 7px 0 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.3;
+    }
+    #actionBlock {
+      margin-top: 0 !important;
+    }
+    .embedded-email-program {
+      margin-top: 0 !important;
+    }
+    .program-step {
+      margin-top: 0 !important;
+    }
+    .guided-card {
+      padding: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    .guided-stipendium {
+      padding: 16px !important;
+    }
+    .title-counter {
+      display: block !important;
+      width: max-content;
+      min-width: 0 !important;
+      height: auto !important;
+      margin: 0 0 8px !important;
+      padding: 6px 10px !important;
+      border-radius: 999px !important;
+      color: #5b48d9 !important;
+      background: rgba(155,108,255,.11) !important;
+      font-family: inherit !important;
+      font-size: 10.5px !important;
+      line-height: 1 !important;
+      font-weight: 950 !important;
+      letter-spacing: .08em !important;
+      text-transform: uppercase !important;
+    }
+    .program-top-title {
+      display: block !important;
+    }
+
+  
+    .project-beauty-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .project-beauty-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 11px;
+      align-items: start;
+      padding: 12px 13px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,240,248,.78));
+      border: 1px solid rgba(255,111,159,.15);
+      box-shadow: 0 10px 24px rgba(82,50,120,.07);
+      overflow: hidden;
+    }
+    .project-beauty-card:nth-child(2) {
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(239,252,255,.78));
+      border-color: rgba(72,213,236,.18);
+    }
+    .project-beauty-card:nth-child(3) {
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(246,240,255,.82));
+      border-color: rgba(155,108,255,.18);
+    }
+    .project-beauty-card:nth-child(4) {
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,248,230,.76));
+      border-color: rgba(255,178,107,.22);
+    }
+    .project-dot {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink));
+      font-size: 12px;
+      font-weight: 950;
+      box-shadow: 0 8px 18px rgba(155,108,255,.18);
+    }
+    .project-beauty-card b {
+      display: block;
+      margin: 0 0 3px;
+      color: var(--navy);
+      font-size: 13.5px;
+      line-height: 1.2;
+      font-weight: 850;
+    }
+    .project-beauty-card span {
+      display: block;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.38;
+      font-weight: 500;
+    }
+    .project-beauty-card strong,
+    .guided-copy strong {
+      font-weight: 780;
+      color: var(--navy);
+    }
+
+  
+    .guide-signature-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,255,255,.72);
+    }
+    .guide-signature-row img {
+      flex: 0 0 70px;
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      object-fit: cover;
+      margin: 0 !important;
+      border: 2px solid rgba(155,108,255,.3);
+    }
+    .guide-signature-copy {
+      flex: 1 1 auto;
+      min-width: 0;
+      text-align: left;
+    }
+    .guide-signature-copy p {
+      margin: 0 !important;
+    }
+    .guided-price-hero {
+      margin: 12px 0 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,240,248,.78));
+      border: 1px solid rgba(255,111,159,.16);
+      box-shadow: 0 10px 24px rgba(82,50,120,.07);
+    }
+    .guided-price-hero span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .guided-price-hero strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--navy);
+      font-family: Georgia, "Playfair Display", serif;
+      font-size: clamp(26px, 8vw, 34px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+    .guided-price-hero small {
+      display: block;
+      margin-top: 7px;
+      color: var(--text);
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+  
+    .reservation-success-card {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,240,248,.82));
+      border: 1px solid rgba(255,111,159,.18);
+      box-shadow: 0 14px 32px rgba(82,50,120,.09);
+    }
+    .reservation-success-row {
+      display: grid;
+      gap: 3px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.72);
+    }
+    .reservation-success-row span {
+      color: var(--muted);
+      font-size: 10.8px;
+      line-height: 1.1;
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .reservation-success-row strong {
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 850;
+    }
+    .reservation-success-note {
+      margin: 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+  
+    .project-dot {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      color: #fff !important;
+      font-weight: 950 !important;
+      line-height: 1 !important;
+      font-variant-numeric: tabular-nums !important;
+    }
+    .guided-price-hero {
+      margin: 12px 0 0 !important;
+    }
+    .guided-price-hero .old-price {
+      display: inline-block;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 850;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      margin-right: 8px;
+      letter-spacing: 0;
+    }
+    .guided-price-hero .new-price {
+      display: inline-block;
+      margin-top: 4px;
+      color: var(--navy);
+      font-family: Georgia, "Playfair Display", serif;
+      font-size: clamp(28px, 8.5vw, 36px);
+      line-height: 1;
+      letter-spacing: -.045em;
+      font-weight: 900;
+    }
+
   </style>
 </head>
 <body>
@@ -845,6 +1853,7 @@
   <section class="view" id="claimScreen">
     <div class="claim-card">
       <div class="claim-label">Proč se ptáme</div>
+      <div class="claim-visual"><img id="claimImage" src="https://make-ful.com/img/makeful_projekty2.jpg" alt="Ukázka projektů Makeful"></div>
       <p class="claim-text" id="claimText"></p>
       <button class="cta" type="button" onclick="continueAfterClaim()">Pokračovat</button>
     </div>
@@ -916,17 +1925,14 @@
 
   <section class="view" id="confirmScreen">
     <div class="card" style="overflow-y:auto">
-      <div class="badge" style="background:rgba(37,211,102,.1);color:#128C7E">Potvrzení</div>
       <h2 id="confirmTitle">Přístup byl udělen</h2>
       <p class="lead" id="confirmText"></p>
       
-      <div id="actionBlock" style="margin-top:16px;"></div>
+      <div id="actionBlock"></div>
 
-      <h3>Doporučené letní turnusy (2026):</h3>
-      <p class="sub">Vyfiltrováno přesně pro věkovou skupinu vaší dcery. Kliknutím přejdete na předvyplněný registrační formulář.</p>
       <div id="turnusyOutput" class="turnusy-list"></div>
 
-      <button class="back" type="button" style="margin-top:24px;" onclick="restartQuiz()">Projít kvíz znovu</button>
+      <button id="confirmBackButton" class="back" type="button" style="margin-top:24px;" onclick="restartQuiz()">Projít kvíz znovu</button>
     </div>
   </section>
 </main>
@@ -996,6 +2002,45 @@
   const state = { index: -1, answers: {}, pendingNext: null, noQuizFlow: false };
   const $ = (id) => document.getElementById(id);
 
+
+  function getDynamicClaimAsset(questionId, value) {
+    const rawValue = Array.isArray(value) ? (value[0] || '') : (value || '');
+
+    if (questionId === 'age') {
+      if (rawValue.includes('10–12')) return { src: 'https://make-ful.com/img/kloboucek.png', alt: 'Ukázka projektu pro mladší dívky' };
+      if (rawValue.includes('13–15') || rawValue.includes('16–19')) return { src: 'https://make-ful.com/img/8.png', alt: 'Ukázka módního projektu pro starší dívky' };
+      return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Ukázka prostředí Makeful' };
+    }
+
+    if (questionId === 'interests') {
+      if (rawValue.includes('Móda')) return { src: 'https://make-ful.com/img/kloboucek.png', alt: 'Klobouček budoucnosti' };
+      if (rawValue.includes('Kreslení')) return { src: 'https://make-ful.com/img/7.png', alt: 'Digitální módní návrh a vizuální tvorba' };
+      if (rawValue.includes('Tvoření rukama')) return { src: 'https://make-ful.com/img/makeful_projekty_shoe.jpg', alt: '3D ozdoba na boty' };
+      if (rawValue.includes('Digitální')) return { src: 'https://make-ful.com/img/5.png', alt: 'AI videoreklama a digitální tvorba' };
+      if (rawValue.includes('AI')) return { src: 'https://make-ful.com/img/7.png', alt: 'AI modelka a digitální projekty' };
+      return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Ukázka projektů Makeful' };
+    }
+
+    if (questionId === 'goal') {
+      if (rawValue.includes('sebevědomí')) return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Dívky při prezentaci projektů' };
+      if (rawValue.includes('dovednosti')) return { src: 'https://make-ful.com/img/7.png', alt: 'Technologická a kreativní tvorba' };
+      if (rawValue.includes('projekty')) return { src: 'https://make-ful.com/img/8.png', alt: 'Hotový módní projekt' };
+      if (rawValue.includes('kamarádky')) return { src: 'https://make-ful.com/img/4.jpg', alt: 'Společná tvorba v Makeful' };
+      return { src: 'https://make-ful.com/img/4.jpg', alt: 'Prostředí letní akademie Makeful' };
+    }
+
+    if (questionId === 'price') {
+      if (rawValue.includes('benefit')) return { src: 'https://www.make-ful.com/img/benefit-logos.png', alt: 'Možnosti úhrady a benefity' };
+      return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Ukázka hodnoty programu Makeful' };
+    }
+
+    if (questionId === 'timing') {
+      return { src: 'https://make-ful.com/img/4.jpg', alt: 'Letní akademie Makeful' };
+    }
+
+    return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Ukázka projektů Makeful' };
+  }
+
   function getDynamicClaim(questionId, value) {
     if (questionId === 'age') {
       if (value.includes('Ještě') || value.includes('více')) {
@@ -1053,7 +2098,7 @@
         return 'Cena je konečná a transparentní. Zahrnuje 45 hodin prémiového programu, teplé obědy, svačiny, pitný režim, práci se špičkovými technologií a všechen materiál, včetně nových bot a trička, které si dcera sama dotvoří a odnese domů.';
       }
       if (value.includes('benefitů')) {
-        return 'Platby máme v malíčku. Makeful můžete kompletně nebo částečně uhradit přes Benefit Plus, Edenred, Pluxee nebo Up Benefity, případně vám vystavíme fakturu pro zaměstnavatele z fondu FKSP. Vše vám pomůžeme zařídit.';
+        return 'Platby máme v malíčku. Makeful můžete kompletně nebo částečně uhradit přes Benefit Plus, Edenred, Pluxee nebo Up Benefity, případně vám vystavíme fakturu pro zaměstnavatele z fondu . Vše vám pomůžeme zařídit.';
       }
       return 'Věříme, že talent by neměl narazit na finance. Protože je pro vás cena klíčová, rádi pro vaši dceru rezervujeme stipendium ve výši 900 Kč, které vám z ceny akademie odečteme. Detaily vám zobrazíme na konci kvízu.';
     }
@@ -1260,7 +2305,10 @@ const phoneAge = $('phoneAge');
       const claim = getDynamicClaim(q.id, value);
       state.pendingNext = state.index + 1;
       if (claim) {
+        const asset = getDynamicClaimAsset(q.id, value);
         $('claimText').textContent = claim;
+        $('claimImage').src = asset.src;
+        $('claimImage').alt = asset.alt;
         setView('claimScreen');
       } else {
         continueAfterClaim();
@@ -1275,7 +2323,10 @@ const phoneAge = $('phoneAge');
     const claim = getDynamicClaim(q.id, selected);
     state.pendingNext = state.index + 1;
     if (claim) {
+      const asset = getDynamicClaimAsset(q.id, selected);
       $('claimText').textContent = claim;
+      $('claimImage').src = asset.src;
+      $('claimImage').alt = asset.alt;
       setView('claimScreen');
     } else {
       continueAfterClaim();
@@ -1569,29 +2620,9 @@ const phoneAge = $('phoneAge');
     restoreLastQuizState();
     const email = localStorage.getItem('makeful_lead_email') || '';
     const phone = localStorage.getItem('makeful_lead_phone') || '';
-    const age = getAnswer('age');
-    const filtered = getReturnMatchedTurnusy(age);
-
-    const output = $('leadCompleteTurnusyOutput');
-    if (!output) return;
-    output.innerHTML = '';
-
-    filtered.forEach(t => {
-      const item = document.createElement('div');
-      item.className = 'turnus-item';
-      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}`;
-      item.innerHTML = `
-        <div class="turnus-info">
-          <strong>${t.date}</strong>
-          <span class="turnus-badge">${t.lang}</span>${getTurnusSpotsHTML(t)}
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Věková skupina: ${t.age}</div>
-        </div>
-        ${getTurnusCTAHTML(t, regUrl)}
-      `;
-      output.appendChild(item);
-    });
-
-    setView('leadCompleteScreen');
+    state.leadEmail = email;
+    state.leadPhone = phone;
+    renderFinalActionPage(email, phone);
   }
 
 
@@ -1732,14 +2763,10 @@ const phoneAge = $('phoneAge');
 
     await _sendQueue;
     await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', { email: em, phone: '' }));
+    saveLeadCompleteState(em, '');
 
     state.noQuizFlow = false;
-    const ageBlock = $('phoneAgeBlock');
-    if (ageBlock) ageBlock.style.display = 'none';
-    const skipButton = document.querySelector('#phoneScreen .skip-btn');
-    if (skipButton) skipButton.textContent = 'Přeskočit a zobrazit další výsledky';
-    $('phoneClaimText').textContent = getPhoneClaimText(state.computedGtmSegment || '');
-    setView('phoneScreen');
+    renderFinalActionPage(em, '');
   }
 
   async function submitPhoneStep() {
@@ -1838,141 +2865,708 @@ const phoneAge = $('phoneAge');
   function renderNoQuizFinalPage(email, phone, gtmSegment, makeSegment) {
     state.computedGtmSegment = gtmSegment;
     state.computedMakeSegment = makeSegment;
+    state.leadEmail = email || '';
+    state.leadPhone = phone || state.leadPhone || '';
 
-    $('confirmTitle').textContent = gtmSegment === 'LOW' ? 'Brzy se vám ozveme!' : 'Brzy se vám ozveme!';
-    $('confirmText').innerHTML = gtmSegment === 'LOW' ? 'Děkujeme, telefon máme uložený. Ozveme se vám a společně individuálně projdeme, jestli je Makeful pro vaši dceru vhodný krok.' : 'Děkujeme, telefon máme uložený. Ozveme se vám co nejdřív a pomůžeme vám vybrat vhodný termín.';
+    setConfirmBackButtonMode('default');
 
-    const waText = 'Dobrý den, vyplnila jsem rychlý kontakt v Makeful kvízu a chci se zeptat na letní program pro dceru.';
-    const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
+    $('confirmTitle').textContent = 'Děkujeme, telefon máme uložený';
+    $('confirmText').innerHTML = 'Teď si můžete projít program akademie krok za krokem, nebo si vybrat termín online dne otevřených dveří.';
+
     $('actionBlock').innerHTML = `
-      <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
-        <div class="claim-label" style="color:#128C7E;">Rychlý kontakt</div>
-        <p class="claim-text" style="font-size:14px;">Pokud chcete něco doplnit hned, můžete nám napsat na WhatsApp nebo zavolat.</p>
-        <a class="cta whatsapp" href="${waUrl}" target="_blank">Napsat na WhatsApp →</a>
-        <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Zavolat: +420 735 820 576</a>
+      <div class="post-cta-grid">
+        <button class="cta" type="button" onclick="startProgramPreview()">Prohlédnout program →</button>
+        <button class="cta secondary" type="button" onclick="showInlineOpenDays()" style="text-align:center;">Den otevřených dveří →</button>
       </div>
     `;
 
     $('turnusyOutput').innerHTML = '';
-    if (gtmSegment !== 'LOW') {
-      const age = getAnswer('age');
-      const filtered = getReturnMatchedTurnusy(age);
-      filtered.forEach(t => {
-        const item = document.createElement('div');
-        item.className = 'turnus-item';
-        const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=&telefon=${encodeURIComponent(phone)}`;
-        item.innerHTML = `
-          <div class="turnus-info">
-            <strong>${t.date}</strong>
-            <span class="turnus-badge">${t.lang}</span>
-            <div style="font-size:11px;color:var(--muted);margin-top:2px;">Věková skupina: ${t.age}</div>
-          </div>
-          <a class="cta" href="${regUrl}" target="_blank">Rezervovat místo na tomto turnusu →</a>
-        `;
-        $('turnusyOutput').appendChild(item);
-      });
-    }
-
     state.noQuizFlow = false;
     setView('confirmScreen');
   }
 
-
   function renderFinalActionPage(email, phone) {
-    const gtmSegment = state.computedGtmSegment;
-    const age = getAnswer('age');
+    setConfirmBackButtonMode('default');
+    state.leadEmail = email || state.leadEmail || '';
+    state.leadPhone = phone || state.leadPhone || '';
 
-    let confirmTitle = 'Přístup byl odemčen 📩';
-    let confirmText = `Kompletní analýzu a podklady jsme vám právě odeslali na adresu <strong>${email}</strong>.`;
-    let actionHtml = '';
+    $('confirmTitle').textContent = 'Děkujeme, vše máte ve schránce!';
+    $('confirmText').innerHTML = `Kompletní podklady jsme vám odeslali na adresu <strong>${state.leadEmail}</strong>. Teď si můžete projít program akademie krok za krokem, nebo si vybrat termín online dne otevřených dveří.`;
 
-    if (gtmSegment === 'BOF_CENA') {
-      confirmTitle = 'Vše máte ve schránce! Stipendium je aktivováno.';
-      confirmText = `Na email jsme vám poslali potvrzení o <strong>stipendiu 900 Kč</strong> a instrukce, jak proplatit akademii přes benefity (Pluxee, Benefit Plus, Edenred, FKSP). Níže si můžete rovnou vybrat turnus.`;
-    } else if (gtmSegment === 'BOF_HOT') {
-      confirmTitle = 'Detaily jsou na cestě do emailu!';
-      confirmText = 'Níže vidíte aktuální stav volných míst pro věkovou skupinu vaší dcery. Doporučujeme zajistit místo co nejdříve.';
-    } else if (gtmSegment === 'LOW') {
-      confirmTitle = 'Děkujeme! Vaši žádost jsme zaznamenali.';
-      confirmText = `Detaily o individuálním posouzení věku jsme vám odeslali na <strong>${email}</strong>. Ozveme se vám co nejdříve osobně.`;
-      actionHtml = `
-        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
-          <div class="claim-label" style="color:#128C7E;">Individuální konzultace</div>
-          <p class="claim-text" style="font-size:14px;">Chcete věk dcery a možnosti jejího zapojení probrat ihned? Napište nám bleskově na WhatsApp.</p>
-          <a class="cta whatsapp" href="https://wa.me/420735820576?text=${encodeURIComponent('Dobrý den, moje dcera nesplňuje standardní věkový limit Makeful, chci se zeptat na možnosti kempu...')}" target="_blank">Napište nám na WhatsApp →</a>
-          <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Zavolat lektorce: +420 735 820 576</a>
-        </div>
-      `;
-    } else {
-      const waText = 'Dobrý den, prošel jsem si váš kvíz Makeful a chci se zeptat na letní kemp pro dceru...';
-      const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
-      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(waUrl)}`;
-
-      actionHtml = `
-        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
-          <div class="claim-label" style="color:#128C7E;">Rychlá konzultace</div>
-          
-          <div class="mobile-only-block">
-            <p class="claim-text" style="font-size:14px;">Máte otázku k akademii? Napište nám přímo přes WhatsApp. Odpovídáme obvykle do pár minut.</p>
-            <a class="cta whatsapp" href="${waUrl}" target="_blank">Napište nám dotaz na WhatsApp →</a>
-          </div>
-
-          <div class="desktop-only-block" style="text-align:center;">
-            <p class="claim-text" style="font-size:14px; text-align:left;">Máte otázku k akademii? Namiřte foťák mobilu na QR kód a napište nám na WhatsApp.</p>
-            <img class="wa-qr" src="${qrUrl}" alt="WhatsApp QR kód" style="width:140px; height:140px; margin: 12px auto; display:block; border: 2px dashed #128C7E; padding: 4px; border-radius:12px; background: #fff;">
-            <a href="${waUrl}" target="_blank" style="font-size:11.5px; color:var(--muted); text-decoration:underline; font-weight:700;">Jste na telefonu? Klikněte zde</a>
-          </div>
-
-          <a class="cta secondary" href="tel:+420735820576" style="text-align:center; margin-top:12px;">Nebo nám zavolejte: +420 735 820 576</a>
-        </div>
-      `;
-    }
-
-    $('confirmTitle').textContent = confirmTitle;
-    $('confirmText').innerHTML = confirmText;
-    $('actionBlock').innerHTML = actionHtml;
-
-    // Filtrování turnusů podle věku
-    let matchedAgeGroup = '13 – 15 let';
-    if (age.includes('10–12')) matchedAgeGroup = '10 – 12 let';
-    if (age.includes('16–19')) matchedAgeGroup = '16 – 19 let';
-
-    // Pokud je věk mimo limit (LOW), zobrazíme raději pro jistotu všechny turnusy
-    const filtered = allTurnusy.filter(t => age.includes('Ještě') || age.includes('více') ? true : t.age === matchedAgeGroup);
+    $('actionBlock').innerHTML = `
+      <div class="post-cta-grid">
+        <button class="cta" type="button" onclick="startProgramPreview()">Prohlédnout program →</button>
+        <button class="cta secondary" type="button" onclick="showInlineOpenDays()" style="text-align:center;">Den otevřených dveří →</button>
+      </div>
+    `;
 
     $('turnusyOutput').innerHTML = '';
-    filtered.forEach(t => {
-      const item = document.createElement('div');
-      item.className = 'turnus-item';
-      
-      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}`;
-
-      item.innerHTML = `
-        <div class="turnus-info">
-          <strong>${t.date}</strong>
-          <span class="turnus-badge">${t.lang}</span>${getTurnusSpotsHTML(t)}
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Věková skupina: ${t.age}</div>
-        </div>
-        ${getTurnusCTAHTML(t, regUrl)}
-      `;
-      $('turnusyOutput').appendChild(item);
-    });
-
+    state.noQuizFlow = false;
     setView('confirmScreen');
   }
+
+  function getDynamicFashionPieceTitle() {
+    const age = getAnswer('age');
+    if (age.includes('10–12')) return '3D tištěný klobouček & virtualita';
+    return '3D tištěná vesta & virtualita';
+  }
+
+  function getScholarshipInfo() {
+    const age = getAnswer('age');
+    if (age.includes('10–12')) return { amount: '900 Kč', code: 'STIPENDIUM900', ageLabel: '10–12 let', basePrice: '7 888 Kč', finalPrice: '6 988 Kč' };
+    if (age.includes('16–19')) return { amount: '2 000 Kč', code: 'STIPENDIUM2000', ageLabel: '16–19 let', basePrice: '9 888 Kč', finalPrice: '7 888 Kč' };
+    return { amount: '1 500 Kč', code: 'STIPENDIUM1500', ageLabel: '13–15 let', basePrice: '8 888 Kč', finalPrice: '7 388 Kč' };
+  }
+
+  function getConcreteAgeOptions() {
+    const age = getAnswer('age');
+    if (age.includes('10–12')) return ['10 let', '11 let', '12 let'];
+    if (age.includes('13–15')) return ['13 let', '14 let', '15 let'];
+    if (age.includes('16–19')) return ['16 let', '17 let', '18 let', '19 let'];
+    return ['10 let', '11 let', '12 let', '13 let', '14 let', '15 let', '16 let', '17 let', '18 let', '19 let'];
+  }
+
+  function startProgramPreview() {
+    const scholarship = getScholarshipInfo();
+    state.programTitles = [
+      'Dovolte mi ukázat, <span class="grad">co Makeful doopravdy znamená</span>',
+      'Úžasné lektorky a <span class="grad">bezpečné prostředí</span>',
+      'Psalo se <span class="grad">o nás</span>',
+      'Sedm dní, na které <span class="grad">vaše dcera nezapomene</span>',
+      'AI, portfolio a <span class="grad">velké finále</span>',
+      'Co všechno je <span class="grad">v ceně</span>',
+      'Stipendium a <span class="grad">rezervace</span>'
+    ];
+    state.programStep = 0;
+    setConfirmBackButtonMode('program');
+
+    $('confirmText').innerHTML = '';
+
+    $('actionBlock').innerHTML = `
+      <div class="embedded-email-program" style="margin-top:4px;">
+        <div id="programSteps">
+
+          <div class="program-step active" data-step="0">
+            <img class="program-hero-img" src="https://make-ful.com/img/kloboucek.png" alt="Dívka s 3D tištěným bucket hatem">
+            <div class="guided-card">
+              <p class="guided-copy">Makeful není jen <strong>letní akademie</strong>. <strong>Je to moje srdce.</strong></p>
+              <p class="guided-copy">Makeful jsem založila z jednoho prostého důvodu: chtěla jsem pro vás vytvořit <strong>bezpečný, holčičí a lidský prostor</strong>, kde dívky kvetou a získávají odvahu stavět své vlastní sny.</p>
+              <p class="guided-copy">Chci vaší dceři ukázat, že technologie mohou přinášet <strong>čistou radost</strong>, rozvíjet její <strong>tvořivost</strong> a dát jí <strong>sebevědomí</strong>. Všechno začíná pouhým nápadem a tím nejdůležitějším momentem: <em>„Já to zvládnu."</em></p>
+              <div class="program-quote">„Lili o vás nepřestala mluvit a pořád na vás od posledního workshopu vzpomíná. Moc se jí to líbilo, chodila každý den nadšená a já jsem velmi ocenila váš trpělivý přístup.“<br><strong>Viktoria, maminka</strong></div>
+            </div>
+            <img class="program-small-img" src="https://make-ful.com/img/8.png" alt="Ukázky projektů z Makeful akademie">
+          </div>
+
+
+
+          <div class="program-step" data-step="1">
+            <div class="guided-card">
+              <p class="guided-copy">Naše lektorky jsou <strong>ženy ve věku 20–30 let</strong> věnující se módnímu návrhářství, architektuře nebo IT. Jsou skvělými <strong>ženskými vzory</strong> pro vaši dceru a ukazují jí, že technologie a kreativita jdou ruku v ruce.</p>
+              <p class="guided-copy">Potkáme se na <strong>Argentinská 1 na Praze 7</strong> v malé skupince <strong>maximálně 10 dívek</strong> v přátelském rodinném kreativním prostředí, kde se dívky cítí dobře.</p>
+              <p class="guided-copy"><strong>Malá skupina</strong> je pro nás důležitá, aby každá účastnice dostala pozornost a podporu.</p>
+              <p class="guided-copy">Já jako zakladatelka strávím <strong>celé 3 dny</strong> s dívkami v laboratoři.</p>
+              <img class="program-small-img" src="https://make-ful.com/img/5.png" alt="Tým lektorek Makeful">
+              <img class="program-small-img" src="https://make-ful.com/img/7.png" alt="Dívky pracují na laptopech a s 3D perem">
+            </div>
+          </div>
+
+
+
+          <div class="program-step" data-step="2">
+            <div class="guided-card">
+              <div class="guided-media-feature">
+                <p class="guided-copy" style="margin-bottom:0;">Možná jste o nás slyšeli z České televize, ze vzdělávacího pořadu <strong>Wifina</strong>. V reportáži ukazujeme, jak se móda, 3D tisk a technologie mohou propojit způsobem, který je dětem <strong>blízký, srozumitelný a inspirující</strong>.</p>
+                <img src="https://make-ful.com/assets/ctd-reportaz-styled.png" alt="Reportáž České televize Wifina o Makeful">
+              </div>
+
+              <div class="guided-logos" aria-label="Psalo se o nás">
+                <a class="guided-logo" href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener">Wired</a>
+                <a class="guided-logo" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">ČT :D</a>
+                <a class="guided-logo" href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener">Hospodářské noviny</a>
+                <a class="guided-logo" href="https://magazin.hrot24.cz/clanek/linette-manuel-navrharka-mody-budoucnosti-HpdXM-683c7446ab9ac80e9863b318" target="_blank" rel="noopener">Hrot</a>
+                <a class="guided-logo" href="https://zpravy.aktualne.cz/domaci/3d-tisk-obleceni/r~32493ce2a66411ef80bfac1f6b220ee8/" target="_blank" rel="noopener">Aktuálně.cz</a>
+                <a class="guided-logo" href="https://youtu.be/SF-NV1AnazM?si=2p3BfzGZL5_mpvZt&t=302" target="_blank" rel="noopener">Abíčko</a>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="program-step" data-step="3">
+            <div class="guided-card">
+              <p class="guided-copy">Během týdne vaši dceru provedeme cestou od <strong>prvního nápadu</strong> přes <strong>3D tisk</strong>, digitální tvorbu a <strong>AI</strong> až po <strong>portfolio</strong> a závěrečnou prezentaci.</p>
+              <div class="project-beauty-grid">
+                <div class="project-beauty-card"><span class="project-dot">1</span><div><b>3D tisk & ozdoby na boty</b><span>Vaše dcera si navrhne a vytiskne <strong>originální ozdoby na boty</strong>.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">2</span><div><b>Přizpůsobitelná trička</b><span>Vytvoří <strong>tričko s vyměnitelnými prvky</strong>, které lze střídat podle nálady.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">3</span><div><b>${getDynamicFashionPieceTitle()}</b><span>Vytvoříme střih, převedeme ho do 3D objektu a během tisku vzniká <strong>moodboard</strong>.</span></div></div>
+              </div>
+              <img class="program-small-img" src="https://make-ful.com/img/makeful_projekty_shoe.jpg" alt="3D tištěné ozdoby na boty">
+              <img class="program-small-img" src="https://make-ful.com/img/makeful_projekty2.jpg" alt="3D tištěné dekorace na tričko">
+            </div>
+          </div>
+
+
+
+          <div class="program-step" data-step="4">
+            <div class="guided-card">
+              <p class="guided-copy">V druhé části týdne vaši dceru povedeme k tomu, aby svůj nápad dotáhla do <strong>finální podoby</strong> a uměla ho <strong>sebevědomě představit</strong>.</p>
+              <div class="project-beauty-grid">
+                <div class="project-beauty-card"><span class="project-dot">4</span><div><b>Když papír ožije díky AI</b><span>Navrhne <strong>virtuální módní kolekci</strong> a zapojí AI nástroje, které návrhy promění v polo-realistickou přehlídku.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">5</span><div><b>AI módní přehlídka v pohybu</b><span>Vytvoří <strong>AI generované video</strong> z módní přehlídky.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">6</span><div><b>Finální kompletace & portfolio</b><span>Sestaví vytištěný kousek a vytvoří <strong>portfolio v Canvě</strong>.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">7</span><div><b>Oslava a diplom</b><span>Odprezentuje své projekty, oslavíme, co dokázala, a odnese si <strong>diplom</strong>.</span></div></div>
+              </div>
+              <img class="program-small-img" src="https://make-ful.com/img/4.jpg" alt="Naše laboratoř v akci">
+            </div>
+          </div>
+
+
+
+          <div class="program-step" data-step="5">
+            <div class="guided-card">
+              <p class="guided-copy">Cenu jsme pro vás připravili tak, aby v ní bylo <strong>vše důležité pro celý týden</strong> a vy jste během programu nemuseli řešit <strong>žádné skryté náklady</strong>.</p>
+              <div class="guided-price-list">
+                <div class="guided-price-item">Celý sedmidenní program v kreativní laboratoři v Praze.</div>
+                <div class="guided-price-item">Celodenní jídlo: oběd, svačiny a pitný režim.</div>
+                <div class="guided-price-item">Nové tričko a boty, které bude vaše dcera upravovat.</div>
+                <div class="guided-price-item">Všechny materiály, komponenty, kreativní pomůcky a práce s technologiemi.</div>
+                <div class="guided-price-item">Osobní portfolio, závěrečná prezentace a diplom.</div>
+              </div>
+              <img class="program-benefits-img" src="https://www.make-ful.com/img/benefit-logos.png" alt="Benefitní karty">
+              <div class="guided-price-hero"><span>Cena po stipendiu</span><div><span class="old-price">8 888 Kč</span><strong class="new-price">7 388 Kč</strong></div><small>Stipendium je započítané v ceně.</small></div>
+              <p class="guided-copy">Program pro vás můžeme rozdělit také do <strong>více plateb</strong>.</p>
+            </div>
+          </div>
+
+
+
+          <div class="program-step" data-step="6">
+            <div class="guided-stipendium">
+              <p class="guided-copy">Pro věkovou skupinu vaší dcery máte připravené stipendium ${scholarship.amount}. Cena programu klesne z ${scholarship.basePrice} na <strong>${scholarship.finalPrice}</strong>.</p>
+              <div class="limited-box"><strong>Stipendium je omezené</strong> a platí pouze pro <strong>5 prvních studentek</strong>, které zaplatí zálohu. Kód: <strong>${scholarship.code}</strong></div>
+              <p class="guided-copy">Pro rezervaci místa stačí zaplatit zálohu pouhých <strong>1 500 Kč</strong>, zbytek hradíte nejpozději 14 dní před začátkem akademie.</p>
+              <div class="program-quote" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.85);">„Program byl opravdu boží a moc mě to bavilo! Naučila jsem se toho opravdu hodně. Nejvíc mě bavila práce ve 3D programech a tisk na tiskárně.“<br><strong>Hanka, absolventka akademie</strong></div>
+              <div class="program-final-ctas">
+                <button class="cta" type="button" onclick="showInlineReservation()" style="border:0;cursor:pointer;">Rezervovat termín na 48 h →</button>
+                <button class="cta secondary" type="button" onclick="showInlineOpenDays()" style="border:0;cursor:pointer;text-align:center;">Online den otevřených dveří →</button>
+              </div>
+            </div>
+
+            <div class="guided-card" style="margin-top:14px;">
+              <div class="guide-signature-row">
+                <img src="https://make-ful.com/img/linette_manuel_profile_photo.png" alt="Linette Manuel">
+                <div class="guide-signature-copy">
+                  <p class="guided-copy"><strong>Budeme se těšit!</strong><br><strong>Linette Manuel</strong><br>Zakladatelka Makeful<br><a href="tel:+420735820576" style="color:#9b6cff;font-weight:800;">735 820 576</a></p>
+                </div>
+              </div>
+              <a class="cta whatsapp" href="https://wa.me/420735820576?text=Dobr%C3%BD%20den%2C%20chci%20se%20zeptat%20na%20Makeful%20letn%C3%AD%20akademii." target="_blank" style="margin-top:10px;text-align:center;">Napsat na WhatsApp →</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="program-nav">
+          <button class="cta" type="button" id="programNext" onclick="moveProgramStep(1)">Ukázat lektorky →</button>
+        </div>
+      </div>
+    `;
+
+    $('turnusyOutput').innerHTML = '';
+    updateProgramNav();
+  }
+
+function setConfirmBackButtonMode(mode) {
+    const btn = $('confirmBackButton');
+    if (!btn) return;
+
+    if (mode === 'program') {
+      btn.textContent = 'Zpět';
+      btn.onclick = function() { moveProgramStep(-1); };
+      btn.style.display = (state.programStep || 0) > 0 ? 'block' : 'none';
+    } else {
+      btn.textContent = 'Projít kvíz znovu';
+      btn.onclick = function() { restartQuiz(); };
+      btn.style.display = 'block';
+    }
+  }
+
+  function moveProgramStep(dir) {
+    const steps = Array.from(document.querySelectorAll('.program-step'));
+    if (!steps.length) return;
+    state.programStep = Math.max(0, Math.min(steps.length - 1, (state.programStep || 0) + dir));
+    steps.forEach((step, i) => step.classList.toggle('active', i === state.programStep));
+    updateProgramNav();
+    const card = document.querySelector('#confirmScreen .card');
+    if (card) card.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgramNav() {
+    const next = $('programNext');
+    const total = document.querySelectorAll('.program-step').length;
+    const labels = [
+    'Ukázat lektory →',
+    'Více o nás →',
+    'Ukázat program →',
+    'Více k programu →',
+    'Ukázat, co je v ceně →',
+    'Chceme získat stipendium →',
+    ''
+  ];
+    const current = state.programStep || 0;
+
+    if (state.programTitles && state.programTitles[current]) {
+      $('confirmTitle').innerHTML = '<span class="title-counter">' + (current + 1) + '/7</span><span class="program-top-title">' + state.programTitles[current] + '</span>';
+    }
+    setConfirmBackButtonMode('program');
+
+    if (next) {
+      if (current >= total - 1) {
+        next.style.display = 'none';
+      } else {
+        next.style.display = 'inline-flex';
+        next.textContent = labels[current] || 'Pokračovat →';
+        next.onclick = function(){ moveProgramStep(1); };
+      }
+    }
+  }
+
+  function showInlineReservation() {
+    setConfirmBackButtonMode('default');
+    const age = getAnswer('age');
+    const filtered = getReturnMatchedTurnusy(age).filter(t => !t.isFull);
+    const scholarship = getScholarshipInfo();
+    const phoneKnown = (state.leadPhone || '').trim();
+
+    $('confirmTitle').textContent = 'Rezervace termínu na 48 h';
+    $('confirmText').innerHTML = '';
+
+    const termOptions = filtered.map(t => `
+      <option value="${t.termin}">${t.date} · ${t.lang} · ${t.age}${t.spots ? ' · zbývají ' + t.spots + ' místa' : ''}</option>
+    `).join('');
+
+    const ageOptions = getConcreteAgeOptions().map(a => `<option value="${a}">${a}</option>`).join('');
+
+    $('actionBlock').innerHTML = `
+      <div class="reservation-shell">
+        <div class="reservation-header">
+          <p class="reservation-eyebrow">Nezávazná rezervace místa</p>
+          <h3 class="reservation-title">Podržíme vám vybraný termín na 48 hodin</h3>
+          <p class="reservation-copy">Doplňte nám údaje a my vám na 48 h podržíme místo i se stipendiem ${scholarship.amount}.</p>
+        </div>
+
+        <div class="reservation-form-card">
+          <div class="reservation-form-grid">
+            <div class="reservation-field">
+              <label for="inlineParticipantName">Křestní jméno účastnice *</label>
+              <input id="inlineParticipantName" type="text" placeholder="např. Tereza" autocomplete="given-name">
+            </div>
+
+            <div class="reservation-field">
+              <label for="inlineAge">Konkrétní věk dcery *</label>
+              <select id="inlineAge">${ageOptions}</select>
+            </div>
+
+            <div class="reservation-field">
+              <label for="inlineTerm">Vybraný termín *</label>
+              <select id="inlineTerm">${termOptions}</select>
+            </div>
+
+            ${phoneKnown ? '' : `
+            <div class="reservation-field">
+              <label for="inlinePhone">Telefon rodiče *</label>
+              <input id="inlinePhone" type="tel" placeholder="+420 777 123 456" autocomplete="tel">
+            </div>`}
+
+            <label class="reservation-consent" for="inlineConsent">
+              <input id="inlineConsent" type="checkbox">
+              <span>Souhlasím se <a href="/ochrana-osobnich-udaju" target="_blank" rel="noopener">zpracováním osobních údajů</a> a <a href="/obchodni-podminky" target="_blank" rel="noopener">obchodními podmínkami</a> Makeful. *</span>
+            </label>
+
+            <p class="inline-error" id="inlineReservationError">Doplňte prosím jméno účastnice, věk, termín, telefon a souhlas.</p>
+
+            <div class="reservation-actions">
+              <button class="cta" type="button" onclick="submitInlineReservation(event)">Rezervovat termín na 48 h →</button>
+            </div>
+
+            <p class="reservation-note">Rezervace zatím neznamená platbu. Termín vám podržíme a pošleme instrukce k záloze 1 500 Kč.</p>
+          </div>
+        </div>
+      </div>
+    `;
+    $('turnusyOutput').innerHTML = '';
+  }
+
+  function getSelectedReservationTermInfo(termValue) {
+    const found = allTurnusy.find(t => t.termin === termValue) || null;
+    if (!found) {
+      return {
+        age: getAnswer('age') || '',
+        date: termValue || '',
+        lang: '',
+        spotsText: ''
+      };
+    }
+
+    const langText = found.lang === 'česky' ? 'v češtině' : 'v angličtině';
+    let spotsText = '';
+    if (found.isFull) {
+      spotsText = 'Tento termín je už plný.';
+    } else if (found.spots) {
+      spotsText = `Na tento termín zbývají pouze ${found.spots} ${getSpotWord(found.spots)}.`;
+    }
+
+    return {
+      age: found.age,
+      date: found.date,
+      lang: langText,
+      spotsText
+    };
+  }
+
+  function getSpotWord(count) {
+    if (count === 1) return 'místo';
+    if (count >= 2 && count <= 4) return 'místa';
+    return 'míst';
+  }
+
+async function submitInlineReservation(evt) {
+    const name = ($('inlineParticipantName') ? $('inlineParticipantName').value.trim() : '');
+    const age = ($('inlineAge') ? $('inlineAge').value : '');
+    const term = ($('inlineTerm') ? $('inlineTerm').value : '');
+    const phone = state.leadPhone || (($('inlinePhone') ? $('inlinePhone').value.trim() : ''));
+    const consent = $('inlineConsent') && $('inlineConsent').checked;
+    const err = $('inlineReservationError');
+
+    if (!name || !age || !term || !phone || !consent) {
+      if (err) err.style.display = 'block';
+      return;
+    }
+    if (err) err.style.display = 'none';
+
+    const scholarship = getScholarshipInfo();
+    const now = new Date();
+    const pad = function(n) { return n < 10 ? '0' + n : n; };
+    const datumCas = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+    const id = now.getFullYear().toString() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
+
+    const payload = {
+      'ID přihlášky': id,
+      'Datum a čas přihlášky': datumCas,
+      'Jméno účastnice': name,
+      'Příjmení účastnice': '-',
+      'Věk': age,
+      'Email účastnice': '-',
+      'Jméno rodiče': '-',
+      'Příjmení rodiče': '-',
+      'Telefon': phone,
+      'Email rodiče': state.leadEmail || '',
+      'Preferovaný termín': term,
+      'Náhradní termín': '-',
+      'Promo kód': scholarship.code,
+      'Zdroj': 'kviz',
+      'Typ rezervace': 'Rezervace termínu na 48 h',
+      'Stipendium': scholarship.amount
+    };
+
+    const btn = evt && evt.target ? evt.target : null;
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Odesílám…';
+    }
+
+    try {
+      const res = await fetch('https://hook.eu1.make.com/oyiz9y17pvcf36ncoa6x4ophaopk3y4p', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error('Status: ' + res.status);
+
+      const termInfo = getSelectedReservationTermInfo(term);
+
+      $('confirmTitle').textContent = 'Rezervace je uložená';
+      $('confirmText').innerHTML = '';
+      $('actionBlock').innerHTML = `
+        <div class="reservation-success-card">
+          <div class="reservation-success-row">
+            <span>Rezervace</span>
+            <strong>Rezervace na 48 h</strong>
+          </div>
+          <div class="reservation-success-row">
+            <span>Skupina</span>
+            <strong>Skupinu pro věk ${termInfo.age}</strong>
+          </div>
+          <div class="reservation-success-row">
+            <span>Termín</span>
+            <strong>${termInfo.date}${termInfo.lang ? ' ' + termInfo.lang : ''}</strong>
+          </div>
+          <p class="reservation-success-note">Stipendijní kód <strong>${scholarship.code}</strong> je uložený u rezervace.</p>
+          ${termInfo.spotsText ? `<p class="reservation-success-note"><strong>${termInfo.spotsText}</strong></p>` : ''}
+          <a class="cta" href="https://buy.stripe.com/5kQ00jbDNfevcPz4oj67S08" target="_blank" rel="noopener" style="text-align:center;">Zaplatit zálohu a potvrdit místo ihned →</a>
+        </div>
+      `;
+      $('turnusyOutput').innerHTML = '';
+    } catch (e) {
+      if (err) {
+        err.textContent = 'Rezervaci se nepodařilo odeslat. Zkuste to prosím znovu nebo nám napište na hello@make-ful.com.';
+        err.style.display = 'block';
+      }
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Rezervovat termín na 48 h →';
+      }
+    }
+  }
+
+
+  const inlineOpenDayTerms = [
+    { id: 'open-2026-06-14', dateKey: '2026-06-14T18:30:00+02:00', label: 'Neděle 14. 6. 2026', time: '18:30 – 19:20', language: 'CZ' },
+    { id: 'open-2026-06-17', dateKey: '2026-06-17T18:30:00+02:00', label: 'Středa 17. 6. 2026', time: '18:30 – 19:20', language: 'CZ' },
+    { id: 'open-2026-06-21', dateKey: '2026-06-21T18:30:00+02:00', label: 'Neděle 21. 6. 2026', time: '18:30 – 19:20', language: 'CZ' },
+    { id: 'open-2026-06-24', dateKey: '2026-06-24T18:30:00+02:00', label: 'Středa 24. 6. 2026', time: '18:30 – 19:20', language: 'CZ' }
+  ];
+
+  const inlineOpenDayFallback = 'Termíny mi nevyhovují, pošlete mi záznam';
+
+  function inlinePragueNow() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Prague',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    }).formatToParts(new Date()).reduce((acc, part) => {
+      acc[part.type] = part.value;
+      return acc;
+    }, {});
+    return new Date(`${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}+02:00`);
+  }
+
+  function getInlineVisibleOpenDays() {
+    const now = inlinePragueNow().getTime();
+    return inlineOpenDayTerms
+      .filter(term => new Date(term.dateKey).getTime() - now > 30 * 60 * 1000)
+      .slice(0, 2);
+  }
+
+  function getInlineOpenDayDescription() {
+    return 'Ukážeme projekty, představíme lektory i možnosti financování. Dostanete prostor zeptat se na vše, co potřebujete vědět.';
+  }
+
+  function selectInlineOpenDayTerm(value, btn) {
+    state.inlineOpenDayTerm = value;
+    document.querySelectorAll('.open-day-choice').forEach(el => el.classList.remove('selected'));
+    if (btn) btn.classList.add('selected');
+    const err = $('inlineOpenDayError');
+    if (err) err.style.display = 'none';
+  }
+
+  function showInlineOpenDays() {
+    setConfirmBackButtonMode('default');
+    const age = getAnswer('age') || 'neuvedeno';
+    const terms = getInlineVisibleOpenDays();
+    const emailValue = state.leadEmail || '';
+
+    $('confirmTitle').textContent = 'Online den otevřených dveří';
+    $('confirmText').innerHTML = getInlineOpenDayDescription();
+
+    const termButtons = terms.map(term => {
+      const value = `${term.label} · ${term.time} · ${term.language}`;
+      return `
+        <button class="open-day-choice" type="button" onclick="selectInlineOpenDayTerm('${value.replace(/'/g, "\\'")}', this)">
+          <span>${term.label}</span>
+          <small>${term.time} · ${term.language}</small>
+        </button>
+      `;
+    }).join('');
+
+    $('actionBlock').innerHTML = `
+      <div class="claim-card">
+        <div class="claim-label">Online den otevřených dveří</div>
+        <h3>Vyberte termín</h3>
+
+        <div class="inline-reservation-form">
+          <div>
+            <label>Věk dcery</label>
+            <input type="text" value="${age}" disabled>
+          </div>
+
+          <div>
+            <label>Termín *</label>
+            <div class="open-day-choice-group">
+              ${termButtons}
+              <button class="open-day-choice" type="button" onclick="selectInlineOpenDayTerm('${inlineOpenDayFallback}', this)">
+                <span>${inlineOpenDayFallback}</span>
+                <small>Pošleme vám záznam, jakmile bude k dispozici.</small>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label for="inlineOpenDayEmail">Email rodiče *</label>
+            <input id="inlineOpenDayEmail" type="email" placeholder="např. jmeno@seznam.cz" value="${emailValue}">
+          </div>
+
+          <p class="inline-error" id="inlineOpenDayError">Vyberte prosím termín a vyplňte platný email.</p>
+          <button class="cta" type="button" onclick="submitInlineOpenDayEmailStep(event)">Poslat pozvánku na email →</button>
+        </div>
+      </div>
+    `;
+
+    state.inlineOpenDayTerm = '';
+    $('turnusyOutput').innerHTML = '';
+  }
+
+  function isInlineOpenDayEmailValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function submitInlineOpenDayEmailStep(evt) {
+    const email = $('inlineOpenDayEmail') ? $('inlineOpenDayEmail').value.trim() : '';
+    const err = $('inlineOpenDayError');
+
+    if (!state.inlineOpenDayTerm || !isInlineOpenDayEmailValid(email)) {
+      if (err) err.style.display = 'block';
+      return;
+    }
+    if (err) err.style.display = 'none';
+
+    state.leadEmail = email;
+    saveLeadCompleteState(email, state.leadPhone || '');
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'lead_email_submitted',
+      email: email,
+      segment: 'OPEN'
+    });
+
+    showInlineOpenDayPhoneStep();
+  }
+
+  function showInlineOpenDayPhoneStep() {
+    const phoneKnown = (state.leadPhone || '').trim();
+    const wantsRecording = (state.inlineOpenDayTerm || '').includes('záznam');
+
+    if (phoneKnown) {
+      submitInlineOpenDayFinal(null);
+      return;
+    }
+
+    $('confirmTitle').textContent = 'Ještě telefon pro připomenutí přes SMS';
+    $('confirmText').innerHTML = wantsRecording
+      ? 'Záznam vám pošleme na email. Pro jistotu prosíme i o telefon, protože email se záznamem může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong>'
+      : 'Pozvánku vám pošleme na email. Pro jistotu prosíme i o telefon, protože pozvánka může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong>';
+
+    $('actionBlock').innerHTML = `
+      <div class="claim-card">
+        <div class="claim-label">Volitelné, ale doporučené</div>
+        <h3>Telefon pro SMS připomenutí</h3>
+        <p class="claim-text">${wantsRecording ? 'Telefon použijeme jen pro SMS připomenutí, že jsme vám poslali záznam dne otevřených dveří.' : 'Telefon použijeme jen pro SMS připomenutí online dne otevřených dveří.'}</p>
+
+        <div class="inline-reservation-form">
+          <div>
+            <label for="inlineOpenDayPhone">Telefon rodiče</label>
+            <input id="inlineOpenDayPhone" type="tel" placeholder="+420 ...">
+          </div>
+          <p class="inline-error" id="inlineOpenDayPhoneError">Vyplňte prosím telefon, nebo telefon přeskočte.</p>
+          <button class="cta" type="button" onclick="submitInlineOpenDayFinal(event)">Dokončit registraci →</button>
+          <button class="skip-btn" type="button" onclick="skipInlineOpenDayPhone()">Přeskočit telefon</button>
+        </div>
+      </div>
+    `;
+
+    $('turnusyOutput').innerHTML = '';
+  }
+
+  function skipInlineOpenDayPhone() {
+    submitInlineOpenDayFinal(null, true);
+  }
+
+  async function submitInlineOpenDayFinal(evt, skippedPhone) {
+    const phone = state.leadPhone || (($('inlineOpenDayPhone') ? $('inlineOpenDayPhone').value.trim() : ''));
+    const selectedTerm = state.inlineOpenDayTerm || '';
+    const wantsRecording = selectedTerm.includes('záznam');
+    const err = $('inlineOpenDayPhoneError');
+
+    if (!skippedPhone && !phone && err) {
+      err.style.display = 'block';
+      return;
+    }
+    if (err) err.style.display = 'none';
+
+    if (!state.leadPhone && phone) {
+      state.leadPhone = phone;
+      saveLeadCompleteState(state.leadEmail || '', phone);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'lead_phone_added',
+        email: state.leadEmail || '',
+        phone: phone,
+        segment: 'OPEN'
+      });
+    } else if (skippedPhone) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'lead_phone_skipped',
+        email: state.leadEmail || '',
+        segment: 'OPEN'
+      });
+    }
+
+    const row = buildExcelRow('lead_completed', { email: state.leadEmail || '', phone: phone });
+    row.q_timing = selectedTerm;
+    row.q_goal = 'Online den otevřených dveří';
+    row.customer_segment = 'MID';
+    row.result_profile = 'Online den otevřených dveří';
+    row.result_title = 'Online den otevřených dveří';
+    row.result_cta = 'OPEN';
+
+    const btn = evt && evt.target ? evt.target : null;
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Odesílám…';
+    }
+
+    try {
+      await sendToDataEndpoint('lead_completed', row);
+
+      $('confirmTitle').textContent = 'Hotovo, zkontrolujte prosím váš email!';
+      $('confirmText').innerHTML = wantsRecording
+        ? 'Záznam vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.'
+        : 'Pozvánku na online den otevřených dveří vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.';
+
+      $('actionBlock').innerHTML = `
+        <div class="claim-card">
+          <div class="claim-label">${wantsRecording ? 'Záznam' : 'Online den otevřených dveří'}</div>
+          <h3>${selectedTerm}</h3>
+          <p class="claim-text">${phone ? 'Telefon máme uložený jen pro SMS připomenutí. Volat vám nebudeme.' : 'Telefon jste přeskočili, proto prosím zkontrolujte i SPAM.'}</p>
+        </div>
+      `;
+      $('turnusyOutput').innerHTML = '';
+    } catch (e) {
+      if (err) {
+        err.textContent = 'Nepodařilo se odeslat přihlášení. Zkuste to prosím znovu nebo nám napište na hello@make-ful.com.';
+        err.style.display = 'block';
+      }
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Dokončit registraci →';
+      }
+    }
+  }
+
+
 
   // Detekce vracejícího se návštěvníka
 const leadCompleteScreen = document.getElementById('leadCompleteScreen');
   if (leadCompleteScreen && localStorage.getItem('makeful_lead_completed')) {
     renderLeadCompleteScreen();
-  } else {
-    const returnLeadScreen = document.getElementById('returnLeadScreen');
-    if (returnLeadScreen && localStorage.getItem('makeful_quiz_completed_no_email')) {
-      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-      returnLeadScreen.classList.add('active');
-      const progress = document.getElementById('progress');
-      if (progress) progress.style.width = '0%';
-    }
+  } else if (localStorage.getItem('makeful_quiz_completed_no_email')) {
+    window.location.href = 'https://make-ful.com/den-otevrenych-dveri';
   }
 
 function restartQuiz() {
