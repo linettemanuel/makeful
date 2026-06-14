@@ -1790,6 +1790,12 @@
       font-weight: 900;
     }
 
+  
+    .recording-now-cta {
+      margin-top: 12px !important;
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
@@ -3326,7 +3332,7 @@ async function submitInlineReservation(evt) {
     { id: 'open-2026-06-24', dateKey: '2026-06-24T18:30:00+02:00', label: 'Středa 24. 6. 2026', time: '18:30 – 19:20', language: 'CZ' }
   ];
 
-  const inlineOpenDayFallback = 'Termíny mi nevyhovují, pošlete mi záznam';
+  const inlineOpenDayFallback = 'Záznam';
 
   function inlinePragueNow() {
     const parts = new Intl.DateTimeFormat('en-CA', {
@@ -3362,6 +3368,10 @@ async function submitInlineReservation(evt) {
     if (btn) btn.classList.add('selected');
     const err = $('inlineOpenDayError');
     if (err) err.style.display = 'none';
+  }
+
+  function isInlineOpenDayRecording(value) {
+    return String(value || '').toLowerCase().includes('záznam');
   }
 
   function showInlineOpenDays() {
@@ -3449,7 +3459,7 @@ async function submitInlineReservation(evt) {
 
   function showInlineOpenDayPhoneStep() {
     const phoneKnown = (state.leadPhone || '').trim();
-    const wantsRecording = (state.inlineOpenDayTerm || '').includes('záznam');
+    const wantsRecording = isInlineOpenDayRecording(state.inlineOpenDayTerm);
 
     if (phoneKnown) {
       submitInlineOpenDayFinal(null);
@@ -3489,7 +3499,7 @@ async function submitInlineReservation(evt) {
   async function submitInlineOpenDayFinal(evt, skippedPhone) {
     const phone = state.leadPhone || (($('inlineOpenDayPhone') ? $('inlineOpenDayPhone').value.trim() : ''));
     const selectedTerm = state.inlineOpenDayTerm || '';
-    const wantsRecording = selectedTerm.includes('záznam');
+    const wantsRecording = isInlineOpenDayRecording(selectedTerm);
     const err = $('inlineOpenDayPhoneError');
 
     if (!skippedPhone && !phone && err) {
@@ -3536,14 +3546,15 @@ async function submitInlineReservation(evt) {
 
       $('confirmTitle').textContent = 'Hotovo, zkontrolujte prosím váš email!';
       $('confirmText').innerHTML = wantsRecording
-        ? 'Záznam vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.'
+        ? 'Záznam jsme vám poslali do emailu. Pokud email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.'
         : 'Pozvánku na online den otevřených dveří vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.';
 
       $('actionBlock').innerHTML = `
         <div class="claim-card">
           <div class="claim-label">${wantsRecording ? 'Záznam' : 'Online den otevřených dveří'}</div>
-          <h3>${selectedTerm}</h3>
+          <h3>${wantsRecording ? 'Záznam' : selectedTerm}</h3>
           <p class="claim-text">${phone ? 'Telefon máme uložený jen pro SMS připomenutí. Volat vám nebudeme.' : 'Telefon jste přeskočili, proto prosím zkontrolujte i SPAM.'}</p>
+          ${wantsRecording ? '<a class="cta recording-now-cta" href="https://www.youtube.com/watch?v=LKs19vUCVNY&t=9s" target="_blank" rel="noopener">Přehrát záznam nyní →</a>' : ''}
         </div>
       `;
       $('turnusyOutput').innerHTML = '';
