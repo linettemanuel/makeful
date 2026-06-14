@@ -755,6 +755,175 @@
       .claim-text { font-size: 14px; }
       .answer { min-height: 35px; padding: 7px 10px; font-size: 12px; }
     }
+  
+    .claim-visual { margin: 0 0 14px; border-radius: 18px; overflow: hidden; aspect-ratio: 16 / 10; background: linear-gradient(135deg, rgba(246,240,255,.92), rgba(239,252,255,.88)); box-shadow: 0 10px 24px rgba(82,50,120,.08); border: 1px solid rgba(255,255,255,.85); }
+    .claim-visual img { display:block; width:100%; height:100%; object-fit:cover; }
+    #confirmScreen .card > .badge { display:none !important; }
+    #confirmTitle { margin:0; }
+    #confirmText { margin: 7px 0 10px; color: var(--muted); font-size:12.5px; line-height:1.3; }
+    #actionBlock { margin-top:0 !important; }
+    .embedded-email-program { margin-top:0 !important; }
+    .program-step { display:none; margin-top:0 !important; }
+    .program-step.active { display:block; }
+    .program-hero-img, .program-small-img, .program-benefits-img { display:block; width:100%; border-radius:20px; object-fit:cover; background:rgba(255,255,255,.75); border:1px solid rgba(255,255,255,.82); box-shadow:0 10px 24px rgba(82,50,120,.08); }
+    .program-hero-img { aspect-ratio:1.35 / 1; margin-bottom:12px; }
+    .program-small-img { aspect-ratio:1.45 / 1; margin-top:12px; }
+    .program-benefits-img { max-height:82px; object-fit:contain; padding:10px; margin:12px 0; }
+    .guided-card { padding:0 !important; border:0 !important; background:transparent !important; box-shadow:none !important; border-radius:0 !important; }
+    .guided-copy { margin:0 0 10px; color:var(--text); font-size:13.2px; line-height:1.48; font-weight:650; }
+    .guided-copy strong { color:var(--navy); font-weight:850; }
+    .program-quote { margin:12px 0 0; padding:12px; border-radius:18px; color:var(--text); background:rgba(255,255,255,.68); border:1px solid var(--line); font-size:12.8px; line-height:1.45; font-weight:650; }
+    .title-counter { display:block !important; width:max-content; margin:0 0 8px !important; padding:6px 10px !important; border-radius:999px !important; color:#5b48d9 !important; background:rgba(155,108,255,.11) !important; font-size:10.5px !important; line-height:1 !important; font-weight:950 !important; letter-spacing:.08em !important; text-transform:uppercase !important; }
+    .program-top-title { display:block !important; }
+    .program-nav { display:grid; grid-template-columns:1fr; gap:8px; margin-top:14px; }
+    .post-cta-grid { display:grid; gap:10px; margin-top:12px; }
+    .project-beauty-grid { display:grid; gap:10px; margin-top:12px; }
+    .project-beauty-card { position:relative; display:grid; grid-template-columns:34px 1fr; gap:11px; align-items:start; padding:12px 13px; border-radius:18px; background:linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,240,248,.78)); border:1px solid rgba(255,111,159,.15); box-shadow:0 10px 24px rgba(82,50,120,.07); overflow:hidden; }
+    .project-beauty-card:nth-child(2) { background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(239,252,255,.78)); border-color:rgba(72,213,236,.18); }
+    .project-beauty-card:nth-child(3) { background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(246,240,255,.82)); border-color:rgba(155,108,255,.18); }
+    .project-beauty-card:nth-child(4) { background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,248,230,.76)); border-color:rgba(255,178,107,.22); }
+    .project-dot { width:30px; height:30px; border-radius:999px; display:flex !important; align-items:center !important; justify-content:center !important; text-align:center !important; color:#fff !important; background:linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink)); font-size:12px; line-height:1 !important; font-weight:950 !important; box-shadow:0 8px 18px rgba(155,108,255,.18); font-variant-numeric: tabular-nums; }
+    .project-beauty-card b { display:block; margin:0 0 3px; color:var(--navy); font-size:13.5px; line-height:1.2; font-weight:850; }
+    .project-beauty-card span { display:block; color:var(--text); font-size:12.5px; line-height:1.38; font-weight:500; }
+    .project-beauty-card strong { font-weight:780; color:var(--navy); }
+    .guided-logos { display:flex; flex-wrap:wrap; gap:9px; margin-top:12px; }
+    .guided-logo { text-decoration:none; display:inline-flex; align-items:center; justify-content:center; padding:9px 12px; border-radius:999px; background:rgba(255,255,255,.82); border:1px solid rgba(137,150,189,.18); color:rgba(17,23,51,.62); font-family:Georgia, serif; font-size:15px; font-weight:850; line-height:1; white-space:nowrap; }
+    .guided-media-feature { margin-bottom:14px; }
+    .guided-media-feature img { display:block; width:100%; max-height:210px; object-fit:cover; border-radius:16px; margin-top:10px; }
+    .guided-price-list { display:grid; gap:8px; margin-top:10px; }
+    .guided-price-item { padding:10px 11px; border-radius:15px; color:var(--text); background:rgba(255,255,255,.72); border:1px solid var(--line); font-size:12.5px; line-height:1.35; font-weight:750; }
+    .guided-price-hero { margin:12px 0 0 !important; padding:14px; border-radius:20px; background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,240,248,.78)); border:1px solid rgba(255,111,159,.16); box-shadow:0 10px 24px rgba(82,50,120,.07); }
+    .guided-price-hero > span { display:block; color:var(--muted); font-size:11px; font-weight:850; letter-spacing:.04em; text-transform:uppercase; }
+    .guided-price-hero .old-price { display:inline-block; color:var(--muted); font-family:inherit; font-size:15px; font-weight:850; text-decoration:line-through; text-decoration-thickness:2px; margin-right:8px; letter-spacing:0; }
+    .guided-price-hero .new-price { display:inline-block; margin-top:4px; color:var(--navy); font-family:Georgia, "Playfair Display", serif; font-size:clamp(28px, 8.5vw, 36px); line-height:1; letter-spacing:-.045em; font-weight:900; }
+    .guided-price-hero small { display:block; margin-top:7px; color:var(--text); font-size:12.5px; line-height:1.35; font-weight:700; }
+    .guided-stipendium { padding:16px !important; border-radius:24px; background:linear-gradient(135deg, #34245f, #5e3acf 55%, #f45b9e); color:#fff; box-shadow:0 14px 32px rgba(82,50,120,.18); }
+    .guided-stipendium .guided-copy { color:rgba(255,255,255,.9); }
+    .guided-stipendium .guided-copy strong { color:#fff; }
+    .limited-box { margin:12px 0; padding:12px; border-radius:16px; color:#fff; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); font-size:13px; line-height:1.42; }
+    .program-final-ctas { display:grid; gap:10px; margin-top:16px; }
+    .guide-signature-row { display:flex; align-items:center; gap:12px; margin-top:14px; padding:12px; border-radius:20px; background:rgba(255,255,255,.62); border:1px solid rgba(255,255,255,.72); }
+    .guide-signature-row img { flex:0 0 70px; width:70px; height:70px; border-radius:18px; object-fit:cover; margin:0 !important; border:2px solid rgba(155,108,255,.3); }
+    .guide-signature-copy { flex:1 1 auto; min-width:0; text-align:left; }
+    .guide-signature-copy p { margin:0 !important; }
+    .inline-reservation-form { display:grid; gap:10px; margin-top:12px; }
+    .inline-error { display:none; margin:4px 0 0; color:#d9255b; font-size:12px; font-weight:800; }
+    .reservation-success-card { display:grid; gap:12px; padding:16px; border-radius:24px; background:linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,240,248,.82)); border:1px solid rgba(255,111,159,.18); box-shadow:0 14px 32px rgba(82,50,120,.09); }
+    .reservation-success-row { display:grid; gap:3px; padding:10px 12px; border-radius:16px; background:rgba(255,255,255,.68); border:1px solid rgba(255,255,255,.72); }
+    .reservation-success-row span { color:var(--muted); font-size:10.8px; line-height:1.1; font-weight:850; letter-spacing:.04em; text-transform:uppercase; }
+    .reservation-success-row strong { color:var(--navy); font-size:14px; line-height:1.25; font-weight:850; }
+    .reservation-success-note { margin:0; color:var(--text); font-size:13px; line-height:1.45; font-weight:650; }
+    .open-day-choice-group { display:grid; gap:8px; }
+    .open-day-choice { width:100%; border:1px solid var(--line); background:rgba(255,255,255,.74); color:var(--navy); border-radius:16px; padding:11px 12px; text-align:left; cursor:pointer; }
+    .open-day-choice.selected { border-color:rgba(155,108,255,.55); background:linear-gradient(120deg, rgba(255,255,255,.94), rgba(246,240,255,.86)); }
+    .open-day-choice span { display:block; font-size:13px; font-weight:950; }
+    .open-day-choice small { display:block; margin-top:3px; color:var(--muted); font-size:11.5px; font-weight:700; }
+
+  
+    /* Inline reservation screen fix */
+    #confirmScreen .card > .badge,
+    #confirmScreen .card > h3,
+    #confirmScreen .card > .sub {
+      display: none !important;
+    }
+
+    #confirmScreen #actionBlock .claim-card {
+      margin: 0 !important;
+      width: 100%;
+    }
+
+    .inline-reservation-form > div,
+    .inline-reservation-form label,
+    .inline-reservation-form .sub,
+    .inline-reservation-form .inline-error,
+    .inline-reservation-form .cta {
+      min-width: 0;
+    }
+
+    .inline-reservation-form input,
+    .inline-reservation-form select {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    .inline-consent-row {
+      display: grid !important;
+      grid-template-columns: 20px 1fr;
+      gap: 9px !important;
+      align-items: start !important;
+      margin-top: 4px !important;
+      padding: 11px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.64);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 12px !important;
+      line-height: 1.38 !important;
+      font-weight: 720 !important;
+    }
+
+    .inline-consent-row input {
+      width: 18px !important;
+      height: 18px !important;
+      margin: 0 !important;
+      flex: 0 0 auto;
+      accent-color: #9b6cff;
+    }
+
+    .inline-reservation-note {
+      margin: 0;
+      padding: 11px 12px;
+      border-radius: 16px;
+      background: rgba(246,240,255,.64);
+      color: var(--text);
+      font-size: 12.3px;
+      line-height: 1.38;
+      font-weight: 720;
+    }
+
+  
+    .inline-choice-group {
+      display: grid;
+      gap: 7px;
+      margin-top: 5px;
+    }
+
+    .inline-choice {
+      width: 100%;
+      min-height: 39px;
+      padding: 9px 11px;
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: var(--navy);
+      text-align: left;
+      font-size: 13.2px;
+      line-height: 1.2;
+      font-weight: 850;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .inline-choice.selected {
+      border-color: rgba(255,111,159,.55);
+      background: linear-gradient(120deg, rgba(255,255,255,.94), rgba(255,240,248,.80));
+    }
+
+    .inline-choice span {
+      display: block;
+      font-weight: 950;
+    }
+
+    .inline-choice small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.25;
+      font-weight: 720;
+    }
+
   </style>
 </head>
 <body>
@@ -818,6 +987,7 @@
   <section class="view" id="claimScreen">
     <div class="claim-card">
       <div class="claim-label">Why we ask</div>
+      <div class="claim-visual"><img id="claimImage" src="https://make-ful.com/img/makeful_projekty2.jpg" alt="Makeful project preview"></div>
       <p class="claim-text" id="claimText"></p>
       <button class="cta" type="button" onclick="continueAfterClaim()">Continue</button>
     </div>
@@ -889,17 +1059,14 @@
 
   <section class="view" id="confirmScreen">
     <div class="card" style="overflow-y:auto">
-      <div class="badge" style="background:rgba(37,211,102,.1);color:#128C7E">Confirmation</div>
       <h2 id="confirmTitle">Access granted</h2>
       <p class="lead" id="confirmText"></p>
 
-      <div id="actionBlock" style="margin-top:16px;"></div>
+      <div id="actionBlock"></div>
 
-      <h3>Recommended summer sessions (2026):</h3>
-      <p class="sub">Now you can see the specific dates that match your daughter's age group. Click to go to a pre-filled registration form.</p>
       <div id="turnusyOutput" class="turnusy-list"></div>
 
-      <button class="back" type="button" style="margin-top:24px;" onclick="restartQuiz()">Retake the quiz</button>
+      <button id="confirmBackButton" class="back" type="button" style="margin-top:24px;" onclick="restartQuiz()">Retake the quiz</button>
     </div>
   </section>
 </main>
@@ -968,6 +1135,37 @@
 
   const state = { index: -1, answers: {}, pendingNext: null, noQuizFlow: false, leadEmail: '', leadPhone: '' };
   const $ = (id) => document.getElementById(id);
+
+
+  function getDynamicClaimAsset(questionId, value) {
+    const rawValue = Array.isArray(value) ? (value[0] || '') : (value || '');
+    if (questionId === 'age') {
+      if (rawValue.includes('10–12')) return { src: 'https://make-ful.com/img/kloboucek.png', alt: 'Project preview for younger girls' };
+      if (rawValue.includes('13–15') || rawValue.includes('16–19')) return { src: 'https://make-ful.com/img/8.png', alt: 'Fashion tech project preview' };
+      return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Makeful environment preview' };
+    }
+    if (questionId === 'interests') {
+      if (rawValue.includes('Fashion')) return { src: 'https://make-ful.com/img/kloboucek.png', alt: 'Future hat project' };
+      if (rawValue.includes('Drawing')) return { src: 'https://make-ful.com/img/7.png', alt: 'Digital fashion design' };
+      if (rawValue.includes('Hands-on')) return { src: 'https://make-ful.com/img/makeful_projekty_shoe.jpg', alt: '3D printed shoe accessory' };
+      if (rawValue.includes('Digital')) return { src: 'https://make-ful.com/img/5.png', alt: 'Digital creation preview' };
+      if (rawValue.includes('AI')) return { src: 'https://make-ful.com/img/7.png', alt: 'AI model and digital projects' };
+      return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Makeful project preview' };
+    }
+    if (questionId === 'goal') {
+      if (rawValue.includes('self-confidence')) return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Girls presenting their projects' };
+      if (rawValue.includes('skills')) return { src: 'https://make-ful.com/img/7.png', alt: 'Creative technology preview' };
+      if (rawValue.includes('projects')) return { src: 'https://make-ful.com/img/8.png', alt: 'Finished fashion project' };
+      if (rawValue.includes('friends') || rawValue.includes('memories')) return { src: 'https://make-ful.com/img/4.jpg', alt: 'Makeful creative community' };
+      return { src: 'https://make-ful.com/img/4.jpg', alt: 'Makeful summer academy' };
+    }
+    if (questionId === 'price') {
+      if (rawValue.includes('benefits')) return { src: 'https://www.make-ful.com/img/benefit-logos.png', alt: 'Benefit payment options' };
+      return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Makeful program value preview' };
+    }
+    if (questionId === 'timing') return { src: 'https://make-ful.com/img/4.jpg', alt: 'Makeful academy preview' };
+    return { src: 'https://make-ful.com/img/makeful_projekty2.jpg', alt: 'Makeful project preview' };
+  }
 
   function getDynamicClaim(questionId, value) {
     if (questionId === 'age') {
@@ -1232,7 +1430,10 @@ const phoneAge = $('phoneAge');
       const claim = getDynamicClaim(q.id, value);
       state.pendingNext = state.index + 1;
       if (claim) {
+        const asset = getDynamicClaimAsset(q.id, value);
         $('claimText').textContent = claim;
+        $('claimImage').src = asset.src;
+        $('claimImage').alt = asset.alt;
         setView('claimScreen');
       } else {
         continueAfterClaim();
@@ -1247,7 +1448,10 @@ const phoneAge = $('phoneAge');
     const claim = getDynamicClaim(q.id, selected);
     state.pendingNext = state.index + 1;
     if (claim) {
+      const asset = getDynamicClaimAsset(q.id, selected);
       $('claimText').textContent = claim;
+      $('claimImage').src = asset.src;
+      $('claimImage').alt = asset.alt;
       setView('claimScreen');
     } else {
       continueAfterClaim();
@@ -1431,12 +1635,7 @@ const phoneAge = $('phoneAge');
     clearCompletedNoEmailState();
 
     state.noQuizFlow = false;
-    const ageBlock = $('phoneAgeBlock');
-    if (ageBlock) ageBlock.style.display = 'none';
-    const skipButton = document.querySelector('#phoneScreen .skip-btn');
-    if (skipButton) skipButton.textContent = 'Skip and show the next results';
-    $('phoneClaimText').textContent = getPhoneClaimText(state.computedGtmSegment || '');
-    setView('phoneScreen');
+    renderFinalActionPage(em, '');
   }
 
 
@@ -1491,29 +1690,9 @@ const phoneAge = $('phoneAge');
     restoreLastQuizState();
     const email = localStorage.getItem('makeful_lead_email') || '';
     const phone = localStorage.getItem('makeful_lead_phone') || '';
-    const age = getAnswer('age');
-    const filtered = getReturnMatchedTurnusy(age);
-
-    const output = $('leadCompleteTurnusyOutput');
-    if (!output) return;
-    output.innerHTML = '';
-
-    filtered.forEach(t => {
-      const item = document.createElement('div');
-      item.className = 'turnus-item';
-      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}&language=en`;
-      item.innerHTML = `
-        <div class="turnus-info">
-          <strong>${t.date}</strong>
-          <span class="turnus-badge">${t.lang}</span>${getTurnusSpotsHTML(t)}
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Age group: ${t.age}</div>
-        </div>
-        ${getTurnusCTAHTML(t, regUrl)}
-      `;
-      output.appendChild(item);
-    });
-
-    setView('leadCompleteScreen');
+    state.leadEmail = email;
+    state.leadPhone = phone;
+    renderFinalActionPage(email, phone);
   }
 
 
@@ -1681,14 +1860,10 @@ const phoneAge = $('phoneAge');
 
     await _sendQueue;
     await sendToDataEndpoint('lead_completed', buildExcelRow('lead_completed', { email: em, phone: '' }));
+    saveLeadCompleteState(em, '');
 
     state.noQuizFlow = false;
-    const ageBlock = $('phoneAgeBlock');
-    if (ageBlock) ageBlock.style.display = 'none';
-    const skipButton = document.querySelector('#phoneScreen .skip-btn');
-    if (skipButton) skipButton.textContent = 'Skip and show the next results';
-    $('phoneClaimText').textContent = getPhoneClaimText(state.computedGtmSegment || '');
-    setView('phoneScreen');
+    renderFinalActionPage(em, '');
   }
 
   async function submitPhoneStep() {
@@ -1784,138 +1959,413 @@ const phoneAge = $('phoneAge');
   }
 
 
+  function setConfirmBackButtonMode(mode) {
+    const btn = $('confirmBackButton');
+    if (!btn) return;
+    if (mode === 'program') {
+      btn.textContent = 'Back';
+      btn.onclick = function() { moveProgramStep(-1); };
+      btn.style.display = (state.programStep || 0) > 0 ? 'block' : 'none';
+    } else {
+      btn.textContent = 'Retake the quiz';
+      btn.onclick = function() { restartQuiz(); };
+      btn.style.display = 'block';
+    }
+  }
+
   function renderNoQuizFinalPage(email, phone, gtmSegment, makeSegment) {
     state.computedGtmSegment = gtmSegment;
     state.computedMakeSegment = makeSegment;
-
-    $('confirmTitle').textContent = gtmSegment === 'LOW' ? 'We will contact you soon!' : 'We will contact you soon!';
-    $('confirmText').innerHTML = gtmSegment === 'LOW' ? 'Thank you, we have saved your phone number. We will contact you and go through individually whether Makeful is the right step for your daughter.' : 'Thank you, we have saved your phone number. We will contact you as soon as possible and help you choose a suitable date.';
-
-    const waText = 'Hello, I used the quick contact option in the Makeful quiz and would like to ask about the summer program for my daughter.';
-    const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
+    state.leadEmail = email || '';
+    state.leadPhone = phone || state.leadPhone || '';
+    setConfirmBackButtonMode('default');
+    $('confirmTitle').textContent = 'Thank you, we saved your phone number';
+    $('confirmText').innerHTML = 'Now you can explore the academy program step by step.';
     $('actionBlock').innerHTML = `
-      <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
-        <div class="claim-label" style="color:#128C7E;">Quick contact</div>
-        <p class="claim-text" style="font-size:14px;">If you want to add anything right away, you can message us on WhatsApp or call us.</p>
-        <a class="cta whatsapp" href="${waUrl}" target="_blank">Message us on WhatsApp →</a>
-        <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Call: +420 735 820 576</a>
-      </div>
-    `;
-
+      <div class="post-cta-grid">
+        <button class="cta" type="button" onclick="startProgramPreview()">View the program →</button>
+      </div>`;
     $('turnusyOutput').innerHTML = '';
-    if (gtmSegment !== 'LOW') {
-      const age = getAnswer('age');
-      const filtered = getReturnMatchedTurnusy(age);
-      filtered.forEach(t => {
-        const item = document.createElement('div');
-        item.className = 'turnus-item';
-        const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=&telefon=${encodeURIComponent(phone)}&language=en`;
-        item.innerHTML = `
-          <div class="turnus-info">
-            <strong>${t.date}</strong>
-            <span class="turnus-badge">${t.lang}</span>
-            <div style="font-size:11px;color:var(--muted);margin-top:2px;">Age group: ${t.age}</div>
-          </div>
-          <a class="cta" href="${regUrl}" target="_blank">Reserve a spot for this session →</a>
-        `;
-        $('turnusyOutput').appendChild(item);
-      });
-    }
-
     state.noQuizFlow = false;
     setView('confirmScreen');
   }
 
-
   function renderFinalActionPage(email, phone) {
-    const gtmSegment = state.computedGtmSegment;
-    const age = getAnswer('age');
-
-    let confirmTitle = 'Access unlocked 📩';
-    let confirmText = `We have just sent the complete analysis and materials to <strong>${email}</strong>.`;
-    let actionHtml = '';
-
-    if (gtmSegment === 'BOF_CENA') {
-      confirmTitle = 'Everything is in your inbox! Scholarship activated.';
-      confirmText = `We sent you confirmation of the <strong>900 CZK scholarship</strong> and instructions on how to pay for the academy via benefits (Pluxee, Benefit Plus, Edenred, FKSP). You can choose your session below.`;
-    } else if (gtmSegment === 'BOF_HOT') {
-      confirmTitle = 'Details are on their way to your email.';
-      confirmText = 'Below you can see the current availability for your daughter\'s age group. We recommend securing a spot as soon as possible.';
-    } else if (gtmSegment === 'LOW') {
-      confirmTitle = 'Thank you! We have noted your request.';
-      confirmText = `We have sent details about the individual age assessment to <strong>${email}</strong>. We will get back to you personally as soon as possible.`;
-      actionHtml = `
-        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
-          <div class="claim-label" style="color:#128C7E;">Individual consultation</div>
-          <p class="claim-text" style="font-size:14px;">Would you like to discuss your daughter's age and options right away? Write to us on WhatsApp.</p>
-          <a class="cta whatsapp" href="https://wa.me/420735820576?text=${encodeURIComponent('Hello, my daughter is outside the standard Makeful age limit and I would like to ask about camp options...')}" target="_blank">Write to us on WhatsApp →</a>
-          <a class="cta secondary" href="tel:+420735820576" style="text-align:center;">Call us: +420 735 820 576</a>
-        </div>
-      `;
-    } else {
-      const waText = 'Hello, I have gone through the Makeful quiz and I would like to ask about the summer camp for my daughter...';
-      const waUrl = `https://wa.me/420735820576?text=${encodeURIComponent(waText)}`;
-      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(waUrl)}`;
-
-      actionHtml = `
-        <div class="claim-card" style="margin-bottom:20px; border-color:rgba(155,108,255,.3);">
-          <div class="claim-label" style="color:#128C7E;">Quick consultation</div>
-
-          <div class="mobile-only-block">
-            <p class="claim-text" style="font-size:14px;">Have a question about the academy? Write to us on WhatsApp. We usually reply within a few minutes.</p>
-            <a class="cta whatsapp" href="${waUrl}" target="_blank">Send us a question on WhatsApp →</a>
-          </div>
-
-          <div class="desktop-only-block" style="text-align:center;">
-            <p class="claim-text" style="font-size:14px; text-align:left;">Have a question about the academy? Point your phone camera at the QR code and write to us on WhatsApp.</p>
-            <img class="wa-qr" src="${qrUrl}" alt="WhatsApp QR code" style="width:140px; height:140px; margin: 12px auto; display:block; border: 2px dashed #128C7E; padding: 4px; border-radius:12px; background: #fff;">
-            <a href="${waUrl}" target="_blank" style="font-size:11.5px; color:var(--muted); text-decoration:underline; font-weight:700;">On your phone? Click here</a>
-          </div>
-
-          <a class="cta secondary" href="tel:+420735820576" style="text-align:center; margin-top:12px;">Or call us: +420 735 820 576</a>
-        </div>
-      `;
-    }
-
-    $('confirmTitle').textContent = confirmTitle;
-    $('confirmText').innerHTML = confirmText;
-    $('actionBlock').innerHTML = actionHtml;
-
-    const filtered = getMatchedTurnusy(age);
-
+    setConfirmBackButtonMode('default');
+    state.leadEmail = email || state.leadEmail || '';
+    state.leadPhone = phone || state.leadPhone || '';
+    $('confirmTitle').textContent = 'Thank you, everything is in your inbox!';
+    $('confirmText').innerHTML = `We have sent the complete materials to <strong>${state.leadEmail}</strong>. Now you can explore the academy program step by step.`;
+    $('actionBlock').innerHTML = `
+      <div class="post-cta-grid">
+        <button class="cta" type="button" onclick="startProgramPreview()">View the program →</button>
+      </div>`;
     $('turnusyOutput').innerHTML = '';
-    filtered.forEach(t => {
-      const item = document.createElement('div');
-      item.className = 'turnus-item';
-
-      const regUrl = `./registrace?termin=${encodeURIComponent(t.termin)}&email=${encodeURIComponent(email)}&telefon=${encodeURIComponent(phone)}&language=en`;
-
-      item.innerHTML = `
-        <div class="turnus-info">
-          <strong>${t.date}</strong>
-          <span class="turnus-badge">${t.lang}</span>${getTurnusSpotsHTML(t)}
-          <div style="font-size:11px;color:var(--muted);margin-top:2px;">Age group: ${t.age}</div>
-        </div>
-        ${getTurnusCTAHTML(t, regUrl)}
-      `;
-      $('turnusyOutput').appendChild(item);
-    });
-
+    state.noQuizFlow = false;
     setView('confirmScreen');
   }
+
+  function getDynamicFashionPieceTitle() {
+    const age = getAnswer('age');
+    if (age.includes('10–12')) return '3D printed future hat & virtuality';
+    return '3D printed vest & virtuality';
+  }
+
+  function getScholarshipInfo() {
+    const age = getAnswer('age');
+    if (age.includes('10–12')) return { amount: '900 CZK', code: 'STIPENDIUM900', ageLabel: '10–12 years', basePrice: '7,888 CZK', finalPrice: '6,988 CZK' };
+    if (age.includes('16–19')) return { amount: '2,000 CZK', code: 'STIPENDIUM2000', ageLabel: '16–19 years', basePrice: '9,888 CZK', finalPrice: '7,888 CZK' };
+    return { amount: '1,500 CZK', code: 'STIPENDIUM1500', ageLabel: '13–15 years', basePrice: '8,888 CZK', finalPrice: '7,388 CZK' };
+  }
+
+  function getConcreteAgeOptions() {
+    const age = getAnswer('age');
+    if (age.includes('10–12')) return ['10 years', '11 years', '12 years'];
+    if (age.includes('13–15')) return ['13 years', '14 years', '15 years'];
+    if (age.includes('16–19')) return ['16 years', '17 years', '18 years', '19 years'];
+    return ['10 years','11 years','12 years','13 years','14 years','15 years','16 years','17 years','18 years','19 years'];
+  }
+
+  function startProgramPreview() {
+    const scholarship = getScholarshipInfo();
+    state.programTitles = [
+      'Let me show you <span class="grad">what Makeful really means</span>',
+      'Amazing mentors and a <span class="grad">safe environment</span>',
+      'More <span class="grad">about us</span>',
+      'Seven days your daughter <span class="grad">will remember</span>',
+      'AI, portfolio and <span class="grad">the final presentation</span>',
+      'What is <span class="grad">included</span>',
+      'Scholarship and <span class="grad">reservation</span>'
+    ];
+    state.programStep = 0;
+    setConfirmBackButtonMode('program');
+    $('confirmText').innerHTML = '';
+    $('actionBlock').innerHTML = `
+      <div class="embedded-email-program">
+        <div id="programSteps">
+          <div class="program-step active" data-step="0">
+            <img class="program-hero-img" src="https://make-ful.com/img/kloboucek.png" alt="Girl wearing a 3D printed bucket hat">
+            <div class="guided-card">
+              <p class="guided-copy">Makeful is not just a <strong>summer academy</strong>. <strong>It is my heart project.</strong></p>
+              <p class="guided-copy">I founded Makeful because I wanted to create a <strong>safe, girls-only and human space</strong> where girls can bloom and gain the courage to build their own dreams.</p>
+              <p class="guided-copy">I want to show your daughter that technology can bring <strong>pure joy</strong>, develop her <strong>creativity</strong> and give her <strong>confidence</strong>. Everything starts with one idea and the most important moment: <em>“I can do this.”</em></p>
+              <div class="program-quote">“Lili could not stop talking about you and keeps remembering your workshop. She loved it, came home excited every day, and I truly appreciated your patient approach.”<br><strong>Viktoria, mum</strong></div>
+            </div>
+            <img class="program-small-img" src="https://make-ful.com/img/8.png" alt="Makeful project examples">
+          </div>
+          <div class="program-step" data-step="1">
+            <div class="guided-card">
+              <p class="guided-copy">Our mentors are <strong>women aged 20–30</strong> working in fashion design, architecture or IT. They are powerful <strong>female role models</strong> for your daughter and show her that technology and creativity naturally belong together.</p>
+              <p class="guided-copy">We meet at <strong>Argentinská 1 in Prague 7</strong> in a small group of <strong>maximum 10 girls</strong>, in a friendly creative environment where girls feel good.</p>
+              <p class="guided-copy"><strong>A small group</strong> matters to us because every participant deserves attention and support.</p>
+              <p class="guided-copy">As the founder, I spend <strong>three full days</strong> with the girls in the lab.</p>
+              <img class="program-small-img" src="https://make-ful.com/img/5.png" alt="Makeful mentors and creative lab">
+              <img class="program-small-img" src="https://make-ful.com/img/7.png" alt="Creative technology workshop">
+            </div>
+          </div>
+          <div class="program-step" data-step="2">
+            <div class="guided-card">
+              <div class="guided-media-feature">
+                <p class="guided-copy" style="margin-bottom:0;">You may have heard about us from Czech Television and the educational show <strong>Wifina</strong>. The feature shows how fashion, 3D printing and technology can connect in a way that is <strong>close, understandable and inspiring</strong> for children.</p>
+                <img src="https://make-ful.com/assets/ctd-reportaz-styled.png" alt="Czech Television Wifina feature about Makeful">
+              </div>
+              <div class="guided-logos" aria-label="Media mentions">
+                <a class="guided-logo" href="https://www.wired.cz/clanky/rodinny-ai-lab-a-stylova-budoucnost-designerka-linette-manuel-uci-deti-jak-propojit-technologie-a-jejich-kreativitu" target="_blank">Wired</a>
+                <a class="guided-logo" href="https://decko.ceskatelevize.cz/wifina" target="_blank">ČT :D</a>
+                <a class="guided-logo" href="https://archiv.hn.cz/c1-67481510-naucte-deti-tvorit-s-umelou-inteligenci-digitalni-laboratore-jim-otevrou-dvere-do-budoucnosti" target="_blank">Hospodářské noviny</a>
+                <a class="guided-logo" href="https://www.hrot24.cz/clanek/tech-skola-umela-inteligence-deti-makeful" target="_blank">Hrot</a>
+                <a class="guided-logo" href="https://zpravy.aktualne.cz/ekonomika/tech-skola-makeful-ai-deti/r~4f3a2ed0bb3111ee9ae20cc47ab5f122/" target="_blank">Aktuálně.cz</a>
+                <a class="guided-logo" href="https://www.abicko.cz/clanek/precti-si-zabava/32544/umela-inteligence-a-deti-kreativita-az-na-prvnim-miste.html" target="_blank">Abíčko</a>
+              </div>
+            </div>
+          </div>
+          <div class="program-step" data-step="3">
+            <div class="guided-card">
+              <p class="guided-copy">During the week we guide your daughter from <strong>the first idea</strong> through <strong>3D printing</strong>, digital creation and <strong>AI</strong> all the way to a <strong>portfolio</strong> and final presentation.</p>
+              <div class="project-beauty-grid">
+                <div class="project-beauty-card"><span class="project-dot">1</span><div><b>3D printing & shoe accessories</b><span>Your daughter designs and prints <strong>original shoe decorations</strong>.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">2</span><div><b>Customisable T-shirts</b><span>She creates a <strong>T-shirt with interchangeable elements</strong> that she can change depending on her mood.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">3</span><div><b>${getDynamicFashionPieceTitle()}</b><span>We create a pattern, turn it into a 3D object, and during printing she creates a <strong>moodboard</strong>.</span></div></div>
+              </div>
+              <img class="program-small-img" src="https://make-ful.com/img/makeful_projekty_shoe.jpg" alt="3D printed shoe accessory">
+              <img class="program-small-img" src="https://make-ful.com/img/makeful_projekty2.jpg" alt="Fashion tech project examples">
+            </div>
+          </div>
+          <div class="program-step" data-step="4">
+            <div class="guided-card">
+              <p class="guided-copy">In the second part of the week we guide your daughter to bring her idea to a <strong>finished form</strong> and present it with <strong>confidence</strong>.</p>
+              <div class="project-beauty-grid">
+                <div class="project-beauty-card"><span class="project-dot">4</span><div><b>When paper comes alive with AI</b><span>She designs a <strong>virtual fashion collection</strong> and uses AI tools to turn it into a semi-realistic runway.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">5</span><div><b>AI fashion show in motion</b><span>She creates an <strong>AI-generated video</strong> from a fashion show.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">6</span><div><b>Final assembly & portfolio</b><span>She assembles her printed piece and creates a <strong>portfolio in Canva</strong>.</span></div></div>
+                <div class="project-beauty-card"><span class="project-dot">7</span><div><b>Celebration and diploma</b><span>She presents her projects, we celebrate what she has achieved, and she takes home a <strong>diploma</strong>.</span></div></div>
+              </div>
+              <img class="program-small-img" src="https://make-ful.com/img/4.jpg" alt="Our lab in action">
+            </div>
+          </div>
+          <div class="program-step" data-step="5">
+            <div class="guided-card">
+              <p class="guided-copy">We prepared the price so it includes <strong>everything important for the full week</strong> and you do not need to deal with <strong>hidden costs</strong>.</p>
+              <div class="guided-price-list">
+                <div class="guided-price-item">The full seven-day program in a creative lab in Prague.</div>
+                <div class="guided-price-item">All-day food: lunch, snacks and drinking regime.</div>
+                <div class="guided-price-item">A new T-shirt and shoes that your daughter will customise.</div>
+                <div class="guided-price-item">All materials, components, creative tools and work with technology.</div>
+                <div class="guided-price-item">Personal portfolio, final presentation and diploma.</div>
+              </div>
+              <img class="program-benefits-img" src="https://www.make-ful.com/img/benefit-logos.png" alt="Benefit payment options">
+              <div class="guided-price-hero"><span>Price after scholarship</span><div><span class="old-price">8,888 CZK</span><strong class="new-price">7,388 CZK</strong></div><small>The scholarship is already included in the price.</small></div>
+              <p class="guided-copy">We can also split the program into <strong>several payments</strong>.</p>
+            </div>
+          </div>
+          <div class="program-step" data-step="6">
+            <div class="guided-stipendium">
+              <p class="guided-copy">For your daughter’s age group, you have a scholarship of ${scholarship.amount}. The program price decreases from ${scholarship.basePrice} to <strong>${scholarship.finalPrice}</strong>.</p>
+              <div class="limited-box"><strong>The scholarship is limited</strong> and applies only to the <strong>first 5 students</strong> who pay the deposit. Code: <strong>${scholarship.code}</strong></div>
+              <p class="guided-copy">To reserve a spot, it is enough to pay a deposit of only <strong>1,500 CZK</strong>. The rest is paid no later than 14 days before the academy starts.</p>
+              <div class="program-quote" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.85);">“The program was amazing and I really enjoyed it! I learned so much. I loved working in 3D programs and printing on the printer the most.”<br><strong>Hanka, academy graduate</strong></div>
+              <div class="program-final-ctas">
+                <button class="cta" type="button" onclick="showInlineReservation()" style="border:0;cursor:pointer;">Reserve a spot for 48 hoursours →</button>
+              </div>
+            </div>
+            <div class="guided-card" style="margin-top:14px;">
+              <div class="guide-signature-row">
+                <img src="https://make-ful.com/img/linette_manuel_profile_photo.png" alt="Linette Manuel">
+                <div class="guide-signature-copy"><p class="guided-copy"><strong>We look forward to meeting you!</strong><br><strong>Linette Manuel</strong><br>Founder of Makeful<br><a href="tel:+420735820576" style="color:#9b6cff;font-weight:800;">735 820 576</a></p></div>
+              </div>
+              <a class="cta whatsapp" href="https://wa.me/420735820576?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20Makeful%20summer%20academy." target="_blank" style="margin-top:10px;text-align:center;">Message us on WhatsApp →</a>
+            </div>
+          </div>
+        </div>
+        <div class="program-nav"><button class="cta" type="button" id="programNext" onclick="moveProgramStep(1)">Show mentors →</button></div>
+      </div>`;
+    updateProgramNav();
+    $('turnusyOutput').innerHTML = '';
+    setView('confirmScreen');
+  }
+
+  function moveProgramStep(dir) {
+    const total = 7;
+    state.programStep = Math.max(0, Math.min(total - 1, (state.programStep || 0) + dir));
+    document.querySelectorAll('.program-step').forEach(step => step.classList.remove('active'));
+    const current = document.querySelector(`.program-step[data-step="${state.programStep}"]`);
+    if (current) current.classList.add('active');
+    updateProgramNav();
+  }
+
+  function updateProgramNav() {
+    const labels = ['Show mentors →','More about us →','Show program →','More about the program →','Show what is included →','I want to get the scholarship →',''];
+    const current = state.programStep || 0;
+    if (state.programTitles && state.programTitles[current]) {
+      $('confirmTitle').innerHTML = '<span class="title-counter">' + (current + 1) + '/7</span><span class="program-top-title">' + state.programTitles[current] + '</span>';
+    }
+    setConfirmBackButtonMode('program');
+    const next = $('programNext');
+    if (next) {
+      if (current >= 6) next.style.display = 'none';
+      else { next.style.display = 'block'; next.textContent = labels[current] || 'Continue →'; }
+    }
+  }
+
+  function getReservationTermsForCurrentAge() {
+    const age = getAnswer('age');
+    return getMatchedTurnusy(age).filter(t => !t.isFull);
+  }
+
+  function selectInlineReservationAge(value, btn) {
+    const input = $('inlineAge');
+    if (input) input.value = value;
+    document.querySelectorAll('.inline-age-choice').forEach(el => el.classList.remove('selected'));
+    if (btn) btn.classList.add('selected');
+    const err = $('inlineReservationError');
+    if (err) err.style.display = 'none';
+  }
+
+  function selectInlineReservationTerm(value, btn) {
+    const input = $('inlineTerm');
+    if (input) input.value = value;
+    document.querySelectorAll('.inline-term-choice').forEach(el => el.classList.remove('selected'));
+    if (btn) btn.classList.add('selected');
+    const err = $('inlineReservationError');
+    if (err) err.style.display = 'none';
+  }
+
+  function showInlineReservation() {
+    setConfirmBackButtonMode('default');
+    const scholarship = getScholarshipInfo();
+    const terms = getReservationTermsForCurrentAge();
+    const ageButtons = getConcreteAgeOptions().map(a => `<button class="inline-choice inline-age-choice" type="button" onclick="selectInlineReservationAge('${a.replace(/'/g, "\\'")}', this)">${a}</button>`).join('');
+    const termButtons = terms.map(t => `<button class="inline-choice inline-term-choice" type="button" onclick="selectInlineReservationTerm('${t.termin.replace(/'/g, "\\'")}', this)"><span>${t.date}</span><small>${t.lang} · ${t.age}${t.spots ? ' · ' + t.spots + ' spots left' : ''}</small></button>`).join('');
+    $('confirmTitle').textContent = 'Reserve a spot for 48 hours';
+    $('confirmText').innerHTML = `Fill in the details and we will hold your spot for 48 hours with the scholarship ${scholarship.amount}.`;
+    $('actionBlock').innerHTML = `
+      <div class="claim-card">
+        <div class="claim-label">Reservation</div>
+        <div class="inline-reservation-form">
+          <div><label for="inlineParticipantName">Participant’s first name *</label><input id="inlineParticipantName" type="text" placeholder="First name"></div>
+          <div>
+            <label>Participant’s age *</label>
+            <input id="inlineAge" type="hidden" value="">
+            <div class="inline-choice-group">${ageButtons}</div>
+          </div>
+          <div>
+            <label>Preferred date *</label>
+            <input id="inlineTerm" type="hidden" value="">
+            <div class="inline-choice-group">${termButtons}</div>
+          </div>
+          <div><label for="inlinePhone">Parent’s phone *</label><input id="inlinePhone" type="tel" placeholder="+420 ..." value="${state.leadPhone || ''}"></div>
+          <label class="inline-consent-row"><input id="inlineConsent" type="checkbox"> <span>I agree to the processing of personal data and the terms and conditions.</span></label>
+          <p class="inline-error" id="inlineReservationError">Please fill in all required fields and confirm consent.</p>
+          <p class="inline-reservation-note">Reservation is not a payment yet. We will hold the date and send deposit instructions for 1,500 CZK.</p>
+          <button class="cta" type="button" onclick="submitInlineReservation(event)">Reserve a spot for 48 hoursours →</button>
+        </div>
+      </div>`;
+    $('turnusyOutput').innerHTML = '';
+  }
+
+  function getSelectedReservationTermInfo(termValue) {
+    const found = allTurnusy.find(t => t.termin === termValue) || null;
+    if (!found) return { age: getAnswer('age') || '', date: termValue || '', lang: '', spotsText: '' };
+    let spotsText = '';
+    if (found.isFull) spotsText = 'This session is already full.';
+    else if (found.spots) spotsText = `Only ${found.spots} ${found.spots === 1 ? 'spot' : 'spots'} left for this date.`;
+    return { age: found.age, date: found.date, lang: found.lang, spotsText };
+  }
+
+  async function submitInlineReservation(evt) {
+    const name = ($('inlineParticipantName') ? $('inlineParticipantName').value.trim() : '');
+    const age = ($('inlineAge') ? $('inlineAge').value : '');
+    const term = ($('inlineTerm') ? $('inlineTerm').value : '');
+    const phone = state.leadPhone || (($('inlinePhone') ? $('inlinePhone').value.trim() : ''));
+    const consent = $('inlineConsent') && $('inlineConsent').checked;
+    const err = $('inlineReservationError');
+    if (!name || !age || !term || !phone || !consent) { if (err) err.style.display = 'block'; return; }
+    if (err) err.style.display = 'none';
+    const scholarship = getScholarshipInfo();
+    const now = new Date();
+    const pad = n => n < 10 ? '0' + n : n;
+    const datumCas = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+    const id = now.getFullYear().toString() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
+    const payload = {
+      'ID přihlášky': id,
+      'Datum a čas přihlášky': datumCas,
+      'Jméno účastnice': name,
+      'Příjmení účastnice': '-',
+      'Věk': age,
+      'Email účastnice': '-',
+      'Jméno rodiče': '-',
+      'Příjmení rodiče': '-',
+      'Telefon': phone,
+      'Email rodiče': state.leadEmail || '',
+      'Preferovaný termín': term,
+      'Náhradní termín': '-',
+      'Promo kód': scholarship.code,
+      'Zdroj': 'quiz-en',
+      'Typ rezervace': '48-hour spot reservation',
+      'Stipendium': scholarship.amount
+    };
+    const btn = evt && evt.target ? evt.target : null;
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    try {
+      const res = await fetch('https://hook.eu1.make.com/oyiz9y17pvcf36ncoa6x4ophaopk3y4p', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error('Status: ' + res.status);
+      const termInfo = getSelectedReservationTermInfo(term);
+      $('confirmTitle').textContent = 'Reservation saved';
+      $('confirmText').innerHTML = '';
+      $('actionBlock').innerHTML = `
+        <div class="reservation-success-card">
+          <div class="reservation-success-row"><span>Reservation</span><strong>48-hour spot reservation</strong></div>
+          <div class="reservation-success-row"><span>Group</span><strong>Session for age ${termInfo.age}</strong></div>
+          <div class="reservation-success-row"><span>Date</span><strong>${termInfo.date} ${termInfo.lang}</strong></div>
+          <p class="reservation-success-note">Scholarship code <strong>${scholarship.code}</strong> is saved with the reservation.</p>
+          ${termInfo.spotsText ? `<p class="reservation-success-note"><strong>${termInfo.spotsText}</strong></p>` : ''}
+          <a class="cta" href="https://buy.stripe.com/5kQ00jbDNfevcPz4oj67S08" target="_blank" rel="noopener" style="text-align:center;">Pay the deposit and confirm the spot now →</a>
+        </div>`;
+      $('turnusyOutput').innerHTML = '';
+    } catch(e) {
+      if (err) { err.textContent = 'The reservation could not be sent. Please try again or email us at hello@make-ful.com.'; err.style.display = 'block'; }
+      if (btn) { btn.disabled = false; btn.textContent = 'Reserve a spot for 48 hoursours →'; }
+    }
+  }
+
+  const inlineOpenDayTerms = [
+    { id:'open-2026-06-14', dateKey:'2026-06-14T18:30:00+02:00', label:'Sunday 14 June 2026', time:'18:30–19:20', language:'CZ' },
+    { id:'open-2026-06-17', dateKey:'2026-06-17T18:30:00+02:00', label:'Wednesday 17 June 2026', time:'18:30–19:20', language:'CZ' },
+    { id:'open-2026-06-21', dateKey:'2026-06-21T18:30:00+02:00', label:'Sunday 21 June 2026', time:'18:30–19:20', language:'CZ' },
+    { id:'open-2026-06-24', dateKey:'2026-06-24T18:30:00+02:00', label:'Wednesday 24 June 2026', time:'18:30–19:20', language:'CZ' }
+  ];
+  const inlineOpenDayFallback = 'The dates do not work for me, please send me the recording';
+  function inlinePragueNow() { const p = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Prague',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(new Date()).reduce((a,x)=>{a[x.type]=x.value;return a;},{}); return new Date(`${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:${p.second}+02:00`); }
+  function getInlineVisibleOpenDays() { const now = inlinePragueNow().getTime(); return inlineOpenDayTerms.filter(t => new Date(t.dateKey).getTime() - now > 30*60*1000).slice(0,2); }
+  function selectInlineOpenDayTerm(value, btn) { state.inlineOpenDayTerm = value; document.querySelectorAll('.open-day-choice').forEach(el => el.classList.remove('selected')); if (btn) btn.classList.add('selected'); const err = $('inlineOpenDayError'); if (err) err.style.display = 'none'; }
+  function showInlineOpenDays() {
+    setConfirmBackButtonMode('default');
+    const age = getAnswer('age') || 'not specified';
+    const terms = getInlineVisibleOpenDays();
+    const emailValue = state.leadEmail || '';
+    $('confirmTitle').textContent = 'Online open day';
+    $('confirmText').innerHTML = 'We will show projects, introduce mentors and explain funding options. You will have space to ask anything you need.';
+    const termButtons = terms.map(term => { const value = `${term.label} · ${term.time} · ${term.language}`; return `<button class="open-day-choice" type="button" onclick="selectInlineOpenDayTerm('${value.replace(/'/g, "\\'")}', this)"><span>${term.label}</span><small>${term.time} · ${term.language}</small></button>`; }).join('');
+    $('actionBlock').innerHTML = `
+      <div class="claim-card">
+        <div class="claim-label">Online open day</div><h3>Choose a date</h3>
+        <div class="inline-reservation-form">
+          <div><label>Daughter’s age</label><input type="text" value="${age}" disabled></div>
+          <div><label>Date *</label><div class="open-day-choice-group">${termButtons}<button class="open-day-choice" type="button" onclick="selectInlineOpenDayTerm('${inlineOpenDayFallback}', this)"><span>${inlineOpenDayFallback}</span><small>We will send the recording as soon as it is available.</small></button></div></div>
+          <div><label for="inlineOpenDayEmail">Parent’s email *</label><input id="inlineOpenDayEmail" type="email" placeholder="name@email.com" value="${emailValue}"></div>
+          <p class="inline-error" id="inlineOpenDayError">Please choose a date and enter a valid email.</p>
+          <button class="cta" type="button" onclick="submitInlineOpenDayEmailStep(event)">Send invitation by email →</button>
+        </div>
+      </div>`;
+    state.inlineOpenDayTerm = '';
+    $('turnusyOutput').innerHTML = '';
+  }
+  function isInlineOpenDayEmailValid(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+  function submitInlineOpenDayEmailStep(evt) {
+    const email = $('inlineOpenDayEmail') ? $('inlineOpenDayEmail').value.trim() : '';
+    const err = $('inlineOpenDayError');
+    if (!state.inlineOpenDayTerm || !isInlineOpenDayEmailValid(email)) { if (err) err.style.display = 'block'; return; }
+    if (err) err.style.display = 'none';
+    state.leadEmail = email;
+    saveLeadCompleteState(email, state.leadPhone || '');
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lead_email_submitted', email, segment: 'OPEN' });
+    showInlineOpenDayPhoneStep();
+  }
+  function showInlineOpenDayPhoneStep() {
+    const phoneKnown = (state.leadPhone || '').trim();
+    const wantsRecording = (state.inlineOpenDayTerm || '').includes('recording');
+    if (phoneKnown) { submitInlineOpenDayFinal(null); return; }
+    $('confirmTitle').textContent = 'One more phone number for an SMS reminder';
+    $('confirmText').innerHTML = wantsRecording ? 'We will send the recording by email. Please also leave a phone number just in case the email lands in spam. We will only remind you by SMS, <strong>we will not call you.</strong>' : 'We will send the invitation by email. Please also leave a phone number just in case the invitation lands in spam. We will only remind you by SMS, <strong>we will not call you.</strong>';
+    $('actionBlock').innerHTML = `
+      <div class="claim-card"><div class="claim-label">Optional but recommended</div><h3>Phone for SMS reminder</h3><p class="claim-text">${wantsRecording ? 'We will use the phone only for an SMS reminder that we sent you the recording.' : 'We will use the phone only for an SMS reminder for the online open day.'}</p><div class="inline-reservation-form"><div><label for="inlineOpenDayPhone">Parent’s phone</label><input id="inlineOpenDayPhone" type="tel" placeholder="+420 ..."></div><p class="inline-error" id="inlineOpenDayPhoneError">Please enter a phone number or skip this step.</p><button class="cta" type="button" onclick="submitInlineOpenDayFinal(event)">Complete registration →</button><button class="skip-btn" type="button" onclick="skipInlineOpenDayPhone()">Skip phone</button></div></div>`;
+    $('turnusyOutput').innerHTML = '';
+  }
+  function skipInlineOpenDayPhone() { submitInlineOpenDayFinal(null, true); }
+  async function submitInlineOpenDayFinal(evt, skippedPhone) {
+    const phone = state.leadPhone || (($('inlineOpenDayPhone') ? $('inlineOpenDayPhone').value.trim() : ''));
+    const selectedTerm = state.inlineOpenDayTerm || '';
+    const wantsRecording = selectedTerm.includes('recording');
+    const err = $('inlineOpenDayPhoneError');
+    if (!skippedPhone && !phone && err) { err.style.display = 'block'; return; }
+    if (err) err.style.display = 'none';
+    if (!state.leadPhone && phone) { state.leadPhone = phone; saveLeadCompleteState(state.leadEmail || '', phone); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'lead_phone_added', email: state.leadEmail || '', phone, segment:'OPEN' }); }
+    else if (skippedPhone) { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'lead_phone_skipped', email: state.leadEmail || '', segment:'OPEN' }); }
+    const row = buildExcelRow('lead_completed', { email: state.leadEmail || '', phone });
+    row.q_timing = selectedTerm; row.q_goal = 'Online open day'; row.customer_segment = 'MID'; row.result_profile = 'Online open day'; row.result_title = 'Online open day'; row.result_cta = 'OPEN';
+    const btn = evt && evt.target ? evt.target : null; if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    try { await sendToDataEndpoint('lead_completed', row); $('confirmTitle').textContent = 'Done, please check your email!'; $('confirmText').innerHTML = wantsRecording ? 'We will send the recording by email. If it does not arrive, please check spam or promotions.' : 'We will send the online open day invitation by email. If it does not arrive, please check spam or promotions.'; $('actionBlock').innerHTML = `<div class="claim-card"><div class="claim-label">${wantsRecording ? 'Recording' : 'Online open day'}</div><h3>${selectedTerm}</h3><p class="claim-text">${phone ? 'Your phone is saved only for an SMS reminder. We will not call you.' : 'You skipped the phone number, so please check your spam folder as well.'}</p></div>`; $('turnusyOutput').innerHTML = ''; }
+    catch(e) { if (err) { err.textContent = 'The registration could not be sent. Please try again or email us at hello@make-ful.com.'; err.style.display = 'block'; } if (btn) { btn.disabled = false; btn.textContent = 'Complete registration →'; } }
+  }
+
 
   // Returning visitor detection
 const leadCompleteScreen = document.getElementById('leadCompleteScreen');
   if (leadCompleteScreen && localStorage.getItem('makeful_lead_completed')) {
     renderLeadCompleteScreen();
-  } else {
-    const returnLeadScreen = document.getElementById('returnLeadScreen');
-    if (returnLeadScreen && localStorage.getItem('makeful_quiz_completed_no_email')) {
-      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-      returnLeadScreen.classList.add('active');
-      const progress = document.getElementById('progress');
-      if (progress) progress.style.width = '0%';
-    }
+  } else if (localStorage.getItem('makeful_quiz_completed_no_email')) {
+    clearCompletedNoEmailState(); setView('intro');
   }
 
 function restartQuiz() {
