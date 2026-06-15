@@ -1919,6 +1919,44 @@
       flex: 0 0 auto;
     }
 
+    .program-scroll-page {
+      display: grid;
+      gap: 24px;
+      margin-top: 6px;
+    }
+
+    .program-scroll-page #programSteps {
+      display: grid;
+      gap: 24px;
+    }
+
+    .program-scroll-page .program-step {
+      display: block !important;
+      margin-top: 0 !important;
+      padding-top: 22px;
+      border-top: 1px solid rgba(137,150,189,.16);
+      animation: none !important;
+    }
+
+    .program-scroll-page .program-step:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .program-section-title {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-family: Georgia, serif;
+      font-size: clamp(21px, 6vw, 27px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      font-weight: 850;
+    }
+
+    .program-scroll-page .program-hero-img {
+      margin-top: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -3057,25 +3095,19 @@ const phoneAge = $('phoneAge');
 
   function startProgramPreview() {
     const scholarship = getScholarshipInfo();
-    state.programTitles = [
-      'Dovolte mi ukázat, <span class="grad">co Makeful doopravdy znamená</span>',
-      'Úžasné lektorky a <span class="grad">bezpečné prostředí</span>',
-      'Psalo se <span class="grad">o nás</span>',
-      'Sedm dní, na které <span class="grad">vaše dcera nezapomene</span>',
-      'AI, portfolio a <span class="grad">velké finále</span>',
-      'Co všechno je <span class="grad">v ceně</span>',
-      'Stipendium a <span class="grad">rezervace</span>'
-    ];
+    state.programTitles = [];
     state.programStep = 0;
-    setConfirmBackButtonMode('program');
+    setConfirmBackButtonMode('default');
 
-    $('confirmText').innerHTML = '';
+    $('confirmTitle').innerHTML = 'Program akademie <span class="grad">krok za krokem</span>';
+    $('confirmText').innerHTML = 'Projděte si celý program v klidu na jedné stránce. Na konci najdete stipendium, rezervaci termínu a kontakt.';
 
     $('actionBlock').innerHTML = `
-      <div class="embedded-email-program" style="margin-top:4px;">
+      <div class="embedded-email-program program-scroll-page" style="margin-top:4px;">
         <div id="programSteps">
 
           <div class="program-step active" data-step="0">
+            <h3 class="program-section-title">Co Makeful doopravdy znamená</h3>
             <img class="program-hero-img" src="https://make-ful.com/img/kloboucek.png" alt="Dívka s 3D tištěným bucket hatem">
             <div class="guided-card">
               <p class="guided-copy">Makeful není jen <strong>letní akademie</strong>. <strong>Je to moje srdce.</strong></p>
@@ -3089,6 +3121,7 @@ const phoneAge = $('phoneAge');
 
 
           <div class="program-step" data-step="1">
+            <h3 class="program-section-title">Lektorky a bezpečné prostředí</h3>
             <div class="guided-card">
               <p class="guided-copy">Naše lektorky jsou <strong>ženy ve věku 20–30 let</strong> věnující se módnímu návrhářství, architektuře nebo IT. Jsou skvělými <strong>ženskými vzory</strong> pro vaši dceru a ukazují jí, že technologie a kreativita jdou ruku v ruce.</p>
               <p class="guided-copy">Potkáme se na <strong>Argentinská 1 na Praze 7</strong> v malé skupince <strong>maximálně 10 dívek</strong> v přátelském rodinném kreativním prostředí, kde se dívky cítí dobře.</p>
@@ -3102,6 +3135,7 @@ const phoneAge = $('phoneAge');
 
 
           <div class="program-step" data-step="2">
+            <h3 class="program-section-title">Psalo se o nás</h3>
             <div class="guided-card">
               <div class="guided-media-feature">
                 <p class="guided-copy" style="margin-bottom:0;">Možná jste o nás slyšeli z České televize, ze vzdělávacího pořadu <strong>Wifina</strong>. V reportáži ukazujeme, jak se móda, 3D tisk a technologie mohou propojit způsobem, který je dětem <strong>blízký, srozumitelný a inspirující</strong>.</p>
@@ -3122,6 +3156,7 @@ const phoneAge = $('phoneAge');
 
 
           <div class="program-step" data-step="3">
+            <h3 class="program-section-title">Sedm dní tvorby a nových dovedností</h3>
             <div class="guided-card">
               <p class="guided-copy">Během týdne vaši dceru provedeme cestou od <strong>prvního nápadu</strong> přes <strong>3D tisk</strong>, digitální tvorbu a <strong>AI</strong> až po <strong>portfolio</strong> a závěrečnou prezentaci.</p>
               <div class="project-beauty-grid">
@@ -3137,6 +3172,7 @@ const phoneAge = $('phoneAge');
 
 
           <div class="program-step" data-step="4">
+            <h3 class="program-section-title">AI, portfolio a velké finále</h3>
             <div class="guided-card">
               <p class="guided-copy">V druhé části týdne vaši dceru povedeme k tomu, aby svůj nápad dotáhla do <strong>finální podoby</strong> a uměla ho <strong>sebevědomě představit</strong>.</p>
               <div class="project-beauty-grid">
@@ -3152,6 +3188,7 @@ const phoneAge = $('phoneAge');
 
 
           <div class="program-step" data-step="5">
+            <h3 class="program-section-title">Co všechno je v ceně</h3>
             <div class="guided-card">
               <p class="guided-copy">Cenu jsme pro vás připravili tak, aby v ní bylo <strong>vše důležité pro celý týden</strong> a vy jste během programu nemuseli řešit <strong>žádné skryté náklady</strong>.</p>
               <div class="guided-price-list">
@@ -3170,6 +3207,7 @@ const phoneAge = $('phoneAge');
 
 
           <div class="program-step" data-step="6">
+            <h3 class="program-section-title">Stipendium a rezervace</h3>
             <div class="guided-stipendium">
               <p class="guided-copy">Pro věkovou skupinu vaší dcery máte připravené stipendium ${scholarship.amount}. Cena programu klesne z ${scholarship.basePrice} na <strong>${scholarship.finalPrice}</strong>.</p>
               <div class="limited-box"><strong>Stipendium je omezené</strong> a platí pouze pro <strong>5 prvních studentek</strong>, které zaplatí zálohu. Kód: <strong>${scholarship.code}</strong></div>
@@ -3193,14 +3231,10 @@ const phoneAge = $('phoneAge');
           </div>
 
         </div>
-        <div class="program-nav">
-          <button class="cta" type="button" id="programNext" onclick="moveProgramStep(1)">Ukázat lektorky →</button>
-        </div>
       </div>
     `;
 
     $('turnusyOutput').innerHTML = '';
-    updateProgramNav();
   }
 
 function setConfirmBackButtonMode(mode) {
