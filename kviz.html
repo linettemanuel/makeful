@@ -1796,6 +1796,129 @@
       text-align: center;
     }
 
+    .guided-stipendium { padding:16px !important; border-radius:24px !important; background:linear-gradient(135deg, #34245f, #5e3acf 55%, #f45b9e) !important; color:#fff !important; box-shadow:0 14px 32px rgba(82,50,120,.18) !important; border:0 !important; }
+    .guided-stipendium .guided-copy { color:rgba(255,255,255,.9) !important; }
+    .guided-stipendium .guided-copy strong { color:#fff !important; }
+    .guided-stipendium .limited-box { margin:12px 0 !important; padding:12px !important; border-radius:16px !important; color:#fff !important; background:rgba(255,255,255,.1) !important; border:1px solid rgba(255,255,255,.18) !important; font-size:13px !important; line-height:1.42 !important; }
+    .guided-stipendium .program-quote { margin:12px 0 !important; padding:12px !important; border-radius:16px !important; background:rgba(255,255,255,.07) !important; border-color:rgba(255,255,255,.12) !important; color:rgba(255,255,255,.85) !important; font-size:13px !important; line-height:1.42 !important; }
+    .guided-stipendium .program-final-ctas { display:grid !important; gap:10px !important; margin-top:16px !important; }
+
+    .inline-choice-group {
+      display: grid;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .inline-choice {
+      width: 100%;
+      min-height: 42px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(137,150,189,.20);
+      background: rgba(255,255,255,.82);
+      color: var(--navy);
+      text-align: left;
+      font-family: inherit;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 560;
+      cursor: pointer;
+      transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+
+    .inline-choice.selected {
+      border-color: rgba(155,108,255,.42);
+      background: linear-gradient(120deg, rgba(255,255,255,.96), rgba(246,240,255,.78));
+      box-shadow: 0 0 0 3px rgba(155,108,255,.08);
+    }
+
+    .reservation-term-choice {
+      display: grid;
+      gap: 6px;
+    }
+
+    .reservation-term-choice span {
+      display: block;
+    }
+
+    .reservation-term-head {
+      display: flex !important;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 6px;
+    }
+
+    .reservation-term-date {
+      color: var(--navy);
+      font-size: 12.6px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: 0;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .reservation-term-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .reservation-term-age {
+      color: #73798c;
+      font-size: 11.2px;
+      font-weight: 500;
+    }
+
+    .reservation-lang-badge {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      min-height: 20px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      font-size: 9.5px;
+      line-height: 1;
+      font-weight: 820;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .reservation-lang-badge.cz {
+      background: rgba(72,213,236,.13);
+      color: #147f98;
+      border: 1px solid rgba(72,213,236,.22);
+    }
+
+    .reservation-lang-badge.en {
+      background: rgba(155,108,255,.13);
+      color: #6548c7;
+      border: 1px solid rgba(155,108,255,.20);
+    }
+
+    .reservation-spots-badge {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      min-height: 20px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(217,37,91,.08);
+      color: #c81f50;
+      border: 1px solid rgba(217,37,91,.15);
+      font-size: 9.5px;
+      line-height: 1;
+      font-weight: 820;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
   </style>
 </head>
 <body>
@@ -3135,6 +3258,36 @@ function setConfirmBackButtonMode(mode) {
     }
   }
 
+  function selectInlineReservationAge(btn) {
+    const input = $('inlineAge');
+    if (input && btn) input.value = btn.dataset.value || '';
+    document.querySelectorAll('.inline-age-choice').forEach(el => el.classList.remove('selected'));
+    if (btn) btn.classList.add('selected');
+    const err = $('inlineReservationError');
+    if (err) err.style.display = 'none';
+  }
+
+  function selectInlineReservationTerm(btn) {
+    const input = $('inlineTerm');
+    if (input && btn) input.value = btn.dataset.value || '';
+    document.querySelectorAll('.inline-term-choice').forEach(el => el.classList.remove('selected'));
+    if (btn) btn.classList.add('selected');
+    const err = $('inlineReservationError');
+    if (err) err.style.display = 'none';
+  }
+
+  function getReservationLangBadge(t) {
+    return t.lang === 'česky'
+      ? '<span class="reservation-lang-badge cz">CZ</span>'
+      : '<span class="reservation-lang-badge en">EN</span>';
+  }
+
+  function getReservationSpotsBadge(t) {
+    if (t.isFull) return '<span class="reservation-spots-badge">Plný termín</span>';
+    if (!t.spots) return '';
+    return '<span class="reservation-spots-badge">Zbývají ' + t.spots + ' ' + getSpotWord(t.spots) + '</span>';
+  }
+
   function showInlineReservation() {
     setConfirmBackButtonMode('default');
     const age = getAnswer('age');
@@ -3145,11 +3298,22 @@ function setConfirmBackButtonMode(mode) {
     $('confirmTitle').textContent = 'Rezervace termínu na 48 h';
     $('confirmText').innerHTML = '';
 
-    const termOptions = filtered.map(t => `
-      <option value="${t.termin}">${t.date} · ${t.lang} · ${t.age}${t.spots ? ' · zbývají ' + t.spots + ' místa' : ''}</option>
+    const ageButtons = getConcreteAgeOptions().map(a => `
+      <button class="inline-choice inline-age-choice" type="button" data-value="${a}" onclick="selectInlineReservationAge(this)">${a}</button>
     `).join('');
 
-    const ageOptions = getConcreteAgeOptions().map(a => `<option value="${a}">${a}</option>`).join('');
+    const termButtons = filtered.map(t => `
+      <button class="inline-choice inline-term-choice reservation-term-choice" type="button" data-value="${t.termin}" onclick="selectInlineReservationTerm(this)">
+        <span class="reservation-term-head">
+          <span class="reservation-term-date">${t.date}</span>
+          ${getReservationLangBadge(t)}
+          ${getReservationSpotsBadge(t)}
+        </span>
+        <span class="reservation-term-meta">
+          <span class="reservation-term-age">${t.age}</span>
+        </span>
+      </button>
+    `).join('');
 
     $('actionBlock').innerHTML = `
       <div class="reservation-shell">
@@ -3167,13 +3331,15 @@ function setConfirmBackButtonMode(mode) {
             </div>
 
             <div class="reservation-field">
-              <label for="inlineAge">Konkrétní věk dcery *</label>
-              <select id="inlineAge">${ageOptions}</select>
+              <label>Konkrétní věk dcery *</label>
+              <input id="inlineAge" type="hidden" value="">
+              <div class="inline-choice-group">${ageButtons}</div>
             </div>
 
             <div class="reservation-field">
-              <label for="inlineTerm">Vybraný termín *</label>
-              <select id="inlineTerm">${termOptions}</select>
+              <label>Vybraný termín *</label>
+              <input id="inlineTerm" type="hidden" value="">
+              <div class="inline-choice-group">${termButtons}</div>
             </div>
 
             ${phoneKnown ? '' : `
