@@ -924,6 +924,44 @@
       font-weight: 720;
     }
 
+    .program-scroll-page {
+      display: grid;
+      gap: 24px;
+      margin-top: 6px !important;
+    }
+
+    .program-scroll-page #programSteps {
+      display: grid;
+      gap: 24px;
+    }
+
+    .program-scroll-page .program-step {
+      display: block !important;
+      margin-top: 0 !important;
+      padding-top: 22px;
+      border-top: 1px solid rgba(137,150,189,.16);
+      animation: none !important;
+    }
+
+    .program-scroll-page .program-step:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .program-section-title {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-family: Georgia, serif;
+      font-size: clamp(21px, 6vw, 27px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      font-weight: 850;
+    }
+
+    .program-scroll-page .program-hero-img {
+      margin-top: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -2028,22 +2066,16 @@ const phoneAge = $('phoneAge');
 
   function startProgramPreview() {
     const scholarship = getScholarshipInfo();
-    state.programTitles = [
-      'Let me show you <span class="grad">what Makeful really means</span>',
-      'Amazing mentors and a <span class="grad">safe environment</span>',
-      'More <span class="grad">about us</span>',
-      'Seven days your daughter <span class="grad">will remember</span>',
-      'AI, portfolio and <span class="grad">the final presentation</span>',
-      'What is <span class="grad">included</span>',
-      'Scholarship and <span class="grad">reservation</span>'
-    ];
+    state.programTitles = [];
     state.programStep = 0;
-    setConfirmBackButtonMode('program');
-    $('confirmText').innerHTML = '';
+    setConfirmBackButtonMode('default');
+    $('confirmTitle').innerHTML = 'Academy program <span class="grad">step by step</span>';
+    $('confirmText').innerHTML = 'Scroll through the full program calmly on one page. At the end you will find the scholarship, reservation and contact.';
     $('actionBlock').innerHTML = `
-      <div class="embedded-email-program">
+      <div class="embedded-email-program program-scroll-page">
         <div id="programSteps">
           <div class="program-step active" data-step="0">
+            <h3 class="program-section-title">What Makeful really means</h3>
             <img class="program-hero-img" src="https://make-ful.com/img/kloboucek.png" alt="Girl wearing a 3D printed bucket hat">
             <div class="guided-card">
               <p class="guided-copy">Makeful is not just a <strong>summer academy</strong>. <strong>It is my heart project.</strong></p>
@@ -2054,6 +2086,7 @@ const phoneAge = $('phoneAge');
             <img class="program-small-img" src="https://make-ful.com/img/8.png" alt="Makeful project examples">
           </div>
           <div class="program-step" data-step="1">
+            <h3 class="program-section-title">Mentors and a safe environment</h3>
             <div class="guided-card">
               <p class="guided-copy">Our mentors are <strong>women aged 20–30</strong> working in fashion design, architecture or IT. They are powerful <strong>female role models</strong> for your daughter and show her that technology and creativity naturally belong together.</p>
               <p class="guided-copy">We meet at <strong>Argentinská 1 in Prague 7</strong> in a small group of <strong>maximum 10 girls</strong>, in a friendly creative environment where girls feel good.</p>
@@ -2064,6 +2097,7 @@ const phoneAge = $('phoneAge');
             </div>
           </div>
           <div class="program-step" data-step="2">
+            <h3 class="program-section-title">More about us</h3>
             <div class="guided-card">
               <div class="guided-media-feature">
                 <p class="guided-copy" style="margin-bottom:0;">You may have heard about us from Czech Television and the educational show <strong>Wifina</strong>. The feature shows how fashion, 3D printing and technology can connect in a way that is <strong>close, understandable and inspiring</strong> for children.</p>
@@ -2080,6 +2114,7 @@ const phoneAge = $('phoneAge');
             </div>
           </div>
           <div class="program-step" data-step="3">
+            <h3 class="program-section-title">Seven days of creative work</h3>
             <div class="guided-card">
               <p class="guided-copy">During the week we guide your daughter from <strong>the first idea</strong> through <strong>3D printing</strong>, digital creation and <strong>AI</strong> all the way to a <strong>portfolio</strong> and final presentation.</p>
               <div class="project-beauty-grid">
@@ -2092,6 +2127,7 @@ const phoneAge = $('phoneAge');
             </div>
           </div>
           <div class="program-step" data-step="4">
+            <h3 class="program-section-title">AI, portfolio and final presentation</h3>
             <div class="guided-card">
               <p class="guided-copy">In the second part of the week we guide your daughter to bring her idea to a <strong>finished form</strong> and present it with <strong>confidence</strong>.</p>
               <div class="project-beauty-grid">
@@ -2104,6 +2140,7 @@ const phoneAge = $('phoneAge');
             </div>
           </div>
           <div class="program-step" data-step="5">
+            <h3 class="program-section-title">What is included</h3>
             <div class="guided-card">
               <p class="guided-copy">We prepared the price so it includes <strong>everything important for the full week</strong> and you do not need to deal with <strong>hidden costs</strong>.</p>
               <div class="guided-price-list">
@@ -2119,6 +2156,7 @@ const phoneAge = $('phoneAge');
             </div>
           </div>
           <div class="program-step" data-step="6">
+            <h3 class="program-section-title">Scholarship and reservation</h3>
             <div class="guided-stipendium">
               <p class="guided-copy">For your daughter’s age group, you have a scholarship of ${scholarship.amount}. The program price decreases from ${scholarship.basePrice} to <strong>${scholarship.finalPrice}</strong>.</p>
               <div class="limited-box"><strong>The scholarship is limited</strong> and applies only to the <strong>first 5 students</strong> who pay the deposit. Code: <strong>${scholarship.code}</strong></div>
@@ -2137,9 +2175,7 @@ const phoneAge = $('phoneAge');
             </div>
           </div>
         </div>
-        <div class="program-nav"><button class="cta" type="button" id="programNext" onclick="moveProgramStep(1)">Show mentors →</button></div>
       </div>`;
-    updateProgramNav();
     $('turnusyOutput').innerHTML = '';
     setView('confirmScreen');
   }
