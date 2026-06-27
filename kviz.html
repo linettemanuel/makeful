@@ -3328,6 +3328,7 @@ async function submitInlineReservation(evt) {
   ];
 
   const inlineOpenDayFallback = 'Termíny mi nevyhovují, pošlete mi záznam';
+  const inlineOpenDayRecordingUrl = 'https://www.youtube.com/watch?v=LKs19vUCVNY&t=21s';
 
   function inlinePragueNow() {
     const parts = new Intl.DateTimeFormat('en-CA', {
@@ -3370,9 +3371,12 @@ async function submitInlineReservation(evt) {
     const age = getAnswer('age') || 'neuvedeno';
     const terms = getInlineVisibleOpenDays();
     const emailValue = state.leadEmail || '';
+    const hasTerms = terms.length > 0;
 
-    $('confirmTitle').textContent = 'Online den otevřených dveří';
-    $('confirmText').innerHTML = getInlineOpenDayDescription();
+    $('confirmTitle').textContent = hasTerms ? 'Online den otevřených dveří' : 'Podívejte se na záznam dne otevřených dveří';
+    $('confirmText').innerHTML = hasTerms
+      ? getInlineOpenDayDescription()
+      : 'Živý termín už teď není vypsaný, ale záznam je k dispozici. Provedeme vás krátce dalším krokem a za chvíli si ho můžete pustit.';
 
     const termButtons = terms.map(term => {
       const value = `${term.label} · ${term.time} · ${term.language}`;
@@ -3395,29 +3399,36 @@ async function submitInlineReservation(evt) {
             <input type="text" value="${age}" disabled>
           </div>
 
-          <div>
-            <label>Termín *</label>
-            <div class="open-day-choice-group">
-              ${termButtons}
-              <button class="open-day-choice" type="button" onclick="selectInlineOpenDayTerm('${inlineOpenDayFallback}', this)">
-                <span>${inlineOpenDayFallback}</span>
-                <small>Pošleme vám záznam, jakmile bude k dispozici.</small>
-              </button>
+          ${hasTerms ? `
+            <div>
+              <label>Termín *</label>
+              <div class="open-day-choice-group">
+                ${termButtons}
+                <button class="open-day-choice" type="button" onclick="selectInlineOpenDayTerm('${inlineOpenDayFallback}', this)">
+                  <span>${inlineOpenDayFallback}</span>
+                  <small>Pošleme vám záznam dne otevřených dveří.</small>
+                </button>
+              </div>
             </div>
-          </div>
+          ` : `
+            <div class="program-card">
+              <h4>Záznam dne otevřených dveří</h4>
+              <p>Nejrychlejší způsob, jak si projít program, projekty a praktické informace vlastním tempem.</p>
+            </div>
+          `}
 
           <div>
             <label for="inlineOpenDayEmail">Email rodiče *</label>
             <input id="inlineOpenDayEmail" type="email" placeholder="např. jmeno@seznam.cz" value="${emailValue}">
           </div>
 
-          <p class="inline-error" id="inlineOpenDayError">Vyberte prosím termín a vyplňte platný email.</p>
-          <button class="cta" type="button" onclick="submitInlineOpenDayEmailStep(event)">Poslat pozvánku na email →</button>
+          <p class="inline-error" id="inlineOpenDayError">${hasTerms ? 'Vyberte prosím termín a vyplňte platný email.' : 'Vyplňte prosím platný email.'}</p>
+          <button class="cta" type="button" onclick="submitInlineOpenDayEmailStep(event)">${hasTerms ? 'Pokračovat →' : 'Pokračovat →'}</button>
         </div>
       </div>
     `;
 
-    state.inlineOpenDayTerm = '';
+    state.inlineOpenDayTerm = hasTerms ? '' : inlineOpenDayFallback;
     $('turnusyOutput').innerHTML = '';
   }
 
@@ -3448,6 +3459,21 @@ async function submitInlineReservation(evt) {
     showInlineOpenDayPhoneStep();
   }
 
+  function renderInlineOpenDayRecordingComplete(phone) {
+    $('confirmTitle').textContent = 'Záznam je připravený';
+    $('confirmText').innerHTML = `Děkujeme, vše je připravené. Záznam si můžete pustit hned teď a vrátit se k němu, kdykoli budete potřebovat.`;
+    $('actionBlock').innerHTML = `
+      <div class="claim-card">
+        <div class="claim-label">Záznam dne otevřených dveří</div>
+        <h3>Pusťte si záznam online</h3>
+        <p class="claim-text">Ve videu projdete program, projekty, lektorky i praktické informace vlastním tempem.</p>
+        <p class="claim-text">${phone ? 'Kdyby bylo potřeba něco praktického doplnit, ozveme se citlivě a jen k programu.' : 'Pokud vám později nepřijde navazující email, zkontrolujte prosím i SPAM nebo hromadné zprávy.'}</p>
+        <a class="cta" href="${inlineOpenDayRecordingUrl}" target="_blank" rel="noopener" style="text-align:center;">Spustit záznam →</a>
+      </div>
+    `;
+    $('turnusyOutput').innerHTML = '';
+  }
+
   function showInlineOpenDayPhoneStep() {
     const phoneKnown = (state.leadPhone || '').trim();
     const wantsRecording = (state.inlineOpenDayTerm || '').includes('záznam');
@@ -3457,25 +3483,25 @@ async function submitInlineReservation(evt) {
       return;
     }
 
-    $('confirmTitle').textContent = 'Ještě telefon pro připomenutí přes SMS';
+    $('confirmTitle').textContent = wantsRecording ? 'Už jen poslední krok' : 'Už jen poslední krok';
     $('confirmText').innerHTML = wantsRecording
-      ? 'Záznam vám pošleme na email. Pro jistotu prosíme i o telefon, protože email se záznamem může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong>'
-      : 'Pozvánku vám pošleme na email. Pro jistotu prosíme i o telefon, protože pozvánka může občas spadnout do SPAMU. Připomeneme se přes SMS, <strong>volat vám nebudeme.</strong>';
+      ? 'Záznam je skoro připravený. Doplňte prosím kontakt, ať vám můžeme poslat i praktické informace k programu a případně se ujistit, že se k vám vše dostalo.'
+      : 'Pozvánka je skoro připravená. Doplňte prosím kontakt, ať vám můžeme poslat praktické informace a připomenout termín, pokud by email zapadl.';
 
     $('actionBlock').innerHTML = `
       <div class="claim-card">
-        <div class="claim-label">Volitelné, ale doporučené</div>
-        <h3>Telefon pro SMS připomenutí</h3>
-        <p class="claim-text">${wantsRecording ? 'Telefon použijeme jen pro SMS připomenutí, že jsme vám poslali záznam dne otevřených dveří.' : 'Telefon použijeme jen pro SMS připomenutí online dne otevřených dveří.'}</p>
+        <div class="claim-label">Poslední detail</div>
+        <h3>Doplňte kontakt</h3>
+        <p class="claim-text">${wantsRecording ? 'Pomůže nám navázat na záznam praktickými informacemi k programu. Bez zbytečného obtěžování.' : 'Pomůže nám pohlídat, aby se k vám pozvánka a praktické informace opravdu dostaly.'}</p>
 
         <div class="inline-reservation-form">
           <div>
             <label for="inlineOpenDayPhone">Telefon rodiče</label>
             <input id="inlineOpenDayPhone" type="tel" placeholder="+420 ...">
           </div>
-          <p class="inline-error" id="inlineOpenDayPhoneError">Vyplňte prosím telefon, nebo telefon přeskočte.</p>
-          <button class="cta" type="button" onclick="submitInlineOpenDayFinal(event)">Dokončit registraci →</button>
-          <button class="skip-btn" type="button" onclick="skipInlineOpenDayPhone()">Přeskočit telefon</button>
+          <p class="inline-error" id="inlineOpenDayPhoneError">Doplňte prosím telefon, nebo pokračujte bez něj.</p>
+          <button class="cta" type="button" onclick="submitInlineOpenDayFinal(event)">${wantsRecording ? 'Pokračovat k záznamu →' : 'Dokončit →'}</button>
+          <button class="skip-btn" type="button" onclick="skipInlineOpenDayPhone()">Pokračovat bez doplnění</button>
         </div>
       </div>
     `;
@@ -3520,11 +3546,11 @@ async function submitInlineReservation(evt) {
 
     const row = buildExcelRow('lead_completed', { email: state.leadEmail || '', phone: phone });
     row.q_timing = selectedTerm;
-    row.q_goal = 'Online den otevřených dveří';
+    row.q_goal = wantsRecording ? 'Záznam dne otevřených dveří' : 'Online den otevřených dveří';
     row.customer_segment = 'MID';
-    row.result_profile = 'Online den otevřených dveří';
-    row.result_title = 'Online den otevřených dveří';
-    row.result_cta = 'OPEN';
+    row.result_profile = wantsRecording ? 'Záznam dne otevřených dveří' : 'Online den otevřených dveří';
+    row.result_title = wantsRecording ? 'Záznam dne otevřených dveří' : 'Online den otevřených dveří';
+    row.result_cta = wantsRecording ? 'OPEN_RECORDING' : 'OPEN';
 
     const btn = evt && evt.target ? evt.target : null;
     if (btn) {
@@ -3535,16 +3561,19 @@ async function submitInlineReservation(evt) {
     try {
       await sendToDataEndpoint('lead_completed', row);
 
+      if (wantsRecording) {
+        renderInlineOpenDayRecordingComplete(phone);
+        return;
+      }
+
       $('confirmTitle').textContent = 'Hotovo, zkontrolujte prosím váš email!';
-      $('confirmText').innerHTML = wantsRecording
-        ? 'Záznam vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.'
-        : 'Pozvánku na online den otevřených dveří vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.';
+      $('confirmText').innerHTML = 'Pozvánku na online den otevřených dveří vám pošleme na email. Kdyby email nedorazil, zkontrolujte prosím SPAM nebo hromadné zprávy.';
 
       $('actionBlock').innerHTML = `
         <div class="claim-card">
-          <div class="claim-label">${wantsRecording ? 'Záznam' : 'Online den otevřených dveří'}</div>
+          <div class="claim-label">Online den otevřených dveří</div>
           <h3>${selectedTerm}</h3>
-          <p class="claim-text">${phone ? 'Telefon máme uložený jen pro SMS připomenutí. Volat vám nebudeme.' : 'Telefon jste přeskočili, proto prosím zkontrolujte i SPAM.'}</p>
+          <p class="claim-text">${phone ? 'Praktické připomenutí pošleme jen k vybranému termínu.' : 'Pokud email neuvidíte, zkontrolujte prosím i SPAM.'}</p>
         </div>
       `;
       $('turnusyOutput').innerHTML = '';
@@ -3555,7 +3584,7 @@ async function submitInlineReservation(evt) {
       }
       if (btn) {
         btn.disabled = false;
-        btn.textContent = 'Dokončit registraci →';
+        btn.textContent = wantsRecording ? 'Pokračovat k záznamu →' : 'Dokončit →';
       }
     }
   }
