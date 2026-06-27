@@ -68,6 +68,9 @@
 
     /* Header */
     .site-header{position:sticky;top:0;z-index:20;background:rgba(255,250,247,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(17,23,51,.05)}
+    .top-banner{background:linear-gradient(105deg,#43d1ed,#9b6cff,#f05aa0,#ffb36b);color:white;font-size:14px;font-weight:950;line-height:1.35;text-align:center}
+    .top-banner-inner{width:min(calc(100% - 32px),var(--max));margin-inline:auto;padding:10px 16px}
+    .top-banner strong{font-weight:950;letter-spacing:.03em}
     .nav{height:92px;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:100%;overflow:hidden}
     .logo{width:250px;flex:0 0 auto}.logo img{width:100%;height:auto}
     .nav-links{display:flex;align-items:center;gap:48px;font-size:16px;font-weight:900;color:#0f1430}
@@ -358,11 +361,13 @@
     }
 
   </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="site-header">
+    <div class="top-banner"><div class="top-banner-inner">Přihlašování do 30.6. Využijte kód <strong>STIPENDIUM900</strong> na získání stipendia.</div></div>
     <div class="wrap nav">
       <a class="logo" href="#"><img src="assets/logo.png" alt="Makeful Fashion Tech Academy"></a>
       <nav class="nav-links" aria-label="Hlavní navigace">
@@ -772,6 +777,7 @@
     var translations = {
       cs: {
         page_title: 'Makeful Fashion Tech Academy',
+        top_banner: 'Přihlašování do 30.6. Využijte kód <strong>STIPENDIUM900</strong> na získání stipendia.',
         nav: ['Program','Projekty','Termíny','O nás','Galerie','FAQ','Kontakt'],
         nav_cta: 'Vybrat termín',
         hero_title: 'Kde jinde se vaše dcera naučí tvořit <span class="grad">AI&nbsp;kolekce a tisknout 3D&nbsp;módní doplňky</span> za jeden týden?',
@@ -887,6 +893,7 @@
       },
       en: {
         page_title: 'Makeful Fashion Tech Academy',
+        top_banner: 'Applications open until 30 June. Use code <strong>STIPENDIUM900</strong> to get a scholarship.',
         nav: ['Program','Projects','Dates','About us','Gallery','FAQ','Contact'],
         nav_cta: 'Choose a date',
         hero_title: 'Where else can your daughter learn to create <span class="grad">AI&nbsp;collections and 3D&nbsp;fashion accessories</span> in one week?',
@@ -1040,6 +1047,7 @@
       filterScheduleByLanguage(lang);
       document.title = t.page_title;
 
+      htmlSet('.top-banner-inner', t.top_banner);
       setAll('.nav-links a', t.nav);
       textSet('.nav-cta', t.nav_cta);
 

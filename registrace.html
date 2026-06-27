@@ -61,6 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media(max-width:720px){.wrap{width:min(calc(100% - 36px),var(--max))}.nav{height:auto;padding:14px 0;align-items:flex-start}.brand{flex-direction:column;align-items:flex-start;gap:10px}.brand img{width:142px}.nav-right{align-self:flex-start}.hero{padding-top:30px}.hero-card{border-radius:30px;padding:28px;min-height:auto}.side-panel{border-radius:30px}.side-visual{height:190px}h1{font-size:38px}.hero-card p{font-size:16px}.info-grid{grid-template-columns:1fr}.form-card{border-radius:28px;padding:26px}.row{grid-template-columns:1fr}.submit-row{align-items:stretch}.btn-submit{width:100%;min-width:0}.footer-inner{flex-direction:column;align-items:flex-start}.lang-toggle span{display:inline}}
     @media(max-width:440px){.wrap{width:min(calc(100% - 28px),var(--max))}.hero-card{padding:24px}.form-card{padding:22px}.side-content{padding:24px}.mini-stats{grid-template-columns:1fr}select,input[type="text"],input[type="email"],input[type="tel"]{font-size:16px}}
 </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -80,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <hr class="divider"><div class="sec-label" data-i18n="sec_promo">Promo kód</div><div class="row full"><div class="field"><label for="f-promo" data-i18n="field_promo_label">Máte promo kód? Zadejte ho zde</label><input id="f-promo" type="text" data-i18n-placeholder="ph_promo" placeholder="např. MAKEFUL10" autocomplete="off" style="text-transform:uppercase;"></div></div>
 <hr class="divider"><div class="sec-label" data-i18n="sec_consent">Souhlas a podmínky</div><div class="consent-row"><input type="checkbox" id="c1"><label for="c1" data-i18n="consent_text">Souhlasím se <a href="/ochrana-osobnich-udaju">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. <span style="color:var(--coral)">*</span></label></div>
 <div id="form-error" class="form-error-banner"></div>
-<div class="submit-row"><button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button><p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme e-mail s dalšími kroky.<br><span style="color:var(--coral);font-weight:900;">Přihlášky přijímáme do 20. června 2026.</span></p></div>
+<div class="submit-row"><button class="btn-submit" id="submit-btn" type="button" onclick="handleSubmit()" data-i18n="btn_submit">Odeslat přihlášku →</button><p class="submit-note" data-i18n="submit_note">Po odeslání vám zašleme e-mail s dalšími kroky.<br><span style="color:var(--coral);font-weight:900;">Přihlášky přijímáme do 30. června.</span></p></div>
 </div></div></section></main>
 <footer><div class="wrap footer-inner"><div>© 2026 Makeful · FashionTech STEAM Program</div><div class="footer-links"><a href="/obchodni-podminky">Obchodní podmínky</a><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a><a href="mailto:hello@make-ful.com">hello@make-ful.com</a></div></div></footer>
 <script>
@@ -103,7 +104,7 @@ var termOptionsData = [
 /* ── TRANSLATIONS DICTIONARY ── */
 var translations = {
   cs: {
-    banner: 'Přihlášky do letní akademie přijímáme do <strong>20. června 2026</strong>. Zajisti si své místo včas!',
+    banner: 'Přihlášky do letní akademie přijímáme do <strong>30. června</strong>. Zajisti si své místo včas!',
     nav_back: 'Zpět na web', nav_badge: '<div class="nav-dot"></div>Přihlášky otevřeny · Léto 2026', nav_cta: 'Dotaz',
     nav_home: 'Domů', nav_program: 'Program', nav_price: 'Cena', nav_dates: 'Termíny', nav_about: 'O nás', nav_contact: 'Kontakt',
     meta_title: 'Přihláška – Letní módní kreativní laboratoř 2026 · Makeful',
@@ -134,7 +135,7 @@ var translations = {
     field_promo: 'Máš promo kód? Zadej ho zde',
     ph_promo: 'např. MAKEFUL10',
     btn_submit: 'Odeslat přihlášku →',
-    submit_note: 'Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 20. června 2026.</span>',
+    submit_note: 'Po odeslání vám zašleme email s dalšími kroky.<br><span style="color:var(--coral);font-weight:600;">Přihlášky přijímáme do 30. června.</span>',
     footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Sleduj nás', footer_docs_lbl: 'Právní dokumenty', footer_contact_lbl: 'Kontakt',
     footer_privacy: 'Zásady ochrany osobních údajů', footer_terms: 'Obchodní podmínky',
     footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.',
@@ -152,7 +153,7 @@ var translations = {
     field_r_phone_label: 'Telefon', field_r_email_label: 'Email rodiče'
   },
   en: {
-    banner: 'Applications for our summer academy are open until <strong>June 20, 2026</strong>. Secure your spot today!',
+    banner: 'Applications for our summer academy are open until <strong>June 30</strong>. Secure your spot today!',
     nav_back: 'Back to web', nav_badge: '<div class="nav-dot"></div>Applications open · Summer 2026', nav_cta: 'Inquiry',
     nav_home: 'Home', nav_program: 'Programme', nav_price: 'Pricing', nav_dates: 'Dates', nav_about: 'About', nav_contact: 'Contact',
     meta_title: 'Application Form – Summer FashionTech Laboratory 2026 · Makeful',
@@ -183,7 +184,7 @@ var translations = {
     field_promo: 'Have a promo code? Enter it here',
     ph_promo: 'e.g. MAKEFUL10',
     btn_submit: 'Submit application →',
-    submit_note: 'After submitting, we will send you an email with next steps.<br><span style="color:var(--coral);font-weight:600;">Applications close on June 20, 2026.</span>',
+    submit_note: 'After submitting, we will send you an email with next steps.<br><span style="color:var(--coral);font-weight:600;">Applications close on June 30.</span>',
     footer_menu_lbl: 'Makeful', footer_follow_lbl: 'Follow us', footer_docs_lbl: 'Legal Documents', footer_contact_lbl: 'Contact',
     footer_privacy: 'Privacy Policy', footer_terms: 'Terms & Conditions',
     footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. All rights reserved.',
