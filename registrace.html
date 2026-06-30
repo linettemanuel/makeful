@@ -87,11 +87,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 /* ── DATA FOR TERMS CONFIGURATION ── */
 var termOptionsData = [
-    { value: "8-9 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 8, ageMax: 9, spots: 2, cs: "8-9 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 8-9 · July 6 - July 12, 2026 · CZ" },
-    { value: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 10-12 · July 6 - July 12, 2026 · CZ" },
-    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 1, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
-    { value: "10-12 let · 10. 8. - 16. 8. 2026 · ENG", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 10. 8. - 16. 8. 2026 · EN", en: "Ages 10-12 · Aug 10 - Aug 16, 2026 · EN" },
-    { value: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", en: "Ages 10-12 · Aug 17 - Aug 23, 2026 · CZ" },
+    { value: "8-9 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 8, ageMax: 9, isFull: true, cs: "8-9 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 8-9 · July 6 - July 12, 2026 · CZ" },
+    { value: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 10, ageMax: 12, isFull: true, cs: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 10-12 · July 6 - July 12, 2026 · CZ" },
+    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, isFull: true, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
+    { value: "10-12 let · 10. 8. - 16. 8. 2026 · ENG", ageMin: 10, ageMax: 12, isFull: true, cs: "10-12 let · 10. 8. - 16. 8. 2026 · EN", en: "Ages 10-12 · Aug 10 - Aug 16, 2026 · EN" },
+    { value: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", ageMin: 10, ageMax: 12, isFull: true, cs: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", en: "Ages 10-12 · Aug 17 - Aug 23, 2026 · CZ" },
     { value: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", ageMin: 13, ageMax: 15, spots: 1, cs: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", en: "Ages 13-15 · July 13 - July 19, 2026 · CZ" },
     { value: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", ageMin: 13, ageMax: 15, spots: 2, cs: "13-15 let · 3. 8. - 9. 8. 2026 · CZ", en: "Ages 13-15 · Aug 3 - Aug 9, 2026 · CZ" },
     { value: "13-15 let · 20. 7. - 26. 7. 2026 · ENG", ageMin: 13, ageMax: 15, spots: 2, cs: "13-15 let · 20. 7. - 26. 7. 2026 · EN", en: "Ages 13-15 · July 20 - July 26, 2026 · EN" },
@@ -340,7 +340,7 @@ function prefillFromUrl() {
         var sel = document.getElementById('f-termin');
         for (var i = 0; i < sel.options.length; i++) {
             var optValNormalized = sel.options[i].value.replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
-            if (optValNormalized === normalizedTermin || itemValuesPartialMatch(optValNormalized, normalizedTermin)) {
+            if ((optValNormalized === normalizedTermin || itemValuesPartialMatch(optValNormalized, normalizedTermin)) && !sel.options[i].disabled) {
                 sel.selectedIndex = i;
                 break;
             }
@@ -404,6 +404,14 @@ function handleSubmit() {
     if (!email)         missingFields.push(currentLang === 'en' ? 'Parent email' : 'Email rodiče');
     if (!termin)        missingFields.push(currentLang === 'en' ? 'Preferred date' : 'Preferovaný termín');
     
+    var selectedTermData = termOptionsData.find(function(item) { return item.value === termin; });
+    if (selectedTermData && selectedTermData.isFull) {
+        errBanner.textContent = currentLang === 'en' ? 'This session is full. Please choose another available date.' : 'Tento termín je plný. Vyberte prosím jiný dostupný termín.';
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+
     if (missingFields.length > 0) {
         errBanner.textContent = (translations[currentLang].js_err_required || 'Vyplňte prosím: ') + missingFields.join(', ');
         errBanner.style.display = 'block';
