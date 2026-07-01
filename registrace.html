@@ -89,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 var termOptionsData = [
     { value: "8-9 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 8, ageMax: 9, isFull: true, cs: "8-9 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 8-9 · July 6 - July 12, 2026 · CZ" },
     { value: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", ageMin: 10, ageMax: 12, isFull: true, cs: "10-12 let · 6. 7. - 12. 7. 2026 · CZ", en: "Ages 10-12 · July 6 - July 12, 2026 · CZ" },
-    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 1, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
+    { value: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", ageMin: 10, ageMax: 12, isFull: true, cs: "10-12 let · 27. 7. - 2. 8. 2026 · CZ", en: "Ages 10-12 · July 27 - Aug 2, 2026 · CZ" },
     { value: "10-12 let · 10. 8. - 16. 8. 2026 · ENG", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 10. 8. - 16. 8. 2026 · EN", en: "Ages 10-12 · Aug 10 - Aug 16, 2026 · EN" },
     { value: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", ageMin: 10, ageMax: 12, spots: 2, cs: "10-12 let · 17. 8. - 23. 8. 2026 · CZ", en: "Ages 10-12 · Aug 17 - Aug 23, 2026 · CZ" },
     { value: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", ageMin: 13, ageMax: 15, spots: 1, cs: "13-15 let · 13. 7. - 19. 7. 2026 · CZ", en: "Ages 13-15 · July 13 - July 19, 2026 · CZ" },
@@ -141,6 +141,7 @@ var translations = {
     footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. Všechna práva vyhrazena.',
     js_err_gdpr: 'Prosím potvrďte souhlas se zpracováním osobních údajů.',
     js_err_required: 'Vyplňte prosím: ',
+    js_err_closed_term: 'Vybraný termín je již plný. Vyberte prosím jiný termín.',
     js_sending: 'Odesílám…', js_err_fail: 'Nepodařilo se odeslat přihlášku. Zkuste to prosím znovu nebo nás kontaktujte na hello@make-ful.com.',
     side_h2: '7 dní. 6 projektů. Malá skupinka.',
     side_p: 'Zarezervujte místo zálohou 1 500 Kč. Po odeslání přihlášky vám pošleme další kroky e-mailem.',
@@ -190,6 +191,7 @@ var translations = {
     footer_copyright: '&copy; 2026 Makeful – FashionTech STEAM Program. All rights reserved.',
     js_err_gdpr: 'Please confirm your consent to the personal data processing rules.',
     js_err_required: 'Please fill in: ',
+    js_err_closed_term: 'The selected session is already full. Please choose another date.',
     js_sending: 'Sending...', js_err_fail: 'Failed to submit application. Please try again or email us directly at hello@make-ful.com.',
     side_h2: '7 days. 6 projects. Small group.',
     side_p: 'Reserve your spot with a 1,500 CZK deposit. After submitting, we will send you next steps by email.',
@@ -368,6 +370,15 @@ function itemValuesPartialMatch(val1, val2) {
     return clean(val1).length > 5 && clean(val1) === clean(val2);
 }
 
+function isClosedTerm(value) {
+    if (!value) return false;
+    var normalizedValue = value.replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
+    return termOptionsData.some(function(item) {
+        var itemValue = item.value.replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
+        return item.isFull && (itemValue === normalizedValue || itemValuesPartialMatch(itemValue, normalizedValue));
+    });
+}
+
 window.addEventListener('DOMContentLoaded', prefillFromUrl);
 
 /* ── FORM HANDLING SUBMISSION ── */
@@ -406,6 +417,13 @@ function handleSubmit() {
     
     if (missingFields.length > 0) {
         errBanner.textContent = (translations[currentLang].js_err_required || 'Vyplňte prosím: ') + missingFields.join(', ');
+        errBanner.style.display = 'block';
+        errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+    }
+
+    if (isClosedTerm(termin)) {
+        errBanner.textContent = translations[currentLang].js_err_closed_term || 'Vybraný termín je již plný. Vyberte prosím jiný termín.';
         errBanner.style.display = 'block';
         errBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
