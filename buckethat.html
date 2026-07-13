@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Můj bucket hat · Makeful</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#111733;
+    --ink:#202747;
+    --muted:#6f7592;
+    --paper:#fff9f5;
+    --line:rgba(17,23,51,.10);
+    --aqua:#43d1ed;
+    --blue:#5f83ff;
+    --lilac:#9b6cff;
+    --pink:#f05aa0;
+    --coral:#ff766c;
+    --peach:#ffb36b;
+    --shadow:0 24px 70px rgba(82,50,120,.14);
+    --soft:0 14px 34px rgba(82,50,120,.10);
+    --serif:"Playfair Display", Georgia, serif;
+    --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--sans);
+    color:var(--navy);
+    background:
+      radial-gradient(circle at 0 18%, rgba(75,214,238,.15), transparent 28rem),
+      radial-gradient(circle at 100% 14%, rgba(240,90,160,.14), transparent 30rem),
+      linear-gradient(180deg,#fffaf7 0%,#fff5f8 44%,#fffaf6 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  p{font-weight:500}
+  .grad{background:linear-gradient(105deg,#6d74ff 0%,#a96cf7 34%,#f05aa0 68%,#ff8d6f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .wrap{width:min(calc(100% - 32px),860px);margin-inline:auto}
+
+  /* nav */
+  .nav{height:92px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+  .logo{width:250px;flex:0 0 auto}
+  .logo img{width:100%;height:auto;display:block}
+  @media(max-width:900px){.nav{height:72px}.logo{width:210px}}
+  @media(max-width:560px){.logo{width:168px}}
+  .lang{
+    display:inline-flex;
+    background:rgba(255,255,255,.82);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:4px;
+    box-shadow:0 10px 22px rgba(82,50,120,.06);
+  }
+  .lang button{
+    border:none;background:transparent;
+    font:inherit;font-weight:800;font-size:13px;
+    padding:7px 16px;border-radius:999px;
+    color:var(--muted);cursor:pointer;
+  }
+  .lang button.active{
+    color:#fff;
+    background:linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70);
+  }
+
+  /* hero */
+  .hero{text-align:center;padding:26px 0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
+    color:#7a8097;background:rgba(255,255,255,.86);
+    border:1px solid rgba(137,150,189,.18);
+    padding:8px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-size:clamp(36px,6vw,54px);
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .hero p{color:var(--muted);font-size:16px;margin-top:12px}
+
+  /* mode toggle */
+  .mode{
+    display:flex;justify-content:center;
+    margin:18px 0 28px;
+  }
+  .mode-inner{
+    display:inline-flex;
+    background:rgba(255,255,255,.85);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:5px;
+    box-shadow:0 12px 28px rgba(82,50,120,.08);
+  }
+  .mode-inner button{
+    border:none;background:transparent;
+    font:inherit;font-weight:900;font-size:14px;
+    padding:11px 28px;border-radius:999px;
+    color:var(--muted);cursor:pointer;transition:.16s ease;
+  }
+  .mode-inner button.active{
+    color:#fff;
+    background:linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70);
+    box-shadow:0 12px 26px rgba(240,90,160,.22);
+  }
+
+  /* steps */
+  .step{
+    background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,248,252,.92));
+    border:1px solid rgba(255,255,255,.94);
+    border-radius:32px;
+    box-shadow:var(--soft);
+    padding:28px;
+    margin-bottom:20px;
+  }
+  .step-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+  .step-num{
+    width:38px;height:38px;flex:none;border-radius:50%;
+    background:linear-gradient(120deg,#986cff,#f05aa0);
+    color:#fff;font-weight:900;font-size:18px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 22px rgba(240,90,160,.25);
+  }
+  .step-head h2{font-family:var(--serif);font-size:24px;font-weight:800}
+  .step .tip{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.55}
+
+  /* measure */
+  .measure{display:flex;align-items:center;gap:14px;justify-content:center}
+  .measure button{
+    width:56px;height:56px;border-radius:50%;
+    border:1px solid rgba(240,90,160,.42);
+    background:rgba(255,255,255,.85);
+    font-size:26px;font-weight:800;color:var(--pink);
+    cursor:pointer;transition:.18s ease;
+    box-shadow:0 12px 28px rgba(82,50,120,.08);
+  }
+  .measure button:hover{transform:translateY(-2px)}
+  .measure .val{font-family:var(--serif);font-size:46px;font-weight:800;min-width:160px;text-align:center}
+  .measure .val small{font-family:var(--sans);font-size:18px;color:var(--muted);font-weight:600}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.six{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:680px){.cards.six{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+  .card{
+    border:2px solid rgba(17,23,51,.08);
+    border-radius:22px;
+    background:rgba(255,255,255,.8);
+    padding:16px 12px 14px;
+    text-align:center;cursor:pointer;
+    transition:.16s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:var(--soft)}
+  .card.active{
+    border-color:transparent;
+    background:
+      linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)) padding-box,
+      linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70) border-box;
+    box-shadow:var(--soft);
+  }
+  .card svg{width:100%;height:74px;display:block;margin-bottom:8px}
+  .cards.six .card svg{height:58px}
+  .card .name{font-weight:800;font-size:15px}
+  .cards.six .card .name{font-size:13.5px}
+  .card .desc{font-size:12.5px;color:var(--muted);margin-top:2px;font-weight:500}
+
+  /* sliders */
+  .sliders{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+  @media(max-width:560px){.sliders{grid-template-columns:1fr}}
+  .slider label{
+    display:flex;justify-content:space-between;
+    font-size:13.5px;font-weight:700;margin-bottom:8px;
+  }
+  .slider label b{color:var(--pink)}
+  input[type=range]{
+    width:100%;height:6px;border-radius:999px;appearance:none;-webkit-appearance:none;
+    background:linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70);
+    outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;
+    width:22px;height:22px;border-radius:50%;
+    background:#fff;border:3px solid var(--pink);
+    box-shadow:0 4px 12px rgba(240,90,160,.35);
+    cursor:pointer;
+  }
+  input[type=range]::-moz-range-thumb{
+    width:18px;height:18px;border-radius:50%;
+    background:#fff;border:3px solid var(--pink);
+    box-shadow:0 4px 12px rgba(240,90,160,.35);
+    cursor:pointer;
+  }
+
+  /* pieces */
+  .hatmap{display:flex;justify-content:center;margin-bottom:14px}
+  .hatmap svg{width:230px;height:auto}
+  .hatmap path,.hatmap ellipse{cursor:pointer;transition:fill .14s}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+  .tabs button{
+    padding:10px 20px;
+    border:1px solid rgba(240,90,160,.35);
+    background:rgba(255,255,255,.82);
+    border-radius:999px;
+    font:inherit;font-size:14px;font-weight:800;
+    color:var(--pink);cursor:pointer;transition:.16s ease;
+  }
+  .tabs button.active{
+    color:#fff;border-color:transparent;
+    background:linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70);
+    box-shadow:0 12px 26px rgba(240,90,160,.22);
+  }
+  .stage{
+    background:
+      linear-gradient(rgba(17,23,51,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,23,51,.05) 1px, transparent 1px),
+      rgba(255,255,255,.9);
+    background-size:20px 20px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:18px;
+    display:flex;justify-content:center;align-items:center;
+    min-height:290px;
+  }
+  .stage svg{max-width:100%;height:auto;max-height:360px}
+  .facts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+  .fact{
+    background:rgba(255,255,255,.85);
+    border:1px solid rgba(17,23,51,.09);
+    border-radius:999px;
+    padding:9px 18px;
+    font-size:14px;font-weight:600;
+    box-shadow:0 10px 22px rgba(82,50,120,.05);
+  }
+  .fact b{color:var(--pink)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+  .btn{
+    min-height:56px;border-radius:999px;
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:0 30px;font:inherit;font-size:15px;font-weight:900;
+    border:1px solid transparent;cursor:pointer;transition:.18s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{
+    color:#fff;
+    background:linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70);
+    box-shadow:0 18px 35px rgba(240,90,160,.23);
+  }
+  .btn-outline{
+    color:#f05a9b;
+    background:rgba(255,255,255,.82);
+    border-color:rgba(240,90,160,.42);
+    box-shadow:0 12px 28px rgba(82,50,120,.08);
+  }
+
+  footer{
+    text-align:center;color:var(--muted);
+    font-size:13px;font-weight:600;
+    padding:10px 0 34px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="nav">
+  <a class="logo" href="#"><img src="assets/logo.png" alt="Makeful Fashion Tech Academy"></a>
+  <div class="lang">
+    <button id="langCs" class="active">CZ</button>
+    <button id="langEn">EN</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <span class="eyebrow">✦ <span data-i="eyebrow"></span></span>
+  <h1><span data-i="title1"></span> <span class="grad" data-i="title2"></span></h1>
+  <p data-i="subtitle"></p>
+</div>
+
+<div class="mode">
+  <div class="mode-inner">
+    <button id="modeSimple" class="active">Simple</button>
+    <button id="modeExtended">Extended</button>
+  </div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step">
+  <div class="step-head"><div class="step-num">1</div><h2 data-i="s1h"></h2></div>
+  <p class="tip" data-i="s1tip"></p>
+  <div class="measure">
+    <button id="minus" aria-label="−">−</button>
+    <div class="val"><span id="headVal">54</span> <small>cm</small></div>
+    <button id="plus" aria-label="+">+</button>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div class="step-head"><div class="step-num">2</div><h2 data-i="s2h"></h2></div>
+  <div class="cards" id="styleCards"></div>
+</div>
+
+<!-- STEP 3: FILL (extended only) -->
+<div class="step" id="fillStep" style="display:none">
+  <div class="step-head"><div class="step-num">3</div><h2 data-i="s3fh"></h2></div>
+  <p class="tip" data-i="s3ftip"></p>
+  <div class="cards six" id="fillCards"></div>
+  <div class="sliders">
+    <div class="slider">
+      <label><span data-i="fillSize"></span><b><span id="sizeVal">8</span> mm</b></label>
+      <input type="range" id="cellSize" min="4" max="20" step="0.5" value="8">
+    </div>
+    <div class="slider">
+      <label><span data-i="fillGap"></span><b><span id="gapVal">1.5</span> mm</b></label>
+      <input type="range" id="cellGap" min="0.6" max="6" step="0.1" value="1.5">
+    </div>
+  </div>
+</div>
+
+<!-- STEP: PIECES -->
+<div class="step">
+  <div class="step-head"><div class="step-num" id="piecesNum">3</div><h2 data-i="sph"></h2></div>
+  <p class="tip" data-i="sptip"></p>
+  <div class="hatmap" id="hatmap"></div>
+  <div class="tabs" id="pieceTabs"></div>
+  <div class="stage" id="stage"></div>
+  <div class="facts" id="facts"></div>
+  <div class="actions">
+    <button class="btn btn-primary" id="dlOne"></button>
+    <button class="btn btn-outline" id="dlAll"></button>
+  </div>
+</div>
+
+<footer>make-ful.com · Fashion Tech Lab</footer>
+
+</div>
+
+<script>
+// ================= constants =================
+const EASE_MM = 15;               // volnost 1,5 cm
+const BED = { w: 240, h: 200 };   // Prusa MK4 s rezervou
+
+// ================= i18n =================
+const I18N = {
+  cs: {
+    eyebrow: 'Fashion Tech Lab',
+    title1: 'Můj', title2: 'bucket hat',
+    subtitle: 'Navrhni si vlastní klobouk a vyrob ho na 3D tiskárně.',
+    s1h: 'Změř si hlavu',
+    s1tip: 'Vezmi krejčovský metr a omotej ho kolem hlavy: nad ušima a kousek nad obočím, přesně tam, kde bude klobouk sedět. Kolik centimetrů ti vyšlo?',
+    s2h: 'Jaký klobouk chceš?',
+    s3fh: 'Vyplň díly vzorem',
+    s3ftip: 'Vzor tvoří otvory v plném střihu. Vyber tvar otvorů a nastav jejich velikost a kolik materiálu mezi nimi zůstane. Otvory vyplní celou plochu a na krajích se samy oříznou.',
+    fillSize: 'Velikost otvorů',
+    fillGap: 'Materiál mezi otvory',
+    sph: 'Tvoje díly klobouku',
+    sptip: 'Klobouk se skládá ze tří dílů. Klikni na obrázek klobouku nebo na jména dílů a prohlédni si je.',
+    hatmapHint: 'klikni na část klobouku',
+    styles: {
+      klasik:   { name: 'Klasik',     desc: 'takový akorát' },
+      slunce:   { name: 'Sluníčkový', desc: 'široká krempa na léto' },
+      rybarsky: { name: 'Rybářský',   desc: 'vyšší a uzavřenější' }
+    },
+    fills: {
+      leaf:   'Lístky',
+      flower: 'Kvítky',
+      drop:   'Kapky',
+      scale:  'Šupinky',
+      pebble: 'Oblázky',
+      wave:   'Vlnky'
+    },
+    pieces: [
+      { name: 'Vršek',  sub: 'kolečko nahoře' },
+      { name: 'Stěna',  sub: 'kolem dokola' },
+      { name: 'Krempa', sub: 'stříška proti sluníčku' }
+    ],
+    factSize: 'velikost', factPrint: 'vytiskni', factCells: "otvorů",
+    dlOne: 'Stáhnout tenhle díl', dlAll: 'Stáhnout všechny díly'
+  },
+  en: {
+    eyebrow: 'Fashion Tech Lab',
+    title1: 'My', title2: 'bucket hat',
+    subtitle: 'Design your own hat and make it on a 3D printer.',
+    s1h: 'Measure your head',
+    s1tip: 'Take a tape measure and wrap it around your head: above your ears and just above your eyebrows, right where the hat will sit. How many centimetres did you get?',
+    s2h: 'Which hat do you want?',
+    s3fh: 'Fill the pieces with a pattern',
+    s3ftip: 'The pattern is made of holes in a solid piece. Pick the hole shape and set how big they are and how much material stays between them. The holes fill the whole area and get trimmed at the edges automatically.',
+    fillSize: 'Hole size',
+    fillGap: 'Material between holes',
+    sph: 'Your hat pieces',
+    sptip: 'The hat is made of three pieces. Click the hat picture or the piece names to explore them.',
+    hatmapHint: 'click a part of the hat',
+    styles: {
+      klasik:   { name: 'Classic',   desc: 'just right' },
+      slunce:   { name: 'Sunny',     desc: 'wide brim for summer' },
+      rybarsky: { name: 'Fisherman', desc: 'taller and snugger' }
+    },
+    fills: {
+      leaf:   'Leaves',
+      flower: 'Flowers',
+      drop:   'Drops',
+      scale:  'Scales',
+      pebble: 'Pebbles',
+      wave:   'Waves'
+    },
+    pieces: [
+      { name: 'Top',   sub: 'the circle on top' },
+      { name: 'Side',  sub: 'goes all the way around' },
+      { name: 'Brim',  sub: 'little roof against the sun' }
+    ],
+    factSize: 'size', factPrint: 'print', factCells: "pattern holes",
+    dlOne: 'Download this piece', dlAll: 'Download all pieces'
+  }
+};
+let lang = 'cs';
+const t = () => I18N[lang];
+
+// ================= helpers =================
+const $ = id => document.getElementById(id);
+
+function pointInPoly(pt, poly) {
+  let inside = false;
+  const [x, y] = pt;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const [xi, yi] = poly[i], [xj, yj] = poly[j];
+    if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+function polyBounds(poly) {
+  let minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
+  for (const [x, y] of poly) {
+    if (x < minX) minX = x; if (x > maxX) maxX = x;
+    if (y < minY) minY = y; if (y > maxY) maxY = y;
+  }
+  return { minX, minY, maxX, maxY, w: maxX - minX, h: maxY - minY };
+}
+
+// ================= hat styles =================
+const STYLES = {
+  klasik:   { crownH: 85, flare: 0.06, brimW: 60, brimAngle: 40 },
+  slunce:   { crownH: 80, flare: 0.06, brimW: 80, brimAngle: 30 },
+  rybarsky: { crownH: 95, flare: 0.08, brimW: 55, brimAngle: 50 }
+};
+let state = {
+  head: 54, style: 'klasik', piece: 0,
+  mode: 'simple', fill: 'leaf', cellSize: 8, cellGap: 1.5
+};
+
+// ================= drafting =================
+function unrollCone(rTop, rBot, slant, parts, inset = 0) {
+  if (Math.abs(rBot - rTop) < 0.5) {
+    const w = 2 * Math.PI * rTop / parts;
+    return [[inset, inset], [w - inset, inset], [w - inset, slant - inset], [inset, slant - inset]];
+  }
+  let R1 = slant * rTop / (rBot - rTop);
+  let R2 = R1 + slant;
+  let theta = 2 * Math.PI * rBot / R2 / parts;
+  if (inset > 0) {
+    theta = Math.max(0.05, theta - 2 * inset / ((R1 + R2) / 2));
+    R1 += inset;
+    R2 -= inset;
+  }
+  const a0 = Math.PI / 2 - theta / 2, a1 = Math.PI / 2 + theta / 2;
+  const n = Math.max(48, Math.ceil(theta * R2 / 4));
+  const pts = [];
+  for (let i = 0; i <= n; i++) {
+    const a = a0 + (a1 - a0) * i / n;
+    pts.push([R2 * Math.cos(a), R2 * Math.sin(a)]);
+  }
+  for (let i = n; i >= 0; i--) {
+    const a = a0 + (a1 - a0) * i / n;
+    pts.push([R1 * Math.cos(a), R1 * Math.sin(a)]);
+  }
+  return pts;
+}
+function circlePoly(r, n = 120) {
+  const pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = 2 * Math.PI * i / n;
+    pts.push([r * Math.cos(a), r * Math.sin(a)]);
+  }
+  return pts;
+}
+function autoParts(maker) {
+  for (const p of [1, 2, 4, 6, 8]) {
+    const b = polyBounds(maker(p));
+    if (b.w <= BED.w && b.h <= BED.h) return p;
+  }
+  return 8;
+}
+function draft() {
+  const s = STYLES[state.style];
+  const C = state.head * 10 + EASE_MM;
+  const r1 = C / (2 * Math.PI);
+  const r2 = r1 * (1 + s.flare);
+  const slantSide = Math.hypot(s.crownH, r2 - r1);
+  const alpha = s.brimAngle * Math.PI / 180;
+  const r3 = r2 + s.brimW * Math.cos(alpha);
+
+  const sideParts = autoParts(p => unrollCone(r1, r2, slantSide, p));
+  const brimParts = autoParts(p => unrollCone(r2, r3, s.brimW, p));
+  const g = state.cellGap; // lem plného materiálu po obvodu
+
+  return [
+    { copies: 1,         poly: circlePoly(r1),                                clip: circlePoly(Math.max(2, r1 - g)) },
+    { copies: sideParts, poly: unrollCone(r1, r2, slantSide, sideParts),      clip: unrollCone(r1, r2, slantSide, sideParts, g) },
+    { copies: brimParts, poly: unrollCone(r2, r3, s.brimW, brimParts),        clip: unrollCone(r2, r3, s.brimW, brimParts, g) }
+  ];
+}
+
+// ================= polygon clipping =================
+function signedArea(poly) {
+  let a = 0;
+  for (let i = 0; i < poly.length; i++) {
+    const [x1, y1] = poly[i], [x2, y2] = poly[(i + 1) % poly.length];
+    a += x1 * y2 - x2 * y1;
+  }
+  return a / 2;
+}
+function ensureCCW(poly) {
+  return signedArea(poly) < 0 ? poly.slice().reverse() : poly;
+}
+// ořízne polygon polorovinou vlevo od orientované hrany a->b
+function clipHalf(poly, a, b) {
+  const out = [];
+  const side = p => (b[0]-a[0])*(p[1]-a[1]) - (b[1]-a[1])*(p[0]-a[0]);
+  for (let i = 0; i < poly.length; i++) {
+    const P = poly[i], Q = poly[(i + 1) % poly.length];
+    const sP = side(P), sQ = side(Q);
+    if (sP >= 0) out.push(P);
+    if ((sP >= 0) !== (sQ >= 0)) {
+      const tden = sP - sQ;
+      const tt = tden !== 0 ? sP / tden : 0;
+      out.push([P[0] + (Q[0]-P[0]) * tt, P[1] + (Q[1]-P[1]) * tt]);
+    }
+  }
+  return out;
+}
+// ořízne malou konvexní buňku podle (i nekonvexního) obrysu:
+// lokálně klipuje jen hranami obrysu, které procházejí okolím buňky
+function clipCellToPoly(cell, poly) {
+  let ins = 0;
+  for (const v of cell) if (pointInPoly(v, poly)) ins++;
+  if (ins === cell.length) return cell;
+
+  const cb = polyBounds(cell);
+  const m = 0.5;
+  const nearEdges = [];
+  for (let i = 0; i < poly.length; i++) {
+    const A = poly[i], B = poly[(i + 1) % poly.length];
+    const exMin = Math.min(A[0], B[0]), exMax = Math.max(A[0], B[0]);
+    const eyMin = Math.min(A[1], B[1]), eyMax = Math.max(A[1], B[1]);
+    if (exMax >= cb.minX - m && exMin <= cb.maxX + m && eyMax >= cb.minY - m && eyMin <= cb.maxY + m) {
+      nearEdges.push([A, B]);
+    }
+  }
+  if (nearEdges.length === 0) return ins > 0 ? cell : null;
+  if (ins === 0) {
+    const cx = cell.reduce((s,p)=>s+p[0],0)/cell.length;
+    const cy = cell.reduce((s,p)=>s+p[1],0)/cell.length;
+    if (!pointInPoly([cx, cy], poly)) {
+      // buňka může přesto přesahovat dovnitř přes roh, zkusíme ořez
+    }
+  }
+  let out = cell;
+  for (const [A, B] of nearEdges) {
+    out = clipHalf(out, A, B);
+    if (out.length < 3) return null;
+  }
+  return out;
+}
+
+// ================= pattern fill (organické otvory) =================
+function rotPts(pts, cx, cy, ang) {
+  const c = Math.cos(ang), s = Math.sin(ang);
+  return pts.map(([x, y]) => [cx + (x-cx)*c - (y-cy)*s, cy + (x-cx)*s + (y-cy)*c]);
+}
+function mulberry32(seed) {
+  return function() {
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+// lísteček: vesica (dva kruhové oblouky), střídavě nakloněný
+function leafAt(cx, cy, s, row, col) {
+  const L = s, w = s * 0.55;
+  const R = (L*L/4 + w*w/4) / w;
+  const off = R - w/2;
+  const a = Math.asin((L/2) / R);
+  const pts = [];
+  for (let i = 0; i <= 12; i++) {
+    const t = -a + 2*a*i/12;
+    pts.push([cx + R*Math.sin(t), cy + off - R*Math.cos(t)]);
+  }
+  for (let i = 12; i >= 0; i--) {
+    const t = -a + 2*a*i/12;
+    pts.push([cx + R*Math.sin(t), cy - off + R*Math.cos(t)]);
+  }
+  const ang = ((row + col) % 2 === 0 ? 1 : -1) * 0.46;
+  return rotPts(pts, cx, cy, ang);
+}
+// kvítek: pětilistá silueta r(θ)
+function flowerAt(cx, cy, s, row, col) {
+  const r0 = s / 2;
+  const rot = ((row*3 + col*5) % 6) * 0.35;
+  const pts = [];
+  for (let i = 0; i < 40; i++) {
+    const th = 2*Math.PI*i/40;
+    const r = r0 * (0.66 + 0.34 * Math.cos(5*th));
+    pts.push([cx + r*Math.cos(th + rot), cy + r*Math.sin(th + rot)]);
+  }
+  return pts;
+}
+// kapka: slzička, střídavě nahoru a dolů
+function dropAt(cx, cy, s, row, col) {
+  const flip = (row + col) % 2 === 0 ? 1 : -1;
+  const pts = [];
+  for (let i = 0; i < 36; i++) {
+    const t = 2*Math.PI*i/36;
+    const x = Math.sin(t) * Math.pow(Math.sin(t/2), 2) * s * 0.42;
+    const y = -Math.cos(t) * s * 0.5;
+    pts.push([cx + x, cy + flip * y]);
+  }
+  return pts;
+}
+// šupinka: rybí šupina, oblouk nahoře a mělký oblouk dole
+function scaleAt(cx, cy, s) {
+  const r = s / 2;
+  const pts = [];
+  for (let i = 0; i <= 16; i++) {
+    const a = Math.PI + Math.PI*i/16;
+    pts.push([cx + r*Math.cos(a), cy + r*Math.sin(a) * 0.9]);
+  }
+  for (let i = 0; i <= 10; i++) {
+    const u = i / 10;
+    const x = cx + r - 2*r*u;
+    const y = cy + Math.sin(Math.PI*u) * r * 0.34;
+    pts.push([x, y]);
+  }
+  return pts;
+}
+// oblázek: nepravidelný oblý kámen, deterministicky náhodný podle pozice
+function pebbleAt(cx, cy, s, row, col) {
+  const rnd = mulberry32(row * 92821 + col * 7349 + 13);
+  const f1 = rnd()*Math.PI*2, f2 = rnd()*Math.PI*2, f3 = rnd()*Math.PI*2;
+  const jx = (rnd()-0.5) * s * 0.12, jy = (rnd()-0.5) * s * 0.12;
+  const r0 = s * 0.46;
+  const pts = [];
+  for (let i = 0; i < 28; i++) {
+    const th = 2*Math.PI*i/28;
+    const r = r0 * (0.84 + 0.13*Math.sin(2*th+f1) + 0.09*Math.sin(3*th+f2) + 0.05*Math.sin(5*th+f3));
+    pts.push([cx + jx + r*Math.cos(th), cy + jy + r*Math.sin(th)]);
+  }
+  return pts;
+}
+// vlnka: prohnutý proužek jako čárka vlny
+function waveAt(cx, cy, s) {
+  const L = s * 1.9, w = s * 0.34, A = s * 0.18;
+  const top = [], bot = [];
+  for (let i = 0; i <= 16; i++) {
+    const u = i / 16;
+    const x = cx - L/2 + L*u;
+    const yc = cy + A * Math.sin(2*Math.PI*u);
+    top.push([x, yc - w/2]);
+    bot.push([x, yc + w/2]);
+  }
+  return top.concat(bot.reverse());
+}
+
+const SHAPES = {
+  leaf:   { at: leafAt,   px: (s,g) => s*0.86 + g, py: (s,g) => s*0.62 + g, stagger: true },
+  flower: { at: flowerAt, px: (s,g) => s + g,      py: (s,g) => s*0.9 + g,  stagger: true },
+  drop:   { at: dropAt,   px: (s,g) => s*0.95 + g, py: (s,g) => s*0.72 + g, stagger: true },
+  scale:  { at: scaleAt,  px: (s,g) => s + g,      py: (s,g) => s*0.64 + g, stagger: true },
+  pebble: { at: pebbleAt, px: (s,g) => s + g,      py: (s,g) => s*0.92 + g, stagger: true },
+  wave:   { at: waveAt,   px: (s,g) => s*1.9 + g,  py: (s,g) => s*0.74 + g, stagger: true }
+};
+
+function genCells(clipPolyRaw) {
+  const clipPoly = ensureCCW(clipPolyRaw);
+  const spec = SHAPES[state.fill];
+  const s = state.cellSize;
+  const gap = state.cellGap;
+  const b = polyBounds(clipPoly);
+  const cells = [];
+  const push = c => {
+    const full = Math.abs(signedArea(c));
+    const clipped = clipCellToPoly(c, clipPoly);
+    if (clipped && Math.abs(signedArea(clipped)) >= Math.max(1.5, 0.10 * full)) cells.push(clipped);
+  };
+  const px = spec.px(s, gap), py = spec.py(s, gap);
+  const x0 = b.minX - s, x1 = b.maxX + s;
+  const y0 = b.minY - s, y1 = b.maxY + s;
+  let row = 0;
+  for (let y = y0; y < y1; y += py, row++) {
+    const off = spec.stagger ? (row % 2) * (px / 2) : 0;
+    let col = 0;
+    for (let x = x0 + off; x < x1; x += px, col++) {
+      push(spec.at(x, y, s, row, col));
+    }
+  }
+  return cells;
+}
+
+// ================= SVG =================
+const polyPath = pts => 'M' + pts.map(p => p[0].toFixed(2) + ' ' + p[1].toFixed(2)).join('L') + 'Z';
+
+function buildExportSVG(piece) {
+  const b = polyBounds(piece.poly);
+  const pad = 2;
+  const w = (b.w + pad * 2).toFixed(1), h = (b.h + pad * 2).toFixed(1);
+  const shift = pts => pts.map(([x,y]) => [x - b.minX + pad, y - b.minY + pad]);
+  let body;
+  if (state.mode === 'extended') {
+    const holes = genCells(piece.clip);
+    const d = polyPath(shift(piece.poly)) + holes.map(c => polyPath(shift(c))).join('');
+    body = `<path d="${d}" fill="#000000" fill-rule="evenodd"/>`;
+  } else {
+    body = `<path d="${polyPath(shift(piece.poly))}" fill="#000000"/>`;
+  }
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${w}mm" height="${h}mm" viewBox="0 0 ${w} ${h}">\n${body}\n</svg>`;
+}
+function download(name, content) {
+  const blob = new Blob([content], { type: 'image/svg+xml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+const slug = s => s.toLowerCase()
+  .replace(/[áä]/g,'a').replace(/[éě]/g,'e').replace(/í/g,'i').replace(/[óô]/g,'o')
+  .replace(/[úů]/g,'u').replace(/ý/g,'y').replace(/č/g,'c').replace(/ď/g,'d')
+  .replace(/ň/g,'n').replace(/ř/g,'r').replace(/š/g,'s').replace(/ť/g,'t').replace(/ž/g,'z')
+  .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+// ================= icons =================
+function hatIcon(s, uid) {
+  const cw = 60, ch = s.crownH * 0.45, bw = s.brimW * 0.5;
+  const drop = Math.sin(s.brimAngle * Math.PI/180) * bw * 0.9;
+  const cx = 70, topY = 18;
+  return `<svg viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="hg${uid}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#986cff"/><stop offset="1" stop-color="#f05aa0"/>
+    </linearGradient></defs>
+    <path d="M${cx-cw/2} ${topY+ch} L${cx-cw/2-4} ${topY+4} Q${cx} ${topY-6} ${cx+cw/2+4} ${topY+4} L${cx+cw/2} ${topY+ch} Z" fill="url(#hg${uid})" opacity="0.9"/>
+    <path d="M${cx-cw/2} ${topY+ch} L${cx-cw/2-bw} ${topY+ch+drop} L${cx+cw/2+bw} ${topY+ch+drop} L${cx+cw/2} ${topY+ch} Z" fill="#43d1ed" opacity="0.75"/>
+  </svg>`;
+}
+function fillIcon(kind) {
+  const spec = SHAPES[kind];
+  const s = 17, g = 3.5;
+  const px = spec.px(s, g), py = spec.py(s, g);
+  let inner = '';
+  let row = 0;
+  for (let y = 12; y < 62; y += py, row++) {
+    const off = (row % 2) * (px / 2);
+    let col = 0;
+    for (let x = 10 + off; x < 132; x += px, col++) {
+      const pts = spec.at(x, y, s, row, col);
+      inner += `<path d="${polyPath(pts)}" fill="#986cff"/>`;
+    }
+  }
+  return `<svg viewBox="0 0 140 70" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+}
+function hatMap(active) {
+  const on = 'url(#hm)';
+  const off = '#e4defc';
+  const c = i => i === active ? on : off;
+  return `<svg viewBox="0 0 240 132" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="hm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#986cff"/><stop offset="1" stop-color="#f05aa0"/>
+    </linearGradient></defs>
+    <ellipse cx="120" cy="24" rx="46" ry="12" fill="${c(0)}" data-i="0"/>
+    <path d="M74 24 L68 74 L172 74 L166 24 Q120 36 74 24 Z" fill="${c(1)}" data-i="1"/>
+    <path d="M68 74 L34 106 L206 106 L172 74 Z" fill="${c(2)}" data-i="2"/>
+    <text x="120" y="128" text-anchor="middle" font-size="11" font-weight="600" fill="#6f7592" font-family="DM Sans,sans-serif">${t().hatmapHint}</text>
+  </svg>`;
+}
+
+// ================= render =================
+let pieces = [];
+function render() {
+  const T = t();
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const v = T[el.dataset.i];
+    if (typeof v === 'string') el.textContent = v;
+  });
+  $('dlOne').textContent = T.dlOne;
+  $('dlAll').textContent = T.dlAll;
+  $('langCs').classList.toggle('active', lang === 'cs');
+  $('langEn').classList.toggle('active', lang === 'en');
+  $('modeSimple').classList.toggle('active', state.mode === 'simple');
+  $('modeExtended').classList.toggle('active', state.mode === 'extended');
+
+  const ext = state.mode === 'extended';
+  $('fillStep').style.display = ext ? '' : 'none';
+  $('piecesNum').textContent = ext ? '4' : '3';
+
+  pieces = draft();
+
+  // style cards
+  const sc = $('styleCards');
+  sc.innerHTML = '';
+  Object.entries(STYLES).forEach(([key, s], idx) => {
+    const div = document.createElement('div');
+    div.className = 'card' + (state.style === key ? ' active' : '');
+    div.innerHTML = hatIcon(s, idx) +
+      `<div class="name">${T.styles[key].name}</div><div class="desc">${T.styles[key].desc}</div>`;
+    div.onclick = () => { state.style = key; render(); };
+    sc.appendChild(div);
+  });
+
+  // fill cards
+  if (ext) {
+    const fc = $('fillCards');
+    fc.innerHTML = '';
+    Object.keys(T.fills).forEach(key => {
+      const div = document.createElement('div');
+      div.className = 'card' + (state.fill === key ? ' active' : '');
+      div.innerHTML = fillIcon(key) + `<div class="name">${T.fills[key]}</div>`;
+      div.onclick = () => { state.fill = key; render(); };
+      fc.appendChild(div);
+    });
+    $('sizeVal').textContent = state.cellSize;
+    $('gapVal').textContent = state.cellGap;
+  }
+
+  // hat map
+  $('hatmap').innerHTML = hatMap(state.piece);
+  $('hatmap').querySelectorAll('[data-i]').forEach(el => {
+    el.addEventListener('click', () => { state.piece = parseInt(el.dataset.i); render(); });
+  });
+
+  // tabs
+  const tabs = $('pieceTabs');
+  tabs.innerHTML = '';
+  pieces.forEach((p, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = T.pieces[i].name;
+    btn.className = i === state.piece ? 'active' : '';
+    btn.onclick = () => { state.piece = i; render(); };
+    tabs.appendChild(btn);
+  });
+
+  // preview
+  const piece = pieces[state.piece];
+  const b = polyBounds(piece.poly);
+  const holes = ext ? genCells(piece.clip) : [];
+  const pad = 12;
+  let inner = `<defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#986cff"/><stop offset="1" stop-color="#f05aa0"/>
+    </linearGradient></defs>`;
+  if (ext) {
+    const d = polyPath(piece.poly) + holes.map(polyPath).join('');
+    inner += `<path d="${d}" fill="url(#pg)" fill-opacity="0.85" fill-rule="evenodd"/>`;
+  } else {
+    inner += `<path d="${polyPath(piece.poly)}" fill="url(#pg)" fill-opacity="0.16" stroke="#f05aa0" stroke-width="${Math.max(1, b.w/280)}"/>`;
+  }
+  $('stage').innerHTML =
+    `<svg viewBox="${b.minX - pad} ${b.minY - pad} ${b.w + pad*2} ${b.h + pad*2}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+
+  // facts
+  $('facts').innerHTML =
+    `<span class="fact">${T.pieces[state.piece].sub}</span>` +
+    `<span class="fact">${T.factSize} <b>${(b.w/10).toFixed(0)} × ${(b.h/10).toFixed(0)} cm</b></span>` +
+    `<span class="fact">${T.factPrint} <b>${piece.copies}×</b></span>` +
+    (ext ? `<span class="fact"><b>${holes.length}</b> ${T.factCells}</span>` : '');
+}
+
+// ================= events =================
+$('minus').onclick = () => { state.head = Math.max(46, state.head - 0.5); $('headVal').textContent = state.head; render(); };
+$('plus').onclick  = () => { state.head = Math.min(64, state.head + 0.5); $('headVal').textContent = state.head; render(); };
+$('langCs').onclick = () => { lang = 'cs'; render(); };
+$('langEn').onclick = () => { lang = 'en'; render(); };
+$('modeSimple').onclick = () => { state.mode = 'simple'; render(); };
+$('modeExtended').onclick = () => { state.mode = 'extended'; render(); };
+$('cellSize').addEventListener('input', e => { state.cellSize = parseFloat(e.target.value); render(); });
+$('cellGap').addEventListener('input', e => { state.cellGap = parseFloat(e.target.value); render(); });
+
+$('dlOne').onclick = () => {
+  const p = pieces[state.piece];
+  download('buckethat-' + slug(t().pieces[state.piece].name) + '.svg', buildExportSVG(p));
+};
+$('dlAll').onclick = () => {
+  pieces.forEach((p, i) => setTimeout(() =>
+    download('buckethat-' + slug(t().pieces[i].name) + '.svg', buildExportSVG(p)), i * 300));
+};
+
+render();
+</script>
+</body>
+</html>
