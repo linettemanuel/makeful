@@ -38,7 +38,7 @@
   }
   p{font-weight:500}
   .grad{background:linear-gradient(105deg,#6d74ff 0%,#a96cf7 34%,#f05aa0 68%,#ff8d6f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .wrap{width:min(calc(100% - 32px),860px);margin-inline:auto}
+  .wrap{width:min(calc(100% - 32px),1140px);margin-inline:auto}
 
   /* nav */
   .nav{height:92px;display:flex;align-items:center;justify-content:space-between;gap:28px}
@@ -66,7 +66,7 @@
   }
 
   /* hero */
-  .hero{text-align:center;padding:26px 0 24px}
+  .hero{text-align:center;padding:14px 0 22px}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;
     font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
@@ -76,45 +76,55 @@
   }
   h1{
     font-family:var(--serif);
-    font-size:clamp(36px,6vw,54px);
+    font-size:clamp(32px,5vw,44px);
     font-weight:800;
     letter-spacing:-0.5px;
   }
   .hero p{color:var(--muted);font-size:16px;margin-top:12px}
 
-  /* mode toggle */
-  .mode{
-    display:flex;justify-content:center;
-    margin:18px 0 28px;
-  }
+  /* mode toggle (v menu) */
   .mode-inner{
     display:inline-flex;
     background:rgba(255,255,255,.85);
     border:1px solid var(--line);
     border-radius:999px;
-    padding:5px;
-    box-shadow:0 12px 28px rgba(82,50,120,.08);
+    padding:4px;
+    box-shadow:0 10px 22px rgba(82,50,120,.06);
   }
   .mode-inner button{
     border:none;background:transparent;
-    font:inherit;font-weight:900;font-size:14px;
-    padding:11px 28px;border-radius:999px;
+    font:inherit;font-weight:800;font-size:13px;
+    padding:7px 16px;border-radius:999px;
     color:var(--muted);cursor:pointer;transition:.16s ease;
   }
   .mode-inner button.active{
     color:#fff;
     background:linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70);
-    box-shadow:0 12px 26px rgba(240,90,160,.22);
+  }
+  .nav-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+  /* two column layout */
+  .layout{
+    display:grid;
+    grid-template-columns:minmax(330px,380px) 1fr;
+    gap:20px;
+    align-items:start;
+    padding-bottom:10px;
+  }
+  .col-right{position:sticky;top:16px}
+  @media(max-width:940px){
+    .layout{grid-template-columns:1fr}
+    .col-right{position:static}
   }
 
   /* steps */
-  .step{
+  .step{scroll-margin-top:12px;
     background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,248,252,.92));
     border:1px solid rgba(255,255,255,.94);
     border-radius:32px;
     box-shadow:var(--soft);
-    padding:28px;
-    margin-bottom:20px;
+    padding:22px;
+    margin-bottom:16px;
   }
   .step-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
   .step-num{
@@ -128,24 +138,37 @@
   .step .tip{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.55}
 
   /* measure */
-  .measure{display:flex;align-items:center;gap:14px;justify-content:center}
+  .measure{display:flex;align-items:center;gap:12px;justify-content:center}
   .measure button{
-    width:56px;height:56px;border-radius:50%;
+    width:52px;height:52px;border-radius:50%;
     border:1px solid rgba(240,90,160,.42);
     background:rgba(255,255,255,.85);
-    font-size:26px;font-weight:800;color:var(--pink);
+    font-size:24px;font-weight:800;color:var(--pink);
     cursor:pointer;transition:.18s ease;
     box-shadow:0 12px 28px rgba(82,50,120,.08);
+    flex:none;
   }
   .measure button:hover{transform:translateY(-2px)}
-  .measure .val{font-family:var(--serif);font-size:46px;font-weight:800;min-width:160px;text-align:center}
-  .measure .val small{font-family:var(--sans);font-size:18px;color:var(--muted);font-weight:600}
+  .measure .val{display:flex;align-items:baseline;gap:6px}
+  .measure input{
+    font-family:var(--serif);
+    font-size:40px;font-weight:800;
+    width:108px;text-align:center;
+    border:none;border-bottom:3px solid rgba(240,90,160,.35);
+    background:transparent;color:var(--navy);
+    outline:none;
+    -moz-appearance:textfield;
+  }
+  .measure input::-webkit-outer-spin-button,
+  .measure input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .measure input:focus{border-bottom-color:var(--pink)}
+  .measure .val small{font-family:var(--sans);font-size:17px;color:var(--muted);font-weight:600}
 
   /* cards */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .cards.six{grid-template-columns:repeat(3,1fr)}
   @media(max-width:680px){.cards.six{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+  @media(max-width:560px){.cards{grid-template-columns:repeat(3,1fr)}}
   .card{
     border:2px solid rgba(17,23,51,.08);
     border-radius:22px;
@@ -162,8 +185,8 @@
       linear-gradient(105deg,#40cef0,#986cff,#f05aa0,#ffad70) border-box;
     box-shadow:var(--soft);
   }
-  .card svg{width:100%;height:74px;display:block;margin-bottom:8px}
-  .cards.six .card svg{height:58px}
+  .card svg{width:100%;height:58px;display:block;margin-bottom:8px}
+  .cards.six .card svg{height:46px}
   .card .name{font-weight:800;font-size:15px}
   .cards.six .card .name{font-size:13.5px}
   .card .desc{font-size:12.5px;color:var(--muted);margin-top:2px;font-weight:500}
@@ -268,9 +291,15 @@
 
 <nav class="nav">
   <a class="logo" href="#"><img src="assets/logo.png" alt="Makeful Fashion Tech Academy"></a>
-  <div class="lang">
-    <button id="langCs" class="active">CZ</button>
-    <button id="langEn">EN</button>
+  <div class="nav-tools">
+    <div class="mode-inner">
+      <button id="modeSimple" class="active">Simple</button>
+      <button id="modeExtended">Extended</button>
+    </div>
+    <div class="lang">
+      <button id="langCs" class="active">CZ</button>
+      <button id="langEn">EN</button>
+    </div>
   </div>
 </nav>
 
@@ -280,12 +309,8 @@
   <p data-i="subtitle"></p>
 </div>
 
-<div class="mode">
-  <div class="mode-inner">
-    <button id="modeSimple" class="active">Simple</button>
-    <button id="modeExtended">Extended</button>
-  </div>
-</div>
+<div class="layout">
+<div class="col-left">
 
 <!-- STEP 1 -->
 <div class="step">
@@ -293,7 +318,7 @@
   <p class="tip" data-i="s1tip"></p>
   <div class="measure">
     <button id="minus" aria-label="−">−</button>
-    <div class="val"><span id="headVal">54</span> <small>cm</small></div>
+    <div class="val"><input type="number" id="headVal" value="54" min="46" max="64" step="0.5"> <small>cm</small></div>
     <button id="plus" aria-label="+">+</button>
   </div>
 </div>
@@ -321,6 +346,9 @@
   </div>
 </div>
 
+</div><!-- /col-left -->
+
+<div class="col-right">
 <!-- STEP: PIECES -->
 <div class="step">
   <div class="step-head"><div class="step-num" id="piecesNum">3</div><h2 data-i="sph"></h2></div>
@@ -334,6 +362,8 @@
     <button class="btn btn-outline" id="dlAll"></button>
   </div>
 </div>
+</div><!-- /col-right -->
+</div><!-- /layout -->
 
 <footer>make-ful.com · Fashion Tech Lab</footer>
 
@@ -880,8 +910,21 @@ function render() {
 }
 
 // ================= events =================
-$('minus').onclick = () => { state.head = Math.max(46, state.head - 0.5); $('headVal').textContent = state.head; render(); };
-$('plus').onclick  = () => { state.head = Math.min(64, state.head + 0.5); $('headVal').textContent = state.head; render(); };
+function setHead(v) {
+  state.head = Math.min(64, Math.max(46, Math.round(v * 2) / 2));
+  $('headVal').value = state.head;
+  render();
+}
+$('minus').onclick = () => setHead(state.head - 0.5);
+$('plus').onclick  = () => setHead(state.head + 0.5);
+$('headVal').addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  if (!isNaN(v) && v >= 46 && v <= 64) { state.head = v; render(); }
+});
+$('headVal').addEventListener('blur', e => {
+  const v = parseFloat(e.target.value);
+  setHead(isNaN(v) ? 54 : v);
+});
 $('langCs').onclick = () => { lang = 'cs'; render(); };
 $('langEn').onclick = () => { lang = 'en'; render(); };
 $('modeSimple').onclick = () => { state.mode = 'simple'; render(); };
