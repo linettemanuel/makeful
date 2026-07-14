@@ -73,7 +73,7 @@
     .top-banner strong{font-weight:950;letter-spacing:.03em}
     .nav{height:92px;display:flex;align-items:center;justify-content:space-between;gap:28px;max-width:100%;overflow:hidden}
     .logo{width:250px;flex:0 0 auto}.logo img{width:100%;height:auto}
-    .nav-links{display:flex;align-items:center;gap:48px;font-size:16px;font-weight:900;color:#0f1430}
+    .nav-links{display:flex;align-items:center;gap:30px;font-size:16px;font-weight:900;color:#0f1430}
     .nav-cta{min-width:202px;min-height:56px;padding:0 30px;border-radius:999px;background:linear-gradient(105deg,#66cfff,#986cff,#f05aa0,#ffad70);color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:900;box-shadow:0 16px 30px rgba(240,90,160,.22)}
 
     /* Buttons */
@@ -84,7 +84,7 @@
     .btn-glass{color:white;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.55)}
 
     /* Hero */
-    .hero{position:relative;padding:48px 0 26px}
+    .hero{position:relative;padding:0 0 26px}
     .hero::after{content:"";position:absolute;left:0;right:0;bottom:-74px;height:150px;border-radius:0 0 52px 52px;background:linear-gradient(180deg,rgba(255,250,247,.15),rgba(255,238,246,.55));z-index:-1}
     .hero-grid{display:grid;grid-template-columns:46% 54%;align-items:center;min-height:650px}
     .hero-copy{padding:28px 0 0;position:relative;z-index:3}.sparkles{font-size:26px;letter-spacing:25px;color:#a46ff1;margin:0 0 24px 4px;opacity:.8}
@@ -179,7 +179,6 @@
     /* Spacing refinement: more breathing room between sections */
     @media (min-width: 741px){
       section{padding:108px 0}
-      .hero{padding:72px 0 88px}
       .press-strip{padding:36px 0 46px}
       .section-title{margin-bottom:56px}
       .section-title .under{margin-top:22px}
@@ -360,6 +359,190 @@
       .nav-cta{padding:0 8px;font-size:10px}
     }
 
+  
+
+    /* Workshop reservation section */
+    .workshop-intro{max-width:860px;margin:0 auto 24px;text-align:center;color:var(--ink);font-size:17px;line-height:1.65;font-weight:650}.workshop-intro strong{font-weight:950}.workshop-filter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0 26px}.workshop-filter button{border:1px solid rgba(17,23,51,.11);border-radius:999px;background:rgba(255,255,255,.78);padding:11px 16px;font:inherit;font-weight:900;color:var(--ink);cursor:pointer;box-shadow:0 8px 18px rgba(82,50,120,.06)}.workshop-filter button.active{color:#fff;border-color:transparent;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink));box-shadow:0 12px 28px rgba(155,108,255,.22)}.workshop-week-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:14px}.workshop-week-card{border-radius:28px;background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.86);box-shadow:var(--soft);padding:18px;display:flex;flex-direction:column;gap:13px}.workshop-week-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.workshop-week-top h3{font-size:25px;margin:0}.workshop-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}.workshop-pill{width:max-content;border-radius:999px;background:rgba(155,108,255,.10);color:#5d43d6;padding:6px 9px;font-size:12px;font-weight:950}.workshop-pill.lang{background:rgba(67,209,237,.15);color:#136f87}.workshop-day-list{display:grid;gap:8px}.workshop-day{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border-radius:18px;background:rgba(255,255,255,.74);border:1px solid rgba(17,23,51,.08)}.workshop-day b{display:block;color:var(--ink);font-size:14px;line-height:1.2}.workshop-day small{display:block;color:var(--muted);font-weight:800;font-size:12px;margin-top:2px}.workshop-day-tag{display:grid;place-items:center;width:38px;height:38px;border-radius:14px;color:#fff;background:linear-gradient(135deg,var(--lilac),var(--pink));font-weight:950}.workshop-spots{white-space:nowrap;border-radius:999px;background:linear-gradient(90deg,#ff1744,#ff2d7a);color:#fff;padding:6px 8px;font-size:11px;font-weight:950}.workshop-week-card .mini-cta{align-self:flex-start;margin-top:2px}.flexi-pass-panel{margin-top:26px;padding:22px;border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(255,241,248,.76));border:1px solid rgba(255,255,255,.88);box-shadow:var(--soft)}.flexi-pass-panel h3{margin:0 0 8px}.flexi-pass-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}.flexi-pass-card{border-radius:20px;background:rgba(255,255,255,.78);border:1px solid rgba(17,23,51,.08);padding:14px}.flexi-pass-card strong{display:block;font-size:16px}.flexi-pass-card span{display:block;margin-top:5px;color:var(--muted);font-size:13px;line-height:1.4;font-weight:700}@media(max-width:860px){.workshop-week-grid,.flexi-pass-grid{grid-template-columns:1fr}.workshop-day{grid-template-columns:40px 1fr}.workshop-spots{grid-column:2;justify-self:start}.workshop-intro{text-align:left}}
+
+  
+
+    /* One-page workshop booking */
+    .onepage-booking{position:relative;overflow:hidden}.booking-panel{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:22px;align-items:start}.booking-copy{padding:22px;border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(255,241,248,.68));border:1px solid rgba(255,255,255,.88);box-shadow:var(--soft)}.booking-copy p{margin:10px 0 0;color:var(--ink);font-size:16px;line-height:1.6;font-weight:650}.booking-steps{display:grid;gap:10px;margin-top:18px}.booking-step{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:12px;border-radius:18px;background:rgba(255,255,255,.72);border:1px solid rgba(17,23,51,.08);font-weight:850;color:var(--ink)}.booking-step b{width:30px;height:30px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--aqua),var(--lilac),var(--pink));font-size:13px}.booking-form{border-radius:32px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.90);box-shadow:var(--shadow);padding:20px;position:sticky;top:88px}.booking-form h3{margin:0 0 6px;font-size:28px}.booking-note{margin:0 0 16px;color:var(--muted);font-size:14px;line-height:1.45;font-weight:750}.booking-field{display:grid;gap:7px;margin-top:12px}.booking-field label{font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}.booking-field input,.booking-field select,.booking-field textarea{width:100%;border:1px solid rgba(17,23,51,.12);border-radius:16px;padding:12px 13px;font:inherit;color:var(--ink);background:rgba(255,255,255,.82);outline:none}.booking-field textarea{min-height:74px;resize:vertical}.booking-field input:focus,.booking-field select:focus,.booking-field textarea:focus{border-color:rgba(155,108,255,.42);box-shadow:0 0 0 4px rgba(155,108,255,.10)}.booking-age-grid{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.booking-age-btn,.booking-week-btn{border:1px solid rgba(17,23,51,.11);border-radius:999px;background:rgba(255,255,255,.78);padding:10px 14px;font:inherit;font-weight:950;color:var(--ink);cursor:pointer;box-shadow:0 8px 18px rgba(82,50,120,.06)}.booking-age-btn.active,.booking-week-btn.active{color:#fff;border-color:transparent;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink));box-shadow:0 12px 28px rgba(155,108,255,.22)}.booking-week-list{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0}.booking-main{display:grid;gap:14px;margin-top:18px}.booking-workshop-list{display:grid;gap:9px}.booking-workshop{display:grid;grid-template-columns:24px 44px 1fr auto;gap:10px;align-items:center;padding:12px;border-radius:20px;background:rgba(255,255,255,.76);border:1px solid rgba(17,23,51,.09);cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}.booking-workshop:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(82,50,120,.08)}.booking-workshop input{width:18px;height:18px;accent-color:#9b6cff}.booking-workshop.selected{border-color:rgba(255,111,159,.45);background:linear-gradient(120deg,rgba(255,255,255,.96),rgba(255,238,248,.84))}.booking-day{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--lilac),var(--pink));font-weight:950}.booking-workshop-title{display:block;font-size:14px;line-height:1.25;font-weight:950;color:var(--ink)}.booking-workshop-meta{display:block;margin-top:3px;color:var(--muted);font-size:12px;line-height:1.35;font-weight:750}.booking-spots{justify-self:end;white-space:nowrap;border-radius:999px;background:linear-gradient(90deg,#ff1744,#ff2d7a);color:#fff;padding:6px 8px;font-size:11px;font-weight:950}.booking-summary{margin-top:16px;border-radius:24px;padding:16px;background:linear-gradient(135deg,rgba(246,240,255,.92),rgba(239,252,255,.76));border:1px solid rgba(155,108,255,.16)}.booking-summary-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.booking-summary strong{display:block;color:var(--ink);font-size:16px}.booking-summary span{display:block;margin-top:4px;color:var(--muted);font-weight:800;line-height:1.35}.booking-price{text-align:right}.booking-price b{display:block;font-size:27px;line-height:1;color:var(--ink)}.booking-price small{display:block;margin-top:5px;color:#6f5bd6;font-weight:950}.booking-selected-list{margin:12px 0 0;padding-left:18px;color:var(--ink);font-size:13px;line-height:1.45;font-weight:750}.booking-consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:12.5px;line-height:1.45;color:var(--ink);font-weight:700}.booking-consent input{width:18px;height:18px;flex:0 0 auto}.booking-error{display:none;margin-top:12px;padding:11px 13px;border-radius:16px;background:rgba(255,23,68,.09);color:#c01842;font-weight:850;font-size:13px;line-height:1.4}.booking-submit{width:100%;border:0;border-radius:999px;margin-top:14px;padding:14px 18px;font:inherit;font-weight:950;color:white;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink),var(--peach));box-shadow:0 15px 30px rgba(255,111,159,.24);cursor:pointer}.booking-submit:disabled{opacity:.62;cursor:not-allowed}.booking-submit-note{margin:9px 0 0;color:var(--muted);font-size:12.5px;line-height:1.45;font-weight:700}.booking-empty{padding:14px;border-radius:18px;background:rgba(255,255,255,.68);border:1px dashed rgba(17,23,51,.18);color:var(--muted);font-weight:800;line-height:1.45}.booking-price-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}.booking-price-card{border-radius:18px;padding:12px;background:rgba(255,255,255,.72);border:1px solid rgba(17,23,51,.08)}.booking-price-card b{display:block;color:var(--ink)}.booking-price-card span{display:block;margin-top:4px;color:var(--muted);font-size:12px;line-height:1.35;font-weight:750}@media(max-width:980px){.booking-panel{grid-template-columns:1fr}.booking-form{position:relative;top:auto}.booking-price-cards{grid-template-columns:1fr}}@media(max-width:640px){.booking-workshop{grid-template-columns:24px 38px 1fr}.booking-spots{grid-column:3;justify-self:start}.booking-summary-top{display:grid}.booking-price{text-align:left}.booking-copy,.booking-form{padding:16px;border-radius:24px}}
+
+  
+    .section-lead.workshop-lead{max-width:820px;margin:-4px auto 22px;color:var(--muted);font-size:16px;line-height:1.65;text-align:center;font-weight:650}
+    .project-link{text-decoration:none;color:inherit;transition:transform .18s ease, box-shadow .18s ease}
+    .project-link:hover{transform:translateY(-3px)}
+    .section-action{display:flex;justify-content:center;margin-top:24px}
+    .section-action .primary{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 20px;color:white;text-decoration:none;font-weight:950;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink),var(--peach));box-shadow:0 14px 28px rgba(255,111,159,.20)}
+    .booking-panel.single-column{display:block}
+    .booking-panel.single-column .booking-copy{margin-bottom:18px}
+    .booking-main.one-column{display:block}
+    .booking-workshop{grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+    .booking-workshop-meta{display:block;color:var(--muted);font-size:12px;line-height:1.35;margin-top:3px;font-weight:750}
+    .booking-workshop-meta .lang-en{color:#5b48d9;font-weight:950}
+    .booking-add{border:0;border-radius:999px;padding:8px 11px;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink));color:#fff;font-weight:950;cursor:pointer;white-space:nowrap}
+    .booking-add.added{background:#dedee6;color:#777b8f;cursor:default}
+    .booking-add.full{background:#dedee6;color:#777b8f;cursor:not-allowed}
+    .booking-selected-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px}
+    .booking-selected-list li{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;padding:10px 11px;border-radius:15px;background:rgba(255,255,255,.74);border:1px solid var(--line)}
+    .booking-selected-list b{display:block;color:var(--ink);font-size:13px}
+    .booking-selected-list span{display:block;color:var(--muted);font-size:12px;line-height:1.35;margin-top:2px;font-weight:750}
+    .cart-remove{border:0;background:rgba(17,23,51,.07);color:var(--muted);border-radius:999px;width:28px;height:28px;cursor:pointer;font-weight:950}
+    .booking-price s{display:block;color:var(--muted);font-size:13px;font-weight:800;margin-bottom:2px}
+    .booking-discount{display:inline-block;margin-top:8px;padding:6px 9px;border-radius:999px;background:rgba(255,111,159,.12);color:#d81b60;font-size:12px;font-weight:950}
+    .booking-upsell{margin-top:10px;color:#5b48d9;font-size:13px;font-weight:900;line-height:1.4}
+    .booking-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .booking-submit span{display:block;font-size:11px;line-height:1.2;font-weight:850;opacity:.95}
+    .booking-submit.instant{background:linear-gradient(100deg,var(--navy),var(--lilac),var(--pink))}
+    @media(max-width:720px){.booking-actions{grid-template-columns:1fr}.booking-workshop{grid-template-columns:auto 1fr}.booking-add{grid-column:1/-1}.booking-selected-list li{grid-template-columns:1fr auto}}
+
+  
+    .booking-week-list.restored{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+    .booking-week-list.restored .booking-week-btn{border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.74);color:var(--ink);font-weight:950;cursor:pointer}
+    .booking-week-list.restored .booking-week-btn.active{border-color:rgba(255,111,159,.55);background:linear-gradient(120deg,rgba(255,255,255,.96),rgba(255,237,248,.82));box-shadow:0 8px 20px rgba(255,111,159,.12)}
+    .booking-workshop-list.restored{display:grid;gap:10px}
+    .booking-workshop-list.restored .booking-workshop{display:grid;grid-template-columns:62px 150px 1fr auto auto;gap:13px;align-items:center;padding:12px;border-radius:18px;background:rgba(17,23,51,.045);border:1px solid rgba(17,23,51,.08);box-shadow:none}
+    .booking-workshop-list.restored .booking-workshop.selected{background:rgba(155,108,255,.085);border-color:rgba(155,108,255,.20)}
+    .booking-workshop-date{display:block;color:var(--ink);font-size:13px;line-height:1.25;font-weight:950}
+    .booking-workshop-time{display:block;color:var(--muted);font-size:11.5px;line-height:1.25;font-weight:850;margin-top:2px}
+    .booking-workshop-desc{display:block;color:var(--muted);font-size:12px;line-height:1.35;font-weight:650;margin-top:4px}
+    .booking-workshop-list.restored .booking-add{min-width:82px;border:1px solid rgba(255,255,255,.62);box-shadow:0 8px 18px rgba(255,111,159,.18)}
+    @media(max-width:860px){.booking-workshop-list.restored .booking-workshop{grid-template-columns:52px 1fr auto}.booking-workshop-date-wrap,.booking-workshop-copy{grid-column:2/3}.booking-workshop-list.restored .booking-spots{grid-column:2/3;width:max-content}.booking-workshop-list.restored .booking-add{grid-column:3/4;grid-row:1/3}}
+    @media(max-width:560px){.booking-workshop-list.restored .booking-workshop{grid-template-columns:48px 1fr}.booking-workshop-list.restored .booking-add{grid-column:1/-1;grid-row:auto;width:100%}.booking-workshop-list.restored .booking-spots{grid-column:1/-1}}
+
+  
+    .booking-price-lines{display:grid;gap:3px;margin-top:8px;color:var(--muted);font-size:12px;font-weight:800;line-height:1.35}
+    .booking-price-lines strong{color:var(--ink)}
+  
+    .project{display:flex;flex-direction:column}
+    .project .project-copy{flex:1}
+    .project-cta{margin:16px 18px 18px;min-height:46px;border-radius:999px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-size:14px;font-weight:950;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink),var(--peach));box-shadow:0 12px 22px rgba(255,111,159,.18)}
+
+  
+    .booking-qty{display:inline-flex;align-items:center;gap:7px;justify-content:flex-end}
+    .qty-btn{width:32px;height:32px;border:1px solid rgba(17,23,51,.10);border-radius:999px;background:#fff;color:var(--ink);font-size:18px;line-height:1;font-weight:950;cursor:pointer;box-shadow:0 6px 14px rgba(82,50,120,.07)}
+    .qty-btn:disabled{opacity:.45;cursor:not-allowed}
+    .qty-num{min-width:22px;text-align:center;color:var(--ink);font-size:14px;font-weight:950}
+    .booking-selected-list .booking-qty{justify-content:flex-end}
+    @media(max-width:860px){.booking-workshop-list.restored .booking-qty{grid-column:3/4;grid-row:1/3}}
+    @media(max-width:560px){.booking-workshop-list.restored .booking-qty{grid-column:1/-1;grid-row:auto;width:100%;justify-content:space-between;background:rgba(255,255,255,.62);border-radius:999px;padding:6px 9px}}
+
+  .booking-workshop-desc strong{display:block;margin-top:4px;color:#d81b60;font-weight:950}
+  
+    .mobile-cart-link{display:none;align-items:center;gap:7px;min-height:42px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.86);border:1px solid rgba(17,23,51,.10);text-decoration:none;color:var(--ink);font-size:13px;font-weight:950;box-shadow:0 10px 22px rgba(82,50,120,.08)}
+    .mobile-cart-link b{min-width:22px;height:22px;border-radius:999px;background:linear-gradient(100deg,var(--aqua),var(--lilac),var(--pink));color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:950}
+    @media(max-width:980px){.mobile-cart-link{display:inline-flex;margin-left:auto}.nav-cta{display:none}.lang-toggle{margin-left:0}}
+    @media(max-width:860px){.booking-workshop-list.restored .booking-workshop{position:relative;padding-top:42px}.booking-workshop-list.restored .booking-spots{position:absolute;top:10px;right:12px;grid-column:auto;width:auto;margin:0;z-index:2}}
+
+  
+    @media(max-width:720px){
+      .booking-age-grid .booking-age-btn,
+      .booking-week-list.restored .booking-week-btn{
+        font-size:85%;
+        padding:8px 11px;
+        min-height:38px;
+      }
+    }
+
+  
+    .booking-qty{
+      display:inline-flex !important;
+      flex-direction:row !important;
+      align-items:center !important;
+      justify-content:center !important;
+      gap:7px !important;
+      white-space:nowrap !important;
+      width:auto !important;
+      min-width:104px;
+      flex:0 0 auto;
+    }
+    .booking-qty .qty-btn,
+    .booking-qty .qty-num{
+      display:inline-flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      flex:0 0 auto !important;
+    }
+    @media(max-width:560px){
+      .booking-workshop-list.restored .booking-qty{
+        width:auto !important;
+        justify-content:center !important;
+        justify-self:stretch;
+      }
+      .booking-selected-list .booking-qty{
+        justify-self:end;
+      }
+    }
+
+  
+    .summary-scroll-anchor{
+      position:relative;
+      top:-96px;
+      height:1px;
+      width:1px;
+      pointer-events:none;
+    }
+    @media(max-width:980px){
+      .summary-scroll-anchor{top:-82px}
+    }
+
+  
+    /* Zvýrazněné ceny workshopů */
+    .booking-price-cards{gap:14px;margin-top:22px}
+    .booking-price-card{
+      position:relative;
+      overflow:hidden;
+      padding:17px 18px 16px;
+      background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,242,249,.96));
+      border:2px solid rgba(240,90,160,.28);
+      box-shadow:0 14px 30px rgba(87,63,145,.12);
+    }
+    .booking-price-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto 0 0;
+      width:6px;
+      background:linear-gradient(180deg,var(--aqua),var(--lilac),var(--pink));
+    }
+    .booking-price-card b{
+      display:block;
+      color:var(--ink);
+      font-size:13px;
+      line-height:1.2;
+      font-weight:950;
+      letter-spacing:.035em;
+      text-transform:uppercase;
+    }
+    .booking-price-card span{
+      display:flex;
+      align-items:baseline;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:8px;
+      color:var(--ink);
+      line-height:1.1;
+    }
+    .booking-price-card span strong{
+      font-size:23px;
+      font-weight:1000;
+      color:#111733;
+      letter-spacing:-.02em;
+    }
+    .booking-price-card span small{
+      font-size:12px;
+      font-weight:850;
+      color:#5d6378;
+    }
+    @media(max-width:980px){
+      .booking-price-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media(max-width:720px){
+      .booking-price-cards{grid-template-columns:1fr}
+      .booking-price-card{padding:15px 17px}
+      .booking-price-card span strong{font-size:22px}
+    }
+
   </style>
   <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32.png">
 </head>
@@ -367,13 +550,16 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="site-header">
-    <div class="top-banner"><div class="top-banner-inner">Přihlašování do 30.6. Využijte kód <strong>STIPENDIUM900</strong> na získání stipendia.</div></div>
+    <div class="top-banner" role="status">
+      <div class="top-banner-inner"><strong>Speciální narozeninová nabídka! Oslavte s námi 3 roky Makeful!</strong></div>
+    </div>
     <div class="wrap nav">
       <a class="logo" href="#"><img src="assets/logo.png" alt="Makeful Fashion Tech Academy"></a>
       <nav class="nav-links" aria-label="Hlavní navigace">
-        <a href="#program">Program</a><a href="#projekty">Projekty</a><a href="#terminy">Termíny</a><a href="#akademie">O nás</a><a href="#galerie">Galerie</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a>
+        <a href="#program">Program</a><a href="#projekty">Projekty</a><a href="#terminy">Workshopy</a><a href="#akademie">O nás</a><a href="#galerie">Galerie</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a>
       </nav>
-      <a class="nav-cta" href="#terminy">Vybrat termín</a>
+      <a class="nav-cta" href="#terminy">Vybrat workshopy</a>
+      <a class="mobile-cart-link" id="mobileCartLink" href="#vas-vyber" aria-label="Zobrazit košík">🛒 <span>Košík</span><b id="mobileCartCount">0</b></a>
       <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Přepnout jazyk">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
         <span id="lang-label">CZ</span>
@@ -389,15 +575,15 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <div class="sparkles">✦ ✦ ✦ ✦</div>
-          <h1>Kde jinde se vaše dcera naučí tvořit <span class="grad">AI&nbsp;kolekce a tisknout 3D&nbsp;módní doplňky</span> za jeden týden?</h1>
-          <p>Letní FashionTech Akademie je týdenní program v Praze pro dívky ve věku 8–19 let, které baví móda, design, kreslení nebo digitální tvorba. Nejsou třeba předchozí zkušenosti, vše naučíme od základů.</p>
+          <h1>Kde jinde se vaše dcera naučí tvořit <span class="grad">AI&nbsp;kolekce a tisknout 3D&nbsp;módní doplňky</span>?</h1>
+          <p>Letní FashionTech Akademie je program v Praze pro dívky ve věku 8–19 let, které baví móda, design, kreslení nebo digitální tvorba. Nejsou třeba předchozí zkušenosti, vše naučíme od základů.</p>
           <div class="badges">
-            <span class="badge"><svg class="b1" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Léto 2026</span>
+            <span class="badge"><svg class="b1" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Workshopy léto 2026</span>
             <span class="badge"><svg class="b2" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>Praha</span>
             <span class="badge"><svg class="b3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>max. 10 míst</span>
             <span class="badge"><svg class="b4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>8–19 let</span>
           </div>
-          <div class="hero-actions"><a class="btn btn-primary" href="#terminy">Vybrat termín →</a><a class="btn btn-outline" href="#program">Více informací</a></div>
+          <div class="hero-actions"><a class="btn btn-primary" href="#terminy">Vybrat workshopy →</a><a class="btn btn-outline" href="#proc-rodice">Více informací</a></div>
           <div class="stats">
             <div class="stat"><div class="stat-ico">⭐</div><div><b>6</b><span>vlastních projektů</span></div></div>
             <div class="stat"><div class="stat-ico">🗓️</div><div><b>7</b><span>denní program</span></div></div>
@@ -434,7 +620,7 @@
       </div>
     </section>
 
-    <section class="why">
+    <section class="why" id="proc-rodice">
       <div class="wrap">
         <div class="section-title"><h2>Proč si rodiče vybírají <span class="grad">Makeful</span></h2><div class="under"></div></div>
         <div class="why-grid">
@@ -459,12 +645,13 @@
 
     <section class="projects" id="projekty">
       <div class="wrap">
-        <div class="section-title"><h2>Co vaše dcera <span class="grad">vytvoří</span></h2><div class="under"></div></div>
+        <div class="section-title"><h2>Co si dcera může <span class="grad">vybrat</span></h2><div class="under"></div></div>
+        <p class="section-lead workshop-lead">Každý workshop je samostatný kreativní den. Můžete vybrat jeden konkrétní termín, nebo zkombinovat více dní podle věku, kapacity a toho, co dceru nejvíc láká.</p>
         <div class="projects-grid">
-          <article class="project"><img src="assets/project-shoe.png" alt="3D doplněk na boty"><div class="project-name"><span>3D doplněk na boty</span><span>→</span></div><p class="project-copy">Navrhne a vytiskne vlastní 3D módní detail, který promění obyčejné boty v originální designový kousek.</p></article>
-          <article class="project"><img src="assets/project-ai-collection.png" alt="AI fashion kolekce"><div class="project-name"><span>AI fashion kolekce</span><span>→</span></div><p class="project-copy">Vytvoří vlastní módní koncept, náladu kolekce a vizuály pomocí AI nástrojů a digitálního návrhu.</p></article>
-          <article class="project"><img src="assets/project-ai-video.png" alt="AI videoreklama"><div class="project-name"><span>AI videoreklama</span><span>→</span></div><p class="project-copy">Z módního nápadu vznikne krátký reklamní spot, kde se propojí obraz, příběh, AI a vlastní kreativita.</p></article>
-          <article class="project"><img src="assets/project-portfolio.png" alt="Osobní webové portfolio"><div class="project-name"><span>Osobní webové portfolio</span><span>→</span></div><p class="project-copy">Na závěr si připraví jednoduché digitální portfolio, kde představí své projekty a kreativní proces.</p></article>
+          <article class="project"><img src="assets/project-shoe.png" alt="3D tištěné nášivky na boty"><div class="project-name"><span>3D tištěné nášivky na boty</span></div><p class="project-copy">Návrh vlastního motivu, příprava pro 3D tisk a první nositelný módní detail.</p><a class="project-cta" href="#terminy">Vybrat workshop</a></article>
+          <article class="project"><img src="assets/project-portfolio.png" alt="Odjímatelné cvoky na trička"><div class="project-name"><span>Odjímatelné cvoky na trička</span></div><p class="project-copy">Modelování drobných módních komponentů, které se dají připnout na textil.</p><a class="project-cta" href="#terminy">Vybrat workshop</a></article>
+          <article class="project"><img src="assets/project-ai-collection.png" alt="AI virtuální módní kolekce"><div class="project-name"><span>AI virtuální módní kolekce</span></div><p class="project-copy">Vlastní módní koncept, moodboard a vizuály vytvořené pomocí AI nástrojů.</p><a class="project-cta" href="#terminy">Vybrat workshop</a></article>
+          <article class="project"><img src="assets/project-ai-video.png" alt="AI reklama"><div class="project-name"><span>AI reklama</span></div><p class="project-copy">Krátký reklamní spot, který propojí módní nápad, obraz, příběh a AI.</p><a class="project-cta" href="#terminy">Vybrat workshop</a></article>
         </div>
       </div>
     </section>
@@ -500,16 +687,16 @@
 
     <section class="week">
       <div class="wrap">
-        <div class="section-title"><h2>Jak vypadá týden <span class="grad">v laboratoři</span></h2><div class="under"></div></div>
-        <div class="timeline program-days">
-          <div class="day-card"><div class="day">Po</div><div class="day-emoji" aria-hidden="true">👗</div><span>3D nášivka</span><p>Dívky začnou jednoduchým návrhem vlastního motivu a naučí se, jak ho připravit pro 3D tisk. Výsledkem je první nositelný detail, který si mohou hned vyzkoušet.</p></div>
-          <div class="day-card"><div class="day">Út</div><div class="day-emoji" aria-hidden="true">🧵</div><span>3D pero & šití</span><p>Vyzkouší si práci s 3D perem a propojí plastový detail s textilem. Den je zaměřený na materiály, vrstvení, ruční dokončení a odvahu experimentovat.</p></div>
-          <div class="day-card"><div class="day">St</div><div class="day-emoji" aria-hidden="true">👒</div><span>Klobouček / vesta</span><p>Podle věku a úrovně pracují na větším módním objektu. Učí se přemýšlet nad tvarem, funkcí a tím, jak technologie mění běžný kus oblečení.</p></div>
-          <div class="day-card"><div class="day">Čt</div><div class="day-emoji" aria-hidden="true">🤖</div><span>AI modelka</span><p>Vytvoří vizuální koncept kolekce a naučí se používat AI jako kreativní nástroj. Nejde o kopírování, ale o vedení nápadu pomocí promyšleného zadání.</p></div>
-          <div class="day-card"><div class="day">Pá</div><div class="day-emoji" aria-hidden="true">🎬</div><span>AI videoreklama</span><p>Z vybraného módního konceptu vznikne krátké video. Dívky si vyzkouší příběh, obraz, rytmus a prezentaci vlastního designu.</p></div>
-          <div class="day-card"><div class="day">So</div><div class="day-emoji" aria-hidden="true">💻</div><span>Webové portfolio</span><p>Poskládají své projekty do jednoduchého portfolia. Naučí se popsat proces, vybrat nejlepší výstupy a ukázat práci tak, aby dávala smysl i ostatním.</p></div>
-          <div class="day-card"><div class="day">Ne</div><div class="day-emoji" aria-hidden="true">🏆</div><span>Prezentace & diplom</span><p>Na závěr představí, co během týdne vytvořily. Důraz je na sebevědomou prezentaci, zpětnou vazbu a radost z hotového výsledku.</p></div>
+        <div class="section-title"><h2>Jaké workshopy <span class="grad">lze objednat</span></h2><div class="under"></div></div>
+        <p class="section-lead workshop-lead">Workshopy probíhají vždy od 09:00 do 17:00. U každého termínu v rezervační části níže uvidíte datum, věk, jazyk a aktuální zbývající kapacitu.</p>
+        <div class="timeline program-days workshop-days">
+          <div class="day-card"><div class="day">Po</div><div class="day-emoji" aria-hidden="true">✨</div><span>AI virtuální módní kolekce</span><p>Dívky vytvoří vizuální koncept kolekce a naučí se používat AI jako kreativní návrhářský nástroj.</p></div>
+          <div class="day-card"><div class="day">Út</div><div class="day-emoji" aria-hidden="true">👕</div><span>Modelování 3D tištěných ozdob na tričko</span><p>Navrhnou a vymodelují drobné 3D komponenty, které se dají připnout na textil a měnit podle nálady.</p></div>
+          <div class="day-card"><div class="day">St</div><div class="day-emoji" aria-hidden="true">👒</div><span>3D tištěný klobouček / kabelka</span><p>Pro věk 8–12 let vzniká 3D tištěný klobouček. Starší dívky 13–19 let pracují na 3D tištěné kabelce. Středeční projekt pokračuje ve čtvrtek i v pátek, proto je nutné rezervovat všechny tři dny ve stejném počtu.</p></div>
+          <div class="day-card"><div class="day">Čt</div><div class="day-emoji" aria-hidden="true">🎬</div><span>AI reklama na šperk</span><p>Z módního produktu vznikne vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci.</p></div>
+          <div class="day-card"><div class="day">Pá</div><div class="day-emoji" aria-hidden="true">👟</div><span>Ručně 3D tištěné ozdoby na boty</span><p>Dívky vytvoří finální nositelný detail na boty a propojí ruční práci s technologií 3D tisku.</p></div>
         </div>
+        <div class="section-action"><a class="primary" href="#terminy">Vybrat konkrétní datum a rezervovat</a></div>
       </div>
     </section>
 
@@ -523,72 +710,68 @@
       </div>
     </section>
 
-
-    <section class="pricing-section" id="terminy">
+    <section class="pricing-section onepage-booking" id="terminy">
       <div class="wrap price-panel">
-        <div class="section-title"><h2>Termíny a <span class="grad">ceny</span></h2><div class="under"></div></div>
-        <div class="trust"><span class="badge">💜 Záloha pouze 1 500 Kč</span><span class="badge">👭 max. 10 míst v turnusu</span><span class="badge">📍 Praha · Léto 2026</span></div>
+        <div class="section-title"><h2>Vyberte workshopy a <span class="grad">rovnou rezervujte</span></h2><div class="under"></div></div>
+        <p class="section-lead workshop-lead">Vyberte jeden nebo více workshopů napříč věky a termíny. V košíku hned uvidíte cenu, slevu při více dnech a možnost místa zarezervovat nebo zakoupit zálohu.</p>
 
-        <div class="age-schedule-grid" aria-label="Letní turnusy 2026 podle věkových skupin">
-          <article class="age-schedule-card cyan">
-            <div class="age-kicker">Věková skupina</div>
-            <h3>8–9 let</h3>
-            <p class="schedule-price">6 888 Kč <span>· záloha pouze 1 500 Kč</span></p>
-            <div class="turnus-list">
-              <div class="turnus-row"><div><strong>1. turnus</strong><span>6. 7. – 12. 7. 2026</span></div><span class="lang">CZ</span><span class="mini-cta disabled" data-cs="Plný termín" data-en="Full session">Plný termín</span></div>
+        <div class="booking-panel single-column">
+          <div class="booking-copy">
+            <div class="age-kicker">Workshopové vstupy · 09:00–17:00</div>
+            <h3>Sestavte vlastní Makeful program z posledních volných míst.</h3>
+            <p>U každého workshopu vidíte datum, jazyk, věkovou skupinu a zbývající kapacitu. Výběr se ukládá do košíku, takže můžete kombinovat více termínů i různé věkové skupiny.</p>
+            <div class="booking-price-cards">
+              <div class="booking-price-card"><b>10–12 let</b><span><strong>1 288 Kč</strong><small>/ workshop</small></span></div>
+              <div class="booking-price-card"><b>13–15 let</b><span><strong>1 388 Kč</strong><small>/ workshop</small></span></div>
+              <div class="booking-price-card"><b>16–19 let</b><span><strong>1 488 Kč</strong><small>/ workshop</small></span></div>
             </div>
-          </article>
+          </div>
 
-          <article class="age-schedule-card cyan">
-            <div class="age-kicker">Věková skupina</div>
-            <h3>10–12 let</h3>
-            <p class="schedule-price">7 888 Kč <span>· záloha pouze 1 500 Kč</span></p>
-            <div class="turnus-list">
-              <div class="turnus-row"><div><strong>1. turnus</strong><span>6. 7. – 12. 7. 2026</span></div><span class="lang">CZ</span><span class="mini-cta disabled" data-cs="Plný termín" data-en="Full session">Plný termín</span></div>
-              <div class="turnus-row"><div><strong>2. turnus</strong><span>27. 7. – 2. 8. 2026</span></div><span class="lang">CZ</span><span class="mini-cta disabled" data-cs="Plný termín" data-en="Full session">Plný termín</span></div>
-              <div class="turnus-row"><div><strong>3. turnus</strong><span>10. 8. – 16. 8. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang en">EN</span><a href="/registrace?termin=10-12-let-10-8-16-8-2026-EN" class="mini-cta">Registrovat</a></div>
-              <div class="turnus-row"><div><strong>4. turnus</strong><span>17. 8. – 23. 8. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang">CZ</span><a href="/registrace?termin=10-12-let-17-8-23-8-2026-CZ" class="mini-cta">Registrovat</a></div>
+          <div class="booking-form" id="rezervace">
+            <h3>Rezervace workshopů</h3>
+            <p class="booking-note">Filtrujte podle věku, vyberte konkrétní datum a workshopy přidejte do košíku.</p>
+
+            <div class="booking-field">
+              <label>Filtrovat podle věku</label>
+              <div class="booking-age-grid" id="bookingAgeGrid">
+                <button type="button" class="booking-age-btn" data-age="8-9">8–9 let</button>
+                <button type="button" class="booking-age-btn active" data-age="10-12">10–12 let</button>
+                <button type="button" class="booking-age-btn" data-age="13-15">13–15 let</button>
+                <button type="button" class="booking-age-btn" data-age="16-19">16–19 let</button>
+              </div>
             </div>
-          </article>
 
-          <article class="age-schedule-card pink">
-            <div class="age-kicker">Věková skupina</div>
-            <h3>13–15 let</h3>
-            <p class="schedule-price">8 888 Kč <span>· záloha pouze 1 500 Kč</span></p>
-            <div class="turnus-list">
-              <div class="turnus-row"><div><strong>1. turnus</strong><span>13. 7. – 19. 7. 2026</span><span class="spot-tag" data-cs="zbývá 1 místo" data-en="1 spot left">zbývá 1 místo</span></div><span class="lang">CZ</span><a href="/registrace?termin=13-15-let-13-7-19-7-2026-CZ" class="mini-cta">Registrovat</a></div>
-              <div class="turnus-row"><div><strong>2. turnus</strong><span>3. 8. – 9. 8. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang">CZ</span><a href="/registrace?termin=13-15-let-3-8-9-8-2026-CZ" class="mini-cta">Registrovat</a></div>
-              <div class="turnus-row"><div><strong>3. turnus</strong><span>20. 7. – 26. 7. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang en">EN</span><a href="/registrace?termin=13-15-let-20-7-26-7-2026-EN" class="mini-cta">Registrovat</a></div>
-              <div class="turnus-row"><div><strong>4. turnus</strong><span>24. 8. – 30. 8. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang">CZ</span><a href="/registrace?termin=13-15-let-24-8-30-8-2026-CZ" class="mini-cta">Registrovat</a></div>
+            <div class="booking-field">
+              <label>Filtrovat podle týdne a jazyka</label>
+              <div class="booking-week-list restored" id="bookingWeekList"></div>
             </div>
-          </article>
 
-          <article class="age-schedule-card purple">
-            <div class="age-kicker">Věková skupina</div>
-            <h3>16–19 let</h3>
-            <p class="schedule-price">9 888 Kč <span>· záloha pouze 1 500 Kč</span></p>
-            <div class="turnus-list">
-              <div class="turnus-row"><div><strong>1. turnus</strong><span>29. 6. – 5. 7. 2026</span></div><span class="lang">CZ</span><span class="mini-cta disabled" data-cs="Plný termín" data-en="Full session">Plný termín</span></div>
-              <div class="turnus-row"><div><strong>2. turnus</strong><span>17. 8. – 23. 8. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang">CZ</span><a href="/registrace?termin=16-19-let-17-8-23-8-2026-CZ" class="mini-cta">Registrovat</a></div>
-              <div class="turnus-row"><div><strong>3. turnus</strong><span>24. 8. – 30. 8. 2026</span><span class="spot-tag" data-cs="zbývají 2 místa" data-en="2 spots left">zbývají 2 místa</span></div><span class="lang">CZ</span><a href="/registrace?termin=16-19-let-24-8-30-8-2026-CZ" class="mini-cta">Registrovat</a></div>
+            <div class="booking-main one-column">
+              <div>
+                <label style="font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.04em;color:var(--ink)">Dostupné workshopy</label>
+                <div class="booking-workshop-list restored" id="bookingWorkshopList"></div>
+              </div>
             </div>
-          </article>
-        </div>
 
-        <div class="included">
-          <h3>Co všechno je <span class="grad">v ceně</span></h3>
-          <ul class="included-grid">
-            <li>7denní program v kreativní laboratoři v Praze</li>
-            <li>Každodenní vedení lektorek a individuální přístup</li>
-            <li>Všechny materiály, látky, komponenty a kreativní pomůcky</li>
-            <li>Práce s 3D tiskárnou, 3D pery, AI nástroji a digitální tvorbou</li>
-            <li>Tričko a boty, které budou dívky upravovat</li>
-            <li>6 vlastních projektů včetně 3D doplňků, AI kolekce a videoreklamy</li>
-            <li>Osobní webové portfolio a závěrečná prezentace</li>
-            <li>Diplom / certifikát o absolvování programu</li>
-            <li>Obědy, svačiny a pitný režim během programu</li>
-            <li>Přístupy k přednáškám od světových designérů pro inspiraci</li>
-          </ul>
+            <div id="vas-vyber" class="summary-scroll-anchor"></div>
+            <div class="booking-summary" id="bookingSummary">
+              <div class="booking-summary-top"><div><strong>Váš výběr</strong><span>Zatím není vybraný žádný workshop.</span></div><div class="booking-price"><b>0 Kč</b><small>Vyberte workshop</small></div></div>
+            </div>
+
+            <div class="booking-field"><label for="bookingParentFirstName">Jméno rodiče *</label><input id="bookingParentFirstName" type="text" autocomplete="given-name" placeholder="Jana"></div>
+            <div class="booking-field"><label for="bookingParentLastName">Příjmení rodiče *</label><input id="bookingParentLastName" type="text" autocomplete="family-name" placeholder="Nováková"></div>
+            <div class="booking-field"><label for="bookingEmail">E-mail rodiče *</label><input id="bookingEmail" type="email" autocomplete="email" placeholder="jana@email.cz"></div>
+            <div class="booking-field"><label for="bookingPhone">Telefon *</label><input id="bookingPhone" type="tel" autocomplete="tel" placeholder="+420 777 123 456"></div>
+            <div class="booking-field"><label for="bookingParticipants">Uveďte křestní jména a věk účastnic *</label><textarea id="bookingParticipants" placeholder="např. Tereza, 11 let&#10;Anna, 13 let"></textarea></div>
+
+            <label class="booking-consent"><input type="checkbox" id="bookingConsent"><span>Souhlasím se <a href="/ochrana-osobnich-udaju">zpracováním osobních údajů</a> a <a href="/obchodni-podminky">obchodními podmínkami</a> Makeful. *</span></label>
+            <div class="booking-error" id="bookingError"></div>
+            <div class="booking-actions">
+              <button class="booking-submit" id="bookingSubmit" type="button" onclick="submitOnePageReservation('reserve')">Rezervovat <span>(platit do 3 dnů)</span></button>
+              <button class="booking-submit instant" id="bookingPaySubmit" type="button" onclick="submitOnePageReservation('pay')">Zakoupit ihned</button>
+            </div>
+            <p class="booking-submit-note">Rezervace pouze odešle výběr a místo drží k platbě do 3 dnů. Zakoupit ihned vás po odeslání údajů přesměruje na platbu zálohy přes Stripe.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -720,24 +903,24 @@
             <div class="faq-answer"><div class="faq-answer-inner"><p>Akademie probíhá v kreativní laboratoři Makeful na adrese Argentinská 1, Praha 7. Podrobné organizační informace posíláme rodičům po rezervaci místa.</p></div></div>
           </article>
           <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Kolik dívek je v jednom turnusu?</span><span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>Maximálně 10. Malá skupina je pro nás důležitá, protože chceme každé účastnici dát dost pozornosti, podpory a prostoru na vlastní tvorbu.</p></div></div>
+            <button class="faq-question" type="button" aria-expanded="false"><span>Kolik dívek je na jednom workshopu?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner"><p>Kapacita je omezená podle konkrétního workshopu a věku. Malá skupina je pro nás důležitá, protože chceme každé účastnici dát dost pozornosti, podpory a prostoru na vlastní tvorbu.</p></div></div>
           </article>
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false"><span>Co si dcera odnese domů?</span><span class="faq-icon" aria-hidden="true">+</span></button>
             <div class="faq-answer"><div class="faq-answer-inner"><p>Hotové módní a digitální projekty, 3D doplňky, upravený textil, AI výstupy, osobní webové portfolio, diplom a hlavně větší jistotu ve vlastní tvorbě.</p></div></div>
           </article>
           <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Jak funguje rezervace místa?</span><span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>Místo je možné rezervovat zálohou 1 500 Kč. Kapacita je omezená na 10 dívek v turnusu, proto doporučujeme vybrat termín včas.</p></div></div>
+            <button class="faq-question" type="button" aria-expanded="false"><span>Jak funguje rezervace workshopu?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner"><p>Vyberete konkrétní workshopy, vyplníte kontakt a místo buď zarezervujete s platbou do 3 dnů, nebo rovnou zakoupíte zálohu přes Stripe.</p></div></div>
           </article>
           <article class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false"><span>Lze kemp uhradit přes Benefit Plus, Pluxee, Up Benefity nebo Edenred?</span><span class="faq-icon" aria-hidden="true">+</span></button>
             <div class="faq-answer"><div class="faq-answer-inner"><p>Ano, benefitní platby umíme řešit individuálně. Pokud chcete využít Benefit Plus, Pluxee, Up Benefity nebo Edenred, napište nám před rezervací a pošleme vám správný postup.</p></div></div>
           </article>
           <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false"><span>Co se stane, když nebudu moci na vybraný turnus dorazit?</span><span class="faq-icon" aria-hidden="true">+</span></button>
-            <div class="faq-answer"><div class="faq-answer-inner"><p>Pokud se plány změní, stačí nám dát vědět nejpozději 14 dní před začátkem. Rádi tě bezplatně přesuneme na jiný volný turnus.</p></div></div>
+            <button class="faq-question" type="button" aria-expanded="false"><span>Co se stane, když nebudu moci na vybraný workshop dorazit?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-answer"><div class="faq-answer-inner"><p>Pokud se plány změní, dejte nám prosím vědět co nejdříve. Podle aktuální kapacity se pokusíme najít jiný vhodný workshopový termín.</p></div></div>
           </article>
         </div>        </div>
       </div>
@@ -745,7 +928,7 @@
 
     <section class="bottom">
       <div class="wrap cta-panel">
-        <div><h2>Dejte své dceři léto, plné zábavy, kreativity a sebevědomí.</h2><p>Vyberte turnus a rezervujte místo včas. Kapacita je jen 10 dívek.</p><p>Nevíte si rady, zda je program pro vaši dceru vhodný? <a href="/kviz" style="color:white;text-decoration:underline;text-underline-offset:4px;font-weight:900">Vyplňte náš kvíz.</a></p><div class="cta-actions"><a class="btn btn-white" href="#terminy">Vybrat termín →</a></div></div>
+        <div><h2>Dejte své dceři léto, plné zábavy, kreativity a sebevědomí.</h2><p>Vyberte workshopy, rovnou uvidíte cenu a rezervujte místa v poslední dostupné kapacitě.</p><p>Nevíte si rady, zda je program pro vaši dceru vhodný? <a href="/kviz" style="color:white;text-decoration:underline;text-underline-offset:4px;font-weight:900">Vyplňte náš kvíz.</a></p><div class="cta-actions"><a class="btn btn-white" href="#terminy">Vybrat workshopy →</a></div></div>
         <div class="cta-img"><img src="assets/cta-objects.png" alt="3D tištěné módní objekty"></div>
       </div>
     </section>
@@ -754,7 +937,7 @@
   <footer>
     <div class="wrap footer">
       <img src="assets/logo.png" alt="Makeful">
-      <div class="footlinks"><a href="#program">Program</a><a href="#terminy">Termíny</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a><a href="/obchodni-podminky">Obchodní podmínky</a><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a></div>
+      <div class="footlinks"><a href="#program">Program</a><a href="#terminy">Workshopy</a><a href="#faq">FAQ</a><a href="#kontakt">Kontakt</a><a href="/obchodni-podminky">Obchodní podmínky</a><a href="/ochrana-osobnich-udaju">Ochrana osobních údajů</a></div>
       <div class="contact"><a href="tel:+420735820576">735 820 576</a><a href="mailto:hello@make-ful.com">hello@make-ful.com</a><span>Praha</span></div>
       <div class="social"><span>◎</span><span>♪</span></div>
     </div>
@@ -777,13 +960,13 @@
     var translations = {
       cs: {
         page_title: 'Makeful Fashion Tech Academy',
-        top_banner: 'Přihlašování do 30.6. Využijte kód <strong>STIPENDIUM900</strong> na získání stipendia.',
+        top_banner: '<strong>Speciální narozeninová nabídka! Oslavte s námi 3 roky Makeful!</strong>',
         nav: ['Program','Projekty','Termíny','O nás','Galerie','FAQ','Kontakt'],
-        nav_cta: 'Vybrat termín',
-        hero_title: 'Kde jinde se vaše dcera naučí tvořit <span class="grad">AI&nbsp;kolekce a tisknout 3D&nbsp;módní doplňky</span> za jeden týden?',
-        hero_text: 'Letní FashionTech Akademie je týdenní program v Praze pro dívky ve věku 8–19 let, které baví móda, design, kreslení nebo digitální tvorba. Nejsou třeba předchozí zkušenosti, vše naučíme od základů.',
-        hero_badges: ['Léto 2026','Praha','max. 10 míst','8–19 let'],
-        hero_buttons: ['Vybrat termín →','Více informací'],
+        nav_cta: 'Vybrat workshopy',
+        hero_title: 'Kde jinde se vaše dcera naučí tvořit <span class="grad">AI&nbsp;kolekce a tisknout 3D&nbsp;módní doplňky</span>?',
+        hero_text: 'Letní FashionTech Akademie je program v Praze pro dívky ve věku 8–19 let, které baví móda, design, kreslení nebo digitální tvorba. Nejsou třeba předchozí zkušenosti, vše naučíme od základů.',
+        hero_badges: ['Workshopy léto 2026','Praha','max. 8 míst','8–19 let'],
+        hero_buttons: ['Vybrat workshopy →','Více informací'],
         stats: [
           ['6','vlastních projektů'],
           ['7','denní program'],
@@ -809,17 +992,15 @@
         video_text: 'Zakladatelka Linette v rozhovoru pro časopis ABC ukazuje, jak 3D tisk a nové technologie mění svět designu. Je to skvělý způsob, jak rodičům i dětem ukázat, co za světem Makeful stojí.',
         video_badges: ['🖨️ 3D tisk v praxi','✨ móda a technologie','📺 reportáž pro děti'],
         video_note: 'Video se spustí přímo na stránce.',
-        week_title: 'Jak vypadá týden <span class="grad">v laboratoři</span>',
+        week_title: 'Jaké workshopy <span class="grad">lze objednat</span>',
         week_days: ['Po','Út','St','Čt','Pá','So','Ne'],
-        week_items: ['3D nášivka','3D pero & šití','Klobouček / vesta','AI modelka','AI videoreklama','Webové portfolio','Prezentace & diplom'],
+        week_items: ['AI virtuální módní kolekce','Modelování 3D tištěných ozdob na tričko','3D tištěný klobouček / kabelka','AI reklama na šperk','Ručně 3D tištěné ozdoby na boty'],
         week_desc: [
-          'Dívky začnou jednoduchým návrhem vlastního motivu a naučí se, jak ho připravit pro 3D tisk. Výsledkem je první nositelný detail, který si mohou hned vyzkoušet.',
-          'Vyzkouší si práci s 3D perem a propojí plastový detail s textilem. Den je zaměřený na materiály, vrstvení, ruční dokončení a odvahu experimentovat.',
-          'Podle věku a úrovně pracují na větším módním objektu. Učí se přemýšlet nad tvarem, funkcí a tím, jak technologie mění běžný kus oblečení.',
-          'Vytvoří vizuální koncept kolekce a naučí se používat AI jako kreativní nástroj. Nejde o kopírování, ale o vedení nápadu pomocí promyšleného zadání.',
-          'Z vybraného módního konceptu vznikne krátké video. Dívky si vyzkouší příběh, obraz, rytmus a prezentaci vlastního designu.',
-          'Poskládají své projekty do jednoduchého portfolia. Naučí se popsat proces, vybrat nejlepší výstupy a ukázat práci tak, aby dávala smysl i ostatním.',
-          'Na závěr představí, co během týdne vytvořily. Důraz je na sebevědomou prezentaci, zpětnou vazbu a radost z hotového výsledku.'
+          'Dívky vytvoří vizuální koncept kolekce a naučí se používat AI jako kreativní návrhářský nástroj.',
+          'Navrhnou a vymodelují drobné 3D komponenty, které se dají připnout na textil.',
+          'Pro věk 8–12 let vzniká klobouček, pro věk 13–19 let kabelka. Projekt pokračuje ve čtvrtek i v pátek.',
+          'Z módního produktu vznikne vizuální koncept a krátká AI reklama na šperk.',
+          'Dívky vytvoří nositelný detail na boty a propojí ruční práci s 3D tiskem.'
         ],
         visual_titles: ['Technologie se učí přes vlastní nápad.','Od skici k prototypu za jeden týden.'],
         visual_texts: ['Každý projekt začíná jednoduchým konceptem a končí fyzickým výstupem, který si účastnice odnáší domů.','Program střídá digitální návrh, ruční práci, 3D tisk, AI nástroje a prezentaci výsledků.'],
@@ -841,14 +1022,14 @@
         ],
         gallery_title: 'Galerie z <span class="grad">minulých turnusů</span>',
         gallery_lead: 'Nahlédněte do atmosféry Makeful: 3D tisk, módní experimenty, práce s technologiemi i konkrétní výstupy, které si dívky odnášejí domů.',
-        pricing_title: 'Termíny a <span class="grad">ceny</span>',
-        trust: ['💜 Záloha pouze 1 500 Kč','👭 max. 10 míst v turnusu','📍 Praha · Léto 2026'],
+        pricing_title: 'Vyberte si <span class="grad">kreativní dny</span>',
+        trust: ['🎟️ 1denní až vícedenní vstupy','👭 kapacita podle konkrétního workshopu','📍 Praha · Workshopy léto 2026'],
         age_kicker: 'Věková skupina',
         age_groups: ['10–12 let','13–15 let','16–19 let'],
         prices: ['7 888 Kč','8 888 Kč','9 888 Kč'],
         deposit: '· záloha pouze 1 500 Kč',
         turnus: ['1. turnus','2. turnus','3. turnus'],
-        register: 'Registrovat',
+        register: 'Vybrat workshopy',
         included_title: 'Co všechno je <span class="grad">v ceně</span>',
         included: [
           '7denní program v kreativní laboratoři v Praze',
@@ -879,26 +1060,26 @@
           ['Může se kurzu účastnit kluk?','Makeful je primárně navržený jako bezpečné a inspirativní prostředí pro dívky. Pokud má ale kluk opravdový zájem o módu, design, AI a 3D tisk, napište nám a vhodnost účasti individuálně probereme.'],
           ['Co musí mít dcera s sebou?','Stačí pohodlné oblečení, ve kterém se jí bude dobře tvořit, a chuť zkoušet nové věci. Materiály, pomůcky, technologie, tričko a boty k úpravě jsou součástí programu.'],
           ['Kde se laboratoř koná?','Akademie probíhá v kreativní laboratoři Makeful na adrese Argentinská 1, Praha 7. Podrobné organizační informace posíláme rodičům po rezervaci místa.'],
-          ['Kolik dívek je v jednom turnusu?','Maximálně 10. Malá skupina je pro nás důležitá, protože chceme každé účastnici dát dost pozornosti, podpory a prostoru na vlastní tvorbu.'],
+          ['Kolik dívek je na jednom workshopu?','Kapacita je omezená podle konkrétního workshopu a věku. Malá skupina je pro nás důležitá, protože chceme každé účastnici dát dost pozornosti, podpory a prostoru na vlastní tvorbu.'],
           ['Co si dcera odnese domů?','Hotové módní a digitální projekty, 3D doplňky, upravený textil, AI výstupy, osobní webové portfolio, diplom a hlavně větší jistotu ve vlastní tvorbě.'],
-          ['Jak funguje rezervace místa?','Místo je možné rezervovat zálohou 1 500 Kč. Kapacita je omezená na 10 dívek v turnusu, proto doporučujeme vybrat termín včas.'],
+          ['Jak funguje rezervace workshopu?','Vyberete konkrétní workshopy, vyplníte kontakt a místo buď zarezervujete s platbou do 3 dnů, nebo rovnou zakoupíte zálohu přes Stripe.'],
           ['Lze kemp uhradit přes Benefit Plus, Pluxee, Up Benefity nebo Edenred?','Ano, benefitní platby umíme řešit individuálně. Pokud chcete využít Benefit Plus, Pluxee, Up Benefity nebo Edenred, napište nám před rezervací a pošleme vám správný postup.'],
-          ['Co se stane, když nebudu moci na vybraný turnus dorazit?','Pokud se plány změní, stačí nám dát vědět nejpozději 14 dní před začátkem. Rádi tě bezplatně přesuneme na jiný volný turnus.']
+          ['Co se stane, když nebudu moci na vybraný workshop dorazit?','Pokud se plány změní, dejte nám prosím vědět co nejdříve. Podle aktuální kapacity se pokusíme najít jiný vhodný workshopový termín.']
         ],
         bottom_title: 'Dejte své dceři léto, plné zábavy, kreativity a sebevědomí.',
-        bottom_text1: 'Vyberte turnus a rezervujte místo včas. Kapacita je jen 10 dívek.',
+        bottom_text1: 'Vyberte workshopy, rovnou uvidíte cenu a rezervujte místa v poslední dostupné kapacitě.',
         bottom_text2: 'Nevíte si rady, zda je program pro vaši dceru vhodný? <a href="/kviz" style="color:white;text-decoration:underline;text-underline-offset:4px;font-weight:900">Vyplňte náš kvíz.</a>',
-        bottom_cta: 'Vybrat termín →',
+        bottom_cta: 'Vybrat workshopy →',
         footer: ['Program','Termíny','FAQ','Kontakt','Obchodní podmínky','Ochrana osobních údajů','Praha']
       },
       en: {
         page_title: 'Makeful Fashion Tech Academy',
-        top_banner: 'Applications open until 30 June. Use code <strong>STIPENDIUM900</strong> to get a scholarship.',
+        top_banner: '<strong>Special birthday offer! Celebrate 3 years of Makeful with us!</strong>',
         nav: ['Program','Projects','Dates','About us','Gallery','FAQ','Contact'],
-        nav_cta: 'Choose a date',
+        nav_cta: 'Choose workshops',
         hero_title: 'Where else can your daughter learn to create <span class="grad">AI&nbsp;collections and 3D&nbsp;fashion accessories</span> in one week?',
         hero_text: 'The Summer FashionTech Academy is a one-week program in Prague for girls aged 8–19 who love fashion, design, drawing or digital creation. No previous experience is needed — we teach everything from the basics.',
-        hero_badges: ['Summer 2026','Prague','max. 10 spots','ages 8–19'],
+        hero_badges: ['Summer 2026','Prague','max. 8 spots','ages 8–19'],
         hero_buttons: ['Choose a date →','More information'],
         stats: [
           ['6','own projects'],
@@ -925,17 +1106,15 @@
         video_text: 'In this interview for ABC magazine, founder Linette shows how 3D printing and new technologies are changing the world of design. It is a great way for parents and children to understand the world behind Makeful.',
         video_badges: ['🖨️ 3D printing in practice','✨ fashion and technology','📺 feature for kids'],
         video_note: 'The video plays directly on this page.',
-        week_title: 'What a week <span class="grad">in the lab looks like</span>',
+        week_title: 'Available <span class="grad">workshops</span>',
         week_days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-        week_items: ['3D patch','3D pen & sewing','Hat / vest','AI model','AI video ad','Web portfolio','Presentation & diploma'],
+        week_items: ['AI virtual fashion collection','Modelling 3D printed T-shirt decorations','3D printed mini hat / handbag','AI jewellery advertisement','Hand-finished 3D printed shoe decorations'],
         week_desc: [
-          'Girls start with a simple motif and learn how to prepare it for 3D printing. The result is their first wearable detail they can try right away.',
-          'They work with a 3D pen and connect a plastic detail with textile. The day focuses on materials, layering, hand finishing and experimenting.',
-          'Depending on age and level, they work on a larger fashion object. They learn to think about shape, function and how technology changes clothing.',
-          'They create a visual collection concept and learn to use AI as a creative tool. The focus is not copying, but guiding an idea with a clear prompt.',
-          'A selected fashion concept becomes a short video. Girls try story, image, rhythm and presenting their own design.',
-          'They assemble their projects into a simple portfolio. They learn to describe the process, choose the strongest outputs and present their work clearly.',
-          'At the end, they present what they created during the week. The focus is confidence, feedback and pride in a finished result.'
+          'Create a visual collection concept and use AI as a fashion design tool.',
+          'Design and model small 3D components that can be attached to textiles.',
+          'Girls aged 8–12 create a mini hat; ages 13–19 create a handbag. The project continues on Thursday and Friday.',
+          'Create a visual concept and a short AI jewellery advertisement.',
+          'Create a wearable shoe detail combining hand finishing with 3D printing.'
         ],
         visual_titles: ['Technology is learned through your own idea.','From sketch to prototype in one week.'],
         visual_texts: ['Every project starts with a simple concept and ends with a physical output that participants take home.','The program alternates digital design, hand work, 3D printing, AI tools and presenting the final results.'],
@@ -957,14 +1136,14 @@
         ],
         gallery_title: 'Gallery from <span class="grad">past dates</span>',
         gallery_lead: 'Take a look inside Makeful: 3D printing, fashion experiments, working with technology and concrete outputs that girls take home.',
-        pricing_title: 'Dates and <span class="grad">pricing</span>',
-        trust: ['💜 Deposit only 1,500 CZK','👭 max. 10 spots per session','📍 Prague · Summer 2026'],
+        pricing_title: 'Choose your <span class="grad">creative days</span>',
+        trust: ['🎟️ 1-day and multi-day passes','👭 capacity by workshop','📍 Prague · Summer 2026'],
         age_kicker: 'Age group',
         age_groups: ['Ages 10–12','Ages 13–15','Ages 16–19'],
         prices: ['7,888 CZK','8,888 CZK','9,888 CZK'],
         deposit: '· deposit only 1,500 CZK',
         turnus: ['Session 1','Session 2','Session 3'],
-        register: 'Register',
+        register: 'Choose workshops',
         included_title: 'What is <span class="grad">included</span>',
         included: [
           '7-day program in a creative lab in Prague',
@@ -1004,7 +1183,7 @@
         bottom_title: 'Give your daughter a summer full of fun, creativity and confidence.',
         bottom_text1: 'Choose a session and reserve a place in time. Capacity is only 10 girls.',
         bottom_text2: 'Not sure whether the program is right for your daughter? <a href="/quiz" style="color:white;text-decoration:underline;text-underline-offset:4px;font-weight:900">Take our quiz.</a>',
-        bottom_cta: 'Choose a date →',
+        bottom_cta: 'Choose workshops →',
         footer: ['Program','Dates','FAQ','Contact','Terms and conditions','Privacy policy','Prague']
       }
     };
@@ -1221,6 +1400,833 @@
         if (btn) btn.setAttribute('aria-expanded', 'false');
       });
     });
+  </script>
+
+
+  <script>
+    window.workshopWeeks = [
+  {
+    "ageGroup": "13-15",
+    "ageLabel": "13–15 let",
+    "weekLabel": "20. 7. – 26. 7. 2026",
+    "weekStart": "2026-07-20",
+    "language": "EN",
+    "spots": 4,
+    "maxCapacity": 8,
+    "registrations": 4,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "20. 7. 2026",
+        "title": "AI virtual fashion collection",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "13-15-2026-07-20-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "21. 7. 2026",
+        "title": "Modelling 3D printed T-shirt decorations",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "13-15-2026-07-20-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "22. 7. 2026",
+        "title": "3D printed handbag",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěná kabelka",
+        "titleEn": "3D printed handbag",
+        "id": "13-15-2026-07-20-2-St",
+        "descriptionCs": "Delší fashion-tech projekt zaměřený na tvar, konstrukci a funkci 3D tištěné kabelky. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project focused on the shape, structure and function of a 3D printed handbag. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "23. 7. 2026",
+        "title": "AI jewellery advertisement",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "13-15-2026-07-20-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "24. 7. 2026",
+        "title": "Hand-finished 3D printed shoe decorations",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "13-15-2026-07-20-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  },
+  {
+    "ageGroup": "13-15",
+    "ageLabel": "13–15 let",
+    "weekLabel": "3. 8. – 9. 8. 2026",
+    "weekStart": "2026-08-03",
+    "language": "CZ",
+    "spots": 2,
+    "maxCapacity": 8,
+    "registrations": 6,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "3. 8. 2026",
+        "title": "AI virtuální módní kolekce",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "13-15-2026-08-03-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "4. 8. 2026",
+        "title": "Modelování 3D tištěných ozdob na tričko",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "13-15-2026-08-03-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "5. 8. 2026",
+        "title": "3D tištěná kabelka",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěná kabelka",
+        "titleEn": "3D printed handbag",
+        "id": "13-15-2026-08-03-2-St",
+        "descriptionCs": "Delší fashion-tech projekt zaměřený na tvar, konstrukci a funkci 3D tištěné kabelky. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project focused on the shape, structure and function of a 3D printed handbag. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "6. 8. 2026",
+        "title": "AI reklama na šperk",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "13-15-2026-08-03-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "7. 8. 2026",
+        "title": "Ručně 3D tištěné ozdoby na boty",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "13-15-2026-08-03-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  },
+  {
+    "ageGroup": "10-12",
+    "ageLabel": "10–12 let",
+    "weekLabel": "10. 8. – 16. 8. 2026",
+    "weekStart": "2026-08-10",
+    "language": "EN",
+    "spots": 2,
+    "maxCapacity": 8,
+    "registrations": 6,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "10. 8. 2026",
+        "title": "AI virtual fashion collection",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "10-12-2026-08-10-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "11. 8. 2026",
+        "title": "Modelling 3D printed T-shirt decorations",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "10-12-2026-08-10-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "12. 8. 2026",
+        "title": "3D printed mini hat",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěný klobouček",
+        "titleEn": "3D printed mini hat",
+        "id": "10-12-2026-08-10-2-St",
+        "descriptionCs": "Delší fashion-tech projekt: návrh, tvarování a výroba 3D tištěného kloboučku. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project: design, shaping and production of a 3D printed mini hat. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "13. 8. 2026",
+        "title": "AI jewellery advertisement",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "10-12-2026-08-10-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "14. 8. 2026",
+        "title": "Hand-finished 3D printed shoe decorations",
+        "spots": 2,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "10-12-2026-08-10-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  },
+  {
+    "ageGroup": "10-12",
+    "ageLabel": "10–12 let",
+    "weekLabel": "17. 8. – 23. 8. 2026",
+    "weekStart": "2026-08-17",
+    "language": "CZ",
+    "spots": 4,
+    "maxCapacity": 8,
+    "registrations": 4,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "17. 8. 2026",
+        "title": "AI virtuální módní kolekce",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "10-12-2026-08-17-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "18. 8. 2026",
+        "title": "Modelování 3D tištěných ozdob na tričko",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "10-12-2026-08-17-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "19. 8. 2026",
+        "title": "3D tištěný klobouček",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěný klobouček",
+        "titleEn": "3D printed mini hat",
+        "id": "10-12-2026-08-17-2-St",
+        "descriptionCs": "Delší fashion-tech projekt: návrh, tvarování a výroba 3D tištěného kloboučku. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project: design, shaping and production of a 3D printed mini hat. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "20. 8. 2026",
+        "title": "AI reklama na šperk",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "10-12-2026-08-17-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "21. 8. 2026",
+        "title": "Ručně 3D tištěné ozdoby na boty",
+        "spots": 4,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "10-12-2026-08-17-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  },
+  {
+    "ageGroup": "16-19",
+    "ageLabel": "16–19 let",
+    "weekLabel": "17. 8. – 23. 8. 2026",
+    "weekStart": "2026-08-17",
+    "language": "CZ",
+    "spots": 7,
+    "maxCapacity": 8,
+    "registrations": 1,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "17. 8. 2026",
+        "title": "AI virtuální módní kolekce",
+        "spots": 7,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "16-19-2026-08-17-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "18. 8. 2026",
+        "title": "Modelování 3D tištěných ozdob na tričko",
+        "spots": 7,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "16-19-2026-08-17-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "19. 8. 2026",
+        "title": "3D tištěná kabelka",
+        "spots": 7,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěná kabelka",
+        "titleEn": "3D printed handbag",
+        "id": "16-19-2026-08-17-2-St",
+        "descriptionCs": "Delší fashion-tech projekt zaměřený na tvar, konstrukci a funkci 3D tištěné kabelky. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project focused on the shape, structure and function of a 3D printed handbag. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "20. 8. 2026",
+        "title": "AI reklama na šperk",
+        "spots": 7,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "16-19-2026-08-17-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "21. 8. 2026",
+        "title": "Ručně 3D tištěné ozdoby na boty",
+        "spots": 7,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "16-19-2026-08-17-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  },
+  {
+    "ageGroup": "13-15",
+    "ageLabel": "13–15 let",
+    "weekLabel": "24. 8. – 30. 8. 2026",
+    "weekStart": "2026-08-24",
+    "language": "EN",
+    "spots": 3,
+    "maxCapacity": 8,
+    "registrations": 5,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "24. 8. 2026",
+        "title": "AI virtual fashion collection",
+        "spots": 3,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "13-15-2026-08-24-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "25. 8. 2026",
+        "title": "Modelling 3D printed T-shirt decorations",
+        "spots": 3,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "13-15-2026-08-24-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "26. 8. 2026",
+        "title": "3D printed handbag",
+        "spots": 3,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěná kabelka",
+        "titleEn": "3D printed handbag",
+        "id": "13-15-2026-08-24-2-St",
+        "descriptionCs": "Delší fashion-tech projekt zaměřený na tvar, konstrukci a funkci 3D tištěné kabelky. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project focused on the shape, structure and function of a 3D printed handbag. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "27. 8. 2026",
+        "title": "AI jewellery advertisement",
+        "spots": 3,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "13-15-2026-08-24-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "28. 8. 2026",
+        "title": "Hand-finished 3D printed shoe decorations",
+        "spots": 3,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "13-15-2026-08-24-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  },
+  {
+    "ageGroup": "16-19",
+    "ageLabel": "16–19 let",
+    "weekLabel": "24. 8. – 30. 8. 2026",
+    "weekStart": "2026-08-24",
+    "language": "EN",
+    "spots": 8,
+    "maxCapacity": 8,
+    "registrations": 0,
+    "workshops": [
+      {
+        "day": "Po",
+        "date": "24. 8. 2026",
+        "title": "AI virtual fashion collection",
+        "spots": 8,
+        "time": "09:00–17:00",
+        "titleCs": "AI virtuální módní kolekce",
+        "titleEn": "AI virtual fashion collection",
+        "id": "16-19-2026-08-24-0-Po",
+        "descriptionCs": "Vizuální koncept kolekce, moodboard a práce s AI jako návrhářským nástrojem.",
+        "descriptionEn": "Create a visual collection concept, moodboard and use AI as a fashion design tool."
+      },
+      {
+        "day": "Út",
+        "date": "25. 8. 2026",
+        "title": "Modelling 3D printed T-shirt decorations",
+        "spots": 8,
+        "time": "09:00–17:00",
+        "titleCs": "Modelování 3D tištěných ozdob na tričko",
+        "titleEn": "Modelling 3D printed T-shirt decorations",
+        "id": "16-19-2026-08-24-1-Út",
+        "descriptionCs": "Návrh a modelování drobných 3D komponentů, které se dají připnout na textil.",
+        "descriptionEn": "Design and model small 3D components that can be attached to textiles."
+      },
+      {
+        "day": "St",
+        "date": "26. 8. 2026",
+        "title": "3D printed handbag",
+        "spots": 8,
+        "time": "09:00–17:00",
+        "titleCs": "3D tištěná kabelka",
+        "titleEn": "3D printed handbag",
+        "id": "16-19-2026-08-24-2-St",
+        "descriptionCs": "Delší fashion-tech projekt zaměřený na tvar, konstrukci a funkci 3D tištěné kabelky. Pokračuje ve čtvrtek i v pátek.",
+        "descriptionEn": "A longer fashion-tech project focused on the shape, structure and function of a 3D printed handbag. It continues on Thursday and Friday.",
+        "requiresThursdayAndFriday": true
+      },
+      {
+        "day": "Čt",
+        "date": "27. 8. 2026",
+        "title": "AI jewellery advertisement",
+        "spots": 8,
+        "time": "09:00–17:00",
+        "titleCs": "AI reklama na šperk",
+        "titleEn": "AI jewellery advertisement",
+        "id": "16-19-2026-08-24-3-Čt",
+        "descriptionCs": "Vizuální koncept a krátká AI reklama zaměřená na příběh, obraz a prezentaci produktu.",
+        "descriptionEn": "Create a visual concept and a short AI advertisement focused on story, imagery and product presentation."
+      },
+      {
+        "day": "Pá",
+        "date": "28. 8. 2026",
+        "title": "Hand-finished 3D printed shoe decorations",
+        "spots": 8,
+        "time": "09:00–17:00",
+        "titleCs": "Ručně 3D tištěné ozdoby na boty",
+        "titleEn": "Hand-finished 3D printed shoe decorations",
+        "id": "16-19-2026-08-24-4-Pá",
+        "descriptionCs": "Výroba nositelného detailu na boty, která propojí ruční práci a technologii 3D tisku.",
+        "descriptionEn": "Create a wearable shoe detail combining hand finishing with 3D printing technology."
+      }
+    ]
+  }
+];
+    (function() {
+      var selectedAge = '10-12';
+      function spotsLabel(n) {
+        if (n === 1) return 'zbývá 1 místo';
+        if (n > 1 && n < 5) return 'zbývají ' + n + ' místa';
+        return 'zbývá ' + n + ' míst';
+      }
+      function renderWorkshops(age) {
+        selectedAge = age || selectedAge;
+        var grid = document.getElementById('workshopWeeksGrid');
+        if (!grid || !window.workshopWeeks) return;
+        var weeks = window.workshopWeeks.filter(function(w) { return w.ageGroup === selectedAge; });
+        grid.innerHTML = weeks.map(function(week) {
+          var rows = week.workshops.map(function(item) {
+            return '<div class="workshop-day"><div class="workshop-day-tag">' + item.day + '</div><div><b>' + item.title + '</b><small>' + item.date + '</small></div><span class="workshop-spots">' + spotsLabel(item.spots) + '</span></div>';
+          }).join('');
+          var url = '/registrace?rezim=workshopy&vek=' + encodeURIComponent(week.ageGroup) + '&tyden=' + encodeURIComponent(week.weekStart);
+          if (window.currentLang === 'en') url += '&language=en';
+          return '<article class="workshop-week-card"><div class="workshop-week-top"><div><div class="age-kicker">Věková skupina</div><h3>' + week.ageLabel + '</h3><div class="workshop-meta"><span class="workshop-pill">' + week.weekLabel + '</span><span class="workshop-pill lang">' + week.language + '</span></div></div><span class="workshop-spots">' + spotsLabel(week.spots) + '</span></div><div class="workshop-day-list">' + rows + '</div><a class="mini-cta" href="' + url + '">Vybrat workshopy</a></article>';
+        }).join('');
+      }
+      function bindWorkshopFilters() {
+        document.querySelectorAll('.workshop-filter button').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.workshop-filter button').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            renderWorkshops(btn.getAttribute('data-age'));
+          });
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { bindWorkshopFilters(); renderWorkshops(selectedAge); });
+      } else { bindWorkshopFilters(); renderWorkshops(selectedAge); }
+      var originalApplyLang = window.applyLang;
+      if (typeof originalApplyLang === 'function') {
+        window.applyLang = function(lang) {
+          originalApplyLang(lang);
+          renderWorkshops(selectedAge);
+        };
+      }
+    })();
+
+    /* ── ONE-PAGE WORKSHOP RESERVATION ── */
+    (function() {
+      
+      var basePrices = { '8-9': 1288, '10-12': 1288, '13-15': 1388, '16-19': 1488 };
+      var state = { filterAge: '10-12', filterWeek: null, selected: [] };
+
+      function czMoney(n) { return new Intl.NumberFormat('cs-CZ').format(Math.round(n)) + ' Kč'; }
+      function discountRate(count) {
+        if (count >= 4) return 0.15;
+        if (count === 3) return 0.125;
+        if (count === 2) return 0.10;
+        return 0;
+      }
+      function selectedUnits() {
+        return state.selected.reduce(function(sum, item) { return sum + item.qty; }, 0);
+      }
+      function priceBreakdown() {
+        var before = state.selected.reduce(function(sum, item) { return sum + ((basePrices[item.ageGroup] || 1288) * item.qty); }, 0);
+        var rate = discountRate(selectedUnits());
+        var discount = before * rate;
+        return { before: before, after: before - discount, discount: discount, rate: rate };
+      }
+      function discountLabel(count) {
+        var rate = discountRate(count);
+        if (!rate) return 'bez slevy';
+        return 'sleva ' + (rate * 100).toString().replace('.', ',') + ' %';
+      }
+      function spotsText(n) {
+        if (n === 1) return 'zbývá 1 místo';
+        if (n > 1 && n < 5) return 'zbývají ' + n + ' místa';
+        return 'zbývá ' + n + ' míst';
+      }
+      function getTitle(week, item) {
+        return week.language === 'EN' ? (item.titleEn || item.title) : (item.titleCs || item.title);
+      }
+      function getDescription(week, item) {
+        return week.language === 'EN' ? (item.descriptionEn || item.descriptionCs || '') : (item.descriptionCs || item.descriptionEn || '');
+      }
+      function weekKey(week) { return week.ageGroup + '|' + week.weekStart + '|' + week.language; }
+      function weeksForAge() {
+        return (window.workshopWeeks || []).filter(function(w) { return w.ageGroup === state.filterAge; });
+      }
+      function syncWeekFilter() {
+        var weeks = weeksForAge();
+        if (!weeks.length) { state.filterWeek = null; return; }
+        if (!state.filterWeek || !weeks.some(function(w) { return weekKey(w) === state.filterWeek; })) {
+          state.filterWeek = weekKey(weeks[0]);
+        }
+      }
+      function allWorkshopItems() {
+        var out = [];
+        (window.workshopWeeks || []).forEach(function(week) {
+          (week.workshops || []).forEach(function(item, idx) {
+            out.push({ id: item.id || (week.ageGroup + '-' + week.weekStart + '-' + idx), week: week, item: item, title: getTitle(week, item), description: getDescription(week, item) });
+          });
+        });
+        return out;
+      }
+      function selectedItem(id) { return state.selected.find(function(x) { return x.id === id; }); }
+      function selectedQty(id) { var item = selectedItem(id); return item ? item.qty : 0; }
+      function changeQty(id, delta) {
+        var found = allWorkshopItems().find(function(x) { return x.id === id; });
+        if (!found) return;
+        var existing = selectedItem(id);
+        var current = existing ? existing.qty : 0;
+        var next = current + delta;
+        var max = Math.max(0, found.item.spots || 0);
+        if (next < 0) next = 0;
+        if (next > max) next = max;
+        if (next === 0) {
+          state.selected = state.selected.filter(function(x) { return x.id !== id; });
+        } else if (existing) {
+          existing.qty = next;
+        } else {
+          state.selected.push({
+            id: found.id, title: found.title, date: found.item.date, day: found.item.day,
+            time: found.item.time || '09:00–17:00', ageLabel: found.week.ageLabel,
+            ageGroup: found.week.ageGroup, language: found.week.language, spots: found.item.spots, qty: next, requiresThursdayAndFriday: !!found.item.requiresThursdayAndFriday, weekStart: found.week.weekStart
+          });
+        }
+        renderBooking();
+      }
+
+      function shortWeekLabel(label) {
+        return (label || '').replace(/\s*2026/g, '').replace(/\s+–\s+/g, ' – ').trim();
+      }
+
+      function renderWeekFilters() {
+        var wrap = document.getElementById('bookingWeekList');
+        if (!wrap) return;
+        syncWeekFilter();
+        var weeks = weeksForAge();
+        if (!weeks.length) {
+          wrap.innerHTML = '<div class="booking-empty">Pro tuto věkovou skupinu teď nejsou vypsané termíny.</div>';
+          return;
+        }
+        wrap.innerHTML = weeks.map(function(w) {
+          var key = weekKey(w);
+          return '<button type="button" class="booking-week-btn' + (state.filterWeek === key ? ' active' : '') + '" data-week="' + key + '">' + shortWeekLabel(w.weekLabel) + ' · ' + w.language + '</button>';
+        }).join('');
+        wrap.querySelectorAll('.booking-week-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() { state.filterWeek = btn.getAttribute('data-week'); renderBooking(); });
+        });
+      }
+      function qtyControl(id, qty, max) {
+        return '<span class="booking-qty" data-id="' + id + '"><button type="button" class="qty-btn qty-minus" aria-label="Odebrat" ' + (qty <= 0 ? 'disabled' : '') + '>−</button><span class="qty-num">' + qty + '</span><button type="button" class="qty-btn qty-plus" aria-label="Přidat" ' + (qty >= max ? 'disabled' : '') + '>+</button></span>';
+      }
+      function bindQtyButtons(root) {
+        root.querySelectorAll('.booking-qty').forEach(function(wrap) {
+          var id = wrap.getAttribute('data-id');
+          var minus = wrap.querySelector('.qty-minus');
+          var plus = wrap.querySelector('.qty-plus');
+          if (minus) minus.addEventListener('click', function() { changeQty(id, -1); });
+          if (plus) plus.addEventListener('click', function() { changeQty(id, 1); });
+        });
+      }
+      function renderBooking() {
+        renderWeekFilters();
+        var list = document.getElementById('bookingWorkshopList');
+        if (!list) return;
+        var items = allWorkshopItems().filter(function(x) { return weekKey(x.week) === state.filterWeek; });
+        list.innerHTML = items.map(function(x) {
+          var qty = selectedQty(x.id);
+          return '<div class="booking-workshop' + (qty > 0 ? ' selected' : '') + '">' +
+            '<span class="booking-day">' + x.item.day + '</span>' +
+            '<span class="booking-workshop-date-wrap"><b class="booking-workshop-date">' + x.item.date + '</b><span class="booking-workshop-time">' + (x.item.time || '09:00–17:00') + '</span></span>' +
+            '<span class="booking-workshop-copy"><b class="booking-workshop-title">' + x.title + '</b><span class="booking-workshop-desc">' + x.description + (x.item.requiresFollowingDay ? ' <strong>Lze rezervovat pouze pokud přidáte i ČT a PÁ ve stejném počtu (projekt pokračuje 3 dny).</strong>' : '') + '</span></span>' +
+            '<span class="booking-spots">' + spotsText(x.item.spots) + '</span>' +
+            qtyControl(x.id, qty, x.item.spots || 0) +
+          '</div>';
+        }).join('') || '<div class="booking-empty">Pro zvolený termín teď nejsou dostupné workshopy.</div>';
+        bindQtyButtons(list);
+        updateSummary();
+      }
+      function updateSummary() {
+        var summary = document.getElementById('bookingSummary');
+        if (!summary) return;
+        var count = selectedUnits();
+        var mobileCount = document.getElementById('mobileCartCount');
+        if (mobileCount) mobileCount.textContent = count;
+        var pricing = priceBreakdown();
+        var priceHtml = count > 1
+          ? '<s>' + czMoney(pricing.before) + '</s><b>' + czMoney(pricing.after) + '</b><small>' + discountLabel(count) + '</small>'
+          : '<b>' + czMoney(pricing.after) + '</b><small>' + discountLabel(count) + '</small>';
+        var extra = count === 1 ? '<div class="booking-upsell">Tip: přidejte druhý workshop a získáte 10% slevu.</div>' : '';
+        var list = count ? '<ul class="booking-selected-list">' + state.selected.map(function(v) {
+          return '<li><div><b>' + v.title + '</b><span>' + v.day + ' ' + v.date + ' · ' + v.time + ' · ' + v.ageLabel + ' · ' + v.language + '</span></div>' + qtyControl(v.id, v.qty, v.spots || 0) + '</li>';
+        }).join('') + '</ul>' : '';
+        summary.innerHTML = '<div class="booking-summary-top"><div><strong>Váš výběr</strong><span>' + (count ? 'Celkem' : 'Zatím není vybraný žádný workshop.') + '</span>' + extra + '</div><div class="booking-price">' + priceHtml + '</div></div>' + list;
+        bindQtyButtons(summary);
+      }
+      function bindBooking() {
+        document.querySelectorAll('.booking-age-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.booking-age-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            state.filterAge = btn.getAttribute('data-age') || '10-12';
+            state.filterWeek = null;
+            renderBooking();
+          });
+        });
+        var mobileCart = document.getElementById('mobileCartLink');
+        if (mobileCart) mobileCart.addEventListener('click', function(event) {
+          document.body.classList.remove('nav-open');
+          var target = document.getElementById('vas-vyber');
+          if (target) {
+            event.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+        renderBooking();
+      }
+
+      function hasRequiredThursdayAndFridayForWednesday() {
+        var byWeek = {};
+        state.selected.forEach(function(item) {
+          var key = item.ageGroup + '|' + item.weekStart + '|' + item.language;
+          if (!byWeek[key]) byWeek[key] = { wedQty: 0, thuQty: 0, friQty: 0 };
+          if (item.day === 'St' && item.qty > 0) byWeek[key].wedQty += item.qty;
+          if (item.day === 'Čt' && item.qty > 0) byWeek[key].thuQty += item.qty;
+          if (item.day === 'Pá' && item.qty > 0) byWeek[key].friQty += item.qty;
+        });
+        return Object.keys(byWeek).every(function(key) {
+          var group = byWeek[key];
+          return group.wedQty === 0 || (group.thuQty >= group.wedQty && group.friQty >= group.wedQty);
+        });
+      }
+
+      function validateBooking() {
+        var error = document.getElementById('bookingError');
+        error.style.display = 'none';
+        var required = [
+          ['bookingParentFirstName','Jméno rodiče'],
+          ['bookingParentLastName','Příjmení rodiče'],
+          ['bookingEmail','E-mail rodiče'],
+          ['bookingPhone','Telefon'],
+          ['bookingParticipants','Křestní jména a věk účastnic']
+        ];
+        var missing = required.filter(function(pair) { var el = document.getElementById(pair[0]); return !el || !el.value.trim(); }).map(function(pair) { return pair[1]; });
+        if (!selectedUnits()) missing.push('Alespoň jeden workshop');
+        if (!hasRequiredThursdayAndFridayForWednesday()) missing.push('Středeční workshop lze rezervovat pouze pokud přidáte i ČT a PÁ ve stejném termínu a ve stejném počtu (projekt pokračuje 3 dny)');
+        if (!document.getElementById('bookingConsent').checked) missing.push('Souhlas s podmínkami');
+        if (missing.length) { error.textContent = 'Vyplňte prosím: ' + missing.join(', '); error.style.display = 'block'; error.scrollIntoView({behavior:'smooth', block:'nearest'}); return false; }
+        return true;
+      }
+      window.submitOnePageReservation = function(mode) {
+        mode = mode || 'reserve';
+        if (!validateBooking()) return;
+        var error = document.getElementById('bookingError');
+        var reserveBtn = document.getElementById('bookingSubmit');
+        var payBtn = document.getElementById('bookingPaySubmit');
+        var activeBtn = mode === 'pay' ? payBtn : reserveBtn;
+        var now = new Date();
+        var pad = function(n) { return n < 10 ? '0' + n : '' + n; };
+        var id = now.getFullYear().toString() + pad(now.getMonth()+1) + pad(now.getDate()) + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
+        var submittedAt = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + ' ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+        var count = selectedUnits();
+        var pricing = priceBreakdown();
+        var payload = {
+          'ID přihlášky': id,
+          'Datum a čas přihlášky': submittedAt,
+          'Režim přihlášky': mode === 'pay' ? 'Zakoupení' : 'Rezervace',
+          'Jméno rodiče': document.getElementById('bookingParentFirstName').value.trim(),
+          'Příjmení rodiče': document.getElementById('bookingParentLastName').value.trim(),
+          'Telefon': document.getElementById('bookingPhone').value.trim(),
+          'Email rodiče': document.getElementById('bookingEmail').value.trim(),
+          'Účastnice': document.getElementById('bookingParticipants').value.trim(),
+          'Vybrané workshopy': state.selected.map(function(v) {
+            return v.qty + '× ' + v.title + ' · ' + v.day + ' ' + v.date + ' · ' + v.time + ' · ' + v.ageLabel + ' · ' + v.language;
+          }).join('\\n'),
+          'Počet workshopů': count,
+          'Sleva procento': discountLabel(count),
+          'Cena před slevou': czMoney(pricing.before),
+          'Sleva': czMoney(pricing.discount),
+          'Cena po slevě': czMoney(pricing.after),
+          'Cena po slevě haléře': Math.round(pricing.after * 100),
+          'Stripe link': '-',
+          'Jazyk přihlášky': window.currentLang === 'en' ? 'EN' : 'CZ'
+        };
+        reserveBtn.disabled = true; payBtn.disabled = true;
+        activeBtn.textContent = mode === 'pay' ? 'Připravuji platbu…' : 'Odesílám rezervaci…';
+        fetch('https://hook.eu1.make.com/m7d9uwdxvqtuimy5vyf4s8lmu1bffdg3', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Status: ' + res.status);
+          return res.text().then(function(text) {
+            if (!text) return {};
+            try { return JSON.parse(text); } catch (e) { return {}; }
+          });
+        })
+        .then(function(data) {
+          if (mode === 'pay') {
+            if (!data.checkout_url) throw new Error('Make nevrátil checkout_url.');
+            window.location.href = data.checkout_url;
+            return;
+          }
+          window.location.href = data.redirect_url || './dekujeme';
+        })
+        .catch(function(err) {
+          error.textContent = 'Rezervaci se nepodařilo odeslat. Zkuste to prosím znovu nebo napište na hello@make-ful.com. ' + (err.message || '');
+          error.style.display = 'block';
+          reserveBtn.innerHTML = 'Rezervovat <span>(platit do 3 dnů)</span>';
+          payBtn.textContent = 'Zakoupit ihned';
+          reserveBtn.disabled = false; payBtn.disabled = false;
+        });
+      };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindBooking); else bindBooking();
+    })();
+
   </script>
 
 </body>
