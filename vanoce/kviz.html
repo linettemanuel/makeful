@@ -564,7 +564,7 @@
       <p class="q-sub" id="doneText"></p>
       <div class="deal" id="bankBox">
         <p class="deal-text" id="bankText"></p>
-        <img id="bankQr" alt="QR kód pro platbu" hidden style="display:block;width:200px;height:200px;margin:12px auto 0">
+        <div id="payBox"></div>
       </div>
     </div>
   </section>
@@ -1454,8 +1454,10 @@
           dl({event:'order_submitted',source:'quiz',payment:'bank',order_number:number,currency:'CZK',value:tot,ecommerce:{transaction_id:number,currency:'CZK',value:tot,items:mfItems()}});
           if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · převod',addonsNote());
           $('doneText').textContent='Objednávku č. '+number+' jsme přijali. Stejné údaje i QR kód jsme vám poslali e-mailem.';
-          $('bankText').innerHTML='Prosíme o úhradu <b>do 24 hodin</b>.<br>Číslo účtu: <b>3623366010/3030</b><br>Variabilní symbol: <b>'+number+'</b><br>Částka: <b>'+fmt(tot)+'</b>';
-          try{var q=new URL(String(res.qrUrl||''));if(q.protocol==='https:'&&q.hostname==='api.qrserver.com'){$('bankQr').src=q.href;$('bankQr').hidden=false;}}catch(e){}
+          $('bankText').innerHTML='Prosíme o úhradu <b>do 24 hodin</b>.';
+          $('payBox').innerHTML='';
+          if(window.MakefulQrPay)window.MakefulQrPay.render($('payBox'),{qrUrl:res.qrUrl,account:'3623366010/3030',amount:tot,vs:number});
+          else $('bankText').innerHTML+='<br>Číslo účtu: <b>3623366010/3030</b><br>Variabilní symbol: <b>'+number+'</b><br>Částka: <b>'+fmt(tot)+'</b>';
           try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id')}catch(e){}
           setView('doneScreen');return;
         }
@@ -1493,5 +1495,6 @@
 })();
 </script>
 <script src="assets/ai-label.js" defer></script>
+<script src="assets/qr-pay.js" defer></script>
 </body>
 </html>
