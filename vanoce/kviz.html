@@ -324,6 +324,12 @@
     .card-head strong { display: block; font-size: 17px; line-height: 1.3; }
     .card-head span { display: block; margin-top: 3px; font-size: 14px; color: var(--muted); font-weight: 600; }
     .deal-badge { display: inline-block; margin-bottom: 8px; padding: 6px 10px; border-radius: 8px; background: #b12260; color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .04em; }
+    .media-block.has-video { position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .media-block.has-video::after { content: ""; position: absolute; left: 50%; top: calc(50% - 22px); width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+      background: rgba(255,255,255,.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23111633'/%3E%3C/svg%3E") 55% 50% / 30px no-repeat;
+      box-shadow: 0 6px 18px rgba(17,22,51,.25); pointer-events: none; transition: opacity .2s; }
+    .media-block.has-video:not(:has(.media-cap))::after { top: 50%; }
+    .media-block.has-video.is-playing::after { opacity: 0; }
     .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
     .sticky-assurance { margin: 6px 0 0; text-align: center; font-size: 12.5px; font-weight: 700; color: #364360; }
     .result { padding-bottom: 170px; }
@@ -1079,12 +1085,25 @@
   // Média rozbíjí text: nahoře fotka v barvě, pod důvody video, nad balením fotka, před FAQ druhé video
   function putMedia(id, m, alt) {
     const box = $(id); box.innerHTML = '';
+    const blk = box.closest('.media-block') || box; blk.classList.remove('has-video', 'is-playing');
     if (!m) { (box.closest('.media-block') || box).hidden = true; return; }
     (box.closest('.media-block') || box).hidden = false;
     const el = mediaEl(m, alt);
     if (el.tagName === 'IMG' && id !== 'heroMedia') el.loading = 'lazy';
     box.appendChild(el);
-    if (el.tagName === 'VIDEO') { el.autoplay = true; videoObserver.observe(el); }
+    if (el.tagName === 'VIDEO') { el.autoplay = true; videoObserver.observe(el); makeTappable(el, box.closest('.media-block') || box); }
+  }
+  // Video jde vždy spustit klepnutím (iPhone v úsporném režimu automatické přehrávání blokuje)
+  function makeTappable(v, block) {
+    block.classList.add('has-video');
+    const sync = () => block.classList.toggle('is-playing', !v.paused);
+    ['play', 'playing', 'pause', 'ended'].forEach(ev => v.addEventListener(ev, sync));
+    if (block.dataset.tap) return;
+    block.dataset.tap = '1';
+    block.addEventListener('click', () => {
+      const vid = block.querySelector('video'); if (!vid) return;
+      if (vid.paused) { vid.muted = true; vid.play().catch(() => {}); } else vid.pause();
+    });
   }
   const videoObserver = 'IntersectionObserver' in window
     ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.35 })
