@@ -93,9 +93,14 @@ function showCartStatus(message){
   if(!status){status=document.createElement('div');status.id='cart-status';status.className='cart-toast';status.setAttribute('role','status');document.body.append(status);}
   status.replaceChildren(document.createTextNode(message+' '));
   const link=document.createElement('a');link.href='objednavka.html';link.textContent='Přejít do košíku →';status.append(link);
+  status.hidden=false;clearTimeout(showCartStatus.t);showCartStatus.t=setTimeout(()=>{status.hidden=true},3500);
 }
 /* Měření pro GTM (Facebook Pixel, GA4): události do dataLayer */
-function mfTrack(event,params={}){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,...params});}catch{}}
+function mfTrack(event,params={}){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,source:'eshop',...params});}catch{}}
+// Cena košíku po slevě (ověřený promokód, nebo 1 + 1 / máma a dcera z nabídky)
+function mfCartValue(list=cart){const sub=mfValue(list);if(typeof appliedPromo!=='undefined'&&appliedPromo)return sub-promoDiscount(sub);let code='';try{code=localStorage.getItem(CART_PROMO_KEY)||''}catch{}const pr=KNOWN_PROMOS[code];return pr?sub-(pr.pct?Math.round(sub*pr.pct/100):Math.min(pr.kc,sub)):sub;}
+// Přechod na jinou stránku až poté, co GTM zpracuje předchozí událost (nejdéle 0,8 s)
+function goAfterTrack(url){let gone=false;const go=()=>{if(gone)return;gone=true;location.href=url};try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'mf_navigate',eventCallback:()=>setTimeout(go,150),eventTimeout:700});}catch{}setTimeout(go,800);}
 function mfItems(list){return list.map(i=>({item_id:i.variant,item_name:LABELS[i.variant],price:PRICES[i.variant],quantity:i.qty}));}
 function mfValue(list){return list.reduce((n,i)=>n+PRICES[i.variant]*i.qty,0);}
 function addToCart(variant,qty=1,options={}){
@@ -111,7 +116,7 @@ function addToCart(variant,qty=1,options={}){
   }
   let item=cart.find(i=>i.variant===variant&&(!partsOf(variant).length||(i.wallet===next.wallet&&i.clutch===next.clutch&&i.clutchName===next.clutchName)));
   if(item)item.qty+=qty;else{item=next;cart.push(item);}
-  saveCart();showCartStatus('Dáreček je v košíku.');mfTrack('add_to_cart',{currency:'CZK',value:PRICES[variant]*qty,ecommerce:{currency:'CZK',value:PRICES[variant]*qty,items:mfItems([{variant,qty}])}});return item;
+  saveCart();showCartStatus('Dáreček je v košíku.');{const pr=KNOWN_PROMOS[options.promo||''],base=PRICES[variant]*qty,tv=pr?base-(pr.pct?Math.round(base*pr.pct/100):Math.min(pr.kc,base)):base;mfTrack('add_to_cart',{currency:'CZK',value:tv,ecommerce:{currency:'CZK',value:tv,items:mfItems([{variant,qty}])}});}return item;
 }
 function toggleMenu(){
   const open=document.body.classList.toggle('nav-open');
@@ -126,12 +131,12 @@ document.addEventListener('click',e=>{
     if(add.closest('.offer-card')&&partsOf(variant).length){e.preventDefault();openQuickAdd(variant,{qty:addQty,promo:addPromo,go:!!buy});return;}
     if(add.closest('.sales-card')&&(variant==='balicek'||variant==='combo')&&!add.hasAttribute('data-quick-confirmed')){openQuickAdd(variant);return;}
     if(buy)e.preventDefault();
-    if(add.closest('.offer-card')){const item=addToCart(variant,addQty);if(item){setCartPromo(addPromo);if(buy)location.href='objednavka.html?item='+encodeURIComponent(item.id);}return;}
+    if(add.closest('.offer-card')){const item=addToCart(variant,addQty,{promo:addPromo});if(item){setCartPromo(addPromo);updateCartBar();if(buy)goAfterTrack('objednavka.html?item='+encodeURIComponent(item.id));}return;}
     const qtyInput=add.hasAttribute('data-use-product-qty')?document.getElementById('product-qty'):null;
     if(qtyInput&&!qtyInput.reportValidity())return;
     const options=add.hasAttribute('data-use-product-qty')?readProductOptions():{};
     const item=addToCart(variant,qtyInput?Number(qtyInput.value):1,options);
-    if(buy&&item)location.href='objednavka.html?item='+encodeURIComponent(item.id);return;
+    if(buy&&item)goAfterTrack('objednavka.html?item='+encodeURIComponent(item.id));return;
   }
   const upsell=e.target.closest('[data-upsell]');if(upsell){openQuickAdd(upsell.dataset.upsell||'combo');return;}
   const edit=e.target.closest('[data-edit-cart]');
@@ -218,11 +223,13 @@ document.addEventListener('click',e=>{
   const ad=e.target.closest('[data-cart-addon]');
   if(ad){addToCart(ad.dataset.cartAddon,1);updateOrderUI(false);return;}
 });
-document.addEventListener('change',e=>{
+// 'input' přichází dřív než 'change' a formulář na něj překresluje souhrn, proto zachytáváme už 'input'
+document.addEventListener('input',e=>{
   const r=e.target.closest('[data-cart-ret]');if(!r)return;e.stopPropagation();
   if(r.checked){if(!cart.some(i=>i.variant==='vraceni30'))addToCart('vraceni30',1);}else cart=cart.filter(i=>i.variant!=='vraceni30');
   saveCart();updateOrderUI(false);
 },true);
+document.addEventListener('change',e=>{if(e.target.closest('[data-cart-ret]'))e.stopPropagation();},true);
 function buildOrderLines(f){
   const lines=['Vánoční objednávka Makeful',''];
   for(const i of cart){
@@ -297,7 +304,7 @@ function showOrderResult(html,tone='info'){
   const box=document.getElementById('order-result');if(!box)return;
   box.innerHTML=html;box.hidden=false;box.dataset.tone=tone;box.scrollIntoView({behavior:'smooth',block:'center'});
 }
-function finishSuccessfulOrder(){cart=[];saveCart();try{localStorage.removeItem(CART_PROMO_KEY);localStorage.removeItem('makeful-quiz-offer-2026')}catch{}clearOrderDraft();updateOrderUI(false);}
+function finishSuccessfulOrder(){cart=[];saveCart();try{sessionStorage.removeItem('makeful-bc-sent');localStorage.removeItem(CART_PROMO_KEY);localStorage.removeItem('makeful-quiz-offer-2026')}catch{}clearOrderDraft();updateOrderUI(false);}
 const ORDER_ERRORS={
   retry:()=>'Objednávku se teď nepodařilo uložit. Zkuste ji prosím za chvíli odeslat znovu.',
   closed:()=>'Vánoční objednávky jsme uzavřeli 30. listopadu 2026. Pokud něco potřebujete, napište nám na '+MAIL_TO+'.',
@@ -330,11 +337,11 @@ async function submitOrder(e){
         if(destination.protocol!=='https:'||!['checkout.stripe.com','buy.stripe.com'].includes(destination.hostname))throw new Error('Invalid payment destination');
         // Na Stripe až poté, co GTM odešle tagy na order_submitted (Purchase), nejdéle za 1,5 s
         let gone=false;const go=()=>{if(gone)return;gone=true;window.location.assign(destination.href)};
-        mfTrack('order_submitted',{payment:'card',order_number:number,currency:'CZK',value:mfValue(cart),ecommerce:{transaction_id:number,currency:'CZK',value:mfValue(cart),items:mfItems(cart)},eventCallback:()=>setTimeout(go,100),eventTimeout:1300});try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number,value:mfValue(cart),items:mfItems(cart)}))}catch{}
+        const ov=Number.isFinite(response.total)?response.total:mfCartValue();mfTrack('order_submitted',{payment:'card',order_number:number,currency:'CZK',value:ov,ecommerce:{transaction_id:number,currency:'CZK',value:ov,items:mfItems(cart)},eventCallback:()=>setTimeout(go,100),eventTimeout:1300});try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number,value:ov,items:mfItems(cart)}))}catch{}
         status.textContent='Přesměrováváme vás na zabezpečenou platbu kartou…';
         setTimeout(go,1500);return;
       }
-      mfTrack('order_submitted',{payment:'bank',order_number:number,currency:'CZK',value:mfValue(cart),ecommerce:{transaction_id:number,currency:'CZK',value:mfValue(cart),items:mfItems(cart)}});
+      {const ov=Number.isFinite(response.total)?response.total:mfCartValue();mfTrack('order_submitted',{payment:'bank',order_number:number,currency:'CZK',value:ov,ecommerce:{transaction_id:number,currency:'CZK',value:ov,items:mfItems(cart)}});}
       status.style.display='none';
       const total=Number.isFinite(response.total)?money(response.total):'';
       let qr='';try{const q=new URL(String(response.qrUrl||''));if(q.protocol==='https:'&&q.hostname==='api.qrserver.com')qr=`<img class="order-qr" src="${escapeHtml(q.href)}" width="180" height="180" alt="QR kód pro platbu">`}catch{}
@@ -354,7 +361,7 @@ function handlePaymentReturn(){
   const number=String(params.get('objednavka')||'').replace(/[^0-9]/g,'');
   if(state==='ok'){
     let paid=null;try{paid=JSON.parse(sessionStorage.getItem('makeful-paid-order')||'null');sessionStorage.removeItem('makeful-paid-order')}catch{}
-    const pv=paid?.value||mfValue(cart),pi=paid?.items||mfItems(cart);
+    const pv=paid?.value||mfCartValue(),pi=paid?.items||mfItems(cart);
     mfTrack('purchase',{payment:'card',order_number:number,currency:'CZK',value:pv,ecommerce:{transaction_id:number,currency:'CZK',value:pv,items:pi}});
     showOrderResult(`<strong>Děkujeme za objednávku${number?' č. '+escapeHtml(number):''}!</strong><br>Platbu teď ověřujeme u platební brány Stripe. Jakmile ji potvrdí, pošleme vám e-mail. Obvykle to trvá jen pár minut.`,'success');
     finishSuccessfulOrder();
@@ -388,10 +395,10 @@ function initQuickAdd(){
     const o={wallet:dialog.querySelector('[data-quick-wallet]').value,clutch:dialog.querySelector('[data-quick-clutch]').value},qty=quickAddOpts.qty||1;
     const n1=dialog.querySelector('[data-quick-name]').value,n2=dialog.querySelector('[data-quick-name2]')?.value||'';
     let item;
-    if(qty===2&&partsOf(quickAddVariant).includes('clutch')&&n1.trim()!==n2.trim()){item=addToCart(quickAddVariant,1,{...o,clutchName:n1});if(item)addToCart(quickAddVariant,1,{...o,clutchName:n2});}
-    else item=addToCart(quickAddVariant,qty,{...o,clutchName:n1});
-    if(!item)return;setCartPromo(quickAddOpts.promo);dialog.close();
-    if(quickAddOpts.go)location.href='objednavka.html?item='+encodeURIComponent(item.id);
+    if(qty===2&&partsOf(quickAddVariant).includes('clutch')&&n1.trim()!==n2.trim()){item=addToCart(quickAddVariant,1,{...o,clutchName:n1,promo:quickAddOpts.promo});if(item)addToCart(quickAddVariant,1,{...o,clutchName:n2,promo:quickAddOpts.promo});}
+    else item=addToCart(quickAddVariant,qty,{...o,clutchName:n1,promo:quickAddOpts.promo});
+    if(!item)return;setCartPromo(quickAddOpts.promo);updateCartBar();dialog.close();
+    if(quickAddOpts.go)goAfterTrack('objednavka.html?item='+encodeURIComponent(item.id));
   });
 }
 function initStandaloneQuiz(){
@@ -422,7 +429,7 @@ function initStandaloneQuiz(){
   quiz.querySelectorAll('input[type="radio"]').forEach(input=>input.addEventListener('change',()=>{error.hidden=true;showReaction(input.value)}));
   next.addEventListener('click',()=>{const chosen=quiz.querySelector(`input[name="sq${current+1}"]:checked`);if(!chosen){error.hidden=false;return}if(current<steps.length-1){feedback.hidden=true;steps[current].hidden=true;current++;steps[current].hidden=false;next.textContent='Pokračovat →';updateProgress();window.scrollTo({top:0,behavior:'smooth'})}else showResult()});
   back?.addEventListener('click',()=>{if(!feedback.hidden){feedback.hidden=true;steps[current].hidden=false;return}if(current>0){steps[current].hidden=true;current--;steps[current].hidden=false;updateProgress()}else location.href='kviz.html'});
-  quiz.querySelector('[data-standalone-buy]')?.addEventListener('click',e=>{const variant=e.currentTarget.dataset.quizVariant;if(variant!=='voucher'){location.href='kreativni-balicek.html'+(variant==='combo'?'#kombinace':'');return}const item=addToCart(variant);if(item)location.href='objednavka.html?item='+encodeURIComponent(item.id)});
+  quiz.querySelector('[data-standalone-buy]')?.addEventListener('click',e=>{const variant=e.currentTarget.dataset.quizVariant;if(variant!=='voucher'){location.href='kreativni-balicek.html'+(variant==='combo'?'#kombinace':'');return}const item=addToCart(variant);if(item)goAfterTrack('objednavka.html?item='+encodeURIComponent(item.id))});
   quiz.querySelector('[data-standalone-upsell]')?.addEventListener('click',()=>{location.href='kreativni-balicek.html#kombinace'});
   updateProgress();
 }
@@ -446,8 +453,8 @@ function initQuiz(){
   dialog.querySelector('[data-quiz-close]')?.addEventListener('click',()=>dialog.close());
   next?.addEventListener('click',()=>{const chosen=dialog.querySelector(`input[name="q${current+1}"]:checked`);if(!chosen){error.hidden=false;return}error.hidden=true;if(current<steps.length-1){steps[current].hidden=true;current++;steps[current].hidden=false;back.hidden=false;progress.textContent='Otázka '+(current+1)+' ze '+steps.length;if(current===steps.length-1)next.textContent='Zobrazit doporučení →'}else showResult()});
   back?.addEventListener('click',()=>{if(current>0){steps[current].hidden=true;current--;steps[current].hidden=false;progress.textContent='Otázka '+(current+1)+' ze '+steps.length;next.textContent='Další otázka →';if(current===0)back.hidden=true}});
-  dialog.querySelector('[data-quiz-buy]')?.addEventListener('click',e=>{const variant=e.currentTarget.dataset.quizVariant;const item=addToCart(variant);if(item){dialog.close();location.href='objednavka.html?item='+encodeURIComponent(item.id)}});
-  dialog.querySelector('[data-quiz-upsell]')?.addEventListener('click',()=>{const item=addToCart('combo');if(item){dialog.close();location.href='objednavka.html?item='+encodeURIComponent(item.id)}});
+  dialog.querySelector('[data-quiz-buy]')?.addEventListener('click',e=>{const variant=e.currentTarget.dataset.quizVariant;const item=addToCart(variant);if(item){dialog.close();goAfterTrack('objednavka.html?item='+encodeURIComponent(item.id))}});
+  dialog.querySelector('[data-quiz-upsell]')?.addEventListener('click',()=>{const item=addToCart('combo');if(item){dialog.close();goAfterTrack('objednavka.html?item='+encodeURIComponent(item.id))}});
   dialog.querySelector('[data-quiz-restart]')?.addEventListener('click',reset);
 }
 function initProductMedia(){
@@ -484,7 +491,7 @@ function initProductMedia(){
 document.addEventListener('play',event=>{if(event.target instanceof HTMLVideoElement)document.querySelectorAll('video').forEach(video=>{if(video!==event.target)video.pause();});},true);
 document.addEventListener('DOMContentLoaded',()=>{
   {const v={'kreativni-balicek.html':'balicek','voucher.html':'voucher'}[location.pathname.split('/').pop()];if(v)mfTrack('view_item',{currency:'CZK',value:PRICES[v],ecommerce:{currency:'CZK',value:PRICES[v],items:mfItems([{variant:v,qty:1}])}});}
-  if(document.getElementById('order-form')&&cart.length&&!new URLSearchParams(location.search).get('platba'))mfTrack('begin_checkout',{currency:'CZK',value:mfValue(cart),ecommerce:{currency:'CZK',value:mfValue(cart),items:mfItems(cart)}});
+  if(document.getElementById('order-form')&&cart.length&&!new URLSearchParams(location.search).get('platba')){const sig=JSON.stringify(cart.map(i=>[i.variant,i.qty]));let seen='';try{seen=sessionStorage.getItem('makeful-bc-sent')||''}catch{}if(seen!==sig){const v=mfCartValue();mfTrack('begin_checkout',{currency:'CZK',value:v,ecommerce:{currency:'CZK',value:v,items:mfItems(cart)}});try{sessionStorage.setItem('makeful-bc-sent',sig)}catch{}}}
   saveCart();initProductMedia();initProductOptions();initAboutPhotos();initAboutMedia();initCartEditor();initQuickAdd();initQuiz();initStandaloneQuiz();
   const form=document.getElementById('order-form');if(!form)return;
   const params=new URLSearchParams(location.search);const preset=params.get('variant')||({balicek:'balicek',voucher:'voucher',oba:'combo'}[params.get('product')]);
