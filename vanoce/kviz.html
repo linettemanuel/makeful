@@ -1433,7 +1433,7 @@
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
     setView('orderScreen');
-    dl({event:'begin_checkout',source:'quiz',ecommerce:ecom()});
+    dl({event:'begin_checkout',source:'quiz',currency:'CZK',value:total(),ecommerce:ecom()});
     if(window.__mfMarkUrl)window.__mfMarkUrl('checkout');
     saveQuizCart();
   }
