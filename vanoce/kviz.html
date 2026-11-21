@@ -622,7 +622,7 @@
     balicek:     { now: 1188 },
     voucher488:  { now: 488 },
     voucher888:  { now: 888 },
-    voucher1288: { now: 1288 },
+    voucher:     { now: 1188 },
     combo:       { now: 2138 }
   };
   Object.keys(PRICES).forEach(k => { PRICES[k].old = PRICES[k].now + DISCOUNT; });
@@ -913,7 +913,7 @@
     const wantsVoucher = a.format === FORMAT.out;
     if (a.budget === BUDGET.low) return wantsVoucher ? 'voucher488' : 'penezenka';
     if (a.budget === BUDGET.mid) return wantsVoucher ? 'voucher888' : 'psanicko';
-    return wantsVoucher ? 'voucher1288' : 'balicek';
+    return wantsVoucher ? 'voucher' : 'balicek';
   }
 
   function buildProfile() {
@@ -1038,7 +1038,7 @@
     },
     voucher488:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
     voucher888:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
-    voucher1288: Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
+    voucher: Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
     combo: {
       title: 'Celý balíček: peněženka + psaníčko + knížka + voucher na workshop',
       moment: 'O Vánocích tvoření doma pod stromečkem, během roku workshop s designérkou. Dárek, na který bude vzpomínat celý rok.',
@@ -1333,8 +1333,30 @@
         img: g.src || g.poster || '', href: 'kviz.html?nabidka=' + encodeURIComponent(v) + '&barva=' + encodeURIComponent(currentColor()), at: Date.now() }));
     } catch (e) {}
   }
+  // Nabídka do košíku e-shopu (objednavka.html): 1 + 1 = 2 kusy + promokód, který Make přepočítá
+  const CART_KEY = 'makeful-christmas-cart-2026', CART_PROMO_KEY = 'makeful-cart-promo-2026';
+  const CART_PROMO = { penezenka2: 'SESTRY20', psanicko2: 'SESTRY20', balicek2: 'SESTRY20', psanickoMD: 'MAMADCERA' };
+  function addOfferToCart() {
+    try {
+      const v = state.activeVariant, base = baseOf(v), qty = TWO_PCS[v] ? 2 : 1, c = currentColor();
+      const mat = MAT[c] ? c : 'Svítí ve tmě', parts = { penezenka: ['wallet'], psanicko: ['clutch'], balicek: ['wallet', 'clutch'], combo: ['wallet', 'clutch'] }[base] || [];
+      const it = { variant: base, qty, wallet: parts.includes('wallet') ? mat : 'Svítí ve tmě', clutch: parts.includes('clutch') ? mat : 'Svítí ve tmě', clutchName: parts.includes('clutch') && state.name ? String(state.name).slice(0, 60) : '' };
+      let cart = []; try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); if (!Array.isArray(cart)) cart = []; } catch (e) { cart = []; }
+      let found = cart.find(i => i && i.variant === it.variant && (!parts.length || (i.wallet === it.wallet && i.clutch === it.clutch && (i.clutchName || '') === it.clutchName)));
+      if (found) { if (found.qty < qty) found.qty = qty; }
+      else { found = Object.assign({ id: 'item-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) }, it); cart.push(found); }
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      if (CART_PROMO[v]) localStorage.setItem(CART_PROMO_KEY, CART_PROMO[v]);
+      try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: PRICES[v].now }); } catch (e) {}
+      return found.id;
+    } catch (e) { return ''; }
+  }
+  // Zavření kvízu po výsledku: nabídka zůstane v košíku i jako lišta na hlavní stránce
+  document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').addEventListener('click', function () {
+    if (!window.__mfOffer && ['resultScreen', 'orderScreen'].includes(state.view)) addOfferToCart();
+  });
   const _rrc = renderResultCard;
-  renderResultCard = function () { _rrc.apply(this, arguments); if (['resultScreen', 'loadingScreen', 'orderScreen'].includes(state.view) || window.__mfQuizRestore) saveOfferForIndex(); };
+  renderResultCard = function () { _rrc.apply(this, arguments); if (window.__mfOffer) $('resultOrderBtn').textContent = 'Vložit do košíku →'; if (['resultScreen', 'loadingScreen', 'orderScreen'].includes(state.view) || window.__mfQuizRestore) saveOfferForIndex(); };
 
   (function init() {
     if (OFFER && PRICES[OFFER] && PRODUCT_DATA[OFFER]) {
@@ -1343,6 +1365,7 @@
       state.baseVariant = state.activeVariant = OFFER; state.book = false;
       renderResultCard(); setView('resultScreen');
       document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').setAttribute('aria-label', 'Zavřít');
+      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); const id = addOfferToCart(); location.href = 'objednavka.html' + (id ? '?item=' + encodeURIComponent(id) : ''); }, true);
       if (q.get('objednat')) setTimeout(() => $('resultOrderBtn').click(), 250);
       return;
     }
@@ -1360,7 +1383,7 @@
   var HOOK='https://hook.eu1.make.com/3sf1buyy0akt5ij2dvetn33g74ghjlbo';
   var KEY='makeful-quiz-visitor-2026';
   function vid(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
-  var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher1288:'Voucher 1288',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
+  var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher:'Voucher 1188',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
   var result={};
   function send(event,step,addons){
     if(window.__mfOffer)return;
