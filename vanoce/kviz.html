@@ -660,8 +660,8 @@
       { v: EFFECT.thermo, s: 'Teplem ruky změní barvu', img: P + 'produkt-penezenka-termo.webp' },
       { v: EFFECT.black, s: 'Elegantní, hodí se ke všemu', img: P + 'produkt-penezenka-cerna.webp' },
       { v: EFFECT.any, s: 'Vyberte nejoblíbenější', i: '🎲' } ] },
-    // Jméno jen když je v dárku psaníčko (tam ho tiskneme)
-    { id: 'name', type: 'input', when: () => hasClutch(computeVariant()), title: () => isJoint() ? 'Jak se jmenují?' : 'Jak se jmenuje?', sub: () => isJoint() ? 'Ať je dárek opravdu jejich.' : 'Ať je dárek opravdu její.' }
+    // Jméno se v kvízu neptáme, vyplňuje se až v objednávce (pole „Jméno na psaníčko“). Pro zapnutí vraťte hasClutch(computeVariant()).
+    { id: 'name', type: 'input', when: () => false, title: () => isJoint() ? 'Jak se jmenují?' : 'Jak se jmenuje?', sub: () => isJoint() ? 'Ať je dárek opravdu jejich.' : 'Ať je dárek opravdu její.' }
   ];
 
   const state = { index: 0, answers: {}, name: '', baseVariant: 'balicek', activeVariant: 'balicek', view: 'questionScreen' };
@@ -783,10 +783,10 @@
     $('eyebrow').textContent = first ? 'Najdeme jí ideální dárek za 45 vteřin' : '';
     $('eyebrow').hidden = !first;
     $('timeNote').hidden = !first;
-    // Číslo otázky před otázkou, u poslední „A poslední otázka:“
+    // Číslo otázky před otázkou, u poslední „Poslední otázka:“ bez čísla
     const qt = $('questionTitle'); qt.textContent = '';
     const last = isLastQuestion(q), num = document.createElement('span');
-    if (last) { num.className = 'q-last'; num.textContent = 'A poslední otázka:'; }
+    if (last) { num.className = 'q-last'; num.textContent = 'Poslední otázka:'; }
     else { num.className = 'q-num'; const t = document.createElement('span'); t.textContent = (state.index + 1) + '/' + qs.length; num.appendChild(t); }
     qt.append(num, ' ' + val(q.title));
     $('questionSub').textContent = val(q.sub) || '';
@@ -1335,10 +1335,25 @@
       fetch(HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});
     }catch(e){}
   }
+  // Stav kvízu i v URL (?quiz-started, ?quiz-finished, ?thank-you) pro GTM, Pixel i Clarity.
+  // Parametry z reklamy (utm, fbclid…) zůstávají. Zároveň jde do dataLayer událost quiz_url.
+  var FLAGS=['quiz-started','quiz-finished','thank-you'];
+  function markUrl(flag){
+    try{
+      var parts=(location.search||'').replace(/^\?/,'').split('&').filter(function(x){return x&&FLAGS.indexOf(x.split('=')[0])<0});
+      parts.push(flag);
+      var url=location.pathname+'?'+parts.join('&')+location.hash;
+      if(url===location.pathname+location.search+location.hash)return;
+      history.replaceState(history.state,'',url);
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'quiz_url',quiz_stage:flag,page_location:location.href,page_path:location.pathname+location.search});
+    }catch(e){}
+  }
+  window.__mfMarkUrl=markUrl;
   var _choose=chooseAnswer;
-  chooseAnswer=function(q,value,btn){var wasBusy=busy;_choose(q,value,btn);if(!wasBusy)send('answer',(state.index+1)+' / '+activeQs().length+' ('+q.id+')');};
+  chooseAnswer=function(q,value,btn){var wasBusy=busy;_choose(q,value,btn);if(!wasBusy){send('answer',(state.index+1)+' / '+activeQs().length+' ('+q.id+')');if(state.index===0)markUrl('quiz-started');}};
   var _show=computeAndShowResult;
-  computeAndShowResult=function(){_show();var p=buildProfile();result={recommended:LABEL[state.baseVariant]||state.baseVariant,shown:LABEL[state.activeVariant]||state.activeVariant,profile:p.name,fit:String(p.fit)};if(!window.__mfQuizRestore)send('result','výsledek');};
+  computeAndShowResult=function(){_show();var p=buildProfile();result={recommended:LABEL[state.baseVariant]||state.baseVariant,shown:LABEL[state.activeVariant]||state.activeVariant,profile:p.name,fit:String(p.fit)};if(!window.__mfQuizRestore)markUrl('quiz-finished');if(!window.__mfQuizRestore)send('result','výsledek');};
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();result.shown=LABEL[state.activeVariant]||state.activeVariant;};
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
@@ -1346,7 +1361,7 @@
   var _restart=restartQuiz;
   restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}result={};_restart();};
   window.__mfQuizSend=send;
-  if(window.__mfPreset)send('answer','1 / '+activeQs().length+' (age)');
+  if(window.__mfPreset){send('answer','1 / '+activeQs().length+' (age)');markUrl('quiz-started');}
 })();
 </script>
 
@@ -1483,7 +1498,7 @@
           if(window.MakefulQrPay)window.MakefulQrPay.render($('payBox'),{qrUrl:res.qrUrl,account:'3623366010/3030',amount:tot,vs:number});
           else $('bankText').innerHTML+='<br>Číslo účtu: <b>3623366010/3030</b><br>Variabilní symbol: <b>'+number+'</b><br>Částka: <b>'+fmt(tot)+'</b>';
           try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id')}catch(e){}
-          setView('doneScreen');return;
+          setView('doneScreen');if(window.__mfMarkUrl)window.__mfMarkUrl('thank-you');return;
         }
         sending=false;btn.disabled=false;btn.textContent='Potvrdit objednávku zavazující k platbě';
         showErr(ERR[res.reason]||ERR.invalid);
