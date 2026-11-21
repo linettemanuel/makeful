@@ -55,7 +55,7 @@
     @keyframes slide { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
 
     /* Otázka */
-    .q-num { color: var(--lilac); font-variant-numeric: tabular-nums; }
+    .q-num { background: linear-gradient(100deg, #48d5ec, #9b6cff 38%, #ff6f9f 72%, #ffb26b); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
     .eyebrow { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--lilac); }
     .q-title { margin: 0; font-size: clamp(22px, 6.2vw, 26px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
     .q-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
@@ -643,16 +643,16 @@
       { v: BUDGET.mid, s: 'Milé osobní překvapení', i: '💌' },
       { v: BUDGET.high, s: 'Chci oslnit', i: '✨' },
       { v: BUDGET.top, s: 'Když to bude mít přínos', i: '🎁' } ] },
-    { id: 'interests', title: () => isJoint() ? 'Co je spolu nejvíc baví?' : 'Co ji nejvíc baví?', answers: [
-      { v: 'Móda a originální doplňky', i: '👗' },
-      { v: 'Tvoření rukama a vyrábění', i: '✂️' },
-      { v: 'Technologie a 3D tisk', i: '🚀' },
-      { v: 'Nové zážitky a zkoušení nepoznaného', t: 'Nové zážitky', s: 'Ráda zkouší, co ještě nezná', js: 'Rády zkouší, co ještě neznají', i: '🎨' } ] },
     { id: 'format', title: () => isJoint() ? 'Jak spolu nejraději tráví čas?' : 'Jak nejraději tráví volný čas?', answers: [
       { v: FORMAT.home, jt: 'Doma u společného tvoření', i: '🏠' },
       { v: FORMAT.out, t: 'S ostatními', jt: 'Venku mezi lidmi', s: 'Workshopy, kroužky, akce', i: '👭' },
       { v: FORMAT.both, i: '💫' },
       { v: FORMAT.unsure, i: '🤔' } ] },
+    { id: 'interests', title: () => isJoint() ? 'Co je spolu nejvíc baví?' : 'Co ji nejvíc baví?', answers: [
+      { v: 'Móda a originální doplňky', i: '👗' },
+      { v: 'Tvoření rukama a vyrábění', i: '✂️' },
+      { v: 'Technologie a 3D tisk', i: '🚀' },
+      { v: 'Nové zážitky a zkoušení nepoznaného', t: 'Nové zážitky', s: 'Ráda zkouší, co ještě nezná', js: 'Rády zkouší, co ještě neznají', i: '🎨' } ] },
     // Efekt jen u balíčku (u voucheru nedává smysl)
     { id: 'effect', when: () => !isVoucher(computeVariant()), title: () => isJoint() ? 'Který efekt by je nadchl?' : 'Který efekt by ji nadchl?', sub: () => isJoint() ? 'Vyberte, co by je nejvíc bavilo.' : 'Vyberte, co by ji nejvíc bavilo.', answers: [
       { v: EFFECT.glow, s: 'Ve tmě se rozzáří', img: P + 'penezenka-svitici.webp' },
@@ -759,6 +759,20 @@
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
+  // Je otázka poslední, ať odpoví cokoli? (u voucheru je to jiná otázka než u peněženky a psaníčka)
+  function isLastQuestion(q) {
+    if (state.index === 0) return false;
+    if (q.type === 'input') return state.index === activeQs().length - 1;
+    const had = Object.prototype.hasOwnProperty.call(state.answers, q.id), prev = state.answers[q.id];
+    let last = true;
+    for (const a of q.answers) {
+      if (a.hide && a.hide()) continue;
+      state.answers[q.id] = a.v;
+      if (activeQs().length > state.index + 1) { last = false; break; }
+    }
+    if (had) state.answers[q.id] = prev; else delete state.answers[q.id];
+    return last;
+  }
   const ansT = (a) => (isJoint() && a.jt) || a.t || a.v;
   const ansS = (a) => (isJoint() && a.js) || a.s;
   function renderQuestion() {
@@ -770,8 +784,9 @@
     $('timeNote').hidden = !first;
     // Číslo otázky před otázkou, u poslední „A poslední otázka:“
     const qt = $('questionTitle'); qt.textContent = '';
-    const num = document.createElement('span'); num.className = 'q-num'; num.textContent = (state.index + 1) + '/' + qs.length;
-    qt.append(num, ' ' + (state.index === qs.length - 1 && qs.length > 1 ? 'A poslední otázka: ' : '') + val(q.title));
+    const num = document.createElement('span'); num.className = 'q-num';
+    num.textContent = (state.index + 1) + '/' + qs.length + (isLastQuestion(q) ? ' A poslední otázka:' : '');
+    qt.append(num, ' ' + val(q.title));
     $('questionSub').textContent = val(q.sub) || '';
     $('questionSub').hidden = !val(q.sub);
     $('answers').innerHTML = '';
@@ -889,7 +904,8 @@
     if (a.age === AGE.sestry) return a.budget === BUDGET.low ? 'penezenka2' : a.budget === BUDGET.mid ? 'psanicko2' : 'balicek2';
     if (a.age === AGE.mamaDcera && (a.budget === BUDGET.low || a.budget === BUDGET.mid)) return 'psanickoMD';
     if (a.budget === BUDGET.top) return 'combo';
-    const wantsVoucher = a.format === FORMAT.out || (a.format === FORMAT.unsure && (a.interests || '').includes('zážitky'));
+    // Voucher jen pro „S ostatními“. Rozhodne se na 3. otázce, takže víme, která otázka bude poslední.
+    const wantsVoucher = a.format === FORMAT.out;
     if (a.budget === BUDGET.low) return wantsVoucher ? 'voucher488' : 'penezenka';
     if (a.budget === BUDGET.mid) return wantsVoucher ? 'voucher888' : 'psanicko';
     return wantsVoucher ? 'voucher1288' : 'balicek';
