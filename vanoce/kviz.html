@@ -1335,9 +1335,9 @@
       fetch(HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});
     }catch(e){}
   }
-  // Stav kvízu i v URL (?quiz-started, ?quiz-finished, ?thank-you) pro GTM, Pixel i Clarity.
+  // Stav kvízu i v URL (?quiz-started, ?quiz-finished, ?checkout, ?thank-you) pro GTM, Pixel i Clarity.
   // Parametry z reklamy (utm, fbclid…) zůstávají. Zároveň jde do dataLayer událost quiz_url.
-  var FLAGS=['quiz-started','quiz-finished','thank-you'];
+  var FLAGS=['quiz-started','quiz-finished','checkout','thank-you'];
   function markUrl(flag){
     try{
       var parts=(location.search||'').replace(/^\?/,'').split('&').filter(function(x){return x&&FLAGS.indexOf(x.split('=')[0])<0});
@@ -1434,6 +1434,7 @@
     renderSummary();$('orderErr').hidden=true;
     setView('orderScreen');
     dl({event:'begin_checkout',source:'quiz',ecommerce:ecom()});
+    if(window.__mfMarkUrl)window.__mfMarkUrl('checkout');
     saveQuizCart();
   }
 
