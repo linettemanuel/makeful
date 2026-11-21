@@ -324,6 +324,13 @@
     .card-head strong { display: block; font-size: 17px; line-height: 1.3; }
     .card-head span { display: block; margin-top: 3px; font-size: 14px; color: var(--muted); font-weight: 600; }
     .deal-badge { display: inline-block; margin-bottom: 8px; padding: 6px 10px; border-radius: 8px; background: #b12260; color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .04em; }
+    .media-block.has-video { position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    .media-block.has-video::after { content: ""; position: absolute; left: 50%; top: calc(50% - 22px); width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+      background: rgba(255,255,255,.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23111633'/%3E%3C/svg%3E") 55% 50% / 30px no-repeat;
+      box-shadow: 0 6px 18px rgba(17,22,51,.25); pointer-events: none; transition: opacity .2s; }
+    .media-block.has-video:not(:has(.media-cap))::after { top: 50%; }
+    .media-block.has-video.is-playing::after { opacity: 0; }
+    .clutch-name { margin-top: 2px; }
     .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
     .sticky-assurance { margin: 6px 0 0; text-align: center; font-size: 12.5px; font-weight: 700; color: #364360; }
     .result { padding-bottom: 170px; }
@@ -416,7 +423,7 @@
 
       <div class="trust-grid">
         <div><b>🇨🇿</b>Česká značka z Prahy</div>
-        <div><b>🔒</b>Bezpečná platba kartou</div>
+        <div><b>💳</b>Platba kartou Edenred nebo Up</div>
         <div><b>🛡️</b>Vrácení až o 30 dní déle</div>
         <div><b>📦</b>Doprava zdarma</div>
         <div><b>🎁</b>Připravené jako dárek</div>
@@ -499,6 +506,7 @@
       </div>
       <label class="ret-line"><input type="checkbox" id="sumRet"> <span>Prodloužené vrácení o 30 dní <b>+22 Kč</b></span></label>
       <label class="ret-line upsell-line" id="upsellLine"><input type="checkbox" id="upsellChk"> <span id="upsellText"></span></label>
+      <label class="fld clutch-name" id="clutchNameFld" hidden><span id="clutchNameLbl">Jméno na psaníčko</span><input id="oClutchName" type="text" maxlength="60" autocomplete="off" placeholder="Např. Ema"></label>
 
       <fieldset class="fs">
         <legend>Kontakt a doručení</legend>
@@ -518,7 +526,7 @@
         <legend>Platba</legend>
         <div class="pay-row">
           <label class="pay-btn"><input type="radio" name="qpay" value="card" checked><span>💳 Kartou</span></label>
-          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span>🏦 Převodem (do 24 h)</span></label>
+          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span>🏦 Převodem</span></label>
         </div>
       </fieldset>
 
@@ -1079,12 +1087,25 @@
   // Média rozbíjí text: nahoře fotka v barvě, pod důvody video, nad balením fotka, před FAQ druhé video
   function putMedia(id, m, alt) {
     const box = $(id); box.innerHTML = '';
+    const blk = box.closest('.media-block') || box; blk.classList.remove('has-video', 'is-playing');
     if (!m) { (box.closest('.media-block') || box).hidden = true; return; }
     (box.closest('.media-block') || box).hidden = false;
     const el = mediaEl(m, alt);
     if (el.tagName === 'IMG' && id !== 'heroMedia') el.loading = 'lazy';
     box.appendChild(el);
-    if (el.tagName === 'VIDEO') { el.autoplay = true; videoObserver.observe(el); }
+    if (el.tagName === 'VIDEO') { el.autoplay = true; videoObserver.observe(el); makeTappable(el, box.closest('.media-block') || box); }
+  }
+  // Video jde vždy spustit klepnutím (iPhone v úsporném režimu automatické přehrávání blokuje)
+  function makeTappable(v, block) {
+    block.classList.add('has-video');
+    const sync = () => block.classList.toggle('is-playing', !v.paused);
+    ['play', 'playing', 'pause', 'ended'].forEach(ev => v.addEventListener(ev, sync));
+    if (block.dataset.tap) return;
+    block.dataset.tap = '1';
+    block.addEventListener('click', () => {
+      const vid = block.querySelector('video'); if (!vid) return;
+      if (vid.paused) { vid.muted = true; vid.play().catch(() => {}); } else vid.pause();
+    });
   }
   const videoObserver = 'IntersectionObserver' in window
     ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.35 })
@@ -1274,6 +1295,9 @@
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();result.shown=LABEL[state.activeVariant]||state.activeVariant;};
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
+  // Nové vyplnění kvízu = nové ID, v tabulce Kvíz vznikne nový řádek místo přepsání starého
+  var _restart=restartQuiz;
+  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}result={};_restart();};
   window.__mfQuizSend=send;
   if(window.__mfPreset)send('answer','1 / '+activeQs().length+' (age)');
 })();
@@ -1296,7 +1320,7 @@
   function items(){
     var v=state.activeVariant,c=currentColor(),parts=PARTS[v]||[];
     // Sestry: do Make jdou 2 kusy běžné varianty + promokód SESTRY20 (20 %), Make cenu přepočítá sám
-    var list=[{variant:baseOf(v),qty:TWO_PCS[v]?2:1,wallet:parts.indexOf('wallet')>=0?c:'',clutch:parts.indexOf('clutch')>=0?c:'',clutchName:(PRODUCT_DATA[v].engrave&&state.name)?state.name:''}];
+    var list=[{variant:baseOf(v),qty:TWO_PCS[v]?2:1,wallet:parts.indexOf('wallet')>=0?c:'',clutch:parts.indexOf('clutch')>=0?c:'',clutchName:(hasClutch(v)&&state.name)?state.name:''}];
     if(state.book&&isVoucher(v))list.push({variant:BOOK.variant,qty:1,wallet:'',clutch:'',clutchName:''});
     if(state.returnExt)list.push({variant:RET.variant,qty:1,wallet:'',clutch:'',clutchName:''});
     return list;
@@ -1317,14 +1341,19 @@
   function renderSummary(){
     var v=state.activeVariant,d=PRODUCT_DATA[v],g=galleryFor(v,currentColor()).hero;
     $('sumImg').src=g.src||g.poster;$('sumTitle').textContent=d.title+(state.book&&isVoucher(v)?' + interaktivní vzdělávací knížka':'');
-    var meta=[];if(!isVoucher(v))meta.push('Materiál: '+currentColor().toLowerCase());if(d.engrave&&state.name)meta.push((isJoint()?'Jména: ':'Jméno: ')+state.name);
+    var meta=[];if(!isVoucher(v))meta.push('Materiál: '+currentColor().toLowerCase());if(hasClutch(v)&&state.name)meta.push((isJoint()||TWO_PCS[v]?'Jména: ':'Jméno: ')+state.name);
     $('sumMeta').textContent=meta.join(' · ');
     $('sumOld').textContent=fmt(PRICES[v].old);$('sumNow').textContent=fmt(PRICES[v].now);
     $('sumRet').checked=!!state.returnExt;
+    // Pole pro jméno na psaníčko vždy, když je psaníčko v objednávce (i po přidání v nabídce navíc)
+    var cn=hasClutch(v),many=isJoint()||!!TWO_PCS[v];$('clutchNameFld').hidden=!cn;
+    if(cn){$('clutchNameLbl').textContent=many?'Jména na psaníčka':'Jméno na psaníčko';$('oClutchName').placeholder=many?'Např. Ema a Klára':'Např. Ema';
+      if(document.activeElement!==$('oClutchName'))$('oClutchName').value=state.name||'';}
     $('orderTotal').textContent=fmt(total());
     if(document.getElementById('orderScreen').classList.contains('active'))saveQuizCart();
   }
   $('sumRet').addEventListener('change',function(){state.returnExt=this.checked;renderSummary();});
+  $('oClutchName').addEventListener('input',function(){state.name=this.value.replace(/\s+/g,' ').trimStart().slice(0,60);renderSummary();});
   $('upsellChk').addEventListener('change',function(){var want=this.checked,up=PRODUCT_DATA[state.baseVariant].upsell;var cur=up&&up.addon?!!state.book:state.activeVariant!==state.baseVariant;if(cur!==want)toggleComboUpgrade();renderSummary();});
 
   // Nabídka prodlouženého vrácení po kliknutí na „Vybrat dárek“
