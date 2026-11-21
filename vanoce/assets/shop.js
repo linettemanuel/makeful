@@ -270,9 +270,11 @@ async function submitOrder(e){
       if(response.payment==='card'){
         const destination=new URL(String(response.checkoutUrl||''));
         if(destination.protocol!=='https:'||!['checkout.stripe.com','buy.stripe.com'].includes(destination.hostname))throw new Error('Invalid payment destination');
-        mfTrack('order_submitted',{payment:'card',order_number:number,currency:'CZK',value:mfValue(cart),ecommerce:{transaction_id:number,currency:'CZK',value:mfValue(cart),items:mfItems(cart)}});try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number,value:mfValue(cart),items:mfItems(cart)}))}catch{}
+        // Na Stripe až poté, co GTM odešle tagy na order_submitted (Purchase), nejdéle za 1,5 s
+        let gone=false;const go=()=>{if(gone)return;gone=true;window.location.assign(destination.href)};
+        mfTrack('order_submitted',{payment:'card',order_number:number,currency:'CZK',value:mfValue(cart),ecommerce:{transaction_id:number,currency:'CZK',value:mfValue(cart),items:mfItems(cart)},eventCallback:()=>setTimeout(go,100),eventTimeout:1300});try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number,value:mfValue(cart),items:mfItems(cart)}))}catch{}
         status.textContent='Přesměrováváme vás na zabezpečenou platbu kartou…';
-        window.location.assign(destination.href);return;
+        setTimeout(go,1500);return;
       }
       mfTrack('order_submitted',{payment:'bank',order_number:number,currency:'CZK',value:mfValue(cart),ecommerce:{transaction_id:number,currency:'CZK',value:mfValue(cart),items:mfItems(cart)}});
       status.style.display='none';
