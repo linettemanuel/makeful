@@ -600,7 +600,10 @@
   const P = 'assets/photos/';
   const isVoucher = (v) => v.indexOf('voucher') === 0;
   // Společný dárek: otázky i texty mluví v množném čísle. Sestry dostanou dva balíčky se slevou 20 %.
-  const isJoint = () => state.answers.age === AGE.mamaDcera || state.answers.age === AGE.sestry;
+  // Nabídka z hlavní stránky (kviz.html?nabidka=…): rovnou karta produktu a objednávka, bez otázek
+  const OFFER = (() => { try { return new URLSearchParams(location.search).get('nabidka') || ''; } catch (e) { return ''; } })();
+  window.__mfOffer = !!OFFER;
+  const isJoint = () => state.answers.age === AGE.mamaDcera || state.answers.age === AGE.sestry || (window.__mfOffer && /2$|MD$/.test(state.baseVariant || ''));
   const isSisters = () => state.answers.age === AGE.sestry;
   const isDuo = (v) => /2$/.test(v);
   // Máma a dcera, 500–1 000 Kč: 2 psaníčka + knížka za 988 Kč (v Make 2× psaníčko + promokód MAMADCERA −788 Kč)
@@ -619,7 +622,7 @@
     balicek:     { now: 1188 },
     voucher488:  { now: 488 },
     voucher888:  { now: 888 },
-    voucher1288: { now: 1288 },
+    voucher:     { now: 1188 },
     combo:       { now: 2138 }
   };
   Object.keys(PRICES).forEach(k => { PRICES[k].old = PRICES[k].now + DISCOUNT; });
@@ -889,7 +892,7 @@
     if (state.view === 'orderScreen') { setView('resultScreen'); return; }
     if (state.view === 'doneScreen') return;
     if (state.view === 'claimScreen') { renderQuestion(); return; }
-    if (state.view === 'resultScreen') { state.index = activeQs().length - 1; renderQuestion(); return; }
+    if (state.view === 'resultScreen') { if (window.__mfOffer) { location.href = 'index.html#produkty'; return; } state.index = activeQs().length - 1; renderQuestion(); return; }
     if (state.index <= 0) return;
     state.index -= 1;
     renderQuestion();
@@ -910,7 +913,7 @@
     const wantsVoucher = a.format === FORMAT.out;
     if (a.budget === BUDGET.low) return wantsVoucher ? 'voucher488' : 'penezenka';
     if (a.budget === BUDGET.mid) return wantsVoucher ? 'voucher888' : 'psanicko';
-    return wantsVoucher ? 'voucher1288' : 'balicek';
+    return wantsVoucher ? 'voucher' : 'balicek';
   }
 
   function buildProfile() {
@@ -970,6 +973,11 @@
   // Nadpis podle odpovědí: [úvod, zvýrazněná část v gradientu]
   function headlineFor(v) {
     const a = state.answers;
+    if (window.__mfOffer) {
+      if (/2$/.test(v)) return ['Tvořte spolu, ', '1 + 1 se slevou 20 %'];
+      if (v === 'psanickoMD') return ['Darujte mámě a dceři ', 'společnou radost z tvoření'];
+      if (v === 'balicek') return ['Darujte jí ', 'peněženku i psaníčko, které si vyrobí sama'];
+    }
     if (a.age === AGE.sestry) return ['Darujte každé sestře ', 'vlastní radost z tvoření'];
     if (a.age === AGE.mamaDcera) return isVoucher(v) ? ['Darujte mámě a dceři ', 'společný tvořivý zážitek'] : ['Darujte mámě a dceři ', 'společnou radost z tvoření'];
     if (isVoucher(v)) return ['Darujte jí ', 'zážitek, který nekončí rozbalením'];
@@ -1030,7 +1038,7 @@
     },
     voucher488:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
     voucher888:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
-    voucher1288: Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
+    voucher: Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
     combo: {
       title: 'Celý balíček: peněženka + psaníčko + knížka + voucher na workshop',
       moment: 'O Vánocích tvoření doma pod stromečkem, během roku workshop s designérkou. Dárek, na který bude vzpomínat celý rok.',
@@ -1089,6 +1097,13 @@
 
   function buildReasons(variant) {
     const a = state.answers, r = [];
+    if (window.__mfOffer) {
+      if (isVoucher(variant)) return ['Zážitek místo další věci. Na workshopu tvoří s designérkou a odnese si vlastní výtvor.', 'Termín i téma si vybere sama, voucher platí celý rok.', 'Přijde jako 3D tištěný voucher, který na dotek mění barvu. Krásný i pod stromečkem.'];
+      const kit = ['Hotový výsledek za jedno odpoledne a hrdý pocit „tohle jsem udělala já“.', 'Dílky jen zacvakne do sebe. Žádné lepidlo, nástroje ani dokupování.', 'Materiál ' + MAT[currentColor()].txt + '. Efekt, kterým se pochlubí.'];
+      if (/2$/.test(variant)) return ['Dva balíčky, dvě vlastní kreativní tvoření bez zbytečných hádek a odpadků.'].concat(kit.slice(1)).concat(['Na oba balíčky máte slevu 20 %.']);
+      if (variant === 'combo') return kit.slice(0, 2).concat(['K tomu voucher na workshop s designérkou, radost na celý rok.']);
+      return kit;
+    }
     const AR = {
       [AGE.mlada]: 'Ve 8–12 letech holky nejvíc baví vidět výsledek hned. Tohle zvládne sama, bez pomoci dospělých.',
       [AGE.teen]: 'Teenagerky chtějí věci, které nikdo jiný nemá. Tohle si v žádném obchodě nekoupí.',
@@ -1282,12 +1297,12 @@
     $('secGives').textContent = j ? 'Co jim dárek dá' : 'Co jí dárek dá';
     $('savedFor').textContent = j ? 'pro ně' : 'pro ni';
     $('rIntro').textContent = j ? 'Dárek, který rozbalí, samy dotvoří a odnesou si z něj opravdovou radost. Vybráno podle vašich odpovědí.' : 'Dárek, který rozbalí, sama dotvoří a odnese si z něj opravdovou radost. Vybráno podle vašich odpovědí.';
-    $('saleRibbon').textContent = duo ? '−20 % · sleva pro sestry' : '−200 Kč · limitovaná sleva';
+    $('saleRibbon').textContent = duo ? (isSisters() ? '−20 % · sleva pro sestry' : '−20 % · 1 + 1') : '−200 Kč · limitovaná sleva';
     $('dealBadge').textContent = duo ? 'LIMITOVANÁ NABÍDKA · SLEVA 20 % NA 2 DÁRKY' : 'LIMITOVANÁ NABÍDKA · SLEVA 200 Kč';
     $('dealSave').textContent = 'Ušetříte ' + fmt(saving(v)) + '.';
     $('resultOrderBtn').textContent = duo ? 'Vybrat 2 dárky se slevou 20 % →' : 'Vybrat dárek se slevou 200 Kč →';
     if (state.name && hasClutch(v)) $('resultFor').textContent = 'Pro: ' + state.name;
-    if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (x.textContent === 'Proč je teď sleva 200 Kč?') { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = 'Sestry chceme podpořit, ať každá tvoří se svým. Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
+    if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (x.textContent === 'Proč je teď sleva 200 Kč?') { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = (isSisters() ? 'Sestry chceme podpořit, ať každá tvoří se svým.' : 'Tvořit spolu je víc radosti, ať každá tvoří se svým.') + ' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
     jointifyDom($('retSheet'), !j);
     if (j) jointifyDom($('resultScreen'));
     updateTimers();
@@ -1308,7 +1323,53 @@
     setView('resultScreen');
   }
 
+  // Nabídka z kvízu zůstane na hlavní stránce (lišta „Vaše nabídka z kvízu“), dokud ji neobjedná nebo nevyplní kvíz znovu
+  const OFFER_KEY = 'makeful-quiz-offer-2026';
+  function saveOfferForIndex() {
+    if (window.__mfOffer) return;
+    try {
+      const v = state.activeVariant, g = galleryFor(v, currentColor()).hero;
+      localStorage.setItem(OFFER_KEY, JSON.stringify({ variant: v, color: currentColor(), title: PRODUCT_DATA[v].title, now: PRICES[v].now, old: PRICES[v].old,
+        img: g.src || g.poster || '', href: 'kviz.html?nabidka=' + encodeURIComponent(v) + '&barva=' + encodeURIComponent(currentColor()), at: Date.now() }));
+    } catch (e) {}
+  }
+  // Nabídka do košíku e-shopu (objednavka.html): 1 + 1 = 2 kusy + promokód, který Make přepočítá
+  const CART_KEY = 'makeful-christmas-cart-2026', CART_PROMO_KEY = 'makeful-cart-promo-2026';
+  const CART_PROMO = { penezenka2: 'SESTRY20', psanicko2: 'SESTRY20', balicek2: 'SESTRY20', psanickoMD: 'MAMADCERA' };
+  function addOfferToCart() {
+    try {
+      const v = state.activeVariant, base = baseOf(v), qty = TWO_PCS[v] ? 2 : 1, c = currentColor();
+      const mat = MAT[c] ? c : 'Svítí ve tmě', parts = { penezenka: ['wallet'], psanicko: ['clutch'], balicek: ['wallet', 'clutch'], combo: ['wallet', 'clutch'] }[base] || [];
+      const it = { variant: base, qty, wallet: parts.includes('wallet') ? mat : 'Svítí ve tmě', clutch: parts.includes('clutch') ? mat : 'Svítí ve tmě', clutchName: parts.includes('clutch') && state.name ? String(state.name).slice(0, 60) : '' };
+      let cart = []; try { cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); if (!Array.isArray(cart)) cart = []; } catch (e) { cart = []; }
+      let found = cart.find(i => i && i.variant === it.variant && (!parts.length || (i.wallet === it.wallet && i.clutch === it.clutch && (i.clutchName || '') === it.clutchName)));
+      if (found) { if (found.qty < qty) found.qty = qty; }
+      else { found = Object.assign({ id: 'item-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) }, it); cart.push(found); }
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      if (CART_PROMO[v]) localStorage.setItem(CART_PROMO_KEY, CART_PROMO[v]);
+      try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: PRICES[v].now }); } catch (e) {}
+      return found.id;
+    } catch (e) { return ''; }
+  }
+  // Zavření kvízu po výsledku: nabídka zůstane v košíku i jako lišta na hlavní stránce
+  document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').addEventListener('click', function () {
+    if (!window.__mfOffer && ['resultScreen', 'orderScreen'].includes(state.view)) addOfferToCart();
+  });
+  const _rrc = renderResultCard;
+  renderResultCard = function () { _rrc.apply(this, arguments); if (window.__mfOffer) $('resultOrderBtn').textContent = 'Vložit do košíku →'; if (['resultScreen', 'loadingScreen', 'orderScreen'].includes(state.view) || window.__mfQuizRestore) saveOfferForIndex(); };
+
   (function init() {
+    if (OFFER && PRICES[OFFER] && PRODUCT_DATA[OFFER]) {
+      const q = new URLSearchParams(location.search), b = q.get('barva');
+      if (b && MAT[b]) state.answers.effect = b;
+      state.baseVariant = state.activeVariant = OFFER; state.book = false;
+      renderResultCard(); setView('resultScreen');
+      document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').setAttribute('aria-label', 'Zavřít');
+      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); const id = addOfferToCart(); location.href = 'objednavka.html' + (id ? '?item=' + encodeURIComponent(id) : ''); }, true);
+      if (q.get('objednat')) setTimeout(() => $('resultOrderBtn').click(), 250);
+      return;
+    }
+    window.__mfOffer = false;
     const preset = AGE[new URLSearchParams(location.search).get('pro')];
     if (preset) { state.answers.age = preset; state.index = 1; window.__mfPreset = true; }
     renderQuestion();
@@ -1322,9 +1383,10 @@
   var HOOK='https://hook.eu1.make.com/3sf1buyy0akt5ij2dvetn33g74ghjlbo';
   var KEY='makeful-quiz-visitor-2026';
   function vid(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
-  var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher1288:'Voucher 1288',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
+  var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher:'Voucher 1188',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
   var result={};
   function send(event,step,addons){
+    if(window.__mfOffer)return;
     try{window.dataLayer=window.dataLayer||[];var dl={event:'quiz_'+event,quiz_step:step||'',quiz_result:result.shown||''};if(event==='answer'&&/^1 \//.test(step||''))window.dataLayer.push({event:'quiz_first_answer',language:'cs'});if(event==='result')dl.event='quiz_completed';window.dataLayer.push(dl);}catch(e){}
     try{
       var a=state.answers;
@@ -1362,6 +1424,9 @@
   restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}result={};_restart();};
   window.__mfQuizSend=send;
   if(window.__mfPreset){send('answer','1 / '+activeQs().length+' (age)');markUrl('quiz-started');}
+  // Otevření stránky kvízu (i když nikdo neodpoví), ať je v tabulce vidět skutečný počet návštěv.
+  // Jen pro nové návštěvy: kdo má uložený výsledek, už v tabulce řádek má (Make ho při „open“ nepřepíše).
+  else{var hasSaved=false;try{hasSaved=!!localStorage.getItem('makeful-quiz-result-2026')}catch(e){}if(!hasSaved)send('open','otevřel stránku');}
 })();
 </script>
 
@@ -1433,7 +1498,7 @@
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
     setView('orderScreen');
-    dl({event:'begin_checkout',source:'quiz',currency:'CZK',value:total(),ecommerce:ecom()});
+    dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});
     if(window.__mfMarkUrl)window.__mfMarkUrl('checkout');
     saveQuizCart();
   }
@@ -1487,20 +1552,20 @@
             var it=mfItems(),val=total();
             // Na Stripe přesměrujeme až poté, co GTM odešle tagy na order_submitted (Purchase), nejdéle za 1,5 s
             var go=function(){if(go.done)return;go.done=1;location.assign(u.href)};
-            dl({event:'order_submitted',source:'quiz',payment:'card',order_number:number,currency:'CZK',value:val,ecommerce:{transaction_id:number,currency:'CZK',value:val,items:it},eventCallback:function(){setTimeout(go,100)},eventTimeout:1300});
+            dl({event:'order_submitted',source:window.__mfOffer?'offer':'quiz',payment:'card',order_number:number,currency:'CZK',value:val,ecommerce:{transaction_id:number,currency:'CZK',value:val,items:it},eventCallback:function(){setTimeout(go,100)},eventTimeout:1300});
             try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number:number,value:val,items:it}))}catch(e){}
             if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · karta',addonsNote());
             btn.textContent='Přesměrováváme na platbu kartou…';setTimeout(go,1500);return;
           }
           var tot=Number.isFinite(res.total)?res.total:total();
-          dl({event:'order_submitted',source:'quiz',payment:'bank',order_number:number,currency:'CZK',value:tot,ecommerce:{transaction_id:number,currency:'CZK',value:tot,items:mfItems()}});
+          dl({event:'order_submitted',source:window.__mfOffer?'offer':'quiz',payment:'bank',order_number:number,currency:'CZK',value:tot,ecommerce:{transaction_id:number,currency:'CZK',value:tot,items:mfItems()}});
           if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · převod',addonsNote());
           $('doneText').textContent='Objednávku č. '+number+' jsme přijali. Stejné údaje i QR kód jsme vám poslali e-mailem.';
           $('bankText').innerHTML='Prosíme o úhradu <b>do 24 hodin</b>.';
           $('payBox').innerHTML='';
           if(window.MakefulQrPay)window.MakefulQrPay.render($('payBox'),{qrUrl:res.qrUrl,account:'3623366010/3030',amount:tot,vs:number});
           else $('bankText').innerHTML+='<br>Číslo účtu: <b>3623366010/3030</b><br>Variabilní symbol: <b>'+number+'</b><br>Částka: <b>'+fmt(tot)+'</b>';
-          try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id')}catch(e){}
+          try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id');localStorage.removeItem('makeful-quiz-offer-2026')}catch(e){}
           setView('doneScreen');if(window.__mfMarkUrl)window.__mfMarkUrl('thank-you');return;
         }
         sending=false;btn.disabled=false;btn.textContent='Potvrdit objednávku zavazující k platbě';
@@ -1525,8 +1590,8 @@
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();try{var d=load();if(d){d.variant=state.activeVariant;localStorage.setItem(SAVE_KEY,JSON.stringify(d))}}catch(e){}};
   var _restart=restartQuiz;
-  restartQuiz=function(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}document.getElementById('savedResultNote').hidden=true;_restart();};
-  if(window.__mfPreset)return;
+  restartQuiz=function(){try{localStorage.removeItem(SAVE_KEY);localStorage.removeItem('makeful-quiz-offer-2026')}catch(e){}document.getElementById('savedResultNote').hidden=true;_restart();};
+  if(window.__mfPreset||window.__mfOffer)return;
   var saved=load();
   if(saved){
     state.answers=saved.answers;state.name=saved.name||'';state.index=activeQs().length-1;
