@@ -249,7 +249,7 @@
     .card { border-radius: 22px; background: #fff; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 14px 36px rgba(84,55,132,.10); }
     .img-wrap { position: relative; }
     .img-wrap img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
-    .name-tag { position: absolute; left: 12px; bottom: 12px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 7px 12px; border-radius: 99px; background: rgba(17,22,51,.82); color: #fff; font-size: 14px; font-weight: 800; letter-spacing: .03em; }
+    .name-tag { position: absolute; left: 12px; top: 58px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 7px 12px; border-radius: 99px; background: rgba(17,22,51,.82); color: #fff; font-size: 14px; font-weight: 800; letter-spacing: .03em; }
     .moment { margin: 0; padding: 14px 16px 16px; font-size: 16px; line-height: 1.5; color: var(--text); font-style: italic; }
 
     .sec { margin: 4px 0 0; font-size: 18px; font-weight: 800; }
@@ -1104,11 +1104,22 @@
     block.dataset.tap = '1';
     block.addEventListener('click', () => {
       const vid = block.querySelector('video'); if (!vid) return;
-      if (vid.paused) { vid.muted = true; vid.play().catch(() => {}); } else vid.pause();
+      if (vid.paused) { vid.dataset.userPaused = ''; vid.muted = true; vid.play().catch(() => {}); } else { vid.dataset.userPaused = '1'; vid.pause(); }
     });
   }
+  // Videa hrají sama (muted, loop). Když je telefon zablokuje (úsporný režim iPhonu),
+  // spustí se při prvním dotyku kdekoli na stránce; ručně zastavené video nespouštíme.
+  function wakeVideos(ev) {
+    if (ev && ev.target && ev.target.closest && ev.target.closest('.has-video')) return;
+    document.querySelectorAll('.view.active video').forEach(v => {
+      if (!v.paused || v.dataset.userPaused) return;
+      const r = v.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) { v.muted = true; v.play().catch(() => {}); }
+    });
+  }
+  ['touchend', 'click', 'scroll'].forEach(ev => document.addEventListener(ev, wakeVideos, { passive: true, capture: true }));
   const videoObserver = 'IntersectionObserver' in window
-    ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.35 })
+    ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (!e.target.dataset.userPaused) e.target.play().catch(() => {}); } else e.target.pause(); }), { threshold: 0.35 })
     : { observe: (v) => v.play().catch(() => {}) };
 
   function renderGallery(v) {
