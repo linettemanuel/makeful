@@ -1485,10 +1485,12 @@
             var u=new URL(String(res.checkoutUrl||''));
             if(u.protocol!=='https:'||['checkout.stripe.com','buy.stripe.com'].indexOf(u.hostname)<0)throw new Error('bad checkout');
             var it=mfItems(),val=total();
-            dl({event:'order_submitted',source:'quiz',payment:'card',order_number:number,currency:'CZK',value:val,ecommerce:{transaction_id:number,currency:'CZK',value:val,items:it}});
+            // Na Stripe přesměrujeme až poté, co GTM odešle tagy na order_submitted (Purchase), nejdéle za 1,5 s
+            var go=function(){if(go.done)return;go.done=1;location.assign(u.href)};
+            dl({event:'order_submitted',source:'quiz',payment:'card',order_number:number,currency:'CZK',value:val,ecommerce:{transaction_id:number,currency:'CZK',value:val,items:it},eventCallback:function(){setTimeout(go,100)},eventTimeout:1300});
             try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number:number,value:val,items:it}))}catch(e){}
             if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · karta',addonsNote());
-            btn.textContent='Přesměrováváme na platbu kartou…';setTimeout(function(){location.assign(u.href)},150);return;
+            btn.textContent='Přesměrováváme na platbu kartou…';setTimeout(go,1500);return;
           }
           var tot=Number.isFinite(res.total)?res.total:total();
           dl({event:'order_submitted',source:'quiz',payment:'bank',order_number:number,currency:'CZK',value:tot,ecommerce:{transaction_id:number,currency:'CZK',value:tot,items:mfItems()}});
