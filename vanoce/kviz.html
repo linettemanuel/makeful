@@ -6,246 +6,1440 @@
 <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Krátký průvodce výběrem dárku Makeful. Za 45 vteřin zjistíte, který dárek jí udělá největší radost.">
-  <title>Průvodce výběrem dárku · Makeful</title>
+  <meta name="theme-color" content="#fff7fb">
+  <meta name="description" content="Najdeme jí ideální dárek za 45 vteřin. Krátký kvíz Makeful.">
+  <title>Najděte jí ideální dárek · Makeful</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <link href="assets/shop.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #111633;
-      --text: #26304f;
-      --muted: #6d7289;
-      --pink: #ff6f9f;
-      --peach: #ffb26b;
-      --aqua: #48d5ec;
-      --lilac: #9b6cff;
-      --card: rgba(255,255,255,.88);
-      --line: rgba(17,22,51,.10);
-      --shadow: 0 16px 42px rgba(84,55,132,.14);
+      --text: #2b3352;
+      --muted: #646a85;
+      --pink: #ff5c93;
+      --pink-soft: #fff0f6;
+      --lilac: #8b5cf6;
+      --lilac-soft: #f3eeff;
+      --line: #e7e4ef;
+      --bg: #fff7fb;
+      --grad: linear-gradient(100deg, #48d5ec, #9b6cff 40%, #ff6f9f 75%, #ffb26b);
+      --radius: 18px;
     }
     * { box-sizing: border-box; }
-    html, body { min-height: 100%; }
-    body.quiz-landing {
-      margin: 0;
-      font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--navy);
-      background:
-        radial-gradient(circle at 0 0, rgba(72,213,236,.22), transparent 32%),
-        radial-gradient(circle at 100% 0, rgba(255,111,159,.22), transparent 34%),
-        linear-gradient(180deg, #fffaf7 0%, #fff1f8 58%, #f7f1ff 100%);
+    [hidden] { display: none !important; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--navy); background-attachment: fixed; background: var(--bg); }
+    button { font: inherit; color: inherit; }
+
+    .app { width: 100%; max-width: 440px; min-height: 100dvh; margin: 0 auto; padding: 0 18px calc(20px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
+    @media (min-width: 600px) {
+      body { background: radial-gradient(circle at 20% 0, #e9f9fd, transparent 40%), radial-gradient(circle at 80% 0, #ffe6f0, transparent 40%), var(--bg); }
     }
-    .quiz-app-wrap {
-      width: min(100%, 480px);
-      margin: 0 auto;
-      padding: 16px 14px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+
+    /* Horní lišta */
+    .top { position: sticky; top: 0; z-index: 6; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; height: 52px; margin: 0 -18px; padding: 0 8px; background: rgba(255,247,251,.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .icon-btn { width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; border-radius: 12px; cursor: pointer; color: var(--navy); text-decoration: none; font-size: 22px; line-height: 1; }
+    .icon-btn:active { background: rgba(17,22,51,.06); }
+    .icon-btn.invisible { visibility: hidden; }
+    .logo { justify-self: center; line-height: 0; }
+    .logo img { height: 22px; width: auto; display: block; }
+
+    .steps { display: flex; gap: 5px; margin: 2px 0 18px; }
+    .steps i { flex: 1; height: 5px; border-radius: 99px; background: #ece8f2; overflow: hidden; position: relative; }
+    .steps i::after { content: ""; position: absolute; inset: 0; width: 0; background: var(--grad); border-radius: inherit; transition: width .35s ease; }
+    .steps i.done::after { width: 100%; }
+
+    .view { display: none; flex-direction: column; flex: 1 1 auto; animation: slide .28s ease; }
+    .view.active { display: flex; }
+    @keyframes slide { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+
+    /* Otázka */
+    .eyebrow { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--lilac); }
+    .q-title { margin: 0; font-size: clamp(22px, 6.2vw, 26px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
+    .q-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
+    .answers { display: grid; gap: 10px; margin-top: 20px; }
+    .answer { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 66px; padding: 12px 14px; border-radius: var(--radius); border: 2px solid var(--line); background: #fff; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: border-color .15s ease, background .15s ease, transform .1s ease; }
+    .answer:active { transform: scale(.98); }
+    .answer .ico { flex: 0 0 42px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--lilac-soft); font-size: 22px; }
+    .answer .thumb { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 12px; object-fit: cover; background: var(--lilac-soft); }
+    .answer .lbl { flex: 1; font-size: 17px; line-height: 1.25; font-weight: 700; color: var(--navy); }
+    .answer .lbl small { display: block; margin-top: 2px; font-size: 14px; font-weight: 600; color: var(--muted); }
+    .answer .chk { flex: 0 0 24px; width: 24px; height: 24px; border-radius: 99px; border: 2px solid var(--line); display: grid; place-items: center; font-size: 13px; color: transparent; }
+    .answer.selected { border-color: var(--pink); background: var(--pink-soft); }
+    .answer.selected .chk { border-color: var(--pink); background: var(--pink); color: #fff; }
+    @media (hover: hover) { .answer:hover { border-color: #cfc3f5; } }
+    .time-note { margin: 16px 0 0; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+
+    /* Otázka se jménem */
+    .name-input { width: 100%; padding: 16px; border-radius: 16px; border: 2px solid var(--line); font: inherit; font-size: 18px; font-weight: 700; color: var(--navy); background: #fff; }
+    .name-input:focus { outline: none; border-color: var(--lilac); }
+    .skip { border: 0; background: none; padding: 12px; font-size: 15px; font-weight: 700; color: var(--muted); cursor: pointer; }
+
+    /* Mezikarta uprostřed obrazovky: reaguje na odpověď a prodává */
+    .claim-wrap { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 24px; }
+    .claim { border-radius: 24px; background: #fff; border: 1px solid var(--line); box-shadow: 0 14px 36px rgba(84,55,132,.12); overflow: hidden; animation: pop .35s ease; }
+    @keyframes pop { from { opacity: 0; transform: scale(.97) translateY(8px); } to { opacity: 1; transform: none; } }
+    .claim-media { position: relative; }
+    .claim-media > img:first-child, .claim-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
+    .claim-media .vid-badge { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: rgba(17,22,51,.75); color: #fff; font-size: 12.5px; font-weight: 800; }
+    .claim-thumb { position: absolute; right: 12px; bottom: -28px; width: 30%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; border: 3px solid #fff; box-shadow: 0 8px 20px rgba(17,22,51,.18); background: var(--lilac-soft); }
+    .claim-body { padding-top: 14px !important; }
+
+
+    /* Galerie produktu: swipe, max 3 fotky + video */
+    .gallery-wrap { position: relative; }
+    .gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .gallery::-webkit-scrollbar { display: none; }
+    .slide { flex: 0 0 100%; scroll-snap-align: center; position: relative; }
+    .slide img, .slide video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
+    .slide .vid-badge { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: rgba(17,22,51,.75); color: #fff; font-size: 12.5px; font-weight: 800; }
+    .dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
+    .dots i { width: 7px; height: 7px; border-radius: 99px; background: rgba(255,255,255,.6); box-shadow: 0 0 0 1px rgba(17,22,51,.15); transition: width .2s ease, background .2s ease; }
+    .dots i.on { width: 20px; background: #fff; }
+
+    .thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 10px 14px 0; }
+    .thumb-btn { position: relative; padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; background: var(--lilac-soft); cursor: pointer; aspect-ratio: 1; }
+    .thumb-btn img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .thumb-btn span { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 16px; background: rgba(17,22,51,.35); }
+    .thumb-btn.on { border-color: var(--pink); }
+
+    .hero-media img, .hero-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
+    .media-block { border-radius: 20px; overflow: hidden; background: var(--lilac-soft); box-shadow: 0 10px 26px rgba(84,55,132,.10); }
+    .media-block img, .media-block video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+    .media-block .media-block { box-shadow: none; border-radius: 0; }
+
+    /* Výběr barvy přímo na kartě */
+    .colors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px 14px 0; }
+    .color-chip { display: grid; justify-items: center; gap: 5px; padding: 8px 4px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font-size: 13px; line-height: 1.2; font-weight: 700; text-align: center; cursor: pointer; touch-action: manipulation; }
+    .color-chip i { width: 26px; height: 26px; border-radius: 99px; box-shadow: inset 0 0 0 1px rgba(17,22,51,.12); }
+    .color-chip[aria-pressed="true"] { border-color: var(--pink); background: var(--pink-soft); }
+
+    .sale-ribbon { position: absolute; left: 12px; top: 12px; padding: 7px 11px; border-radius: 10px; background: #e5145f; color: #fff; font-size: 13.5px; font-weight: 800; box-shadow: 0 6px 14px rgba(229,20,95,.3); }
+    .slide .vid-badge { top: auto; bottom: 30px; }
+    .deal { padding: 14px 16px; border-radius: 18px; background: linear-gradient(120deg, #fff0f6, #fff7ec); border: 1.5px solid #ffc6da; }
+    .deal-price { display: flex; align-items: baseline; gap: 10px; }
+    .deal-price s { font-size: 18px; font-weight: 700; color: var(--muted); }
+    .deal-price strong { font-size: 30px; font-weight: 800; color: #e5145f; letter-spacing: -.01em; }
+    .deal-text { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--text); }
+    .deal-timer { margin: 8px 0 0; font-size: 14.5px; font-weight: 800; color: #c2185b; }
+    .info-list { display: grid; gap: 10px; }
+    .info { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; padding: 12px 14px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .info b { font-size: 22px; line-height: 1.2; }
+    .info strong { display: block; font-size: 15.5px; line-height: 1.3; }
+    .info span { display: block; margin-top: 2px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+    .faq { display: grid; gap: 8px; }
+    .faq details { border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+    .faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 52px; padding: 12px 14px; font-size: 15.5px; font-weight: 700; cursor: pointer; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; flex: 0 0 auto; font-size: 22px; font-weight: 600; color: var(--lilac); }
+    .faq details[open] summary::after { content: "−"; }
+    .faq-link { display: inline-block; margin-top: 8px; color: var(--lilac); font-weight: 800; text-decoration: none; }
+    .faq details p { margin: 0; padding: 0 14px 14px; font-size: 15px; line-height: 1.5; color: var(--text); }
+
+    /* Nabídka prodlouženého vrácení (spodní panel) */
+    .sheet-backdrop { position: fixed; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; background: rgba(17,22,51,.45); animation: fade .2s ease; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    .sheet { width: 100%; max-width: 440px; padding: 10px 18px calc(18px + env(safe-area-inset-bottom)); border-radius: 24px 24px 0 0; background: #fff; animation: up .28s ease; }
+    @keyframes up { from { transform: translateY(40px); opacity: .6; } to { transform: none; opacity: 1; } }
+    .sheet-handle { width: 40px; height: 5px; margin: 0 auto 14px; border-radius: 99px; background: #e2deea; }
+    .sheet-ico { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px; background: #e9fbf1; font-size: 26px; }
+    .sheet h3 { margin: 12px 0 6px; font-size: 21px; line-height: 1.25; font-weight: 800; }
+    .sheet p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--text); }
+    .sheet ul { margin: 12px 0 16px; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .sheet li { font-size: 15px; font-weight: 600; }
+    .sheet li::before { content: "✓ "; color: #13a05a; font-weight: 800; }
+    .sheet-no { display: block; width: 100%; margin-top: 6px; padding: 14px; border: 0; background: none; font-size: 15.5px; font-weight: 700; color: var(--muted); cursor: pointer; }
+
+    .trust-strip { margin-top: 18px; padding: 12px; border-radius: 14px; background: #fff; border: 1px solid var(--line); text-align: center; }
+    .trust-strip span { display: block; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .trust-strip p { margin: 4px 0 0; font-size: 15px; font-weight: 800; color: #4b4f66; }
+    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .trust-grid div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 14px; background: #fff; border: 1px solid var(--line); font-size: 13.5px; line-height: 1.3; font-weight: 700; }
+    .trust-grid b { font-size: 18px; }
+    .tv-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #111633; color: #fff; text-decoration: none; }
+    .tv-badge { flex: 0 0 auto; padding: 8px 10px; border-radius: 10px; background: #fff; color: #111633; font-size: 15px; font-weight: 900; }
+    .tv-card strong { display: block; font-size: 15.5px; }
+    .tv-card small { display: block; margin-top: 2px; font-size: 13.5px; color: #c9cbe0; font-weight: 600; }
+    .team { border-radius: 20px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+    .team img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--lilac-soft); }
+    .team-body { padding: 14px 16px 16px; }
+    .team-body strong { display: block; font-size: 17px; }
+    .team-body span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--text); }
+    .company { margin: 0; text-align: center; font-size: 13px; color: var(--muted); }
+    .company a { color: var(--muted); }
+
+    /* Objednávka */
+    .order { display: grid; gap: 16px; padding-bottom: 150px; }
+    .sum { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items: center; padding: 10px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .sum img { width: 72px; height: 72px; border-radius: 12px; object-fit: cover; background: var(--lilac-soft); }
+    .sum strong { display: block; font-size: 15px; line-height: 1.3; }
+    .sum-body span { display: block; margin-top: 3px; font-size: 13.5px; color: var(--muted); }
+    .sum-price s { color: var(--muted); } .sum-price b { color: #e5145f; font-size: 16px; }
+    .ret-line { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #e9fbf1; font-size: 15px; font-weight: 600; }
+    .upsell-line { background: var(--lilac-soft); }
+    .ret-line b { white-space: nowrap; }
+    .ret-line input, .chk input { width: 22px; height: 22px; flex: 0 0 22px; accent-color: var(--pink); }
+    .fs { margin: 0; padding: 0; border: 0; display: grid; gap: 10px; }
+    .fs legend { padding: 0; margin-bottom: 10px; font-size: 18px; font-weight: 800; }
+    .fld { display: grid; gap: 5px; font-size: 14px; font-weight: 700; color: var(--text); }
+    .fld input, .note textarea { width: 100%; min-height: 52px; padding: 13px 14px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); }
+    .fld input:focus, .note textarea:focus { outline: none; border-color: var(--lilac); }
+    .fld input:user-invalid { border-color: #e5145f; }
+    .row2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px; }
+    .note summary { cursor: pointer; padding: 6px 0; font-size: 15px; font-weight: 700; color: var(--lilac); list-style: none; }
+    .note summary::-webkit-details-marker { display: none; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .pay { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 16px; border: 2px solid var(--line); background: #fff; cursor: pointer; }
+    .pay input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--pink); flex: 0 0 22px; }
+    .pay strong { display: block; font-size: 16px; }
+    .pay small { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+    .pay:has(input:checked) { border-color: var(--pink); background: var(--pink-soft); }
+    .pay-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pay-btn { position: relative; cursor: pointer; }
+    .pay-btn input { position: absolute; opacity: 0; pointer-events: none; }
+    .pay-btn span { display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font-size: 16px; font-weight: 800; }
+    .pay-btn input:checked + span { border-color: var(--pink); background: var(--pink-soft); color: #c2185b; }
+    .pay-btn input:focus-visible + span { outline: 3px solid #cdbbff; }
+    .consents { display: grid; gap: 12px; }
+    .chk { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: var(--text); }
+    .chk a { color: var(--lilac); font-weight: 700; }
+    .form-err { margin: 0; padding: 12px 14px; border-radius: 14px; background: #ffe3ee; color: #a3123f; font-size: 14.5px; font-weight: 700; }
+    .tot-label { font-size: 14px; font-weight: 700; color: var(--muted); }
+    .cta:disabled { opacity: .7; }
+    #orderSubmit { font-size: 15.5px; padding: 14px 12px; }
+
+    /* Cena se slevou */
+    .price-now { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+    .price-now s { font-size: 16px; font-weight: 700; color: var(--muted); }
+    .price-now strong { color: #e5145f; }
+    .price-now em { font-style: normal; padding: 3px 8px; border-radius: 8px; background: #ffe3ee; color: #c2185b; font-size: 13.5px; font-weight: 800; align-self: center; }
+    .claim-body { padding: 16px 18px 18px; }
+    .claim-label { display: inline-block; margin-bottom: 8px; padding: 5px 10px; border-radius: 99px; background: var(--lilac-soft); color: #5b3fd6; font-size: 12.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .claim h2 { margin: 0 0 6px; font-size: 21px; line-height: 1.25; font-weight: 800; }
+    .claim p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--text); }
+
+    .cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 58px; padding: 14px 18px; border: 0; border-radius: 16px; font-size: 17.5px; font-weight: 800; color: #fff; text-decoration: none; background: var(--grad); box-shadow: 0 10px 22px rgba(255,92,147,.28); cursor: pointer; touch-action: manipulation; }
+    .cta:active { transform: scale(.99); }
+    .claim .cta { margin-top: 16px; }
+
+    /* Vyhodnocování */
+    .loading { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; padding-bottom: 40px; }
+    .loading h2 { margin: 0; text-align: center; font-size: 22px; line-height: 1.25; font-weight: 800; min-height: 56px; }
+    .meter { height: 10px; border-radius: 99px; background: #ece8f2; overflow: hidden; }
+    .meter i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: inherit; }
+    .meter-pct { margin: -10px 0 0; text-align: right; font-size: 14px; font-weight: 800; color: var(--lilac); }
+    .checklist { display: grid; gap: 10px; margin: 0; padding: 16px; list-style: none; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
+    .checklist li { display: flex; align-items: center; gap: 10px; font-size: 15.5px; font-weight: 700; opacity: .3; transition: opacity .3s ease; }
+    .checklist li b { margin-left: auto; color: #fff; background: #d9d4e6; width: 22px; height: 22px; border-radius: 99px; display: grid; place-items: center; font-size: 12px; transition: background .3s ease; }
+    .checklist li.on { opacity: 1; }
+    .checklist li.on b { background: var(--pink); }
+    .press { text-align: center; }
+    .press span { display: block; margin-bottom: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+    .press p { margin: 0; font-size: 15px; font-weight: 800; color: #6b6f86; line-height: 1.5; }
+
+    /* Výsledek */
+    .result { display: grid; gap: 16px; padding-bottom: 150px; }
+    .r-label { margin: 0; display: inline-flex; gap: 6px; align-items: center; padding: 6px 12px; width: max-content; border-radius: 99px; background: #e9fbf1; color: #137a43; font-size: 14px; font-weight: 800; }
+    .r-title { margin: 6px 0 0; font-size: clamp(23px, 6.4vw, 27px); line-height: 1.18; font-weight: 800; }
+    .r-for { margin: 4px 0 0; font-size: 15px; font-weight: 600; color: var(--muted); }
+    .saved-note { margin: 0; font-size: 14px; color: var(--muted); }
+    .saved-note button { border: 0; background: none; padding: 0; color: var(--lilac); font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+    .card { border-radius: 22px; background: #fff; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 14px 36px rgba(84,55,132,.10); }
+    .img-wrap { position: relative; }
+    .img-wrap img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
+    .name-tag { position: absolute; left: 12px; bottom: 12px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 7px 12px; border-radius: 99px; background: rgba(17,22,51,.82); color: #fff; font-size: 14px; font-weight: 800; letter-spacing: .03em; }
+    .moment { margin: 0; padding: 14px 16px 16px; font-size: 16px; line-height: 1.5; color: var(--text); font-style: italic; }
+
+    .sec { margin: 4px 0 0; font-size: 18px; font-weight: 800; }
+    .reasons { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .reasons li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 12px 14px; border-radius: 16px; background: var(--pink-soft); font-size: 15.5px; line-height: 1.45; color: var(--text); }
+    .reasons li::before { content: "♥"; color: var(--pink); font-size: 18px; line-height: 1.2; text-align: center; }
+    .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .benefit { padding: 14px 12px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .benefit b { display: block; font-size: 24px; line-height: 1; margin-bottom: 8px; }
+    .benefit strong { display: block; font-size: 15px; line-height: 1.25; margin-bottom: 4px; }
+    .benefit span { display: block; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+    .bullets { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .bullets li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 15px; line-height: 1.4; font-weight: 600; }
+    .bullets li::before { content: "✓"; color: var(--pink); font-weight: 800; }
+    .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .perk { padding: 10px 6px; border-radius: 14px; background: #fff; border: 1px solid var(--line); text-align: center; font-size: 12.5px; line-height: 1.3; font-weight: 700; color: var(--text); }
+    .perk b { display: block; font-size: 20px; margin-bottom: 4px; }
+    .upsell { width: 100%; min-height: 56px; padding: 12px 14px; border-radius: 16px; border: 2px dashed #cdbbff; background: var(--lilac-soft); color: #5b3fd6; font-size: 15px; line-height: 1.35; font-weight: 800; cursor: pointer; white-space: pre-line; touch-action: manipulation; }
+    .result-links { display: flex; justify-content: space-between; gap: 10px; }
+    .result-links a, .result-links button { border: 0; background: none; padding: 10px 0; font-size: 15px; font-weight: 700; color: var(--lilac); text-decoration: none; cursor: pointer; }
+    .help { margin: 0; text-align: center; font-size: 14px; line-height: 1.5; color: var(--muted); }
+    .help a { color: var(--lilac); font-weight: 700; text-decoration: none; }
+
+    /* Spodní lišta: vždy viditelná, v dosahu palce */
+    .bottom-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 8; background: rgba(255,255,255,.97); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(84,55,132,.08); }
+    .bottom-inner { max-width: 440px; margin: 0 auto; padding: 10px 18px calc(12px + env(safe-area-inset-bottom)); }
+    .price-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+    .price-row strong { font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
+    .price-row span { font-size: 12.5px; line-height: 1.3; font-weight: 700; color: #c2185b; text-align: right; }
+    .bar-note { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
+
+    /* Materiál */
+    .mat-group h3 { margin: 0 0 10px; font-size: 16px; font-weight: 800; }
+    .mat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .mat-option { display: grid; gap: 6px; padding: 6px 6px 9px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font-size: 13.5px; font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer; touch-action: manipulation; }
+    .mat-option img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; display: block; background: var(--lilac-soft); }
+    .mat-option[aria-checked="true"] { border-color: var(--pink); background: var(--pink-soft); }
+    .mat-name { display: grid; gap: 6px; font-size: 16px; font-weight: 800; }
+    .mat-name small { font-size: 14px; font-weight: 600; color: var(--muted); }
+    .mat-name input { width: 100%; padding: 14px 16px; border-radius: 14px; border: 2px solid var(--line); font: inherit; font-size: 16px; color: var(--navy); background: #fff; }
+    .ai-note { margin: -6px 0 0; font-size: 12px; color: var(--muted); }
+
+    @media (max-height: 640px) {
+      .answer { min-height: 58px; padding: 9px 12px; }
+      .answer .ico { flex-basis: 36px; width: 36px; height: 36px; font-size: 19px; }
+      .answer .thumb { flex-basis: 46px; width: 46px; height: 46px; }
+      .answers { margin-top: 14px; gap: 8px; }
+      .steps { margin-bottom: 12px; }
+      .claim-media > img:first-child, .claim-media video { aspect-ratio: 16 / 10; }
     }
-    .quiz-top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 4px 2px;
-    }
-    .quiz-top-bar img {
-      display: block;
-      width: 150px;
-      height: auto;
-    }
-    .quiz-top-back {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .quiz-top-back:hover { color: var(--navy); }
-    .quiz-hero-card {
-      border-radius: 26px;
-      padding: 24px 20px;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.85);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
-    .quiz-pill-eyebrow {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      color: #5b48d9;
-      background: rgba(155,108,255,.11);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-    .quiz-hero-card h1 {
-      margin: 0;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(30px, 8vw, 38px);
-      line-height: 1.08;
-      letter-spacing: -.03em;
-      color: var(--navy);
-    }
-    .quiz-hero-card .grad {
-      background: linear-gradient(105deg, #6b4dff, #e35fb2, #ff806a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .quiz-lead {
-      margin: 14px 0 0;
-      color: var(--text);
-      font-size: 14.5px;
-      line-height: 1.55;
-    }
-    .quiz-facts {
-      display: grid;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .quiz-fact {
-      padding: 11px 13px;
-      border-radius: 17px;
-      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,245,250,.78));
-      border: 1px solid rgba(255,255,255,.9);
-      box-shadow: 0 8px 20px rgba(84,55,132,.06);
-      font-size: 13.5px;
-      line-height: 1.32;
-      font-weight: 700;
-      display: grid;
-      grid-template-columns: 26px 1fr;
-      gap: 10px;
-      align-items: center;
-    }
-    .quiz-fact:nth-child(2n) {
-      background: linear-gradient(135deg, rgba(246,240,255,.92), rgba(239,252,255,.78));
-    }
-    .quiz-fact-check {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--aqua), var(--lilac), var(--pink));
-      box-shadow: 0 6px 13px rgba(155,108,255,.24);
-    }
-    .quiz-intro-note {
-      margin: 18px 0 0;
-      padding: 13px 14px;
-      color: var(--text);
-      font-size: 13px;
-      line-height: 1.48;
-      font-weight: 600;
-      border-radius: 18px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(17,22,51,.07);
-    }
-    .quiz-cta-main {
-      width: 100%;
-      margin-top: 20px;
-      border: 0;
-      border-radius: 999px;
-      padding: 15px 18px;
-      cursor: pointer;
-      color: #fff;
-      font-size: 15.5px;
-      font-weight: 800;
-      background: linear-gradient(100deg, var(--aqua), var(--lilac), var(--pink), var(--peach));
-      box-shadow: 0 12px 24px rgba(255,111,159,.26);
-      text-align: center;
-      text-decoration: none;
-      display: block;
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .quiz-cta-main:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(255,111,159,.32);
-    }
-    .quiz-cta-sub {
-      width: 100%;
-      margin-top: 9px;
-      border-radius: 999px;
-      padding: 12px 16px;
-      color: var(--navy);
-      background: rgba(255,255,255,.8);
-      border: 1px solid var(--line);
-      font-size: 13.5px;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-    }
-    .quiz-press-mini {
-      border-radius: 20px;
-      padding: 14px 16px;
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(255,255,255,.85);
-      text-align: center;
-    }
-    .quiz-press-mini span {
-      display: block;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .quiz-press-mini-logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px 12px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-weight: 800;
-      font-size: 13.5px;
-      color: rgba(17,22,51,.62);
-    }
+  
+    /* Typografie převzatá z návrhu: Playfair Display pro nadpisy, gradient v klíčových slovech */
+    /* Barevný overlay jako v návrhu. Přes ::before, protože iOS neumí background-attachment: fixed. */
+    body { background: #fffaf7; }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background:
+        radial-gradient(circle at 0 0, rgba(72,213,236,.22), transparent 30%),
+        radial-gradient(circle at 100% 0, rgba(255,111,159,.22), transparent 32%),
+        linear-gradient(180deg, #fffaf7 0%, #fff1f8 58%, #f7f1ff 100%); }
+    .top { background: rgba(255,250,247,.9); }
+    /* Dva fonty jako v návrhu: Playfair Display jen pro hlavní nadpisy, všechno ostatní DM Sans */
+    .q-title, .r-title, .claim h2, .loading h2 {
+      font-family: "Playfair Display", Georgia, serif; letter-spacing: -.02em; }
+    .q-title { font-size: clamp(25px, 7vw, 30px); line-height: 1.12; font-weight: 800; }
+    .r-title { font-size: clamp(27px, 7.4vw, 33px); line-height: 1.1; font-weight: 800; }
+    .claim h2 { font-size: 23px; line-height: 1.18; }
+    .loading h2 { font-size: 25px; }
+    .sec { font-size: 22px; line-height: 1.2; }
+    .grad { background: linear-gradient(105deg, #6b4dff, #e35fb2, #ff806a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .r-intro { margin: 8px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--text); }
+    .kicker { display: block; margin-bottom: 4px; font-size: 11.5px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; color: #7049da; }
+    .card-head { padding: 14px 16px 0; }
+    .card-head strong { display: block; font-size: 17px; line-height: 1.3; }
+    .card-head span { display: block; margin-top: 3px; font-size: 14px; color: var(--muted); font-weight: 600; }
+    .deal-badge { display: inline-block; margin-bottom: 8px; padding: 6px 10px; border-radius: 8px; background: #b12260; color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .04em; }
+    .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
+    .sticky-assurance { margin: 6px 0 0; text-align: center; font-size: 12.5px; font-weight: 700; color: #364360; }
+    .result { padding-bottom: 170px; }
+
+    /* Svítící psaníčko: fotka má nahoře světlou a dole svítící polovinu, ukazujeme spodní */
+    img[src$="produkt-psanicko-svitici.webp"] { object-position: 50% 100%; }
   </style>
 </head>
-<body class="mobile-sales quiz-page quiz-landing">
+<body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <div class="preorder-bar"><div class="wrap preorder-bar-inner"><p><strong>Objednávky do 30. 11.</strong> · Doprava zdarma · Limitovaná edice 100 ks · Rozesíláme od 7. 12.</p></div></div>
+<main class="app">
+  <div class="top">
+    <button class="icon-btn" id="backBtn" type="button" aria-label="Zpět" onclick="goBack()">←</button>
+    <a class="logo" href="index.html" aria-label="Makeful"><img src="assets/logo.png" alt="Makeful"></a>
+    <a class="icon-btn" href="index.html#produkty" aria-label="Zavřít kvíz">×</a>
+  </div>
+  <div class="steps" id="steps" aria-hidden="true"></div>
 
-  <main class="quiz-app-wrap">
-    <div class="quiz-top-bar">
-      <a href="index.html" aria-label="Makeful domů"><img src="assets/logo.png" alt="Makeful"></a>
-      <a class="quiz-top-back" href="index.html#produkty">← Zpět na dárky</a>
-    </div>
-
-    <section class="quiz-hero-card">
-      <div class="quiz-pill-eyebrow">🎁 Malá nápověda s výběrem</div>
-      <h1>Který dárek jí udělá <span class="grad">největší radost?</span></h1>
-      <p class="quiz-lead"><strong>Makeful propojuje módu, design a 3D tisk v dárku, který neskončí v šuplíku.</strong> Odpovězte na 5 rychlých otázek a hned vám doporučíme ideální variantu podle jejího věku a povahy.</p>
-
-      <div class="quiz-facts">
-        <div class="quiz-fact"><span class="quiz-fact-check">✓</span><span>Doporučení na míru za méně než 45 vteřin</span></div>
-        <div class="quiz-fact"><span class="quiz-fact-check">✓</span><span>Bez hádání. Hned uvidíte, co jí sedne nejvíc</span></div>
-        <div class="quiz-fact"><span class="quiz-fact-check">✓</span><span>Doprava zdarma i možnost platby benefity</span></div>
-      </div>
-
-      <p class="quiz-intro-note">Záleží nám na tom, aby dárek přinesl opravdovou radost z tvoření rukama. Bez lepidla, nepořádku a zbytečného sezení u obrazovky.</p>
-
-      <a class="quiz-cta-main" href="kviz-otazky.html">Spustit krátký kvíz (45 s) →</a>
-      <a class="quiz-cta-sub" href="index.html#produkty">Prohlédnout rovnou všechny 3 varianty</a>
-    </section>
-
-    <div class="quiz-press-mini" aria-label="Napsali o nás">
-      <span>O projektu Makeful psali</span>
-      <div class="quiz-press-mini-logos">
-        <span>Wired</span> · <span>ČT :D</span> · <span>Hospodářské noviny</span> · <span>Hrot</span> · <span>Aktuálně.cz</span> · <span>Abíčko</span>
+  <!-- OTÁZKA -->
+  <section class="view active" id="questionScreen">
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 class="q-title" id="questionTitle"></h1>
+    <p class="q-sub" id="questionSub"></p>
+    <div class="answers" id="answers"></div>
+    <div id="timeNote">
+      <p class="time-note">Pár krátkých otázek · cca 45 vteřin</p>
+      <div class="trust-strip">
+        <span>Známe z</span>
+        <p>ČT :D · Wired · Hospodářské noviny · Hrot</p>
       </div>
     </div>
-  </main>
+  </section>
 
-  <script src="assets/shop.js"></script>
+  <!-- MEZIKARTA -->
+  <section class="view" id="claimScreen">
+    <div class="claim-wrap">
+      <div class="claim">
+        <div class="claim-media" id="claimMedia"></div>
+        <div class="claim-body">
+          <span class="claim-label" id="claimLabel"></span>
+          <h2 id="claimTitle"></h2>
+          <p id="claimText"></p>
+          <button class="cta" type="button" onclick="advance()">Pokračovat →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VYHODNOCOVÁNÍ -->
+  <section class="view" id="loadingScreen">
+    <div class="loading">
+      <h2 id="loadingText">Vyhodnocujeme vaše odpovědi…</h2>
+      <div class="meter"><i id="meterBar"></i></div>
+      <p class="meter-pct" id="meterPct">0 %</p>
+      <ul class="checklist" id="checklist"></ul>
+      <div class="press">
+        <span>O projektu Makeful psali</span>
+        <p>Wired · ČT :D · Hospodářské noviny<br>Hrot · Aktuálně.cz · Abíčko</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÝSLEDEK -->
+  <section class="view" id="resultScreen">
+    <div class="result">
+      <p class="saved-note" id="savedResultNote" hidden>💡 Tohle je dárek, který jsme <span id="savedFor">pro ni</span> vybrali podle vašich odpovědí minule. <button type="button" onclick="restartQuiz()">Vyplnit kvíz znovu</button></p>
+      <div>
+        <p class="r-label" id="matchLabel">🎉 Máme to! Shoda 96 %</p>
+        <h1 class="r-title" id="resultTitle"></h1>
+        <p class="r-intro" id="rIntro">Dárek, který rozbalí, sama dotvoří a odnese si z něj opravdovou radost. Vybráno podle vašich odpovědí.</p>
+      </div>
+
+      <div class="card">
+        <div class="gallery-wrap">
+          <div class="hero-media" id="heroMedia"></div>
+          <span class="sale-ribbon" id="saleRibbon">−200 Kč · limitovaná sleva</span>
+          <span class="name-tag" id="nameTag" hidden></span>
+        </div>
+        <div class="card-head"><span class="kicker">Váš dárek na míru rozpočtu</span><strong id="resultProduct"></strong><span id="resultFor"></span></div>
+        <div class="colors" id="colors" role="group" aria-label="Barva materiálu"></div>
+        <p class="moment" id="resultMoment"></p>
+      </div>
+
+      <div class="deal">
+        <span class="deal-badge" id="dealBadge">LIMITOVANÁ NABÍDKA · SLEVA 200 Kč</span>
+        <div class="deal-price"><s id="dealOld"></s><strong id="dealNow"></strong></div>
+        <p class="deal-text"><b id="dealSave">Ušetříte 200 Kč.</b> Vánoční sleva platí jen do 30. 11. nebo do vyprodání 100 ks.</p>
+        <p class="deal-timer" id="dealTimer"></p>
+      </div>
+
+      <div class="trust-grid">
+        <div><b>🇨🇿</b>Česká značka z Prahy</div>
+        <div><b>🔒</b>Bezpečná platba kartou</div>
+        <div><b>🛡️</b>Vrácení až o 30 dní déle</div>
+        <div><b>📦</b>Doprava zdarma</div>
+        <div><b>🎁</b>Připravené jako dárek</div>
+        <div><b>💬</b>Jsme na telefonu i e-mailu</div>
+      </div>
+
+      <a class="tv-card" id="tvCard" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">
+        <span class="tv-badge">ČT :D</span>
+        <span><strong>Viděli jste nás v České televizi</strong><small>Reportáž o módě budoucnosti ▶</small></span>
+      </a>
+
+      <h2 class="sec" id="secWhy">Proč právě pro ni</h2>
+      <ul class="reasons" id="reasons"></ul>
+      <div class="media-block"><div id="midVideo"></div><p class="media-cap">▶ Podívejte se, jak dárek vypadá doopravdy</p></div>
+
+      <h2 class="sec" id="secGives">Co jí dárek dá</h2>
+      <div class="benefits" id="benefits"></div>
+
+      <div class="media-block" id="midImage"></div>
+      <h2 class="sec">Co si vlastně rozbalí?</h2>
+      <ul class="bullets" id="resultBullets"></ul>
+
+      <div class="info-list">
+        <div class="info"><b>🎁</b><div><strong>Krásně zabalené, rovnou pod stromeček</strong><span>Přijde v dárkové krabičce, nic nebalíte.</span></div></div>
+        <div class="info" id="materialInfo"><b>🧵</b><div><strong>Z čeho je vyrobené</strong><span id="materialText"></span></div></div>
+        <div class="info"><b>🚚</b><div><strong>Doprava zdarma, doma před Vánoci</strong><span>Rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12.</span></div></div>
+        <div class="info"><b>💳</b><div><strong>Karta, převod i benefity</strong><span>Platit můžete i kartou Edenred nebo Up.</span></div></div>
+      </div>
+
+      <div class="media-block" id="lateVideo"></div>
+      <h2 class="sec">Možná vás ještě napadá…</h2>
+      <div class="faq" id="faq"></div>
+
+      <div class="team">
+        <img src="assets/photos/makeful-nase-mise.png" alt="Tvůrkyně Makeful ve studiu s 3D tištěným psaníčkem a peněženkou" loading="lazy">
+        <div class="team-body">
+          <strong>Kdo za Makeful stojí?</strong>
+          <span>Jsme lokální tvůrkyně, které věří, že tvoření dává dětem i dospělým odvahu zkoušet nové věci. S láskou propojujeme módu, moderní technologie a radost z toho, že něco krásného vznikne vlastníma rukama. Své zkušenosti sdílíme také při vzdělávání učitelů. A o módě budoucnosti jsme mluvily i v České televizi.</span>
+        </div>
+      </div>
+      <div class="press">
+        <span>O projektu Makeful psali</span>
+        <p>Wired · ČT :D · Hospodářské noviny · Hrot · Aktuálně.cz · Abíčko</p>
+      </div>
+      <div class="press">
+        <span>Spolupracujeme s</span>
+        <p>Materialise · Recreus · ELEGOO · SuperCreators</p>
+      </div>
+      <p class="company">Makeful · IČO 08487341 · <a href="mailto:hello@make-ful.com">hello@make-ful.com</a></p>
+      <div class="result-links" style="justify-content:center">
+        <button type="button" onclick="restartQuiz()">Projít kvíz znovu</button>
+      </div>
+      <p class="help">Nejste si jistí? Zavolejte <a href="tel:+420735820576">735 820 576</a></p>
+    </div>
+    <div class="bottom-bar"><div class="bottom-inner">
+      <div class="price-row">
+        <div class="price-now"><s id="resultOldPrice"></s><strong id="resultPrice">1 188 Kč</strong></div>
+        <span id="barTimer">Sleva 200 Kč jen do 30. 11.</span>
+      </div>
+      <a class="cta" id="resultOrderBtn" href="objednavka.html">Vybrat dárek se slevou 200 Kč →</a>
+      <p class="sticky-assurance">Bez okamžité platby · údaje a platbu vyberete v dalším kroku</p>
+    </div></div>
+  </section>
+
+  <!-- OBJEDNÁVKA přímo v kvízu -->
+  <section class="view" id="orderScreen">
+    <form id="quizOrderForm" class="order" novalidate>
+      <div>
+        <p class="eyebrow">Poslední krok</p>
+        <h1 class="q-title">Kam dárek pošleme?</h1>
+      </div>
+
+      <div class="sum">
+        <img id="sumImg" src="" alt="">
+        <div class="sum-body">
+          <strong id="sumTitle"></strong>
+          <span id="sumMeta"></span>
+          <span class="sum-price"><s id="sumOld"></s> <b id="sumNow"></b></span>
+        </div>
+      </div>
+      <label class="ret-line"><input type="checkbox" id="sumRet"> <span>Prodloužené vrácení o 30 dní <b>+22 Kč</b></span></label>
+      <label class="ret-line upsell-line" id="upsellLine"><input type="checkbox" id="upsellChk"> <span id="upsellText"></span></label>
+
+      <fieldset class="fs">
+        <legend>Kontakt a doručení</legend>
+        <label class="fld"><span>E-mail</span><input id="oEmail" type="email" autocomplete="email" inputmode="email" required placeholder="vas@email.cz"></label>
+        <label class="fld"><span>Jméno a příjmení</span><input id="oName" type="text" autocomplete="name" required></label>
+        <label class="fld"><span>Telefon</span><input id="oPhone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+420"></label>
+        <label class="fld"><span>Ulice a číslo popisné</span><input id="oStreet" type="text" autocomplete="street-address" required></label>
+        <div class="row2">
+          <label class="fld"><span>Město</span><input id="oCity" type="text" autocomplete="address-level2" required></label>
+          <label class="fld"><span>PSČ</span><input id="oZip" type="text" autocomplete="postal-code" inputmode="numeric" required pattern="[0-9 ]{5,6}"></label>
+        </div>
+        <details class="note"><summary>+ Přidat poznámku</summary><textarea id="oNote" rows="3"></textarea></details>
+        <input id="oWebsite" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+      </fieldset>
+
+      <fieldset class="fs">
+        <legend>Platba</legend>
+        <div class="pay-row">
+          <label class="pay-btn"><input type="radio" name="qpay" value="card" checked><span>💳 Kartou</span></label>
+          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span>🏦 Převodem (do 24 h)</span></label>
+        </div>
+      </fieldset>
+
+      <div class="consents">
+        <label class="chk"><input type="checkbox" id="oConsent" required><span>Seznámil/a jsem se s <a href="obchodni-podminky.html" target="_blank" rel="noopener">obchodními podmínkami</a> a <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">zásadami ochrany osobních údajů</a>. Beru na vědomí, že <strong>dárky se vyrábějí ručně a rozesílají ve dvou vlnách, v týdnu od 7. 12. 2026 a od 15. 12. 2026</strong>.</span></label>
+      </div>
+      <p class="form-err" id="orderErr" hidden></p>
+    </form>
+    <div class="bottom-bar" id="orderBar"><div class="bottom-inner">
+      <div class="price-row">
+        <div class="price-now"><span class="tot-label">Celkem</span><strong id="orderTotal"></strong></div>
+        <span>Doprava zdarma</span>
+      </div>
+      <button class="cta" id="orderSubmit" type="button">Potvrdit objednávku zavazující k platbě</button>
+    </div></div>
+  </section>
+
+  <!-- POTVRZENÍ (převod) -->
+  <section class="view" id="doneScreen">
+    <div class="result" style="padding-bottom:40px">
+      <p class="r-label">✅ Objednávka přijata</p>
+      <h1 class="r-title">Děkujeme! Dárek je na cestě k vám.</h1>
+      <p class="q-sub" id="doneText"></p>
+      <div class="deal" id="bankBox">
+        <p class="deal-text" id="bankText"></p>
+        <img id="bankQr" alt="QR kód pro platbu" hidden style="display:block;width:200px;height:200px;margin:12px auto 0">
+      </div>
+    </div>
+  </section>
+
+  <div class="sheet-backdrop" id="retSheet" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="retTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-ico" aria-hidden="true">🛡️</div>
+      <h3 id="retTitle">Chcete jistotu, že se trefíte?</h3>
+      <p>Přidejte prodloužené vrácení. Když se jí dárek nebude líbit, můžete ho vrátit bez udání důvodu ještě o 30 dní déle.</p>
+      <ul>
+        <li>Vrácení bez udání důvodu o 30 dní déle</li>
+        <li>Ideální, když dárek kupujete s předstihem</li>
+      </ul>
+      <button class="cta" id="retYes" type="button">Ano, přidat za 22 Kč</button>
+      <button class="sheet-no" id="retNo" type="button">Ne, děkuji</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const AGE = {
+    mlada: 'Pro holku od 8 do 12 let',
+    teen: 'Pro teenagerku od 13 do 19 let',
+    dospela: 'Pro dospělou ženu',
+    mamaDcera: 'Společný dárek pro mámu a dceru',
+    sestry: 'Dárek pro sestry'
+  };
+  const BUDGET = { low: 'Do 500 Kč', mid: '500–1 000 Kč', high: '1 000–1 500 Kč', top: 'Nad 1 500 Kč' };
+  const FORMAT = { home: 'Doma v klidu u tvoření', out: 'S ostatními, na workshopech a akcích', both: 'Obojí, podle nálady', unsure: 'Nevím, poraďte' };
+  const EFFECT = { glow: 'Svítí ve tmě', thermo: 'Mění barvu na dotek', black: 'Klasická černá', any: 'Nechám to na vás' };
+  const P = 'assets/photos/';
+  const isVoucher = (v) => v.indexOf('voucher') === 0;
+  // Společný dárek: otázky i texty mluví v množném čísle. Sestry dostanou dva balíčky se slevou 20 %.
+  const isJoint = () => state.answers.age === AGE.mamaDcera || state.answers.age === AGE.sestry;
+  const isSisters = () => state.answers.age === AGE.sestry;
+  const isDuo = (v) => /2$/.test(v);
+  // Máma a dcera, 500–1 000 Kč: 2 psaníčka + knížka za 988 Kč (v Make 2× psaníčko + promokód MAMADCERA −788 Kč)
+  const TWO_PCS = { penezenka2: 'penezenka', psanicko2: 'psanicko', balicek2: 'balicek', psanickoMD: 'psanicko' };
+  const baseOf = (v) => TWO_PCS[v] || v;
+  const hasClutch = (v) => ['psanicko', 'balicek', 'combo', 'psanicko2', 'balicek2', 'psanickoMD'].includes(v);
+  const val = (x) => typeof x === 'function' ? x() : x;
+
+  /* CENY: jediné místo, kde se mění. old = přeškrtnutá cena.
+     Stejné ceny a varianty musí znát i assets/shop.js (PRICES, LABELS) a scénář v Make, který cenu přepočítává. */
+  const DISCOUNT = 200;
+  const SALE_END = new Date('2026-11-30T23:59:59+01:00');
+  const PRICES = {
+    penezenka:   { now: 488 },
+    psanicko:    { now: 888 },
+    balicek:     { now: 1188 },
+    voucher488:  { now: 488 },
+    voucher888:  { now: 888 },
+    voucher1288: { now: 1288 },
+    combo:       { now: 2138 }
+  };
+  Object.keys(PRICES).forEach(k => { PRICES[k].old = PRICES[k].now + DISCOUNT; });
+  // Dva balíčky pro sestry: přeškrtnutá cena = 2 kusy, aktuální = o 20 % méně (Make počítá stejně: 781 / 1 421 / 1 901)
+  const DUO_RATE = 0.2;
+  ['penezenka', 'psanicko', 'balicek'].forEach(k => { const o = 2 * PRICES[k].now; PRICES[k + '2'] = { now: Math.round(o * (1 - DUO_RATE)), old: o }; });
+  PRICES.psanickoMD = { now: 988, old: 988 + DISCOUNT };
+  const saving = (v) => PRICES[v].old - PRICES[v].now;
+  // Doplněk k voucherům (samostatná položka v objednávce, Make ji zná jako „knizka“)
+  const BOOK = { variant: 'knizka', price: 100, name: 'Interaktivní vzdělávací knížka' };
+  const fmt = (n) => n.toLocaleString('cs-CZ').replace(/ /g, ' ') + ' Kč';
+
+  const questions = [
+    { id: 'age', title: 'Pro koho dárek vybíráte?', answers: [
+      { v: AGE.mlada, t: 'Holka 8–12 let', i: '🧒' },
+      { v: AGE.teen, t: 'Teenagerka 13–19 let', i: '👧' },
+      { v: AGE.dospela, t: 'Dospělá žena', i: '👩' },
+      { v: AGE.mamaDcera, t: 'Máma a dcera', i: '👩‍👧' },
+      { v: AGE.sestry, t: 'Sestry', i: '👯‍♀️' } ] },
+    { id: 'budget', title: () => isSisters() ? 'V jaké cenové kategorii hledáte dárek pro 1 holčičku?' : 'V jaké cenové kategorii dárek hledáte?', sub: 'Doporučíme variantu, která respektuje váš rozpočet.', answers: [
+      { v: BUDGET.low, s: 'Zatím jen malý dárek', i: '🎀', hide: () => state.answers.age === AGE.mamaDcera },
+      { v: BUDGET.mid, s: 'Milé osobní překvapení', i: '💌' },
+      { v: BUDGET.high, s: 'Chci oslnit', i: '✨' },
+      { v: BUDGET.top, s: 'Když to bude mít přínos', i: '🎁' } ] },
+    { id: 'interests', title: () => isJoint() ? 'Co je spolu nejvíc baví?' : 'Co ji nejvíc baví?', answers: [
+      { v: 'Móda a originální doplňky', i: '👗' },
+      { v: 'Tvoření rukama a vyrábění', i: '✂️' },
+      { v: 'Technologie a 3D tisk', i: '🚀' },
+      { v: 'Nové zážitky a zkoušení nepoznaného', t: 'Nové zážitky', s: 'Ráda zkouší, co ještě nezná', js: 'Rády zkouší, co ještě neznají', i: '🎨' } ] },
+    { id: 'format', title: () => isJoint() ? 'Jak spolu nejraději tráví čas?' : 'Jak nejraději tráví volný čas?', answers: [
+      { v: FORMAT.home, jt: 'Doma u společného tvoření', i: '🏠' },
+      { v: FORMAT.out, t: 'S ostatními', jt: 'Venku mezi lidmi', s: 'Workshopy, kroužky, akce', i: '👭' },
+      { v: FORMAT.both, i: '💫' },
+      { v: FORMAT.unsure, i: '🤔' } ] },
+    // Efekt jen u balíčku (u voucheru nedává smysl)
+    { id: 'effect', when: () => !isVoucher(computeVariant()), title: () => isJoint() ? 'Který efekt by je nadchl?' : 'Který efekt by ji nadchl?', sub: () => isJoint() ? 'Vyberte, co by je nejvíc bavilo.' : 'Vyberte, co by ji nejvíc bavilo.', answers: [
+      { v: EFFECT.glow, s: 'Ve tmě se rozzáří', img: P + 'penezenka-svitici.webp' },
+      { v: EFFECT.thermo, s: 'Teplem ruky změní barvu', img: P + 'produkt-penezenka-termo.webp' },
+      { v: EFFECT.black, s: 'Elegantní, hodí se ke všemu', img: P + 'produkt-penezenka-cerna.webp' },
+      { v: EFFECT.any, s: 'Vyberte nejoblíbenější', i: '🎲' } ] },
+    // Jméno jen když je v dárku psaníčko (tam ho tiskneme)
+    { id: 'name', type: 'input', when: () => hasClutch(computeVariant()), title: () => isJoint() ? 'Jak se jmenují?' : 'Jak se jmenuje?', sub: () => isJoint() ? 'Ať je dárek opravdu jejich.' : 'Ať je dárek opravdu její.' }
+  ];
+
+  const state = { index: 0, answers: {}, name: '', baseVariant: 'balicek', activeVariant: 'balicek', view: 'questionScreen' };
+  const $ = (id) => document.getElementById(id);
+  const activeQs = () => questions.filter(q => !q.when || q.when());
+  const capName = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+
+  // Mezikarty: produktové fotky a videa, reagují na odpověď
+  // Mezikarty „ukaž, neříkej“: video (nebo fotka) + produktová fotka v rohu + jedna krátká věta
+  // [hlavní médium, poster videa, produktová fotka, titulek, věta]
+  const VID = { pen: 'produkt-penezenka-ukazka.mp4', psa: 'produkt-psanicko-detail.mp4', mat: 'produkt-materialy.mp4', voda: 'produkt-zmena-barvy-voda.mp4', d1: 'makeful-prvni-den.mp4', d3: 'makeful-treti-den.mp4', studio: 'makeful-ze-studia.mp4' };
+  const POSTER = { pen: 'produkt-penezenka-video-poster.webp', mat: 'produkt-materialy-poster.webp', voda: 'produkt-zmena-barvy-voda-poster.webp', d3: 'makeful-treti-den-poster.webp' };
+  function getDynamicClaim(qid, v) {
+    // Mezikarty: reagují na odpověď a prodávají pocit. Žádné názvy produktů, ceny ani slevy.
+    const C = {
+      age: {
+        [AGE.mlada]: ['pen', 'produkt-penezenka-v-ruce.webp', 'Tohle zvládne úplně sama', 'Hotový výsledek za jedno odpoledne a hrdý pocit „tohle jsem udělala já“.'],
+        [AGE.teen]: ['psa', 'psanicko-v-ruce.webp', 'Něco, co nikdo jiný nemá', 'Vlastní styl, který vznikl jejíma rukama. Na tohle v obchodě nenarazí.'],
+        [AGE.dospela]: ['studio', 'makeful-nase-mise.png', 'Hodina klidu bez telefonu', 'Ruce tvoří, hlava odpočívá.'],
+        [AGE.mamaDcera]: ['d1', 'produkt-balicek-novy.webp', 'Jeden stůl, dvě tvůrkyně', 'Společný čas, na který se nezapomíná.'],
+        [AGE.sestry]: ['d1', 'balicek-krabicka.webp', 'Každá svůj, žádné hádky', 'Dva balíčky, dvě vlastní kreativní tvoření bez zbytečných hádek a odpadků.']
+      },
+      budget: {
+        [BUDGET.low]: ['pen', 'penezenka-oranzova-v-ruce.webp', 'I malý dárek může otevřít velký svět', 'Nejde o velikost dárku, ale o chvíli, kdy něco vytvoří sama.'],
+        [BUDGET.mid]: ['psa', 'produkt-psanicko-svitici.webp', 'Osobní detail dělá z dárku vzpomínku', 'Dárek, který je opravdu jen její, si pamatuje nejdéle.'],
+        [BUDGET.high]: ['mat', 'balicek-krabicka.webp', 'Radost hned po rozbalení', 'Všechno připravené, stačí se pustit do tvoření.'],
+        [BUDGET.top]: ['d3', 'produkt-kombinace-nova.webp', 'Radost, která vydrží', 'Tvořivý zážitek, ke kterému se bude vracet celý rok.']
+      },
+      interests: {
+        'Móda a originální doplňky': ['psa', 'psanicko-cerne.webp', 'Móda, kterou si vyrobí', 'Kousek, který obstojí vedle čehokoli ve skříni. A ona ví, že je její.'],
+        'Tvoření rukama a vyrábění': ['pen', 'produkt-pripravene-moduly.webp', 'Klik, klik, hotovo', 'Skládání, které baví a učí trpělivosti.'],
+        'Technologie a 3D tisk': ['mat', 'produkt-penezenka-prototyp.webp', 'Technika, která se dá nosit', 'Móda budoucnosti se dá nejen číst, ale také osahat.'],
+        'Nové zážitky a zkoušení nepoznaného': ['voda', 'voucher-zmena-barvy-dotek.webp', 'Tohle ještě nezažila', 'Materiál, který reaguje na teplo i světlo.']
+      },
+      format: {
+        [FORMAT.home]: ['mat', 'produkt-balicek-novy.webp', 'Klidné odpoledne doma', 'Nic se nedokupuje, nic se nelepí.'],
+        [FORMAT.out]: ['d3', 'voucher-ruzovy.webp', 'Tvoření mezi lidmi', 'Inspirace od designérky a holky se stejným zájmem.'],
+        [FORMAT.both]: ['studio', 'produkt-kombinace-nova.webp', 'Proč si vybírat?', 'Radost z tvoření doma i zážitek mezi lidmi.'],
+        [FORMAT.unsure]: ['pen', 'balicek-krabicka.webp', 'Podívejte se', 'Za chvíli vám ukážeme, co jí sedne nejvíc.']
+      },
+      effect: {
+        [EFFECT.glow]: ['IMG:penezenka-svitici.webp', 'produkt-psanicko-svitici.webp', 'Až zhasnete světla…', '…začne její výtvor zářit.'],
+        [EFFECT.thermo]: ['voda', 'produkt-penezenka-termo.webp', 'Stačí vzít do ruky', 'Teplo dlaně změní barvu. Podívejte se.'],
+        [EFFECT.black]: ['IMG:produkt-penezenka-cerna.webp', 'psanicko-cerne.webp', 'Nadčasová černá', 'Hodí se ke všemu a vydrží roky.'],
+        [EFFECT.any]: ['mat', 'penezenka-svitici.webp', 'Necháte to na nás?', 'Vybereme to, co holky baví nejvíc.']
+      }
+    };
+    const LABEL = { age: 'Podívejte se', budget: 'Dobrá volba', interests: 'Ukázka', format: 'Naživo', effect: 'Ukázka' };
+    // Mezikarty u společného dárku v množném čísle
+    if (isJoint()) {
+      C.budget[BUDGET.low][3] = 'Nejde o velikost dárku, ale o chvíli, kdy něco vytvoří samy.';
+      C.budget[BUDGET.mid][3] = 'Dárek, který je opravdu jen jejich, si pamatují nejdéle.';
+      C.budget[BUDGET.top][3] = 'Tvořivý zážitek, ke kterému se budou vracet celý rok.';
+      C.interests['Móda a originální doplňky'][3] = 'Kousky, které obstojí vedle čehokoli ve skříni.';
+      C.interests['Tvoření rukama a vyrábění'][3] = 'Skládání, které baví malé i velké.';
+      C.interests['Nové zážitky a zkoušení nepoznaného'][2] = 'Tohle ještě nezažily';
+      C.format[FORMAT.home] = ['mat', 'produkt-balicek-novy.webp', 'Společné odpoledne doma', 'Nic se nedokupuje, nic se nelepí. Jen tvoření a společný čas.'];
+      C.format[FORMAT.out][3] = 'Tvoří spolu s designérkou a každá si odnese svůj výtvor.';
+      C.format[FORMAT.unsure][3] = 'Za chvíli vám ukážeme, co jim sedne nejvíc.';
+      C.effect[EFFECT.glow][3] = '…začnou jejich výtvory zářit.';
+    }
+    const hit = C[qid] && C[qid][v];
+    if (!hit) return null;
+    const main = { src: P + (hit[0].startsWith('IMG:') ? hit[0].slice(4) : hit[1]) };
+    return { main, title: hit[2], text: hit[3], label: LABEL[qid] };
+  }
+
+  function mediaEl(m, alt) {
+    if (m.video) {
+      const v = document.createElement('video');
+      v.src = m.video; v.poster = m.poster || ''; v.muted = true; v.loop = true; v.playsInline = true;
+      v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); v.preload = 'metadata';
+      return v;
+    }
+    const i = document.createElement('img');
+    i.src = m.src; i.alt = alt || ''; i.decoding = 'async';
+    return i;
+  }
+
+  function renderSteps() {
+    const total = activeQs().length + 1;
+    let done = state.index;
+    if (state.view === 'claimScreen') done = state.index + 1;
+    if (['loadingScreen', 'resultScreen', 'orderScreen', 'doneScreen'].includes(state.view)) done = total;
+    $('steps').innerHTML = Array.from({ length: total }, (_, i) => '<i class="' + (i < done ? 'done' : '') + '"></i>').join('');
+  }
+
+  function setView(id) {
+    state.view = id;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    $(id).classList.add('active');
+    const showBack = !(id === 'questionScreen' && state.index === 0) && id !== 'loadingScreen' && id !== 'doneScreen';
+    $('backBtn').classList.toggle('invisible', !showBack);
+    document.querySelectorAll('video').forEach(v => { if (!$(id).contains(v)) v.pause(); });
+    renderSteps();
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  const ansT = (a) => (isJoint() && a.jt) || a.t || a.v;
+  const ansS = (a) => (isJoint() && a.js) || a.s;
+  function renderQuestion() {
+    const qs = activeQs();
+    const q = qs[state.index];
+    const first = state.index === 0;
+    $('eyebrow').textContent = first ? 'Najdeme jí ideální dárek za 45 vteřin' : 'Otázka ' + (state.index + 1) + ' z ' + qs.length;
+    $('timeNote').hidden = !first;
+    $('questionTitle').textContent = val(q.title);
+    $('questionSub').textContent = val(q.sub) || '';
+    $('questionSub').hidden = !val(q.sub);
+    $('answers').innerHTML = '';
+
+    if (q.type === 'input') {
+      const inp = document.createElement('input');
+      inp.className = 'name-input'; inp.type = 'text'; inp.maxLength = 40; inp.autocomplete = 'off';
+      inp.placeholder = isJoint() ? 'Např. Ema a Klára' : 'Např. Ema'; inp.maxLength = isJoint() ? 60 : 40; inp.value = state.name; inp.setAttribute('aria-label', 'Jméno obdarované');
+      const go = document.createElement('button');
+      go.className = 'cta'; go.type = 'button'; go.textContent = 'Najít dárek →';
+      const skip = document.createElement('button');
+      skip.className = 'skip'; skip.type = 'button'; skip.textContent = 'Přeskočit';
+      const submit = (val) => { state.name = capName((val || '').trim()); chooseAnswer(q, state.name ? 'vyplněno' : 'přeskočeno', null); };
+      go.addEventListener('click', () => submit(inp.value));
+      skip.addEventListener('click', () => submit(''));
+      inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') submit(inp.value); });
+      $('answers').append(inp, go, skip);
+      setView('questionScreen');
+      return;
+    }
+
+    const selected = state.answers[q.id] || '';
+    q.answers.filter(a => !(a.hide && a.hide())).forEach(a => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'answer' + (selected === a.v ? ' selected' : '');
+      btn.innerHTML = (a.img ? '<img class="thumb" alt="">' : '<span class="ico" aria-hidden="true"></span>') + '<span class="lbl"></span><span class="chk" aria-hidden="true">✓</span>';
+      if (a.img) btn.querySelector('.thumb').src = a.img; else btn.querySelector('.ico').textContent = a.i;
+      const lbl = btn.querySelector('.lbl');
+      lbl.textContent = ansT(a);
+      if (ansS(a)) { const s = document.createElement('small'); s.textContent = ansS(a); lbl.appendChild(s); }
+      btn.addEventListener('click', () => chooseAnswer(q, a.v, btn));
+      $('answers').appendChild(btn);
+    });
+    setView('questionScreen');
+  }
+
+  let busy = false;
+  function chooseAnswer(q, value, btn) {
+    if (busy) return;
+    busy = true;
+    state.answers[q.id] = value;
+    if (btn) {
+      document.querySelectorAll('#answers .answer').forEach(el => el.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+    setTimeout(() => {
+      busy = false;
+      const c = getDynamicClaim(q.id, value);
+      if (c) {
+        const box = $('claimMedia'); box.innerHTML = '';
+        box.appendChild(mediaEl(c.main, c.title));
+        $('claimLabel').textContent = c.label;
+        $('claimTitle').textContent = c.title;
+        $('claimText').textContent = c.text;
+        setView('claimScreen');
+      } else {
+        advance();
+      }
+    }, btn ? 220 : 0);
+  }
+
+  function advance() {
+    const next = state.index + 1;
+    if (next >= activeQs().length) { showLoadingThenResult(); return; }
+    state.index = next;
+    renderQuestion();
+  }
+
+  // Vyhodnocování (pomalé, ať je vidět, že kvíz „přemýšlí“)
+  function showLoadingThenResult() {
+    const a = state.answers;
+    const short = (qid) => { const q = questions.find(x => x.id === qid); const ans = q && q.answers && q.answers.find(x => x.v === a[qid]); return ans ? ansT(ans) : ''; };
+    const rows = [['👧', short('age')], ['💰', 'Rozpočet: ' + (a.budget || '')], ['💡', short('interests')], ['🏠', short('format')]];
+    if (a.effect && !isVoucher(computeVariant())) rows.push(['✨', a.effect === EFFECT.any ? 'Materiál vybereme za vás' : 'Materiál: ' + a.effect.toLowerCase()]);
+    $('checklist').innerHTML = rows.map(() => '<li><span></span><span></span><b>✓</b></li>').join('');
+    document.querySelectorAll('#checklist li').forEach((li, i) => { li.children[0].textContent = rows[i][0]; li.children[1].textContent = rows[i][1]; });
+    setView('loadingScreen');
+
+    const texts = ['Vyhodnocujeme vaše odpovědi…', 'Porovnáváme možnosti…', (isJoint() ? 'Hledáme nejlepší shodu pro ně…' : 'Hledáme nejlepší shodu pro ni…'), 'Připravujeme doporučení…', 'Máme to! 🎉'];
+    const DURATION = 6000, start = performance.now();
+    const items = document.querySelectorAll('#checklist li');
+    function tick(now) {
+      const t = Math.min(1, (now - start) / DURATION);
+      const pct = Math.round((1 - Math.pow(1 - t, 2)) * 100);
+      $('meterBar').style.width = pct + '%';
+      $('meterPct').textContent = pct + ' %';
+      $('loadingText').textContent = texts[Math.min(texts.length - 1, Math.floor(t * texts.length))];
+      items.forEach((li, i) => li.classList.toggle('on', t > (i + 1) / (items.length + 1.5)));
+      if (t < 1) requestAnimationFrame(tick); else setTimeout(computeAndShowResult, 900);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function goBack() {
+    if (state.view === 'orderScreen') { setView('resultScreen'); return; }
+    if (state.view === 'doneScreen') return;
+    if (state.view === 'claimScreen') { renderQuestion(); return; }
+    if (state.view === 'resultScreen') { state.index = activeQs().length - 1; renderQuestion(); return; }
+    if (state.index <= 0) return;
+    state.index -= 1;
+    renderQuestion();
+  }
+
+  function restartQuiz() {
+    state.index = 0; state.answers = {}; state.name = '';
+    renderQuestion();
+  }
+
+  // Doporučení: rozpočet určí cenovou hladinu, volný čas a zájmy rozhodnou balíček vs. voucher
+  function computeVariant() {
+    const a = state.answers;
+    if (a.age === AGE.sestry) return a.budget === BUDGET.low ? 'penezenka2' : a.budget === BUDGET.mid ? 'psanicko2' : 'balicek2';
+    if (a.age === AGE.mamaDcera && (a.budget === BUDGET.low || a.budget === BUDGET.mid)) return 'psanickoMD';
+    if (a.budget === BUDGET.top) return 'combo';
+    const wantsVoucher = a.format === FORMAT.out || (a.format === FORMAT.unsure && (a.interests || '').includes('zážitky'));
+    if (a.budget === BUDGET.low) return wantsVoucher ? 'voucher488' : 'penezenka';
+    if (a.budget === BUDGET.mid) return wantsVoucher ? 'voucher888' : 'psanicko';
+    return wantsVoucher ? 'voucher1288' : 'balicek';
+  }
+
+  function buildProfile() {
+    const age = state.answers.age || '', interests = state.answers.interests || '';
+    if (age === AGE.mamaDcera || age === AGE.sestry) return { name: 'Kreativní tandem', fit: 98 };
+    if (interests.includes('zážitky')) return { name: 'Zážitková experimentátorka', fit: 95 };
+    if (interests.includes('3D tisk')) return { name: 'Designérka budoucnosti', fit: 97 };
+    if (age.includes('dospělou')) return { name: 'Milovnice chytrého designu', fit: 95 };
+    return { name: 'Tvořivá módní objevitelka', fit: 96 };
+  }
+
+  // Fotky podle barvy materiálu (stejné soubory jako konfigurátor v shop.js)
+  const MAT = {
+    'Svítí ve tmě':        { short: 'Svítí ve tmě', w: 'penezenka-svitici.webp', c: 'produkt-psanicko-svitici.webp', dot: 'radial-gradient(circle at 35% 35%, #f4ffd6, #b9f27a 60%, #7fd34e)', txt: 've tmě se rozzáří' },
+    'Mění barvu na dotek': { short: 'Mění barvu', w: 'produkt-penezenka-termo.webp', c: 'psanicko-termo.webp', dot: 'linear-gradient(135deg, #ff6f9f, #9b6cff 55%, #48d5ec)', txt: 'teplem ruky mění barvu' },
+    'Klasická černá':      { short: 'Černá', w: 'produkt-penezenka-cerna.webp', c: 'psanicko-cerne.webp', dot: '#1b1d29', txt: 'elegantní černá' }
+  };
+  const V = (file, poster) => ({ video: 'assets/videos/' + file, poster: P + poster });
+  const currentColor = () => (state.answers.effect && MAT[state.answers.effect]) ? state.answers.effect : 'Svítí ve tmě';
+
+  // Max 3 fotky + 1 video (video jako druhé)
+  // Karta nabídky: 3 fotky + 2 videa (fotka podle barvy je první, videa se střídají s fotkami)
+  // Média podle typu produktu: hero (fotka v barvě), video pod důvody, fotka obsahu nad „Co si vlastně rozbalí?“, video před FAQ
+  function galleryFor(variant, color) {
+    const m = MAT[color];
+    const thermo = color === 'Mění barvu na dotek';
+    const vVoda = V('produkt-zmena-barvy-voda.mp4', 'produkt-zmena-barvy-voda-poster.webp');
+    const vPen = V('produkt-penezenka-ukazka.mp4', 'produkt-penezenka-video-poster.webp');
+    const vPsa = V('produkt-psanicko-detail.mp4', 'produkt-psanicko-detail-poster.webp');
+    const vMat = V('produkt-materialy.mp4', 'produkt-materialy-poster.webp');
+    const vD3 = V('makeful-treti-den.mp4', 'makeful-treti-den-poster.webp');
+    const vStudio = V('makeful-ze-studia.mp4', 'makeful-ze-studia-poster.webp');
+    const img = (f) => ({ src: P + f });
+    // Fotky a videa podle zvoleného materiálu, ať u svítící (bílé) varianty nejsou vidět černé kusy
+    const glow = color === 'Svítí ve tmě';
+    const KIT = glow ? {
+      penezenka: { video1: vPen, image: 'produkt-penezenka-v-ruce.webp', video2: vD3 },
+      psanicko:  { video1: vD3, image: 'penezenka-svitici.webp', video2: vStudio },
+      balicek:   { video1: vPen, image: 'produkt-psanicko-svitici.webp', video2: vD3 },
+      combo:     { video1: vPen, image: 'produkt-psanicko-svitici.webp', video2: vStudio }
+    } : thermo ? {
+      penezenka: { video1: vVoda, image: 'penezenka-oranzova-v-ruce.webp', video2: vMat },
+      psanicko:  { video1: vVoda, image: 'psanicko-termo.webp', video2: vMat },
+      balicek:   { video1: vVoda, image: 'psanicko-termo.webp', video2: vMat },
+      combo:     { video1: vVoda, image: 'psanicko-termo.webp', video2: vD3 }
+    } : {
+      penezenka: { video1: vMat, image: 'produkt-balicek-novy.webp', video2: vD3 },
+      psanicko:  { video1: vPsa, image: 'psanicko-v-ruce.webp', video2: vMat },
+      balicek:   { video1: vPsa, image: 'psanicko-v-ruce.webp', video2: vMat },
+      combo:     { video1: vPsa, image: 'produkt-kombinace-nova.webp', video2: vD3 }
+    };
+    const G = { voucher: { hero: img('voucher-ruzovy.webp'), video1: vD3, image: img('voucher-zmena-barvy-dotek.webp'), video2: vStudio } };
+    Object.keys(KIT).forEach(k => { G[k] = { hero: img(k === 'psanicko' ? m.c : m.w), video1: KIT[k].video1, image: img(KIT[k].image), video2: KIT[k].video2 }; });
+    return G[isVoucher(variant) ? 'voucher' : baseOf(variant)];
+  }
+
+  // Nadpis podle odpovědí: [úvod, zvýrazněná část v gradientu]
+  function headlineFor(v) {
+    const a = state.answers;
+    if (a.age === AGE.sestry) return ['Darujte každé sestře ', 'vlastní radost z tvoření'];
+    if (a.age === AGE.mamaDcera) return isVoucher(v) ? ['Darujte mámě a dceři ', 'společný tvořivý zážitek'] : ['Darujte mámě a dceři ', 'společnou radost z tvoření'];
+    if (isVoucher(v)) return ['Darujte jí ', 'zážitek, který nekončí rozbalením'];
+    if (v === 'combo') return ['Darujte jí ', 'radost z tvoření na celý rok'];
+    if (v === 'psanicko') return state.name ? ['Darujte jí psaníčko se jménem ', state.name.toUpperCase()] : ['Darujte jí doplněk ', 's jejím vlastním jménem'];
+    if (a.age === AGE.dospela) return ['Darujte jí ', 'chvíli klidu a radost z tvoření'];
+    if (a.age === AGE.teen) return ['Darujte jí ', 'originál, který nikdo jiný nemá'];
+    if (v === 'penezenka') return ['Darujte jí ', 'radost z první vlastní peněženky'];
+    return ['Darujte jí ', 'originální radost z tvoření'];
+  }
+
+
+  const KIT_BENEFITS = [
+    { i: '💪', t: 'Sebevědomí', d: '„Tohle jsem vyrobila já!“ Hrdost, kterou v obchodě nekoupíte.' },
+    { i: '🧠', t: 'Hravě se učí', d: '3D tisk, chytré materiály a móda budoucnosti.' },
+    { i: '📵', t: 'Čas bez obrazovky', d: 'Soustředění a tvoření rukama místo scrollování.' },
+    { i: '🎒', t: 'Používá to denně', d: 'Žádný lapač prachu. Nosí to s sebou.' }
+  ];
+  const VOUCHER_BENEFITS = [
+    { i: '🎨', t: 'Tvoří s designérkou', d: 'Profesionální vedení a inspirace z módního světa.' },
+    { i: '👭', t: 'Nové kamarádky', d: 'Holky se stejným zájmem, bez soutěžení.' },
+    { i: '🗓️', t: 'Volba je na ní', d: 'Termín i téma workshopu si vybere sama.' },
+    { i: '💪', t: 'Sebevědomí', d: 'Odnese si vlastní výtvor a chuť tvořit dál.' }
+  ];
+  const VOUCHER_BASE = {
+    moment: 'Představte si, jak vezme voucher do ruky a on změní barvu. Pak si sama vybírá, kdy půjde tvořit s designérkou.',
+    benefits: VOUCHER_BENEFITS,
+    bullets: ['Fyzický 3D tištěný voucher, který na dotek mění barvu', 'Workshop v pražském studiu nebo online', 'Platí celý rok od zakoupení', 'Dárkové balení, rovnou pod stromeček'],
+    material: 'Voucher je 3D tištěný ze 100% TPU, pružného a odolného materiálu, který na dotek mění barvu.',
+    engrave: false
+  };
+  const KIT_MATERIAL = 'Ze 100% TPU: pružný, odolný a příjemně ohebný materiál.';
+
+  const PRODUCT_DATA = {
+    penezenka: {
+      title: 'Kreativní balíček: peněženka + interaktivní knížka',
+      moment: 'Představte si Štědrý večer: rozbalí krabičku, dílky začnou cvakat do sebe a za chvíli vám hrdě ukazuje vlastní peněženku.',
+      benefits: KIT_BENEFITS,
+      bullets: ['3D tištěná peněženka, dílky jen zacvakne do sebe', 'Interaktivní knížka o budoucnosti módy s kreativními úkoly', 'Bez lepidla, nástrojů a dokupování', 'Dárková krabička, rovnou pod stromeček'],
+      material: KIT_MATERIAL, engrave: false,
+      upsell: { to: 'balicek', add: 'Přidat psaníčko s jejím jménem' }
+    },
+    psanicko: {
+      title: 'Kreativní balíček: psaníčko se jménem + interaktivní knížka',
+      moment: 'Představte si, jak rozbalí krabičku a uvidí své jméno. Pak si psaníčko sama složí a hned ho nosí.',
+      benefits: KIT_BENEFITS,
+      bullets: ['3D tištěné psaníčko s jejím jménem zdarma', 'Interaktivní knížka o budoucnosti módy s kreativními úkoly', 'Bez lepidla, nástrojů a dokupování', 'Dárková krabička, rovnou pod stromeček'],
+      material: KIT_MATERIAL, engrave: true,
+      upsell: { to: 'balicek', add: 'Přidat 3D tištěnou peněženku' }
+    },
+    balicek: {
+      title: 'Velký kreativní balíček: peněženka + psaníčko + knížka',
+      moment: 'Představte si Štědrý večer: rozbalí krabičku, najde v ní své jméno a za chvíli má vlastní sadu doplňků, kterou nikdo jiný nemá.',
+      benefits: KIT_BENEFITS,
+      bullets: ['3D tištěná peněženka a psaníčko, dílky jen zacvakne', 'Jméno na psaníčko zdarma', 'Designérská knížka a hmatatelné ukázky materiálů budoucnosti', 'Dárková krabička, rovnou pod stromeček'],
+      material: KIT_MATERIAL, engrave: true,
+      upsell: { to: 'combo', add: 'Přidat voucher na workshop' }
+    },
+    voucher488:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
+    voucher888:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
+    voucher1288: Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
+    combo: {
+      title: 'Celý balíček: peněženka + psaníčko + knížka + voucher na workshop',
+      moment: 'O Vánocích tvoření doma pod stromečkem, během roku workshop s designérkou. Dárek, na který bude vzpomínat celý rok.',
+      benefits: [KIT_BENEFITS[0], KIT_BENEFITS[1], VOUCHER_BENEFITS[0], VOUCHER_BENEFITS[1]],
+      bullets: ['3D tištěná peněženka a psaníčko se jménem zdarma', 'Designérská knížka a ukázky materiálů budoucnosti', '3D voucher na workshop, platí celý rok', 'Dárková krabička, rovnou pod stromeček'],
+      material: 'Peněženka, psaníčko i voucher jsou ze 100% TPU: pružný, odolný a příjemně ohebný materiál.', engrave: true,
+      upsell: null
+    }
+  };
+  // Dva balíčky pro sestry (každá dostane svůj)
+  [['penezenka2', 'penezenka', '2× kreativní balíček: peněženka + knížka', { to: 'balicek2', add: 'Přidat oběma psaníčko se jménem' }],
+   ['psanicko2', 'psanicko', '2× kreativní balíček: psaníčko se jménem + knížka', { to: 'balicek2', add: 'Přidat oběma 3D tištěnou peněženku' }],
+   ['balicek2', 'balicek', '2× velký kreativní balíček: peněženka + psaníčko + knížka', null]].forEach(([k, b, title, upsell]) => {
+    const B = PRODUCT_DATA[b];
+    PRODUCT_DATA[k] = Object.assign({}, B, { title, upsell,
+      moment: 'Představte si Štědrý večer: obě rozbalí každá svou krabičku, dílky začnou cvakat a za chvíli se předhánějí, čí výtvor je hezčí.',
+      bullets: ['2 samostatné dárkové krabičky, každá sestra má svou'].concat(B.bullets.slice(0, 3)).concat(['Na oba balíčky sleva 20 %']) });
+  });
+  PRODUCT_DATA.psanickoMD = Object.assign({}, PRODUCT_DATA.psanicko, {
+    title: 'Zvýhodněný kreativní balíček: 2 psaníčka + knížka',
+    moment: 'Představte si Štědrý večer: máma i dcera rozbalí krabičku, každá najde psaníčko se svým jménem a pustí se do skládání spolu.',
+    bullets: ['2 3D tištěná psaníčka se jmény zdarma', 'Interaktivní knížka o budoucnosti módy s kreativními úkoly', 'Bez lepidla, nástrojů a dokupování', 'Dárková krabička, rovnou pod stromeček'],
+    upsell: null });
+  Object.keys(PRODUCT_DATA).forEach(k => { PRODUCT_DATA[k].orderHref = 'objednavka.html?variant=' + k; });
+
+  // Odkaz na reportáž ČT o módě budoucnosti. DOPLNIT URL; dokud je prázdné, odkaz se nezobrazí.
+  const CT_LINK = 'https://decko.ceskatelevize.cz/video/i1151928';
+
+  // Odpovědi na námitky
+  const FAQ_KIT = [
+    ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Nabídneme vám ho hned po kliknutí na „Vybrat dárek“. Vaše zákonná práva tím nejsou dotčena.'],
+    ['Kdo za Makeful stojí?', 'Jsme Makeful, lokální tvůrkyně z Prahy. Věříme, že v každé holce se skrývá tvůrkyně a stačí jí dát do ruky ty správné nástroje. Proto propojujeme módu s moderními technologiemi, jako je 3D tisk, a školíme i učitele, aby radost z tvoření mohli předávat dál. O naší módě budoucnosti natáčela reportáž Česká televize. Každý dárek připravujeme s láskou a s přáním, aby u vás doma udělal radost.', 'ct'],
+    ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Dárek máte doma před Vánoci, doprava je zdarma.'],
+    ['Zvládne to sama, bez zkušeností?', 'Ano. Je to od 8 let a pro úplné začátečnice. Dílky se jen zacvaknou do sebe, žádné lepidlo, nástroje ani 3D tiskárna nejsou potřeba.'],
+    ['Co když ji zajímají spíš technologie než móda?', 'Balíček spojuje vlastní tvoření, 3D tisk a objevování materiálů budoucnosti. Interaktivní knížka přidává kreativní úkoly.'],
+    ['Nebude to jen další věc do šuplíku?', 'Ne. Výsledkem je peněženka nebo psaníčko, které opravdu nosí. A knížka s kreativními úkoly ji zabaví i po Vánocích.'],
+    ['Má doma spoustu tvořivých sad. Co je na tom nového?', 'Spojení módy, 3D tisku a chytrých materiálů, které svítí ve tmě nebo mění barvu. Tohle v běžných tvořivých sadách nenajde.'],
+    ['Nebude po tvoření nepořádek?', 'Ne. Žádné lepidlo, odřezky ani barvy. Dílky se skládají jako stavebnice.'],
+    ['Proč je teď sleva 200 Kč?', 'Je to limitovaná vánoční edice 100 kusů. Sleva platí jen pro objednávky do 30. 11. nebo do vyprodání.'],
+    ['Zaplatím hned po kliknutí?', 'Ne. Kliknutím jen vyplníte doručení a vyberete platbu. Nic se nestrhne automaticky, objednávku potvrdíte až vy.'],
+    ['Jak můžu zaplatit?', 'Kartou online, bankovním převodem i benefitními kartami Edenred a Up.']
+  ];
+  const FAQ_VOUCHER = [
+    ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Nabídneme vám ho hned po kliknutí na „Vybrat dárek“. Vaše zákonná práva tím nejsou dotčena.'],
+    ['Kdo za Makeful stojí?', 'Jsme Makeful, lokální tvůrkyně z Prahy. Věříme, že v každé holce se skrývá tvůrkyně a stačí jí dát do ruky ty správné nástroje. Proto propojujeme módu s moderními technologiemi, jako je 3D tisk, a školíme i učitele, aby radost z tvoření mohli předávat dál. O naší módě budoucnosti natáčela reportáž Česká televize. Každý dárek připravujeme s láskou a s přáním, aby u vás doma udělal radost.', 'ct'],
+    ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Doprava je zdarma.'],
+    ['Jaké workshopy si může vybrat?', 'Nové termíny a témata průběžně vypisujeme, například 3D tištěné kytice, čelenky nebo trička se světelným potiskem. V pražském studiu i online.'],
+    ['Musí si vybrat termín už teď?', 'Ne. Voucher platí celý rok a workshop si obdarovaná vybere později, až se jí to hodí.'],
+    ['Musí dojíždět do Prahy?', 'Ne. Voucher lze využít i na online workshopy, nejen ve studiu v Praze.'],
+    ['Je to opravdu fyzický dárek?', 'Ano. Dostanete 3D tištěný voucher, který na dotek mění barvu, v dárkovém balení. Ne jen e-mail s kódem.'],
+    ['Potřebuje nějaké zkušenosti?', 'Ne. Workshopy jsou pro úplné začátečnice od 8 let, všechno potřebné je na místě.'],
+    ['Proč je teď sleva 200 Kč?', 'Je to limitovaná vánoční nabídka. Sleva platí jen pro objednávky do 30. 11.'],
+    ['Zaplatím hned po kliknutí?', 'Ne. Kliknutím jen vyplníte doručení a vyberete platbu. Nic se nestrhne automaticky, objednávku potvrdíte až vy.'],
+    ['Jak můžu zaplatit?', 'Kartou online, bankovním převodem i benefitními kartami Edenred a Up.']
+  ];
+
+  function buildReasons(variant) {
+    const a = state.answers, r = [];
+    const AR = {
+      [AGE.mlada]: 'Ve 8–12 letech holky nejvíc baví vidět výsledek hned. Tohle zvládne sama, bez pomoci dospělých.',
+      [AGE.teen]: 'Teenagerky chtějí věci, které nikdo jiný nemá. Tohle si v žádném obchodě nekoupí.',
+      [AGE.dospela]: 'Chvíle klidu u tvoření bez obrazovek a doplněk s příběhem, který ji bude bavit nosit.',
+      [AGE.mamaDcera]: 'Společné odpoledne u tvoření, na které budou máma i dcera vzpomínat ještě dlouho.',
+      [AGE.sestry]: 'Každá sestra má svůj vlastní balíček. Tvoří vedle sebe a nikdo se nehádá, čí co je.'
+    };
+    const IR = {
+      'Móda a originální doplňky': 'Baví ji móda, takže dostane doplněk, který si sama vyrobí a hned nosí.',
+      'Tvoření rukama a vyrábění': 'Ráda tvoří rukama. Tady skládá skutečné 3D tištěné dílky, bez lepidla.',
+      'Technologie a 3D tisk': 'Zajímá ji technika. Osahá si 3D tisk a chytré materiály budoucnosti.',
+      'Nové zážitky a zkoušení nepoznaného': 'Ráda zkouší nové věci. Tohle ještě nezažila.'
+    };
+    const IRJ = {
+      'Móda a originální doplňky': 'Baví je móda, takže dostanou doplňky, které si samy vyrobí a hned nosí.',
+      'Tvoření rukama a vyrábění': 'Rády tvoří rukama. Tady skládají skutečné 3D tištěné dílky, bez lepidla.',
+      'Technologie a 3D tisk': 'Zajímá je technika. Osahají si 3D tisk a chytré materiály budoucnosti.',
+      'Nové zážitky a zkoušení nepoznaného': 'Rády zkouší nové věci. Tohle ještě nezažily.'
+    };
+    if (isJoint()) Object.assign(IR, IRJ);
+    if (AR[a.age]) r.push(AR[a.age]);
+    if (isVoucher(variant)) {
+      r.push(isJoint() ? 'Rády tráví čas s ostatními. Na workshopu tvoří spolu s designérkou.' : 'Ráda tráví čas s ostatními. Na workshopu potká holky se stejným zájmem a tvoří s designérkou.');
+    } else {
+      if (IR[a.interests]) r.push(IR[a.interests]);
+      r.push('Vybrali jste materiál, který ' + MAT[currentColor()].txt + '. Efekt, kterým se pochlubí.');
+    }
+    r.push(isDuo(variant) ? 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + ' za dárek) a na oba balíčky máte slevu 20 %.' : 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + '), a teď navíc se slevou 200 Kč.');
+    return r;
+  }
+
+  // Média rozbíjí text: nahoře fotka v barvě, pod důvody video, nad balením fotka, před FAQ druhé video
+  function putMedia(id, m, alt) {
+    const box = $(id); box.innerHTML = '';
+    if (!m) { (box.closest('.media-block') || box).hidden = true; return; }
+    (box.closest('.media-block') || box).hidden = false;
+    const el = mediaEl(m, alt);
+    if (el.tagName === 'IMG' && id !== 'heroMedia') el.loading = 'lazy';
+    box.appendChild(el);
+    if (el.tagName === 'VIDEO') { el.autoplay = true; videoObserver.observe(el); }
+  }
+  const videoObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.35 })
+    : { observe: (v) => v.play().catch(() => {}) };
+
+  function renderGallery(v) {
+    const color = currentColor();
+    const items = galleryFor(v, color);
+    const title = PRODUCT_DATA[v].title;
+    putMedia('heroMedia', items.hero, title);
+    putMedia('midVideo', items.video1, title);
+    putMedia('midImage', items.image, title);
+    putMedia('lateVideo', items.video2, title);
+
+    const box = $('colors'); box.innerHTML = '';
+    box.hidden = isVoucher(v);
+    Object.keys(MAT).forEach(name => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'color-chip';
+      b.setAttribute('aria-pressed', name === color ? 'true' : 'false');
+      b.innerHTML = '<i></i><span></span>';
+      b.querySelector('i').style.background = MAT[name].dot;
+      b.querySelector('span').textContent = MAT[name].short;
+      b.addEventListener('click', () => { state.answers.effect = name; renderResultCard(); });
+      box.appendChild(b);
+    });
+  }
+
+
+
+  // Odpočet do konce slevy
+  function timerText() {
+    const ms = SALE_END - Date.now();
+    if (ms <= 0) return 'Sleva právě končí';
+    const d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4);
+    const dd = d === 1 ? 'den' : (d >= 2 && d <= 4 ? 'dny' : 'dní');
+    return d > 0 ? d + ' ' + dd + ' ' + h + ' h' : h + ' h ' + m + ' min';
+  }
+  function updateTimers() {
+    const t = timerText();
+    $('dealTimer').textContent = '⏳ Sleva končí za ' + t;
+    $('barTimer').innerHTML = (isDuo(state.activeVariant) ? 'Sleva −20 %' : 'Sleva −200 Kč') + '<br>končí za ' + t;
+  }
+  setInterval(updateTimers, 30000);
+
+  function renderResultCard() {
+    const v = state.activeVariant, d = PRODUCT_DATA[v], base = state.baseVariant;
+    const p = buildProfile();
+    $('matchLabel').textContent = '🎉 Máme to! Shoda ' + p.fit + ' %';
+    const h = headlineFor(v);
+    $('resultTitle').innerHTML = '';
+    $('resultTitle').append(document.createTextNode(h[0]));
+    const gs = document.createElement('span'); gs.className = 'grad'; gs.textContent = h[1]; $('resultTitle').appendChild(gs);
+    $('resultProduct').textContent = d.title;
+    $('resultFor').textContent = state.name && !isVoucher(v) ? 'Pro: ' + state.name : '';
+    $('resultFor').hidden = !(state.name && !isVoucher(v));
+    renderGallery(v);
+    $('nameTag').hidden = !(d.engrave && state.name);
+    $('nameTag').textContent = '✨ ' + state.name.toUpperCase();
+    $('resultMoment').textContent = d.moment;
+
+    const pr = PRICES[v];
+    $('dealOld').textContent = fmt(pr.old);
+    $('dealNow').textContent = fmt(pr.now);
+    $('resultOldPrice').textContent = fmt(pr.old);
+    $('resultPrice').textContent = fmt(pr.now);
+    updateTimers();
+
+    $('reasons').innerHTML = '';
+    buildReasons(v).forEach(t => { const li = document.createElement('li'); li.textContent = t; $('reasons').appendChild(li); });
+    $('benefits').innerHTML = d.benefits.map(b => '<div class="benefit"><b>' + b.i + '</b><strong>' + b.t + '</strong><span>' + b.d + '</span></div>').join('');
+    $('resultBullets').innerHTML = '';
+    d.bullets.forEach(t => { const li = document.createElement('li'); li.textContent = t; $('resultBullets').appendChild(li); });
+    $('materialText').textContent = d.material;
+
+    $('faq').innerHTML = '';
+    (isVoucher(v) ? FAQ_VOUCHER : FAQ_KIT).forEach(([q, a, link], i) => {
+      const det = document.createElement('details');
+      if (i === 0) det.open = true;
+      const sum = document.createElement('summary'); sum.textContent = q;
+      const p = document.createElement('p'); p.textContent = a;
+      if (link === 'ct' && CT_LINK) {
+        const l = document.createElement('a');
+        l.href = CT_LINK; l.target = '_blank'; l.rel = 'noopener';
+        l.className = 'faq-link'; l.textContent = '▶ Podívejte se na reportáž ČT';
+        p.appendChild(document.createElement('br')); p.appendChild(l);
+      }
+      det.append(sum, p); $('faq').appendChild(det);
+    });
+
+    $('resultOrderBtn').href = d.orderHref;
+    const up = PRODUCT_DATA[base].upsell;
+    $('upsellLine').hidden = !up;
+    if (up) {
+      $('upsellChk').checked = up.addon ? !!state.book : v !== base;
+      $('upsellText').innerHTML = '';
+      $('upsellText').append(document.createTextNode(up.add + ' '));
+      const pb = document.createElement('b'); pb.textContent = '+' + fmt(up.addon ? BOOK.price : PRICES[up.to].now - PRICES[base].now); $('upsellText').appendChild(pb);
+    }
+    applyAudience(v);
+  }
+
+  // Texty podle toho, pro koho dárek je (množné číslo u společného dárku, sleva 20 % u sester)
+  const JOINT_PHRASES = [
+    ['Co když se jí to nebude líbit?', 'Co když se jim to nebude líbit?'], ['Když se jí dárek nebude líbit', 'Když se jim dárek nebude líbit'],
+    ['Zvládne to sama, bez zkušeností?', 'Zvládnou to samy, bez zkušeností?'], ['Co když ji zajímají', 'Co když je zajímají'],
+    ['ji zabaví i po Vánocích', 'je zabaví i po Vánocích'], ['které opravdu nosí', 'které opravdu nosí'],
+    ['Má doma spoustu tvořivých sad', 'Mají doma spoustu tvořivých sad'], ['sadách nenajde.', 'sadách nenajdou.'],
+    ['Volba je na ní', 'Volba je na nich'], ['si vybere sama', 'si vyberou samy'], ['Odnese si vlastní výtvor', 'Odnesou si vlastní výtvory'],
+    ['jak vezme voucher do ruky a on změní barvu. Pak si sama vybírá', 'jak vezmou voucher do ruky a on změní barvu. Pak si samy vybírají'],
+    ['rozbalí krabičku, dílky začnou cvakat do sebe a za chvíli vám hrdě ukazuje vlastní peněženku', 'rozbalí krabičku, dílky začnou cvakat do sebe a za chvíli si hrdě ukazují vlastní peněženku'],
+    ['uvidí své jméno. Pak si psaníčko sama složí a hned ho nosí', 'uvidí svá jména. Pak si psaníčka samy složí a hned je nosí'],
+    ['najde v ní své jméno a za chvíli má vlastní sadu doplňků', 'najdou v ní svá jména a za chvíli mají vlastní sady doplňků'],
+    ['s jejím jménem', 's jejich jmény'], ['na který bude vzpomínat', 'na který budou vzpomínat'], ['Používá to denně', 'Používají to denně'],
+    ['„Tohle jsem vyrobila já!“', '„Tohle jsme vyrobily samy!“'], ['si obdarovaná vybere později, až se jí to hodí', 'si vyberou později, až se jim to hodí'],
+    ['Potřebuje nějaké zkušenosti?', 'Potřebují nějaké zkušenosti?'], ['Co si vlastně rozbalí?', 'Co si vlastně rozbalí?']
+  ];
+  function jointifyText(t, back) { JOINT_PHRASES.forEach(([a, b]) => { if (back) [a, b] = [b, a]; if (a !== b && t.indexOf(a) !== -1) t = t.split(a).join(b); }); return t; }
+  function jointifyDom(root, back) {
+    if (!root) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n; while ((n = w.nextNode())) { const t = jointifyText(n.nodeValue, back); if (t !== n.nodeValue) n.nodeValue = t; }
+  }
+  function applyAudience(v) {
+    const j = isJoint(), duo = isDuo(v);
+    $('secWhy').textContent = j ? 'Proč právě pro ně' : 'Proč právě pro ni';
+    $('secGives').textContent = j ? 'Co jim dárek dá' : 'Co jí dárek dá';
+    $('savedFor').textContent = j ? 'pro ně' : 'pro ni';
+    $('rIntro').textContent = j ? 'Dárek, který rozbalí, samy dotvoří a odnesou si z něj opravdovou radost. Vybráno podle vašich odpovědí.' : 'Dárek, který rozbalí, sama dotvoří a odnese si z něj opravdovou radost. Vybráno podle vašich odpovědí.';
+    $('saleRibbon').textContent = duo ? '−20 % · sleva pro sestry' : '−200 Kč · limitovaná sleva';
+    $('dealBadge').textContent = duo ? 'LIMITOVANÁ NABÍDKA · SLEVA 20 % NA 2 DÁRKY' : 'LIMITOVANÁ NABÍDKA · SLEVA 200 Kč';
+    $('dealSave').textContent = 'Ušetříte ' + fmt(saving(v)) + '.';
+    $('resultOrderBtn').textContent = duo ? 'Vybrat 2 dárky se slevou 20 % →' : 'Vybrat dárek se slevou 200 Kč →';
+    if (state.name && hasClutch(v)) $('resultFor').textContent = 'Pro: ' + state.name;
+    if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (x.textContent === 'Proč je teď sleva 200 Kč?') { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = 'Sestry chceme podpořit, ať každá tvoří se svým. Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
+    jointifyDom($('retSheet'), !j);
+    if (j) jointifyDom($('resultScreen'));
+    updateTimers();
+  }
+
+  function toggleComboUpgrade() {
+    const up = PRODUCT_DATA[state.baseVariant].upsell;
+    if (up && up.addon) { state.book = !state.book; renderResultCard(); return; }
+    state.activeVariant = (state.activeVariant === state.baseVariant && up) ? up.to : state.baseVariant;
+    renderResultCard();
+  }
+
+  function computeAndShowResult() {
+    state.baseVariant = computeVariant();
+    state.activeVariant = state.baseVariant;
+    state.book = false;
+    renderResultCard();
+    setView('resultScreen');
+  }
+
+  (function init() {
+    const preset = AGE[new URLSearchParams(location.search).get('pro')];
+    if (preset) { state.answers.age = preset; state.index = 1; window.__mfPreset = true; }
+    renderQuestion();
+  })();
+</script>
+
+<script>
+/* Průběžné ukládání kvízu do Makeu (list „Kvíz“). Jméno se NEposílá (jen „vyplněno/přeskočeno“).
+   Rozpočet q_budget, materiál q_effect, jméno jen vyplněno/přeskočeno (q_name), doplňky v objednávce q_addons. */
+(function(){
+  var HOOK='https://hook.eu1.make.com/3sf1buyy0akt5ij2dvetn33g74ghjlbo';
+  var KEY='makeful-quiz-visitor-2026';
+  function vid(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
+  var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher1288:'Voucher 1288',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
+  var result={};
+  function send(event,step,addons){
+    try{window.dataLayer=window.dataLayer||[];var dl={event:'quiz_'+event,quiz_step:step||'',quiz_result:result.shown||''};if(event==='answer'&&/^1 \//.test(step||''))window.dataLayer.push({event:'quiz_first_answer',language:'cs'});if(event==='result')dl.event='quiz_completed';window.dataLayer.push(dl);}catch(e){}
+    try{
+      var a=state.answers;
+      var p={event:event,vid:vid(),step:step||'',q_age:a.age||'',q_budget:a.budget||'',q_interests:a.interests||'',q_goal:'',q_format:a.format||'',q_effect:a.effect||'',q_name:a.name?'ano':(a.format?'ne':''),q_extra:'',q_addons:addons||'',
+        r_rec:result.recommended||'',r_shown:result.shown||'',r_profile:result.profile||'',r_fit:result.fit||'',page:(function(){var u=location.href;try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);u=sessionStorage.getItem(_mfL)||u;}catch(e){}return u;})(),ua:navigator.userAgent.slice(0,200)};
+      var body=new URLSearchParams(p);
+      if(navigator.sendBeacon&&navigator.sendBeacon(HOOK,body))return;
+      fetch(HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});
+    }catch(e){}
+  }
+  var _choose=chooseAnswer;
+  chooseAnswer=function(q,value,btn){var wasBusy=busy;_choose(q,value,btn);if(!wasBusy)send('answer',(state.index+1)+' / '+activeQs().length+' ('+q.id+')');};
+  var _show=computeAndShowResult;
+  computeAndShowResult=function(){_show();var p=buildProfile();result={recommended:LABEL[state.baseVariant]||state.baseVariant,shown:LABEL[state.activeVariant]||state.activeVariant,profile:p.name,fit:String(p.fit)};if(!window.__mfQuizRestore)send('result','výsledek');};
+  var _toggle=toggleComboUpgrade;
+  toggleComboUpgrade=function(){_toggle();result.shown=LABEL[state.activeVariant]||state.activeVariant;};
+  document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
+  window.__mfQuizSend=send;
+  if(window.__mfPreset)send('answer','1 / '+activeQs().length+' (age)');
+})();
+</script>
+
+<script>
+/* Objednávka přímo v kvízu.
+   Odesílá stejná data jako assets/shop.js (buildServerPayload): cart, customer, payment, consent... Ceny přepočítává Make.
+   Adresu webhooku bere z window.MAKEFUL_CONFIG.makeWebhookUrl (stejně jako shop.js), případně z ORDER_HOOK níže. */
+(function(){
+  var CFG=window.MAKEFUL_CONFIG||{makeWebhookUrl:'https://hook.eu1.make.com/2rqbza7vatd3v95e4ihyv7hr6apl6piv',makeDraftWebhookUrl:'https://hook.eu1.make.com/ye9x0ciknn3wcnwq8fstdvt1m13vrw5c'};
+  var ORDER_HOOK=CFG.makeWebhookUrl||'',DRAFT_HOOK=CFG.makeDraftWebhookUrl||'',DRAFT_KEY='makeful-order-draft-2026',lastDraft='';
+  var CART_KEY='makeful-christmas-cart-2026';
+  var RET={variant:'vraceni30',price:22,name:'Prodloužené vrácení o 30 dní'};
+  var PARTS={penezenka:['wallet'],psanicko:['clutch'],balicek:['wallet','clutch'],combo:['wallet','clutch'],penezenka2:['wallet'],psanicko2:['clutch'],balicek2:['wallet','clutch'],psanickoMD:['clutch']};
+  var ERR={retry:'Objednávku se teď nepodařilo uložit. Zkuste ji prosím za chvíli odeslat znovu.',closed:'Vánoční objednávky jsme uzavřeli 30. listopadu 2026. Pokud něco potřebujete, napište nám na hello@make-ful.com.',invalid:'Objednávku se nepodařilo ověřit. Zkontrolujte prosím kontaktní údaje (e-mail, telefon, PSČ) a zkuste to znovu.',payment_unavailable:'Platební bránu se teď nepodařilo připravit. Zkuste to prosím za chvíli znovu, nebo zvolte platbu převodem.'};
+  var $=function(id){return document.getElementById(id)};
+  var sending=false;
+
+  function items(){
+    var v=state.activeVariant,c=currentColor(),parts=PARTS[v]||[];
+    // Sestry: do Make jdou 2 kusy běžné varianty + promokód SESTRY20 (20 %), Make cenu přepočítá sám
+    var list=[{variant:baseOf(v),qty:TWO_PCS[v]?2:1,wallet:parts.indexOf('wallet')>=0?c:'',clutch:parts.indexOf('clutch')>=0?c:'',clutchName:(PRODUCT_DATA[v].engrave&&state.name)?state.name:''}];
+    if(state.book&&isVoucher(v))list.push({variant:BOOK.variant,qty:1,wallet:'',clutch:'',clutchName:''});
+    if(state.returnExt)list.push({variant:RET.variant,qty:1,wallet:'',clutch:'',clutchName:''});
+    return list;
+  }
+  function priceOf(k){return k===RET.variant?RET.price:k===BOOK.variant?BOOK.price:PRICES[k].now}
+  function nameOf(k){return k===RET.variant?RET.name:k===BOOK.variant?BOOK.name:PRODUCT_DATA[k].title}
+  // Promokódy, které kvíz posílá sám (list Promokódy v tabulce objednávek). Make podle nich cenu přepočítá.
+  var PROMO={penezenka2:{code:'SESTRY20',pct:20},psanicko2:{code:'SESTRY20',pct:20},balicek2:{code:'SESTRY20',pct:20},psanickoMD:{code:'MAMADCERA',kc:788}};
+  function total(){var sub=items().reduce(function(n,i){return n+priceOf(i.variant)*i.qty},0),p=PROMO[state.activeVariant];
+    if(!p)return sub;return sub-(p.pct?Math.round(sub*p.pct/100):Math.min(p.kc,sub))}
+  function mfItems(){return items().map(function(i){return {item_id:i.variant,item_name:nameOf(i.variant),price:priceOf(i.variant),quantity:i.qty}})}
+  function addonsNote(){return items().slice(1).map(function(i){return nameOf(i.variant)}).concat(state.activeVariant!==state.baseVariant?['upsell: '+PRODUCT_DATA[state.activeVariant].title]:[]).join(', ')}
+  function dl(o){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(o)}catch(e){}}
+  function ecom(){return {currency:'CZK',value:total(),items:mfItems()}}
+
+  // Košík sdílený s e-shopem: kdo kvíz opustí, najde výběr v objednavka.html
+  function saveQuizCart(){try{localStorage.setItem(CART_KEY,JSON.stringify(items().map(function(i,k){i.id='item-quiz-'+k;return i})))}catch(e){}}
+  function renderSummary(){
+    var v=state.activeVariant,d=PRODUCT_DATA[v],g=galleryFor(v,currentColor()).hero;
+    $('sumImg').src=g.src||g.poster;$('sumTitle').textContent=d.title+(state.book&&isVoucher(v)?' + interaktivní vzdělávací knížka':'');
+    var meta=[];if(!isVoucher(v))meta.push('Materiál: '+currentColor().toLowerCase());if(d.engrave&&state.name)meta.push((isJoint()?'Jména: ':'Jméno: ')+state.name);
+    $('sumMeta').textContent=meta.join(' · ');
+    $('sumOld').textContent=fmt(PRICES[v].old);$('sumNow').textContent=fmt(PRICES[v].now);
+    $('sumRet').checked=!!state.returnExt;
+    $('orderTotal').textContent=fmt(total());
+    if(document.getElementById('orderScreen').classList.contains('active'))saveQuizCart();
+  }
+  $('sumRet').addEventListener('change',function(){state.returnExt=this.checked;renderSummary();});
+  $('upsellChk').addEventListener('change',function(){var want=this.checked,up=PRODUCT_DATA[state.baseVariant].upsell;var cur=up&&up.addon?!!state.book:state.activeVariant!==state.baseVariant;if(cur!==want)toggleComboUpgrade();renderSummary();});
+
+  // Nabídka prodlouženého vrácení po kliknutí na „Vybrat dárek“
+  var sheet=$('retSheet');
+  function closeSheet(yes){
+    sheet.hidden=true;state.returnExt=!!yes;
+    dl({event:'return_extension',choice:yes?'ano':'ne',value:yes?RET.price:0});
+    openOrder();
+  }
+  $('retYes').addEventListener('click',function(){closeSheet(true)});
+  $('retNo').addEventListener('click',function(){closeSheet(false)});
+  sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet(false)});
+  $('resultOrderBtn').addEventListener('click',function(e){e.preventDefault();sheet.hidden=false;});
+
+  function openOrder(){
+    renderSummary();$('orderErr').hidden=true;
+    setView('orderScreen');
+    dl({event:'begin_checkout',source:'quiz',ecommerce:ecom()});
+    saveQuizCart();
+  }
+
+  // Lišta s tlačítkem se schová, když je otevřená klávesnice
+  function isTyping(el){return el&&el.closest&&el.closest('#quizOrderForm')&&(el.tagName==='TEXTAREA'||(el.tagName==='INPUT'&&!/^(checkbox|radio)$/.test(el.type)))}
+  document.addEventListener('focusin',function(e){if(isTyping(e.target))$('orderBar').style.display='none'});
+  document.addEventListener('focusout',function(){setTimeout(function(){if(!isTyping(document.activeElement))$('orderBar').style.display=''},50)});
+
+  function showErr(t){$('orderErr').textContent=t;$('orderErr').hidden=false;$('orderErr').scrollIntoView({behavior:'smooth',block:'center'});}
+  function rnd(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)}
+  function getDraftId(){var id='';try{id=localStorage.getItem(DRAFT_KEY+'-id')||'';if(!/^draft-[a-z0-9-]{8,80}$/.test(id)){id='draft-'+Date.now().toString(36)+'-'+rnd().toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(DRAFT_KEY+'-id',id)}}catch(e){}return id}
+  function newOrderId(){return ('ord-'+rnd().replace(/[^A-Za-z0-9-]/g,'')).slice(0,64)}
+  function customer(){return {name:$('oName').value.trim(),email:$('oEmail').value.trim(),phone:$('oPhone').value.trim(),street:$('oStreet').value.trim(),city:$('oCity').value.trim(),zip:$('oZip').value.trim(),note:$('oNote').value.trim()}}
+  function payMethod(){var r=document.querySelector('input[name="qpay"]:checked');return r&&r.value==='bank'?'bank':'card'}
+  // Rozpracovaná objednávka do Makeu (stejně jako shop.js): po vyplnění e-mailu a při odchodu ze stránky
+  function sendDraft(onExit){
+    if(!DRAFT_HOOK||sending||state.view!=='orderScreen'||$('oWebsite').value)return;
+    var c=customer(),email=c.email.toLowerCase();if(!/^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]{2,}$/.test(email))return;
+    c.email=email;var json=JSON.stringify({event:'order_draft',draftId:getDraftId(),cart:items().map(function(i){return {variant:i.variant,qty:i.qty}}),customer:c,payment:payMethod(),page:location.origin+location.pathname});
+    if(json===lastDraft)return;lastDraft=json;var body=new URLSearchParams({payload:json});
+    try{if(onExit&&navigator.sendBeacon){navigator.sendBeacon(DRAFT_HOOK,body);return}fetch(DRAFT_HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true,cache:'no-store'}).catch(function(){lastDraft=''})}catch(e){lastDraft=''}
+  }
+  $('oEmail').addEventListener('change',function(){sendDraft(false)});
+  addEventListener('pagehide',function(){sendDraft(true)});
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')sendDraft(true)});
+
+  $('orderSubmit').addEventListener('click',function(){
+    if(sending)return;
+    var f=$('quizOrderForm');
+    if(Date.now()>=new Date('2026-12-01T00:00:00+01:00').getTime()){showErr(ERR.closed);return;}
+    if(!f.checkValidity()){f.reportValidity();var bad=f.querySelector(':invalid');if(bad)bad.scrollIntoView({behavior:'smooth',block:'center'});return;}
+    var pay=payMethod();
+    var payload={event:'order_submitted',draftId:getDraftId(),cart:items(),customer:customer(),payment:pay,promoCode:PROMO[state.activeVariant]?PROMO[state.activeVariant].code:'',
+      website:$('oWebsite').value,consent:$('oConsent').checked,
+      returnUrl:location.origin+location.pathname.replace(/[^\/]*$/,'')+'objednavka.html',orderId:newOrderId()};
+    dl({event:'add_payment_info',payment_type:pay,ecommerce:ecom()});
+    if(!ORDER_HOOK){location.href='mailto:hello@make-ful.com?subject='+encodeURIComponent('Vánoční objednávka Makeful')+'&body='+encodeURIComponent(JSON.stringify(payload,null,2));return;}
+    sending=true;var btn=$('orderSubmit');btn.textContent='Ukládáme objednávku…';btn.disabled=true;
+    var ctl=window.AbortController?new AbortController():null;var t=setTimeout(function(){if(ctl)ctl.abort()},60000);
+    fetch(ORDER_HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store',signal:ctl?ctl.signal:undefined})
+      .then(function(r){return r.json()})
+      .then(function(res){
+        clearTimeout(t);
+        if(!res||typeof res!=='object')throw new Error('bad');
+        if(res.accepted===true){
+          var number=String(res.orderNumber||'').replace(/[^0-9]/g,'');
+          if((res.payment||pay)==='card'){
+            var u=new URL(String(res.checkoutUrl||''));
+            if(u.protocol!=='https:'||['checkout.stripe.com','buy.stripe.com'].indexOf(u.hostname)<0)throw new Error('bad checkout');
+            var it=mfItems(),val=total();
+            dl({event:'order_submitted',source:'quiz',payment:'card',order_number:number,currency:'CZK',value:val,ecommerce:{transaction_id:number,currency:'CZK',value:val,items:it}});
+            try{sessionStorage.setItem('makeful-paid-order',JSON.stringify({number:number,value:val,items:it}))}catch(e){}
+            if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · karta',addonsNote());
+            btn.textContent='Přesměrováváme na platbu kartou…';setTimeout(function(){location.assign(u.href)},150);return;
+          }
+          var tot=Number.isFinite(res.total)?res.total:total();
+          dl({event:'order_submitted',source:'quiz',payment:'bank',order_number:number,currency:'CZK',value:tot,ecommerce:{transaction_id:number,currency:'CZK',value:tot,items:mfItems()}});
+          if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · převod',addonsNote());
+          $('doneText').textContent='Objednávku č. '+number+' jsme přijali. Stejné údaje i QR kód jsme vám poslali e-mailem.';
+          $('bankText').innerHTML='Prosíme o úhradu <b>do 24 hodin</b>.<br>Číslo účtu: <b>3623366010/3030</b><br>Variabilní symbol: <b>'+number+'</b><br>Částka: <b>'+fmt(tot)+'</b>';
+          try{var q=new URL(String(res.qrUrl||''));if(q.protocol==='https:'&&q.hostname==='api.qrserver.com'){$('bankQr').src=q.href;$('bankQr').hidden=false;}}catch(e){}
+          try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id')}catch(e){}
+          setView('doneScreen');return;
+        }
+        sending=false;btn.disabled=false;btn.textContent='Potvrdit objednávku zavazující k platbě';
+        showErr(ERR[res.reason]||ERR.invalid);
+      })
+      .catch(function(){
+        clearTimeout(t);sending=false;btn.disabled=false;btn.textContent='Potvrdit objednávku zavazující k platbě';
+        showErr('Spojení se nepodařilo dokončit. Než objednávku odešlete znovu, podívejte se prosím do e-mailu. Pokud vám přišlo potvrzení, objednávka už je přijatá.');
+      });
+  });
+})();
+</script>
+
+<script>
+/* Kvíz si pamatuje výsledek 60 dní (localStorage). */
+(function(){
+  var SAVE_KEY='makeful-quiz-result-2026', MAX_AGE=60*24*3600*1000;
+  function load(){try{var d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(!d||!d.answers||typeof d.answers!=='object'||!d.at||Date.now()-d.at>MAX_AGE)return null;
+    return ['age','budget','interests','format'].every(function(k){return Object.prototype.hasOwnProperty.call(d.answers,k)})?d:null}catch(e){return null}}
+  var _show=computeAndShowResult;
+  computeAndShowResult=function(){_show();try{localStorage.setItem(SAVE_KEY,JSON.stringify({answers:state.answers,name:state.name,variant:state.activeVariant,at:Date.now()}))}catch(e){}};
+  var _toggle=toggleComboUpgrade;
+  toggleComboUpgrade=function(){_toggle();try{var d=load();if(d){d.variant=state.activeVariant;localStorage.setItem(SAVE_KEY,JSON.stringify(d))}}catch(e){}};
+  var _restart=restartQuiz;
+  restartQuiz=function(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}document.getElementById('savedResultNote').hidden=true;_restart();};
+  if(window.__mfPreset)return;
+  var saved=load();
+  if(saved){
+    state.answers=saved.answers;state.name=saved.name||'';state.index=activeQs().length-1;
+    window.__mfQuizRestore=true;try{_show();}catch(e){}window.__mfQuizRestore=false;
+    var _up=PRODUCT_DATA[state.baseVariant].upsell;if(saved.variant&&_up&&saved.variant===_up.to){try{_toggle();}catch(e){}}
+    document.getElementById('savedResultNote').hidden=false;
+  }
+})();
+</script>
 <script src="assets/ai-label.js" defer></script>
 </body>
 </html>

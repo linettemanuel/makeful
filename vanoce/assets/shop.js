@@ -1,7 +1,15 @@
 /* Kampaně: zapamatuje si vstupní URL i s parametry (utm_*, fbclid…) pro kvíz */
 try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);}catch(e){}
-const PRICES = {balicek:1188, voucher:1188, combo:2138};
-const LABELS = {balicek:'Kreativní vzdělávací balíček', voucher:'3D tištěný voucher', combo:'Voucher + kreativní balíček'};
+const PRICES = {balicek:1188, voucher:1188, combo:2138, penezenka:488, psanicko:888, voucher488:488, voucher888:888, voucher1288:1288, knizka:100, vraceni30:22};
+const LABELS = {balicek:'Kreativní vzdělávací balíček', voucher:'3D tištěný voucher', combo:'Voucher + kreativní balíček',
+  penezenka:'Kreativní balíček: peněženka + knížka', psanicko:'Kreativní balíček: psaníčko se jménem + knížka',
+  voucher488:'3D voucher na workshop (488 Kč)', voucher888:'3D voucher na workshop (888 Kč)', voucher1288:'3D voucher na workshop (1 288 Kč)',
+  knizka:'Interaktivní vzdělávací knížka', vraceni30:'Prodloužené vrácení o 30 dní'};
+// Které díly má varianta (kvůli materiálům a jménu). Vouchery, knížka a vrácení žádné.
+const VARIANT_PARTS = {balicek:['wallet','clutch'], combo:['wallet','clutch'], penezenka:['wallet'], psanicko:['clutch']};
+const partsOf = v => VARIANT_PARTS[v]||[];
+const isVoucherVariant = v => String(v).indexOf('voucher')===0;
+const VOUCHER_VALUE = {voucher:'1 188 Kč', combo:'1 188 Kč', voucher488:'488 Kč', voucher888:'888 Kč', voucher1288:'1 288 Kč'};
 const PAYMENT_LABELS={bank:'Bankovní převod',card:'Platba kartou online'};
 const MAIL_TO = 'hello@make-ful.com';
 const CART_KEY='makeful-christmas-cart-2026';
@@ -48,7 +56,7 @@ function loadCart(){
       if(used.has(id))id=newItem(item.variant).id;used.add(id);
       return {id,variant:item.variant,qty:Number.isInteger(item.qty)&&item.qty>=1&&item.qty<=100?item.qty:1,
         wallet:MATERIALS.includes(item.wallet)?item.wallet:MATERIALS[0],clutch:MATERIALS.includes(item.clutch)?item.clutch:MATERIALS[0],
-        clutchName:item.variant!=='voucher'&&personalizationAvailable()&&typeof item.clutchName==='string'?item.clutchName.slice(0,60):''};
+        clutchName:partsOf(item.variant).includes('clutch')&&personalizationAvailable()&&typeof item.clutchName==='string'?item.clutchName.slice(0,60):''};
     });
   }catch{return [];}
 }
@@ -72,12 +80,12 @@ function addToCart(variant,qty=1,options={}){
   if(!Number.isInteger(qty)||qty<1||qty>100)return;
   if(cart.reduce((n,i)=>n+i.qty,0)+qty>100){showCartStatus('Do jedné objednávky lze přidat nejvýše 100 kusů. Pro větší množství nám napište na '+MAIL_TO+'.');return;}
   const next={...newItem(variant),qty};
-  if(variant!=='voucher'){
+  if(partsOf(variant).length){
     if(MATERIALS.includes(options.wallet))next.wallet=options.wallet;
     if(MATERIALS.includes(options.clutch))next.clutch=options.clutch;
     next.clutchName=personalizationAvailable()?String(options.clutchName||'').trim().slice(0,60):'';
   }
-  let item=cart.find(i=>i.variant===variant&&(variant==='voucher'||(i.wallet===next.wallet&&i.clutch===next.clutch&&i.clutchName===next.clutchName)));
+  let item=cart.find(i=>i.variant===variant&&(!partsOf(variant).length||(i.wallet===next.wallet&&i.clutch===next.clutch&&i.clutchName===next.clutchName)));
   if(item)item.qty+=qty;else{item=next;cart.push(item);}
   saveCart();showCartStatus('Dáreček je v košíku.');mfTrack('add_to_cart',{currency:'CZK',value:PRICES[variant]*qty,ecommerce:{currency:'CZK',value:PRICES[variant]*qty,items:mfItems([{variant,qty}])}});return item;
 }
@@ -139,9 +147,12 @@ function updateOrderUI(sync=true){
   nameInput.disabled=!(bundle&&personalizationAvailable());nameInput.closest('.personalization-field').hidden=nameInput.disabled;
   document.getElementById('order-qty').disabled=!f.variant;
   document.getElementById('summary-items').innerHTML=cart.length?cart.map(item=>{
-    const details=item.variant!=='voucher'?`<small>Peněženka: ${escapeHtml(item.wallet)}<br>Psaníčko: ${escapeHtml(item.clutch)}${item.clutchName&&personalizationAvailable()?'<br>Jméno: '+escapeHtml(item.clutchName):''}</small>`:'';
-    const cover=item.variant==='voucher'?PRODUCT_MEDIA.voucher[0]:BUNDLE_PHOTO;
-    return `<div class="cart-line"><img src="${cover.src}" alt="${escapeHtml(LABELS[item.variant])}" width="58" height="72"><div class="cart-line-content"><div class="cart-line-heading"><strong>${LABELS[item.variant]}</strong><b>${money(PRICES[item.variant]*item.qty)}</b></div>${item.variant==='combo'?'<small class="cart-best">NEJVÝHODNĚJŠÍ VOLBA · SLEVA 10 %</small>':''}${details}<div class="cart-line-controls"><label>Počet <input type="number" data-cart-qty="${item.id}" value="${item.qty}" min="1" max="100" step="1" aria-label="Počet kusů: ${LABELS[item.variant]}"></label>${item.variant!=='voucher'?`<button class="cart-edit" type="button" data-edit-cart="${item.id}" aria-label="Upravit ${LABELS[item.variant]}">Upravit</button>`:''}<button class="cart-remove" type="button" data-remove-cart="${item.id}" aria-label="Odebrat ${LABELS[item.variant]}">Odebrat</button></div></div></div>`;
+    const parts=partsOf(item.variant),rows=[];
+    if(parts.includes('wallet'))rows.push('Peněženka: '+escapeHtml(item.wallet));
+    if(parts.includes('clutch'))rows.push('Psaníčko: '+escapeHtml(item.clutch)+(item.clutchName&&personalizationAvailable()?'<br>Jméno: '+escapeHtml(item.clutchName):''));
+    const details=rows.length?`<small>${rows.join('<br>')}</small>`:'';
+    const cover=isVoucherVariant(item.variant)?PRODUCT_MEDIA.voucher[0]:BUNDLE_PHOTO;
+    return `<div class="cart-line"><img src="${cover.src}" alt="${escapeHtml(LABELS[item.variant])}" width="58" height="72"><div class="cart-line-content"><div class="cart-line-heading"><strong>${LABELS[item.variant]}</strong><b>${money(PRICES[item.variant]*item.qty)}</b></div>${item.variant==='combo'?'<small class="cart-best">NEJVÝHODNĚJŠÍ VOLBA · SLEVA 10 %</small>':''}${details}<div class="cart-line-controls"><label>Počet <input type="number" data-cart-qty="${item.id}" value="${item.qty}" min="1" max="100" step="1" aria-label="Počet kusů: ${LABELS[item.variant]}"></label>${partsOf(item.variant).length===2?`<button class="cart-edit" type="button" data-edit-cart="${item.id}" aria-label="Upravit ${LABELS[item.variant]}">Upravit</button>`:''}<button class="cart-remove" type="button" data-remove-cart="${item.id}" aria-label="Odebrat ${LABELS[item.variant]}">Odebrat</button></div></div></div>`;
   }).join(''):'<p class="summary-note">Váš košík čeká na první tvořivou radost.</p>';
   renderTotals();
   document.getElementById('summary-note').textContent='Doprava je zdarma v ceně. Balíčky rozesíláme v týdnu od 7. 12. a od 15. 12.';
@@ -159,11 +170,10 @@ function buildOrderLines(f){
   for(const i of cart){
     lines.push(`Dáreček: ${LABELS[i.variant]}`,`Počet kusů: ${i.qty}`,`Cena za kus: ${money(PRICES[i.variant])}`,`Cena položky: ${money(PRICES[i.variant]*i.qty)}`);
     if(i.variant==='combo')lines.push('Sleva kombinace: 10 % oproti samostatnému nákupu');
-    if(i.variant==='balicek'||i.variant==='combo'){
-      lines.push(`Materiál peněženky: ${i.wallet}`,`Materiál psaníčka: ${i.clutch}`);
-      lines.push(`Jméno na psaníčko: ${personalizationAvailable()&&i.clutchName?i.clutchName:'bez personalizace'}`);
-    }
-    if(i.variant==='voucher'||i.variant==='combo')lines.push('Hodnota voucheru: 1 188 Kč','Platnost: 1 rok od zakoupení','Využití: workshopy v našem studiu i online');
+    const parts=partsOf(i.variant);
+    if(parts.includes('wallet'))lines.push(`Materiál peněženky: ${i.wallet}`);
+    if(parts.includes('clutch'))lines.push(`Materiál psaníčka: ${i.clutch}`,`Jméno na psaníčko: ${personalizationAvailable()&&i.clutchName?i.clutchName:'bez personalizace'}`);
+    if(VOUCHER_VALUE[i.variant])lines.push('Hodnota voucheru: '+VOUCHER_VALUE[i.variant],'Platnost: 1 rok od zakoupení','Využití: workshopy v našem studiu i online');
     lines.push('');
   }
   lines.push('Způsob platby: '+(PAYMENT_LABELS[f.payment]||PAYMENT_LABELS.bank),`Celkem za dárečky: ${money(cart.reduce((n,i)=>n+PRICES[i.variant]*i.qty,0))}`,'Doprava: zdarma, zahrnuta v ceně',`Promokód: ${f.promoCode||'neuveden'}`,'','Kontaktní údaje:',`Jméno: ${f.name}`,`E-mail: ${f.email}`,`Telefon: ${f.phone}`,`Adresa: ${f.street}, ${f.zip} ${f.city}`,`Poznámka: ${f.note||'bez poznámky'}`,'','Prosím o potvrzení objednávky a zaslání platebních údajů. Beru na vědomí, že jde o ruční výrobu a balíčky odcházejí hromadně v týdnu od 7. 12. a od 15. 12. 2026.');
@@ -204,7 +214,7 @@ function clearOrderDraft(){try{localStorage.removeItem(DRAFT_KEY);localStorage.r
 function buildServerPayload(){
   const f=readOrderForm();
   return {event:'order_submitted',draftId:getDraftId(),
-    cart:cart.map(i=>({variant:i.variant,qty:i.qty,wallet:i.wallet,clutch:i.clutch,clutchName:i.variant!=='voucher'&&personalizationAvailable()?i.clutchName:''})),
+    cart:cart.map(i=>({variant:i.variant,qty:i.qty,wallet:i.wallet,clutch:i.clutch,clutchName:partsOf(i.variant).includes('clutch')&&personalizationAvailable()?i.clutchName:''})),
     customer:{name:f.name,email:f.email,phone:f.phone,street:f.street,city:f.city,zip:f.zip,note:f.note},
     payment:f.payment==='card'?'card':'bank',promoCode:f.promoCode,
     website:document.getElementById('order-website')?.value||'',
