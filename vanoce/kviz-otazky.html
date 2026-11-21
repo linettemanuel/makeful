@@ -583,6 +583,7 @@
   <section class="view" id="resultScreen">
     <div class="card" style="overflow-y:auto">
       <div class="badge">Vaše osobní doporučení</div>
+      <p id="savedResultNote" hidden style="margin:10px 0 0;font-size:14px;color:#6f7592">Tohle je váš výsledek z kvízu, který jste už vyplnili. <button type="button" onclick="restartQuiz()" style="border:0;background:none;padding:0;font:inherit;color:#7a4fd8;font-weight:700;text-decoration:underline;cursor:pointer">Vyplnit kvíz znovu</button></p>
       <h2 id="resultTitle">Máme pro vás <span class="grad">ideální dárek!</span></h2>
 
       <div id="profileOutput" class="profile-wrap"></div>
@@ -1142,7 +1143,7 @@
   var _choose=chooseAnswer;
   chooseAnswer=function(q,value,btn){_choose(q,value,btn);send('answer',(state.index+1)+' / '+questions.length+' ('+q.id+')');};
   var _show=computeAndShowResult;
-  computeAndShowResult=function(){_show();var p=buildProfile();result={recommended:LABEL[state.baseVariant]||state.baseVariant,shown:LABEL[state.activeVariant]||state.activeVariant,profile:p.name,fit:String(p.fit)};send('result','výsledek');};
+  computeAndShowResult=function(){_show();var p=buildProfile();result={recommended:LABEL[state.baseVariant]||state.baseVariant,shown:LABEL[state.activeVariant]||state.activeVariant,profile:p.name,fit:String(p.fit)};if(!window.__mfQuizRestore)send('result','výsledek');};
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();result.shown=LABEL[state.activeVariant]||state.activeVariant;};
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
@@ -1202,6 +1203,31 @@
     var name=(document.getElementById('materialName').value||'').trim().slice(0,60);
     addAndGo(state.activeVariant==='combo'?'combo':'balicek',pick.wallet,pick.clutch,name);
   });
+})();
+</script>
+<script>
+/* Kvíz si pamatuje výsledek: kdo už kvíz vyplnil, uvidí při příští návštěvě rovnou svůj výsledek.
+   Uloženo jen v prohlížeči návštěvnice (localStorage), platí 60 dní. „Vyplnit kvíz znovu“ výsledek smaže. */
+(function(){
+  var SAVE_KEY='makeful-quiz-result-2026', MAX_AGE=60*24*3600*1000;
+  function load(){try{var d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(!d||!d.answers||typeof d.answers!=='object'||!d.at||Date.now()-d.at>MAX_AGE)return null;
+    var ok=questions.every(function(q){return Object.prototype.hasOwnProperty.call(d.answers,q.id)});return ok?d:null}catch(e){return null}}
+  var _show=computeAndShowResult;
+  computeAndShowResult=function(){_show();
+    try{localStorage.setItem(SAVE_KEY,JSON.stringify({answers:state.answers,variant:state.activeVariant,at:Date.now()}))}catch(e){}};
+  var _toggle=toggleComboUpgrade;
+  toggleComboUpgrade=function(){_toggle();try{var d=load();if(d){d.variant=state.activeVariant;localStorage.setItem(SAVE_KEY,JSON.stringify(d))}}catch(e){}};
+  var _restart=restartQuiz;
+  restartQuiz=function(){try{localStorage.removeItem(SAVE_KEY)}catch(e){}var n=document.getElementById('savedResultNote');if(n)n.hidden=true;_restart();};
+  var saved=load();
+  if(saved){
+    state.answers=saved.answers;state.index=questions.length-1;
+    window.__mfQuizRestore=true;
+    try{_show();}catch(e){}
+    window.__mfQuizRestore=false;
+    if(saved.variant&&saved.variant!==state.activeVariant&&(saved.variant==='combo'||state.activeVariant==='combo')){try{_toggle();}catch(e){}}
+    var n=document.getElementById('savedResultNote');if(n)n.hidden=false;
+  }
 })();
 </script>
 <script src="assets/ai-label.js" defer></script>
