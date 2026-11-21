@@ -29,21 +29,12 @@
 .offer-card img[src$="penezenka-oranzova-v-ruce.webp"]{object-position:50% 0}
 .offer-card img[src$="produkt-psanicko-svitici.webp"]{object-position:50% 100%}
 .offer-badge{position:absolute;left:12px;top:12px;padding:6px 10px;border-radius:10px;background:#e5145f;color:#fff;font-weight:800;font-size:14px}
-.offer-card .product-actions .btn{width:100%;justify-content:center}
+.offer-card .product-actions>*{grid-column:1/-1}.offer-card .product-actions{display:grid;grid-template-columns:1fr;gap:10px}.offer-card .product-actions .btn{width:100%;justify-content:center}
 .offer-card .card-price s{color:#8a8fa6;font-weight:600;font-size:.7em;margin-right:4px}
 .offer-card .product-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .offer-card .product-actions .btn{text-align:center;justify-content:center}
 /* Lišta s nabídkou z kvízu */
-.quiz-offer-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:flex;align-items:center;gap:12px;max-width:620px;margin:0 auto;padding:10px 12px;border-radius:18px;background:#fff;box-shadow:0 10px 32px rgba(17,22,51,.22);border:1px solid rgba(17,22,51,.08)}
-.quiz-offer-bar img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none}
-.quiz-offer-bar .qo-txt{flex:1;min-width:0;line-height:1.25}
-.quiz-offer-bar .qo-txt small{display:block;font-size:12px;font-weight:800;color:#7c3aed;text-transform:uppercase;letter-spacing:.04em}
-.quiz-offer-bar .qo-txt b{display:block;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.quiz-offer-bar .qo-txt span{font-size:14px}.quiz-offer-bar s{color:#8a8fa6;margin-right:4px}
-.quiz-offer-bar .qo-go{flex:none;padding:12px 14px;border-radius:999px;background:linear-gradient(105deg,#6b4dff,#d1488f);color:#fff;font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap}
-.quiz-offer-bar .qo-x{flex:none;border:0;background:none;font-size:20px;line-height:1;color:#8a8fa6;cursor:pointer;padding:4px}
-@media(max-width:420px){.quiz-offer-bar .qo-go{padding:11px 12px;font-size:13px}}
-</style>
+@media(max-width:420px){</style>
 </head><body class="mobile-sales">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="preorder-bar"><div class="wrap preorder-bar-inner"><p><strong>Objednávky do 30. 11.</strong> · Limitovaná edice 100 ks · Doprava zdarma · Rozesíláme od 7. 12.</p></div></div>
@@ -102,18 +93,5 @@
 <footer><div class="wrap footer"><a href="index.html"><img alt="Makeful" src="assets/logo.png"/></a><div class="footer-links"><a href="index.html#produkty">Varianty dárků</a><a href="kreativni-balicek.html">Kreativní balíček</a><a href="voucher.html">Voucher</a><a href="obchodni-podminky.html">Obchodní podmínky</a><a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></div><div class="footer-contact"><a href="tel:+420735820576">735 820 576</a><a href="mailto:hello@make-ful.com">hello@make-ful.com</a><p>Linette Leandra Cabral Manuel · IČO 08487341<br/>Sídlo: Roháčova 145/14, 130 00 Praha</p></div><div class="copyright">© 2026 Makeful. Všechna práva vyhrazena.</div></div></footer>
 <dialog aria-labelledby="quick-add-title" class="quick-add-dialog" id="quick-add-dialog"><form class="quick-add-form" method="dialog"><div class="quick-add-head"><div><div class="eyebrow">Ještě jeden detail</div><h2 id="quick-add-title">Vyberte variantu dárku.</h2></div><button aria-label="Zavřít výběr" class="quiz-close" data-quick-close type="button">×</button></div><p class="quick-add-intro">Peněženka a psaníčko mohou být ze stejného, nebo z odlišného materiálu. Vše je z pružného 100% TPU.</p><div class="quick-add-fields"><label>Materiál peněženky<select data-quick-wallet><option>Svítí ve tmě</option><option>Mění barvu na dotek</option><option>Klasická černá</option></select></label><label>Materiál psaníčka<select data-quick-clutch><option>Svítí ve tmě</option><option>Mění barvu na dotek</option><option>Klasická černá</option></select></label><label class="quick-name-field">Jméno na psaníčko zdarma<input data-quick-name maxlength="60" placeholder="Volitelné jméno" type="text"/></label></div><p class="quick-add-note">🎁 Bez zkušeností · od 8 let · doprava zdarma</p><div class="quick-add-actions"><button class="btn btn-secondary" data-quick-close type="button">Zpět</button><button class="btn btn-primary" data-quick-confirm type="button">Přidat do košíku →</button></div></form></dialog>
 <script src="assets/shop.js"></script><script src="assets/ai-label.js" defer></script>
-<script>/* Nabídka z kvízu: zůstává na hlavní stránce jako lišta, dokud ji zákazník neobjedná nebo nevyplní kvíz znovu */
-(function(){try{
-  var o=JSON.parse(localStorage.getItem('makeful-quiz-offer-2026')||'null');
-  if(!o||!o.variant||!o.at||Date.now()-o.at>5184e6||sessionStorage.getItem('makeful-offer-hidden'))return;
-  var esc=function(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-  var kc=function(n){return Number(n).toLocaleString('cs-CZ').replace(/\s/g,'\u00a0')+'\u00a0Kč'};
-  var href=/^kviz\.html\?nabidka=[\w%.-]+(&barva=[^"<>]*)?$/.test(o.href||'')?o.href:'kviz.html';
-  var img=/^assets\/photos\/[\w.-]+$/.test(o.img||'')?o.img:'';
-  var bar=document.createElement('div');bar.className='quiz-offer-bar';bar.setAttribute('role','region');bar.setAttribute('aria-label','Vaše nabídka z kvízu');
-  bar.innerHTML=(img?'<img src="'+esc(img)+'" alt="">':'')+'<div class="qo-txt"><small>Vaše nabídka z kvízu</small><b>'+esc(o.title)+'</b><span><s>'+kc(o.old)+'</s><strong>'+kc(o.now)+'</strong></span></div><a class="qo-go" href="objednavka.html">Dokončit objednávku</a><button class="qo-x" type="button" aria-label="Skrýt">×</button>';
-  bar.querySelector('.qo-x').addEventListener('click',function(){bar.remove();try{sessionStorage.setItem('makeful-offer-hidden','1')}catch(e){}});
-  var add=function(){document.body.appendChild(bar);document.body.style.paddingBottom='96px'};
-  if(document.body)add();else document.addEventListener('DOMContentLoaded',add);
-}catch(e){}})();</script>
+
 </body></html>

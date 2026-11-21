@@ -17,6 +17,7 @@ const MAKEFUL_CONFIG=window.MAKEFUL_CONFIG||{};
 const MAKE_WEBHOOK_URL=MAKEFUL_CONFIG.makeWebhookUrl||'';
 const MAKE_DRAFT_URL=MAKEFUL_CONFIG.makeDraftWebhookUrl||'';
 const MAKE_PROMO_URL=MAKEFUL_CONFIG.makePromoWebhookUrl||'';
+const CART_PROMO_KEY='makeful-cart-promo-2026';
 let appliedPromo=null; // {code,type,value} po úspěšném ověření v Make
 function promoDiscount(subtotal){if(!appliedPromo||!(appliedPromo.value>0))return 0;return appliedPromo.type==='percent'?Math.round(subtotal*Math.min(appliedPromo.value,100)/100):Math.min(Math.round(appliedPromo.value),subtotal);}
 function renderTotals(){
@@ -63,6 +64,29 @@ function loadCart(){
 function saveCart(){
   try{localStorage.setItem(CART_KEY,JSON.stringify(cart));sessionStorage.removeItem(CART_KEY);}catch{}
   document.querySelectorAll('[data-cart-count]').forEach(el=>el.textContent=cart.reduce((n,i)=>n+i.qty,0));
+  updateCartBar();
+}
+// Prodejní lišta dole (jako v kvízu): ukazuje aktuální stav košíku. Na stránce košíku se nezobrazuje.
+const KNOWN_PROMOS={SESTRY20:{pct:20},MAMADCERA:{kc:788}};
+function updateCartBar(){
+  if(document.getElementById('order-form')||!document.body||document.querySelector('.mobile-product-buy'))return;
+  let bar=document.getElementById('cart-bar');
+  const count=cart.reduce((n,i)=>n+i.qty,0);
+  if(!count){if(bar){bar.hidden=true;document.body.classList.remove('has-cart-bar');}return;}
+  if(!bar){
+    const st=document.createElement('style');st.textContent='.cart-bar{position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,255,255,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #e7e4ef;box-shadow:0 -8px 24px rgba(84,55,132,.08);font-family:"DM Sans",system-ui,sans-serif;color:#111633}.cart-bar[hidden]{display:none}.cart-bar-inner{max-width:520px;margin:0 auto;padding:10px 18px calc(12px + env(safe-area-inset-bottom))}.cart-bar-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.cart-bar-row strong{font-size:26px;font-weight:800;letter-spacing:-.01em}.cart-bar-row s{color:#8a8fa6;font-size:15px;font-weight:600;margin-right:6px}.cart-bar-row span{font-size:12.5px;line-height:1.3;font-weight:700;color:#c2185b;text-align:right}.cart-bar-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;padding:14px 18px;border-radius:16px;font-size:17.5px;font-weight:800;color:#fff;text-decoration:none;background:linear-gradient(100deg,#48d5ec,#9b6cff 40%,#ff6f9f 75%,#ffb26b);box-shadow:0 10px 22px rgba(255,92,147,.28)}.cart-bar-note{margin:6px 0 0;text-align:center;font-size:12.5px;font-weight:700;color:#364360}body.has-cart-bar{padding-bottom:150px}.has-cart-bar .cart-toast{bottom:170px}';
+    document.head.appendChild(st);
+    bar=document.createElement('div');bar.id='cart-bar';bar.className='cart-bar';bar.setAttribute('role','region');bar.setAttribute('aria-label','Košík');
+    bar.innerHTML='<div class="cart-bar-inner"><div class="cart-bar-row"><div><s data-cb-old></s><strong data-cb-total></strong></div><span data-cb-info></span></div><a class="cart-bar-cta" href="objednavka.html">Objednat →</a><p class="cart-bar-note">Bez okamžité platby · platbu vyberete v dalším kroku</p></div>';
+    document.body.appendChild(bar);
+  }
+  const sub=cart.reduce((n,i)=>n+PRICES[i.variant]*i.qty,0);
+  let code='';try{code=localStorage.getItem(CART_PROMO_KEY)||''}catch{}
+  const pr=KNOWN_PROMOS[code],disc=pr?(pr.pct?Math.round(sub*pr.pct/100):Math.min(pr.kc,sub)):0;
+  bar.querySelector('[data-cb-old]').textContent=disc?money(sub):'';
+  bar.querySelector('[data-cb-total]').textContent=money(sub-disc);
+  bar.querySelector('[data-cb-info]').textContent='V košíku '+count+' '+(count===1?'dárek':count<5?'dárky':'dárků');
+  bar.hidden=false;document.body.classList.add('has-cart-bar');
 }
 function showCartStatus(message){
   let status=document.getElementById('cart-status');
@@ -341,7 +365,6 @@ function handlePaymentReturn(){
 }
 let quickAddVariant='',quickAddOpts={};
 // 1 + 1 nabídky: promokód se předvyplní v košíku a Make podle něj přepočítá cenu
-const CART_PROMO_KEY='makeful-cart-promo-2026';
 function setCartPromo(code){try{if(code)localStorage.setItem(CART_PROMO_KEY,code);}catch{}}
 function openQuickAdd(variant,opts={}){
   const dialog=document.getElementById('quick-add-dialog');if(!dialog)return;
