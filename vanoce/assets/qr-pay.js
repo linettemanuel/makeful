@@ -44,7 +44,7 @@
       var img = el('img', 'mf-pay-qr'); img.src = qr; img.alt = 'QR kód pro platbu'; img.width = 200; img.height = 200; wrap.appendChild(img);
       if (phone) {
         var actions = el('div', 'mf-pay-actions');
-        var share = el('button', 'mf-pay-btn primary', 'Sdílet do banky'); share.type = 'button'; share.hidden = true;
+        var share = el('button', 'mf-pay-btn primary', 'Sdílet do banky a uhradit'); share.type = 'button'; share.hidden = true;
         var save = el('a', 'mf-pay-btn', 'Uložit QR kód'); save.href = qr; save.target = '_blank'; save.rel = 'noopener'; save.setAttribute('download', name);
         actions.appendChild(share); actions.appendChild(save); wrap.appendChild(actions);
         wrap.appendChild(el('p', 'mf-pay-hint', 'Jste na mobilu? QR kód si uložte a v aplikaci své banky zvolte QR platba → Načíst z galerie.'));
