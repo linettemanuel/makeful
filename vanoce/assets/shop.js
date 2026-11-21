@@ -1,3 +1,5 @@
+/* Kampaně: zapamatuje si vstupní URL i s parametry (utm_*, fbclid…) pro kvíz */
+try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);}catch(e){}
 const PRICES = {balicek:1188, voucher:1188, combo:2138};
 const LABELS = {balicek:'Kreativní vzdělávací balíček', voucher:'3D tištěný voucher', combo:'Voucher + kreativní balíček'};
 const PAYMENT_LABELS={bank:'Bankovní převod',card:'Platba kartou online'};

@@ -1133,7 +1133,7 @@
     try{
       var a=state.answers;
       var p={event:event,vid:vid(),step:step||'',q_age:a.age||'',q_interests:a.interests||'',q_goal:a.goal||'',q_format:a.format||'',q_extra:a.extra||'',
-        r_rec:result.recommended||'',r_shown:result.shown||'',r_profile:result.profile||'',r_fit:result.fit||'',page:location.pathname,ua:navigator.userAgent.slice(0,200)};
+        r_rec:result.recommended||'',r_shown:result.shown||'',r_profile:result.profile||'',r_fit:result.fit||'',page:(function(){var u=location.href;try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);u=sessionStorage.getItem(_mfL)||u;}catch(e){}return u;})(),ua:navigator.userAgent.slice(0,200)};
       var body=new URLSearchParams(p);
       if(navigator.sendBeacon&&navigator.sendBeacon(HOOK,body))return;
       fetch(HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});
