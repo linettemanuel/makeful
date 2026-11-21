@@ -333,6 +333,9 @@
     .media-block.has-video:not(:has(.media-cap))::after { top: 50%; }
     .media-block.has-video.is-playing::after { opacity: 0; }
     .clutch-name { margin-top: 2px; }
+    .qr-mobile { margin: 14px 0 0; padding: 12px 14px; border-radius: 14px; background: #fff; text-align: left; font-size: 14.5px; line-height: 1.45; }
+    .qr-mobile ol { margin: 6px 0 0; padding-left: 20px; }
+    .qr-mobile li + li { margin-top: 3px; }
     .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
     .sticky-assurance { margin: 6px 0 0; text-align: center; font-size: 12.5px; font-weight: 700; color: #364360; }
     .result { padding-bottom: 170px; }
@@ -565,6 +568,7 @@
       <div class="deal" id="bankBox">
         <p class="deal-text" id="bankText"></p>
         <img id="bankQr" alt="QR kód pro platbu" hidden style="display:block;width:200px;height:200px;margin:12px auto 0">
+        <div class="qr-mobile" id="qrMobile" hidden><strong>Platíte z telefonu?</strong><ol><li>Udělejte snímek obrazovky s QR kódem.</li><li>V mobilní aplikaci své banky zvolte platbu QR kódem.</li><li>Vyberte snímek z galerie a platbu potvrďte.</li></ol></div>
       </div>
     </div>
   </section>
@@ -1408,6 +1412,8 @@
   function getDraftId(){var id='';try{id=localStorage.getItem(DRAFT_KEY+'-id')||'';if(!/^draft-[a-z0-9-]{8,80}$/.test(id)){id='draft-'+Date.now().toString(36)+'-'+rnd().toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(DRAFT_KEY+'-id',id)}}catch(e){}return id}
   function newOrderId(){return ('ord-'+rnd().replace(/[^A-Za-z0-9-]/g,'')).slice(0,64)}
   function customer(){return {name:$('oName').value.trim(),email:$('oEmail').value.trim(),phone:$('oPhone').value.trim(),street:$('oStreet').value.trim(),city:$('oCity').value.trim(),zip:$('oZip').value.trim(),note:$('oNote').value.trim()}}
+  // Telefon: ukážeme postup, jak zaplatit QR kódem ze snímku obrazovky
+  function isPhone(){try{return /Android|iPhone|iPod/i.test(navigator.userAgent)||(matchMedia('(pointer: coarse)').matches&&innerWidth<820)}catch(e){return false}}
   function payMethod(){var r=document.querySelector('input[name="qpay"]:checked');return r&&r.value==='bank'?'bank':'card'}
   // Rozpracovaná objednávka do Makeu (stejně jako shop.js): po vyplnění e-mailu a při odchodu ze stránky
   function sendDraft(onExit){
@@ -1455,7 +1461,7 @@
           if(window.__mfQuizSend)window.__mfQuizSend('order','objednávka '+number+' · převod',addonsNote());
           $('doneText').textContent='Objednávku č. '+number+' jsme přijali. Stejné údaje i QR kód jsme vám poslali e-mailem.';
           $('bankText').innerHTML='Prosíme o úhradu <b>do 24 hodin</b>.<br>Číslo účtu: <b>3623366010/3030</b><br>Variabilní symbol: <b>'+number+'</b><br>Částka: <b>'+fmt(tot)+'</b>';
-          try{var q=new URL(String(res.qrUrl||''));if(q.protocol==='https:'&&q.hostname==='api.qrserver.com'){$('bankQr').src=q.href;$('bankQr').hidden=false;}}catch(e){}
+          try{var q=new URL(String(res.qrUrl||''));if(q.protocol==='https:'&&q.hostname==='api.qrserver.com'){$('bankQr').src=q.href;$('bankQr').hidden=false;$('qrMobile').hidden=!isPhone();}}catch(e){}
           try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id')}catch(e){}
           setView('doneScreen');return;
         }

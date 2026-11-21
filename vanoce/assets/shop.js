@@ -278,6 +278,9 @@ async function submitOrder(e){
       status.style.display='none';
       const total=Number.isFinite(response.total)?money(response.total):'';
       let qr='';try{const q=new URL(String(response.qrUrl||''));if(q.protocol==='https:'&&q.hostname==='api.qrserver.com')qr=`<img class="order-qr" src="${escapeHtml(q.href)}" width="180" height="180" alt="QR kód pro platbu">`}catch{}
+      const isPhone=(()=>{try{return /Android|iPhone|iPod/i.test(navigator.userAgent)||(matchMedia('(pointer: coarse)').matches&&innerWidth<820)}catch{return false}})();
+      // Telefon: postup, jak zaplatit QR kódem ze snímku obrazovky
+      if(qr&&isPhone)qr+=`<div class="qr-mobile"><strong>Platíte z telefonu?</strong><ol><li>Udělejte snímek obrazovky s QR kódem.</li><li>V mobilní aplikaci své banky zvolte platbu QR kódem.</li><li>Vyberte snímek z galerie a platbu potvrďte.</li></ol></div>`;
       showOrderResult(`<strong>Děkujeme, objednávku č. ${escapeHtml(number)} jsme přijali.</strong><div class="order-pay"><div><p>Prosíme o úhradu <strong>do 24 hodin</strong>. Letos vyrábíme jen omezený počet kusů.</p><p>Číslo účtu: <strong>3623366010/3030</strong><br>Variabilní symbol: <strong>${escapeHtml(number)}</strong>${total?`<br>Částka: <strong>${escapeHtml(total)}</strong>`:''}</p><p>Stejné údaje i QR kód jsme vám poslali e-mailem. Každý kus vyrábíme ručně, balíčky rozesíláme v týdnu od 7. 12. a od 15. 12.</p></div>${qr}</div>`,'success');
       finishSuccessfulOrder();return;
     }
