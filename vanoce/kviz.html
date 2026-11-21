@@ -55,7 +55,8 @@
     @keyframes slide { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
 
     /* Otázka */
-    .q-num { background: linear-gradient(100deg, #48d5ec, #9b6cff 38%, #ff6f9f 72%, #ffb26b); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+    .q-num { display: inline-flex; align-items: center; justify-content: center; min-width: 52px; height: 40px; padding: 0 10px; margin-right: 4px; vertical-align: 4px; border-radius: 999px; background: #fff; box-shadow: 0 4px 14px rgba(84,55,132,.14); font-family: "DM Sans", system-ui, sans-serif; font-size: 17px; font-weight: 800; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+    .q-num span, .q-last { background: linear-gradient(100deg, #48d5ec, #9b6cff 38%, #ff6f9f 72%, #ffb26b); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .eyebrow { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--lilac); }
     .q-title { margin: 0; font-size: clamp(22px, 6.2vw, 26px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
     .q-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
@@ -784,8 +785,9 @@
     $('timeNote').hidden = !first;
     // Číslo otázky před otázkou, u poslední „A poslední otázka:“
     const qt = $('questionTitle'); qt.textContent = '';
-    const num = document.createElement('span'); num.className = 'q-num';
-    num.textContent = (state.index + 1) + '/' + qs.length + (isLastQuestion(q) ? ' A poslední otázka:' : '');
+    const last = isLastQuestion(q), num = document.createElement('span');
+    if (last) { num.className = 'q-last'; num.textContent = 'A poslední otázka:'; }
+    else { num.className = 'q-num'; const t = document.createElement('span'); t.textContent = (state.index + 1) + '/' + qs.length; num.appendChild(t); }
     qt.append(num, ' ' + val(q.title));
     $('questionSub').textContent = val(q.sub) || '';
     $('questionSub').hidden = !val(q.sub);
