@@ -9,7 +9,7 @@
     'produkt-kombinace-nova.webp'
   ];
   var TEXT='Reálná fotka, AI retuš';
-  var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer';
+  var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen';
   var css='.ai-photo-label{position:absolute;left:10px;bottom:10px;z-index:3;max-width:calc(100% - 20px);padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.88);color:#202747;font:600 10.5px/1.35 "DM Sans",system-ui,sans-serif;letter-spacing:.01em;box-shadow:0 1px 6px rgba(17,23,51,.12);pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}';
   function isAI(src){if(!src)return false;var f=src.split('?')[0].split('/').pop();return AI_PHOTOS.indexOf(f)>-1}
   function update(){
