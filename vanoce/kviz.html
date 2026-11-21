@@ -330,6 +330,7 @@
       box-shadow: 0 6px 18px rgba(17,22,51,.25); pointer-events: none; transition: opacity .2s; }
     .media-block.has-video:not(:has(.media-cap))::after { top: 50%; }
     .media-block.has-video.is-playing::after { opacity: 0; }
+    .clutch-name { margin-top: 2px; }
     .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
     .sticky-assurance { margin: 6px 0 0; text-align: center; font-size: 12.5px; font-weight: 700; color: #364360; }
     .result { padding-bottom: 170px; }
@@ -505,6 +506,7 @@
       </div>
       <label class="ret-line"><input type="checkbox" id="sumRet"> <span>Prodloužené vrácení o 30 dní <b>+22 Kč</b></span></label>
       <label class="ret-line upsell-line" id="upsellLine"><input type="checkbox" id="upsellChk"> <span id="upsellText"></span></label>
+      <label class="fld clutch-name" id="clutchNameFld" hidden><span id="clutchNameLbl">Jméno na psaníčko</span><input id="oClutchName" type="text" maxlength="60" autocomplete="off" placeholder="Např. Ema"></label>
 
       <fieldset class="fs">
         <legend>Kontakt a doručení</legend>
@@ -1318,7 +1320,7 @@
   function items(){
     var v=state.activeVariant,c=currentColor(),parts=PARTS[v]||[];
     // Sestry: do Make jdou 2 kusy běžné varianty + promokód SESTRY20 (20 %), Make cenu přepočítá sám
-    var list=[{variant:baseOf(v),qty:TWO_PCS[v]?2:1,wallet:parts.indexOf('wallet')>=0?c:'',clutch:parts.indexOf('clutch')>=0?c:'',clutchName:(PRODUCT_DATA[v].engrave&&state.name)?state.name:''}];
+    var list=[{variant:baseOf(v),qty:TWO_PCS[v]?2:1,wallet:parts.indexOf('wallet')>=0?c:'',clutch:parts.indexOf('clutch')>=0?c:'',clutchName:(hasClutch(v)&&state.name)?state.name:''}];
     if(state.book&&isVoucher(v))list.push({variant:BOOK.variant,qty:1,wallet:'',clutch:'',clutchName:''});
     if(state.returnExt)list.push({variant:RET.variant,qty:1,wallet:'',clutch:'',clutchName:''});
     return list;
@@ -1339,14 +1341,19 @@
   function renderSummary(){
     var v=state.activeVariant,d=PRODUCT_DATA[v],g=galleryFor(v,currentColor()).hero;
     $('sumImg').src=g.src||g.poster;$('sumTitle').textContent=d.title+(state.book&&isVoucher(v)?' + interaktivní vzdělávací knížka':'');
-    var meta=[];if(!isVoucher(v))meta.push('Materiál: '+currentColor().toLowerCase());if(d.engrave&&state.name)meta.push((isJoint()?'Jména: ':'Jméno: ')+state.name);
+    var meta=[];if(!isVoucher(v))meta.push('Materiál: '+currentColor().toLowerCase());if(hasClutch(v)&&state.name)meta.push((isJoint()||TWO_PCS[v]?'Jména: ':'Jméno: ')+state.name);
     $('sumMeta').textContent=meta.join(' · ');
     $('sumOld').textContent=fmt(PRICES[v].old);$('sumNow').textContent=fmt(PRICES[v].now);
     $('sumRet').checked=!!state.returnExt;
+    // Pole pro jméno na psaníčko vždy, když je psaníčko v objednávce (i po přidání v nabídce navíc)
+    var cn=hasClutch(v),many=isJoint()||!!TWO_PCS[v];$('clutchNameFld').hidden=!cn;
+    if(cn){$('clutchNameLbl').textContent=many?'Jména na psaníčka':'Jméno na psaníčko';$('oClutchName').placeholder=many?'Např. Ema a Klára':'Např. Ema';
+      if(document.activeElement!==$('oClutchName'))$('oClutchName').value=state.name||'';}
     $('orderTotal').textContent=fmt(total());
     if(document.getElementById('orderScreen').classList.contains('active'))saveQuizCart();
   }
   $('sumRet').addEventListener('change',function(){state.returnExt=this.checked;renderSummary();});
+  $('oClutchName').addEventListener('input',function(){state.name=this.value.replace(/\s+/g,' ').trimStart().slice(0,60);renderSummary();});
   $('upsellChk').addEventListener('change',function(){var want=this.checked,up=PRODUCT_DATA[state.baseVariant].upsell;var cur=up&&up.addon?!!state.book:state.activeVariant!==state.baseVariant;if(cur!==want)toggleComboUpgrade();renderSummary();});
 
   // Nabídka prodlouženého vrácení po kliknutí na „Vybrat dárek“
