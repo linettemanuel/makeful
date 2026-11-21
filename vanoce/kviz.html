@@ -1336,6 +1336,9 @@
   // Nabídka do košíku e-shopu (objednavka.html): 1 + 1 = 2 kusy + promokód, který Make přepočítá
   const CART_KEY = 'makeful-christmas-cart-2026', CART_PROMO_KEY = 'makeful-cart-promo-2026';
   const CART_PROMO = { penezenka2: 'SESTRY20', psanicko2: 'SESTRY20', balicek2: 'SESTRY20', psanickoMD: 'MAMADCERA' };
+  // Odchod ze stránky až poté, co GTM zpracuje add_to_cart (nejdéle 0,8 s)
+  function goAfterTrack(url) { let gone = false; const go = () => { if (gone) return; gone = true; location.href = url; };
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mf_navigate', eventCallback: () => setTimeout(go, 150), eventTimeout: 700 }); } catch (e) {} setTimeout(go, 800); }
   function addOfferToCart() {
     try {
       const v = state.activeVariant, base = baseOf(v), qty = TWO_PCS[v] ? 2 : 1, c = currentColor();
@@ -1347,13 +1350,13 @@
       else { found = Object.assign({ id: 'item-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) }, it); cart.push(found); }
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
       if (CART_PROMO[v]) localStorage.setItem(CART_PROMO_KEY, CART_PROMO[v]);
-      try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: PRICES[v].now }); } catch (e) {}
+      try { const pv = PRICES[v].now; window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: pv, ecommerce: { currency: 'CZK', value: pv, items: [{ item_id: base, item_name: PRODUCT_DATA[v].title, price: Math.round(pv / qty), quantity: qty }] } }); } catch (e) {}
       return found.id;
     } catch (e) { return ''; }
   }
   // Zavření kvízu po výsledku: nabídka zůstane v košíku i jako lišta na hlavní stránce
-  document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').addEventListener('click', function () {
-    if (!window.__mfOffer && ['resultScreen', 'orderScreen'].includes(state.view)) addOfferToCart();
+  document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').addEventListener('click', function (e) {
+    if (!window.__mfOffer && ['resultScreen', 'orderScreen'].includes(state.view)) { e.preventDefault(); addOfferToCart(); goAfterTrack(this.getAttribute('href')); }
   });
   const _rrc = renderResultCard;
   renderResultCard = function () { _rrc.apply(this, arguments); if (window.__mfOffer) $('resultOrderBtn').textContent = 'Vložit do košíku →'; if (['resultScreen', 'loadingScreen', 'orderScreen'].includes(state.view) || window.__mfQuizRestore) saveOfferForIndex(); };
@@ -1365,7 +1368,7 @@
       state.baseVariant = state.activeVariant = OFFER; state.book = false;
       renderResultCard(); setView('resultScreen');
       document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').setAttribute('aria-label', 'Zavřít');
-      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); const id = addOfferToCart(); location.href = 'objednavka.html' + (id ? '?item=' + encodeURIComponent(id) : ''); }, true);
+      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); addOfferToCart(); goAfterTrack('index.html#produkty'); }, true);
       if (q.get('objednat')) setTimeout(() => $('resultOrderBtn').click(), 250);
       return;
     }
