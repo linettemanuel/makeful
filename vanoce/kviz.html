@@ -1017,14 +1017,15 @@
   // Nadpis podle odpovědí: [úvod, zvýrazněná část v gradientu]
   // Krátké nadpisy na jeden řádek (mobil), ať je produkt a cena hned na první obrazovce
   function headlineFor(v) {
-    if (isVoucher(v)) return ['Voucher na ', 'tvoření s designérkou'];
-    if (/2$/.test(v)) return ['Kreativní sady: ', 'každá si složí svou'];
-    if (v === 'psanickoMD') return ['Kreativní sada ', 'pro mámu a dceru'];
-    if (v === 'combo') return ['Kreativní sada ', 'a workshop navíc'];
-    if (v === 'balicek') return ['Kreativní sada: ', 'složí si 2 doplňky'];
-    if (v === 'psanicko') return ['Kreativní sada: ', 'složí si psaníčko'];
+    if (isVoucher(v)) return ['Voucher: ', 'Tvoření s designérkou'];
+    if (/2$/.test(v)) return ['Kreativní sady: ', '1 + 1 se slevou'];
+    if (v === 'psanickoMD') return ['Kreativní sada: ', 'Pro mámu a dceru'];
+    if (v === 'combo') return ['Kreativní sada: ', 'Doplňky + Workshop'];
+    if (v === 'balicek') return ['Kreativní sada: ', 'Peněženka + Psaníčko'];
+    if (v === 'psanicko') return ['Kreativní sada: ', 'Psaníčko se jménem'];
     return ['Kreativní sada: ', 'Originální Peněženka'];
   }
+
 
 
 
