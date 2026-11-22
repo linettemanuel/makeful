@@ -864,7 +864,7 @@
     renderQuestion();
   }
 
-  // Vyhodnocování (pomalé, ať je vidět, že kvíz „přemýšlí“)
+  // Vyhodnocování (krátce, ať je vidět, že kvíz „přemýšlí“: celkem asi 3 s)
   function showLoadingThenResult() {
     const a = state.answers;
     const short = (qid) => { const q = questions.find(x => x.id === qid); const ans = q && q.answers && q.answers.find(x => x.v === a[qid]); return ans ? ansT(ans) : ''; };
@@ -875,7 +875,7 @@
     setView('loadingScreen');
 
     const texts = ['Vyhodnocujeme vaše odpovědi…', 'Porovnáváme možnosti…', (isJoint() ? 'Hledáme nejlepší shodu pro ně…' : 'Hledáme nejlepší shodu pro ni…'), 'Připravujeme doporučení…', 'Máme to! 🎉'];
-    const DURATION = 6000, start = performance.now();
+    const DURATION = 2600, start = performance.now();
     const items = document.querySelectorAll('#checklist li');
     function tick(now) {
       const t = Math.min(1, (now - start) / DURATION);
@@ -884,7 +884,7 @@
       $('meterPct').textContent = pct + ' %';
       $('loadingText').textContent = texts[Math.min(texts.length - 1, Math.floor(t * texts.length))];
       items.forEach((li, i) => li.classList.toggle('on', t > (i + 1) / (items.length + 1.5)));
-      if (t < 1) requestAnimationFrame(tick); else setTimeout(computeAndShowResult, 900);
+      if (t < 1) requestAnimationFrame(tick); else setTimeout(computeAndShowResult, 400);
     }
     requestAnimationFrame(tick);
   }
