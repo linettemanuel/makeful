@@ -1,8 +1,8 @@
 /* Kampaně: zapamatuje si vstupní URL i s parametry (utm_*, fbclid…) pro kvíz */
 try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);}catch(e){}
 const PRICES = {balicek:1188, voucher:1188, combo:2138, penezenka:488, psanicko:888, voucher488:488, voucher888:888, voucher1288:1288, knizka:100, vraceni30:22};
-const LABELS = {balicek:'Kreativní balíček: peněženka + psaníčko + knížka', voucher:'3D voucher na workshop (1 188 Kč)', combo:'Peněženka, psaníčko a voucher',
-  penezenka:'Kreativní balíček: peněženka + knížka', psanicko:'Kreativní balíček: psaníčko se jménem + knížka',
+const LABELS = {balicek:'Kreativní balíček Peněženka + Psaníčko', voucher:'3D voucher na workshop (1 188 Kč)', combo:'Kreativní balíček Peněženka + Psaníčko + Voucher',
+  penezenka:'Kreativní balíček Peněženka', psanicko:'Kreativní balíček Psaníčko',
   voucher488:'3D voucher na workshop (488 Kč)', voucher888:'3D voucher na workshop (888 Kč)', voucher1288:'3D voucher na workshop (1 288 Kč)',
   knizka:'Interaktivní vzdělávací knížka', vraceni30:'Prodloužené vrácení o 30 dní'};
 // Které díly má varianta (kvůli materiálům a jménu). Vouchery, knížka a vrácení žádné.
