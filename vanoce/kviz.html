@@ -1533,6 +1533,9 @@
     if(state.returnExt)list.push({variant:RET.variant,qty:1,wallet:'',clutch:'',clutchName:''});
     return list;
   }
+  // Kombinace jde do Make jako 2 položky (voucher, pak balíček) + automatický kód na slevu 426 Kč, ať je v listu Položky každá zvlášť
+  var COMBO_CODE='KOMBINACE426K';
+  function serverCart(){var out=[];items().forEach(function(i){if(i.variant==='combo'){out.push({variant:'voucher',qty:i.qty,wallet:'',clutch:'',clutchName:''});out.push({variant:'balicek',qty:i.qty,wallet:i.wallet,clutch:i.clutch,clutchName:i.clutchName});}else out.push(i)});return out}
   function priceOf(k){return k===RET.variant?RET.price:k===BOOK.variant?BOOK.price:PRICES[k].now}
   function nameOf(k){return k===RET.variant?RET.name:k===BOOK.variant?BOOK.name:sheetName(k)}
   // Promokódy, které kvíz posílá sám (list Promokódy v tabulce objednávek). Make podle nich cenu přepočítá.
@@ -1612,7 +1615,7 @@
     if(Date.now()>=new Date('2026-12-01T00:00:00+01:00').getTime()){showErr(ERR.closed);return;}
     if(!f.checkValidity()){f.reportValidity();var bad=f.querySelector(':invalid');if(bad)bad.scrollIntoView({behavior:'smooth',block:'center'});return;}
     var pay=payMethod();
-    var payload={event:'order_submitted',draftId:getDraftId(),cart:items(),customer:customer(),payment:pay,promoCode:PROMO[state.activeVariant]?PROMO[state.activeVariant].code:'',
+    var payload={event:'order_submitted',draftId:getDraftId(),cart:serverCart(),customer:customer(),payment:pay,promoCode:state.activeVariant==='combo'?COMBO_CODE:(PROMO[state.activeVariant]?PROMO[state.activeVariant].code:''),
       website:$('oWebsite').value,consent:$('oConsent').checked,
       returnUrl:location.origin+location.pathname.replace(/[^\/]*$/,'')+'objednavka.html',orderId:newOrderId()};
     dl({event:'add_payment_info',payment_type:pay,ecommerce:ecom()});
