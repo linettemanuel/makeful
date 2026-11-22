@@ -342,6 +342,45 @@
     /* Svítící psaníčko: fotka má nahoře světlou a dole svítící polovinu, ukazujeme spodní */
     img[src$="produkt-psanicko-svitici.webp"] { object-position: 50% 100%; }
     img[src$="penezenka-oranzova-v-ruce.webp"] { object-position: 50% 0; }
+
+    /* Výsledek: produkt, cena a tlačítko co nejvýš (mobil) */
+    #resultScreen .r-title { font-size: clamp(22px, 6.2vw, 27px); line-height: 1.15; }
+    #resultScreen .r-intro { display: none; }
+    .result > div:first-of-type { display: grid; gap: 4px; }
+    .name-preview { display: grid; gap: 8px; padding: 12px 16px 0; }
+    .name-preview label { display: grid; gap: 2px; font-size: 15px; font-weight: 800; color: var(--navy); }
+    .name-preview small { font-size: 13px; font-weight: 600; color: var(--muted); }
+    .name-preview input { width: 100%; min-height: 50px; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); background: #fff; }
+    .name-preview input:focus { outline: none; border-color: var(--lilac); }
+    .deal-low { margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
+    .alt { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; width: 100%; padding: 10px 12px; border-radius: 16px; border: 1.5px dashed #cfc3f5; background: #fff; text-align: left; font: inherit; color: var(--navy); cursor: pointer; touch-action: manipulation; }
+    .alt img { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; background: var(--lilac-soft); }
+    .alt-body { display: grid; gap: 2px; min-width: 0; }
+    .alt-body small { font-size: 12.5px; font-weight: 800; color: #7049da; }
+    .alt-body strong { font-size: 14.5px; line-height: 1.3; }
+    .alt-price { font-size: 14px; } .alt-price s { color: var(--muted); } .alt-price b { color: #e5145f; }
+    .alt-go { font-size: 13.5px; font-weight: 800; color: var(--lilac); white-space: nowrap; }
+    .voices { display: grid; gap: 10px; }
+    .voices-photo { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 18px; background: var(--lilac-soft); }
+    .score { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 16px; background: #fff7ec; border: 1px solid #ffe0b8; }
+    .score b { font-size: 24px; font-weight: 800; color: #c25e00; white-space: nowrap; }
+    .score span { font-size: 13.5px; line-height: 1.4; color: var(--text); font-weight: 600; }
+    .voice { margin: 0; padding: 12px 14px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .voice blockquote { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--navy); }
+    .voice figcaption { margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--muted); }
+    .voices-note { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+    .later-link { display: block; width: 100%; margin-top: 6px; padding: 6px 4px 2px; border: 0; background: none; font: inherit; font-size: 13.5px; font-weight: 700; color: #364360; text-align: center; cursor: pointer; touch-action: manipulation; }
+    .later-link u { text-underline-offset: 3px; color: var(--lilac); }
+    .later-card { display: grid; gap: 6px; padding: 14px 16px; border-radius: 18px; background: var(--lilac-soft); }
+    .later-card strong { font-size: 16.5px; } .later-card span { font-size: 14.5px; line-height: 1.45; color: var(--text); }
+    .later-open { justify-self: start; margin-top: 4px; padding: 10px 14px; border-radius: 12px; border: 2px solid var(--lilac); background: #fff; font: inherit; font-size: 15px; font-weight: 800; color: var(--lilac); cursor: pointer; }
+    .later-input { display: block; width: 100%; min-height: 54px; margin: 14px 0 10px; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); }
+    .later-input:focus { outline: none; border-color: var(--lilac); }
+    .later-err { margin: -4px 0 10px !important; font-size: 14px !important; font-weight: 700; color: #c2185b !important; }
+    .later-fine { margin-top: 10px !important; font-size: 12.5px !important; line-height: 1.45 !important; color: var(--muted) !important; }
+    .later-fine a { color: var(--muted); }
+    #laterSheet .sheet-ico { background: var(--pink-soft); }
+    #laterDone p { margin: 0 0 14px; }
   </style>
 </head>
 <body>
@@ -415,6 +454,10 @@
           <span class="name-tag" id="nameTag" hidden></span>
         </div>
         <div class="card-head"><span class="kicker">Váš dárek na míru rozpočtu</span><strong id="resultProduct"></strong><span id="resultFor"></span></div>
+        <div class="name-preview" id="namePreview" hidden>
+          <label for="namePrev"><span id="namePrevLbl">✍️ Napište její jméno a uvidíte ho na psaníčku</span><small>Jméno na psaníčku je zdarma. Můžete ho doplnit i později v objednávce.</small></label>
+          <input id="namePrev" type="text" maxlength="40" autocomplete="off" enterkeyhint="done" placeholder="Např. Ema">
+        </div>
         <div class="colors" id="colors" role="group" aria-label="Barva materiálu"></div>
         <p class="moment" id="resultMoment"></p>
       </div>
@@ -422,9 +465,16 @@
       <div class="deal">
         <span class="deal-badge" id="dealBadge">LIMITOVANÁ NABÍDKA · SLEVA 200 Kč</span>
         <div class="deal-price"><s id="dealOld"></s><strong id="dealNow"></strong></div>
+        <p class="deal-low" id="dealLow" hidden></p>
         <p class="deal-text"><b id="dealSave">Ušetříte 200 Kč.</b> Vánoční sleva platí jen do 30. 11. nebo do vyprodání 100 ks.</p>
         <p class="deal-timer" id="dealTimer"></p>
       </div>
+
+      <button type="button" class="alt" id="altBox" hidden>
+        <img id="altImg" alt="">
+        <span class="alt-body"><small id="altQ">Hledáte menší dárek?</small><strong id="altTitle"></strong><span class="alt-price"><s id="altOld"></s> <b id="altNow"></b></span></span>
+        <span class="alt-go" aria-hidden="true">Zobrazit →</span>
+      </button>
 
       <div class="trust-grid">
         <div><b>🇨🇿</b>Česká značka z Prahy</div>
@@ -439,6 +489,18 @@
         <span class="tv-badge">ČT :D</span>
         <span><strong>Viděli jste nás v České televizi</strong><small>Reportáž o módě budoucnosti ▶</small></span>
       </a>
+
+      <!-- Skutečné anonymní ohlasy z dotazníku po letní akademii 2026 (tabulka makeful_prihlasky_2026, list Feedback). Jen doslovné citace. -->
+      <section class="voices" aria-labelledby="voicesTitle">
+        <h2 class="sec" id="voicesTitle">Co říkají holky, které s námi tvořily</h2>
+        <img class="voices-photo" src="assets/photos/o-nas-tvoreni-ve-studiu.webp" alt="Holky při tvoření ve studiu Makeful" loading="lazy">
+        <div class="score"><b>9,95 / 10</b><span>průměrné hodnocení lektorek v 19 anonymních dotaznících po letní FashionTech akademii Makeful 2026</span></div>
+        <figure class="voice"><blockquote>„Moc se mi líbila atmosféra byly tu skvělé lektorky i holky“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
+        <figure class="voice"><blockquote>„To že jsme se naučily pracovat s tou 3D tiskárnou a hlavně jsme se dozvěděly spoustu nových cest jak designovat/vyrábět oblečení.“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
+        <figure class="voice"><blockquote>„Dozvěděla a naučila jsem se tady hodně nových věcí a za to vám děkuju!🩷🩷“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
+        <figure class="voice"><blockquote>„Chtěla bych aby to byl kroužek“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
+        <p class="voices-note">Ohlasy jsou z anonymního dotazníku po letní akademii, kde holky tvořily s 3D tiskem. Vánoční balíčky jsou novinka, recenze na ně teprve sbíráme.</p>
+      </section>
 
       <h2 class="sec" id="secWhy">Proč právě pro ni</h2>
       <ul class="reasons" id="reasons"></ul>
@@ -470,6 +532,11 @@
       <div class="media-block" id="lateVideo"></div>
       <h2 class="sec">Možná vás ještě napadá…</h2>
       <div class="faq" id="faq"></div>
+      <div class="later-card">
+        <strong>Nemusíte se rozhodnout hned</strong>
+        <span>Pošleme vám tenhle výsledek na e-mail, ať se k němu můžete vrátit, třeba až to proberete doma.</span>
+        <button type="button" class="later-open" data-later>Poslat výsledek na e-mail</button>
+      </div>
 
       <div class="team">
         <div class="team-body">
@@ -496,8 +563,8 @@
         <div class="price-now"><s id="resultOldPrice"></s><strong id="resultPrice">1 188 Kč</strong></div>
         <span id="barTimer">Sleva 200 Kč jen do 30. 11.</span>
       </div>
-      <a class="cta" id="resultOrderBtn" href="objednavka.html">Vybrat dárek se slevou 200 Kč →</a>
-      <p class="sticky-assurance">Bez okamžité platby · údaje a platbu vyberete v dalším kroku</p>
+      <a class="cta" id="resultOrderBtn" href="objednavka.html">Objednat balíček se slevou 200 Kč →</a>
+      <button type="button" class="later-link" id="laterLink">Ještě nevíte? <u>Pošlete si výsledek na e-mail</u></button>
     </div></div>
   </section>
 
@@ -570,18 +637,27 @@
     </div>
   </section>
 
-  <div class="sheet-backdrop" id="retSheet" hidden>
-    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="retTitle">
+  <!-- Poslat výsledek na e-mail (nenásilná druhá možnost vedle „Objednat“) -->
+  <div class="sheet-backdrop" id="laterSheet" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="laterTitle">
       <div class="sheet-handle" aria-hidden="true"></div>
-      <div class="sheet-ico" aria-hidden="true">🛡️</div>
-      <h3 id="retTitle">Chcete jistotu, že se trefíte?</h3>
-      <p>Přidejte prodloužené vrácení. Když se jí dárek nebude líbit, můžete ho vrátit bez udání důvodu ještě o 30 dní déle.</p>
-      <ul>
-        <li>Vrácení bez udání důvodu o 30 dní déle</li>
-        <li>Ideální, když dárek kupujete s předstihem</li>
-      </ul>
-      <button class="cta" id="retYes" type="button">Ano, přidat za 22 Kč</button>
-      <button class="sheet-no" id="retNo" type="button">Ne, děkuji</button>
+      <div class="sheet-ico" aria-hidden="true">💌</div>
+      <h3 id="laterTitle">Pošleme vám výsledek na e-mail</h3>
+      <div id="laterFormWrap">
+        <p>Doporučený dárek i odkaz na objednávku budete mít v e-mailu. Můžete se rozhodnout v klidu, třeba až to proberete doma.</p>
+        <form id="laterForm" novalidate>
+          <input class="later-input" id="laterEmail" type="email" autocomplete="email" inputmode="email" required placeholder="vas@email.cz" aria-label="Váš e-mail">
+          <input type="text" id="laterWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <p class="later-err" id="laterErr" hidden>Zkontrolujte prosím e-mail.</p>
+          <button class="cta" id="laterSend" type="submit">Poslat výsledek</button>
+        </form>
+        <p class="later-fine">Pošleme výsledek a do 30. 11. nejvýš 2 připomínky, že sleva končí. Pak už nic. Odhlásit se můžete jedním klikem v každém e-mailu. <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Ochrana osobních údajů</a></p>
+      </div>
+      <div id="laterDone" hidden>
+        <p><b>Hotovo, výsledek je na cestě.</b> Kdyby nedorazil do pár minut, mrkněte do složky Promoakce nebo Spam.</p>
+        <button class="cta" id="laterBack" type="button">Zpět na dárek</button>
+      </div>
+      <button class="sheet-no" id="laterNo" type="button">Zavřít</button>
     </div>
   </div>
 </main>
@@ -831,7 +907,8 @@
   }
 
   let busy = false;
-  const CLAIM_STEPS = ['age'];
+  // Mezikarta až po otázce na rozpočet (po 1. otázce z kvízu odcházela polovina lidí, kteří ho nedokončili)
+  const CLAIM_STEPS = ['budget'];
   function chooseAnswer(q, value, btn) {
     if (busy) return;
     busy = true;
@@ -842,7 +919,7 @@
     }
     setTimeout(() => {
       busy = false;
-      // Mezikarty zatím jen po první otázce (věk), ať se kvíz rychle proklikne. Pro zapnutí dalších přidejte jejich id.
+      // Mezikarty jen po otázkách v CLAIM_STEPS, ať se kvíz rychle proklikne.
       const c = CLAIM_STEPS.includes(q.id) ? getDynamicClaim(q.id, value) : null;
       if (c) {
         const box = $('claimMedia'); box.innerHTML = '';
@@ -1065,12 +1142,25 @@
     upsell: null });
   Object.keys(PRODUCT_DATA).forEach(k => { PRODUCT_DATA[k].orderHref = 'objednavka.html?variant=' + k; });
 
+  // Alternativa pod hlavním doporučením: kdo nechce hlavní dárek, má kam jít (levnější nebo osobnější varianta)
+  const ALT = {
+    penezenka: ['psanicko', 'Chcete něco osobnějšího?'],
+    psanicko: ['penezenka', 'Hledáte menší dárek?'],
+    balicek: ['psanicko', 'Hledáte menší dárek?'],
+    combo: ['balicek', 'Bez voucheru na workshop?'],
+    voucher488: ['penezenka', 'Raději tvoření doma?'],
+    voucher888: ['psanicko', 'Raději tvoření doma?'],
+    voucher: ['balicek', 'Raději tvoření doma?']
+  };
+  // Nejnižší cena za 30 dní před slevou (§ 12a zákona o ochraně spotřebitele): jen u dárků, které se prodávaly za přeškrtnutou cenu
+  const LOWEST_30 = ['penezenka', 'psanicko', 'balicek', 'voucher488', 'voucher888', 'voucher'];
+
   // Odkaz na reportáž ČT o módě budoucnosti. DOPLNIT URL; dokud je prázdné, odkaz se nezobrazí.
   const CT_LINK = 'https://decko.ceskatelevize.cz/video/i1151928';
 
   // Odpovědi na námitky
   const FAQ_KIT = [
-    ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Nabídneme vám ho hned po kliknutí na „Vybrat dárek“. Vaše zákonná práva tím nejsou dotčena.'],
+    ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Přidáte ho jedním zaškrtnutím v objednávce. Vaše zákonná práva tím nejsou dotčena.'],
     ['Kdo za Makeful stojí?', 'Jsme Makeful, lokální tvůrkyně z Prahy. Věříme, že v každé holce se skrývá tvůrkyně a stačí jí dát do ruky ty správné nástroje. Proto propojujeme módu s moderními technologiemi, jako je 3D tisk, a školíme i učitele, aby radost z tvoření mohli předávat dál. O naší módě budoucnosti natáčela reportáž Česká televize. Každý dárek připravujeme s láskou a s přáním, aby u vás doma udělal radost.', 'ct'],
     ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Dárek máte doma před Vánoci, doprava je zdarma.'],
     ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.'],
@@ -1083,7 +1173,7 @@
     ['Zaplatím hned po kliknutí?', 'Ne. Kliknutím jen vyplníte doručení a vyberete platbu. Nic se nestrhne automaticky, objednávku potvrdíte až vy.']
   ];
   const FAQ_VOUCHER = [
-    ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Nabídneme vám ho hned po kliknutí na „Vybrat dárek“. Vaše zákonná práva tím nejsou dotčena.'],
+    ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Přidáte ho jedním zaškrtnutím v objednávce. Vaše zákonná práva tím nejsou dotčena.'],
     ['Kdo za Makeful stojí?', 'Jsme Makeful, lokální tvůrkyně z Prahy. Věříme, že v každé holce se skrývá tvůrkyně a stačí jí dát do ruky ty správné nástroje. Proto propojujeme módu s moderními technologiemi, jako je 3D tisk, a školíme i učitele, aby radost z tvoření mohli předávat dál. O naší módě budoucnosti natáčela reportáž Česká televize. Každý dárek připravujeme s láskou a s přáním, aby u vás doma udělal radost.', 'ct'],
     ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Doprava je zdarma.'],
     ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.'],
@@ -1132,7 +1222,8 @@
       if (IR[a.interests]) r.push(IR[a.interests]);
       r.push('Vybrali jste materiál, který ' + MAT[currentColor()].txt + '. Efekt, kterým se pochlubí.');
     }
-    r.push(isDuo(variant) ? 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + ' za dárek) a na oba balíčky máte slevu 20 %.' : 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + '), a teď navíc se slevou ' + fmt(saving(variant)) + '.');
+    if (state.alt) r.push('Teď navíc se slevou ' + fmt(saving(variant)) + '.');
+    else r.push(isDuo(variant) ? 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + ' za dárek) a na oba balíčky máte slevu 20 %.' : 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + '), a teď navíc se slevou ' + fmt(saving(variant)) + '.');
     return r;
   }
 
@@ -1235,7 +1326,11 @@
     $('dealNow').textContent = fmt(pr.now);
     $('resultOldPrice').textContent = fmt(pr.old);
     $('resultPrice').textContent = fmt(pr.now);
+    $('dealLow').hidden = !LOWEST_30.includes(v);
+    $('dealLow').textContent = 'Nejnižší cena za posledních 30 dní před slevou: ' + fmt(pr.old);
     updateTimers();
+    renderNamePreview(v);
+    renderAlt(v);
 
     $('reasons').innerHTML = '';
     buildReasons(v).forEach(t => { const li = document.createElement('li'); li.textContent = t; $('reasons').appendChild(li); });
@@ -1301,14 +1396,65 @@
     $('saleRibbon').textContent = duo ? (isSisters() ? '−20 % · sleva pro sestry' : '−20 % · 1 + 1') : '−' + fmt(saving(v)) + ' · limitovaná sleva';
     $('dealBadge').textContent = duo ? 'LIMITOVANÁ NABÍDKA · SLEVA 20 % NA 2 DÁRKY' : 'LIMITOVANÁ NABÍDKA · SLEVA ' + fmt(saving(v));
     $('dealSave').textContent = 'Ušetříte ' + fmt(saving(v)) + '.';
-    $('resultOrderBtn').textContent = duo ? 'Vybrat 2 dárky se slevou 20 % →' : 'Vybrat dárek se slevou ' + fmt(saving(v)) + ' →';
+    $('resultOrderBtn').textContent = duo ? 'Objednat 2 balíčky se slevou 20 % →' : (isVoucher(v) ? 'Objednat voucher' : 'Objednat balíček') + ' se slevou ' + fmt(saving(v)) + ' →';
     if (state.name && hasClutch(v)) $('resultFor').textContent = 'Pro: ' + state.name;
-    if (!duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) x.textContent = 'Proč je teď sleva ' + fmt(saving(v)) + '?'; });
+    if (!duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je teď sleva ' + fmt(saving(v)) + '?'; if (LOWEST_30.includes(v) && x.nextElementSibling.textContent.indexOf('Nejnižší cena') < 0) x.nextElementSibling.textContent += ' Nejnižší cena za posledních 30 dní před slevou: ' + fmt(PRICES[v].old) + '.'; } });
     if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = (isSisters() ? 'Sestry chceme podpořit, ať každá tvoří se svým.' : 'Tvořit spolu je víc radosti, ať každá tvoří se svým.') + ' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
-    jointifyDom($('retSheet'), !j);
     if (j) jointifyDom($('resultScreen'));
     updateTimers();
   }
+
+  // Náhled jména přímo na výsledku: jméno se ukáže na fotce produktu a předvyplní se do objednávky
+  function renderNamePreview(v) {
+    const on = hasClutch(v), j = isJoint() || !!TWO_PCS[v];
+    $('namePreview').hidden = !on;
+    if (!on) return;
+    $('namePrevLbl').textContent = j ? '✍️ Napište jejich jména a uvidíte je na psaníčku' : '✍️ Napište její jméno a uvidíte ho na psaníčku';
+    $('namePrev').placeholder = j ? 'Např. Ema a Klára' : 'Např. Ema';
+    $('namePrev').maxLength = j ? 60 : 40;
+    if (document.activeElement !== $('namePrev')) $('namePrev').value = state.name || '';
+  }
+  // Při psaní jen lehká aktualizace (bez překreslení fotek a videí)
+  function updateNameBits() {
+    const v = state.activeVariant, d = PRODUCT_DATA[v];
+    $('nameTag').hidden = !(hasClutch(v) && state.name);
+    $('nameTag').textContent = '✨ ' + state.name.toUpperCase();
+    $('resultFor').textContent = state.name && hasClutch(v) ? 'Pro: ' + state.name : '';
+    $('resultFor').hidden = !(state.name && hasClutch(v));
+    const h = headlineFor(v);
+    $('resultTitle').innerHTML = '';
+    $('resultTitle').append(document.createTextNode(h[0]));
+    const gs = document.createElement('span'); gs.className = 'grad'; gs.textContent = h[1]; $('resultTitle').appendChild(gs);
+    if (isJoint()) jointifyDom($('resultTitle'));
+  }
+  $('namePrev').addEventListener('input', function () {
+    state.name = capName(this.value.replace(/\s+/g, ' ').trimStart().slice(0, 60)).trimEnd();
+    state.answers.name = state.name ? 'vyplněno' : '';
+    updateNameBits();
+  });
+  $('namePrev').addEventListener('keydown', function (e) { if (e.key === 'Enter') this.blur(); });
+  $('namePrev').addEventListener('change', function () { try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'quiz_name_preview', filled: state.name ? 'ano' : 'ne' }); } catch (e) {} if (window.__mfSaveResult) window.__mfSaveResult(); });
+
+  function renderAlt(v) {
+    const a = !window.__mfOffer && ALT[state.baseVariant] && v === state.baseVariant ? ALT[state.baseVariant] : null;
+    $('altBox').hidden = !a;
+    if (!a) return;
+    // Náhled alternativy: reálné fotky bez AI retuše (štítek by se do malého náhledu nevešel)
+    const k = a[0], ALT_IMG = { penezenka: 'produkt-penezenka-v-ruce.webp', psanicko: 'produkt-psanicko-detail-poster.webp', balicek: 'produkt-balicek-novy.webp' };
+    $('altImg').src = P + (ALT_IMG[k] || 'produkt-balicek-novy.webp');
+    $('altQ').textContent = a[1];
+    $('altTitle').textContent = PRODUCT_DATA[k].title;
+    $('altOld').textContent = fmt(PRICES[k].old);
+    $('altNow').textContent = fmt(PRICES[k].now);
+  }
+  function switchToAlt(k) {
+    if (!PRODUCT_DATA[k]) return;
+    state.alt = k; state.baseVariant = state.activeVariant = k; state.book = false;
+    renderResultCard();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'quiz_alternative', quiz_result: k }); } catch (e) {}
+  }
+  $('altBox').addEventListener('click', () => { const a = ALT[state.baseVariant]; if (a) switchToAlt(a[0]); });
 
   function toggleComboUpgrade() {
     const up = PRODUCT_DATA[state.baseVariant].upsell;
@@ -1320,7 +1466,7 @@
   function computeAndShowResult() {
     state.baseVariant = computeVariant();
     state.activeVariant = state.baseVariant;
-    state.book = false;
+    state.book = false; state.alt = '';
     renderResultCard();
     setView('resultScreen');
   }
@@ -1426,6 +1572,8 @@
   computeAndShowResult=function(){_show();var p=buildProfile();result={recommended:LABEL[state.baseVariant]||state.baseVariant,shown:LABEL[state.activeVariant]||state.activeVariant,profile:p.name,fit:String(p.fit)};if(!window.__mfQuizRestore)markUrl('quiz-finished');if(!window.__mfQuizRestore)send('result','výsledek');};
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();result.shown=LABEL[state.activeVariant]||state.activeVariant;};
+  var _alt=switchToAlt;
+  switchToAlt=function(k){_alt(k);result.shown=LABEL[state.activeVariant]||state.activeVariant;};
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
   // Nové vyplnění kvízu = nové ID, v tabulce Kvíz vznikne nový řádek místo přepsání starého
   var _restart=restartQuiz;
@@ -1497,17 +1645,40 @@
   $('oClutchName').addEventListener('input',function(){state.name=this.value.replace(/\s+/g,' ').trimStart().slice(0,60);renderSummary();});
   $('upsellChk').addEventListener('change',function(){var want=this.checked,up=PRODUCT_DATA[state.baseVariant].upsell;var cur=up&&up.addon?!!state.book:state.activeVariant!==state.baseVariant;if(cur!==want)toggleComboUpgrade();renderSummary();});
 
-  // Nabídka prodlouženého vrácení po kliknutí na „Vybrat dárek“
-  var sheet=$('retSheet');
-  function closeSheet(yes){
-    sheet.hidden=true;state.returnExt=!!yes;
-    dl({event:'return_extension',choice:yes?'ano':'ne',value:yes?RET.price:0});
-    openOrder();
+  // „Objednat“ vede rovnou do objednávky. Prodloužené vrácení je zaškrtávátko v souhrnu objednávky (bez vyskakovacího okna).
+  $('resultOrderBtn').addEventListener('click',function(e){e.preventDefault();openOrder();});
+  $('sumRet').addEventListener('change',function(){dl({event:'return_extension',choice:this.checked?'ano':'ne',value:this.checked?RET.price:0});});
+
+  // „Ještě se rozmýšlíte?“ Výsledek na e-mail (scénář v Make pošle výsledek a nejvýš 2 připomínky do 30. 11.)
+  var LATER_HOOK='https://hook.eu1.make.com/djr9ygt8ca4rctqqsu8xsnsnl6o52ckm',laterSheet=$('laterSheet'),laterSent=false;
+  function resultCode(){
+    var a=state.answers,o={a:{age:a.age||'',budget:a.budget||'',format:a.format||'',interests:a.interests||'',effect:a.effect||''}};
+    if(state.name)o.n=state.name;if(state.alt)o.x=state.alt;
+    try{return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}catch(e){return ''}
   }
-  $('retYes').addEventListener('click',function(){closeSheet(true)});
-  $('retNo').addEventListener('click',function(){closeSheet(false)});
-  sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet(false)});
-  $('resultOrderBtn').addEventListener('click',function(e){e.preventDefault();sheet.hidden=false;});
+  function openLater(){
+    $('laterFormWrap').hidden=laterSent;$('laterDone').hidden=!laterSent;$('laterErr').hidden=true;
+    laterSheet.hidden=false;dl({event:'quiz_email_open'});
+    if(!laterSent)setTimeout(function(){try{$('laterEmail').focus({preventScroll:true})}catch(e){}},250);
+  }
+  function closeLater(){laterSheet.hidden=true;}
+  $('laterLink').addEventListener('click',openLater);
+  document.querySelectorAll('[data-later]').forEach(function(b){b.addEventListener('click',openLater)});
+  $('laterNo').addEventListener('click',closeLater);$('laterBack').addEventListener('click',closeLater);
+  laterSheet.addEventListener('click',function(e){if(e.target===laterSheet)closeLater()});
+  $('laterForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=$('laterEmail').value.trim().toLowerCase();
+    if(!/^[^\s@,;<>"]+@[^\s@,;<>"]+\.[a-z]{2,}$/.test(email)||email.length>120){$('laterErr').hidden=false;$('laterEmail').focus();return;}
+    if($('laterWebsite').value)return;
+    var v=state.activeVariant,g=galleryFor(v,currentColor()).hero,img=String(g.src||g.poster||'').split('/').pop();
+    var vidv='';try{vidv=localStorage.getItem('makeful-quiz-visitor-2026')||''}catch(err){}
+    var body=new URLSearchParams({event:'save',email:email,variant:v,img:img,name:hasClutch(v)?(state.name||''):'',code:resultCode(),vid:vidv,website:''});
+    try{if(!(navigator.sendBeacon&&navigator.sendBeacon(LATER_HOOK,body)))fetch(LATER_HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});}catch(err){}
+    laterSent=true;$('laterFormWrap').hidden=true;$('laterDone').hidden=false;
+    dl({event:'quiz_email_saved',quiz_result:v});
+    // Do listu Kvíz nezapisujeme (stav by se přepsal). Kdo si poslal výsledek, je v listu „Výsledek e-mailem“ se stejným ID návštěvy.
+  });
 
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
@@ -1599,18 +1770,32 @@
   var SAVE_KEY='makeful-quiz-result-2026', MAX_AGE=60*24*3600*1000;
   function load(){try{var d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(!d||!d.answers||typeof d.answers!=='object'||!d.at||Date.now()-d.at>MAX_AGE)return null;
     return ['age','budget','interests','format'].every(function(k){return Object.prototype.hasOwnProperty.call(d.answers,k)})?d:null}catch(e){return null}}
+  function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({answers:state.answers,name:state.name,variant:state.activeVariant,alt:state.alt||'',at:Date.now()}))}catch(e){}}
+  window.__mfSaveResult=save;
   var _show=computeAndShowResult;
-  computeAndShowResult=function(){_show();try{localStorage.setItem(SAVE_KEY,JSON.stringify({answers:state.answers,name:state.name,variant:state.activeVariant,at:Date.now()}))}catch(e){}};
+  computeAndShowResult=function(){_show();save();};
+  var _alt=switchToAlt;
+  switchToAlt=function(k){_alt(k);if(!window.__mfQuizRestore)save();};
+  // Odkaz z e-mailu s výsledkem (?vysledek=…): stejné odpovědi, jméno i zvolená alternativa, i na jiném zařízení
+  function fromLink(){
+    try{var c=new URLSearchParams(location.search).get('vysledek');if(!c||c.length>800)return null;
+      c=c.replace(/-/g,'+').replace(/_/g,'/');while(c.length%4)c+='=';
+      var o=JSON.parse(decodeURIComponent(escape(atob(c))));if(!o||!o.a||typeof o.a!=='object')return null;
+      var a={};['age','budget','format','interests','effect'].forEach(function(k){if(typeof o.a[k]==='string'&&o.a[k].length<120)a[k]=o.a[k]});
+      if(!a.age||!a.budget||!a.format||!a.interests)return null;
+      return {answers:a,name:typeof o.n==='string'?o.n.slice(0,60):'',alt:typeof o.x==='string'&&PRODUCT_DATA[o.x]?o.x:'',at:Date.now(),link:true};
+    }catch(e){return null}}
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();try{var d=load();if(d){d.variant=state.activeVariant;localStorage.setItem(SAVE_KEY,JSON.stringify(d))}}catch(e){}};
   var _restart=restartQuiz;
   restartQuiz=function(){try{localStorage.removeItem(SAVE_KEY);localStorage.removeItem('makeful-quiz-offer-2026')}catch(e){}document.getElementById('savedResultNote').hidden=true;_restart();};
   if(window.__mfPreset||window.__mfOffer)return;
-  var saved=load();
+  var saved=fromLink()||load();
   if(saved){
     state.answers=saved.answers;state.name=saved.name||'';state.index=activeQs().length-1;
-    window.__mfQuizRestore=true;try{_show();}catch(e){}window.__mfQuizRestore=false;
-    var _up=PRODUCT_DATA[state.baseVariant].upsell;if(saved.variant&&_up&&saved.variant===_up.to){try{_toggle();}catch(e){}}
+    window.__mfQuizRestore=true;try{_show();if(saved.alt&&saved.alt!==state.baseVariant)switchToAlt(saved.alt);}catch(e){}window.__mfQuizRestore=false;
+    var _up=PRODUCT_DATA[state.baseVariant].upsell;if(!saved.alt&&saved.variant&&_up&&saved.variant===_up.to){try{_toggle();}catch(e){}}
+    if(saved.link)save();
     document.getElementById('savedResultNote').hidden=false;
   }
 })();
