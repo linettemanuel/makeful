@@ -1,8 +1,8 @@
 /* Kampaně: zapamatuje si vstupní URL i s parametry (utm_*, fbclid…) pro kvíz */
 try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);}catch(e){}
 const PRICES = {balicek:1188, voucher:1188, combo:2138, penezenka:488, psanicko:888, voucher488:488, voucher888:888, voucher1288:1288, knizka:100, vraceni30:22};
-const LABELS = {balicek:'Kreativní balíček: peněženka + psaníčko + knížka', voucher:'3D voucher na workshop (1 188 Kč)', combo:'Peněženka, psaníčko a voucher',
-  penezenka:'Kreativní balíček: peněženka + knížka', psanicko:'Kreativní balíček: psaníčko se jménem + knížka',
+const LABELS = {balicek:'Kreativní balíček Peněženka + Psaníčko', voucher:'3D voucher na workshop (1 188 Kč)', combo:'Kreativní balíček Peněženka + Psaníčko + Voucher',
+  penezenka:'Kreativní balíček Peněženka', psanicko:'Kreativní balíček Psaníčko',
   voucher488:'3D voucher na workshop (488 Kč)', voucher888:'3D voucher na workshop (888 Kč)', voucher1288:'3D voucher na workshop (1 288 Kč)',
   knizka:'Interaktivní vzdělávací knížka', vraceni30:'Prodloužené vrácení o 30 dní'};
 // Které díly má varianta (kvůli materiálům a jménu). Vouchery, knížka a vrácení žádné.
@@ -298,12 +298,20 @@ function restoreOrderDraft(){
 }
 function clearOrderDraft(){try{localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id')}catch{}lastDraftSent=''}
 // Server (Make) si sám přepočítá ceny i promokód. Posíláme jen výběr zákazníka, žádné ceny.
+// Kombinace (voucher + kreativní balíček) jde do Make jako 2 položky + automatický kód KOMBINACE426K (−426 Kč),
+// aby byl v listu Položky voucher a balíček každý na svém řádku. Jen když zákazník nezadal vlastní promokód a kombinace je 1 kus
+// (Make umí jen jeden promokód); jinak se pošle jako dřív, cena se nemění.
+const COMBO_CODE='KOMBINACE426K';
 function buildServerPayload(){
   const f=readOrderForm();
+  let items=cart.map(i=>({variant:i.variant,qty:i.qty,wallet:i.wallet,clutch:i.clutch,clutchName:partsOf(i.variant).includes('clutch')&&personalizationAvailable()?i.clutchName:''}));
+  let promoCode=promoAllowed(f.promoCode)?f.promoCode:'';
+  const comboQty=items.filter(i=>i.variant==='combo').reduce((n,i)=>n+i.qty,0);
+  if(comboQty===1&&!promoCode){items=items.flatMap(i=>i.variant==='combo'?[{variant:'voucher',qty:1,wallet:'',clutch:'',clutchName:''},{variant:'balicek',qty:1,wallet:i.wallet,clutch:i.clutch,clutchName:i.clutchName}]:[i]);promoCode=COMBO_CODE;}
   return {event:'order_submitted',draftId:getDraftId(),
-    cart:cart.map(i=>({variant:i.variant,qty:i.qty,wallet:i.wallet,clutch:i.clutch,clutchName:partsOf(i.variant).includes('clutch')&&personalizationAvailable()?i.clutchName:''})),
+    cart:items,
     customer:{name:f.name,email:f.email,phone:f.phone,street:f.street,city:f.city,zip:f.zip,note:f.note},
-    payment:f.payment==='card'?'card':'bank',promoCode:promoAllowed(f.promoCode)?f.promoCode:'',
+    payment:f.payment==='card'?'card':'bank',promoCode,
     website:document.getElementById('order-website')?.value||'',
     consent:!!document.getElementById('order-consent')?.checked&&!!document.getElementById('order-shipping-consent')?.checked,
     returnUrl:location.origin+location.pathname};
