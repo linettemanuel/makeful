@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="cs">
-<head>
+<head><script src="assets/visit-id.js"></script>
 <!-- Google Tag Manager (Facebook Pixel + GA4 se spravují v GTM) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KGDFKB27");</script>
 <!-- End Google Tag Manager -->
@@ -1429,7 +1429,7 @@
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
   // Nové vyplnění kvízu = nové ID, v tabulce Kvíz vznikne nový řádek místo přepsání starého
   var _restart=restartQuiz;
-  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}memVid='';result={};_restart();};
+  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}memVid='';result={};_restart();try{window.__mfApplyVisitId&&window.__mfApplyVisitId(vid())}catch(e){}};
   window.__mfQuizSend=send;
   if(window.__mfPreset){send('answer','1 / '+activeQs().length+' (age)');markUrl('quiz-started');}
   // Otevření stránky kvízu (i když nikdo neodpoví), ať je v tabulce vidět skutečný počet návštěv.
