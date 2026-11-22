@@ -364,11 +364,13 @@
     .voices-photo { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 18px; background: var(--lilac-soft); }
     .score { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 16px; background: #fff7ec; border: 1px solid #ffe0b8; }
     .score b { font-size: 24px; font-weight: 800; color: #c25e00; white-space: nowrap; }
-    .score span { font-size: 13.5px; line-height: 1.4; color: var(--text); font-weight: 600; }
+    .score span { display: grid; gap: 2px; font-size: 16px; line-height: 1.3; color: var(--navy); }
+    .score span strong { font-weight: 800; }
+    .score small { font-size: 12.5px; line-height: 1.4; color: var(--muted); font-weight: 600; }
+    .voices-lead { margin: 2px 0; font-size: 16px; line-height: 1.5; font-weight: 700; color: var(--navy); }
     .voice { margin: 0; padding: 12px 14px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
     .voice blockquote { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--navy); }
     .voice figcaption { margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--muted); }
-    .voices-note { margin: 0; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
     .later-link { display: block; width: 100%; margin-top: 6px; padding: 6px 4px 2px; border: 0; background: none; font: inherit; font-size: 13.5px; font-weight: 700; color: #364360; text-align: center; cursor: pointer; touch-action: manipulation; }
     .later-link u { text-underline-offset: 3px; color: var(--lilac); }
     .later-card { display: grid; gap: 6px; padding: 14px 16px; border-radius: 18px; background: var(--lilac-soft); }
@@ -492,14 +494,11 @@
 
       <!-- Skutečné anonymní ohlasy z dotazníku po letní akademii 2026 (tabulka makeful_prihlasky_2026, list Feedback). Jen doslovné citace. -->
       <section class="voices" aria-labelledby="voicesTitle">
-        <h2 class="sec" id="voicesTitle">Co říkají holky, které s námi tvořily</h2>
         <img class="voices-photo" src="assets/photos/o-nas-tvoreni-ve-studiu.webp" alt="Holky při tvoření ve studiu Makeful" loading="lazy">
-        <div class="score"><b>9,95 / 10</b><span>průměrné hodnocení lektorek v 19 anonymních dotaznících po letní FashionTech akademii Makeful 2026</span></div>
-        <figure class="voice"><blockquote>„Moc se mi líbila atmosféra byly tu skvělé lektorky i holky“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
-        <figure class="voice"><blockquote>„To že jsme se naučily pracovat s tou 3D tiskárnou a hlavně jsme se dozvěděly spoustu nových cest jak designovat/vyrábět oblečení.“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
-        <figure class="voice"><blockquote>„Dozvěděla a naučila jsem se tady hodně nových věcí a za to vám děkuju!🩷🩷“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
-        <figure class="voice"><blockquote>„Chtěla bych aby to byl kroužek“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
-        <p class="voices-note">Ohlasy jsou z anonymního dotazníku po letní akademii, kde holky tvořily s 3D tiskem. Vánoční balíčky jsou novinka, recenze na ně teprve sbíráme.</p>
+        <div class="score"><b>9 / 10</b><span><strong id="voicesTitle">Hodnocení našich programů</strong><small>průměr všech hodnocení v 19 anonymních dotaznících po letní akademii 2026</small></span></div>
+        <p class="voices-lead">Holky milují Makeful kvůli tomu, jak jednoduše se dá vše pochopit a kolik nového se toho dozví.</p>
+        <figure class="voice"><blockquote>„Jste super!!! Dozvěděla a naučila jsem se tady hodně nových věcí a za to vám děkuju!🩷🩷“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
+        <figure class="voice"><blockquote>„Pokračujte v tom a chtěla bych aby to byl kroužek“</blockquote><figcaption>Účastnice letní akademie 2026</figcaption></figure>
       </section>
 
       <h2 class="sec" id="secWhy">Proč právě pro ni</h2>
@@ -907,8 +906,8 @@
   }
 
   let busy = false;
-  // Mezikarta až po otázce na rozpočet (po 1. otázce z kvízu odcházela polovina lidí, kteří ho nedokončili)
-  const CLAIM_STEPS = ['budget'];
+  // Mezikarty vypnuté: kvíz jde rovnou z otázky na otázku. Pro zapnutí přidejte id otázky, např. ['budget'].
+  const CLAIM_STEPS = [];
   function chooseAnswer(q, value, btn) {
     if (busy) return;
     busy = true;
