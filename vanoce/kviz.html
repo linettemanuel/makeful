@@ -630,6 +630,7 @@
   const DUO_RATE = 0.2;
   ['penezenka', 'psanicko', 'balicek'].forEach(k => { const o = 2 * PRICES[k].now; PRICES[k + '2'] = { now: Math.round(o * (1 - DUO_RATE)), old: o }; });
   PRICES.psanickoMD = { now: 988, old: 988 + DISCOUNT };
+  PRICES.combo.old = 2564; // peněženka, psaníčko a voucher: běžně 2 564 Kč, sleva 426 Kč
   const saving = (v) => PRICES[v].old - PRICES[v].now;
   // Doplněk k voucherům (samostatná položka v objednávce, Make ji zná jako „knizka“)
   const BOOK = { variant: 'knizka', price: 100, name: 'Interaktivní vzdělávací knížka' };
@@ -1131,7 +1132,7 @@
       if (IR[a.interests]) r.push(IR[a.interests]);
       r.push('Vybrali jste materiál, který ' + MAT[currentColor()].txt + '. Efekt, kterým se pochlubí.');
     }
-    r.push(isDuo(variant) ? 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + ' za dárek) a na oba balíčky máte slevu 20 %.' : 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + '), a teď navíc se slevou 200 Kč.');
+    r.push(isDuo(variant) ? 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + ' za dárek) a na oba balíčky máte slevu 20 %.' : 'Vejde se do vašeho rozpočtu (' + (a.budget || '') + '), a teď navíc se slevou ' + fmt(saving(variant)) + '.');
     return r;
   }
 
@@ -1209,7 +1210,7 @@
   function updateTimers() {
     const t = timerText();
     $('dealTimer').textContent = '⏳ Sleva končí za ' + t;
-    $('barTimer').innerHTML = (isDuo(state.activeVariant) ? 'Sleva −20 %' : 'Sleva −200 Kč') + '<br>končí za ' + t;
+    $('barTimer').innerHTML = (isDuo(state.activeVariant) ? 'Sleva −20 %' : 'Sleva −' + fmt(saving(state.activeVariant))) + '<br>končí za ' + t;
   }
   setInterval(updateTimers, 30000);
 
@@ -1297,12 +1298,13 @@
     $('secGives').textContent = j ? 'Co jim dárek dá' : 'Co jí dárek dá';
     $('savedFor').textContent = j ? 'pro ně' : 'pro ni';
     $('rIntro').textContent = j ? 'Dárek, který rozbalí, samy dotvoří a odnesou si z něj opravdovou radost. Vybráno podle vašich odpovědí.' : 'Dárek, který rozbalí, sama dotvoří a odnese si z něj opravdovou radost. Vybráno podle vašich odpovědí.';
-    $('saleRibbon').textContent = duo ? (isSisters() ? '−20 % · sleva pro sestry' : '−20 % · 1 + 1') : '−200 Kč · limitovaná sleva';
-    $('dealBadge').textContent = duo ? 'LIMITOVANÁ NABÍDKA · SLEVA 20 % NA 2 DÁRKY' : 'LIMITOVANÁ NABÍDKA · SLEVA 200 Kč';
+    $('saleRibbon').textContent = duo ? (isSisters() ? '−20 % · sleva pro sestry' : '−20 % · 1 + 1') : '−' + fmt(saving(v)) + ' · limitovaná sleva';
+    $('dealBadge').textContent = duo ? 'LIMITOVANÁ NABÍDKA · SLEVA 20 % NA 2 DÁRKY' : 'LIMITOVANÁ NABÍDKA · SLEVA ' + fmt(saving(v));
     $('dealSave').textContent = 'Ušetříte ' + fmt(saving(v)) + '.';
-    $('resultOrderBtn').textContent = duo ? 'Vybrat 2 dárky se slevou 20 % →' : 'Vybrat dárek se slevou 200 Kč →';
+    $('resultOrderBtn').textContent = duo ? 'Vybrat 2 dárky se slevou 20 % →' : 'Vybrat dárek se slevou ' + fmt(saving(v)) + ' →';
     if (state.name && hasClutch(v)) $('resultFor').textContent = 'Pro: ' + state.name;
-    if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (x.textContent === 'Proč je teď sleva 200 Kč?') { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = (isSisters() ? 'Sestry chceme podpořit, ať každá tvoří se svým.' : 'Tvořit spolu je víc radosti, ať každá tvoří se svým.') + ' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
+    if (!duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) x.textContent = 'Proč je teď sleva ' + fmt(saving(v)) + '?'; });
+    if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = (isSisters() ? 'Sestry chceme podpořit, ať každá tvoří se svým.' : 'Tvořit spolu je víc radosti, ať každá tvoří se svým.') + ' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
     jointifyDom($('retSheet'), !j);
     if (j) jointifyDom($('resultScreen'));
     updateTimers();
@@ -1385,7 +1387,10 @@
 (function(){
   var HOOK='https://hook.eu1.make.com/3sf1buyy0akt5ij2dvetn33g74ghjlbo';
   var KEY='makeful-quiz-visitor-2026';
-  function vid(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
+  function vidStored(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
+  // ID držíme i v paměti stránky: in-app prohlížeče FB/IG umí po načtení vyměnit úložiště a pak by vznikl druhý řádek
+  var memVid='';
+  function vid(){if(memVid){try{if(localStorage.getItem(KEY)!==memVid)localStorage.setItem(KEY,memVid)}catch(e){}return memVid}memVid=vidStored();return memVid}
   var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher:'Voucher 1188',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
   var result={};
   function send(event,step,addons){
@@ -1424,12 +1429,15 @@
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
   // Nové vyplnění kvízu = nové ID, v tabulce Kvíz vznikne nový řádek místo přepsání starého
   var _restart=restartQuiz;
-  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}result={};_restart();};
+  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}memVid='';result={};_restart();};
   window.__mfQuizSend=send;
   if(window.__mfPreset){send('answer','1 / '+activeQs().length+' (age)');markUrl('quiz-started');}
   // Otevření stránky kvízu (i když nikdo neodpoví), ať je v tabulce vidět skutečný počet návštěv.
   // Jen pro nové návštěvy: kdo má uložený výsledek, už v tabulce řádek má (Make ho při „open“ nepřepíše).
-  else{var hasSaved=false;try{hasSaved=!!localStorage.getItem('makeful-quiz-result-2026')}catch(e){}if(!hasSaved)send('open','otevřel stránku');}
+  else{var hasSaved=false;try{hasSaved=!!localStorage.getItem('makeful-quiz-result-2026')}catch(e){}
+    // Otevření zapíšeme, až je stránka opravdu vidět (přednačtení stránky v aplikaci FB/IG se nepočítá)
+    if(!hasSaved){var opened=false,openNow=function(){if(opened||document.visibilityState==='hidden'||document.prerendering)return;opened=true;send('open','otevřel stránku');};
+      openNow();if(!opened){document.addEventListener('visibilitychange',openNow);document.addEventListener('prerenderingchange',openNow);}}}
 })();
 </script>
 
@@ -1460,7 +1468,10 @@
   // Promokódy, které kvíz posílá sám (list Promokódy v tabulce objednávek). Make podle nich cenu přepočítá.
   var PROMO={penezenka2:{code:'SESTRY20',pct:20},psanicko2:{code:'SESTRY20',pct:20},balicek2:{code:'SESTRY20',pct:20},psanickoMD:{code:'MAMADCERA',kc:788}};
   function total(){var sub=items().reduce(function(n,i){return n+priceOf(i.variant)*i.qty},0),p=PROMO[state.activeVariant];
-    if(!p)return sub;return sub-(p.pct?Math.round(sub*p.pct/100):Math.min(p.kc,sub))}
+    if(!p)return sub;
+    // SESTRY20 se v Make počítá jen z dárků v páru (doplňky jsou za plnou cenu)
+    var base=p.pct?['penezenka','psanicko','balicek'].reduce(function(n,v){var q=items().filter(function(i){return i.variant===v}).reduce(function(a,i){return a+i.qty},0);return n+(q>=2?priceOf(v)*q:0)},0):sub;
+    return sub-(p.pct?Math.round(base*p.pct/100):Math.min(p.kc,sub))}
   function mfItems(){return items().map(function(i){return {item_id:i.variant,item_name:nameOf(i.variant),price:priceOf(i.variant),quantity:i.qty}})}
   function addonsNote(){return items().slice(1).map(function(i){return nameOf(i.variant)}).concat(state.activeVariant!==state.baseVariant?['upsell: '+PRODUCT_DATA[state.activeVariant].title]:[]).join(', ')}
   function dl(o){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(o)}catch(e){}}
