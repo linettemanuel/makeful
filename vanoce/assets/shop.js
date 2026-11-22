@@ -18,8 +18,30 @@ const MAKE_WEBHOOK_URL=MAKEFUL_CONFIG.makeWebhookUrl||'';
 const MAKE_DRAFT_URL=MAKEFUL_CONFIG.makeDraftWebhookUrl||'';
 const MAKE_PROMO_URL=MAKEFUL_CONFIG.makePromoWebhookUrl||'';
 const CART_PROMO_KEY='makeful-cart-promo-2026';
+// Promokódy vázané na nabídku: SESTRY20 jen pro 1 + 1 (2 stejné dárky), MAMADCERA jen pro máma a dcera (2 psaníčka)
+const OFFER_PROMOS={
+  SESTRY20:{ok:list=>['penezenka','psanicko','balicek'].some(v=>list.filter(i=>i.variant===v).reduce((n,i)=>n+i.qty,0)>=2),msg:'Promokód SESTRY20 platí jen pro nabídku 1 + 1, tedy 2 stejné dárky v košíku.'},
+  MAMADCERA:{ok:list=>list.filter(i=>i.variant==='psanicko').reduce((n,i)=>n+i.qty,0)>=2,msg:'Promokód MAMADCERA platí jen pro nabídku máma a dcera, tedy 2 psaníčka v košíku.'}
+};
+const promoAllowed=(code,list=cart)=>{const r=OFFER_PROMOS[String(code||'').trim().toUpperCase()];return !r||r.ok(list);};
+// Vymaže promokód z pole, z ověřené slevy i z uložené nabídky
+function clearPromo(){
+  appliedPromo=null;try{localStorage.removeItem(CART_PROMO_KEY)}catch{}
+  const pi=document.getElementById('promo-code'),ps=document.getElementById('promo-status');
+  if(pi&&pi.value){pi.value='';if(typeof scheduleDraftSave==='function')scheduleDraftSave();}
+  if(ps){ps.textContent='';ps.dataset.state='';}
+  if(typeof renderTotals==='function'&&document.getElementById('order-form'))renderTotals();
+}
+// Po každé změně košíku: kód, který už k obsahu nesedí, zmizí
+function enforcePromoRules(){
+  let stored='';try{stored=localStorage.getItem(CART_PROMO_KEY)||''}catch{}
+  const pi=document.getElementById('promo-code'),typed=pi?pi.value:'';
+  if(!cart.length||(stored&&!promoAllowed(stored))||(typed&&!promoAllowed(typed)))clearPromo();
+}
 let appliedPromo=null; // {code,type,value} po úspěšném ověření v Make
-function promoDiscount(subtotal){if(!appliedPromo||!(appliedPromo.value>0))return 0;return appliedPromo.type==='percent'?Math.round(subtotal*Math.min(appliedPromo.value,100)/100):Math.min(Math.round(appliedPromo.value),subtotal);}
+// Základ procentní slevy: u SESTRY20 jen dárky v páru (stejně počítá Make), jinak celý košík
+function promoBase(code,subtotal,list=cart){if(String(code||'').toUpperCase()!=='SESTRY20')return subtotal;return ['penezenka','psanicko','balicek'].reduce((n,v)=>{const q=list.filter(i=>i.variant===v).reduce((a,i)=>a+i.qty,0);return n+(q>=2?PRICES[v]*q:0)},0);}
+function promoDiscount(subtotal){if(!appliedPromo||!(appliedPromo.value>0))return 0;return appliedPromo.type==='percent'?Math.round(promoBase(appliedPromo.code,subtotal)*Math.min(appliedPromo.value,100)/100):Math.min(Math.round(appliedPromo.value),subtotal);}
 function renderTotals(){
   const sub=cart.reduce((n,i)=>n+PRICES[i.variant]*i.qty,0),disc=promoDiscount(sub);
   const row=document.getElementById('summary-discount-row');
@@ -64,7 +86,7 @@ function loadCart(){
 function saveCart(){
   try{localStorage.setItem(CART_KEY,JSON.stringify(cart));sessionStorage.removeItem(CART_KEY);}catch{}
   document.querySelectorAll('[data-cart-count]').forEach(el=>el.textContent=cart.reduce((n,i)=>n+i.qty,0));
-  updateCartBar();
+  enforcePromoRules();updateCartBar();
 }
 // Prodejní lišta dole (jako v kvízu): ukazuje aktuální stav košíku. Na stránce košíku se nezobrazuje.
 const KNOWN_PROMOS={SESTRY20:{pct:20},MAMADCERA:{kc:788}};
@@ -82,7 +104,7 @@ function updateCartBar(){
   }
   const sub=cart.reduce((n,i)=>n+PRICES[i.variant]*i.qty,0);
   let code='';try{code=localStorage.getItem(CART_PROMO_KEY)||''}catch{}
-  const pr=KNOWN_PROMOS[code],disc=pr?(pr.pct?Math.round(sub*pr.pct/100):Math.min(pr.kc,sub)):0;
+  const pr=promoAllowed(code)?KNOWN_PROMOS[code]:null,disc=pr?(pr.pct?Math.round(promoBase(code,sub)*pr.pct/100):Math.min(pr.kc,sub)):0;
   bar.querySelector('[data-cb-old]').textContent=disc?money(sub):'';
   bar.querySelector('[data-cb-total]').textContent=money(sub-disc);
   bar.querySelector('[data-cb-info]').textContent='V košíku '+count+' '+(count===1?'dárek':count<5?'dárky':'dárků');
@@ -98,7 +120,7 @@ function showCartStatus(message){
 /* Měření pro GTM (Facebook Pixel, GA4): události do dataLayer */
 function mfTrack(event,params={}){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event,source:'eshop',...params});}catch{}}
 // Cena košíku po slevě (ověřený promokód, nebo 1 + 1 / máma a dcera z nabídky)
-function mfCartValue(list=cart){const sub=mfValue(list);if(typeof appliedPromo!=='undefined'&&appliedPromo)return sub-promoDiscount(sub);let code='';try{code=localStorage.getItem(CART_PROMO_KEY)||''}catch{}const pr=KNOWN_PROMOS[code];return pr?sub-(pr.pct?Math.round(sub*pr.pct/100):Math.min(pr.kc,sub)):sub;}
+function mfCartValue(list=cart){const sub=mfValue(list);if(typeof appliedPromo!=='undefined'&&appliedPromo)return sub-promoDiscount(sub);let code='';try{code=localStorage.getItem(CART_PROMO_KEY)||''}catch{}const pr=promoAllowed(code)?KNOWN_PROMOS[code]:null;return pr?sub-(pr.pct?Math.round(promoBase(code,sub,list)*pr.pct/100):Math.min(pr.kc,sub)):sub;}
 // Přechod na jinou stránku až poté, co GTM zpracuje předchozí událost (nejdéle 0,8 s)
 function goAfterTrack(url){let gone=false;const go=()=>{if(gone)return;gone=true;location.href=url};try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'mf_navigate',eventCallback:()=>setTimeout(go,150),eventTimeout:700});}catch{}setTimeout(go,800);}
 function mfItems(list){return list.map(i=>({item_id:i.variant,item_name:LABELS[i.variant],price:PRICES[i.variant],quantity:i.qty}));}
@@ -143,7 +165,7 @@ document.addEventListener('click',e=>{
   if(edit){const item=cart.find(i=>i.id===edit.dataset.editCart);if(item){activeVariant=item.variant;selectActiveVariant(item.variant,item.id);updateOrderUI(false);const dialog=document.getElementById('cart-item-editor');document.getElementById('cart-editor-product').textContent=LABELS[item.variant];dialog.showModal();document.body.classList.add('cart-editor-open');}return;}
   const remove=e.target.closest('[data-remove-cart]');
   if(remove){
-    cart=cart.filter(i=>i.id!==remove.dataset.removeCart);
+    cart=cart.filter(i=>i.id!==remove.dataset.removeCart);clearPromo();
     if(activeItemId===remove.dataset.removeCart){activeVariant=cart[0]?.variant||'';selectActiveVariant(activeVariant,cart[0]?.id);}
     saveCart();updateOrderUI(false);
   }
@@ -281,7 +303,7 @@ function buildServerPayload(){
   return {event:'order_submitted',draftId:getDraftId(),
     cart:cart.map(i=>({variant:i.variant,qty:i.qty,wallet:i.wallet,clutch:i.clutch,clutchName:partsOf(i.variant).includes('clutch')&&personalizationAvailable()?i.clutchName:''})),
     customer:{name:f.name,email:f.email,phone:f.phone,street:f.street,city:f.city,zip:f.zip,note:f.note},
-    payment:f.payment==='card'?'card':'bank',promoCode:f.promoCode,
+    payment:f.payment==='card'?'card':'bank',promoCode:promoAllowed(f.promoCode)?f.promoCode:'',
     website:document.getElementById('order-website')?.value||'',
     consent:!!document.getElementById('order-consent')?.checked&&!!document.getElementById('order-shipping-consent')?.checked,
     returnUrl:location.origin+location.pathname};
@@ -501,7 +523,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   form.addEventListener('change',e=>{if(e.target.name==='variant'){activeVariant=e.target.value;selectActiveVariant(activeVariant);}updateOrderUI();scheduleDraftSave();});
   form.addEventListener('input',e=>{if(e.target.name!=='variant')updateOrderUI();scheduleDraftSave();});
   restoreOrderDraft();
-  {let pc='';try{pc=localStorage.getItem(CART_PROMO_KEY)||''}catch{}const pi=document.getElementById('promo-code');if(pc&&pi&&!pi.value.trim()&&cart.length)pi.value=pc;}
+  {let pc='';try{pc=localStorage.getItem(CART_PROMO_KEY)||''}catch{}const pi=document.getElementById('promo-code');if(pc&&pi&&!pi.value.trim()&&cart.length)pi.value=pc;enforcePromoRules();}
   // Mobil: nejdřív kontaktní a doručovací údaje, pak shrnutí a nakonec souhlasy s tlačítkem objednat.
   {const summary=document.querySelector('.summary-card'),shell=summary?.parentElement,finalStep=document.getElementById('order-consent')?.closest('.form-section');
    const mq=matchMedia('(max-width: 980px)');
@@ -516,6 +538,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const checkPromo=async(silent)=>{
     const code=promoInput.value.trim().toUpperCase();appliedPromo=null;renderTotals();
     if(!code){promoStatus.textContent=silent?'':'Zadejte promokód, pokud ho máte.';promoStatus.dataset.state='';return;}
+    if(!promoAllowed(code)){promoStatus.textContent=OFFER_PROMOS[code].msg;promoStatus.dataset.state='error';return;}
     if(!MAKE_PROMO_URL){promoStatus.textContent='Promokód ověříme při odeslání objednávky.';promoStatus.dataset.state='';return;}
     promoButton.disabled=true;promoStatus.dataset.state='';promoStatus.textContent='Ověřujeme promokód…';
     try{

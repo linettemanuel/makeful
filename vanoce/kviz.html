@@ -1462,7 +1462,10 @@
   // Promokódy, které kvíz posílá sám (list Promokódy v tabulce objednávek). Make podle nich cenu přepočítá.
   var PROMO={penezenka2:{code:'SESTRY20',pct:20},psanicko2:{code:'SESTRY20',pct:20},balicek2:{code:'SESTRY20',pct:20},psanickoMD:{code:'MAMADCERA',kc:788}};
   function total(){var sub=items().reduce(function(n,i){return n+priceOf(i.variant)*i.qty},0),p=PROMO[state.activeVariant];
-    if(!p)return sub;return sub-(p.pct?Math.round(sub*p.pct/100):Math.min(p.kc,sub))}
+    if(!p)return sub;
+    // SESTRY20 se v Make počítá jen z dárků v páru (doplňky jsou za plnou cenu)
+    var base=p.pct?['penezenka','psanicko','balicek'].reduce(function(n,v){var q=items().filter(function(i){return i.variant===v}).reduce(function(a,i){return a+i.qty},0);return n+(q>=2?priceOf(v)*q:0)},0):sub;
+    return sub-(p.pct?Math.round(base*p.pct/100):Math.min(p.kc,sub))}
   function mfItems(){return items().map(function(i){return {item_id:i.variant,item_name:nameOf(i.variant),price:priceOf(i.variant),quantity:i.qty}})}
   function addonsNote(){return items().slice(1).map(function(i){return nameOf(i.variant)}).concat(state.activeVariant!==state.baseVariant?['upsell: '+PRODUCT_DATA[state.activeVariant].title]:[]).join(', ')}
   function dl(o){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(o)}catch(e){}}
