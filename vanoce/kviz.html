@@ -446,7 +446,7 @@
           <span class="sale-ribbon" id="saleRibbon">−200 Kč · limitovaná sleva</span>
           <span class="name-tag" id="nameTag" hidden></span>
         </div>
-        <div class="card-head"><span class="kicker">Váš dárek na míru rozpočtu</span><strong id="resultProduct"></strong><span id="resultFor"></span></div>
+        <div class="card-head"><span class="kicker">Váš dárek na míru</span><strong id="resultProduct"></strong><span id="resultFor"></span></div>
         <div class="card-price"><s id="cardOld"></s> <b id="cardNow"></b></div>
         <ul class="card-why" id="cardWhy"></ul>
         <div class="colors" id="colors" role="group" aria-label="Barva materiálu"></div>
@@ -1019,22 +1019,15 @@
   // Nadpis podle odpovědí: [úvod, zvýrazněná část v gradientu]
   // Krátké nadpisy na jeden řádek (mobil), ať je produkt a cena hned na první obrazovce
   function headlineFor(v) {
-    const a = state.answers;
-    if (window.__mfOffer) {
-      if (/2$/.test(v)) return ['Tvořte spolu ', '1 + 1 se slevou 20 %'];
-      if (v === 'psanickoMD') return ['Pro mámu a dceru ', 'společné tvoření'];
-      if (v === 'balicek') return ['Darujte jí ', 'dva doplňky naráz'];
-    }
-    if (a.age === AGE.sestry) return ['Darujte sestrám ', 'radost z tvoření'];
-    if (a.age === AGE.mamaDcera) return isVoucher(v) ? ['Pro mámu a dceru ', 'společný zážitek'] : ['Pro mámu a dceru ', 'společné tvoření'];
-    if (isVoucher(v)) return ['Darujte jí ', 'zážitek s designérkou'];
-    if (v === 'combo') return ['Darujte jí ', 'radost na celý rok'];
-    if (v === 'psanicko') return ['Darujte jí ', 'psaníčko se jménem'];
-    if (a.age === AGE.dospela) return ['Darujte jí ', 'chvíli pro sebe'];
-    if (a.age === AGE.teen) return ['Darujte jí ', 'originál, co nikdo nemá'];
-    if (v === 'penezenka') return ['Darujte jí ', 'vlastní peněženku'];
-    return ['Darujte jí ', 'radost z tvoření'];
+    if (isVoucher(v)) return ['Voucher na ', 'tvoření s designérkou'];
+    if (/2$/.test(v)) return ['Kreativní sady: ', 'každá si složí svou'];
+    if (v === 'psanickoMD') return ['Kreativní sada ', 'pro mámu a dceru'];
+    if (v === 'combo') return ['Kreativní sada ', 'a workshop navíc'];
+    if (v === 'balicek') return ['Kreativní sada: ', 'složí si 2 doplňky'];
+    if (v === 'psanicko') return ['Kreativní sada: ', 'složí si psaníčko'];
+    return ['Kreativní sada: ', 'složí si peněženku'];
   }
+
 
 
 
