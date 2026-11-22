@@ -1387,7 +1387,10 @@
 (function(){
   var HOOK='https://hook.eu1.make.com/3sf1buyy0akt5ij2dvetn33g74ghjlbo';
   var KEY='makeful-quiz-visitor-2026';
-  function vid(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
+  function vidStored(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
+  // ID držíme i v paměti stránky: in-app prohlížeče FB/IG umí po načtení vyměnit úložiště a pak by vznikl druhý řádek
+  var memVid='';
+  function vid(){if(memVid){try{if(localStorage.getItem(KEY)!==memVid)localStorage.setItem(KEY,memVid)}catch(e){}return memVid}memVid=vidStored();return memVid}
   var LABEL={penezenka:'Kreativní balíček: peněženka',psanicko:'Kreativní balíček: psaníčko',balicek:'Velký kreativní balíček',voucher488:'Voucher 488',voucher888:'Voucher 888',voucher:'Voucher 1188',combo:'Celý balíček',penezenka2:'Sestry: 2× peněženka',psanicko2:'Sestry: 2× psaníčko',balicek2:'Sestry: 2× velký balíček',psanickoMD:'Máma a dcera: 2× psaníčko'};
   var result={};
   function send(event,step,addons){
@@ -1426,12 +1429,15 @@
   document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
   // Nové vyplnění kvízu = nové ID, v tabulce Kvíz vznikne nový řádek místo přepsání starého
   var _restart=restartQuiz;
-  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}result={};_restart();};
+  restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}memVid='';result={};_restart();};
   window.__mfQuizSend=send;
   if(window.__mfPreset){send('answer','1 / '+activeQs().length+' (age)');markUrl('quiz-started');}
   // Otevření stránky kvízu (i když nikdo neodpoví), ať je v tabulce vidět skutečný počet návštěv.
   // Jen pro nové návštěvy: kdo má uložený výsledek, už v tabulce řádek má (Make ho při „open“ nepřepíše).
-  else{var hasSaved=false;try{hasSaved=!!localStorage.getItem('makeful-quiz-result-2026')}catch(e){}if(!hasSaved)send('open','otevřel stránku');}
+  else{var hasSaved=false;try{hasSaved=!!localStorage.getItem('makeful-quiz-result-2026')}catch(e){}
+    // Otevření zapíšeme, až je stránka opravdu vidět (přednačtení stránky v aplikaci FB/IG se nepočítá)
+    if(!hasSaved){var opened=false,openNow=function(){if(opened||document.visibilityState==='hidden'||document.prerendering)return;opened=true;send('open','otevřel stránku');};
+      openNow();if(!opened){document.addEventListener('visibilitychange',openNow);document.addEventListener('prerenderingchange',openNow);}}}
 })();
 </script>
 
