@@ -355,7 +355,6 @@
     .card-why { margin: 8px 0 0; padding: 0 16px; list-style: none; display: grid; gap: 4px; }
     .card-why li { display: grid; grid-template-columns: 18px 1fr; gap: 6px; font-size: 14.5px; line-height: 1.4; font-weight: 600; color: var(--navy); }
     .card-why li::before { content: "✓"; color: var(--pink); font-weight: 800; }
-    .deal-low { margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
     /* Spokojenost zákaznic */
     .voices { display: grid; gap: 14px; }
     .voices-hero { position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 14px 32px rgba(84,55,132,.14); }
@@ -456,7 +455,6 @@
       <div class="deal">
         <span class="deal-badge" id="dealBadge">LIMITOVANÁ NABÍDKA · SLEVA 200 Kč</span>
         <div class="deal-price"><s id="dealOld"></s><strong id="dealNow"></strong></div>
-        <p class="deal-low" id="dealLow" hidden></p>
         <p class="deal-text"><b id="dealSave">Ušetříte 200 Kč.</b> Vánoční sleva platí jen do 30. 11. nebo do vyprodání 100 ks.</p>
         <p class="deal-timer" id="dealTimer"></p>
       </div>
@@ -1133,8 +1131,6 @@
     upsell: null });
   Object.keys(PRODUCT_DATA).forEach(k => { PRODUCT_DATA[k].orderHref = 'objednavka.html?variant=' + k; });
 
-  // Nejnižší cena za 30 dní před slevou (§ 12a zákona o ochraně spotřebitele): jen u dárků, které se prodávaly za přeškrtnutou cenu
-  const LOWEST_30 = ['penezenka', 'psanicko', 'balicek', 'voucher488', 'voucher888', 'voucher'];
 
   // Odkaz na reportáž ČT o módě budoucnosti. DOPLNIT URL; dokud je prázdné, odkaz se nezobrazí.
   const CT_LINK = 'https://decko.ceskatelevize.cz/video/i1151928';
@@ -1306,8 +1302,6 @@
     $('dealNow').textContent = fmt(pr.now);
     $('resultOldPrice').textContent = fmt(pr.old);
     $('resultPrice').textContent = fmt(pr.now);
-    $('dealLow').hidden = !LOWEST_30.includes(v);
-    $('dealLow').textContent = 'Nejnižší cena za posledních 30 dní před slevou: ' + fmt(pr.old);
     updateTimers();
     $('cardOld').textContent = fmt(pr.old); $('cardNow').textContent = fmt(pr.now);
     $('cardWhy').innerHTML = '';
@@ -1380,7 +1374,7 @@
     $('dealSave').textContent = 'Ušetříte ' + fmt(saving(v)) + '.';
     $('resultOrderBtn').textContent = duo ? 'Objednat 2 balíčky se slevou 20 % →' : (isVoucher(v) ? 'Objednat voucher' : 'Objednat balíček') + ' se slevou ' + fmt(saving(v)) + ' →';
     if (state.name && hasClutch(v)) $('resultFor').textContent = 'Pro: ' + state.name;
-    if (!duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je teď sleva ' + fmt(saving(v)) + '?'; if (LOWEST_30.includes(v) && x.nextElementSibling.textContent.indexOf('Nejnižší cena') < 0) x.nextElementSibling.textContent += ' Nejnižší cena za posledních 30 dní před slevou: ' + fmt(PRICES[v].old) + '.'; } });
+    if (!duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je teď sleva ' + fmt(saving(v)) + '?'; } });
     if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = (isSisters() ? 'Sestry chceme podpořit, ať každá tvoří se svým.' : 'Tvořit spolu je víc radosti, ať každá tvoří se svým.') + ' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
     if (j) jointifyDom($('resultScreen'));
     updateTimers();
