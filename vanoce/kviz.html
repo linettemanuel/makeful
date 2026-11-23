@@ -380,6 +380,16 @@
     .voice blockquote { position: relative; margin: 0; font-size: 16px; line-height: 1.55; font-weight: 600; color: var(--navy); }
     .voice figcaption { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 800; color: var(--text); }
     .voice-av { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #48d5ec, #9b6cff 50%, #ff6f9f); color: #fff; font-size: 14px; flex: 0 0 30px; }
+    /* Okno „Uložte si svůj dárek“ po kliknutí na ← u výsledku */
+    #laterSheet .sheet-ico { background: var(--pink-soft); }
+    #laterSheet h3 { margin: 12px 0 4px; }
+    #laterSheet p { margin: 0; }
+    .later-input { display: block; width: 100%; min-height: 54px; margin: 14px 0 10px; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); }
+    .later-input:focus { outline: none; border-color: var(--lilac); }
+    .later-err { margin: -4px 0 10px !important; font-size: 14px; font-weight: 700; color: #c2185b; }
+    .later-fine { margin-top: 10px !important; font-size: 12px; line-height: 1.45; color: var(--muted); text-align: center; }
+    .later-fine a { color: var(--muted); }
+    #laterDone p { margin: 0 0 14px; }
   </style>
 </head>
 <body>
@@ -633,6 +643,28 @@
     </div>
   </section>
 
+  <div class="sheet-backdrop" id="laterSheet" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="laterTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-ico" aria-hidden="true">💌</div>
+      <h3 id="laterTitle">Uložte si svůj dárek</h3>
+      <div id="laterFormWrap">
+        <p>Pošleme vám výběr i se slevou na e-mail.</p>
+        <form id="laterForm" novalidate>
+          <input class="later-input" id="laterEmail" type="email" autocomplete="email" inputmode="email" required placeholder="vas@email.cz" aria-label="Váš e-mail">
+          <input type="text" id="laterWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <p class="later-err" id="laterErr" hidden>Zkontrolujte prosím e-mail.</p>
+          <button class="cta" id="laterSend" type="submit">Poslat výběr</button>
+        </form>
+        <p class="later-fine">Do 30. 11. nejvýš 2 připomínky, odhlášení jedním klikem. <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">Ochrana osobních údajů</a></p>
+      </div>
+      <div id="laterDone" hidden>
+        <p><b>Hotovo, výběr je na cestě.</b></p>
+        <button class="cta" id="laterBack" type="button">Zpět na dárek</button>
+      </div>
+      <button class="sheet-no" id="laterNo" type="button">Ne, děkuji</button>
+    </div>
+  </div>
 </main>
 
 <script>
@@ -1632,6 +1664,46 @@
   $('resultOrderBtn').addEventListener('click',function(e){e.preventDefault();openOrder();});
   $('sumRet').addEventListener('change',function(){dl({event:'return_extension',choice:this.checked?'ano':'ne',value:this.checked?RET.price:0});});
 
+
+
+  // ← u výsledku: jednou za návštěvu nabídne poslat výběr na e-mail (Make scénář 8732445 pošle výsledek, 8732514 nejvýš 2 připomínky)
+  var LATER_HOOK='https://hook.eu1.make.com/djr9ygt8ca4rctqqsu8xsnsnl6o52ckm',laterSheet=$('laterSheet'),laterSent=false,LATER_KEY='makeful-later-asked-2026';
+  function laterAsked(){try{return !!sessionStorage.getItem(LATER_KEY)}catch(e){return false}}
+  function resultCode(){
+    var a=state.answers,o={a:{age:a.age||'',budget:a.budget||'',format:a.format||'',interests:a.interests||'',effect:a.effect||''}};
+    if(state.name)o.n=state.name;
+    try{return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}catch(e){return ''}
+  }
+  function openLater(){
+    try{sessionStorage.setItem(LATER_KEY,'1')}catch(e){}
+    $('laterFormWrap').hidden=laterSent;$('laterDone').hidden=!laterSent;$('laterErr').hidden=true;$('laterNo').hidden=laterSent;
+    laterSheet.hidden=false;dl({event:'quiz_email_open'});
+    if(!laterSent)setTimeout(function(){try{$('laterEmail').focus({preventScroll:true})}catch(e){}},250);
+  }
+  function closeLater(){laterSheet.hidden=true;}
+  var _goBackLater=goBack,laterThen='back',closeBtn=document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]');
+  function shouldAskLater(){return state.view==='resultScreen'&&!window.__mfOffer&&!laterSent&&!laterAsked()}
+  goBack=function(){
+    if(shouldAskLater()){laterThen='back';openLater();return;}
+    _goBackLater();
+  };
+  // Stejně pro × vpravo nahoře (zavření kvízu)
+  if(closeBtn)closeBtn.addEventListener('click',function(e){if(shouldAskLater()){e.preventDefault();e.stopImmediatePropagation();laterThen='close';openLater();}},true);
+  $('laterNo').addEventListener('click',function(){closeLater();dl({event:'quiz_email_declined'});if(laterThen==='close'&&closeBtn)closeBtn.click();else _goBackLater();});
+  $('laterBack').addEventListener('click',closeLater);
+  laterSheet.addEventListener('click',function(e){if(e.target===laterSheet)closeLater()});
+  $('laterForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=$('laterEmail').value.trim().toLowerCase();
+    if(!/^[^\s@,;<>"]+@[^\s@,;<>"]+\.[a-z]{2,}$/.test(email)||email.length>120){$('laterErr').hidden=false;$('laterEmail').focus();return;}
+    if($('laterWebsite').value)return;
+    var v=state.activeVariant,img='';try{var g=galleryFor(v,currentColor()).hero;img=String(g.src||g.poster||'').split('/').pop();}catch(err){}
+    var vidv='';try{vidv=localStorage.getItem('makeful-quiz-visitor-2026')||''}catch(err){}
+    var body=new URLSearchParams({event:'save',email:email,variant:v,img:img,name:hasClutch(v)?(state.name||''):'',code:resultCode(),vid:vidv,website:''});
+    try{if(!(navigator.sendBeacon&&navigator.sendBeacon(LATER_HOOK,body)))fetch(LATER_HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});}catch(err){}
+    laterSent=true;$('laterFormWrap').hidden=true;$('laterDone').hidden=false;$('laterNo').hidden=true;
+    dl({event:'quiz_email_saved',quiz_result:v});
+  });
 
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
