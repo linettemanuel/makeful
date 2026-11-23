@@ -350,6 +350,7 @@
     /* Výsledek: produkt, cena a tlačítko co nejvýš (mobil) */
     #resultScreen .r-title { font-size: clamp(19px, 5.4vw, 23px); line-height: 1.2; }
     #resultScreen .r-intro { display: none; }
+    #resultScreen .r-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.4; font-weight: 600; color: var(--muted); }
     .result > div:first-of-type { display: grid; gap: 4px; }
     .card-price { padding: 6px 16px 0; font-size: 15px; } .card-price s { color: var(--muted); } .card-price b { font-size: 22px; font-weight: 800; color: #e5145f; margin-left: 4px; }
     .card-why { margin: 8px 0 0; padding: 0 16px; list-style: none; display: grid; gap: 4px; }
@@ -436,6 +437,7 @@
       <div>
         <p class="r-label" id="matchLabel">🎉 Máme to! Shoda 96 %</p>
         <h1 class="r-title" id="resultTitle"></h1>
+        <p class="r-sub" id="resultSub" hidden></p>
         <p class="r-intro" id="rIntro">Dárek, který rozbalí, sama dotvoří a odnese si z něj opravdovou radost. Vybráno podle vašich odpovědí.</p>
       </div>
 
@@ -1015,17 +1017,20 @@
 
   // Nadpis podle odpovědí: [úvod, zvýrazněná část v gradientu]
   // Krátké nadpisy na jeden řádek (mobil), ať je produkt a cena hned na první obrazovce
+  // Nadpis výsledku: [začátek, zvýrazněno, konec]; podnadpis: subheadFor
   function headlineFor(v) {
-    if (isVoucher(v)) return ['Unikátní ', 'dárkový poukaz'];
-    if (v === 'penezenka2') return ['Kreativní sady: ', '2× Peněženka'];
-    if (v === 'psanicko2') return ['Kreativní sady: ', '2× Psaníčko se jménem'];
-    if (v === 'balicek2') return ['Kreativní sady: ', '2× Oba doplňky'];
-    if (v === 'psanickoMD') return ['Kreativní sada: ', 'Pro mámu a dceru'];
-    if (v === 'combo') return ['Kreativní sada ', '+ 3D Workshop'];
-    if (v === 'balicek') return ['Kreativní sada: ', 'Peněženka + Psaníčko'];
-    if (v === 'psanicko') return ['Kreativní sada: ', 'Psaníčko se jménem'];
-    return ['Kreativní sada: ', 'Originální Peněženka'];
+    const end = ' z 3D tištěných modulů a objevit budoucnost módy.';
+    if (isVoucher(v)) return ['Unikátní ', 'dárkový poukaz', ''];
+    if (v === 'psanickoMD') return ['Sestavte si spolu ', 'vlastní psaníčka', ' z 3D tištěných modulů a objevte budoucnost módy.'];
+    if (v === 'penezenka2') return ['Nechte je sestavit ', 'vlastní peněženky', end];
+    if (v === 'psanicko2') return ['Nechte je sestavit ', 'vlastní psaníčka', end];
+    if (v === 'balicek2') return ['Nechte je sestavit ', 'vlastní peněženky a psaníčka', end];
+    if (v === 'balicek' || v === 'combo') return ['Nechte ji sestavit ', 'vlastní peněženku a psaníčko', end];
+    if (v === 'psanicko') return ['Nechte ji sestavit ', 'vlastní psaníčko', end];
+    return ['Nechte ji sestavit ', 'vlastní peněženku', end];
   }
+  function subheadFor(v) { return isVoucher(v) ? '' : 'Bez 3D tiskárny, bez nářadí a zbytečného odpadu.'; }
+
 
 
 
@@ -1291,6 +1296,8 @@
     $('resultTitle').innerHTML = '';
     $('resultTitle').append(document.createTextNode(h[0]));
     const gs = document.createElement('span'); gs.className = 'grad'; gs.textContent = h[1]; $('resultTitle').appendChild(gs);
+    if (h[2]) $('resultTitle').append(document.createTextNode(h[2]));
+    $('resultSub').textContent = subheadFor(v); $('resultSub').hidden = !subheadFor(v);
     $('resultProduct').textContent = d.title;
     $('resultFor').textContent = state.name && !isVoucher(v) ? 'Pro: ' + state.name : '';
     $('resultFor').hidden = !(state.name && !isVoucher(v));
