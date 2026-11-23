@@ -1034,7 +1034,12 @@
     if (v === 'psanicko') return ['Nechte ji ', 'sestavit vlastní psaníčko z 3D tištěných modulů', end];
     return ['Nechte ji ', 'sestavit vlastní peněženku z 3D tištěných modulů', end];
   }
-  function subheadFor(v) { return isVoucher(v) ? 'Bez předchozích znalostí s výběrem dle vlastní preference' : 'Bez 3D tiskárny, bez nářadí a zbytečného odpadu.'; }
+  function subheadFor(v) {
+    if (isVoucher(v)) return 'Bez předchozích znalostí s výběrem dle vlastní preference';
+    if (v === 'psanickoMD') return 'Bez 3D tiskárny, bez nářadí a zvládnete to spolu.';
+    if (/2$/.test(v)) return 'Bez 3D tiskárny, bez nářadí a zvládnou to úplně samy.';
+    return 'Bez 3D tiskárny, bez nářadí a zvládne to úplně sama.';
+  }
 
 
 
