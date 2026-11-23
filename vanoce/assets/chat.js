@@ -1,11 +1,11 @@
 /* Chat Tawk.to – bublina vpravo dole, nikdy nepřekrývá tlačítko.
    Kvíz: jen na výsledku a potvrzení. Na mobilu sedí vedle tlačítka „Objednat →“ (lišta má vpravo místo, třída mf-chat).
-   Ve formuláři objednávky se schová. Produktové stránky: nad spodní lištou „Přidat do košíku“. */
+   Ve formuláři objednávky se schová. E-shop: v košíkové liště dole sedí vedle „Dokončit objednávku →“. Produktové stránky: nad lištou „Přidat do košíku“. */
 (function () {
   var w = window, d = document;
   var isQuiz = !!d.getElementById('resultScreen');
   var hasBuyBar = !!d.querySelector('.mobile-product-buy');
-  var yMobile = isQuiz ? 12 : (hasBuyBar ? 84 : 20);
+  var yMobile = hasBuyBar ? 84 : 12; // kvíz a košíková lišta: vedle tlačítka (lišta má vpravo místo)
   var yDesktop = 20;
 
   var T = w.Tawk_API = w.Tawk_API || {};
