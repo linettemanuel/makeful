@@ -1498,13 +1498,16 @@
   var RES_KEYS=['cena','produkt','material','krok'];
   var PROD_SLUG={penezenka:'penezenka',psanicko:'psanicko',balicek:'penezenka-psanicko',combo:'sada-voucher',voucher488:'voucher',voucher888:'voucher',voucher:'voucher',penezenka2:'2x-penezenka',psanicko2:'2x-psanicko',balicek2:'2x-penezenka-psanicko',psanickoMD:'mama-dcera'};
   var MAT_SLUG={'Svítí ve tmě':'svitici','Mění barvu na dotek':'meni-barvu','Klasická černá':'cerna'};
+  // Cena = rozpětí z kvízu (otázka na rozpočet); u nabídky bez kvízu podle ceny dárku
+  var BUDGET_SLUG={'Do 500 Kč':'do-500','500–1 000 Kč':'500-1000','1 000–1 500 Kč':'1000-1500','Nad 1 500 Kč':'nad-1500'};
+  function budgetSlug(v){var b=BUDGET_SLUG[state.answers.budget];if(b&&!window.__mfOffer)return b;var n=PRICES[v].now;return n<=500?'do-500':n<=1000?'500-1000':n<=1500?'1000-1500':'nad-1500';}
   function setResultUrl(clear){
     try{
       var parts=(location.search||'').replace(/^\?/,'').split('&').filter(function(x){return x&&RES_KEYS.indexOf(x.split('=')[0])<0});
       var krok=(location.search.match(/[?&]krok=([^&]*)/)||[])[1];
       if(!clear&&krok)parts.push('krok='+krok);
       if(!clear&&state.view==='resultScreen'||!clear&&window.__mfOffer||!clear&&/^(vysledek|nabidka|objednavka|odeslano)$/.test(krok||'')){var v=state.activeVariant;if(v&&PRICES[v])
-        parts.push('cena='+PRICES[v].now,'produkt='+(PROD_SLUG[v]||v),'material='+(isVoucher(v)?'zadny':(MAT_SLUG[currentColor()]||'svitici')));}
+        parts.push('cena='+budgetSlug(v),'produkt='+(PROD_SLUG[v]||v),'material='+(isVoucher(v)?'zadny':(MAT_SLUG[currentColor()]||'svitici')));}
       var url=location.pathname+(parts.length?'?'+parts.join('&'):'')+location.hash;
       if(url!==location.pathname+location.search+location.hash)history.replaceState(history.state,'',url);
     }catch(e){}
