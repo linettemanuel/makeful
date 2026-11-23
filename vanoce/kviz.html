@@ -46,6 +46,7 @@
     .logo img { height: 22px; width: auto; display: block; }
 
     .steps { display: flex; gap: 5px; margin: 2px 0 18px; }
+    .steps[hidden] { display: none; }
     .steps i { flex: 1; height: 5px; border-radius: 99px; background: #ece8f2; overflow: hidden; position: relative; }
     .steps i::after { content: ""; position: absolute; inset: 0; width: 0; background: var(--grad); border-radius: inherit; transition: width .35s ease; }
     .steps i.done::after { width: 100%; }
@@ -348,8 +349,14 @@
     img[src$="penezenka-oranzova-v-ruce.webp"] { object-position: 50% 0; }
 
     /* Výsledek: produkt, cena a tlačítko co nejvýš (mobil) */
-    #resultScreen .r-title { font-size: clamp(19px, 5.4vw, 23px); line-height: 1.2; }
+    #resultScreen .r-title { font-size: clamp(22px, 6.3vw, 27px); line-height: 1.18; }
+    .r-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
+    #resultScreen .r-title, #resultScreen .r-sub { text-align: center; }
+    .r-tags .r-label { padding: 5px 10px; font-size: 12.5px; gap: 4px; }
+    @media (max-width: 380px) { .r-tags .r-label { padding: 4px 8px; font-size: 11.5px; } }
+    .r-tag-gift { background: var(--lilac-soft, #f3eeff); color: #6b3fc4; }
     #resultScreen .r-intro { display: none; }
+    #resultScreen .r-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.4; font-weight: 600; color: var(--muted); }
     .result > div:first-of-type { display: grid; gap: 4px; }
     .card-price { padding: 6px 16px 0; font-size: 15px; } .card-price s { color: var(--muted); } .card-price b { font-size: 22px; font-weight: 800; color: #e5145f; margin-left: 4px; }
     .card-why { margin: 8px 0 0; padding: 0 16px; list-style: none; display: grid; gap: 4px; }
@@ -434,8 +441,9 @@
     <div class="result">
       <p class="saved-note" id="savedResultNote" hidden>💡 Tohle je dárek, který jsme <span id="savedFor">pro ni</span> vybrali podle vašich odpovědí minule. <button type="button" onclick="restartQuiz()">Vyplnit kvíz znovu</button></p>
       <div>
-        <p class="r-label" id="matchLabel">🎉 Máme to! Shoda 96 %</p>
+        <div class="r-tags"><p class="r-label" id="matchLabel">🎉 Máme to! Shoda 96 %</p><p class="r-label r-tag-gift">🎁 Váš dárek na míru</p></div>
         <h1 class="r-title" id="resultTitle"></h1>
+        <p class="r-sub" id="resultSub" hidden></p>
         <p class="r-intro" id="rIntro">Dárek, který rozbalí, sama dotvoří a odnese si z něj opravdovou radost. Vybráno podle vašich odpovědí.</p>
       </div>
 
@@ -445,7 +453,7 @@
           <span class="sale-ribbon" id="saleRibbon">−200 Kč · limitovaná sleva</span>
           <span class="name-tag" id="nameTag" hidden></span>
         </div>
-        <div class="card-head"><span class="kicker">Váš dárek na míru</span><strong id="resultProduct"></strong><span id="resultFor"></span></div>
+        <div class="card-head"><strong id="resultProduct"></strong><span id="resultFor"></span></div>
         <div class="card-price"><s id="cardOld"></s> <b id="cardNow"></b></div>
         <ul class="card-why" id="cardWhy"></ul>
         <div class="colors" id="colors" role="group" aria-label="Barva materiálu"></div>
@@ -802,6 +810,7 @@
     $('backBtn').classList.toggle('invisible', !showBack);
     document.querySelectorAll('video').forEach(v => { if (!$(id).contains(v)) v.pause(); });
     renderSteps();
+    $('steps').hidden = ['resultScreen', 'orderScreen', 'doneScreen'].includes(id);
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
@@ -1015,17 +1024,25 @@
 
   // Nadpis podle odpovědí: [úvod, zvýrazněná část v gradientu]
   // Krátké nadpisy na jeden řádek (mobil), ať je produkt a cena hned na první obrazovce
+  // Nadpis výsledku: [začátek, zvýrazněno, konec]; podnadpis: subheadFor
   function headlineFor(v) {
-    if (isVoucher(v)) return ['Unikátní ', 'dárkový poukaz'];
-    if (v === 'penezenka2') return ['Kreativní sady: ', '2× Peněženka'];
-    if (v === 'psanicko2') return ['Kreativní sady: ', '2× Psaníčko se jménem'];
-    if (v === 'balicek2') return ['Kreativní sady: ', '2× Oba doplňky'];
-    if (v === 'psanickoMD') return ['Kreativní sada: ', 'Pro mámu a dceru'];
-    if (v === 'combo') return ['Kreativní sada ', '+ 3D Workshop'];
-    if (v === 'balicek') return ['Kreativní sada: ', 'Peněženka + Psaníčko'];
-    if (v === 'psanicko') return ['Kreativní sada: ', 'Psaníčko se jménem'];
-    return ['Kreativní sada: ', 'Originální Peněženka'];
+    const end = ' a objevit budoucnost módy.';
+    if (isVoucher(v)) return ['Nechte ji ', 'objevit kouzlo módy budoucnosti', ' na kreativním workshopu'];
+    if (v === 'psanickoMD') return ['', 'Sestavte si spolu vlastní psaníčka z 3D tištěných modulů', ' a objevte budoucnost módy.'];
+    if (v === 'penezenka2') return ['Nechte je ', 'sestavit vlastní peněženky z 3D tištěných modulů', end];
+    if (v === 'psanicko2') return ['Nechte je ', 'sestavit vlastní psaníčka z 3D tištěných modulů', end];
+    if (v === 'balicek2') return ['Nechte je ', 'sestavit vlastní peněženky a psaníčka z 3D tištěných modulů', end];
+    if (v === 'balicek' || v === 'combo') return ['Nechte ji ', 'sestavit vlastní peněženku a psaníčko z 3D tištěných modulů', end];
+    if (v === 'psanicko') return ['Nechte ji ', 'sestavit vlastní psaníčko z 3D tištěných modulů', end];
+    return ['Nechte ji ', 'sestavit vlastní peněženku z 3D tištěných modulů', end];
   }
+  function subheadFor(v) {
+    if (isVoucher(v)) return 'Bez předchozích znalostí s výběrem dle vlastní preference';
+    if (v === 'psanickoMD') return 'Bez 3D tiskárny, bez nářadí a zvládnete to spolu.';
+    if (/2$/.test(v)) return 'Bez 3D tiskárny, bez nářadí a zvládnou to úplně samy.';
+    return 'Bez 3D tiskárny, bez nářadí a zvládne to úplně sama.';
+  }
+
 
 
 
@@ -1082,7 +1099,7 @@
 
   const PRODUCT_DATA = {
     penezenka: {
-      title: 'Kreativní balíček Peněženka',
+      title: 'Kreativní sada Peněženka',
       moment: 'Představte si Štědrý večer: rozbalí krabičku, dílky začnou cvakat do sebe a za chvíli vám hrdě ukazuje vlastní peněženku.',
       benefits: KIT_BENEFITS,
       bullets: ['3D tištěná peněženka, dílky jen zacvakne do sebe', 'Interaktivní knížka o budoucnosti módy s kreativními úkoly', 'Bez lepidla, nástrojů a dokupování', 'Dárková krabička, rovnou pod stromeček'],
@@ -1090,7 +1107,7 @@
       upsell: { to: 'balicek', add: 'Přidat psaníčko s jejím jménem' }
     },
     psanicko: {
-      title: 'Kreativní balíček Psaníčko',
+      title: 'Kreativní sada Psaníčko',
       moment: 'Představte si, jak rozbalí krabičku a uvidí své jméno. Pak si psaníčko sama složí a hned ho nosí.',
       benefits: KIT_BENEFITS,
       bullets: ['3D tištěné psaníčko s jejím jménem zdarma', 'Interaktivní knížka o budoucnosti módy s kreativními úkoly', 'Bez lepidla, nástrojů a dokupování', 'Dárková krabička, rovnou pod stromeček'],
@@ -1098,7 +1115,7 @@
       upsell: { to: 'balicek', add: 'Přidat 3D tištěnou peněženku' }
     },
     balicek: {
-      title: 'Kreativní balíček Peněženka + Psaníčko',
+      title: 'Kreativní sada Peněženka + Psaníčko',
       moment: 'Představte si Štědrý večer: rozbalí krabičku, najde v ní své jméno a za chvíli má vlastní sadu doplňků, kterou nikdo jiný nemá.',
       benefits: KIT_BENEFITS,
       bullets: ['3D tištěná peněženka a psaníčko, dílky jen zacvakne', 'Jméno na psaníčko zdarma', 'Designérská knížka a hmatatelné ukázky materiálů budoucnosti', 'Dárková krabička, rovnou pod stromeček'],
@@ -1109,7 +1126,7 @@
     voucher888:  Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
     voucher: Object.assign({ title: '3D voucher na workshop', upsell: { addon: 'knizka', add: 'Přidat interaktivní vzdělávací knížku' } }, VOUCHER_BASE),
     combo: {
-      title: 'Kreativní balíček Peněženka + Psaníčko + Voucher',
+      title: 'Kreativní sada Peněženka + Psaníčko + Voucher',
       moment: 'O Vánocích tvoření doma pod stromečkem, během roku workshop s designérkou. Dárek, na který bude vzpomínat celý rok.',
       benefits: [KIT_BENEFITS[0], KIT_BENEFITS[1], VOUCHER_BENEFITS[0], VOUCHER_BENEFITS[1]],
       bullets: ['3D tištěná peněženka a psaníčko se jménem zdarma', 'Designérská knížka a ukázky materiálů budoucnosti', '3D voucher na workshop, platí celý rok', 'Dárková krabička, rovnou pod stromeček'],
@@ -1118,16 +1135,16 @@
     }
   };
   // Dva balíčky pro sestry (každá dostane svůj)
-  [['penezenka2', 'penezenka', '2× Kreativní balíček Peněženka', { to: 'balicek2', add: 'Přidat oběma psaníčko se jménem' }],
-   ['psanicko2', 'psanicko', '2× Kreativní balíček Psaníčko', { to: 'balicek2', add: 'Přidat oběma 3D tištěnou peněženku' }],
-   ['balicek2', 'balicek', '2× Kreativní balíček Peněženka + Psaníčko', null]].forEach(([k, b, title, upsell]) => {
+  [['penezenka2', 'penezenka', '2× Kreativní sada Peněženka', { to: 'balicek2', add: 'Přidat oběma psaníčko se jménem' }],
+   ['psanicko2', 'psanicko', '2× Kreativní sada Psaníčko', { to: 'balicek2', add: 'Přidat oběma 3D tištěnou peněženku' }],
+   ['balicek2', 'balicek', '2× Kreativní sada Peněženka + Psaníčko', null]].forEach(([k, b, title, upsell]) => {
     const B = PRODUCT_DATA[b];
     PRODUCT_DATA[k] = Object.assign({}, B, { title, upsell,
       moment: 'Představte si Štědrý večer: obě rozbalí každá svou krabičku, dílky začnou cvakat a za chvíli se předhánějí, čí výtvor je hezčí.',
       bullets: ['2 samostatné dárkové krabičky, každá sestra má svou'].concat(B.bullets.slice(0, 3)).concat(['Na oba balíčky sleva 20 %']) });
   });
   PRODUCT_DATA.psanickoMD = Object.assign({}, PRODUCT_DATA.psanicko, {
-    title: 'Kreativní balíček Máma a dcera: 2× Psaníčko',
+    title: 'Kreativní sada Máma a dcera: 2× Psaníčko',
     moment: 'Představte si Štědrý večer: máma i dcera rozbalí krabičku, každá najde psaníčko se svým jménem a pustí se do skládání spolu.',
     bullets: ['2 3D tištěná psaníčka se jmény zdarma', 'Interaktivní knížka o budoucnosti módy s kreativními úkoly', 'Bez lepidla, nástrojů a dokupování', 'Dárková krabička, rovnou pod stromeček'],
     upsell: null });
@@ -1291,6 +1308,8 @@
     $('resultTitle').innerHTML = '';
     $('resultTitle').append(document.createTextNode(h[0]));
     const gs = document.createElement('span'); gs.className = 'grad'; gs.textContent = h[1]; $('resultTitle').appendChild(gs);
+    if (h[2]) $('resultTitle').append(document.createTextNode(h[2]));
+    $('resultSub').textContent = subheadFor(v); $('resultSub').hidden = !subheadFor(v);
     $('resultProduct').textContent = d.title;
     $('resultFor').textContent = state.name && !isVoucher(v) ? 'Pro: ' + state.name : '';
     $('resultFor').hidden = !(state.name && !isVoucher(v));
