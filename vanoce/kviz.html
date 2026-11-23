@@ -287,6 +287,7 @@
     .price-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
     .price-row strong { font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
     .price-row span { font-size: 12.5px; line-height: 1.3; font-weight: 700; color: #c2185b; text-align: right; }
+    @media (max-width:600px){ body.mf-chat #resultScreen .bottom-inner { padding-right: 84px; } }
     .bar-note { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
 
     /* Materiál */
@@ -340,7 +341,6 @@
     .media-block.has-video.is-playing::after { opacity: 0; }
     .clutch-name { margin-top: 2px; }
     .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
-    .sticky-assurance { margin: 6px 0 0; text-align: center; font-size: 12.5px; font-weight: 700; color: #364360; }
     .result { padding-bottom: 170px; }
 
     /* Svítící psaníčko: fotka má nahoře světlou a dole svítící polovinu, ukazujeme spodní */
@@ -548,8 +548,7 @@
         <div class="price-now"><s id="resultOldPrice"></s><strong id="resultPrice">1 188 Kč</strong></div>
         <span id="barTimer">Sleva 200 Kč jen do 30. 11.</span>
       </div>
-      <a class="cta" id="resultOrderBtn" href="objednavka.html">Objednat balíček se slevou 200 Kč →</a>
-      <p class="sticky-assurance">Bez okamžité platby · údaje a platbu vyberete v dalším kroku</p>
+      <a class="cta" id="resultOrderBtn" href="objednavka.html">Objednat →</a>
     </div></div>
   </section>
 
@@ -1375,7 +1374,8 @@
     $('saleRibbon').textContent = duo ? (isSisters() ? '−20 % · sleva pro sestry' : '−20 % · 1 + 1') : '−' + fmt(saving(v)) + ' · limitovaná sleva';
     $('dealBadge').textContent = duo ? 'LIMITOVANÁ NABÍDKA · SLEVA 20 % NA 2 DÁRKY' : 'LIMITOVANÁ NABÍDKA · SLEVA ' + fmt(saving(v));
     $('dealSave').textContent = 'Ušetříte ' + fmt(saving(v)) + '.';
-    $('resultOrderBtn').textContent = duo ? 'Objednat 2 balíčky se slevou 20 % →' : (isVoucher(v) ? 'Objednat voucher' : 'Objednat balíček') + ' se slevou ' + fmt(saving(v)) + ' →';
+    // Na mobilu krátce „Objednat →“, vpravo vedle tlačítka je bublina chatu
+    $('resultOrderBtn').textContent = window.matchMedia('(max-width:600px)').matches ? 'Objednat →' : duo ? 'Objednat 2 balíčky se slevou 20 % →' : (isVoucher(v) ? 'Objednat voucher' : 'Objednat balíček') + ' se slevou ' + fmt(saving(v)) + ' →';
     if (state.name && hasClutch(v)) $('resultFor').textContent = 'Pro: ' + state.name;
     if (!duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je teď sleva ' + fmt(saving(v)) + '?'; } });
     if (duo) document.querySelectorAll('#faq summary').forEach(x => { if (/^Proč je teď sleva [\d\s ]+ Kč\?$/.test(x.textContent)) { x.textContent = 'Proč je na dva balíčky sleva 20 %?'; x.nextElementSibling.textContent = (isSisters() ? 'Sestry chceme podpořit, ať každá tvoří se svým.' : 'Tvořit spolu je víc radosti, ať každá tvoří se svým.') + ' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.'; } });
@@ -1735,5 +1735,6 @@
 </script>
 <script src="assets/ai-label.js" defer></script>
 <script src="assets/qr-pay.js" defer></script>
+<script src="assets/chat.js" defer></script>
 </body>
 </html>
