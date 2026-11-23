@@ -5,7 +5,7 @@
   var w = window, d = document;
   var isQuiz = !!d.getElementById('resultScreen');
   var hasBuyBar = !!d.querySelector('.mobile-product-buy');
-  var yMobile = isQuiz ? 33 : (hasBuyBar ? 84 : 20);
+  var yMobile = isQuiz ? 12 : (hasBuyBar ? 84 : 20);
   var yDesktop = 20;
 
   var T = w.Tawk_API = w.Tawk_API || {};
