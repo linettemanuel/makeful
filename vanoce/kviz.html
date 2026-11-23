@@ -1019,17 +1019,17 @@
   // Krátké nadpisy na jeden řádek (mobil), ať je produkt a cena hned na první obrazovce
   // Nadpis výsledku: [začátek, zvýrazněno, konec]; podnadpis: subheadFor
   function headlineFor(v) {
-    const end = ' z 3D tištěných modulů a objevit budoucnost módy.';
-    if (isVoucher(v)) return ['Unikátní ', 'dárkový poukaz', ''];
-    if (v === 'psanickoMD') return ['Sestavte si spolu ', 'vlastní psaníčka', ' z 3D tištěných modulů a objevte budoucnost módy.'];
-    if (v === 'penezenka2') return ['Nechte je sestavit ', 'vlastní peněženky', end];
-    if (v === 'psanicko2') return ['Nechte je sestavit ', 'vlastní psaníčka', end];
-    if (v === 'balicek2') return ['Nechte je sestavit ', 'vlastní peněženky a psaníčka', end];
-    if (v === 'balicek' || v === 'combo') return ['Nechte ji sestavit ', 'vlastní peněženku a psaníčko', end];
-    if (v === 'psanicko') return ['Nechte ji sestavit ', 'vlastní psaníčko', end];
-    return ['Nechte ji sestavit ', 'vlastní peněženku', end];
+    const end = ' a objevit budoucnost módy.';
+    if (isVoucher(v)) return ['Nechte ji objevit ', 'kouzlo módy budoucnosti', ' na kreativním workshopu'];
+    if (v === 'psanickoMD') return ['', 'Sestavte si spolu vlastní psaníčka z 3D tištěných modulů', ' a objevte budoucnost módy.'];
+    if (v === 'penezenka2') return ['Nechte je ', 'sestavit vlastní peněženky z 3D tištěných modulů', end];
+    if (v === 'psanicko2') return ['Nechte je ', 'sestavit vlastní psaníčka z 3D tištěných modulů', end];
+    if (v === 'balicek2') return ['Nechte je ', 'sestavit vlastní peněženky a psaníčka z 3D tištěných modulů', end];
+    if (v === 'balicek' || v === 'combo') return ['Nechte ji ', 'sestavit vlastní peněženku a psaníčko z 3D tištěných modulů', end];
+    if (v === 'psanicko') return ['Nechte ji ', 'sestavit vlastní psaníčko z 3D tištěných modulů', end];
+    return ['Nechte ji ', 'sestavit vlastní peněženku z 3D tištěných modulů', end];
   }
-  function subheadFor(v) { return isVoucher(v) ? '' : 'Bez 3D tiskárny, bez nářadí a zbytečného odpadu.'; }
+  function subheadFor(v) { return isVoucher(v) ? 'Bez předchozích znalostí s výběrem dle vlastní preference' : 'Bez 3D tiskárny, bez nářadí a zbytečného odpadu.'; }
 
 
 
