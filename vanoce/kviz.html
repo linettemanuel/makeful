@@ -46,6 +46,7 @@
     .logo img { height: 22px; width: auto; display: block; }
 
     .steps { display: flex; gap: 5px; margin: 2px 0 18px; }
+    .steps[hidden] { display: none; }
     .steps i { flex: 1; height: 5px; border-radius: 99px; background: #ece8f2; overflow: hidden; position: relative; }
     .steps i::after { content: ""; position: absolute; inset: 0; width: 0; background: var(--grad); border-radius: inherit; transition: width .35s ease; }
     .steps i.done::after { width: 100%; }
@@ -809,6 +810,7 @@
     $('backBtn').classList.toggle('invisible', !showBack);
     document.querySelectorAll('video').forEach(v => { if (!$(id).contains(v)) v.pause(); });
     renderSteps();
+    $('steps').hidden = ['resultScreen', 'orderScreen', 'doneScreen'].includes(id);
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
