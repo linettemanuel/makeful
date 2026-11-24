@@ -113,6 +113,7 @@
     .vs li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.4; }
     .vs li::before { position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 900; color: #fff; }
     .vs-no li::before { content: '✕'; background: #e5484d; }
+    .vs-no li { text-decoration: line-through; text-decoration-color: #e5484d; text-decoration-thickness: 2px; color: #7a6a6a; }
     .vs-yes li::before { content: '✓'; background: #1f9d55; }
     .vs-yes li { font-weight: 600; }
     .how { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: how; }
@@ -1116,17 +1117,20 @@
     };
     const G = { voucher: { hero: img('voucher-ruzovy.webp'), video1: vD3, image: img('voucher-zmena-barvy-dotek.webp'), video2: vStudio } };
     Object.keys(KIT).forEach(k => { G[k] = { hero: img(k === 'psanicko' ? m.c : m.w), video1: KIT[k].video1, image: img(KIT[k].image), video2: KIT[k].video2 }; });
-    // Psaníčko: posouvací galerie nahoře podle materiálu (fotky „to_web“ z Disku)
+    // Galerie sad: první je vždy hero fotka (sada + krabička) v barvě zvoleného materiálu
     const PS = { 'Svítí ve tmě': 'svitici', 'Mění barvu na dotek': 'termo', 'Klasická černá': 'cerne' }[color] || 'svitici';
-    G.psanicko.image = img('sada-krabicka.webp');
-    G.psanicko.slides = [
-      { src: P + 'psanicko-' + PS + '-sada.webp' },
-      { src: P + 'psanicko-' + PS + '-predek.webp', fit: 'contain' },
-      { src: P + 'psanicko-' + PS + '-v-ruce.webp', fit: 'contain' },
-      { src: P + 'psanicko-' + PS + '-efekt.webp', fit: PS === 'cerne' ? '' : 'contain' },
-      { src: P + 'sada-krabicka.webp' },
-      { src: P + 'sada-knizka.webp' }
-    ];
+    const W = { hero: 'penezenka-' + PS + '-hero.webp', hand: PS === 'termo' ? 'penezenka-oranzova-v-ruce.webp' : 'penezenka-' + PS + '-v-ruce.webp', fx: PS === 'cerne' ? '' : 'penezenka-' + PS + '-efekt.webp' };
+    const C = { hero: 'psanicko-' + PS + '-sada.webp', front: 'psanicko-' + PS + '-predek.webp', hand: 'psanicko-' + PS + '-v-ruce.webp', fx: 'psanicko-' + PS + '-efekt.webp' };
+    const sl = (f, fit) => f ? { src: P + f, fit: fit || '' } : null;
+    const tail = [sl('sada-krabicka.webp'), sl('sada-knizka.webp')];
+    const SL = {
+      penezenka: [sl(W.hero), sl(W.hand, 'contain'), sl(W.fx, 'contain')].concat(tail),
+      psanicko: [sl(C.hero), sl(C.front, 'contain'), sl(C.hand, 'contain'), sl(C.fx, PS === 'cerne' ? '' : 'contain')].concat(tail),
+      balicek: [sl(W.hero), sl(C.hero), sl(W.hand, 'contain'), sl(C.hand, 'contain')].concat(tail)
+    };
+    SL.combo = SL.balicek;
+    Object.keys(SL).forEach(k => { G[k].slides = SL[k].filter(Boolean); G[k].image = img('sada-krabicka.webp'); });
+
     return G[isVoucher(variant) ? 'voucher' : baseOf(variant)];
   }
 
@@ -1146,10 +1150,9 @@
   }
   function subheadFor(v) {
     if (isVoucher(v)) return 'Bez předchozích znalostí s výběrem dle vlastní preference';
-    if (v === 'psanickoMD') return 'Bez 3D tiskárny, bez nářadí a zvládnete to spolu.';
-    if (/2$/.test(v)) return 'Bez 3D tiskárny, bez nářadí a zvládnou to úplně samy.';
-    return 'Bez 3D tiskárny, bez nářadí a zvládne to úplně sama.';
+    return 'Bez dalšího nářadí, bez lepidla a zbytečného odpadu.';
   }
+
 
 
 
@@ -1354,7 +1357,7 @@
     };
     g.addEventListener('scroll', () => { clearTimeout(g._t); g._t = setTimeout(sync, 60); }, { passive: true });
     box.append(g, dots, prev, next);
-    const start = Math.min(state.slide || 0, slides.length - 1);
+    const start = 0;
     requestAnimationFrame(() => { g.scrollLeft = start * g.clientWidth; sync(); });
   }
   function putMedia(id, m, alt) {
@@ -1457,11 +1460,11 @@
 
     const ps = { 'Svítí ve tmě': 'svitici', 'Mění barvu na dotek': 'termo', 'Klasická černá': 'cerne' }[c];
     const base = baseOf(v);
-    const wallet = { svitici: 'produkt-penezenka-v-ruce.webp', termo: 'penezenka-oranzova-v-ruce.webp', cerne: 'produkt-penezenka-cerna.webp' }[ps];
+    const wallet = ps === 'termo' ? 'penezenka-oranzova-v-ruce.webp' : 'penezenka-' + ps + '-v-ruce.webp';
     const done = base === 'penezenka' ? wallet : 'psanicko-' + ps + '-v-ruce.webp';
-    const doneFit = done === 'penezenka-oranzova-v-ruce.webp' ? 'top' : 'contain';
+    const doneFit = 'contain';
     const steps = [
-      { img: 'psanicko-cerne-efekt.webp', t: MODS[v] + ' modulů, ze kterých ' + (md ? 'složíte ' : 'složí ') + KIT_WORD[v], d: 'Moduly se do sebe jednoduše spojí a proplétají. Je to velmi snadné, bez lepidla a bez nářadí.' },
+      { img: 'penezenka-' + ps + '-mesh.webp', fit: 'contain', t: MODS[v] + ' modulů, ze kterých ' + (md ? 'složíte ' : 'složí ') + KIT_WORD[v], d: 'Moduly se do sebe jednoduše spojí a proplétají. Je to velmi snadné, bez lepidla a bez nářadí.' },
       { img: 'sada-knizka.webp', t: 'Interaktivní knížka o módě budoucnosti', d: 'Přenese ' + ji + ' do světa módy budoucnosti. Jednoduché úkoly, digitální i nedigitální, zabaví na další měsíc.' },
       { img: done, fit: doneFit, t: two ? 'Hotové kousky, které opravdu nosí' : 'Hotový kousek, který opravdu nosí', d: 'Žádná věc do šuplíku. ' + kousek + effect + (md ? ' a patří jen vám.' : many ? ' a patří jen jim.' : two ? ' a jsou jen její.' : ' a je jen její.') }
     ];
