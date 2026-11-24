@@ -92,6 +92,15 @@
 
     /* Galerie produktu: swipe, max 3 fotky + video */
     .gallery-wrap { position: relative; }
+    #heroMedia { position: relative; }
+    #heroMedia .slide img { aspect-ratio: 5 / 4; object-fit: cover; background: #fff; }
+    #heroMedia .slide img.fit-contain { object-fit: contain; }
+    .gal-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.9); box-shadow: 0 2px 10px rgba(17,22,51,.18); color: var(--navy); font-size: 24px; line-height: 32px; font-weight: 700; cursor: pointer; }
+    .gal-nav.prev { left: 8px; } .gal-nav.next { right: 8px; }
+    .gal-nav[hidden] { display: none; }
+    #heroMedia .dots { left: auto; right: 10px; bottom: 10px; padding: 5px 8px; border-radius: 99px; background: rgba(255,255,255,.9); box-shadow: 0 1px 6px rgba(17,22,51,.15); }
+    #heroMedia .dots i { background: rgba(17,22,51,.22); box-shadow: none; }
+    #heroMedia .dots i.on { background: var(--pink); }
     .gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .gallery::-webkit-scrollbar { display: none; }
     .slide { flex: 0 0 100%; scroll-snap-align: center; position: relative; }
@@ -983,7 +992,7 @@
   }
 
   function restartQuiz() {
-    state.index = 0; state.answers = {}; state.name = '';
+    state.index = 0; state.answers = {}; state.name = ''; state.slide = 0;
     renderQuestion();
   }
 
@@ -1051,6 +1060,17 @@
     };
     const G = { voucher: { hero: img('voucher-ruzovy.webp'), video1: vD3, image: img('voucher-zmena-barvy-dotek.webp'), video2: vStudio } };
     Object.keys(KIT).forEach(k => { G[k] = { hero: img(k === 'psanicko' ? m.c : m.w), video1: KIT[k].video1, image: img(KIT[k].image), video2: KIT[k].video2 }; });
+    // Psaníčko: posouvací galerie nahoře podle materiálu (fotky „to_web“ z Disku)
+    const PS = { 'Svítí ve tmě': 'svitici', 'Mění barvu na dotek': 'termo', 'Klasická černá': 'cerne' }[color] || 'svitici';
+    G.psanicko.image = img('sada-krabicka.webp');
+    G.psanicko.slides = [
+      { src: P + 'psanicko-' + PS + '-sada.webp' },
+      { src: P + 'psanicko-' + PS + '-predek.webp', fit: 'contain' },
+      { src: P + 'psanicko-' + PS + '-v-ruce.webp', fit: 'contain' },
+      { src: P + 'psanicko-' + PS + '-efekt.webp', fit: PS === 'cerne' ? '' : 'contain' },
+      { src: P + 'sada-krabicka.webp' },
+      { src: P + 'sada-knizka.webp' }
+    ];
     return G[isVoucher(variant) ? 'voucher' : baseOf(variant)];
   }
 
@@ -1255,6 +1275,32 @@
   }
 
   // Média rozbíjí text: nahoře fotka v barvě, pod důvody video, nad balením fotka, před FAQ druhé video
+  // Posouvací galerie (prst / šipky / tečky); pamatuje si fotku i po změně materiálu
+  function putSlides(id, slides, alt) {
+    const box = $(id); box.innerHTML = '';
+    const g = document.createElement('div'); g.className = 'gallery'; g.setAttribute('aria-label', 'Fotky produktu');
+    const dots = document.createElement('div'); dots.className = 'dots';
+    slides.forEach((m, i) => {
+      const sl = document.createElement('div'); sl.className = 'slide';
+      const im = document.createElement('img'); im.src = m.src; im.alt = alt; im.decoding = 'async';
+      if (i > 0) im.loading = 'lazy';
+      if (m.fit === 'contain') im.className = 'fit-contain';
+      sl.appendChild(im); g.appendChild(sl);
+      dots.appendChild(document.createElement('i'));
+    });
+    const go = (i) => g.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * g.clientWidth, behavior: 'smooth' });
+    const mk = (cls, label, d) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'gal-nav ' + cls; b.setAttribute('aria-label', label); b.textContent = d > 0 ? '›' : '‹'; b.addEventListener('click', () => go((state.slide || 0) + d)); return b; };
+    const prev = mk('prev', 'Předchozí fotka', -1), next = mk('next', 'Další fotka', 1);
+    const sync = () => {
+      const i = Math.round(g.scrollLeft / Math.max(1, g.clientWidth)); state.slide = i;
+      [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+      prev.hidden = i === 0; next.hidden = i === slides.length - 1;
+    };
+    g.addEventListener('scroll', () => { clearTimeout(g._t); g._t = setTimeout(sync, 60); }, { passive: true });
+    box.append(g, dots, prev, next);
+    const start = Math.min(state.slide || 0, slides.length - 1);
+    requestAnimationFrame(() => { g.scrollLeft = start * g.clientWidth; sync(); });
+  }
   function putMedia(id, m, alt) {
     const box = $(id); box.innerHTML = '';
     const blk = box.closest('.media-block') || box; blk.classList.remove('has-video', 'is-playing');
@@ -1296,7 +1342,7 @@
     const color = currentColor();
     const items = galleryFor(v, color);
     const title = PRODUCT_DATA[v].title;
-    putMedia('heroMedia', items.hero, title);
+    if (items.slides) putSlides('heroMedia', items.slides, title); else { state.slide = 0; putMedia('heroMedia', items.hero, title); }
     putMedia('midVideo', items.video1, title);
     putMedia('midImage', items.image, title);
     putMedia('lateVideo', items.video2, title);
