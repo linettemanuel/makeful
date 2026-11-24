@@ -6,7 +6,8 @@
     'balicek-krabicka.webp','penezenka-oranzova-v-ruce.webp','psanicko-v-ruce.webp',
     'penezenka-svitici.webp','produkt-penezenka-termo.webp','produkt-penezenka-cerna.webp',
     'produkt-psanicko-svitici.webp','psanicko-termo.webp','psanicko-cerne.webp',
-    'produkt-kombinace-nova.webp'
+    'produkt-kombinace-nova.webp',
+    'psanicko-svitici-sada.webp','psanicko-svitici-predek.webp','psanicko-svitici-v-ruce.webp','psanicko-svitici-efekt.webp','psanicko-termo-sada.webp','psanicko-termo-predek.webp','psanicko-termo-v-ruce.webp','psanicko-termo-efekt.webp','psanicko-cerne-sada.webp','psanicko-cerne-predek.webp','psanicko-cerne-v-ruce.webp','psanicko-cerne-efekt.webp','sada-krabicka.webp','sada-knizka.webp','penezenka-svitici-hero.webp','penezenka-svitici-v-ruce.webp','penezenka-svitici-mesh.webp','penezenka-svitici-efekt.webp','penezenka-termo-hero.webp','penezenka-termo-v-ruce.webp','penezenka-termo-mesh.webp','penezenka-termo-efekt.webp','penezenka-cerne-hero.webp','penezenka-cerne-v-ruce.webp','penezenka-cerne-mesh.webp','penezenka-cerne-efekt.webp'
   ];
   var TEXT='Reálná fotka, AI retuš';
   var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen,.quiz-offer-bar';
