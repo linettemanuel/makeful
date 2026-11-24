@@ -122,6 +122,7 @@
     #kitSell > .sec { margin-top: 26px; }
     .how img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; background: #fff; }
     .how img.fit-contain { object-fit: contain; }
+    .how img.fit-hand { object-fit: cover; object-position: 50% 50%; }
     .how img.fit-top { object-position: 50% 30%; }
     .how-body { position: relative; padding: 14px 16px 16px 58px; }
     .how-body::before { content: counter(how); position: absolute; left: 16px; top: 14px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #9b6cff, #ff6f9f); color: #fff; font-weight: 900; font-size: 15px; }
@@ -1126,9 +1127,9 @@
     const SL = {
       penezenka: [sl(W.hero), sl(W.hand, 'contain'), sl(W.fx, 'contain')].concat(tail),
       psanicko: [sl(C.hero), sl(C.front, 'contain'), sl(C.hand, 'contain'), sl(C.fx, PS === 'cerne' ? '' : 'contain')].concat(tail),
-      balicek: [sl(W.hero), sl(C.hero), sl(W.hand, 'contain'), sl(C.hand, 'contain')].concat(tail)
+      balicek: [sl('sada-kombo-' + PS + '.webp'), sl(W.hand, 'contain'), sl(C.hand, 'contain')].concat(tail)
     };
-    SL.combo = SL.balicek;
+    SL.combo = [SL.balicek[0], sl('voucher-zmena-barvy-dotek.webp')].concat(SL.balicek.slice(1));
     Object.keys(SL).forEach(k => { G[k].slides = SL[k].filter(Boolean); G[k].image = img('sada-krabicka.webp'); });
 
     return G[isVoucher(variant) ? 'voucher' : baseOf(variant)];
@@ -1462,12 +1463,13 @@
     const base = baseOf(v);
     const wallet = ps === 'termo' ? 'penezenka-oranzova-v-ruce.webp' : 'penezenka-' + ps + '-v-ruce.webp';
     const done = base === 'penezenka' ? wallet : 'psanicko-' + ps + '-v-ruce.webp';
-    const doneFit = 'contain';
+    const doneFit = 'hand';
     const steps = [
       { img: 'penezenka-' + ps + '-mesh.webp', fit: 'contain', t: MODS[v] + ' modulů, ze kterých ' + (md ? 'složíte ' : 'složí ') + KIT_WORD[v], d: 'Moduly se do sebe jednoduše spojí a proplétají. Je to velmi snadné, bez lepidla a bez nářadí.' },
       { img: 'sada-knizka.webp', t: 'Interaktivní knížka o módě budoucnosti', d: 'Přenese ' + ji + ' do světa módy budoucnosti. Jednoduché úkoly, digitální i nedigitální, zabaví na další měsíc.' },
       { img: done, fit: doneFit, t: two ? 'Hotové kousky, které opravdu nosí' : 'Hotový kousek, který opravdu nosí', d: 'Žádná věc do šuplíku. ' + kousek + effect + (md ? ' a patří jen vám.' : many ? ' a patří jen jim.' : two ? ' a jsou jen její.' : ' a je jen její.') }
     ];
+    if (v === 'combo') steps.push({ img: 'voucher-zmena-barvy-dotek.webp', fit: 'hand', t: 'Voucher na workshop, který mění barvu', d: '3D tištěný voucher, který na dotek mění barvu. Vybere si živý online nebo offline workshop a pokračuje v tvoření s námi.' });
     $('how').innerHTML = '';
     steps.forEach(st => {
       const li = document.createElement('li');
