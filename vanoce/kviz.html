@@ -1126,7 +1126,7 @@
     const SL = {
       penezenka: [sl(W.hero), sl(W.hand, 'contain'), sl(W.fx, 'contain')].concat(tail),
       psanicko: [sl(C.hero), sl(C.front, 'contain'), sl(C.hand, 'contain'), sl(C.fx, PS === 'cerne' ? '' : 'contain')].concat(tail),
-      balicek: [sl(W.hero), sl(C.hero), sl(W.hand, 'contain'), sl(C.hand, 'contain')].concat(tail)
+      balicek: [sl('sada-kombo-' + PS + '.webp'), sl(W.hand, 'contain'), sl(C.hand, 'contain')].concat(tail)
     };
     SL.combo = SL.balicek;
     Object.keys(SL).forEach(k => { G[k].slides = SL[k].filter(Boolean); G[k].image = img('sada-krabicka.webp'); });
