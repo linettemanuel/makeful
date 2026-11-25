@@ -1856,7 +1856,8 @@
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
     setView('orderScreen');
-    dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});
+    var bcSig=JSON.stringify([state.activeVariant,total()]),bcSeen='';try{bcSeen=sessionStorage.getItem('makeful-bc-quiz')||''}catch(e){}
+    if(bcSeen!==bcSig){try{sessionStorage.setItem('makeful-bc-quiz',bcSig)}catch(e){}dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});}
     if(window.__mfMarkUrl)window.__mfMarkUrl('checkout');
     saveQuizCart();
   }
