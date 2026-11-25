@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="cs">
-<head><script src="assets/visit-id.js?v=20261125b"></script>
+<head><script src="assets/visit-id.js?v=20261125c"></script>
 <!-- Google Tag Manager (Facebook Pixel + GA4 se spravují v GTM) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KGDFKB27");</script>
 <!-- End Google Tag Manager -->
@@ -1395,7 +1395,7 @@
     const color = currentColor();
     const items = galleryFor(v, color);
     const title = PRODUCT_DATA[v].title;
-    if (items.slides) putSlides('heroMedia', items.slides, title); else { state.slide = 0; putMedia('heroMedia', items.hero, title); }
+    state.slide = 0; putMedia('heroMedia', items.slides ? Object.assign({ type: 'image' }, items.slides[0]) : items.hero, title);
     putMedia('midVideo', items.video1, title);
     putMedia('midImage', items.image, title);
     putMedia('lateVideo', items.video2, title);
@@ -1972,8 +1972,8 @@
   }
 })();
 </script>
-<script src="assets/ai-label.js?v=20261125b" defer></script>
-<script src="assets/qr-pay.js?v=20261125b" defer></script>
-<script src="assets/chat.js?v=20261125b" defer></script>
+<script src="assets/ai-label.js?v=20261125c" defer></script>
+<script src="assets/qr-pay.js?v=20261125c" defer></script>
+<script src="assets/chat.js?v=20261125c" defer></script>
 </body>
 </html>
