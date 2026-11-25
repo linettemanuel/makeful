@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="cs">
-<head><script src="assets/visit-id.js?v=20261125c"></script>
+<head><script src="assets/visit-id.js?v=20261125d"></script>
 <!-- Google Tag Manager (Facebook Pixel + GA4 se spravují v GTM) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KGDFKB27");</script>
 <!-- End Google Tag Manager -->
@@ -1614,7 +1614,7 @@
   // Odchod ze stránky až poté, co GTM zpracuje add_to_cart (nejdéle 0,8 s)
   function goAfterTrack(url) { let gone = false; const go = () => { if (gone) return; gone = true; location.href = url; };
     try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mf_navigate', eventCallback: () => setTimeout(go, 150), eventTimeout: 700 }); } catch (e) {} setTimeout(go, 800); }
-  function addOfferToCart() {
+  function addOfferToCart(realAdd) {
     try {
       const v = state.activeVariant, base = baseOf(v), qty = TWO_PCS[v] ? 2 : 1, c = currentColor();
       const mat = MAT[c] ? c : 'Svítí ve tmě', parts = { penezenka: ['wallet'], psanicko: ['clutch'], balicek: ['wallet', 'clutch'], combo: ['wallet', 'clutch'] }[base] || [];
@@ -1625,7 +1625,7 @@
       else { found = Object.assign({ id: 'item-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) }, it); cart.push(found); }
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
       if (CART_PROMO[v]) localStorage.setItem(CART_PROMO_KEY, CART_PROMO[v]);
-      try { const pv = PRICES[v].now; window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: pv, ecommerce: { currency: 'CZK', value: pv, items: [{ item_id: base, item_name: PRODUCT_DATA[v].title, price: Math.round(pv / qty), quantity: qty }] } }); } catch (e) {}
+      try { const pv = PRICES[v].now; window.dataLayer = window.dataLayer || []; window.dataLayer.push(realAdd ? { event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: pv, ecommerce: { currency: 'CZK', value: pv, items: [{ item_id: base, item_name: PRODUCT_DATA[v].title, price: Math.round(pv / qty), quantity: qty }] } } : { event: 'quiz_offer_saved', source: 'quiz', variant: base, value: pv }); } catch (e) {}
       return found.id;
     } catch (e) { return ''; }
   }
@@ -1643,7 +1643,7 @@
       state.baseVariant = state.activeVariant = OFFER; state.book = false;
       renderResultCard(); setView('resultScreen');
       document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').setAttribute('aria-label', 'Zavřít');
-      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); addOfferToCart(); goAfterTrack('index.html#produkty'); }, true);
+      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); addOfferToCart(true); goAfterTrack('index.html#produkty'); }, true);
       if (q.get('objednat')) setTimeout(() => $('resultOrderBtn').click(), 250);
       return;
     }
@@ -1856,7 +1856,8 @@
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
     setView('orderScreen');
-    dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});
+    var bcSeen='1';try{bcSeen=localStorage.getItem('makeful-bc-once')||'';localStorage.setItem('makeful-bc-once','1')}catch(e){}
+    if(!bcSeen){dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});}
     if(window.__mfMarkUrl)window.__mfMarkUrl('checkout');
     saveQuizCart();
   }
@@ -1972,8 +1973,8 @@
   }
 })();
 </script>
-<script src="assets/ai-label.js?v=20261125c" defer></script>
-<script src="assets/qr-pay.js?v=20261125c" defer></script>
-<script src="assets/chat.js?v=20261125c" defer></script>
+<script src="assets/ai-label.js?v=20261125d" defer></script>
+<script src="assets/qr-pay.js?v=20261125d" defer></script>
+<script src="assets/chat.js?v=20261125d" defer></script>
 </body>
 </html>

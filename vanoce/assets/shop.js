@@ -122,7 +122,10 @@ function mfTrack(event,params={}){try{window.dataLayer=window.dataLayer||[];wind
 // Cena košíku po slevě (ověřený promokód, nebo 1 + 1 / máma a dcera z nabídky)
 function mfCartValue(list=cart){const sub=mfValue(list);if(typeof appliedPromo!=='undefined'&&appliedPromo)return sub-promoDiscount(sub);let code='';try{code=localStorage.getItem(CART_PROMO_KEY)||''}catch{}const pr=promoAllowed(code)?KNOWN_PROMOS[code]:null;return pr?sub-(pr.pct?Math.round(promoBase(code,sub,list)*pr.pct/100):Math.min(pr.kc,sub)):sub;}
 // Přechod na jinou stránku až poté, co GTM zpracuje předchozí událost (nejdéle 0,8 s)
-function goAfterTrack(url){let gone=false;const go=()=>{if(gone)return;gone=true;location.href=url};try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'mf_navigate',eventCallback:()=>setTimeout(go,150),eventTimeout:700});}catch{}setTimeout(go,800);}
+// begin_checkout: jen po kliknutí na tlačítko vedoucí k objednávce a jen jednou za zákazníka (sdílené s kvízem)
+function mfBeginCheckoutOnce(){if(!cart.length)return;try{if(localStorage.getItem('makeful-bc-once'))return;localStorage.setItem('makeful-bc-once','1')}catch{}const v=mfCartValue();mfTrack('begin_checkout',{currency:'CZK',value:v,ecommerce:{currency:'CZK',value:v,items:mfItems(cart)}});}
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a.cart-bar-cta');if(a){e.preventDefault();goAfterTrack(a.getAttribute('href'))}});
+function goAfterTrack(url){if(/^objednavka\.html/.test(url))mfBeginCheckoutOnce();let gone=false;const go=()=>{if(gone)return;gone=true;location.href=url};try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'mf_navigate',eventCallback:()=>setTimeout(go,150),eventTimeout:700});}catch{}setTimeout(go,800);}
 function mfItems(list){return list.map(i=>({item_id:i.variant,item_name:LABELS[i.variant],price:PRICES[i.variant],quantity:i.qty}));}
 function mfValue(list){return list.reduce((n,i)=>n+PRICES[i.variant]*i.qty,0);}
 function addToCart(variant,qty=1,options={}){
@@ -521,7 +524,6 @@ function initProductMedia(){
 document.addEventListener('play',event=>{if(event.target instanceof HTMLVideoElement)document.querySelectorAll('video').forEach(video=>{if(video!==event.target)video.pause();});},true);
 document.addEventListener('DOMContentLoaded',()=>{
   {const v={'kreativni-balicek.html':'balicek','voucher.html':'voucher'}[location.pathname.split('/').pop()];if(v)mfTrack('view_item',{currency:'CZK',value:PRICES[v],ecommerce:{currency:'CZK',value:PRICES[v],items:mfItems([{variant:v,qty:1}])}});}
-  if(document.getElementById('order-form')&&cart.length&&!new URLSearchParams(location.search).get('platba')){const sig=JSON.stringify(cart.map(i=>[i.variant,i.qty]));let seen='';try{seen=sessionStorage.getItem('makeful-bc-sent')||''}catch{}if(seen!==sig){const v=mfCartValue();mfTrack('begin_checkout',{currency:'CZK',value:v,ecommerce:{currency:'CZK',value:v,items:mfItems(cart)}});try{sessionStorage.setItem('makeful-bc-sent',sig)}catch{}}}
   saveCart();initProductMedia();initProductOptions();initAboutPhotos();initAboutMedia();initCartEditor();initQuickAdd();initQuiz();initStandaloneQuiz();
   const form=document.getElementById('order-form');if(!form)return;
   const params=new URLSearchParams(location.search);const preset=params.get('variant')||({balicek:'balicek',voucher:'voucher',oba:'combo'}[params.get('product')]);
