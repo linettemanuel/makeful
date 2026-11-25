@@ -1614,7 +1614,7 @@
   // Odchod ze stránky až poté, co GTM zpracuje add_to_cart (nejdéle 0,8 s)
   function goAfterTrack(url) { let gone = false; const go = () => { if (gone) return; gone = true; location.href = url; };
     try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'mf_navigate', eventCallback: () => setTimeout(go, 150), eventTimeout: 700 }); } catch (e) {} setTimeout(go, 800); }
-  function addOfferToCart() {
+  function addOfferToCart(realAdd) {
     try {
       const v = state.activeVariant, base = baseOf(v), qty = TWO_PCS[v] ? 2 : 1, c = currentColor();
       const mat = MAT[c] ? c : 'Svítí ve tmě', parts = { penezenka: ['wallet'], psanicko: ['clutch'], balicek: ['wallet', 'clutch'], combo: ['wallet', 'clutch'] }[base] || [];
@@ -1625,7 +1625,7 @@
       else { found = Object.assign({ id: 'item-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) }, it); cart.push(found); }
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
       if (CART_PROMO[v]) localStorage.setItem(CART_PROMO_KEY, CART_PROMO[v]);
-      try { const pv = PRICES[v].now; window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: pv, ecommerce: { currency: 'CZK', value: pv, items: [{ item_id: base, item_name: PRODUCT_DATA[v].title, price: Math.round(pv / qty), quantity: qty }] } }); } catch (e) {}
+      try { const pv = PRICES[v].now; window.dataLayer = window.dataLayer || []; window.dataLayer.push(realAdd ? { event: 'add_to_cart', source: window.__mfOffer ? 'offer' : 'quiz', currency: 'CZK', value: pv, ecommerce: { currency: 'CZK', value: pv, items: [{ item_id: base, item_name: PRODUCT_DATA[v].title, price: Math.round(pv / qty), quantity: qty }] } } : { event: 'quiz_offer_saved', source: 'quiz', variant: base, value: pv }); } catch (e) {}
       return found.id;
     } catch (e) { return ''; }
   }
@@ -1643,7 +1643,7 @@
       state.baseVariant = state.activeVariant = OFFER; state.book = false;
       renderResultCard(); setView('resultScreen');
       document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').setAttribute('aria-label', 'Zavřít');
-      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); addOfferToCart(); goAfterTrack('index.html#produkty'); }, true);
+      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); addOfferToCart(true); goAfterTrack('index.html#produkty'); }, true);
       if (q.get('objednat')) setTimeout(() => $('resultOrderBtn').click(), 250);
       return;
     }
