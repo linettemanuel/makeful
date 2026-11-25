@@ -9,21 +9,24 @@
     'produkt-kombinace-nova.webp',
     'psanicko-svitici-sada.webp','psanicko-svitici-predek.webp','psanicko-svitici-v-ruce.webp','psanicko-svitici-efekt.webp','psanicko-termo-sada.webp','psanicko-termo-predek.webp','psanicko-termo-v-ruce.webp','psanicko-termo-efekt.webp','psanicko-cerne-sada.webp','psanicko-cerne-predek.webp','psanicko-cerne-v-ruce.webp','psanicko-cerne-efekt.webp','sada-krabicka.webp','sada-knizka.webp','sada-kombo-cerne.webp','sada-kombo-svitici.webp','sada-kombo-termo.webp','penezenka-svitici-hero.webp','penezenka-svitici-v-ruce.webp','penezenka-svitici-mesh.webp','penezenka-svitici-efekt.webp','penezenka-termo-hero.webp','penezenka-termo-v-ruce.webp','penezenka-termo-mesh.webp','penezenka-termo-efekt.webp','penezenka-cerne-hero.webp','penezenka-cerne-v-ruce.webp','penezenka-cerne-mesh.webp','penezenka-cerne-efekt.webp'
   ];
-  var TEXT='Reálná fotka, AI retuš';
+  var LIGHT=['psanicko-svitici-predek.webp','psanicko-svitici-v-ruce.webp','psanicko-svitici-efekt.webp','psanicko-termo-predek.webp','psanicko-termo-v-ruce.webp','psanicko-cerne-predek.webp','psanicko-cerne-v-ruce.webp','penezenka-svitici-v-ruce.webp','penezenka-svitici-mesh.webp','penezenka-svitici-efekt.webp','penezenka-termo-mesh.webp','penezenka-termo-efekt.webp','penezenka-cerne-mesh.webp','penezenka-cerne-v-ruce.webp','voucher-zmena-barvy-dotek.webp'];
+  var TEXT='AI',TITLE='Reálná fotka, AI retuš';
   var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen,.quiz-offer-bar';
-  var css='.ai-photo-label{position:absolute;left:10px;bottom:10px;z-index:3;max-width:calc(100% - 20px);padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.88);color:#202747;font:600 10.5px/1.35 "DM Sans",system-ui,sans-serif;letter-spacing:.01em;box-shadow:0 1px 6px rgba(17,23,51,.12);pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}';
+  var css='.ai-photo-label{position:absolute;left:8px;bottom:8px;z-index:3;width:13px;height:13px;display:grid;place-items:center;border-radius:50%;background:none;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.5);font:600 5.5px/1 "DM Sans",system-ui,sans-serif;letter-spacing:.02em;pointer-events:none}.ai-photo-label.on-light{border-color:rgba(120,124,140,.22);color:rgba(120,124,140,.38)}';
   function isAI(src){if(!src)return false;var f=src.split('?')[0].split('/').pop();return AI_PHOTOS.indexOf(f)>-1}
+  function fname(src){return String(src||'').split('?')[0].split('/').pop()}
   function update(){
     document.querySelectorAll('img').forEach(function(img){
       if(img.closest(SKIP))return;
       var box=img.parentElement;if(!box)return;
       var label=box.querySelector(':scope > .ai-photo-label');
-      var ai=isAI(img.getAttribute('src'));
-      if(ai&&!label){
+      var aiImg=[].filter.call(box.querySelectorAll(':scope > img'),function(i){return isAI(i.getAttribute('src'))})[0];
+      if(!aiImg){if(label)label.remove();return;}
+      if(!label){
         if(getComputedStyle(box).position==='static')box.style.position='relative';
-        label=document.createElement('span');label.className='ai-photo-label';label.textContent=TEXT;box.appendChild(label);
-      }else if(!ai&&label&&!box.querySelector(':scope > img[src*=".webp"]')){label.remove();}
-      else if(!ai&&label){var anyAI=[].some.call(box.querySelectorAll(':scope > img'),function(i){return isAI(i.getAttribute('src'))});if(!anyAI)label.remove();}
+        label=document.createElement('span');label.className='ai-photo-label';label.textContent=TEXT;label.title=TITLE;label.setAttribute('aria-label',TITLE);box.appendChild(label);
+      }
+      label.classList.toggle('on-light',LIGHT.indexOf(fname(aiImg.getAttribute('src')))>-1);
     });
     document.querySelectorAll('.ai-photo-label').forEach(function(l){var b=l.parentElement;if(!b.querySelector(':scope > img'))l.remove();});
   }

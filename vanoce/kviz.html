@@ -290,6 +290,7 @@
     .press { text-align: center; }
     .press span { display: block; margin-bottom: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
     .press p { margin: 0; font-size: 15px; font-weight: 800; color: #6b6f86; line-height: 1.5; }
+    .press p a { color: inherit; text-decoration: underline; text-decoration-color: rgba(107,111,134,.35); text-underline-offset: 3px; }
 
     /* Výsledek */
     .result { display: grid; gap: 16px; padding-bottom: 150px; }
@@ -548,7 +549,7 @@
       <div class="info-list">
         <div class="info" id="infoGift"><b>🎁</b><div><strong>Krásně zabalené, rovnou pod stromeček</strong><span>Přijde v dárkové krabičce, nic nebalíte.</span></div></div>
         <div class="info" id="materialInfo"><b>🧵</b><div><strong>Z čeho je vyrobené</strong><span id="materialText"></span></div></div>
-        <div class="info"><b>🚚</b><div><strong>Doprava zdarma, doma před Vánoci</strong><span>Rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12.</span></div></div>
+        <div class="info"><b>🚚</b><div><strong>Doprava zdarma, doma před Vánoci</strong></div></div>
         <div class="info"><b>💳</b><div><strong>Karta, převod i benefity</strong><span>Platit můžete i přes Apple Pay a Google Pay nebo kartou Edenred či Up.</span></div></div>
       </div>
 
@@ -569,7 +570,7 @@
       
       <h2 class="sec" id="secWhy">Proč právě pro ni</h2>
       <ul class="reasons" id="reasons"></ul>
-      <div class="media-block"><div id="midVideo"></div><p class="media-cap">▶ Podívejte se, jak dárek vypadá doopravdy</p></div>
+      <div class="media-block"><div id="midVideo"></div></div>
 
       <h2 class="sec" id="secGives">Co jí dárek dá</h2>
       <div class="benefits" id="benefits"></div>
@@ -599,8 +600,8 @@
         <img src="assets/photos/produkt-moduly-vyroba.webp" alt="Návrh a 3D tištěné dílky psaníčka na stole v pražském studiu Makeful" loading="lazy">
         <div class="team-body">
           <em class="made-badge">🇨🇿 Žádný přeprodej z Číny</em>
-          <strong>Každý balíček vyrábíme ručně v Praze</strong>
-          <span>Dílky navrhujeme, tiskneme na 3D tiskárnách a balíčky kompletujeme ručně v našem pražském studiu. Od návrhu až po poslední dílek prochází všechno našima rukama.</span>
+          <strong>Vyrobeno v České republice</strong>
+          <span>Sady navrhujeme a vyrábíme v České republice, od 3D tištěných dílků po dárkové balení.</span>
         </div>
       </div>
 
@@ -616,13 +617,13 @@
       </div>
       <div class="press">
         <span>O projektu Makeful psali</span>
-        <p>Wired · ČT :D · Hospodářské noviny · Hrot · Aktuálně.cz · Abíčko</p>
+        <p><a href="https://www.wired.cz/clanky/tak-co-si-dnes-vytisknu-na-rande-nakup-obleceni-ma-sanci-se-zasadne-zmenit" target="_blank" rel="noopener">Wired</a> · <a href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">ČT :D</a> · <a href="https://archiv.hn.cz/c1-67521380-z-kalhot-udelaji-tricko-z-nej-kabelku-mlada-ceska-uci-studenty-tisknout-si-obleceni" target="_blank" rel="noopener">Hospodářské noviny</a> · <a href="https://magazin.hrot24.cz/clanek/linette-manuel-navrharka-mody-budoucnosti-HpdXM-683c7446ab9ac80e9863b318" target="_blank" rel="noopener">Hrot</a> · <a href="https://zpravy.aktualne.cz/domaci/3d-tisk-obleceni/r~32493ce2a66411ef80bfac1f6b220ee8/" target="_blank" rel="noopener">Aktuálně.cz</a> · <a href="https://youtu.be/SF-NV1AnazM?si=2p3BfzGZL5_mpvZt&amp;t=302" target="_blank" rel="noopener">Abíčko</a></p>
       </div>
       <div class="press">
         <span>Spolupracujeme s</span>
         <p>Materialise · Recreus · ELEGOO · SuperCreators</p>
       </div>
-      <p class="company">Makeful · IČO 08487341 · <a href="mailto:hello@make-ful.com">hello@make-ful.com</a></p>
+      <p class="company">Makeful · IČO 08487341 · Roháčova 145/14, Praha 3, 130 00 · <a href="mailto:hello@make-ful.com">hello@make-ful.com</a></p>
       <div class="result-links" style="justify-content:center">
         <button type="button" onclick="restartQuiz()">Projít kvíz znovu</button>
       </div>
@@ -684,7 +685,7 @@
       </fieldset>
 
       <div class="consents">
-        <label class="chk"><input type="checkbox" id="oConsent" required><span>Seznámil/a jsem se s <a href="obchodni-podminky.html" target="_blank" rel="noopener">obchodními podmínkami</a> a <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">zásadami ochrany osobních údajů</a>. Beru na vědomí, že <strong>dárky se vyrábějí ručně a rozesílají ve dvou vlnách, v týdnu od 7. 12. 2026 a od 15. 12. 2026</strong>.</span></label>
+        <label class="chk"><input type="checkbox" id="oConsent" required><span>Seznámil/a jsem se s <a href="obchodni-podminky.html" target="_blank" rel="noopener">obchodními podmínkami</a> a <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">zásadami ochrany osobních údajů</a>. Beru na vědomí, že <strong>dárky se rozesílají ve dvou vlnách, v týdnu od 7. 12. 2026 a od 15. 12. 2026</strong>.</span></label>
       </div>
       <p class="form-err" id="orderErr" hidden></p>
     </form>
@@ -1269,7 +1270,6 @@
   // Odpovědi na námitky
   const FAQ_KIT = [
     ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Přidáte ho jedním zaškrtnutím v objednávce. Vaše zákonná práva tím nejsou dotčena.'],
-    ['Kdo za Makeful stojí?', 'Jsme Makeful, lokální tvůrkyně z Prahy. Věříme, že v každé holce se skrývá tvůrkyně a stačí jí dát do ruky ty správné nástroje. Proto propojujeme módu s moderními technologiemi, jako je 3D tisk, a školíme i učitele, aby radost z tvoření mohli předávat dál. O naší módě budoucnosti natáčela reportáž Česká televize. Každý dárek připravujeme s láskou a s přáním, aby u vás doma udělal radost.', 'ct'],
     ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Dárek máte doma před Vánoci, doprava je zdarma.'],
     ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.'],
     ['Zvládne to sama, bez zkušeností?', 'Ano. Je to od 8 let a pro úplné začátečnice. Dílky se jen zacvaknou do sebe, žádné lepidlo, nástroje ani 3D tiskárna nejsou potřeba.'],
@@ -1282,7 +1282,6 @@
   ];
   const FAQ_VOUCHER = [
     ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Přidáte ho jedním zaškrtnutím v objednávce. Vaše zákonná práva tím nejsou dotčena.'],
-    ['Kdo za Makeful stojí?', 'Jsme Makeful, lokální tvůrkyně z Prahy. Věříme, že v každé holce se skrývá tvůrkyně a stačí jí dát do ruky ty správné nástroje. Proto propojujeme módu s moderními technologiemi, jako je 3D tisk, a školíme i učitele, aby radost z tvoření mohli předávat dál. O naší módě budoucnosti natáčela reportáž Česká televize. Každý dárek připravujeme s láskou a s přáním, aby u vás doma udělal radost.', 'ct'],
     ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Doprava je zdarma.'],
     ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.'],
     ['Jaké workshopy si může vybrat?', 'Nové termíny a témata průběžně vypisujeme, například 3D tištěné kytice, čelenky nebo trička se světelným potiskem. V pražském studiu i online.'],
