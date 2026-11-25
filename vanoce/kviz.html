@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="cs">
-<head><script src="assets/visit-id.js?v=20261125c"></script>
+<head><script src="assets/visit-id.js?v=20261125d"></script>
 <!-- Google Tag Manager (Facebook Pixel + GA4 se spravují v GTM) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KGDFKB27");</script>
 <!-- End Google Tag Manager -->
@@ -1856,8 +1856,8 @@
   function openOrder(){
     renderSummary();$('orderErr').hidden=true;
     setView('orderScreen');
-    var bcSig=JSON.stringify([state.activeVariant,total()]),bcSeen='';try{bcSeen=sessionStorage.getItem('makeful-bc-quiz')||''}catch(e){}
-    if(bcSeen!==bcSig){try{sessionStorage.setItem('makeful-bc-quiz',bcSig)}catch(e){}dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});}
+    var bcSeen='1';try{bcSeen=localStorage.getItem('makeful-bc-once')||'';localStorage.setItem('makeful-bc-once','1')}catch(e){}
+    if(!bcSeen){dl({event:'begin_checkout',source:window.__mfOffer?'offer':'quiz',currency:'CZK',value:total(),ecommerce:ecom()});}
     if(window.__mfMarkUrl)window.__mfMarkUrl('checkout');
     saveQuizCart();
   }
@@ -1973,8 +1973,8 @@
   }
 })();
 </script>
-<script src="assets/ai-label.js?v=20261125c" defer></script>
-<script src="assets/qr-pay.js?v=20261125c" defer></script>
-<script src="assets/chat.js?v=20261125c" defer></script>
+<script src="assets/ai-label.js?v=20261125d" defer></script>
+<script src="assets/qr-pay.js?v=20261125d" defer></script>
+<script src="assets/chat.js?v=20261125d" defer></script>
 </body>
 </html>
