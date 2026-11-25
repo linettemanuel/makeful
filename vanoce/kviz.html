@@ -99,11 +99,8 @@
     .gal-nav.prev { left: 8px; } .gal-nav.next { right: 8px; }
     .gal-nav[hidden] { display: none; }
     /* Prodejní část výsledku: důkaz, srovnání, jak to funguje, obsah */
-    .proof { margin: 14px 0 4px; text-align: center; }
-    .proof-score { margin: 0; font-size: 14px; color: var(--navy); }
-    .proof-stars { color: #f5a623; letter-spacing: 1px; }
-    .proof-quote { margin: 4px auto 0; max-width: 34ch; font-size: 13.5px; font-style: italic; line-height: 1.45; color: var(--muted); }
-    .proof-quote span { display: block; font-style: normal; font-size: 12px; font-weight: 700; margin-top: 2px; }
+    .order .is-invalid, .order input.is-invalid { border-color: #e5145f !important; background: #fff5f8 !important; }
+    .consents .chk.is-invalid { border-radius: 12px; outline: 2px solid #e5145f; outline-offset: 4px; background: #fff5f8; }
     .vs { display: grid; gap: 10px; }
     .vs-box { border-radius: 18px; padding: 14px 16px; }
     .vs-no { background: #fff4f4; border: 1px solid #ffd9d9; }
@@ -119,7 +116,7 @@
     .how { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: how; }
     .how li { counter-increment: how; border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 10px 26px rgba(84,55,132,.10); }
     .how-img { position: relative; }
-    #kitSell > .sec { margin-top: 26px; }
+    #kitSell > .sec, #kitInside > .sec { margin-top: 26px; }
     .how img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; background: #fff; }
     .how img.fit-contain { object-fit: contain; }
     .how img.fit-hand { object-fit: cover; object-position: 50% 50%; }
@@ -515,11 +512,6 @@
         <p class="moment" id="resultMoment" hidden></p>
       </div>
 
-      <div class="proof">
-        <p class="proof-score"><span class="proof-stars" aria-hidden="true">★★★★★</span> <b>9/10</b> spokojenost zákaznic</p>
-        <p class="proof-quote">„Naši Aničku to hrozně moc bavilo, nemohla o tom přestat mluvit!“ <span>Spokojená zákaznice</span></p>
-      </div>
-
       <div id="kitSell">
         <h2 class="sec">Proč ne obyčejná tvořivá sada?</h2>
         <div class="vs">
@@ -529,13 +521,6 @@
 
         <h2 class="sec">Jak to funguje</h2>
         <ol class="how" id="how"></ol>
-
-        <h2 class="sec" id="secInside">Co je uvnitř sady</h2>
-        <figure class="giftbox">
-          <div class="how-img"><img src="assets/photos/sada-krabicka.webp" alt="Dárková krabička Kreativní sada Makeful" loading="lazy"></div>
-          <figcaption><strong>Dárkové balení rovnou pod stromeček</strong><span>Krásná krabička, kterou nemusíte balit. Mašličku přibalíme.</span></figcaption>
-        </figure>
-        <ul class="bullets" id="resultBullets"></ul>
       </div>
 
       <div class="deal">
@@ -545,29 +530,6 @@
         <p class="deal-timer" id="dealTimer"></p>
       </div>
 
-
-      <div class="info-list">
-        <div class="info" id="infoGift"><b>🎁</b><div><strong>Krásně zabalené, rovnou pod stromeček</strong><span>Přijde v dárkové krabičce, nic nebalíte.</span></div></div>
-        <div class="info" id="materialInfo"><b>🧵</b><div><strong>Z čeho je vyrobené</strong><span id="materialText"></span></div></div>
-        <div class="info"><b>🚚</b><div><strong>Doprava zdarma, doma před Vánoci</strong></div></div>
-        <div class="info"><b>💳</b><div><strong>Karta, převod i benefity</strong><span>Platit můžete i přes Apple Pay a Google Pay nebo kartou Edenred či Up.</span></div></div>
-      </div>
-
-      <div class="trust-grid">
-        <div><b>🇨🇿</b>Česká značka z Prahy</div>
-        <div><b>💳</b>Platba kartou Edenred nebo Up</div>
-        <div><b>🛡️</b>Vrácení až o 30 dní déle</div>
-        <div><b>📦</b>Doprava zdarma</div>
-        <div><b>🎁</b>Připravené jako dárek</div>
-        <div><b>💬</b>Jsme na telefonu i e-mailu</div>
-      </div>
-
-      <a class="tv-card" id="tvCard" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">
-        <span class="tv-badge">ČT :D</span>
-        <span><strong>Viděli jste nás v České televizi</strong><small>Reportáž o módě budoucnosti ▶</small></span>
-      </a>
-
-      
       <h2 class="sec" id="secWhy">Proč právě pro ni</h2>
       <ul class="reasons" id="reasons"></ul>
       <div class="media-block"><div id="midVideo"></div></div>
@@ -592,9 +554,39 @@
         </div>
       </section>
 
+      <div id="kitInside">
+        <h2 class="sec" id="secInside">Co je uvnitř sady</h2>
+        <figure class="giftbox">
+          <div class="how-img"><img src="assets/photos/sada-krabicka.webp" alt="Dárková krabička Kreativní sada Makeful" loading="lazy"></div>
+          <figcaption><strong>Dárkové balení rovnou pod stromeček</strong><span>Krásná krabička, kterou nemusíte balit. Mašličku přibalíme.</span></figcaption>
+        </figure>
+        <ul class="bullets" id="resultBullets"></ul>
+      </div>
+
       <div class="media-block" id="midImage" hidden></div>
       <h2 class="sec" id="secInsideV" hidden>Co dostane</h2>
       <ul class="bullets" id="resultBulletsV" hidden></ul>
+
+      <div class="info-list">
+        <div class="info" id="infoGift"><b>🎁</b><div><strong>Krásně zabalené, rovnou pod stromeček</strong><span>Přijde v dárkové krabičce, nic nebalíte.</span></div></div>
+        <div class="info" id="materialInfo"><b>🧵</b><div><strong>Z čeho je vyrobené</strong><span id="materialText"></span></div></div>
+        <div class="info"><b>🚚</b><div><strong>Doprava zdarma, doma před Vánoci</strong></div></div>
+        <div class="info"><b>💳</b><div><strong>Karta, převod i benefity</strong><span>Platit můžete i přes Apple Pay a Google Pay nebo kartou Edenred či Up.</span></div></div>
+      </div>
+
+      <div class="trust-grid">
+        <div><b>🇨🇿</b>Česká značka z Prahy</div>
+        <div><b>💳</b>Platba kartou Edenred nebo Up</div>
+        <div><b>🛡️</b>Vrácení až o 30 dní déle</div>
+        <div><b>📦</b>Doprava zdarma</div>
+        <div><b>🎁</b>Připravené jako dárek</div>
+        <div><b>💬</b>Jsme na telefonu i e-mailu</div>
+      </div>
+
+      <a class="tv-card" id="tvCard" href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">
+        <span class="tv-badge">ČT :D</span>
+        <span><strong>Viděli jste nás v České televizi</strong><small>Reportáž o módě budoucnosti ▶</small></span>
+      </a>
 
       <div class="team made">
         <img src="assets/photos/produkt-moduly-vyroba.webp" alt="Návrh a 3D tištěné dílky psaníčka na stole v pražském studiu Makeful" loading="lazy">
@@ -628,7 +620,7 @@
         <div class="price-now"><s id="resultOldPrice"></s><strong id="resultPrice">1 188 Kč</strong></div>
         <span id="barTimer">Sleva 200 Kč jen do 30. 11.</span>
       </div>
-      <a class="cta" id="resultOrderBtn" href="objednavka.html">Objednat →</a>
+      <button type="button" class="cta" id="resultOrderBtn">Objednat →</button>
     </div></div>
   </section>
 
@@ -1265,26 +1257,16 @@
   const FAQ_KIT = [
     ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Přidáte ho jedním zaškrtnutím v objednávce. Vaše zákonná práva tím nejsou dotčena.'],
     ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Dárek máte doma před Vánoci, doprava je zdarma.'],
-    ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.'],
     ['Zvládne to sama, bez zkušeností?', 'Ano. Je to od 8 let a pro úplné začátečnice. Dílky se jen zacvaknou do sebe, žádné lepidlo, nástroje ani 3D tiskárna nejsou potřeba.'],
-    ['Co když ji zajímají spíš technologie než móda?', 'Balíček spojuje vlastní tvoření, 3D tisk a objevování materiálů budoucnosti. Interaktivní knížka přidává kreativní úkoly.'],
     ['Nebude to jen další věc do šuplíku?', 'Ne. Výsledkem je peněženka nebo psaníčko, které opravdu nosí. A knížka s kreativními úkoly ji zabaví i po Vánocích.'],
-    ['Má doma spoustu tvořivých sad. Co je na tom nového?', 'Spojení módy, 3D tisku a chytrých materiálů, které svítí ve tmě nebo mění barvu. Tohle v běžných tvořivých sadách nenajde.'],
-    ['Nebude po tvoření nepořádek?', 'Ne. Žádné lepidlo, odřezky ani barvy. Dílky se skládají jako stavebnice.'],
-    ['Proč je teď sleva 200 Kč?', 'Je to limitovaná vánoční edice 100 kusů. Sleva platí jen pro objednávky do 30. 11. nebo do vyprodání.'],
-    ['Zaplatím hned po kliknutí?', 'Ne. Kliknutím jen vyplníte doručení a vyberete platbu. Nic se nestrhne automaticky, objednávku potvrdíte až vy.']
+    ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.']
   ];
   const FAQ_VOUCHER = [
     ['Co když se jí to nebude líbit?', 'Žádný stres. Za 22 Kč si můžete přikoupit prodloužené vrácení: dárek pak můžete vrátit bez udání důvodu ještě o 30 dní déle. Přidáte ho jedním zaškrtnutím v objednávce. Vaše zákonná práva tím nejsou dotčena.'],
     ['Stihne to dorazit do Vánoc?', 'Ano. Objednávky přijímáme do 30. 11. a rozesíláme ve dvou vlnách, od 7. 12. a od 15. 12. Doprava je zdarma.'],
-    ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.'],
-    ['Jaké workshopy si může vybrat?', 'Nové termíny a témata průběžně vypisujeme, například 3D tištěné kytice, čelenky nebo trička se světelným potiskem. V pražském studiu i online.'],
-    ['Musí si vybrat termín už teď?', 'Ne. Voucher platí celý rok a workshop si obdarovaná vybere později, až se jí to hodí.'],
-    ['Musí dojíždět do Prahy?', 'Ne. Voucher lze využít i na online workshopy, nejen ve studiu v Praze.'],
-    ['Je to opravdu fyzický dárek?', 'Ano. Dostanete 3D tištěný voucher, který na dotek mění barvu, v dárkovém balení. Ne jen e-mail s kódem.'],
     ['Potřebuje nějaké zkušenosti?', 'Ne. Workshopy jsou pro úplné začátečnice od 8 let, všechno potřebné je na místě.'],
-    ['Proč je teď sleva 200 Kč?', 'Je to limitovaná vánoční nabídka. Sleva platí jen pro objednávky do 30. 11.'],
-    ['Zaplatím hned po kliknutí?', 'Ne. Kliknutím jen vyplníte doručení a vyberete platbu. Nic se nestrhne automaticky, objednávku potvrdíte až vy.']
+    ['Musí si vybrat termín už teď?', 'Ne. Voucher platí celý rok a workshop si obdarovaná vybere později, až se jí to hodí.'],
+    ['Jak můžu zaplatit?', 'Kartou online s možností využít i Apple Pay nebo Google Pay, bankovním převodem i benefitními kartami Edenred a Up.']
   ];
 
   function buildReasons(variant) {
@@ -1507,7 +1489,7 @@
     buildReasons(v).forEach(t => { const li = document.createElement('li'); li.textContent = t; $('reasons').appendChild(li); });
     $('benefits').innerHTML = d.benefits.map(b => '<div class="benefit"><b>' + b.i + '</b><strong>' + b.t + '</strong><span>' + b.d + '</span></div>').join('');
     const vch = isVoucher(v);
-    $('kitSell').hidden = vch; $('infoGift').hidden = !vch;
+    $('kitSell').hidden = vch; $('kitInside').hidden = vch; $('infoGift').hidden = !vch;
     ['midImage', 'secInsideV', 'resultBulletsV'].forEach(id => { $(id).hidden = !vch; });
     const listEl = vch ? $('resultBulletsV') : $('resultBullets');
     $('resultBullets').innerHTML = ''; $('resultBulletsV').innerHTML = '';
@@ -1531,7 +1513,6 @@
       det.append(sum, p); $('faq').appendChild(det);
     });
 
-    $('resultOrderBtn').href = d.orderHref;
     const up = PRODUCT_DATA[base].upsell;
     $('upsellLine').hidden = !up;
     if (up) {
@@ -1643,7 +1624,6 @@
       state.baseVariant = state.activeVariant = OFFER; state.book = false;
       renderResultCard(); setView('resultScreen');
       document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]').setAttribute('aria-label', 'Zavřít');
-      $('resultOrderBtn').addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); addOfferToCart(true); goAfterTrack('index.html#produkty'); }, true);
       if (q.get('objednat')) setTimeout(() => $('resultOrderBtn').click(), 250);
       return;
     }
@@ -1731,7 +1711,7 @@
   var _toggle=toggleComboUpgrade;
   toggleComboUpgrade=function(){_toggle();result.shown=LABEL[state.activeVariant]||state.activeVariant;};
 
-  document.getElementById('resultOrderBtn').addEventListener('click',function(){send('cta_order','výsledek: objednat')});
+  window.__mfSend=function(){return send.apply(this,arguments)};
   // Nové vyplnění kvízu = nové ID, v tabulce Kvíz vznikne nový řádek místo přepsání starého
   var _restart=restartQuiz;
   restartQuiz=function(){try{localStorage.removeItem(KEY)}catch(e){}memVid='';result={};setResultUrl(true);_restart();try{window.__mfApplyVisitId&&window.__mfApplyVisitId(vid())}catch(e){}};
@@ -1808,8 +1788,13 @@
   $('oClutchName').addEventListener('input',function(){state.name=this.value.replace(/\s+/g,' ').trimStart().slice(0,60);renderSummary();});
   $('upsellChk').addEventListener('change',function(){var want=this.checked,up=PRODUCT_DATA[state.baseVariant].upsell;var cur=up&&up.addon?!!state.book:state.activeVariant!==state.baseVariant;if(cur!==want)toggleComboUpgrade();renderSummary();});
 
-  // „Objednat“ vede rovnou do objednávky. Prodloužené vrácení je zaškrtávátko v souhrnu objednávky (bez vyskakovacího okna).
-  $('resultOrderBtn').addEventListener('click',function(e){e.preventDefault();openOrder();});
+  // Jediná obsluha tlačítka na výsledku: nabídka z e-shopu → do košíku, kvíz → objednávka přímo v kvízu
+  $('resultOrderBtn').addEventListener('click',function(e){
+    e.preventDefault();
+    if(window.__mfOffer===true){addOfferToCart(true);goAfterTrack('index.html#produkty');return;}
+    if(window.__mfSend)window.__mfSend('cta_order','výsledek: objednat');
+    openOrder();
+  });
   $('sumRet').addEventListener('change',function(){dl({event:'return_extension',choice:this.checked?'ano':'ne',value:this.checked?RET.price:0});});
 
 
@@ -1867,7 +1852,7 @@
   document.addEventListener('focusin',function(e){if(isTyping(e.target))$('orderBar').style.display='none'});
   document.addEventListener('focusout',function(){setTimeout(function(){if(!isTyping(document.activeElement))$('orderBar').style.display=''},50)});
 
-  function showErr(t){$('orderErr').textContent=t;$('orderErr').hidden=false;$('orderErr').scrollIntoView({behavior:'smooth',block:'center'});}
+  function showErr(t){$('quizOrderForm').appendChild($('orderErr'));$('orderErr').textContent=t;$('orderErr').hidden=false;$('orderErr').scrollIntoView({behavior:'smooth',block:'center'});}
   function rnd(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)}
   function getDraftId(){var id='';try{id=localStorage.getItem(DRAFT_KEY+'-id')||'';if(!/^draft-[a-z0-9-]{8,80}$/.test(id)){id='draft-'+Date.now().toString(36)+'-'+rnd().toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(DRAFT_KEY+'-id',id)}}catch(e){}return id}
   function newOrderId(){return ('ord-'+rnd().replace(/[^A-Za-z0-9-]/g,'')).slice(0,64)}
@@ -1885,11 +1870,37 @@
   addEventListener('pagehide',function(){sendDraft(true)});
   document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')sendDraft(true)});
 
+  // Vlastní validace (nativní bubliny v in-app prohlížečích FB/IG často nejsou vidět)
+  var ORDER_CHECKS=[
+    ['oEmail',function(el){return /^[^\s@,;<>"]+@[^\s@,;<>"]+\.[a-z]{2,}$/i.test(el.value.trim())},'Zadejte prosím platný e-mail.'],
+    ['oName',function(el){return el.value.trim().length>=2},'Zadejte prosím jméno a příjmení.'],
+    ['oPhone',function(el){var d=el.value.replace(/[\s+]/g,'');return d.length>0&&(d.match(/\d/g)||[]).length>=9},'Zadejte prosím telefonní číslo.'],
+    ['oStreet',function(el){return el.value.trim().length>=3},'Zadejte prosím ulici a číslo popisné.'],
+    ['oCity',function(el){return el.value.trim().length>=2},'Zadejte prosím město.'],
+    ['oZip',function(el){return /^\d{5}$/.test(el.value.replace(/\s/g,''))},'Zadejte prosím 5místné PSČ.'],
+    ['oConsent',function(el){return el.checked===true},'Potvrďte prosím souhlas s obchodními podmínkami.']
+  ];
+  function clearInvalid(){this.classList.remove('is-invalid');var lbl=this.closest('.chk');if(lbl)lbl.classList.remove('is-invalid');$('orderErr').hidden=true;}
+  ORDER_CHECKS.forEach(function(c){var el=$(c[0]);el.addEventListener('input',clearInvalid);el.addEventListener('change',clearInvalid);});
+  function validateOrder(){
+    for(var i=0;i<ORDER_CHECKS.length;i++){
+      var c=ORDER_CHECKS[i],el=$(c[0]);
+      if(c[1](el))continue;
+      el.classList.add('is-invalid');var lbl=el.closest('.chk');if(lbl)lbl.classList.add('is-invalid');
+      var errEl=$('orderErr'),host=lbl||el.closest('.row2')||el.closest('.fld')||el;host.insertAdjacentElement('afterend',errEl);
+      errEl.textContent=c[2];errEl.hidden=false;
+      (lbl||el).scrollIntoView({behavior:'smooth',block:'center'});
+      try{el.focus({preventScroll:true})}catch(e){el.focus()}
+      return false;
+    }
+    return true;
+  }
+
   $('orderSubmit').addEventListener('click',function(){
     if(sending)return;
     var f=$('quizOrderForm');
     if(Date.now()>=new Date('2026-12-01T00:00:00+01:00').getTime()){showErr(ERR.closed);return;}
-    if(!f.checkValidity()){f.reportValidity();var bad=f.querySelector(':invalid');if(bad)bad.scrollIntoView({behavior:'smooth',block:'center'});return;}
+    if(!validateOrder())return;
     var pay=payMethod();
     var payload={event:'order_submitted',draftId:getDraftId(),cart:serverCart(),customer:customer(),payment:pay,promoCode:state.activeVariant==='combo'?COMBO_CODE:(PROMO[state.activeVariant]?PROMO[state.activeVariant].code:''),
       website:$('oWebsite').value,consent:$('oConsent').checked,
