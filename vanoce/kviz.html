@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="cs">
-<head><script src="assets/visit-id.js?v=20261125d"></script>
+<head><script src="assets/visit-id.js?v=20261125e"></script>
 <!-- Google Tag Manager (Facebook Pixel + GA4 se spravují v GTM) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KGDFKB27");</script>
 <!-- End Google Tag Manager -->
@@ -1668,7 +1668,7 @@
   var result={};
   function send(event,step,addons){
     if(window.__mfOffer)return;
-    try{window.dataLayer=window.dataLayer||[];var dl={event:'quiz_'+event,quiz_step:step||'',quiz_result:result.shown||''};if(event==='answer'&&/^1 \//.test(step||''))window.dataLayer.push({event:'quiz_first_answer',language:'cs'});if(event==='result')dl.event='quiz_completed';window.dataLayer.push(dl);}catch(e){}
+    try{window.dataLayer=window.dataLayer||[];var dl={event:'quiz_'+event,quiz_step:step||'',quiz_result:result.shown||''};if(event==='result'){dl.event='quiz_completed';var leadSeen='1';try{leadSeen=localStorage.getItem('makeful-lead-once')||'';localStorage.setItem('makeful-lead-once','1')}catch(e){}}window.dataLayer.push(dl);if(event==='result'&&!leadSeen)window.dataLayer.push({event:'quiz_lead',quiz_result:result.shown||''});}catch(e){}
     try{
       var a=state.answers;
       var p={event:event,vid:vid(),step:step||'',q_age:a.age||'',q_budget:a.budget||'',q_interests:a.interests||'',q_goal:'',q_format:a.format||'',q_effect:a.effect||'',q_name:a.name?'ano':(a.format?'ne':''),q_extra:'',q_addons:addons||'',
@@ -1973,8 +1973,8 @@
   }
 })();
 </script>
-<script src="assets/ai-label.js?v=20261125d" defer></script>
-<script src="assets/qr-pay.js?v=20261125d" defer></script>
-<script src="assets/chat.js?v=20261125d" defer></script>
+<script src="assets/ai-label.js?v=20261125e" defer></script>
+<script src="assets/qr-pay.js?v=20261125e" defer></script>
+<script src="assets/chat.js?v=20261125e" defer></script>
 </body>
 </html>
