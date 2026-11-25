@@ -11,7 +11,7 @@
   ];
   var LIGHT=['psanicko-svitici-predek.webp','psanicko-svitici-v-ruce.webp','psanicko-svitici-efekt.webp','psanicko-termo-predek.webp','psanicko-termo-v-ruce.webp','psanicko-cerne-predek.webp','psanicko-cerne-v-ruce.webp','penezenka-svitici-v-ruce.webp','penezenka-svitici-mesh.webp','penezenka-svitici-efekt.webp','penezenka-termo-mesh.webp','penezenka-termo-efekt.webp','penezenka-cerne-mesh.webp','penezenka-cerne-v-ruce.webp','voucher-zmena-barvy-dotek.webp'];
   var TEXT='AI',TITLE='Reálná fotka, AI retuš';
-  var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen,.quiz-offer-bar,.v8-option,.v8-thumbs,.v9-matgrid,.v11-swatches,.v11-variants';
+  var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen,.quiz-offer-bar,.v8-option,.v8-thumbs,.v9-matgrid,.v13-thumbs,.v13-grid';
   var css='.ai-photo-label{position:absolute;left:8px;bottom:8px;z-index:3;width:14px;height:14px;line-height:0;pointer-events:none;color:rgba(255,255,255,.55)}.ai-photo-label svg{display:block;width:14px;height:14px}.ai-photo-label.on-light{color:rgba(120,124,140,.4)}';
   function isAI(src){if(!src)return false;var f=src.split('?')[0].split('/').pop();return AI_PHOTOS.indexOf(f)>-1}
   function fname(src){return String(src||'').split('?')[0].split('/').pop()}
