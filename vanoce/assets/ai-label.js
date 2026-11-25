@@ -11,7 +11,7 @@
   ];
   var LIGHT=['psanicko-svitici-predek.webp','psanicko-svitici-v-ruce.webp','psanicko-svitici-efekt.webp','psanicko-termo-predek.webp','psanicko-termo-v-ruce.webp','psanicko-cerne-predek.webp','psanicko-cerne-v-ruce.webp','penezenka-svitici-v-ruce.webp','penezenka-svitici-mesh.webp','penezenka-svitici-efekt.webp','penezenka-termo-mesh.webp','penezenka-termo-efekt.webp','penezenka-cerne-mesh.webp','penezenka-cerne-v-ruce.webp','voucher-zmena-barvy-dotek.webp'];
   var TEXT='AI',TITLE='Reálná fotka, AI retuš';
-  var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen,.quiz-offer-bar';
+  var SKIP='.gallery-thumbs,.cart-line,.mat-option,.mat-swatch,#answers .answer,#orderScreen,.quiz-offer-bar,.v8-option,.v8-thumbs,.v9-matgrid';
   var css='.ai-photo-label{position:absolute;left:8px;bottom:8px;z-index:3;width:14px;height:14px;line-height:0;pointer-events:none;color:rgba(255,255,255,.55)}.ai-photo-label svg{display:block;width:14px;height:14px}.ai-photo-label.on-light{color:rgba(120,124,140,.4)}';
   function isAI(src){if(!src)return false;var f=src.split('?')[0].split('/').pop();return AI_PHOTOS.indexOf(f)>-1}
   function fname(src){return String(src||'').split('?')[0].split('/').pop()}
@@ -26,7 +26,7 @@
         if(getComputedStyle(box).position==='static')box.style.position='relative';
         label=document.createElement('span');label.className='ai-photo-label';label.innerHTML='<svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6.4" fill="none" stroke="currentColor" stroke-width="0.9"/><text x="7" y="9.1" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="5.6" font-weight="700" fill="currentColor">AI</text></svg>';label.title=TITLE;label.setAttribute('aria-label',TITLE);box.appendChild(label);
       }
-      label.classList.toggle('on-light',LIGHT.indexOf(fname(aiImg.getAttribute('src')))>-1);
+      label.classList.toggle('on-light',LIGHT.indexOf(fname(aiImg.getAttribute('src')))>-1||!!aiImg.closest('#newUI'));
     });
     document.querySelectorAll('.ai-photo-label').forEach(function(l){var b=l.parentElement;if(!b.querySelector(':scope > img'))l.remove();});
   }
