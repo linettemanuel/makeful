@@ -467,6 +467,20 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
 #newUI .v8-timer{font-size:14px;font-weight:800;color:#c2185b}
 #newUI .v8-barprice{display:grid;line-height:1.15}#newUI .v8-barprice strong{color:#e5145f}#newUI .v8-barprice s{font-size:12.5px}#newUI .v8-barprice small{font-size:11.5px;font-weight:700;color:#c2185b}
 @media(max-width:600px){body.mf-chat #newUI .v8-bottom>div{padding-right:70px}}
+/* Barvy jako ve zbytku webu: gradientová tlačítka, růžová a fialová */
+#newUI{color:var(--navy)}#newUI h1,#newUI h2,#newUI h3{color:var(--navy)}
+#newUI .v8-lead,#newUI .v8-section>p,#newUI .v8-mini,#newUI .v8-note,#newUI .v8-option small,#newUI .v8-tile p,#newUI .v8-faq details p,#newUI .v8-save{color:var(--muted)}
+#newUI .v8-btn{background:var(--grad);border-radius:16px;font-weight:800;font-size:17px;min-height:56px;box-shadow:0 10px 22px rgba(255,92,147,.28);color:#fff}
+#newUI .v8-btn:active{transform:scale(.99)}
+#newUI .v8-link,#newUI .v8-section a,#newUI .v8-faq a{color:var(--lilac)}
+#newUI .v8-tag{color:var(--lilac);font-weight:700}
+#newUI .v8-progress i.on{background:var(--grad)}
+#newUI .v8-option em{color:#e5145f}#newUI .v8-arrow{color:var(--lilac)}
+#newUI .v8-option:active{background:var(--pink-soft);border-color:var(--pink)}
+#newUI .v8-offers .v8-option[aria-pressed=true],#newUI .v8-materials button[aria-pressed=true]{border:2px solid var(--pink);background:var(--pink-soft)}
+#newUI .v9-matgrid button[aria-pressed=true]{border:2px solid var(--pink);background:var(--pink-soft)}
+#newUI .v8-check li:before{color:var(--pink)}
+#newUI .v8-option:focus-visible,#newUI .v8-btn:focus-visible{outline:3px solid #cdbbff;outline-offset:2px}
 #newUI .v9-imgwrap{display:block;position:relative;line-height:0}#newUI .v8-two.v9-side{grid-template-columns:repeat(2,minmax(0,1fr))}#newUI .v9-side .v8-tile img,#newUI .v9-side .v8-tile video{aspect-ratio:1;object-fit:cover;width:100%;height:auto}#newUI .v9-side .v8-tile div{padding:8px 10px 10px}#newUI .v9-side h3{font-size:15px}#newUI .v9-side p{font-size:12.5px}
 
 </style>
