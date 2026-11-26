@@ -6,495 +6,483 @@
 <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#fff7fb">
+  <meta name="theme-color" content="#fbf6ff">
   <meta name="description" content="Najdeme jí ideální dárek za 45 vteřin. Krátký kvíz Makeful.">
   <title>Najděte jí ideální dárek · Makeful</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Makeful kvíz · vzhled „termo materiál“: kde rodič klepne, tam se barva rozlije jako od tepla dlaně */
     :root {
-      --navy: #111633;
-      --text: #2b3352;
-      --muted: #646a85;
-      --pink: #ff5c93;
-      --pink-soft: #fff0f6;
-      --lilac: #8b5cf6;
-      --lilac-soft: #f3eeff;
-      --line: #e7e4ef;
-      --bg: #fff7fb;
-      --grad: linear-gradient(100deg, #48d5ec, #9b6cff 40%, #ff6f9f 75%, #ffb26b);
-      --radius: 18px;
+      --ink: #1f1233;
+      --text: #43355b;
+      --muted: #6f6285;
+      --line: rgba(31, 18, 51, .1);
+      --bg: #fbf6ff;
+      --card: #ffffff;
+      --gold: #f5c04a;
+      --violet: #8754ce;
+      --pink: #db49ca;
+      --orange: #ff8a3d;
+      --irid: linear-gradient(115deg, #8754ce 0%, #db49ca 34%, #f05564 64%, #ff8a3d 84%, #f5c04a 100%);
+      --cta: linear-gradient(115deg, #7a3fd6 0%, #c9389a 52%, #f0504f 100%);
+      --soft: linear-gradient(135deg, #f4ebff 0%, #ffecf5 50%, #fff2e3 100%);
+      --plum: #7a3fd6;
+      --plum-deep: #5a26a8;
+      --plum-soft: #f3e9ff;
+      --berry: #d0389a;
+      --berry-soft: #ffedf6;
+      --sage: #12925a;
+      --sage-soft: #e5f7ee;
+      --night: #1e0f36;
+      --display: "Manrope", "Figtree", system-ui, sans-serif;
+      --sans: "Figtree", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --spring: cubic-bezier(.22, 1, .36, 1);
+      --bounce: cubic-bezier(.34, 1.56, .64, 1);
+      --glass: rgba(255, 255, 255, .78);
+      --lift: 0 10px 30px rgba(110, 45, 150, .08);
     }
+
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
     html { -webkit-text-size-adjust: 100%; }
-    body { margin: 0; font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--navy); background-attachment: fixed; background: var(--bg); }
-    button { font: inherit; color: inherit; }
-
-    .app { width: 100%; max-width: 440px; min-height: 100dvh; margin: 0 auto; padding: 0 18px calc(20px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; }
-    @media (min-width: 600px) {
-      body { background: radial-gradient(circle at 20% 0, #e9f9fd, transparent 40%), radial-gradient(circle at 80% 0, #ffe6f0, transparent 40%), var(--bg); }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color .7s ease;
     }
+    button, input, textarea { font: inherit; color: inherit; }
+    img { max-width: 100%; }
+    :focus-visible { outline: 3px solid rgba(135, 84, 206, .55); outline-offset: 2px; }
 
-    /* Horní lišta */
-    .top { position: sticky; top: 0; z-index: 6; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; height: 52px; margin: 0 -18px; padding: 0 8px; background: rgba(255,247,251,.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
-    .icon-btn { width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; border-radius: 12px; cursor: pointer; color: var(--navy); text-decoration: none; font-size: 22px; line-height: 1; }
-    .icon-btn:active { background: rgba(17,22,51,.06); }
-    .icon-btn.invisible { visibility: hidden; }
+    /* Živé pozadí: barva se posouvá s každou odpovědí (--hue nastavuje skript) */
+    .aura { position: fixed; inset: -25vmax; z-index: -2; pointer-events: none; filter: hue-rotate(var(--hue, 0deg)); transition: filter 1.4s var(--spring), opacity .8s ease; }
+    .aura i { position: absolute; border-radius: 50%; filter: blur(64px); opacity: .6; animation: drift 20s ease-in-out infinite alternate; will-change: transform; }
+    .aura i:nth-child(1) { width: 62vmax; height: 62vmax; left: 0; top: -6vmax; background: radial-gradient(circle, #ffd6a3 0%, transparent 64%); }
+    .aura i:nth-child(2) { width: 58vmax; height: 58vmax; right: -4vmax; top: 10vmax; background: radial-gradient(circle, #d6b2ff 0%, transparent 64%); animation-duration: 24s; animation-delay: -8s; }
+    .aura i:nth-child(3) { width: 64vmax; height: 64vmax; left: 14vmax; bottom: -10vmax; background: radial-gradient(circle, #ffb6d8 0%, transparent 64%); animation-duration: 28s; animation-delay: -14s; }
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(5vmax, -4vmax) scale(1.08); }
+      100% { transform: translate(-4vmax, 5vmax) scale(.95); }
+    }
+    body.night { background: var(--night); }
+    body.night .aura { opacity: .28; }
+
+    .app { width: 100%; max-width: 460px; min-height: 100dvh; margin: 0 auto; padding: 0 18px calc(24px + env(safe-area-inset-bottom)); }
+    @media (min-width: 600px) { .app { max-width: 580px; padding-top: 18px; } }
+
+    body:not(.mf-order) .app > .top,
+    body:not(.mf-order) .app > #steps,
+    #questionScreen, #claimScreen, #loadingScreen, #resultScreen { display: none !important; }
+    body.mf-order #newUI { display: none !important; }
+
+    /* Ikony */
+    .ic { width: 19px; height: 19px; display: block; flex: 0 0 auto; }
+    .ic .ic-dot { fill: url(#icoGrad); stroke: none; }
+    .m-hook .m-orb .ic { width: 19px; height: 19px; }
+    .m-mirror .m-orb .ic { width: 21px; height: 21px; }
+    .m-bulb .ic { width: 24px; height: 24px; stroke: #ffd27a; }
+    .m-opt.is-picked .m-ico .ic, .m-chk:has(input:checked) .m-ico .ic { stroke-width: 2.1; }
+    .r-rec-why { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
+    .r-rec-why-list { display: grid; gap: 6px; }
+    .r-rec-sec { background: linear-gradient(135deg, #fff1e6, #ffeaf4); color: #8a2a5e; }
+    .r-rec-why .ic { width: 16px; height: 16px; margin-top: 1px; }
+    .r-mini-ic { display: flex; align-items: center; justify-content: center; gap: 7px; }
+    .r-mini-ic .ic { width: 17px; height: 17px; }
+
+    /* ===== Horní řádek kvízu: zpět + skládající se květinové moduly ===== */
+    #newUI { padding-bottom: 18px; }
+    .m-top { display: grid; grid-template-columns: 42px 1fr 42px; align-items: center; gap: 8px; height: 60px; margin-bottom: 8px; }
+    .m-back { width: 42px; height: 42px; border: 0; border-radius: 14px; background: rgba(255, 255, 255, .72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 2px 12px rgba(31, 18, 51, .07); display: grid; place-items: center; cursor: pointer; color: var(--ink); transition: transform .25s var(--bounce); }
+    .m-back:active { transform: scale(.88); }
+    .m-back svg { width: 18px; height: 18px; }
+    .m-flowers { display: flex; justify-content: center; align-items: center; gap: 5px; }
+    .m-flowers svg { width: 20px; height: 20px; fill: #e6d9f4; transition: fill .4s ease, transform .4s var(--bounce); }
+    .m-flowers svg.on { fill: url(#flwGrad); }
+    .m-flowers svg.cur { fill: #d9b4f2; transform: scale(1.18); animation: curPulse 1.8s ease-in-out infinite; }
+    .m-flowers svg.snap { animation: snap .6s var(--bounce); }
+    @keyframes snap { 0% { transform: scale(.2) rotate(-90deg); } 100% { transform: none; } }
+    @keyframes curPulse { 50% { transform: scale(1.3); } }
+    .m-count { font-size: 12.5px; font-weight: 700; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+    .m-logo { justify-self: center; height: 22px; width: auto; display: block; }
+
+    /* ===== Přechody mezi kroky ===== */
+    .stage-fwd { animation: inFwd .55s var(--spring) both; }
+    .stage-back { animation: inBack .55s var(--spring) both; }
+    .stage-fade { animation: inFade .7s var(--spring) both; }
+    @keyframes inFwd { from { opacity: 0; transform: translateX(32px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+    @keyframes inBack { from { opacity: 0; transform: translateX(-32px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+    @keyframes inFade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    /* ===== Typografie kvízu ===== */
+    .m-h1 { margin: 0; text-align: center; font-family: var(--display); font-size: 21px; line-height: 1.25; letter-spacing: -.02em; font-weight: 700; color: var(--ink); }
+    .m-sub { margin: 6px 0 0; text-align: center; font-size: 14px; line-height: 1.45; color: var(--muted); }
+    .m-tag { display: flex; width: max-content; max-width: 100%; align-items: center; gap: 6px; margin: 0 auto 10px; padding: 4px 10px 4px 8px; border-radius: 99px; background: rgba(255, 255, 255, .8); box-shadow: inset 0 0 0 1px rgba(135, 84, 206, .16); font-size: 13px; font-weight: 700; color: var(--plum-deep); }
+    .m-tag::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--irid); }
+
+    /* Kontext z reklamy */
+    .m-hook { display: flex; align-items: center; gap: 11px; margin: 0 0 16px; padding: 10px 12px; border-radius: 16px; background: rgba(255, 255, 255, .66); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9), var(--lift); }
+    .m-orb { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; font-size: 23px; background: var(--soft); box-shadow: inset 0 0 0 1px rgba(135, 84, 206, .12); }
+    .m-hook div > strong { display: block; font-size: 14.5px; line-height: 1.3; font-weight: 700; }
+    .m-hook div > span { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
+
+    /* ===== Odpovědi jako dílky ===== */
+    .m-opts { display: grid; gap: 10px; margin: 22px 0 12px; }
+    .m-opt {
+      position: relative; overflow: hidden; isolation: isolate;
+      width: 100%; display: grid; grid-template-columns: 34px minmax(0, 1fr) 22px; gap: 11px; align-items: center;
+      text-align: left; padding: 8px 12px 8px 8px; min-height: 52px;
+      border: 2px solid transparent; border-radius: 16px;
+      background: linear-gradient(var(--glass), var(--glass)) padding-box, linear-gradient(#fff, #fff) border-box;
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      box-shadow: var(--lift);
+      cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+      animation: rise .6s var(--spring) backwards; animation-delay: calc(var(--i, 0) * 55ms + 90ms);
+      transition: transform .3s var(--spring), box-shadow .3s ease;
+    }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+    @media (hover: hover) { .m-opt:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(110, 45, 150, .13); } }
+    .m-opt:active { transform: scale(.975); }
+    .m-opt .m-ico { width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; font-size: 23px; line-height: 1; background: var(--soft); transition: transform .4s var(--bounce); }
+    .m-opt strong { display: block; font-size: 15px; font-weight: 700; line-height: 1.25; letter-spacing: -.005em; color: var(--ink); }
+    .m-opt small { display: block; margin-top: 1px; font-size: 12.5px; line-height: 1.35; color: var(--muted); font-weight: 500; }
+    .m-opt .m-arr { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: var(--plum); background: var(--plum-soft); transition: transform .35s var(--bounce), background .3s; }
+    .m-opt.is-picked { background: linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .55)) padding-box, var(--irid) border-box; box-shadow: 0 14px 34px rgba(135, 84, 206, .22); }
+    .m-opt.is-picked .m-ico { transform: scale(1.14) rotate(-8deg); background: #fff; }
+    .m-opt.is-picked .m-arr { background: var(--cta); color: #fff; transform: scale(1.12); }
+    .m-badge { display: inline-block; margin-left: 7px; padding: 2px 9px; border-radius: 99px; background: var(--cta); color: #fff; font-size: 11.5px; font-weight: 800; vertical-align: 2px; letter-spacing: .01em; }
+
+    /* Termo efekt: barva se rozlije z místa dotyku */
+    .bloom { position: absolute; left: var(--x); top: var(--y); width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; pointer-events: none; z-index: -1;
+      background: radial-gradient(circle, rgba(219, 73, 202, .38) 0%, rgba(240, 85, 100, .28) 38%, rgba(255, 138, 61, .2) 60%, transparent 72%);
+      transform: scale(0); animation: bloom .75s var(--spring) forwards; }
+    .bloom.fade { animation: bloomFade .8s var(--spring) forwards; }
+    @keyframes bloom { to { transform: scale(30); } }
+    @keyframes bloomFade { 60% { opacity: 1; } to { transform: scale(30); opacity: 0; } }
+
+    /* Více odpovědí najednou */
+    .m-chk {
+      position: relative; overflow: hidden; isolation: isolate;
+      display: flex; align-items: center; gap: 11px; padding: 8px 12px 8px 8px; min-height: 52px;
+      border: 2px solid transparent; border-radius: 16px;
+      background: linear-gradient(var(--glass), var(--glass)) padding-box, linear-gradient(#fff, #fff) border-box;
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: var(--lift);
+      cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+      animation: rise .6s var(--spring) backwards; animation-delay: calc(var(--i, 0) * 55ms + 90ms);
+      transition: transform .25s var(--spring), box-shadow .3s ease;
+    }
+    .m-chk:active { transform: scale(.98); }
+    .m-chk .m-ico { flex: 0 0 34px; width: 34px; height: 34px; border-radius: 11px; display: grid; place-items: center; font-size: 23px; background: var(--soft); transition: transform .4s var(--bounce); }
+    .m-chk .m-txt { flex: 1; min-width: 0; }
+    .m-chk strong { display: block; font-size: 14.5px; font-weight: 700; line-height: 1.28; }
+    .m-chk small { display: block; margin-top: 3px; font-size: 13px; line-height: 1.35; color: var(--muted); }
+    .m-chk input { -webkit-appearance: none; appearance: none; flex: 0 0 22px; width: 22px; height: 22px; margin: 0; border-radius: 7px; background: #fff; box-shadow: inset 0 0 0 2px #e0d1ef; display: grid; place-items: center; cursor: pointer; transition: transform .3s var(--bounce), box-shadow .2s; }
+    .m-chk input::after { content: "✓"; color: #fff; font-size: 12px; font-weight: 900; transform: scale(0); transition: transform .3s var(--bounce); }
+    .m-chk input:checked { background: var(--cta); box-shadow: none; transform: scale(1.08); }
+    .m-chk input:checked::after { transform: scale(1); }
+    .m-chk:has(input:checked) { background: linear-gradient(rgba(255, 255, 255, .6), rgba(255, 255, 255, .6)) padding-box, var(--irid) border-box; box-shadow: 0 14px 34px rgba(135, 84, 206, .18); }
+    .m-chk:has(input:checked) .m-ico { transform: scale(1.1) rotate(-6deg); background: #fff; }
+
+    .m-link { display: block; width: 100%; border: 0; background: none; padding: 10px 8px; font-size: 13.5px; font-weight: 600; color: var(--muted); text-decoration: underline; text-decoration-color: rgba(111, 98, 133, .35); text-underline-offset: 4px; cursor: pointer; text-align: center; }
+    .m-meta-note { margin: 0; text-align: center; font-size: 13px; color: var(--muted); }
+
+    /* ===== Zrcadlo: věta rodiče + teploměr 1 až 5 ===== */
+    .m-mirror { margin: 0 0 18px; padding: 26px 20px 28px; border-radius: 24px; text-align: center; background: rgba(255, 255, 255, .82); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: inset 0 0 0 1px #fff, 0 22px 54px rgba(110, 45, 150, .11); }
+    .m-mirror .m-orb { margin: 0 auto 16px; width: 40px; height: 40px; flex-basis: 40px; border-radius: 12px; }
+    .m-mirror blockquote { margin: 0; font-family: var(--display); font-size: 23px; line-height: 1.3; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
+    .m-scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .m-scale button {
+      --c: #8754ce;
+      position: relative; overflow: hidden; isolation: isolate;
+      height: 48px; border: 0; border-radius: 14px; background: rgba(255, 255, 255, .9);
+      box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--c) 40%, #fff), 0 8px 20px rgba(110, 45, 150, .07);
+      font-family: var(--display); font-size: 17px; font-weight: 800; color: var(--ink); cursor: pointer; touch-action: manipulation;
+      animation: rise .55s var(--spring) backwards; animation-delay: calc(var(--i, 0) * 50ms + 120ms);
+      transition: transform .35s var(--bounce), background .3s ease, color .3s ease, box-shadow .3s ease;
+    }
+    .m-scale button:nth-child(2) { --c: #b04bd6; }
+    .m-scale button:nth-child(3) { --c: #db49ca; }
+    .m-scale button:nth-child(4) { --c: #f05564; }
+    .m-scale button:nth-child(5) { --c: #ff8a3d; }
+    .m-scale button.is-picked, .m-scale button[aria-pressed="true"] { background: var(--c); color: #fff; transform: translateY(-3px) scale(1.04); box-shadow: 0 14px 28px color-mix(in srgb, var(--c) 45%, transparent); }
+    .m-scale-bar { height: 4px; margin: 10px 4px 0; border-radius: 9px; background: linear-gradient(90deg, #8754ce, #db49ca 40%, #f05564 70%, #ff8a3d); opacity: .55; }
+    .m-scale-lbl { display: flex; justify-content: space-between; margin-top: 8px; font-size: 13.5px; font-weight: 600; color: var(--muted); }
+
+    /* ===== Aha karta: tmavá, svítí ===== */
+    .m-agitate { position: relative; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; min-height: min(440px, 62dvh); margin-top: 4px; padding: 26px 22px 22px; border-radius: 24px; background: var(--night); color: #fff; box-shadow: 0 30px 70px rgba(50, 15, 70, .35); }
+    .m-agitate::before, .m-agitate::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(30px); animation: drift 12s ease-in-out infinite alternate; }
+    .m-agitate::before { width: 280px; height: 280px; right: -110px; top: -120px; background: radial-gradient(circle, rgba(135, 84, 206, .75), transparent 66%); }
+    .m-agitate::after { width: 240px; height: 240px; left: -110px; bottom: -120px; background: radial-gradient(circle, rgba(240, 85, 100, .55), transparent 66%); animation-delay: -5s; }
+    .m-agitate-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 22px; }
+    .m-bulb { flex: 0 0 46px; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; font-size: 25px; background: rgba(255, 255, 255, .09); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); animation: glowPulse 2.6s ease-in-out infinite; }
+    @keyframes glowPulse { 50% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25), 0 0 34px rgba(255, 196, 120, .5); } }
+    .m-agitate-echo { padding: 7px 12px; border-radius: 14px; background: rgba(255, 255, 255, .1); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); font-size: 12.5px; line-height: 1.3; font-weight: 600; color: #f2e6ff; text-align: left; }
+    .m-agitate h1 { flex: 1; margin: 0 0 24px; font-family: var(--display); font-size: 27px; line-height: 1.22; letter-spacing: -.022em; font-weight: 800; }
+    .m-agitate-q { margin: 0 0 10px !important; font-size: 14.5px !important; line-height: 1.4; font-weight: 600; color: #e6d8f3; }
+    .m-agitate p { margin: 0 0 16px; font-size: 14.5px; line-height: 1.58; color: #e6d8f3; }
+
+    /* ===== Tlačítka ===== */
+    .m-btn { position: relative; overflow: hidden; isolation: isolate; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 48px; padding: 11px 16px; border: 0; border-radius: 14px; background: var(--ink); color: #fff; font-size: 15.5px; font-weight: 700; letter-spacing: -.005em; cursor: pointer; touch-action: manipulation; box-shadow: 0 14px 30px rgba(31, 18, 51, .22); transition: transform .25s var(--spring), box-shadow .25s ease; }
+    .m-btn:active { transform: scale(.97); }
+    .m-btn-grad { background: var(--cta); box-shadow: 0 16px 34px rgba(201, 56, 154, .36); }
+    .m-btn-grad::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, .38) 50%, transparent 68%); transform: translateX(-130%); animation: sheen 3.6s ease-in-out infinite; }
+    @keyframes sheen { 0%, 58% { transform: translateX(-130%); } 88%, 100% { transform: translateX(130%); } }
+
+    /* ===== Vyhodnocení: zhasne se a svítící moduly se poskládají ===== */
+    .m-synth { min-height: calc(100dvh - 110px); display: flex; flex-direction: column; justify-content: center; gap: 26px; padding: 10px 0 40px; text-align: center; color: #fff; }
+    .m-ring { position: relative; width: 210px; height: 210px; margin: 0 auto; }
+    .m-ring::before { content: ""; position: absolute; inset: 30px; border-radius: 50%; background: radial-gradient(circle, rgba(135, 84, 206, .55), rgba(240, 85, 100, .18) 55%, transparent 72%); filter: blur(12px); animation: corePulse 2.2s ease-in-out infinite; }
+    @keyframes corePulse { 50% { transform: scale(1.12); opacity: .8; } }
+    .m-ring-in { position: absolute; inset: 0; animation: spin 14s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .m-ring svg { position: absolute; left: 50%; top: 50%; width: 36px; height: 36px; margin: -18px 0 0 -18px; fill: url(#flwGrad); opacity: 0;
+      filter: drop-shadow(0 0 8px rgba(135, 84, 206, .95)) drop-shadow(0 0 18px rgba(240, 85, 100, .6));
+      transform: rotate(var(--a)) translateY(-150px) rotate(0deg) scale(.2);
+      animation: assemble 1s var(--spring) forwards; animation-delay: calc(var(--i) * 120ms); }
+    @keyframes assemble { to { opacity: 1; transform: rotate(var(--a)) translateY(-78px) rotate(240deg) scale(1); } }
+    .m-ring img { position: absolute; left: 50%; top: 50%; width: 104px; height: auto; transform: translate(-50%, -50%) scale(.85); filter: brightness(0) invert(1) drop-shadow(0 0 14px rgba(255, 205, 235, .8)); opacity: 0; animation: logoIn .8s var(--spring) .75s forwards; }
+    @keyframes logoIn { to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+    .m-synth h1 { margin: 0; font-family: var(--display); font-size: 20px; line-height: 1.3; letter-spacing: -.015em; font-weight: 700; }
+    .m-bar { width: 100%; max-width: 280px; height: 6px; margin: 0 auto; border-radius: 99px; background: rgba(255, 255, 255, .12); overflow: hidden; }
+    .m-bar i { display: block; height: 100%; width: 12%; border-radius: inherit; background: var(--irid); box-shadow: 0 0 14px rgba(240, 85, 100, .8); transition: width .2s linear; }
+    .m-synth-list { list-style: none; width: 100%; max-width: 360px; margin: 0 auto; padding: 0; display: grid; gap: 9px; text-align: left; }
+    .m-synth-list li { display: flex; align-items: center; gap: 11px; padding: 13px 15px; border-radius: 16px; background: rgba(255, 255, 255, .07); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); font-size: 14.5px; font-weight: 600; color: #f3e9ff; opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .55s var(--spring); }
+    .m-synth-list li.on { opacity: 1; transform: none; }
+    .m-synth-list li b { flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: var(--irid); color: #fff; font-size: 12px; }
+
+    /* ===== VÝSLEDEK ===== */
+    .r-wrap { padding-bottom: 116px; }
+    .r-saved { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+    .r-saved button { border: 0; background: none; padding: 0; color: var(--plum); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+    .r-pill { position: relative; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; padding: 7px 13px; border-radius: 99px; background: rgba(255, 255, 255, .85); box-shadow: inset 0 0 0 1px rgba(135, 84, 206, .2), 0 6px 18px rgba(110, 45, 150, .08); font-size: 13.5px; font-weight: 800; color: var(--plum-deep); }
+    .r-h1 { margin: 0; font-family: var(--display); font-size: 27px; line-height: 1.16; letter-spacing: -.025em; font-weight: 800; color: var(--ink); }
+    .r-lead { margin: 14px 0 0; font-size: 15.5px; line-height: 1.52; color: var(--text); }
+
+    .r-concept { margin: 32px 0 0; padding: 18px 16px 16px; border-radius: 20px; background: rgba(255, 255, 255, .84); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: inset 0 0 0 1px #fff, 0 22px 54px rgba(110, 45, 150, .1); display: grid; gap: 16px; }
+    .r-concept-head { margin: 0; font-family: var(--display); font-size: 18px; line-height: 1.3; letter-spacing: -.015em; font-weight: 700; }
+    .r-concept-intro { margin: 0; font-size: 15px; line-height: 1.55; color: var(--text); }
+    .r-steps { position: relative; display: grid; gap: 12px; }
+    .r-step { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; padding: 6px 10px 6px 6px; border-radius: 15px; background: var(--soft); }
+    .r-step img { width: 64px; height: 64px; border-radius: 11px; object-fit: cover; background: #fff; display: block; }
+    .r-step strong { display: block; font-size: 14.5px; font-weight: 700; line-height: 1.3; }
+    .r-step span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.42; color: var(--muted); }
+
+    .r-sec { margin-top: 48px; display: grid; gap: 14px; }
+    .r-sec h2 { margin: 0; font-family: var(--display); font-size: 21px; line-height: 1.25; letter-spacing: -.02em; font-weight: 800; }
+    .r-box { padding: 10px 10px 14px; border-radius: 20px; background: rgba(255, 255, 255, .86); box-shadow: inset 0 0 0 1px #fff, var(--lift); display: grid; gap: 14px; }
+    .r-box img, .r-box video { width: 100%; border-radius: 14px; display: block; aspect-ratio: 4/3; object-fit: cover; background: var(--soft); }
+    .r-box p { margin: 0 4px 4px; font-size: 14.5px; line-height: 1.58; color: var(--text); }
+    .r-reveal { opacity: 1; }
+
+    .r-checks { list-style: none; margin: 0 4px 4px; padding: 0; display: grid; gap: 8px; }
+    .r-checks li { position: relative; padding-left: 30px; font-size: 14.5px; line-height: 1.42; color: var(--text); }
+    .r-checks li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 21px; height: 21px; border-radius: 50%; display: grid; place-items: center; background: var(--cta); color: #fff; font-size: 11px; font-weight: 900; }
+
+    /* Produktová karta: duhový rámeček jako materiál */
+    .r-card { position: relative; overflow: hidden; border: 2px solid transparent; border-radius: 22px; background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; box-shadow: 0 28px 64px rgba(110, 45, 150, .18); }
+    .r-card-brand { display: flex; align-items: center; justify-content: center; padding: 12px 0 2px; }
+    .r-card-brand img { height: 18px; width: auto; display: block; opacity: .9; }
+    .r-gal-wrap { position: relative; margin: 8px 8px 0; border-radius: 16px; overflow: hidden; background: var(--soft); }
+    .r-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .r-gallery::-webkit-scrollbar { display: none; }
+    .r-gallery > div { flex: 0 0 100%; scroll-snap-align: start; }
+    .r-gallery img { width: 100%; aspect-ratio: 5/4; object-fit: contain; display: block; background: #fff; }
+    .r-gal-wrap.flash::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--irid); mix-blend-mode: soft-light; animation: matFlash 1s ease forwards; }
+    @keyframes matFlash { 0% { opacity: 0; } 30% { opacity: .9; } 100% { opacity: 0; } }
+    .r-save-ribbon { position: absolute; top: 12px; left: 12px; padding: 7px 12px; border-radius: 13px; background: var(--cta); color: #fff; font-size: 13px; font-weight: 800; box-shadow: 0 10px 22px rgba(201, 56, 154, .35); }
+    .r-live-tag { position: absolute; left: 12px; bottom: 12px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 8px 14px; border-radius: 99px; background: rgba(31, 18, 51, .86); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: #fff; font-size: 13.5px; font-weight: 800; letter-spacing: .08em; box-shadow: 0 8px 22px rgba(31, 18, 51, .3); animation: tagPop .4s var(--bounce); }
+    @keyframes tagPop { from { opacity: 0; transform: scale(.7) translateY(6px); } to { opacity: 1; transform: none; } }
+    .r-thumbs { display: flex; gap: 8px; padding: 12px 14px 0; overflow-x: auto; scrollbar-width: none; }
+    .r-thumbs::-webkit-scrollbar { display: none; }
+    .r-thumbs button { flex: 0 0 44px; height: 44px; padding: 2px; border: 2px solid transparent; border-radius: 11px; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(var(--line), var(--line)) border-box; cursor: pointer; transition: transform .25s var(--bounce); }
+    .r-thumbs button.on { background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; transform: translateY(-2px); }
+    .r-thumbs img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: 10px; }
+
+    .r-card-body { padding: 16px 14px 18px; display: grid; gap: 18px; }
+    .r-rec-why { padding: 8px 11px; border-radius: 12px; background: var(--soft); font-size: 14px; line-height: 1.42; color: var(--plum-deep); font-weight: 650; }
+    .r-card-body h3 { margin: 0; font-family: var(--display); font-size: 18px; line-height: 1.3; letter-spacing: -.015em; font-weight: 700; }
+    .r-card-desc { margin: 5px 0 0; font-size: 15px; color: var(--muted); line-height: 1.48; }
+    .r-price-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .r-price-line s { font-size: 16px; color: var(--muted); font-weight: 600; }
+    .r-price-line strong { font-family: var(--display); font-size: 27px; line-height: 1; font-weight: 800; letter-spacing: -.025em; background: var(--cta); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+    .r-price-line span { padding: 5px 10px; border-radius: 10px; background: var(--berry-soft); color: #b21d74; font-size: 13px; font-weight: 800; }
+
+    .r-mat-lbl { display: block; margin: 0 0 6px; font-size: 13.5px; font-weight: 700; line-height: 1.3; }
+    .r-mat-hint { display: block; margin-bottom: 10px; font-size: 13.5px; color: var(--muted); }
+    .r-mat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .r-mat-grid button { position: relative; overflow: hidden; isolation: isolate; min-height: 34px; padding: 5px 6px; border: 1.5px solid transparent; border-radius: 10px; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(var(--line), var(--line)) border-box; display: grid; place-items: center; text-align: center; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: transform .3s var(--bounce), box-shadow .3s ease; }
+    .r-mat-grid button[aria-pressed="true"] { background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; box-shadow: 0 4px 12px rgba(135, 84, 206, .18); color: var(--plum-deep); }
+    .r-mat-grid img { width: 56px; height: 56px; object-fit: contain; border-radius: 12px; }
+
+    .r-name-box { display: grid; gap: 6px; font-size: 13.5px; font-weight: 700; }
+    .r-name-box input { width: 100%; min-height: 44px; padding: 9px 13px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff; font-size: 16px; font-weight: 700; letter-spacing: .01em; color: var(--ink); transition: border-color .2s, box-shadow .2s; }
+    .r-name-box input:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 5px rgba(135, 84, 206, .14); }
+    .r-mini { margin: 0; font-size: 13.5px; color: var(--muted); text-align: center; }
+
+    /* Důkaz: tmavá karta, ať citace vynikne */
+    .r-proof { position: relative; overflow: hidden; isolation: isolate; margin: 48px 0 0; padding: 16px 14px 12px; border-radius: 20px; background: var(--night); color: #fff; box-shadow: 0 24px 56px rgba(50, 15, 70, .28); }
+    .r-proof::before { content: ""; position: absolute; z-index: -1; width: 260px; height: 260px; right: -120px; top: -130px; border-radius: 50%; background: radial-gradient(circle, rgba(135, 84, 206, .6), transparent 66%); filter: blur(24px); }
+    .r-proof-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14.5px; font-weight: 800; }
+    .r-proof-cz { flex: 0 0 auto; white-space: nowrap; font-size: 13px; font-weight: 600; color: #d5c2ec; }
+    .r-stars { color: #f5c04a; letter-spacing: 2px; }
+    .r-proof p { margin: 12px 0 0; font-family: var(--display); font-size: 16.5px; line-height: 1.45; font-weight: 700; letter-spacing: -.01em; }
+    .r-media-bar { margin-top: 16px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, .12); display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: #d5c2ec; }
+    .r-media-bar a { color: #fff; text-decoration: none; }
+
+    /* Srovnání */
+    .r-vs { display: grid; gap: 14px; }
+    .r-vs-no, .r-vs-yes { padding: 14px 13px; border-radius: 18px; }
+    .r-vs-no { background: rgba(255, 255, 255, .55); box-shadow: inset 0 0 0 1px rgba(31, 18, 51, .07); }
+    .r-vs-yes { border: 2px solid transparent; background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; box-shadow: 0 18px 40px rgba(135, 84, 206, .16); }
+    .r-vs-head { display: block; margin-bottom: 12px; font-family: var(--display); font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--muted); }
+    .r-vs-yes .r-vs-head { color: var(--plum-deep); }
+    .r-vs ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
+    .r-vs li { position: relative; padding-left: 32px; line-height: 1.45; }
+    .r-vs li::before { position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 900; color: #fff; }
+    .r-vs-no li::before { content: "✕"; background: #d4c6e2; }
+    .r-vs-no li { color: var(--muted); }
+    .r-vs-yes li::before { content: "✓"; background: var(--cta); }
+    .r-vs-yes li { color: var(--ink); }
+
+    /* Rozbalovací informace */
+    .r-details { border-radius: 15px; background: rgba(255, 255, 255, .86); box-shadow: inset 0 0 0 1px #fff, 0 6px 20px rgba(110, 45, 150, .06); overflow: hidden; }
+    .r-details summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 12px 11px 14px; font-size: 14.5px; font-weight: 700; line-height: 1.35; cursor: pointer; }
+    .r-details summary::-webkit-details-marker { display: none; }
+    .r-details summary::after { content: "+"; flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: var(--plum-soft); color: var(--plum); font-size: 18px; font-weight: 700; transition: transform .35s var(--spring), background .3s, color .3s; }
+    .r-details[open] summary::after { transform: rotate(45deg); background: var(--cta); color: #fff; }
+    .r-details > p { margin: 0; padding: 0 14px 12px; font-size: 14px; line-height: 1.55; color: var(--text); }
+    .r-details-body { display: grid; gap: 8px; padding: 0 10px 10px; }
+    .r-details[open] > :not(summary) { animation: inFade .45s var(--spring); }
+    .r-details-body img, .r-details-body video { width: 100%; border-radius: 16px; display: block; aspect-ratio: 4/3; object-fit: cover; background: var(--soft); }
+    .r-details-body p { margin: 0 4px 4px; font-size: 14px; line-height: 1.55; color: var(--text); }
+
+    /* Varianty */
+    .r-tiers { display: grid; gap: 10px; }
+    .r-tier { position: relative; overflow: hidden; isolation: isolate; width: 100%; display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 10px; align-items: center; text-align: left; padding: 7px 10px 7px 7px; border: 2px solid transparent; border-radius: 15px; background: linear-gradient(rgba(255, 255, 255, .88), rgba(255, 255, 255, .88)) padding-box, linear-gradient(#fff, #fff) border-box; box-shadow: var(--lift); cursor: pointer; transition: transform .3s var(--spring), box-shadow .3s; }
+    .r-tier:active { transform: scale(.98); }
+    .r-tier[aria-pressed="true"] { background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; box-shadow: 0 14px 32px rgba(135, 84, 206, .17); }
+    .r-tier img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; background: var(--soft); }
+    .r-tier strong { display: block; font-size: 13.5px; line-height: 1.28; }
+    .r-tier small { display: block; margin-top: 3px; font-size: 12.5px; line-height: 1.35; color: var(--muted); }
+    .r-tier-price { text-align: right; white-space: nowrap; }
+    .r-tier-price s { display: block; font-size: 12px; color: var(--muted); }
+    .r-tier-price b { font-family: var(--display); font-size: 15.5px; color: var(--plum-deep); }
+    .r-footer { margin-top: 40px; }
+    .r-footer a, .r-footer button { border: 0; background: none; padding: 0; color: var(--plum); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+    /* Spodní lišta: vyjede, jen když hlavní tlačítko není vidět */
+    .r-bottom { position: fixed; left: 0; right: 0; bottom: 0; z-index: 12; padding: 8px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .82); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 -1px 0 rgba(255, 255, 255, .9), 0 -14px 34px rgba(110, 45, 150, .1); transform: translateY(115%); transition: transform .55s var(--spring); }
+    .r-bottom.show { transform: none; }
+    .r-bottom-in { max-width: 428px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+    .r-bottom-price s { display: block; font-size: 12.5px; color: var(--muted); }
+    .r-bottom-price strong { font-family: var(--display); font-size: 18px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .r-bottom .m-btn { min-height: 46px; }
+    @media (max-width: 600px) { body.mf-chat .r-bottom-in { padding-right: 64px; } }
+
+    /* Jiskry při odhalení výsledku */
+    .spark { position: fixed; z-index: 30; width: 9px; height: 9px; border-radius: 50%; pointer-events: none; background: var(--c); animation: spark 1s var(--spring) forwards; }
+    @keyframes spark { from { transform: translate(0, 0) scale(1); opacity: 1; } to { transform: translate(var(--dx), var(--dy)) scale(.2); opacity: 0; } }
+
+    /* ===== Objednávka a potvrzení ===== */
+    .top { position: sticky; top: 0; z-index: 6; display: grid; grid-template-columns: 42px 1fr 42px; align-items: center; height: 56px; margin: 0 -18px; padding: 0 10px; background: rgba(251, 246, 255, .82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+    .icon-btn { width: 42px; height: 42px; display: grid; place-items: center; border: 0; background: none; border-radius: 14px; cursor: pointer; color: var(--ink); text-decoration: none; font-size: 20px; }
     .logo { justify-self: center; line-height: 0; }
-    .logo img { height: 22px; width: auto; display: block; }
-
-    .steps { display: flex; gap: 5px; margin: 2px 0 18px; }
-    .steps[hidden] { display: none; }
-    .steps i { flex: 1; height: 5px; border-radius: 99px; background: #ece8f2; overflow: hidden; position: relative; }
-    .steps i::after { content: ""; position: absolute; inset: 0; width: 0; background: var(--grad); border-radius: inherit; transition: width .35s ease; }
-    .steps i.done::after { width: 100%; }
-
-    .view { display: none; flex-direction: column; flex: 1 1 auto; animation: slide .28s ease; }
-    .view.active { display: flex; }
-    @keyframes slide { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
-
-    /* Otázka */
-    .q-num { display: inline-flex; align-items: center; justify-content: center; min-width: 52px; height: 40px; padding: 0 10px; margin-right: 4px; vertical-align: 4px; border-radius: 999px; background: #fff; box-shadow: 0 4px 14px rgba(84,55,132,.14); font-family: "DM Sans", system-ui, sans-serif; font-size: 17px; font-weight: 800; letter-spacing: 0; font-variant-numeric: tabular-nums; }
-    .q-num span, .q-last { background: linear-gradient(100deg, #48d5ec, #9b6cff 38%, #ff6f9f 72%, #ffb26b); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .eyebrow { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--lilac); }
-    .q-title { margin: 0; font-size: clamp(22px, 6.2vw, 26px); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; }
-    .q-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--muted); }
-    .answers { display: grid; gap: 10px; margin-top: 20px; }
-    .answer { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 66px; padding: 12px 14px; border-radius: var(--radius); border: 2px solid var(--line); background: #fff; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: border-color .15s ease, background .15s ease, transform .1s ease; }
-    .answer:active { transform: scale(.98); }
-    .answer .ico { flex: 0 0 42px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--lilac-soft); font-size: 22px; }
-    .answer .thumb { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 12px; object-fit: cover; background: var(--lilac-soft); }
-    .answer .lbl { flex: 1; font-size: 17px; line-height: 1.25; font-weight: 700; color: var(--navy); }
-    .answer .lbl small { display: block; margin-top: 2px; font-size: 14px; font-weight: 600; color: var(--muted); }
-    .answer .chk { flex: 0 0 24px; width: 24px; height: 24px; border-radius: 99px; border: 2px solid var(--line); display: grid; place-items: center; font-size: 13px; color: transparent; }
-    .answer.selected { border-color: var(--pink); background: var(--pink-soft); }
-    .answer.selected .chk { border-color: var(--pink); background: var(--pink); color: #fff; }
-    @media (hover: hover) { .answer:hover { border-color: #cfc3f5; } }
-    .time-note { margin: 16px 0 0; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--muted); }
-
-    /* Otázka se jménem */
-    .name-input { width: 100%; padding: 16px; border-radius: 16px; border: 2px solid var(--line); font: inherit; font-size: 18px; font-weight: 700; color: var(--navy); background: #fff; }
-    .name-input:focus { outline: none; border-color: var(--lilac); }
-    .skip { border: 0; background: none; padding: 12px; font-size: 15px; font-weight: 700; color: var(--muted); cursor: pointer; }
-
-    /* Mezikarta uprostřed obrazovky: reaguje na odpověď a prodává */
-    .claim-wrap { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 24px; }
-    .claim { border-radius: 24px; background: #fff; border: 1px solid var(--line); box-shadow: 0 14px 36px rgba(84,55,132,.12); overflow: hidden; animation: pop .35s ease; }
-    @keyframes pop { from { opacity: 0; transform: scale(.97) translateY(8px); } to { opacity: 1; transform: none; } }
-    .claim-media { position: relative; }
-    .claim-media > img:first-child, .claim-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
-    .claim-media .vid-badge { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: rgba(17,22,51,.75); color: #fff; font-size: 12.5px; font-weight: 800; }
-    .claim-thumb { position: absolute; right: 12px; bottom: -28px; width: 30%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; border: 3px solid #fff; box-shadow: 0 8px 20px rgba(17,22,51,.18); background: var(--lilac-soft); }
-    .claim-body { padding-top: 14px !important; }
-
-
-    /* Galerie produktu: swipe, max 3 fotky + video */
-    .gallery-wrap { position: relative; }
-    #heroMedia { position: relative; }
-    #heroMedia .slide img { aspect-ratio: 5 / 4; object-fit: cover; background: #fff; }
-    #heroMedia .slide img.fit-contain { object-fit: contain; }
-    .gal-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.9); box-shadow: 0 2px 10px rgba(17,22,51,.18); color: var(--navy); font-size: 24px; line-height: 32px; font-weight: 700; cursor: pointer; }
-    .gal-nav.prev { left: 8px; } .gal-nav.next { right: 8px; }
-    .gal-nav[hidden] { display: none; }
-    /* Prodejní část výsledku: důkaz, srovnání, jak to funguje, obsah */
-    .order .is-invalid, .order input.is-invalid { border-color: #e5145f !important; background: #fff5f8 !important; }
-    .consents .chk.is-invalid { border-radius: 12px; outline: 2px solid #e5145f; outline-offset: 4px; background: #fff5f8; }
-    .vs { display: grid; gap: 10px; }
-    .vs-box { border-radius: 18px; padding: 14px 16px; }
-    .vs-no { background: #fff4f4; border: 1px solid #ffd9d9; }
-    .vs-yes { background: #effbf3; border: 1px solid #bfeccf; }
-    .vs-head { margin: 0 0 8px; font-weight: 800; font-size: 15px; }
-    .vs ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
-    .vs li { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.4; }
-    .vs li::before { position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 900; color: #fff; }
-    .vs-no li::before { content: '✕'; background: #e5484d; }
-    .vs-no li { text-decoration: line-through; text-decoration-color: #e5484d; text-decoration-thickness: 2px; color: #7a6a6a; }
-    .vs-yes li::before { content: '✓'; background: #1f9d55; }
-    .vs-yes li { font-weight: 600; }
-    .how { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: how; }
-    .how li { counter-increment: how; border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 10px 26px rgba(84,55,132,.10); }
-    .how-img { position: relative; }
-    #kitSell > .sec, #kitInside > .sec { margin-top: 26px; }
-    .how img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; background: #fff; }
-    .how img.fit-contain { object-fit: contain; }
-    .how img.fit-hand { object-fit: cover; object-position: 50% 50%; }
-    .how img.fit-top { object-position: 50% 30%; }
-    .how-body { position: relative; padding: 14px 16px 16px 58px; }
-    .how-body::before { content: counter(how); position: absolute; left: 16px; top: 14px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #9b6cff, #ff6f9f); color: #fff; font-weight: 900; font-size: 15px; }
-    .how-body strong { display: block; font-size: 17px; line-height: 1.3; }
-    .how-body span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.45; color: #364360; }
-    .giftbox { margin: 0 0 12px; border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 10px 26px rgba(84,55,132,.10); }
-    .giftbox img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
-    .giftbox figcaption { padding: 12px 16px 14px; }
-    .giftbox strong { display: block; font-size: 17px; }
-    .giftbox span { display: block; margin-top: 3px; font-size: 15px; color: #364360; }
-    #heroMedia .dots { left: auto; right: 10px; bottom: 10px; padding: 5px 8px; border-radius: 99px; background: rgba(255,255,255,.9); box-shadow: 0 1px 6px rgba(17,22,51,.15); }
-    #heroMedia .dots i { background: rgba(17,22,51,.22); box-shadow: none; }
-    #heroMedia .dots i.on { background: var(--pink); }
-    .gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-    .gallery::-webkit-scrollbar { display: none; }
-    .slide { flex: 0 0 100%; scroll-snap-align: center; position: relative; }
-    .slide img, .slide video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
-    .slide .vid-badge { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: rgba(17,22,51,.75); color: #fff; font-size: 12.5px; font-weight: 800; }
-    .dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
-    .dots i { width: 7px; height: 7px; border-radius: 99px; background: rgba(255,255,255,.6); box-shadow: 0 0 0 1px rgba(17,22,51,.15); transition: width .2s ease, background .2s ease; }
-    .dots i.on { width: 20px; background: #fff; }
-
-    .thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 10px 14px 0; }
-    .thumb-btn { position: relative; padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden; background: var(--lilac-soft); cursor: pointer; aspect-ratio: 1; }
-    .thumb-btn img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .thumb-btn span { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 16px; background: rgba(17,22,51,.35); }
-    .thumb-btn.on { border-color: var(--pink); }
-
-    .hero-media img, .hero-media video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
-    .media-block { border-radius: 20px; overflow: hidden; background: var(--lilac-soft); box-shadow: 0 10px 26px rgba(84,55,132,.10); }
-    .media-block img, .media-block video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-    .media-block .media-block { box-shadow: none; border-radius: 0; }
-
-    /* Výběr barvy přímo na kartě */
-    .colors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px 14px 0; }
-    .color-chip { display: grid; justify-items: center; gap: 5px; padding: 8px 4px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font-size: 13px; line-height: 1.2; font-weight: 700; text-align: center; cursor: pointer; touch-action: manipulation; }
-    .color-chip i { width: 26px; height: 26px; border-radius: 99px; box-shadow: inset 0 0 0 1px rgba(17,22,51,.12); }
-    .color-chip[aria-pressed="true"] { border-color: var(--pink); background: var(--pink-soft); }
-
-    .sale-ribbon { position: absolute; left: 12px; top: 12px; padding: 7px 11px; border-radius: 10px; background: #e5145f; color: #fff; font-size: 13.5px; font-weight: 800; box-shadow: 0 6px 14px rgba(229,20,95,.3); }
-    .slide .vid-badge { top: auto; bottom: 30px; }
-    .deal { padding: 14px 16px; border-radius: 18px; background: linear-gradient(120deg, #fff0f6, #fff7ec); border: 1.5px solid #ffc6da; }
-    .deal-price { display: flex; align-items: baseline; gap: 10px; }
-    .deal-price s { font-size: 18px; font-weight: 700; color: var(--muted); }
-    .deal-price strong { font-size: 30px; font-weight: 800; color: #e5145f; letter-spacing: -.01em; }
-    .deal-text { margin: 6px 0 0; font-size: 15px; line-height: 1.45; color: var(--text); }
-    .deal-timer { margin: 8px 0 0; font-size: 14.5px; font-weight: 800; color: #c2185b; }
-    .info-list { display: grid; gap: 10px; }
-    .info { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; padding: 12px 14px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
-    .info b { font-size: 22px; line-height: 1.2; }
-    .info strong { display: block; font-size: 15.5px; line-height: 1.3; }
-    .info span { display: block; margin-top: 2px; font-size: 14px; line-height: 1.45; color: var(--muted); }
-    .faq { display: grid; gap: 8px; }
-    .faq details { border-radius: 14px; background: #fff; border: 1px solid var(--line); }
-    .faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 52px; padding: 12px 14px; font-size: 15.5px; font-weight: 700; cursor: pointer; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; flex: 0 0 auto; font-size: 22px; font-weight: 600; color: var(--lilac); }
-    .faq details[open] summary::after { content: "−"; }
-    .faq-link { display: inline-block; margin-top: 8px; color: var(--lilac); font-weight: 800; text-decoration: none; }
-    .faq details p { margin: 0; padding: 0 14px 14px; font-size: 15px; line-height: 1.5; color: var(--text); }
-
-    /* Nabídka prodlouženého vrácení (spodní panel) */
-    .sheet-backdrop { position: fixed; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; background: rgba(17,22,51,.45); animation: fade .2s ease; }
-    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-    .sheet { width: 100%; max-width: 440px; padding: 10px 18px calc(18px + env(safe-area-inset-bottom)); border-radius: 24px 24px 0 0; background: #fff; animation: up .28s ease; }
-    @keyframes up { from { transform: translateY(40px); opacity: .6; } to { transform: none; opacity: 1; } }
-    .sheet-handle { width: 40px; height: 5px; margin: 0 auto 14px; border-radius: 99px; background: #e2deea; }
-    .sheet-ico { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px; background: #e9fbf1; font-size: 26px; }
-    .sheet h3 { margin: 12px 0 6px; font-size: 21px; line-height: 1.25; font-weight: 800; }
-    .sheet p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--text); }
-    .sheet ul { margin: 12px 0 16px; padding: 0; list-style: none; display: grid; gap: 6px; }
-    .sheet li { font-size: 15px; font-weight: 600; }
-    .sheet li::before { content: "✓ "; color: #13a05a; font-weight: 800; }
-    .sheet-no { display: block; width: 100%; margin-top: 6px; padding: 14px; border: 0; background: none; font-size: 15.5px; font-weight: 700; color: var(--muted); cursor: pointer; }
-
-    .trust-strip { margin-top: 18px; padding: 12px; border-radius: 14px; background: #fff; border: 1px solid var(--line); text-align: center; }
-    .trust-strip span { display: block; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-    .trust-strip p { margin: 4px 0 0; font-size: 15px; font-weight: 800; color: #4b4f66; }
-    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .trust-grid div { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 14px; background: #fff; border: 1px solid var(--line); font-size: 13.5px; line-height: 1.3; font-weight: 700; }
-    .trust-grid b { font-size: 18px; }
-    .tv-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #111633; color: #fff; text-decoration: none; }
-    .tv-badge { flex: 0 0 auto; padding: 8px 10px; border-radius: 10px; background: #fff; color: #111633; font-size: 15px; font-weight: 900; }
-    .tv-card strong { display: block; font-size: 15.5px; }
-    .tv-card small { display: block; margin-top: 2px; font-size: 13.5px; color: #c9cbe0; font-weight: 600; }
-    .team { border-radius: 20px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
-    .team img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--lilac-soft); }
-    .team-body { padding: 14px 16px 16px; }
-    .made img { aspect-ratio: 4 / 3; object-position: 50% 30%; }
-    .made-badge { display: inline-block; margin-bottom: 8px; padding: 5px 10px; border-radius: 999px; background: #eef8f1; color: #17663a; font-size: 13px; font-weight: 800; font-style: normal; }
-    .team-body strong { display: block; font-size: 17px; }
-    .team-body span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--text); }
-    .company { margin: 0; text-align: center; font-size: 13px; color: var(--muted); }
-    .company a { color: var(--muted); }
-
-    /* Objednávka */
-    .order { display: grid; gap: 16px; padding-bottom: 150px; }
-    .sum { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items: center; padding: 10px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
-    .sum img { width: 72px; height: 72px; border-radius: 12px; object-fit: cover; background: var(--lilac-soft); }
+    .logo img { height: 20px; width: auto; display: block; }
+    .view { display: none; flex-direction: column; flex: 1 1 auto; }
+    .view.active { display: flex; animation: inFade .5s var(--spring); }
+    .order { display: grid; gap: 16px; padding: 6px 0 170px; }
+    .eyebrow { margin: 0 0 4px; font-size: 14px; font-weight: 700; color: var(--plum); }
+    .q-title { margin: 0; font-family: var(--display); font-size: 23px; font-weight: 800; letter-spacing: -.02em; line-height: 1.22; }
+    .q-sub { margin: 8px 0 0; font-size: 15.5px; color: var(--muted); }
+    .sum { display: grid; grid-template-columns: 70px 1fr; gap: 13px; align-items: center; padding: 10px; border-radius: 22px; background: rgba(255, 255, 255, .88); box-shadow: inset 0 0 0 1px #fff, var(--lift); }
+    .sum img { width: 70px; height: 70px; border-radius: 15px; object-fit: cover; background: var(--soft); }
     .sum strong { display: block; font-size: 15px; line-height: 1.3; }
     .sum-body span { display: block; margin-top: 3px; font-size: 13.5px; color: var(--muted); }
-    .sum-price s { color: var(--muted); } .sum-price b { color: #e5145f; font-size: 16px; }
-    .sum-contents { padding: 12px 14px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
-    .sum-contents summary { cursor: pointer; font-size: 15px; font-weight: 800; color: var(--navy); }
-    .sum-contents .bullets { margin-top: 10px; gap: 6px; }
-    .sum-contents .bullets li { font-size: 14px; }
-    .ret-line { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #e9fbf1; font-size: 15px; font-weight: 600; }
-    .upsell-line { background: var(--lilac-soft); }
-    .ret-line b { white-space: nowrap; }
-    .ret-line input, .chk input { width: 22px; height: 22px; flex: 0 0 22px; accent-color: var(--pink); }
-    .fs { margin: 0; padding: 0; border: 0; display: grid; gap: 10px; }
-    .fs legend { padding: 0; margin-bottom: 10px; font-size: 18px; font-weight: 800; }
+    .sum-price s { color: var(--muted); } .sum-price b { color: var(--berry); font-size: 16px; }
+    .sum-contents { padding: 14px 16px; border-radius: 20px; background: rgba(255, 255, 255, .88); box-shadow: inset 0 0 0 1px #fff; }
+    .sum-contents summary { cursor: pointer; font-size: 15px; font-weight: 700; }
+    .bullets { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+    .bullets li { display: grid; grid-template-columns: 18px 1fr; gap: 7px; font-size: 14px; }
+    .bullets li::before { content: "✓"; color: var(--plum); font-weight: 800; }
+    .ret-line { display: flex; align-items: center; gap: 10px; padding: 10px 13px; border-radius: 13px; background: var(--sage-soft); font-size: 15px; font-weight: 600; }
+    .upsell-line { background: var(--plum-soft); }
+    .ret-line input, .chk input { width: 22px; height: 22px; flex: 0 0 22px; accent-color: var(--plum); }
+    .fs { margin: 0; padding: 0; border: 0; display: grid; gap: 11px; }
+    .fs legend { padding: 0; margin-bottom: 8px; font-family: var(--display); font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
     .fld { display: grid; gap: 5px; font-size: 14px; font-weight: 700; color: var(--text); }
-    .fld input, .note textarea { width: 100%; min-height: 52px; padding: 13px 14px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); }
-    .fld input:focus, .note textarea:focus { outline: none; border-color: var(--lilac); }
-    .fld input:user-invalid { border-color: #e5145f; }
+    .fld input, .note textarea { width: 100%; min-height: 46px; padding: 10px 13px; border-radius: 12px; border: 2px solid var(--line); background: #fff; font-size: 16px; color: var(--ink); transition: border-color .2s, box-shadow .2s; }
+    .fld input:focus, .note textarea:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 5px rgba(135, 84, 206, .13); }
     .row2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px; }
-    .note summary { cursor: pointer; padding: 6px 0; font-size: 15px; font-weight: 700; color: var(--lilac); list-style: none; }
-    .note summary::-webkit-details-marker { display: none; }
+    .note summary { cursor: pointer; padding: 4px 0; font-size: 14.5px; font-weight: 700; color: var(--plum); list-style: none; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-    .pay { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 16px; border: 2px solid var(--line); background: #fff; cursor: pointer; }
-    .pay input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--pink); flex: 0 0 22px; }
-    .pay strong { display: block; font-size: 16px; }
-    .pay small { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
-    .pay:has(input:checked) { border-color: var(--pink); background: var(--pink-soft); }
     .pay-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .pay-btn { position: relative; cursor: pointer; }
     .pay-btn input { position: absolute; opacity: 0; pointer-events: none; }
-    .pay-btn span { display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font-size: 16px; font-weight: 800; }
-    .pay-btn input:checked + span { border-color: var(--pink); background: var(--pink-soft); color: #c2185b; }
-    .pay-btn input:focus-visible + span { outline: 3px solid #cdbbff; }
-    .consents { display: grid; gap: 12px; }
+    .pay-btn span { display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 13px; border: 2px solid transparent; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(var(--line), var(--line)) border-box; font-size: 16px; font-weight: 700; transition: transform .25s var(--bounce); }
+    .pay-btn input:checked + span { background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; color: var(--plum-deep); transform: translateY(-2px); }
+    .pay-btn input:focus-visible + span { outline: 3px solid rgba(135, 84, 206, .5); }
     .chk { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: var(--text); }
-    .chk a { color: var(--lilac); font-weight: 700; }
-    .form-err { margin: 0; padding: 12px 14px; border-radius: 14px; background: #ffe3ee; color: #a3123f; font-size: 14.5px; font-weight: 700; }
-    .tot-label { font-size: 14px; font-weight: 700; color: var(--muted); }
+    .chk a { color: var(--plum); font-weight: 700; }
+    .form-err { margin: 0; padding: 13px 15px; border-radius: 16px; background: #ffe3ef; color: #a3123f; font-size: 14.5px; font-weight: 700; }
+    .bottom-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 8; background: rgba(255, 255, 255, .86); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); box-shadow: 0 -14px 34px rgba(110, 45, 150, .1); }
+    .bottom-inner { max-width: 460px; margin: 0 auto; padding: 10px 18px calc(10px + env(safe-area-inset-bottom)); }
+    .price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+    .price-now { display: flex; align-items: baseline; gap: 8px; }
+    .price-now strong { font-family: var(--display); font-size: 21px; font-weight: 800; letter-spacing: -.02em; }
+    .tot-label { font-size: 14px; color: var(--muted); }
+    .cta { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 48px; padding: 11px 16px; border: 0; border-radius: 14px; font-size: 16px; font-weight: 700; color: #fff; background: var(--cta); box-shadow: 0 14px 30px rgba(201, 56, 154, .32); cursor: pointer; text-decoration: none; }
     .cta:disabled { opacity: .7; }
-    #orderSubmit { font-size: 15.5px; padding: 14px 12px; }
+    .deal { padding: 15px 17px; border-radius: 22px; background: rgba(255, 255, 255, .9); box-shadow: inset 0 0 0 1px #fff, var(--lift); }
+    .r-label { margin: 0; display: inline-flex; padding: 7px 13px; border-radius: 99px; background: var(--sage-soft); color: var(--sage); font-size: 14px; font-weight: 800; }
 
-    /* Cena se slevou */
-    .price-now { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
-    .price-now s { font-size: 16px; font-weight: 700; color: var(--muted); }
-    .price-now strong { color: #e5145f; }
-    .price-now em { font-style: normal; padding: 3px 8px; border-radius: 8px; background: #ffe3ee; color: #c2185b; font-size: 13.5px; font-weight: 800; align-self: center; }
-    .claim-body { padding: 16px 18px 18px; }
-    .claim-label { display: inline-block; margin-bottom: 8px; padding: 5px 10px; border-radius: 99px; background: var(--lilac-soft); color: #5b3fd6; font-size: 12.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
-    .claim h2 { margin: 0 0 6px; font-size: 21px; line-height: 1.25; font-weight: 800; }
-    .claim p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--text); }
+    /* Okno uložení výběru */
+    .sheet-backdrop { position: fixed; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; background: rgba(31, 18, 51, .45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); animation: inFade .3s ease; }
+    .sheet { width: 100%; max-width: 460px; padding: 12px 20px calc(20px + env(safe-area-inset-bottom)); border-radius: 30px 30px 0 0; background: #fff; animation: sheetUp .45s var(--spring); }
+    @keyframes sheetUp { from { transform: translateY(60px); opacity: .5; } to { transform: none; opacity: 1; } }
+    .sheet h3 { font-family: var(--display) !important; letter-spacing: -.02em; }
+    .sheet-handle { width: 42px; height: 5px; margin: 0 auto 14px; border-radius: 99px; background: #eadcf3; }
+    .later-input { display: block; width: 100%; min-height: 46px; margin: 12px 0 10px; padding: 12px 15px; border-radius: 16px; border: 2px solid var(--line); font-size: 16px; }
+    .later-input:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 5px rgba(135, 84, 206, .13); }
+    .later-err { margin: 0 0 10px; font-size: 14px; font-weight: 700; color: var(--berry); }
+    .later-fine { margin-top: 10px; font-size: 12.5px; color: var(--muted); text-align: center; }
+    .sheet-no { display: block; width: 100%; margin-top: 6px; padding: 12px; border: 0; background: none; font-size: 15px; font-weight: 700; color: var(--muted); cursor: pointer; }
 
-    .cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 58px; padding: 14px 18px; border: 0; border-radius: 16px; font-size: 17.5px; font-weight: 800; color: #fff; text-decoration: none; background: var(--grad); box-shadow: 0 10px 22px rgba(255,92,147,.28); cursor: pointer; touch-action: manipulation; }
-    .cta:active { transform: scale(.99); }
-    .claim .cta { margin-top: 16px; }
-
-    /* Vyhodnocování */
-    .loading { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 20px; padding-bottom: 40px; }
-    .loading h2 { margin: 0; text-align: center; font-size: 22px; line-height: 1.25; font-weight: 800; min-height: 56px; }
-    .meter { height: 10px; border-radius: 99px; background: #ece8f2; overflow: hidden; }
-    .meter i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: inherit; }
-    .meter-pct { margin: -10px 0 0; text-align: right; font-size: 14px; font-weight: 800; color: var(--lilac); }
-    .checklist { display: grid; gap: 10px; margin: 0; padding: 16px; list-style: none; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
-    .checklist li { display: flex; align-items: center; gap: 10px; font-size: 15.5px; font-weight: 700; opacity: .3; transition: opacity .3s ease; }
-    .checklist li b { margin-left: auto; color: #fff; background: #d9d4e6; width: 22px; height: 22px; border-radius: 99px; display: grid; place-items: center; font-size: 12px; transition: background .3s ease; }
-    .checklist li.on { opacity: 1; }
-    .checklist li.on b { background: var(--pink); }
-    .press { text-align: center; }
-    .press span { display: block; margin-bottom: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-    .press p { margin: 0; font-size: 15px; font-weight: 800; color: #6b6f86; line-height: 1.5; }
-    .press p a { color: inherit; text-decoration: underline; text-decoration-color: rgba(107,111,134,.35); text-underline-offset: 3px; }
-
-    /* Výsledek */
-    .result { display: grid; gap: 16px; padding-bottom: 150px; }
-    .r-label { margin: 0; display: inline-flex; gap: 6px; align-items: center; padding: 6px 12px; width: max-content; border-radius: 99px; background: #e9fbf1; color: #137a43; font-size: 14px; font-weight: 800; }
-    .r-title { margin: 6px 0 0; font-size: clamp(23px, 6.4vw, 27px); line-height: 1.18; font-weight: 800; }
-    .r-for { margin: 4px 0 0; font-size: 15px; font-weight: 600; color: var(--muted); }
-    .saved-note { margin: 0; font-size: 14px; color: var(--muted); }
-    .saved-note button { border: 0; background: none; padding: 0; color: var(--lilac); font-weight: 700; text-decoration: underline; cursor: pointer; }
-
-    .card { border-radius: 22px; background: #fff; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 14px 36px rgba(84,55,132,.10); }
-    .img-wrap { position: relative; }
-    .img-wrap img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--lilac-soft); }
-    .name-tag { position: absolute; left: 12px; top: 58px; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 7px 12px; border-radius: 99px; background: rgba(17,22,51,.82); color: #fff; font-size: 14px; font-weight: 800; letter-spacing: .03em; }
-    .moment { margin: 0; padding: 14px 16px 16px; font-size: 16px; line-height: 1.5; color: var(--text); font-style: italic; }
-
-    .sec { margin: 4px 0 0; font-size: 18px; font-weight: 800; }
-    .reasons { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-    .reasons li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 12px 14px; border-radius: 16px; background: var(--pink-soft); font-size: 15.5px; line-height: 1.45; color: var(--text); }
-    .reasons li::before { content: "♥"; color: var(--pink); font-size: 18px; line-height: 1.2; text-align: center; }
-    .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .benefit { padding: 14px 12px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
-    .benefit b { display: block; font-size: 24px; line-height: 1; margin-bottom: 8px; }
-    .benefit strong { display: block; font-size: 15px; line-height: 1.25; margin-bottom: 4px; }
-    .benefit span { display: block; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
-    .bullets { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-    .bullets li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 15px; line-height: 1.4; font-weight: 600; }
-    .bullets li::before { content: "✓"; color: var(--pink); font-weight: 800; }
-    .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .perk { padding: 10px 6px; border-radius: 14px; background: #fff; border: 1px solid var(--line); text-align: center; font-size: 12.5px; line-height: 1.3; font-weight: 700; color: var(--text); }
-    .perk b { display: block; font-size: 20px; margin-bottom: 4px; }
-    .upsell { width: 100%; min-height: 56px; padding: 12px 14px; border-radius: 16px; border: 2px dashed #cdbbff; background: var(--lilac-soft); color: #5b3fd6; font-size: 15px; line-height: 1.35; font-weight: 800; cursor: pointer; white-space: pre-line; touch-action: manipulation; }
-    .result-links { display: flex; justify-content: space-between; gap: 10px; }
-    .result-links a, .result-links button { border: 0; background: none; padding: 10px 0; font-size: 15px; font-weight: 700; color: var(--lilac); text-decoration: none; cursor: pointer; }
-    .help { margin: 0; text-align: center; font-size: 14px; line-height: 1.5; color: var(--muted); }
-    .help a { color: var(--lilac); font-weight: 700; text-decoration: none; }
-
-    /* Spodní lišta: vždy viditelná, v dosahu palce */
-    .bottom-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 8; background: rgba(255,255,255,.97); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(84,55,132,.08); }
-    .bottom-inner { max-width: 440px; margin: 0 auto; padding: 10px 18px calc(12px + env(safe-area-inset-bottom)); }
-    .price-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-    .price-row strong { font-size: 26px; font-weight: 800; letter-spacing: -.01em; }
-    .price-row span { font-size: 12.5px; line-height: 1.3; font-weight: 700; color: #c2185b; text-align: right; }
-    @media (max-width:600px){ body.mf-chat #resultScreen .bottom-inner { padding-right: 84px; } }
-    .bar-note { margin: 8px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
-
-    /* Materiál */
-    .mat-group h3 { margin: 0 0 10px; font-size: 16px; font-weight: 800; }
-    .mat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .mat-option { display: grid; gap: 6px; padding: 6px 6px 9px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font-size: 13.5px; font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer; touch-action: manipulation; }
-    .mat-option img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 10px; display: block; background: var(--lilac-soft); }
-    .mat-option[aria-checked="true"] { border-color: var(--pink); background: var(--pink-soft); }
-    .mat-name { display: grid; gap: 6px; font-size: 16px; font-weight: 800; }
-    .mat-name small { font-size: 14px; font-weight: 600; color: var(--muted); }
-    .mat-name input { width: 100%; padding: 14px 16px; border-radius: 14px; border: 2px solid var(--line); font: inherit; font-size: 16px; color: var(--navy); background: #fff; }
-    .ai-note { margin: -6px 0 0; font-size: 12px; color: var(--muted); }
-
-    @media (max-height: 640px) {
-      .answer { min-height: 58px; padding: 9px 12px; }
-      .answer .ico { flex-basis: 36px; width: 36px; height: 36px; font-size: 19px; }
-      .answer .thumb { flex-basis: 46px; width: 46px; height: 46px; }
-      .answers { margin-top: 14px; gap: 8px; }
-      .steps { margin-bottom: 12px; }
-      .claim-media > img:first-child, .claim-media video { aspect-ratio: 16 / 10; }
+    @media (max-width: 360px) {
+      .app { padding-left: 14px; padding-right: 14px; }
+      .m-h1 { font-size: 19.5px; }
+      .m-agitate h1 { font-size: 24px; }
+      .m-mirror blockquote { font-size: 21px; }
+      .r-h1 { font-size: 24px; }
+      .m-opt strong { font-size: 14.5px; }
     }
-  
-    /* Typografie převzatá z návrhu: Playfair Display pro nadpisy, gradient v klíčových slovech */
-    /* Barevný overlay jako v návrhu. Přes ::before, protože iOS neumí background-attachment: fixed. */
-    body { background: #fffaf7; }
-    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background:
-        radial-gradient(circle at 0 0, rgba(72,213,236,.22), transparent 30%),
-        radial-gradient(circle at 100% 0, rgba(255,111,159,.22), transparent 32%),
-        linear-gradient(180deg, #fffaf7 0%, #fff1f8 58%, #f7f1ff 100%); }
-    .top { background: rgba(255,250,247,.9); }
-    /* Dva fonty jako v návrhu: Playfair Display jen pro hlavní nadpisy, všechno ostatní DM Sans */
-    .q-title, .r-title, .claim h2, .loading h2 {
-      font-family: "Playfair Display", Georgia, serif; letter-spacing: -.02em; }
-    .q-title { font-size: clamp(25px, 7vw, 30px); line-height: 1.12; font-weight: 800; }
-    .r-title { font-size: clamp(27px, 7.4vw, 33px); line-height: 1.1; font-weight: 800; }
-    .claim h2 { font-size: 23px; line-height: 1.18; }
-    .loading h2 { font-size: 25px; }
-    .sec { font-size: 22px; line-height: 1.2; }
-    .grad { background: linear-gradient(105deg, #6b4dff, #e35fb2, #ff806a); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .r-intro { margin: 8px 0 0; font-size: 15.5px; line-height: 1.5; color: var(--text); }
-    .kicker { display: block; margin-bottom: 4px; font-size: 11.5px; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; color: #7049da; }
-    .card-head { padding: 14px 16px 0; }
-    .card-head strong { display: block; font-size: 17px; line-height: 1.3; }
-    .card-head span { display: block; margin-top: 3px; font-size: 14px; color: var(--muted); font-weight: 600; }
-    .deal-badge { display: inline-block; margin-bottom: 8px; padding: 6px 10px; border-radius: 8px; background: #b12260; color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .04em; }
-    .media-block.has-video { position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-    .media-block.has-video::after { content: ""; position: absolute; left: 50%; top: calc(50% - 22px); width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
-      background: rgba(255,255,255,.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5v14l11-7z' fill='%23111633'/%3E%3C/svg%3E") 55% 50% / 30px no-repeat;
-      box-shadow: 0 6px 18px rgba(17,22,51,.25); pointer-events: none; transition: opacity .2s; }
-    .media-block.has-video:not(:has(.media-cap))::after { top: 50%; }
-    .media-block.has-video.is-playing::after { opacity: 0; }
-    .clutch-name { margin-top: 2px; }
-    .media-cap { margin: 0; padding: 10px 14px 12px; background: #fff; font-size: 14px; font-weight: 700; color: var(--text); }
-    .result { padding-bottom: 170px; }
-
-    /* Svítící psaníčko: fotka má nahoře světlou a dole svítící polovinu, ukazujeme spodní */
-    img[src$="produkt-psanicko-svitici.webp"] { object-position: 50% 100%; }
-    img[src$="penezenka-oranzova-v-ruce.webp"] { object-position: 50% 0; }
-
-    /* Výsledek: produkt, cena a tlačítko co nejvýš (mobil) */
-    #resultScreen .r-title { font-size: clamp(22px, 6.3vw, 27px); line-height: 1.18; }
-    .r-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
-    #resultScreen .r-title, #resultScreen .r-sub { text-align: center; }
-    .r-tags .r-label { padding: 5px 10px; font-size: 12.5px; gap: 4px; }
-    @media (max-width: 380px) { .r-tags .r-label { padding: 4px 8px; font-size: 11.5px; } }
-    .r-tag-gift { background: var(--lilac-soft, #f3eeff); color: #6b3fc4; }
-    #resultScreen .r-intro { display: none; }
-    #resultScreen .r-sub { margin: 6px 0 0; font-size: 15px; line-height: 1.4; font-weight: 600; color: var(--muted); }
-    .result > div:first-of-type { display: grid; gap: 4px; }
-    .card-price { padding: 6px 16px 0; font-size: 15px; } .card-price s { color: var(--muted); } .card-price b { font-size: 22px; font-weight: 800; color: #e5145f; margin-left: 4px; }
-    .card-why { margin: 8px 0 0; padding: 0 16px; list-style: none; display: grid; gap: 4px; }
-    .card-why li { display: grid; grid-template-columns: 18px 1fr; gap: 6px; font-size: 14.5px; line-height: 1.4; font-weight: 600; color: var(--navy); }
-    .card-why li::before { content: "✓"; color: var(--pink); font-weight: 800; }
-    /* Spokojenost zákaznic */
-    .voices { display: grid; gap: 14px; }
-    .voices-hero { position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 14px 32px rgba(84,55,132,.14); }
-    .voices-hero img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-    .voices-hero::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(180deg, rgba(17,22,51,0), rgba(17,22,51,.45)); pointer-events: none; }
-    .score-badge { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 1; display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 18px; background: rgba(255,255,255,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 8px 24px rgba(17,22,51,.18); }
-    .score-num { display: inline-flex; align-items: baseline; gap: 2px; font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: 700; line-height: 1; color: var(--navy); white-space: nowrap; }
-    .score-num small { font-size: 17px; font-weight: 700; color: var(--muted); }
-    .score-star { margin-right: 6px; font-size: 28px; background: linear-gradient(135deg, #ffcf4d, #ff9a3c); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .score-txt { padding-left: 14px; border-left: 2px solid var(--line); font-size: 15px; font-weight: 800; line-height: 1.3; color: var(--navy); }
-    .voices-lead { margin: 2px 0 0; padding: 4px 0 4px 14px; border-left: 4px solid; border-image: linear-gradient(180deg, #48d5ec, #9b6cff 45%, #ff6f9f) 1; font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.45; color: var(--navy); }
-    .voice-track { display: grid; grid-auto-flow: column; grid-auto-columns: 84%; gap: 12px; margin: 0 -18px; padding: 4px 18px 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 18px; scrollbar-width: none; }
-    .voice-track::-webkit-scrollbar { display: none; }
-    .voice { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; margin: 0; padding: 22px 18px 16px; border-radius: 20px; background: #fff; border: 1px solid #efe8f7; box-shadow: 0 10px 26px rgba(84,55,132,.10); scroll-snap-align: start; overflow: hidden; }
-    .voice::before { content: "“"; position: absolute; top: -18px; right: 10px; font: 700 96px/1 Georgia, serif; background: linear-gradient(135deg, #9b6cff, #ff6f9f); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: .22; }
-    .voice blockquote { position: relative; margin: 0; font-size: 16px; line-height: 1.55; font-weight: 600; color: var(--navy); }
-    .voice figcaption { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 800; color: var(--text); }
-    .voice-av { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #48d5ec, #9b6cff 50%, #ff6f9f); color: #fff; font-size: 14px; flex: 0 0 30px; }
-    /* Okno „Uložte si svůj dárek“ po kliknutí na ← u výsledku */
-    #laterSheet .sheet-ico { background: var(--pink-soft); }
-    #laterSheet h3 { margin: 12px 0 4px; }
-    #laterSheet p { margin: 0; }
-    .later-input { display: block; width: 100%; min-height: 54px; margin: 14px 0 10px; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); }
-    .later-input:focus { outline: none; border-color: var(--lilac); }
-    .later-err { margin: -4px 0 10px !important; font-size: 14px; font-weight: 700; color: #c2185b; }
-    .later-fine { margin-top: 10px !important; font-size: 12px; line-height: 1.45; color: var(--muted); text-align: center; }
-    .later-fine a { color: var(--muted); }
-    #laterDone p { margin: 0 0 14px; }
-  
-/* V5 – independent visible interface. Old quiz/result DOM is retained only for checkout and integration compatibility. */
-body{background:#fbf7f4;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#19182d}body::before{display:none}
-.app{max-width:480px;padding:0 16px 20px;min-height:100dvh;display:block}
-body:not(.mf-order) .app>.top,body:not(.mf-order) .app>#steps, #questionScreen,#claimScreen,#loadingScreen,#resultScreen{display:none!important}
-body.mf-order #newUI{display:none!important}
-#newUI *{box-sizing:border-box;min-width:0}#newUI{padding:0 0 22px;max-width:100%;overflow-wrap:break-word}
-.n-header{height:57px;display:grid;grid-template-columns:40px 1fr 40px;align-items:center;margin-bottom:5px}.n-brand{text-align:center;font-size:14px;letter-spacing:.29em;font-weight:500;color:#59565b}.n-back{border:0;background:none;padding:8px;min-height:40px;font-size:23px;cursor:pointer;color:#363048}.n-progress{display:flex;gap:4px;margin:8px 0 16px}.n-progress i{flex:1;height:4px;border-radius:9px;background:#e8e0e9}.n-progress i.on{background:#9a62c8}.n-kicker{font-size:11px;letter-spacing:.035em;color:#66616b;font-weight:600;margin:0 0 10px;text-transform:uppercase}.n-title{font-size:clamp(22px,6.4vw,28px);line-height:1.2;letter-spacing:-.035em;font-weight:720;margin:0 0 15px;color:#19182d}.n-sub{font-size:14px;line-height:1.45;color:#65616a;margin:0 0 14px}.n-options{display:grid;gap:10px}.n-option{width:100%;display:grid;grid-template-columns:25px minmax(0,1fr) 14px;gap:10px;align-items:center;text-align:left;border:1px solid #dedbdf;background:#fff;border-radius:13px;padding:13px 11px;cursor:pointer;color:#19182d;min-height:60px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}.n-option:focus-visible,.n-btn:focus-visible{outline:3px solid #b894e0;outline-offset:2px}.n-option:active{background:#f4ebfa;border-color:#aa7bce}.n-option .n-icon{font-size:23px;line-height:1;text-align:center}.n-option .n-label{font-size:15px;line-height:1.3;font-weight:600;display:block}.n-option .n-desc{display:block;font-size:13px;line-height:1.35;color:#646168;margin-top:4px;font-weight:400}.n-option .n-price{display:block;color:#8c51bd;font-size:14px;font-weight:600;line-height:1.3;margin-top:4px;white-space:nowrap}.n-arrow{font-size:23px;color:#9560c3;line-height:1;font-weight:400}.n-note{text-align:center;font-size:12px;color:#77717b;margin:15px 0 0}.n-photo{width:100%;display:block;object-fit:cover;border-radius:15px;background:#eee6f2;aspect-ratio:5/3}.n-photo-missing{display:grid;place-items:center;min-height:110px;aspect-ratio:5/3;border-radius:15px;background:#eee6f2;color:#746582;font-size:12px;text-align:center;padding:12px}.n-intro{margin:0 0 15px}.n-intro .n-photo,.n-intro .n-photo-missing{aspect-ratio:3/1;min-height:90px;margin-bottom:12px}.n-intro .n-title{margin-bottom:7px}.n-intro .n-sub{margin-bottom:0}.n-materials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.n-mat{border:1px solid #dedbdf;background:white;border-radius:13px;padding:7px;text-align:left;cursor:pointer;color:#19182d;display:flex;flex-direction:column;gap:7px}.n-mat .n-photo,.n-mat .n-photo-missing{aspect-ratio:4/3;min-height:0;border-radius:8px}.n-mat strong{font-size:14px;line-height:1.3;padding:0 3px 4px}.n-result{padding-bottom:110px}.n-result .n-title{margin-bottom:7px}.n-result .n-sub{margin-bottom:12px}.n-hero{position:relative;margin:0 0 12px}.n-hero .n-photo,.n-hero .n-photo-missing{aspect-ratio:5/4}.n-product{font-size:19px;font-weight:700;line-height:1.25;margin:0 0 8px}.n-checks{list-style:none;padding:0;margin:0 0 13px;display:grid;gap:5px}.n-checks li{display:grid;grid-template-columns:17px 1fr;gap:6px;font-size:13px;line-height:1.35}.n-checks li:before{content:'✓';color:#487e64;font-weight:700}.n-section{border-top:1px solid #e4dce5;margin-top:18px;padding-top:15px}.n-section h2{font-size:17px;margin:0 0 10px;letter-spacing:-.02em}.n-chips{display:flex;gap:6px;flex-wrap:wrap}.n-chip{border:1px solid #dcd5df;background:white;border-radius:9px;padding:8px 10px;font-size:12px;font-weight:600;cursor:pointer}.n-chip[aria-pressed=true]{border-color:#925bc0;background:#f2e9fa;color:#714096}.n-buybar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2dce4;z-index:9;padding:10px 16px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 18px #29143a0d}.n-buyinner{max-width:448px;margin:auto}.n-buyline{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}.n-buyline strong{font-size:23px;line-height:1.1;white-space:nowrap}.n-buyline span{font-size:12px;color:#66616b;text-align:right}.n-btn{display:block;width:100%;border:0;background:#8151be;color:white;border-radius:11px;font-size:15px;font-weight:650;padding:13px 10px;min-height:46px;cursor:pointer;text-align:center}.n-alt{display:grid;gap:7px}.n-alt button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;text-align:left;align-items:center;background:white;border:1px solid #dedbdf;border-radius:11px;padding:11px;font-size:13px;cursor:pointer}.n-alt button[aria-pressed=true]{border-color:#925bc0;background:#f6effb}.n-alt strong{white-space:nowrap;color:#8151be;font-size:13px}.n-alt small{display:block;color:#77717b;font-size:11px;margin-top:3px}.n-faq details{border-bottom:1px solid #e4dce5;padding:11px 0}.n-faq summary{font-size:14px;font-weight:600;cursor:pointer}.n-faq p,.n-faq ul{font-size:13px;line-height:1.5;color:#65616a;margin:8px 0 0}.n-faq ul{padding-left:18px}.n-video{width:100%;border-radius:12px;background:#eee6f2;display:block;max-height:260px}.n-link{background:none;border:0;color:#8151be;text-decoration:underline;cursor:pointer;font-size:13px;padding:8px 0}.n-material-title{margin:0 0 7px;font-size:13px;font-weight:650}.n-price-inline{font-size:25px;font-weight:700;margin:0 0 9px}.n-close{font-size:20px;text-decoration:none;text-align:center;color:#363048}.n-result .n-header{margin-bottom:9px}
-@media(max-width:360px){.app{padding-left:12px;padding-right:12px}.n-option{padding:11px 9px;gap:8px;grid-template-columns:23px minmax(0,1fr) 12px}.n-option .n-label{font-size:14px}.n-option .n-desc{font-size:12px}.n-option .n-price{font-size:13px}.n-options{gap:8px}.n-title{font-size:22px}.n-header{height:48px}.n-progress{margin-bottom:12px}.n-kicker{margin-bottom:8px}}
-@media(min-width:600px){body{background:#f1ebf0}.app{background:#fbf7f4;min-height:100dvh;box-shadow:0 0 50px #44284b0b;padding-left:22px;padding-right:22px}}
-body.mf-order .app{display:flex;flex-direction:column}body.mf-order .app>.top{margin:0 -16px}body.mf-order .order{padding-bottom:170px}body.mf-order .sum-body,body.mf-order .fld{min-width:0}body.mf-order .price-now{white-space:normal;flex-wrap:wrap}body.mf-order .price-row{flex-wrap:wrap}body.mf-order .bottom-inner{padding-right:12px!important}
-
-
-/* V6: visible editorial sales page; V5 quiz remains unchanged. */
-.s-opening{text-align:center}.s-opening .n-title{font-size:clamp(24px,7vw,32px)}.s-eyebrow{font-size:11px;letter-spacing:.09em;font-weight:700;color:#8050aa;margin:0 0 8px}.s-product{background:#fff;border:1px solid #e4dce5;border-radius:18px;overflow:hidden}.s-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.s-slide{flex:0 0 100%;scroll-snap-align:start}.s-slide .n-photo,.s-slide .n-photo-missing{border-radius:0;aspect-ratio:5/4;object-fit:contain;background:#f4eef6}.s-dots{display:flex;justify-content:center;gap:6px;padding:8px}.s-dots button{height:8px;width:8px;border:0;background:#d9c9e3;border-radius:20px;padding:0;cursor:pointer}.s-dots button[aria-current=true]{width:20px;background:#8151be}.s-product-body{padding:12px 14px 15px}.s-product-body h2{font-size:20px;line-height:1.25;margin:0 0 4px;letter-spacing:-.025em}.s-price{font-size:28px;font-weight:750;margin:8px 0;white-space:nowrap}.s-product-body .n-btn{margin-top:12px}.s-delivery{font-size:11px;line-height:1.4;color:#67616b;text-align:center;margin:8px 0 0}.s-section{margin:29px 0 0;padding-top:22px;border-top:1px solid #e4dce5}.s-section h2{font-size:clamp(22px,6vw,28px);line-height:1.17;letter-spacing:-.035em;margin:0 0 13px}.s-section h3{font-size:15px;line-height:1.25;margin:0 0 4px}.s-copy{font-size:14px;line-height:1.5;color:#625a68;margin:10px 0 0}.s-effects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.s-effects>div{background:white;border:1px solid #e4dce5;border-radius:12px;overflow:hidden}.s-effects h3,.s-effects p{padding:0 9px}.s-effects h3{margin-top:9px}.s-effects p,.s-step p,.s-values p{font-size:12px;line-height:1.4;color:#69616e;margin:0 0 10px}.s-video{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#eae1ee;border-radius:12px}.s-effects .s-video,.s-effects .n-photo,.s-effects .n-photo-missing{aspect-ratio:1;min-height:0;border-radius:0}.s-steps{display:grid;gap:10px;margin-bottom:12px}.s-step{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;align-items:center;background:white;border-radius:12px;padding:8px;border:1px solid #e4dce5}.s-step .n-photo,.s-step .n-photo-missing{aspect-ratio:1;min-height:0;border-radius:8px}.s-step p{margin:0}.s-contents{margin:12px 0}.s-review{background:white;padding:15px;border:1px solid #e4dce5;border-radius:12px;margin-top:10px}.s-review>strong{font-size:27px;color:#8151be;margin-right:10px}.s-review>span,.s-review small{font-size:12px;color:#67616b}.s-review blockquote{font-size:15px;line-height:1.5;margin:12px 0}.s-values{display:grid;gap:8px}.s-values>div{background:#fff;border:1px solid #e4dce5;padding:12px;border-radius:12px}.s-values p{margin:4px 0 0}.s-offers{display:grid;gap:8px}.s-offers button{width:100%;display:grid;grid-template-columns:66px minmax(0,1fr) 12px;gap:10px;align-items:center;text-align:left;background:white;border:1px solid #dedbdf;border-radius:12px;padding:10px;cursor:pointer}.s-offers button[aria-pressed=true]{border:2px solid #925bc0;padding:9px;background:#f7effb}.s-offers .n-photo,.s-offers .n-photo-missing{aspect-ratio:1;min-height:0;border-radius:7px;font-size:9px;padding:0}.s-offer-name{display:block;font-size:14px;font-weight:650;line-height:1.3}.s-offers small{display:block;font-size:11px;color:#68616d;line-height:1.35;margin:3px 0}.s-offers strong{display:block;color:#8151be;font-size:16px;white-space:nowrap}.s-offers .s-recommend{color:#8151be}.s-media-link{display:block;margin-top:12px;padding:12px;background:#fff;border-radius:10px;color:#8151be;font-size:14px;text-decoration:none}.s-section a{color:#8151be}.n-result{padding-bottom:125px}.n-buybar .n-btn{min-height:48px}.s-section .n-photo{object-fit:cover}.s-section .n-photo-missing{min-height:0}.s-section .n-faq summary{line-height:1.4}
-@media(max-width:360px){.s-step{grid-template-columns:80px minmax(0,1fr)}.s-offers button{grid-template-columns:55px minmax(0,1fr) 10px}.s-product-body{padding:12px}.s-section h2{font-size:22px}}
-
-/* V7: compact entry and product-first mobile layout */
-.v7-intro{margin:0 0 16px}.v7-intro h1{font-size:clamp(25px,7vw,33px);line-height:1.12;letter-spacing:-.045em;margin:6px 0 7px}.v7-intro p{font-size:14px;line-height:1.4;color:#62596a;margin:0 0 10px}.v7-intro .n-photo,.v7-intro .n-photo-missing{aspect-ratio:2.7;min-height:0;object-fit:cover}.v7-skip{display:block;margin:8px auto;text-align:center}.n-header{height:48px}.n-option{min-height:54px;padding:11px 10px}.s-opening{text-align:left}.s-opening .n-title{font-size:clamp(24px,7vw,31px);margin:0 0 12px}.s-slide .n-photo,.s-slide .n-photo-missing{aspect-ratio:1.55;object-fit:contain}.s-section{margin-top:24px;padding-top:19px}.s-section h2{font-size:23px}.s-product-body .n-checks{gap:6px}.s-price{margin:6px 0 10px}.v7-material{margin-top:14px}.v7-details{font-size:14px;border-top:1px solid #e4dce5;padding:10px 0}.v7-details .n-checks{margin-top:10px}.s-offers+.n-btn{margin-top:12px}.n-result{padding-bottom:83px}.n-buybar{padding:9px 16px calc(9px + env(safe-area-inset-bottom))}.n-btn{background:#7141a9;font-size:15px;min-height:48px}.n-option .n-label{font-size:15px}.n-option .n-desc{font-size:13px}.s-offers button{min-height:78px}.n-chip{min-height:44px}.n-link{min-height:40px}.s-delivery{font-size:12px}.n-photo-missing{font-size:11px}.s-section .n-photo{aspect-ratio:5/3} @media(max-width:360px){.v7-intro h1{font-size:25px}.s-section h2{font-size:21px}.n-option .n-label{font-size:14px}}
-.v7-reason{font-size:13px;color:#61546d;margin:0 0 7px}.s-product-body .n-chips{margin:0 0 12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.s-product-body .n-chip{padding:6px 4px;line-height:1.2;white-space:normal;overflow-wrap:anywhere}.v7-quote{margin:12px 0 0;padding:14px;background:white;border-left:3px solid #8151be;border-radius:8px;font-size:15px;line-height:1.5}.v7-quote small{display:block;font-size:12px;color:#655e6c;margin-top:7px}.n-btn:active{transform:scale(.99)}.v7-intro .n-photo{object-fit:contain;background:white}.s-product-body .n-checks li{font-size:14px}.s-section .s-copy{font-size:15px}.s-offers button{min-width:0}.s-offer-name{overflow-wrap:anywhere}.n-result{padding-bottom:100px}.v7-intro h1{font-size:clamp(23px,6.7vw,30px)}
-/* V8: mobile-first editorial commerce */
-body:not(.mf-order){background:#faf7f2;color:#22202a}body:not(.mf-order)::before{display:none}body:not(.mf-order) .app{max-width:760px;padding:0 16px 20px}#newUI{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#22202a;overflow:visible}#newUI h1,#newUI h2,#newUI h3,#newUI p{margin:0}#newUI h1{font-size:clamp(27px,7.7vw,42px);letter-spacing:-.045em;line-height:1.08;font-weight:800}#newUI h2{font-size:clamp(23px,6vw,30px);letter-spacing:-.035em;line-height:1.15}#newUI h3{font-size:16px;line-height:1.25}#newUI p{line-height:1.45}#newUI .v8-top{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}#newUI .v8-top img{width:108px;height:auto;object-fit:contain}#newUI .v8-top button{border:0;background:none;min-width:44px;min-height:44px;font-size:22px}#newUI .v8-tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#744d92;margin-bottom:8px}#newUI .v8-lead{font-size:15px;color:#625969;margin:10px 0 14px}#newUI .v8-photo{width:100%;display:block;border-radius:14px;object-fit:contain;background:#fff;height:auto}#newUI .v8-hero{aspect-ratio:1.5;object-fit:contain}#newUI .v8-entry{display:grid;gap:12px}#newUI .v8-entry .v8-photo{aspect-ratio:1.65;object-fit:contain}#newUI .v8-btn{width:100%;min-height:54px;border:0;border-radius:12px;background:#643b99;color:white;font-size:16px;font-weight:750;padding:12px 14px;cursor:pointer}#newUI .v8-link{display:block;width:100%;border:0;background:none;color:#643b99;text-decoration:underline;font-weight:650;font-size:14px;padding:10px;min-height:44px;cursor:pointer}#newUI .v8-note{font-size:12px;color:#625969;text-align:center}#newUI .v8-progress{display:flex;gap:5px;margin:4px 0 20px}#newUI .v8-progress i{height:4px;flex:1;background:#e7dfe9;border-radius:5px}#newUI .v8-progress i.on{background:#8755b6}#newUI .v8-opts{display:grid;gap:9px;margin:16px 0}#newUI .v8-option{display:grid;grid-template-columns:44px minmax(0,1fr) 18px;align-items:center;gap:10px;text-align:left;background:white;border:1px solid #dfd9e1;border-radius:13px;padding:12px;min-height:65px;cursor:pointer}#newUI .v8-option img{width:44px;height:44px;object-fit:cover;border-radius:8px}#newUI .v8-option strong{display:block;font-size:15px;line-height:1.25}#newUI .v8-option small{display:block;color:#6a6270;font-size:13px;line-height:1.35;margin-top:3px}#newUI .v8-option em{display:block;color:#643b99;font-weight:750;font-style:normal;font-size:14px;margin-top:4px;white-space:nowrap}#newUI .v8-icon{font-size:24px;text-align:center}#newUI .v8-arrow{color:#8755b6;font-size:22px;text-align:center}#newUI .v8-product{display:grid;gap:12px}#newUI .v8-card{background:white;border:1px solid #e5dfe5;border-radius:16px;padding:14px;display:grid;gap:10px}#newUI .v8-price{font-size:30px;font-weight:850;letter-spacing:-.04em;white-space:nowrap}#newUI .v8-trust{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:#514957}#newUI .v8-check{list-style:none;padding:0;margin:0;display:grid;gap:6px;font-size:14px;line-height:1.4}#newUI .v8-check li{padding-left:20px;position:relative}#newUI .v8-check li:before{content:'✓';position:absolute;left:0;color:#427a54;font-weight:800}#newUI .v8-section{margin-top:30px;display:grid;gap:12px}#newUI .v8-section>p{font-size:15px;color:#625969}#newUI .v8-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#newUI .v8-tile{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5dfe5}#newUI .v8-tile img,#newUI .v8-tile video{width:100%;aspect-ratio:1;object-fit:contain;display:block;background:white}#newUI .v8-tile div{padding:10px}#newUI .v8-tile p{font-size:13px;color:#625969;margin-top:4px}#newUI .v8-video{width:100%;max-height:390px;display:block;background:#25232c;border-radius:14px;aspect-ratio:4/3;object-fit:contain}#newUI .v8-offers{display:grid;gap:8px}#newUI .v8-offers .v8-option[aria-pressed=true]{border:2px solid #643b99;background:#f7f0fb}#newUI .v8-faq details{border-bottom:1px solid #ded7df;padding:12px 0}#newUI .v8-faq summary{font-size:15px;font-weight:650;cursor:pointer}#newUI .v8-faq details p{font-size:14px;margin-top:9px;color:#625969}#newUI .v8-bottom{position:fixed;z-index:12;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5dfe5;padding:9px 16px calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:center}#newUI .v8-bottom>div{width:100%;max-width:728px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}#newUI .v8-bottom strong{font-size:19px;white-space:nowrap}#newUI .v8-sales{padding-bottom:100px}#newUI .v8-gallery{display:flex;overflow:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:8px}#newUI .v8-gallery>div{flex:0 0 100%;scroll-snap-align:start;position:relative}#newUI .v8-gallery img{aspect-ratio:1.45;object-fit:contain}#newUI .v8-thumbs{display:flex;gap:6px;overflow:auto}#newUI .v8-thumbs button{flex:0 0 48px;border:1px solid #e5dfe5;background:white;border-radius:7px;padding:2px;cursor:pointer}#newUI .v8-thumbs img{width:42px;height:42px;object-fit:contain;display:block}#newUI .v8-materials{display:flex;flex-wrap:wrap;gap:6px}#newUI .v8-materials button{flex:1 1 85px;min-height:44px;background:white;border:1px solid #ded7df;border-radius:9px;font-size:12px;font-weight:650;padding:6px;cursor:pointer}#newUI .v8-materials button[aria-pressed=true]{border:2px solid #643b99;background:#f7f0fb}#newUI .v8-contents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#newUI .v8-contents div{background:white;border:1px solid #e5dfe5;border-radius:10px;padding:10px;font-size:13px}#newUI .v8-contents strong{display:block;font-size:21px;color:#643b99}#newUI .v8-direct{font-size:13px;text-align:center;color:#625969}#newUI .v8-mini{font-size:12px;color:#625969} @media(min-width:650px){#newUI .v8-entry{grid-template-columns:1fr 1fr;align-items:center}#newUI .v8-entry>div:last-child{grid-column:1/-1}#newUI .v8-product{grid-template-columns:1fr 1fr;align-items:start}#newUI .v8-opts{max-width:520px;margin-inline:auto}#newUI .v8-section{margin-top:40px}} @media(max-width:350px){#newUI .v8-option{padding:9px;gap:8px;grid-template-columns:36px minmax(0,1fr) 15px}#newUI .v8-option img{width:36px;height:36px}#newUI .v8-card{padding:11px}#newUI .v8-bottom>div{gap:8px}#newUI .v8-bottom strong{font-size:17px}}
-#newUI{color:#19172e}#newUI .v8-opts{max-width:none;margin:16px 0;gap:10px}#newUI .v8-option{width:100%;grid-template-columns:30px minmax(0,1fr) 14px;padding:13px 11px;gap:10px;border-color:#e0dce3;background:#fff;border-radius:13px}#newUI .v8-option strong{font-size:16px;font-weight:600}#newUI .v8-option small{font-size:14px;font-weight:400;color:#666;line-height:1.35;margin-top:4px}#newUI .v8-option em{font-weight:600;font-size:15px;color:#8755b6}#newUI .v8-option img{width:30px;height:30px;object-fit:contain}#newUI .v8-progress{margin:8px 0 15px}#newUI .v8-progress i{height:5px}#newUI .v8-tag{font-size:12px;font-weight:500;letter-spacing:.04em}#newUI h1{font-size:clamp(24px,6.7vw,36px);letter-spacing:-.025em;line-height:1.18;font-weight:750}#newUI .v8-gallery img,#newUI .v8-entry .v8-photo,#newUI .v8-section .v8-photo{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;object-position:center;background:transparent}#newUI .v8-gallery>div{display:grid;align-items:center}#newUI .v8-two{grid-template-columns:1fr}#newUI .v8-tile img,#newUI .v8-tile video{height:auto;aspect-ratio:auto;object-fit:contain;object-position:center}#newUI .v8-video{height:auto;max-height:none;aspect-ratio:auto;object-position:center}#newUI .v9-matgroup{display:grid;gap:8px;margin-top:5px}#newUI .v9-matgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}#newUI .v9-matgrid button{min-width:0;padding:5px;border:1px solid #ddd5e2;background:#fff;border-radius:10px;display:grid;gap:6px;align-content:start;font-size:12px;line-height:1.25;cursor:pointer;overflow-wrap:normal}#newUI .v9-matgrid button[aria-pressed=true]{border:2px solid #8755b6;background:#f7f0fb;padding:4px}#newUI .v9-matgrid img{width:100%;aspect-ratio:1;object-fit:contain;object-position:center;border-radius:6px}#newUI .v9-name{display:grid;gap:6px;font-size:14px;font-weight:600}#newUI .v9-name input{width:100%;min-width:0;font:inherit;font-size:16px;border:1px solid #ddd5e2;border-radius:9px;padding:12px}#newUI .v9-loading{display:grid;gap:22px;padding:24px 0}#newUI .v9-loading>span{text-align:center;font-size:38px}#newUI .v9-loading h1{text-align:center}#newUI .v9-loading .v8-check{gap:14px}#newUI .v9-meter{height:9px;background:#e7dfe9;border-radius:20px;overflow:hidden}#newUI .v9-meter i{display:block;height:100%;background:#a16acb;animation:v9progress .65s linear forwards}@keyframes v9progress{from{width:15%}to{width:100%}}@media(min-width:650px){#newUI .v8-product,#newUI .v8-entry{grid-template-columns:1fr}#newUI .v8-two{grid-template-columns:repeat(2,minmax(0,1fr))}}
-#newUI .v10-intro{display:grid;gap:8px;margin:4px 0 18px}#newUI .v10-intro p{font-size:14px;line-height:1.42;color:#625969}#newUI .v10-intro h1{font-size:clamp(25px,6.7vw,36px)}#newUI .v10-entry-photo{margin-top:12px}#newUI .v10-entry-photo img{width:100%;height:auto;object-fit:contain;object-position:center}#newUI .v10-intro~.v8-opts{margin-top:12px;gap:8px}#newUI .v10-intro~.v8-opts .v8-option{min-height:54px;padding-block:10px}
-/* Písmo jako ve zbytku webu: DM Sans, hlavní nadpisy Playfair Display s barevným zvýrazněním */
-body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-#newUI h1{font-family:"Playfair Display",Georgia,serif;letter-spacing:-.02em;font-weight:800;line-height:1.12}
-#newUI h2,#newUI h3{font-family:"DM Sans",system-ui,sans-serif;font-weight:800;letter-spacing:-.01em}
-#newUI .grad{background:linear-gradient(105deg,#6b4dff,#e35fb2,#ff806a);-webkit-background-clip:text;background-clip:text;color:transparent}
-#newUI .v8-tag{display:inline-block;justify-self:start;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.06em}
-/* Slevy a chat */
-#newUI .v8-sale{display:inline-block;justify-self:start;padding:6px 10px;border-radius:8px;background:#e5145f;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.02em}
-#newUI .v8-price s,#newUI .v8-option em s,#newUI .v8-barprice s{color:#8b8592;font-weight:600;font-size:.62em;margin-right:6px;letter-spacing:0}
-#newUI .v8-option em s{font-size:13px}
-#newUI .v8-price{color:#e5145f}
-#newUI .v8-save{font-size:14px;color:#514957}
-#newUI .v8-timer{font-size:14px;font-weight:800;color:#c2185b}
-#newUI .v8-barprice{display:grid;line-height:1.15}#newUI .v8-barprice strong{color:#e5145f}#newUI .v8-barprice s{font-size:12.5px}#newUI .v8-barprice small{font-size:11.5px;font-weight:700;color:#c2185b}
-@media(max-width:600px){body.mf-chat #newUI .v8-bottom>div{padding-right:70px}}
-/* Barvy jako ve zbytku webu: duhová tlačítka, růžová a fialová */
-#newUI{color:var(--navy)}#newUI h1,#newUI h2,#newUI h3{color:var(--navy)}
-#newUI .v8-lead,#newUI .v10-intro p,#newUI .v8-section>p,#newUI .v8-mini,#newUI .v8-note,#newUI .v8-option small,#newUI .v8-tile p,#newUI .v8-faq details p,#newUI .v8-save{color:var(--muted)}
-#newUI .v8-btn{background:var(--grad);border-radius:16px;font-weight:800;font-size:17px;min-height:56px;box-shadow:0 10px 22px rgba(255,92,147,.28);color:#fff}
-#newUI .v8-btn:active{transform:scale(.99)}
-#newUI .v8-link,#newUI .v8-section a,#newUI .v8-faq a{color:var(--lilac)}
-#newUI .v8-progress i.on,#newUI .v9-meter i{background:var(--grad)}
-#newUI .v8-option em{color:#e5145f}#newUI .v8-arrow{color:var(--lilac)}
-#newUI .v8-option:active{background:var(--pink-soft);border-color:var(--pink)}
-#newUI .v8-offers .v8-option[aria-pressed=true],#newUI .v8-materials button[aria-pressed=true],#newUI .v9-matgrid button[aria-pressed=true]{border:2px solid var(--pink);background:var(--pink-soft)}
-#newUI .v8-check li:before{color:var(--pink)}
-#newUI .v8-option:focus-visible,#newUI .v8-btn:focus-visible{outline:3px solid #cdbbff;outline-offset:2px}
-#newUI .v9-imgwrap{display:block;position:relative;line-height:0}
-#newUI .v8-video{max-height:75vh}
-#newUI .v8-faq{display:block}#newUI .v8-faq details{border-bottom:1px solid var(--line);padding:0}#newUI .v8-faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:12px 0;font-size:15.5px;font-weight:700;line-height:1.35;cursor:pointer}#newUI .v8-faq summary::-webkit-details-marker{display:none}#newUI .v8-faq summary::after{content:"+";flex:0 0 auto;font-size:22px;font-weight:600;color:var(--lilac)}#newUI .v8-faq details[open] summary::after{content:"−"}#newUI .v8-faq details p{margin:0;padding:0 0 14px;font-size:15px;line-height:1.5;color:var(--text)}
-/* Fotky vyplní celý svůj box */
-#newUI .v8-photo{width:100%;display:block}#newUI .v9-side .v8-tile{display:flex;flex-direction:column}#newUI .v9-side .v8-tile .v9-imgwrap,#newUI .v9-side .v8-tile>video{width:100%;aspect-ratio:1;overflow:hidden}#newUI .v9-side .v8-tile .v9-imgwrap img,#newUI .v9-side .v8-tile>video{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;border-radius:0;background:#fff}#newUI .v8-option img{object-fit:cover}#newUI .v9-matgrid img{object-fit:cover}
-#newUI .v8-two.v9-side{grid-template-columns:repeat(2,minmax(0,1fr))}#newUI .v9-side .v8-tile img,#newUI .v9-side .v8-tile video{aspect-ratio:1;object-fit:cover;width:100%;height:auto}#newUI .v9-side .v8-tile div{padding:8px 10px 10px}#newUI .v9-side h3{font-size:15px}#newUI .v9-side p{font-size:12.5px}
-
-</style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .m-ring svg { opacity: 1; transform: rotate(var(--a)) translateY(-78px); }
+      .m-ring img { opacity: 1; }
+    }
+      .order .is-invalid, .order input.is-invalid { border-color: #e5145f !important; background: #fff5f8 !important; }
+    .consents .chk.is-invalid { border-radius: 12px; outline: 2px solid #e5145f; outline-offset: 4px; background: #fff5f8; }
+  </style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGDFKB27" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<main class="app"><section id="newUI" aria-live="off"></section>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="flwGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8754ce"/><stop offset=".4" stop-color="#db49ca"/><stop offset=".72" stop-color="#f05564"/><stop offset="1" stop-color="#ffa23d"/></linearGradient>
+    <linearGradient id="icoGrad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#7a3fd6"/><stop offset=".55" stop-color="#d0389a"/><stop offset="1" stop-color="#f05a3c"/></linearGradient>
+    <symbol id="flw" viewBox="-20 -20 40 40"><g><ellipse cx="0" cy="-10" rx="6.6" ry="9"/><ellipse cx="0" cy="-10" rx="6.6" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-10" rx="6.6" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-10" rx="6.6" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-10" rx="6.6" ry="9" transform="rotate(288)"/></g><circle r="4.6" fill="#fff" fill-opacity=".92"/></symbol>
+  </defs>
+</svg>
+<main class="app"><section id="newUI" aria-live="polite"></section>
   <div class="top">
     <button class="icon-btn" id="backBtn" type="button" aria-label="Zpět" onclick="goBack()">←</button>
     <a class="logo" href="index.html" aria-label="Makeful"><img src="assets/logo.png" alt="Makeful"></a>
@@ -1703,10 +1691,10 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
 </script>
 
 <script>
-/* Průběžné ukládání kvízu do Makeu (list „Kvíz“). Jméno se NEposílá (jen „vyplněno/přeskočeno“).
+/* Průběžné ukládání prodejního kvízu do Makeu (list „Prodejní kvíz“, scénář 8816842). Jméno se NEposílá (jen „vyplněno/přeskočeno“).
    Rozpočet q_budget, materiál q_effect, jméno jen vyplněno/přeskočeno (q_name), doplňky v objednávce q_addons. */
 (function(){
-  var HOOK='https://hook.eu1.make.com/3sf1buyy0akt5ij2dvetn33g74ghjlbo';
+  var HOOK='https://hook.eu1.make.com/i3f4csehnx94imoq1ni792fhgt97dx73';
   var KEY='makeful-quiz-visitor-2026';
   function vidStored(){var id='';try{id=localStorage.getItem(KEY)||'';if(!/^q-[a-z0-9-]{8,80}$/.test(id)){id='q-'+Date.now().toString(36)+'-'+(window.crypto&&crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).toLowerCase().replace(/[^a-z0-9-]/g,'');localStorage.setItem(KEY,id)}}catch(e){id=id||'q-'+Date.now().toString(36)+Math.random().toString(36).slice(2)}return id}
   // ID držíme i v paměti stránky: in-app prohlížeče FB/IG umí po načtení vyměnit úložiště a pak by vznikl druhý řádek
@@ -1716,12 +1704,14 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
   var result={};
   function send(event,step,addons){
     if(window.__mfOffer)return;
+    try{var _v=state.activeVariant;if(_v&&PRICES[_v]&&/^(result|variant|cta_order|order)$/.test(event)){result.recommended=LABEL[state.baseVariant]||state.baseVariant||'';result.shown=LABEL[_v]||_v;}}catch(e){}
     try{window.dataLayer=window.dataLayer||[];var dl={event:'quiz_'+event,quiz_step:step||'',quiz_result:result.shown||''};if(event==='result'&&window.__mfDirect){dl.event='quiz_direct'}else if(event==='result'){dl.event='quiz_completed';var leadSeen='1';try{leadSeen=localStorage.getItem('makeful-lead-once')||'';localStorage.setItem('makeful-lead-once','1')}catch(e){}}window.dataLayer.push(dl);if(event==='result'&&!window.__mfDirect&&!leadSeen)window.dataLayer.push({event:'quiz_lead',quiz_result:result.shown||''});}catch(e){}
     try{
       var a=state.answers;
       if(event==='variant'||event==='cta_order'){result.shown=LABEL[state.activeVariant]||state.activeVariant;}
-      var p={event:event,vid:vid(),step:step||'',q_age:a.age||'',q_budget:a.budget||'',q_interests:a.interests||'',q_goal:'',q_format:a.format||'',q_effect:a.effect||'',q_name:a.name?'ano':(a.format?'ne':''),q_extra:'',q_addons:addons||'',
-        r_rec:result.recommended||'',r_shown:result.shown||'',r_profile:result.profile||'',r_fit:result.fit||'',page:(function(){var u=location.href;try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);u=sessionStorage.getItem(_mfL)||u;}catch(e){}return u;})(),ua:navigator.userAgent.slice(0,200)};
+      var p={event:event,vid:vid(),step:step||'',q_age:a.age||'',q_budget:a.budget||'',q_interests:a.interests||'',q_goal:'',q_format:a.format||'',q_effect:a.effect||'',q_name:state.name?'ano':(a.format?'ne':''),q_extra:'',q_addons:addons||'',
+        r_rec:result.recommended||'',r_shown:result.shown||'',r_profile:result.profile||'',r_fit:result.fit||'',
+        pain:a.pain||'',primary_pain:a.primary_pain||'',ratings:a.ratings||'',intent:a.intent||'',delivery:a.delivery||'',objection:a.objection||'',page:(function(){var u=location.href;try{var _mfL='makeful-landing-url';if(location.search||!sessionStorage.getItem(_mfL))sessionStorage.setItem(_mfL,location.href);u=sessionStorage.getItem(_mfL)||u;}catch(e){}return u;})(),ua:navigator.userAgent.slice(0,200)};
       var body=new URLSearchParams(p);
       if(navigator.sendBeacon&&navigator.sendBeacon(HOOK,body))return;
       fetch(HOOK,{method:'POST',body:body,mode:'no-cors',keepalive:true}).catch(function(){});
@@ -1872,7 +1862,7 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
   var LATER_HOOK='https://hook.eu1.make.com/djr9ygt8ca4rctqqsu8xsnsnl6o52ckm',laterSheet=$('laterSheet'),laterSent=false,LATER_KEY='makeful-later-asked-2026';
   function laterAsked(){try{return !!sessionStorage.getItem(LATER_KEY)}catch(e){return false}}
   function resultCode(){
-    var a=state.answers,o={a:{age:a.age||'',budget:a.budget||'',format:a.format||'',interests:a.interests||'',effect:a.effect||''}};
+    var a=state.answers,o={v:2,c:a.codes||{},ef:a.effect||'',var:state.activeVariant||'',wm:state.walletMaterial||'',cm:state.clutchMaterial||'',a:{budget:a.budget||'',effect:a.effect||''}};
     if(state.name)o.n=state.name;
     try{return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}catch(e){return ''}
   }
@@ -1885,6 +1875,7 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
   function closeLater(){laterSheet.hidden=true;}
   var _goBackLater=goBack,laterThen='back',closeBtn=document.querySelector('.icon-btn[aria-label="Zavřít kvíz"]');
   function shouldAskLater(){return state.view==='resultScreen'&&!window.__mfOffer&&!laterSent&&!laterAsked()}
+  window.__mfOpenLater=function(){laterThen='stay';openLater();};
   window.__mfAskLater=function(){if(!shouldAskLater())return false;laterThen='back';openLater();return true;};
   goBack=function(){
     if(shouldAskLater()){laterThen='back';openLater();return;}
@@ -1892,7 +1883,7 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
   };
   // Stejně pro × vpravo nahoře (zavření kvízu)
   if(closeBtn)closeBtn.addEventListener('click',function(e){if(shouldAskLater()){e.preventDefault();e.stopImmediatePropagation();laterThen='close';openLater();}},true);
-  $('laterNo').addEventListener('click',function(){closeLater();dl({event:'quiz_email_declined'});if(laterThen==='close'&&closeBtn)closeBtn.click();else _goBackLater();});
+  $('laterNo').addEventListener('click',function(){closeLater();dl({event:'quiz_email_declined'});if(laterThen==='close'&&closeBtn)closeBtn.click();else if(laterThen==='back')goBack();});
   $('laterBack').addEventListener('click',closeLater);
   laterSheet.addEventListener('click',function(e){if(e.target===laterSheet)closeLater()});
   $('laterForm').addEventListener('submit',function(e){
@@ -2055,56 +2046,874 @@ body,#newUI{font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Se
 })();
 </script>
 <script>
-(()=>{
-'use strict';
-const PARTS={penezenka:['wallet'],psanicko:['clutch'],balicek:['wallet','clutch'],combo:['wallet','clutch'],penezenka2:['wallet'],psanicko2:['clutch'],balicek2:['wallet','clutch'],psanickoMD:['clutch']};
-const root=document.getElementById('newUI'), esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])), money=n=>new Intl.NumberFormat('cs-CZ').format(n)+'\u00a0Kč';
-let page=-1, recommended='',direct=false, selectedSize='auto';
-const names={penezenka:'Peněženka + knížka',psanicko:'Psaníčko se jménem + knížka',balicek:'Velká módní laboratoř',combo:'Módní laboratoř + workshop',voucher488:'Voucher na workshop',voucher888:'Voucher na workshop',voucher:'Voucher na workshop',penezenka2:'Dvě sady s peněženkou',psanicko2:'Dvě sady s psaníčkem',balicek2:'Dvě velké módní laboratoře',psanickoMD:'Dvě psaníčka pro společné tvoření'};
-const desc={penezenka:'Sestaví si vlastní peněženku.',psanicko:'Sestaví si psaníčko s vlastním jménem.',balicek:'Peněženka, psaníčko se jménem a interaktivní knížka.',combo:'Peněženka, psaníčko, knížka a voucher v hodnotě 1 188 Kč.',voucher488:'Fyzický 3D tištěný voucher v hodnotě 488 Kč.',voucher888:'Fyzický 3D tištěný voucher v hodnotě 888 Kč.',voucher:'Fyzický 3D tištěný voucher v hodnotě 1 188 Kč.',penezenka2:'Dvě samostatné kreativní sady.',psanicko2:'Dvě samostatné kreativní sady.',balicek2:'Dvě kompletní kreativní sady.',psanickoMD:'Dvě psaníčka a jedna interaktivní knížka.'};
-const img=(f,alt,cl='',lazy=true)=>`<span class="v9-imgwrap"><img class="v8-photo ${cl}" src="${esc(f.startsWith('assets/')?f:P+f)}" alt="${esc(alt)}" ${lazy?'loading="lazy"':''} decoding="async"></span>`;
-const vid=(f,p)=>`<video class="v8-video" controls playsinline preload="none" poster="${P+p}" src="assets/videos/${f}"></video>`;
-const header=()=>`<header class="v8-top"><button data-back aria-label="Zpět" ${page<=0&&state.view!=='resultScreen'?'style="visibility:hidden"':''}>←</button><img src="assets/logo.png" alt="Makeful"><span style="width:44px"></span></header>`;
-const btn=(t,attr='data-order')=>`<button type="button" class="v8-btn" ${attr}>${esc(t)}</button>`;
-const link=(t,attr)=>`<button type="button" class="v8-link" ${attr}>${esc(t)}</button>`;
-const checks=a=>`<ul class="v8-check">${a.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
-const section=(title,body)=>`<section class="v8-section"><h2>${title}</h2>${body}</section>`;
-const pt=k=>`<s>${money(PRICES[k].old)}</s> ${money(PRICES[k].now)}`;
-const saleBadge=v=>isDuo(v)?(isSisters()?'−20 % · sleva pro sestry':'−20 % · 1 + 1'):'−'+money(saving(v))+' · limitovaná sleva';
-const timer=(pre)=>`<span data-timer data-prefix="${pre}">${pre}${timerText()}</span>`;
-setInterval(()=>root.querySelectorAll('[data-timer]').forEach(e=>{e.textContent=e.dataset.prefix+timerText()}),30000);
-JOINT_PHRASES.push(...[["Co jí dokáže rozzářit oči?", "Co jim dokáže rozzářit oči?"], ["Vyberte, co ji nejvíce vystihuje.", "Vyberte, co je nejvíce vystihuje."], ["Které materiálové kouzlo by ji nadchlo?", "Které materiálové kouzlo by je nadchlo?"], ["Jak by si tvoření nejvíc užila?", "Jak by si tvoření nejvíc užily?"], ["Jak velké překvapení jí chcete letos nadělit?", "Jak velké překvapení jim chcete letos nadělit?"], ["Miluje vyrábění", "Milují vyrábění"], ["Má ráda módu a doplňky", "Mají rády módu a doplňky"], ["Ráda vymýšlí svůj vlastní styl.", "Rády vymýšlejí svůj vlastní styl."], ["Baví ji experimentovat", "Baví je experimentovat"], ["Objevuje nové věci a zkouší, jak fungují.", "Objevují nové věci a zkoušejí, jak fungují."], ["Miluje překvapení", "Milují překvapení"], ["Ráda zkouší něco úplně nového.", "Rády zkoušejí něco úplně nového."], ["Vybíráme dárek, který ji bude opravdu bavit…", "Vybíráme dárek, který je bude opravdu bavit…"], ["Zohledňujeme její věk", "Zohledňujeme jejich věk"], ["Vybíráme podle toho, co ráda tvoří", "Vybíráme podle toho, co rády tvoří"], ["Nejen hotová věc, ale radost z toho, že něco dokázala vlastníma rukama.", "Nejen hotová věc, ale radost z toho, že něco dokázaly vlastníma rukama."], ["Dílky do sebe zacvakne bez lepidla a nástrojů", "Dílky do sebe zacvaknou bez lepidla a nástrojů"], ["Jméno na psaníčku zdarma", "Jména na psaníčkách zdarma"], ["Až vám řekne: „To jsem vyrobila sama!“", "Až vám řeknou: „To jsme vyrobily samy!“"], ["Dílky si sama pospojuje. Vznikne doplněk, který může opravdu nosit.", "Dílky si samy pospojují. Vzniknou doplňky, které mohou opravdu nosit."], ["Materiály, které ji překvapí.", "Materiály, které je překvapí."], ["Kolik kreativní radosti jí nadělíte?", "Kolik kreativní radosti jim nadělíte?"]]);
-const joint=()=>{if(isJoint())jointifyDom(root)};
-const cardHead={penezenka:['Sestaví si vlastní peněženku','Peněženka a interaktivní knížka'],psanicko:['Sestaví si psaníčko s vlastním jménem','Psaníčko se jménem a interaktivní knížka'],balicek:['Sestaví si vlastní peněženku i psaníčko','Peněženka, psaníčko se jménem a interaktivní knížka'],combo:['Sestaví si peněženku i psaníčko a vyrazí na workshop','Peněženka, psaníčko, knížka a voucher v hodnotě 1 188 Kč'],voucher488:['Vybere si vlastní kreativní workshop','Fyzický 3D tištěný voucher v hodnotě 488 Kč'],voucher888:['Vybere si vlastní kreativní workshop','Fyzický 3D tištěný voucher v hodnotě 888 Kč'],voucher:['Vybere si vlastní kreativní workshop','Fyzický 3D tištěný voucher v hodnotě 1 188 Kč'],penezenka2:['Každá si sestaví vlastní peněženku','Dvě samostatné sady s peněženkou a interaktivní knížkou'],psanicko2:['Každá si sestaví psaníčko se svým jménem','Dvě samostatné sady s psaníčkem a interaktivní knížkou'],balicek2:['Každá si sestaví peněženku i psaníčko','Dvě kompletní sady s peněženkou, psaníčkem a knížkou'],psanickoMD:['Každá si sestaví psaníčko se svým jménem','Dvě psaníčka a jedna interaktivní knížka']};
-const heroOf=(v)=>{const g=galleryFor(v,currentColor());return (g.slides||[g.hero])[0].src||g.hero.src};
-function entry(){page=0;question()}
-function directOffer(){direct=true;window.__mfDirect=true;state.walletMaterial=state.clutchMaterial='';state.answers={age:'',interests:'',format:FORMAT.home,budget:BUDGET.high,effect:EFFECT.thermo};recommended='';state.baseVariant=state.activeVariant='balicek';state.book=false;renderResultCard();setView('resultScreen');window.__mfQuizSend?.('result','přímý výběr bez kvízu')}
+<!-- VÁNOČNÍ KVÍZ PRO UNAVENÉHO RODIČE · vzhled „termo materiál“ -->
 
-const ages=[['🎀','Dívka 8–12 let','',AGE.mlada],['✨','Dívka 13–19 let','',AGE.teen],['💕','Máma a dcera','',AGE.mamaDcera],['🎁','Sestry','',AGE.sestry]];
-const interests=[['🎨','Miluje vyrábění','Pořád něco tvoří vlastníma rukama.','Tvoření rukama a vyrábění'],['👜','Má ráda módu a doplňky','Ráda vymýšlí svůj vlastní styl.','Móda a originální doplňky'],['✨','Baví ji experimentovat','Objevuje nové věci a zkouší, jak fungují.','Technologie a 3D tisk'],['🎁','Miluje překvapení','Ráda zkouší něco úplně nového.','Nové zážitky a zkoušení nepoznaného']];
-const effects=[['produkt-penezenka-termo.webp','Mění barvu na dotek','Kouzlo tepla jejích rukou.',EFFECT.thermo],['penezenka-svitici.webp','Svítí ve tmě','Překvapení po zhasnutí.',EFFECT.glow],['produkt-penezenka-cerna.webp','Elegantní černá','Stylová klasika.',EFFECT.black],['✨','Nechám si poradit','Vyberte za mě.',EFFECT.any]];
-const formats=[['🏠','Doma, ve svém kreativním světě','Vlastní tempo a prostor pro fantazii.',FORMAT.home],['💗','Společně s někým blízkým','Krásné chvíle při společném tvoření.','shared'],['🎨','Na skutečném kreativním workshopu','Zážitek a objevování něčeho nového.',FORMAT.out],['✨','Kombinace domácího tvoření a zážitku','To nejlepší z obou světů.',FORMAT.both]];
-function sizeChoices(){if(isSisters())return [['🎁','Dvě sady s peněženkou','',BUDGET.low,pt('penezenka2')],['🎀','Dvě sady s psaníčkem','',BUDGET.mid,pt('psanicko2')],['✨','Dvě kompletní sady','',BUDGET.high,pt('balicek2')],['💗','Nechám si doporučit ten nejlepší','','auto']];if(state.answers.age===AGE.mamaDcera)return [['🎀','Dvě psaníčka','',BUDGET.mid,pt('psanickoMD')],['🎁','Dvě kompletní sady','',BUDGET.high,pt('balicek2')],['✨','Nechám si doporučit ten nejlepší','','auto']];if(state.answers.format===FORMAT.out)return [['🎁','Voucher na workshop','',BUDGET.low,pt('voucher488')],['🎀','Voucher na workshop','',BUDGET.mid,pt('voucher888')],['💝','Voucher na workshop','',BUDGET.high,pt('voucher')],['✨','Nechám si doporučit ten nejlepší','','auto']];return [['🎁','Menší kreativní dárek','Jeden vlastnoručně vytvořený doplněk.',BUDGET.low,'<s>688–1 088 Kč</s> 488–888 Kč'],['🎀','Velký kreativní dárek','Celá módní laboratoř se dvěma výrobky.',BUDGET.high,pt('balicek')],['💝','Dárek i nezapomenutelný zážitek','Kreativní balíček a workshop.',BUDGET.top,pt('combo')],['✨','Nechám si doporučit ten nejlepší','Pomozte mi vybrat podle jejích zájmů.','auto']];}
-function option(x,i){return `<button class="v8-option" data-answer="${i}" type="button">${x[0].endsWith('.webp')?`<img src="${P+x[0]}" alt="">`:`<span class="v8-icon">${x[0]}</span>`}<span><strong>${esc(x[1])}</strong>${x[2]?`<small>${esc(x[2])}</small>`:''}${x[4]?`<em>${x[4]}</em>`:''}</span><span class="v8-arrow">›</span></button>`}
-function question(){state.view='questionScreen';root.hidden=false;document.body.classList.remove('mf-order');const data=[['age','Pro koho vybíráte dárek?',ages],['interests','Co jí dokáže rozzářit oči?',interests,'Vyberte, co ji nejvíce vystihuje.'],['effect','Které materiálové kouzlo by ji nadchlo?',effects],['format','Jak by si tvoření nejvíc užila?',isJoint()?formats.slice(0,2):formats],['budget','Jak velké překvapení jí chcete letos nadělit?',sizeChoices()]][page];root.innerHTML=header()+`${page===0?`<div class="v10-intro"><h1>Máte doma holčičku, <span class="grad">která pořád něco vyrábí?</span></h1><p>Darujte jí vlastní módní laboratoř. Sama si vytvoří módní doplňky a objeví kouzelné materiály.</p></div>`:''}<div class="v8-progress">${[0,1,2,3,4].map(i=>`<i class="${i<=page?'on':''}"></i>`).join('')}</div><p class="v8-tag">${page===4?'Poslední otázka':'Otázka '+(page+1)+' z 5'}</p>${page===0?`<h2>${data[1]}</h2>`:`<h1>${data[1]}</h1>`}${data[3]?`<p class="v8-lead">${data[3]}</p>`:''}<div class="v8-opts">${data[2].map(option).join('')}</div>${page===0?`<p class="v8-note">5 krátkých otázek · Bez registrace</p>${link('Rovnou prohlédnout nabídku od 488 Kč','data-direct')}<div class="v10-entry-photo">${img('sada-kombo-termo.webp','Velká kreativní sada Makeful','',true)}</div>`:''}`;if(page===0)root.querySelector('[data-direct]').onclick=directOffer;root.querySelector('[data-back]').onclick=()=>{page--;page<0?entry():question()};root.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{let value=data[2][+b.dataset.answer][3];state.answers[data[0]]=value==='shared'?FORMAT.home:value;state.index=page;if(page===0){direct=false;window.__mfDirect=false;state.walletMaterial=state.clutchMaterial='';window.__mfMarkUrl?.('quiz-started')}if(page===2){state.walletMaterial=state.clutchMaterial=MAT[value]?value:EFFECT.thermo}if(page===4){selectedSize=value;state.answers.budget=value==='auto'?BUDGET.high:value;}window.__mfQuizSend?.('answer',`${page+1} / 5 (${data[0]})`);if(page<4){page++;question()}else{recommended=computeVariant();showRecommendation()}});joint();window.scrollTo(0,0)}
-function showRecommendation(){root.innerHTML=header()+`<div class="v9-loading"><span aria-hidden="true">🎁</span><h1>Vybíráme dárek, který ji bude opravdu bavit…</h1><div class="v9-meter"><i></i></div>${checks(['Zohledňujeme její věk','Vybíráme podle toho, co ráda tvoří','Hledáme vhodné materiály','Připravujeme doporučení'])}<p class="v8-note">Český kreativní projekt Makeful</p></div>`;joint();window.scrollTo(0,0);setTimeout(()=>computeAndShowResult(),650)}
-computeVariant=function(){const a=state.answers,b=a.budget;if(a.age===AGE.sestry)return b===BUDGET.low?'penezenka2':b===BUDGET.mid?'psanicko2':'balicek2';if(a.age===AGE.mamaDcera)return b===BUDGET.high&&selectedSize!=='auto'?'balicek2':'psanickoMD';if(a.format===FORMAT.out)return b===BUDGET.low?'voucher488':b===BUDGET.mid?'voucher888':'voucher';if(b===BUDGET.top||(a.format===FORMAT.both&&selectedSize==='auto'))return 'combo';return b===BUDGET.low?(a.interests==='Móda a originální doplňky'?'psanicko':'penezenka'):b===BUDGET.mid?'psanicko':'balicek'};
-let lastPart='wallet';
-function materialFor(part){return state[part+'Material']|| (MAT[state.answers.effect]?state.answers.effect:EFFECT.thermo)}
-function materialPicker(v){return (PARTS[v]||[]).map(part=>`<div class="v9-matgroup"><h3>Vyberte materiál ${part==='wallet'?'peněženky':'psaníčka'}</h3><div class="v9-matgrid">${[EFFECT.thermo,EFFECT.glow,EFFECT.black].map(m=>`<button type="button" data-part="${part}" data-material="${esc(m)}" aria-pressed="${materialFor(part)===m}"><img src="${P+MAT[m][part==='wallet'?'w':'c']}" alt=""><span>${esc(m)}</span></button>`).join('')}</div></div>`).join('')+(hasClutch(v)?`<label class="v9-name">Jméno na psaníčko (nepovinné)<input id="v9-name" maxlength="60" value="${esc(state.name||'')}" placeholder="Např. Anička"></label>`:'')}
-function offers(v){if(isSisters())return ['penezenka2','psanicko2','balicek2'];if(state.answers.age===AGE.mamaDcera)return ['psanickoMD','balicek2'];return isVoucher(v)?['voucher488','voucher888','voucher','balicek','combo']:['balicek','penezenka','psanicko','combo','voucher'];}
-function sales(reset=true){state.view='resultScreen';root.hidden=false;document.body.classList.remove('mf-order');const v=state.activeVariant,vo=isVoucher(v),base=baseOf(v),price=PRICES[v].now,g=galleryFor(v,currentColor()),slides=(g.slides||[g.hero,g.image]).filter(x=>x&&x.src).slice(0,5), rec=v===recommended&&!direct, tt=vo?['Darujte jí ','zážitek, při kterém bude sama tvořit.']:isJoint()?[isSisters()?'Darujte jim ':'Darujte si ','společné chvíle plné tvoření.']:base==='penezenka'?['Její první ','vlastnoručně vytvořená peněženka.']:base==='psanicko'?['Psaníčko s jejím jménem. ','A jejím vlastním designem.']:rec?['Pro vaši malou návrhářku jsme našli ','něco výjimečného.']:['Darujte jí ','vlastní módní laboratoř.'],title=esc(tt[0])+'<span class="grad">'+esc(tt[1])+'</span>';
-if(!vo){const parts=PARTS[v]||[];if(parts.length===2&&materialFor('wallet')!==materialFor('clutch')){const cl={src:P+MAT[materialFor('clutch')].c},wl={src:P+MAT[materialFor('wallet')].w};slides.splice(0,slides.length,...(lastPart==='clutch'?[cl,wl]:[wl,cl]),{src:P+'sada-krabicka.webp'},{src:P+'sada-knizka.webp'});}else if(parts.length){const gg=galleryFor(v,materialFor(parts[0]));slides.splice(0,slides.length,...(gg.slides||[gg.hero,gg.image]).filter(x=>x&&x.src).slice(0,5));}}
-const order=btn('Vybrat dárek za '+money(price)+' →');const pr0=PRICES[v].now,pool=[...new Set(offers(v))].filter(k=>k!==v&&PRICES[k]),cheaper=pool.filter(k=>PRICES[k].now<pr0).sort((a,b)=>PRICES[b].now-PRICES[a].now),dearer=pool.filter(k=>PRICES[k].now>pr0).sort((a,b)=>PRICES[a].now-PRICES[b].now),alts=cheaper.length&&dearer.length?[cheaper[0],dearer[0]]:cheaper.length?cheaper.slice(0,2):dearer.slice(0,2);const all=[v,...alts].sort((a,b)=>PRICES[a].now-PRICES[b].now);
-const offerHtml=`<div class="v8-offers">${all.map(k=>`<button class="v8-option" data-variant="${k}" aria-pressed="${k===v}"><img src="${heroOf(k)}" alt=""><span><strong>${esc(names[k])}</strong><small>${esc(desc[k])}</small><em>${pt(k)}</em>${k===recommended&&!direct?'<small>Doporučení z kvízu</small>':''}</span><span class="v8-arrow">${k===v?'✓':'›'}</span></button>`).join('')}</div>`;
-let html=header()+`<div class="v8-sales"><p class="v8-tag">${rec?'Vybráno podle vašich odpovědí':'Kreativní dárky Makeful'}</p><h1>${title}</h1><p class="v8-lead">${vo?'Fyzický dárkový voucher na workshop v Praze nebo online.':'Nejen hotová věc, ale radost z toho, že něco dokázala vlastníma rukama.'}</p><div class="v8-product"><div><div class="v8-gallery"><div>${img(slides[0].src,names[v],'',false)}</div></div></div><div class="v8-card"><h2>${esc(cardHead[v][0])}</h2><p style="font-size:14px">${esc(cardHead[v][1])}</p><span class="v8-sale">${esc(saleBadge(v))}</span><div class="v8-price"><s>${money(PRICES[v].old)}</s>${money(price)}</div><p class="v8-save">Ušetříte ${money(saving(v))}. Vánoční sleva platí jen do 30. 11. nebo do vyprodání 100 ks.</p><p class="v8-timer">${timer('⏳ Sleva končí za ')}</p>${checks(vo?['Platí celý rok','Termín si obdarovaná vybere později']:['Dílky do sebe zacvakne bez lepidla a nástrojů','Od 8 let, i bez zkušeností',hasClutch(v)?'Jméno na psaníčku zdarma':'Interaktivní knížka s úkoly'])}${vo?'':materialPicker(v)}${order}<p class="v8-mini">Doprava zdarma</p>${link('Porovnat další balíčky ↓','data-compare')}</div></div>`;
-if(!vo){html+=section('Až vám řekne: „To jsem vyrobila sama!“',vid(base==='psanicko'?'produkt-psanicko-detail.mp4':'produkt-penezenka-ukazka.mp4',base==='psanicko'?'produkt-psanicko-detail-poster.webp':'produkt-penezenka-video-poster.webp')+img('penezenka-'+({'Mění barvu na dotek':'termo','Svítí ve tmě':'svitici','Klasická černá':'cerne'}[materialFor((PARTS[v]||['wallet'])[0])]||'termo')+'-mesh.webp','Rozpracované moduly')+'<p>Dílky si sama pospojuje. Vznikne doplněk, který může opravdu nosit.</p>');html+=section('Materiály, které ji překvapí.',`<div class="v8-two v9-side"><div class="v8-tile"><video controls playsinline preload="none" poster="${P}produkt-zmena-barvy-voda-poster.webp" src="assets/videos/produkt-zmena-barvy-voda.mp4"></video><div><h3>Mění barvu</h3><p>Reaguje na teplo.</p></div></div><div class="v8-tile"><span class="v9-imgwrap"><img loading="lazy" src="${P}psanicko-svitici-efekt.webp" alt="Psaníčko za světla a ve tmě"></span><div><h3>Svítí ve tmě</h3><p>Po nasvícení se rozzáří.</p></div></div></div><p class="v8-mini">Materiál si vyberete přímo nahoře u dárku.</p>`);html+=section('Co všechno objeví v dárkové krabičce?',`<div style="position:relative">${img(heroOf(v),names[v])}</div><div class="v8-card">${checks(contentsOf(v).filter(x=>!/Doprava/.test(x)))}</div><div class="v8-two v9-side"><div class="v8-tile">${img('sada-knizka.webp','Interaktivní knížka')}<div><h3>Dobrodružství nekončí posledním dílkem</h3><p>Knížka s kreativními úkoly.</p></div></div><div class="v8-tile">${img('sada-krabicka.webp','Dárková krabička')}<div><h3>Připraveno pod stromeček</h3><p>Dárkové balení.</p></div></div></div>${order}`)}else{html+=section('Jak voucher funguje',img('voucher-zmena-barvy-dotek.webp','Voucher měnící barvu')+checks(PRODUCT_DATA[v].bullets)+vid('makeful-ze-studia.mp4','makeful-ze-studia-poster.webp'))}
-html+=section('Kousek naší kreativní módní laboratoře, až k vám domů',img('o-nas-tvoreni-ve-studiu.webp','Účastnice při tvoření v Makeful')+'<p>Makeful propojuje módu, kreativitu a technologie. Na fotografii je tvoření v rámci našich programů.</p>'+img('o-nas-vlastni-klobouk.webp','Účastnice s vlastním výtvorem')+'<p class="v8-mini">Ukázka z programu Makeful, nikoli obsah domácí sady.</p>');
-html+=`<div id="v8-offers">${section('Kolik kreativní radosti jí nadělíte?',offerHtml+order)}</div>`;
-html+=section('O Makeful','<p>Český kreativní projekt, který přibližuje módu a nové technologie dětem i dospělým.</p><div class="v8-card"><strong>O Makeful v médiích</strong><p style="font-size:14px">ČT :D · Wired · Hospodářské noviny</p><a href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">Reportáž České televize →</a></div>');
-const faqs=(vo?FAQ_VOUCHER:FAQ_KIT).map(f=>/^Proč je teď sleva/.test(f[0])?(isDuo(v)?['Proč je na dva balíčky sleva 20 %?',(isSisters()?'Sestry chceme podpořit, ať každá tvoří se svým.':'Tvořit spolu je víc radosti, ať každá tvoří se svým.')+' Na dva balíčky v jedné objednávce dáváme 20 %. Platí do 30. 11. nebo do vyprodání.']:['Proč je teď sleva '+money(saving(v))+'?',f[1]]):f);html+=section('Co potřebujete vědět před objednáním',`<div class="v8-faq">${faqs.map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join('')}</div><p>Potřebujete poradit? <a href="tel:+420735820576">735 820 576</a> · <a href="mailto:hello@make-ful.com">hello@make-ful.com</a></p>${link('Vybrat dárek znovu','data-restart')}`);
-html+=`<div class="v8-bottom"><div><div class="v8-barprice"><s>${money(PRICES[v].old)}</s><strong>${money(price)}</strong><small>${timer('Sleva končí za ')}</small></div>${btn('Objednat →')}</div></div></div>`;root.innerHTML=html;root.querySelectorAll('[data-material]').forEach(b=>b.onclick=()=>{const y=scrollY,part=b.dataset.part;lastPart=part;state[part+'Material']=b.dataset.material;state.answers.effect=b.dataset.material;renderResultCard();sales(false);window.scrollTo(0,y);});const nameInput=root.querySelector('#v9-name');if(nameInput)nameInput.oninput=()=>{state.name=nameInput.value.slice(0,60)};root.querySelector('[data-back]').onclick=()=>{if(window.__mfOffer){location.href='index.html#produkty';return}if(window.__mfAskLater&&window.__mfAskLater())return;if(direct){page=-1;entry()}else{page=4;question()}};root.querySelector('[data-compare]').onclick=()=>root.querySelector('#v8-offers').scrollIntoView({behavior:'smooth'});root.querySelectorAll('[data-slide]').forEach(b=>b.onclick=()=>{const gg=root.querySelector('.v8-gallery');gg.scrollTo({left:gg.children[+b.dataset.slide].offsetLeft-gg.children[0].offsetLeft,behavior:'smooth'})});root.querySelectorAll('[data-variant]').forEach(b=>b.onclick=()=>{state.activeVariant=b.dataset.variant;state.book=false;renderResultCard();window.__mfQuizSend?.('variant','změna varianty: '+state.activeVariant);sales()});root.querySelectorAll('[data-order]').forEach(b=>b.onclick=()=>document.getElementById('resultOrderBtn').click());root.querySelector('[data-restart]').onclick=()=>{page=-1;recommended='';state.walletMaterial=state.clutchMaterial='';restartQuiz()};joint();if(reset)window.scrollTo(0,0)}
-const oldView=setView;setView=function(id){oldView(id);if(id==='orderScreen'||id==='doneScreen'){document.body.classList.add('mf-order');root.hidden=true}else if(id==='resultScreen')sales();else if(id==='questionScreen'){page<0?entry():question()}};renderQuestion=function(){page<0?entry():question()};goBack=function(){if(state.view==='orderScreen')setView('resultScreen');else if(state.view==='resultScreen'){page=direct?-1:4;page<0?entry():question()}else{page=Math.max(-1,page-1);page<0?entry():question()}};if(state.view==='resultScreen'){recommended=state.baseVariant;page=4;sales()}else if(window.__mfPreset){page=1;question()}else entry();
+(() => {
+  'use strict';
+
+  const PARTS = { penezenka: ['wallet'], psanicko: ['clutch'], balicek: ['wallet', 'clutch'], combo: ['wallet', 'clutch'], penezenka2: ['wallet'], psanicko2: ['clutch'], balicek2: ['wallet', 'clutch'], psanickoMD: ['clutch'] };
+  const root = document.getElementById('newUI');
+  const aura = document.querySelector('.aura');
+  const esc = x => String(x ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const money = n => new Intl.NumberFormat('cs-CZ').format(n) + ' Kč';
+  const SAVE_KEY = 'makeful-quiz-result-v8-2026';
+  // Ikony místo emoji (tvary podle Lucide, licence ISC), tah v barvách krabičky
+  const ICONS = {"phone": "<rect width=\"14\" height=\"20\" x=\"5\" y=\"2\" rx=\"2.5\"/><path d=\"M11 18h2\"/>", "gift": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"4\" rx=\"1\"/><path d=\"M12 8v13\"/><path d=\"M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7\"/><path d=\"M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5\"/>", "palette": "<path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z\"/><circle cx=\"13.5\" cy=\"6.5\" r=\"1\" class=\"ic-dot\"/><circle cx=\"17.5\" cy=\"10.5\" r=\"1\" class=\"ic-dot\"/><circle cx=\"8.5\" cy=\"7.5\" r=\"1\" class=\"ic-dot\"/><circle cx=\"6.5\" cy=\"12.5\" r=\"1\" class=\"ic-dot\"/>", "users": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>", "sparkles": "<path d=\"M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z\"/><path d=\"M20 3v4\"/><path d=\"M22 5h-4\"/>", "smile": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><path d=\"M9 9h.01\"/><path d=\"M15 9h.01\"/>", "award": "<circle cx=\"12\" cy=\"8\" r=\"6\"/><path d=\"m15.48 12.89 1.51 8.53a.5.5 0 0 1-.81.47l-3.58-2.69a1 1 0 0 0-1.2 0l-3.59 2.69a.5.5 0 0 1-.81-.47l1.51-8.53\"/>", "puzzle": "<path d=\"M19.44 7.85c-.05.32.06.65.29.88l1.57 1.57c.47.47.7 1.09.7 1.7s-.23 1.23-.7 1.7l-1.61 1.61a.98.98 0 0 1-.84.28c-.47-.07-.8-.48-.97-.93a2.5 2.5 0 1 0-3.21 3.21c.45.17.86.5.93.97a.98.98 0 0 1-.28.84l-1.61 1.61a2.4 2.4 0 0 1-1.7.7 2.4 2.4 0 0 1-1.7-.7l-1.57-1.57a1.03 1.03 0 0 0-.88-.29c-.49.07-.84.5-1.02.97a2.5 2.5 0 1 1-3.24-3.24c.46-.18.9-.53.97-1.02a1.03 1.03 0 0 0-.29-.88l-1.57-1.57A2.4 2.4 0 0 1 2 12c0-.62.24-1.23.7-1.7l1.53-1.53c.24-.24.58-.35.92-.3.51.08.88.53 1.07 1.01a2.5 2.5 0 1 0 3.26-3.26c-.48-.2-.93-.56-1.01-1.07-.05-.34.06-.68.3-.92L10.3 2.7A2.4 2.4 0 0 1 12 2c.62 0 1.23.24 1.7.7l1.57 1.57c.23.23.56.34.88.29.49-.07.84-.5 1.02-.97a2.5 2.5 0 1 1 3.24 3.24c-.46.18-.9.53-.97 1.02Z\"/>", "bulb": "<path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5\"/><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/>", "bag": "<path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/>", "eye": "<path d=\"M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>", "tree": "<path d=\"m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z\"/><path d=\"M12 22v-3\"/>", "gem": "<path d=\"M6 3h12l4 6-10 13L2 9Z\"/><path d=\"M11 3 8 9l4 13 4-13-3-6\"/><path d=\"M2 9h20\"/>", "zap": "<path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\"/>", "calendar": "<rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/><path d=\"M16 2v4\"/><path d=\"M8 2v4\"/><path d=\"M3 10h18\"/><path d=\"M8 15h.01\"/><path d=\"M12 15h.01\"/><path d=\"M16 15h.01\"/>", "calcheck": "<rect width=\"18\" height=\"18\" x=\"3\" y=\"4\" rx=\"2\"/><path d=\"M16 2v4\"/><path d=\"M8 2v4\"/><path d=\"M3 10h18\"/><path d=\"m9 16 2 2 4-4\"/>", "box": "<path d=\"M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z\"/><path d=\"M12 22V12\"/><path d=\"m3.3 7 7.7 4.73a2 2 0 0 0 2 0L20.7 7\"/><path d=\"m7.5 4.27 9 5.15\"/>", "shield": "<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"/><path d=\"m9 12 2 2 4-4\"/>", "heart": "<path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"/>", "target": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><circle cx=\"12\" cy=\"12\" r=\"6\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/>", "truck": "<path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\"/><path d=\"M15 18H9\"/><path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14\"/><circle cx=\"17\" cy=\"18\" r=\"2\"/><circle cx=\"7\" cy=\"18\" r=\"2\"/>", "mail": "<rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/>"};
+  const ic = (n, cls = '') => ICONS[n] ? `<svg class="ic ${cls}" viewBox="0 0 24 24" fill="none" stroke="url(#icoGrad)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>` : '';
+  const REDUCE = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const PARAM = new URLSearchParams(location.search);
+  const ALIAS = { confidence: 'pride', gift: 'meaning', talent: 'creativity' };
+  let adAngle = ALIAS[PARAM.get('pain')] || PARAM.get('pain') || 'creativity';
+  if (!['screen', 'meaning', 'pride', 'creativity', 'together', 'magic'].includes(adAngle)) adAngle = 'creativity';
+
+  // Vstupní kontext z reklamy
+  const AD_HOOKS = {
+    screen:     ['phone', 'Co kdyby ji mobil vedl k tvoření, ne jen ke scrollování?', 'Stačí pár klepnutí. Najdeme dárek, u kterého tvoří vlastníma rukama.'],
+    meaning:    ['gift', 'Dárek, který 27. prosince neskončí v koutě', 'Vybereme řešení podle toho, co vaši holčičku chytne i dlouho po Vánocích.'],
+    pride:      ['smile', '„Mami, podívej, to jsem vyrobila sama!“', 'Najdeme dárek, u kterého zažije opravdovou radost z vlastního výsledku.'],
+    creativity: ['palette', 'Máte doma holčičku, která pořád něco vyrábí?', 'Zjistíme, co jí dá větší prostor než běžné věci z obchodu.'],
+    together:   ['users', 'Odpoledne bez vánočního spěchu', 'Ukážeme vám tip na společný čas, který si užijete obě.'],
+    magic:      ['sparkles', 'Nevíte, čím ji letos pod stromečkem překvapit?', 'Za chvilku vám ukážeme nápad, který ještě nezažila.']
+  };
+
+  // KROK 0: Frustrace rodiče
+  const PAINS = [
+    { id: 'screen',     ico: 'phone', title: 'Tráví moc času u mobilu' },
+    { id: 'meaning',    ico: 'gift', title: 'Dárky ji nadchnou jen na chvíli' },
+    { id: 'creativity', ico: 'palette', title: 'Běžné tvoření už jí nestačí' },
+    { id: 'together',   ico: 'users', title: 'Chybí nám společný čas bez spěchu' },
+    { id: 'magic',      ico: 'sparkles', title: 'Hračky už ji neberou a nevím co koupit' }
+  ];
+
+  // KROK 1 & 2: první věta zjistí, jak moc rodiče pálí jeho hlavní problém,
+  // druhá zkusí související starost. Obě hodnocení mění výsledek (viz RESULT_REACT).
+  // Klíče jdou do Makeu (sloupec ratings).
+  const PAIN_CLAIMS = {
+    screen: [
+      ['screen_fight', 'phone', 'Když jí vezmu mobil, je z toho hádka nebo nuda.'],
+      ['sec_independent', 'puzzle', 'Ocenila bych, kdyby se do toho pustila úplně sama, bez mé pomoci.']
+    ],
+    meaning: [
+      ['meaning_drawer', 'gift', 'Spousta dárků od nás do týdne skončí v šuplíku.'],
+      ['sec_screen', 'phone', 'Ráda bych, aby trávila méně času u mobilu.']
+    ],
+    creativity: [
+      ['creativity_done', 'palette', 'Běžné tvořivé sady má hotové za odpoledne a pak ji to nebaví.'],
+      ['sec_pride', 'award', 'Chci, aby byla pyšná na něco, co vytvořila sama.']
+    ],
+    together: [
+      ['together_screens', 'users', 'Večer každý skončí u své obrazovky.'],
+      ['sec_meaning', 'gift', 'Nechci dárek, který skončí po jednom odpoledni.']
+    ],
+    magic: [
+      ['magic_miss', 'gift', 'Hračky už ji neberou a s oblečením se netrefím.'],
+      ['sec_screen', 'phone', 'Ráda bych, aby trávila méně času u mobilu.']
+    ],
+    none: [
+      ['none_unique', 'sparkles', 'Chci dárek, který nebude mít nikdo jiný.'],
+      ['sec_screen', 'phone', 'Ráda bych, aby trávila méně času u mobilu.']
+    ]
+  };
+  // Jak výsledek reaguje na škálu.
+  // strong: hlavní problém ohodnocený 4–5 → úvodní věta výsledku vrací rodiči jeho vlastní slova.
+  const STRONG_LEAD = {
+    screen: 'Hádky o mobil znáte. Tady ji mobil provede návodem a videi, ale tvoří vlastníma rukama.',
+    meaning: 'Dárky, které skončí v šuplíku, už nechcete. Tenhle si sama sestaví a pak ho opravdu nosí.',
+    creativity: 'Sady na jedno odpoledne ji nebaví. Tady skládá vlastní doplněk a kombinuje ho po svém.',
+    together: 'Místo večera, kdy každý kouká do svého, si sednete k jednomu stolu a tvoříte spolu.',
+    magic: 'Netrefit se už nehrozí. Tohle žádná kamarádka nemá a na dotek to mění barvu.',
+    none: 'Dárek, který nikdo jiný mít nebude. Sama si ho sestaví a pak ho nosí.'
+  };
+  // sec: související starost ohodnocená 4–5 → věta u doporučené sady + odpovídající důkaz navrch.
+  const SEC_REACT = {
+    sec_independent: { line: 'Zvládne to úplně sama: dílky se jen spojí, bez lepidla a bez vaší pomoci.', proof: 'fun' },
+    sec_screen: { line: 'Mobil ji provede návodem, tvoří ale vlastníma rukama.', proof: 'fun' },
+    sec_pride: { line: 'Hotový doplněk nosí a může se pochlubit: „Tohle jsem udělala já.“', proof: 'trust' },
+    sec_meaning: { line: 'Nekončí po jednom odpoledni: doplněk nosí a knížka s úkoly ji zabaví na další týdny.', proof: 'trust' }
+  };
+
+  // KROK 3: Aha karta
+  // Aha karta: malá otázka + velké obecné pravidlo
+  const AGITATE = {
+    screen: { ico: 'bulb', q: 'Proč zákazy mobilu nefungují?', title: 'Zákazy mobilu nefungují. Děti víc chytne, když je mobil pošle tvořit vlastníma rukama.' },
+    meaning: { ico: 'bulb', q: 'Proč většina dárků do týdne omrzí?', title: 'Dárky omrzí, protože jsou hotové. Děti si váží věcí, do kterých vloží vlastní energii.' },
+    creativity: { ico: 'bulb', q: 'Proč ji běžné tvoření nudí?', title: 'Dekorace na poličku děti nebaví. Chtějí vyrobit osobitou věc, kterou se můžou pochlubit mezi kamarády.' },
+    together: { ico: 'bulb', q: 'Jak najít společný čas bez stresu?', title: 'Složité stavebnice končí vztekem. Jednoduché tvoření u jednoho stolu dává rodičům a dětem čas na povídání.' },
+    magic: { ico: 'bulb', q: 'Jak ji překvapit, když už všechno má?', title: 'Hračky děti časem přestanou bavit. Překvapí je vlastní styl spojený s chytrým nápadem.' },
+    none: { ico: 'bulb', q: 'Jaký dárek nekončí rozbalením?', title: 'Nejlepší dárky nekončí rozbalením. Spojují vlastní tvoření s věcí, kterou děti opravdu nosí.' }
+  };
+
+  const INTENT_OPTS = [
+    { ico: 'bag', title: 'Chci vybrat a koupit dárek hned', val: 'buy' },
+    { ico: 'eye', title: 'Zatím se jen rozhlížím', val: 'consider' }
+  ];
+  const BUDGET_OPTS = [
+    { ico: 'gift', title: '500 až 1 000 Kč', sub: 'Menší osobní překvapení', val: BUDGET.mid },
+    { ico: 'tree', title: '1 000 až 1 500 Kč', sub: 'Hlavní dárek pod stromeček', val: BUDGET.high },
+    { ico: 'gem', title: '1 500 Kč a více', sub: 'Větší dárek s dlouhodobým přesahem', val: BUDGET.top }
+  ];
+  const DELIVERY_OPTS = [
+    { ico: 'zap', title: 'Chci mít dárek odškrtnutý co nejdřív', val: 'fast' },
+    { ico: 'tree', title: 'Stačí, když bude včas pod stromečkem', val: 'christmas' },
+    { ico: 'calendar', title: 'Datum mě netlačí', val: 'later' }
+  ];
+  // Řádek pod tlačítkem na kartě navazuje na to, kdy rodič dárek potřebuje
+  const DELIVERY_LINE = {
+    fast: 'Doprava zdarma · Objednáte dnes a máte vyřešeno',
+    christmas: 'Doprava zdarma · Dárková krabička rovnou pod stromeček',
+    later: 'Doprava zdarma · Dárková krabička, hodí se k jakékoli příležitosti'
+  };
+  const OBJECTION_OPTS = [
+    { ico: 'smile', title: 'Bude ji to bavit a zvládne to sama?', jt: 'Bude nás to bavit a zvládneme to spolu?', val: 'fun' },
+    { ico: 'calcheck', title: 'Využije to i po Vánocích?', jt: 'Využijeme to i po Vánocích?', val: 'trust' },
+    { ico: 'box', title: 'Co přesně za ty peníze dostane?', jt: 'Co přesně za ty peníze dostaneme?', val: 'value' },
+    { ico: 'sparkles', title: 'V čem je to jiné než běžné věci z obchodu?', val: 'magic' },
+    { ico: 'shield', title: 'Kdo za tím stojí a mohu značce věřit?', val: 'brand' }
+  ];
+
+  const RESULT_COPY = {
+    screen: {
+      h1: 'Dárek, který z mobilu udělá průvodce tvořením.',
+      lead: 'V mobilu má návody a krátká videa, ale tvoří vlastníma rukama. Výsledkem je opravdový módní doplněk.',
+      vsNo: ['<strong>Zákazy mobilu:</strong> hádka a nuda za pět minut', '<strong>Běžné pastelky:</strong> pomalé, bez okamžitého efektu', '<strong>Další hra v mobilu:</strong> jen další scrollování'],
+      vsYes: ['<strong>Chytrý 3D materiál:</strong> reaguje na dotek nebo svítí jako technologie, ale v rukou', '<strong>Okamžitý výsledek:</strong> první dílky složí během pár minut', '<strong>Mobil jako pomocník:</strong> návody a videa ji posílají tvořit vlastníma rukama']
+    },
+    meaning: {
+      h1: 'Konečně dárek, který 27. prosince neskončí v koutě.',
+      lead: 'Protože si ho sama sestaví a nese její jméno, má k němu úplně jiný vztah než k hotové věci z obchodu.',
+      vsNo: ['<strong>Hotová věc z obchodu:</strong> nadšení vyprchá za dva dny', '<strong>Plastová hračka:</strong> za měsíc překáží v pokoji', '<strong>Univerzální dárek:</strong> nemá v sobě nic osobního'],
+      vsYes: ['<strong>Sama si ho složí:</strong> hrdý pocit „tohle jsem vyrobila já“', '<strong>Její jméno přímo na doplňku:</strong> osobní kousek jen pro ni', '<strong>Každodenní radost:</strong> reálně ho nosí do školy i mezi kamarádky']
+    },
+    creativity: {
+      h1: 'Zapomeňte na tvořivé sady na jedno odpoledne.',
+      lead: 'Tady nevzniká papírová dekorace na poličku, ale pružný a odolný módní doplněk, který bude nosit.',
+      vsNo: ['<strong>Klasické tvořivé sady:</strong> nalepí podle šablony a konec', '<strong>Lepidlo a třpytky:</strong> nepořádek po celém stole', '<strong>Krátká životnost:</strong> výsledek se nedá nikam vzít'],
+      vsYes: ['<strong>Modulární 3D dílky:</strong> kombinuje tvary podle vlastní fantazie', '<strong>Čisté tvoření:</strong> žádné lepidlo ani nůžky', '<strong>Interaktivní knížka:</strong> zábavné úkoly na další týdny']
+    },
+    together: {
+      h1: 'Společné odpoledne u jednoho stolu, bez spěchu.',
+      lead: 'Skládání ohebných dílků je jednoduché a intuitivní. Ideální společný čas, kde se nic nezkazí.',
+      vsNo: ['<strong>Složité stavebnice:</strong> frustrace z nepřehledného návodu', '<strong>Společný film:</strong> každý jen mlčky kouká', '<strong>Běžný týden:</strong> na hezké chvíle nezbývá energie'],
+      vsYes: ['<strong>Jednoduché skládání:</strong> tvoříte a povídáte si zároveň', '<strong>Vše připravené v krabičce:</strong> nic nemusíte chystat', '<strong>Společná vzpomínka:</strong> zůstane vám doplněk, který připomíná hezké odpoledne']
+    },
+    magic: {
+      h1: 'Překvapení, které v běžném obchodě nekoupíte.',
+      lead: 'Česká 3D tištěná móda, která na dotek mění barvu nebo ve tmě září.',
+      vsNo: ['<strong>Obálka s penězi:</strong> praktické, ale bez emocí', '<strong>Kosmetika nebo oblečení:</strong> těžko se trefit do vkusu', '<strong>Obyčejná kabelka:</strong> nemá žádný příběh'],
+      vsYes: ['<strong>Chytrý materiál:</strong> reaguje na teplo ruky nebo světlo', '<strong>Jméno na psaníčko zdarma:</strong> originál na míru', '<strong>Dárková krabička:</strong> připraveno rovnou pod stromeček']
+    }
+  };
+  RESULT_COPY.none = RESULT_COPY.creativity;
+
+  const TIER_NAMES = {
+    psanicko: 'Kreativní sada: Psaníčko se jménem + knížka',
+    balicek: 'Velká kreativní sada: Peněženka + psaníčko + knížka',
+    combo: 'Kompletní sada + živý workshop s designérkou',
+    penezenka: 'Menší kreativní sada: Peněženka + knížka',
+    voucher: '3D voucher na workshop s designérkou',
+    psanickoMD: 'Máma a dcera: 2× psaníčko + knížka',
+    balicek2: 'Sestry: 2× velká kreativní sada'
+  };
+  // Společné tvoření: popisy variant v množném čísle
+  const TIER_DESC_T = {
+    psanicko: 'Spolu poskládáte psaníčko se jménem a k tomu dostanete interaktivní knížku s úkoly.',
+    balicek: 'Spolu poskládáte peněženku i psaníčko se jménem a k tomu dostanete interaktivní knížku s úkoly.',
+    combo: 'Peněženka, psaníčko se jménem, knížka a navíc voucher na živý workshop, kam můžete spolu.',
+    penezenka: 'První seznámení s 3D módou: spolu poskládáte peněženku a dostanete knížku.'
+  };
+  const objTitle = (o) => (primaryPain === 'together' && o.jt) || o.title;
+  const tierDesc = (k) => (primaryPain === 'together' && TIER_DESC_T[k]) || TIER_DESC[k] || '';
+  const TIER_DESC = {
+    psanicko: 'Sestaví si vlastní psaníčko se svým jménem a k tomu dostane interaktivní knížku s úkoly.',
+    balicek: 'Sestaví si peněženku i psaníčko se jménem a k tomu dostane interaktivní knížku s úkoly.',
+    combo: 'Peněženka, psaníčko se jménem, knížka a navíc voucher na živý workshop.',
+    penezenka: 'První seznámení s 3D módou: sestaví si peněženku a dostane knížku.',
+    voucher: 'Fyzický 3D voucher na tvoření s designérkou v Praze nebo online.',
+    psanickoMD: 'Dvě psaníčka se jmény pro společné tvoření a interaktivní knížka.',
+    balicek2: 'Dvě samostatné dárkové krabičky se slevou 20 %.'
+  };
+
+  let step = 0;
+  let navDir = 'fwd';
+  let primaryPain = '';
+  let ratings = {};
+  let intent = '';
+  let budget = '';
+  let delivery = '';
+  let selectedObjections = [];
+  let recommended = 'balicek';
+  let showAllTiers = false;
+  let isRestored = false;
+  let busy = false;
+  let lastFlowerIdx = -1;
+  let shownPrice = 0;
+  let matFlash = false;
+  let firstReveal = true;
+  let barObserver = null;
+  let vidObserver = null;
+  let syncFromSaved = false;
+
+  const sellingPain = () => (primaryPain && primaryPain !== 'none') ? primaryPain : adAngle;
+  const heroOf = (v) => { const g = galleryFor(v, currentColor()); return (g.slides && g.slides[0] ? g.slides[0].src : g.hero.src); };
+  const materialFor = (part) => state[part + 'Material'] || EFFECT.thermo;
+  const setHue = (deg) => { if (aura) aura.style.setProperty('--hue', deg + 'deg'); };
+  const buzz = () => { try { navigator.vibrate && navigator.vibrate(8); } catch (e) {} };
+
+  function track(ev, val) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'makeful_v19_' + ev, funnel_version: 'v19', primary_pain: primaryPain, pain: adAngle, ratings: { ...ratings }, intent, delivery, budget, objections: [...selectedObjections], objection: selectedObjections.join(','), value: val, variant: state.activeVariant || '' });
+  }
+  // Do Makeu (list Prodejní kvíz) jdou čitelné texty, kódy si nechávám zvlášť pro obnovení výsledku
+  function syncState() {
+    const label = (list, val, key = 'val') => (list.find(o => o[key] === val) || {}).title || '';
+    const claims = PAIN_CLAIMS[primaryPain] || PAIN_CLAIMS.none;
+    state.answers.pain = PARAM.get('pain') ? adAngle : 'bez reklamy';
+    state.answers.primary_pain = primaryPain === 'none' ? 'Jen hledá originální dárek' : label(PAINS, primaryPain, 'id');
+    state.answers.ratings = Object.keys(ratings).length ? claims.map(c => ratings[c[0]] ? `„${c[2]}“: ${ratings[c[0]]}` : '').join(' | ') : '';
+    state.answers.intent = label(INTENT_OPTS, intent);
+    state.answers.budget = budget;
+    state.answers.delivery = label(DELIVERY_OPTS, delivery);
+    state.answers.objection = selectedObjections.map(k => OBJECTION_OPTS.find(o => o.val === k)).filter(Boolean).map(objTitle).join(' · ');
+    state.answers.format = isVoucher(state.activeVariant) ? FORMAT.out : FORMAT.home;
+    state.answers.name = state.name ? 'ano' : '';
+    state.answers.codes = { primaryPain, ratings: { ...ratings }, intent, budget, delivery, objections: [...selectedObjections] };
+  }
+  function saveResultLocal() {
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify({ answers: state.answers, name: state.name, variant: state.activeVariant, walletMaterial: state.walletMaterial, clutchMaterial: state.clutchMaterial, at: Date.now() })); } catch (e) {}
+  }
+
+  /* ---------- Horní řádek ---------- */
+  const BACK_ICO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+  const flower = (cls) => `<svg class="${cls}" viewBox="0 0 40 40" aria-hidden="true"><use href="#flw" width="40" height="40"/></svg>`;
+  // Kvíz: zpět + 7 květinových modulů, které se s odpověďmi skládají (bez loga)
+  function quizTop(canBack, activeIdx) {
+    const snapIdx = (navDir === 'fwd' && activeIdx > lastFlowerIdx) ? activeIdx - 1 : -2;
+    lastFlowerIdx = activeIdx;
+    const flowers = [0, 1, 2, 3, 4, 5, 6].map(i => flower(i < activeIdx ? 'on' + (i === snapIdx ? ' snap' : '') : i === activeIdx ? 'cur' : '')).join('');
+    return `<div class="m-top">
+      <button type="button" class="m-back" data-back aria-label="Zpět" ${canBack ? '' : 'style="visibility:hidden"'}>${BACK_ICO}</button>
+      <div class="m-flowers" role="img" aria-label="Krok ${activeIdx + 1} ze 7">${flowers}</div>
+      <span class="m-count">${activeIdx + 1}/7</span>
+    </div>`;
+  }
+  function resultTop() {
+    return `<div class="m-top">
+      <button type="button" class="m-back" data-back aria-label="Zpět">${BACK_ICO}</button>
+      <img class="m-logo" src="assets/logo.png" alt="Makeful">
+      <span></span>
+    </div>`;
+  }
+
+  /* ---------- Termo efekt: barva se rozlije z místa dotyku ---------- */
+  root.addEventListener('pointerdown', (e) => {
+    if (REDUCE) return;
+    const el = e.target.closest('.m-opt, .m-chk, .m-scale button, .r-tier, .r-mat-grid button, .m-btn');
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const s = document.createElement('span');
+    s.className = 'bloom' + (el.classList.contains('m-opt') ? '' : ' fade');
+    s.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    s.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    el.appendChild(s);
+    if (s.classList.contains('fade')) setTimeout(() => s.remove(), 900);
+  }, { passive: true });
+
+  function pickAndNext(btnEl, fn) {
+    if (busy) return;
+    busy = true;
+    navDir = 'fwd';
+    buzz();
+    if (btnEl) {
+      btnEl.classList.add('is-picked');
+      const arr = btnEl.querySelector('.m-arr');
+      if (arr) arr.textContent = '✓';
+    }
+    setTimeout(() => { busy = false; fn(); }, REDUCE ? 60 : 320);
+  }
+  function goStepBack(targetStep) { navDir = 'back'; step = targetStep; renderStep(); }
+
+  const optBtn = (o, i, attr) => `<button type="button" class="m-opt" style="--i:${i}" ${attr}>
+      <span class="m-ico">${ic(o.ico)}</span>
+      <span><strong>${esc(o.title)}${o.badge ? `<span class="m-badge">${esc(o.badge)}</span>` : ''}</strong>${o.sub ? `<small>${esc(o.sub)}</small>` : ''}</span>
+      <span class="m-arr" aria-hidden="true">›</span>
+    </button>`;
+
+  function renderStep() {
+    busy = false;
+    state.view = 'questionScreen';
+    root.hidden = false;
+    document.body.classList.remove('mf-order', 'night');
+    window.scrollTo(0, 0);
+    setHue(step * 5);
+    const stageCls = navDir === 'back' ? 'stage-back' : 'stage-fwd';
+
+    if (step === 0) {
+      const hook = AD_HOOKS[adAngle];
+      root.innerHTML = `${quizTop(false, 0)}
+        <div class="${stageCls}">
+          <div class="m-hook">
+            <span class="m-orb">${ic(hook[0])}</span>
+            <div><strong>${esc(hook[1])}</strong><span>${esc(hook[2])}</span></div>
+          </div>
+          <h1 class="m-h1">Co byste si letos u dárku přáli nejvíc&nbsp;změnit?</h1>
+          <div class="m-opts">${PAINS.map((p, i) => optBtn(p, i, `data-pain="${p.id}"`)).join('')}</div>
+          <button type="button" class="m-link" data-pain="none">Nevybírám podle problému, jen hledám originální dárek</button>
+          <p class="m-meta-note">Zabere to jen chvilku</p>
+        </div>`;
+      root.querySelectorAll('[data-pain]').forEach(b => b.onclick = () => pickAndNext(b, () => {
+        primaryPain = b.dataset.pain;
+        ratings = {};
+        syncState();
+        window.__mfMarkUrl?.('quiz-started');
+        window.__mfQuizSend?.('answer', '1 / 7 (' + primaryPain + ')');
+        track('primary_pain', primaryPain);
+        step = 1;
+        renderStep();
+      }));
+      return;
+    }
+
+    if (step === 1 || step === 2) {
+      const [key, ico, quote] = (PAIN_CLAIMS[primaryPain] || PAIN_CLAIMS.none)[step - 1];
+      root.innerHTML = `${quizTop(true, step)}
+        <div class="${stageCls}">
+          <span class="m-tag">Jak moc to sedí na vás?</span>
+          <div class="m-mirror">
+            <span class="m-orb">${ic(ico)}</span>
+            <blockquote>„${esc(quote)}“</blockquote>
+          </div>
+          <div class="m-scale">${[1, 2, 3, 4, 5].map((n, i) => `<button type="button" style="--i:${i}" data-score="${n}" aria-pressed="${ratings[key] === n}">${n}</button>`).join('')}</div>
+          <div class="m-scale-bar" aria-hidden="true"></div>
+          <div class="m-scale-lbl"><span>Vůbec ne</span><span>Přesně tak</span></div>
+        </div>`;
+      root.querySelector('[data-back]').onclick = () => goStepBack(step - 1);
+      root.querySelectorAll('[data-score]').forEach(b => b.onclick = () => pickAndNext(b, () => {
+        ratings[key] = +b.dataset.score;
+        syncState();
+        window.__mfQuizSend?.('answer', `${step + 1} / 7 (${key}:${ratings[key]})`);
+        track('claim', key + ':' + ratings[key]);
+        step++;
+        renderStep();
+      }));
+      return;
+    }
+
+    if (step === 3) {
+      const ag = AGITATE[sellingPain()] || AGITATE.none;
+      root.innerHTML = `${quizTop(true, 3)}
+        <div class="m-agitate ${stageCls}">
+          <div class="m-agitate-top">
+            <span class="m-bulb">${ic(ag.ico)}</span>
+          </div>
+          <p class="m-agitate-q">${esc(ag.q)}</p>
+          <h1>${esc(ag.title)}</h1>
+          <button type="button" class="m-btn m-btn-grad" data-next>Pokračovat k výběru →</button>
+        </div>`;
+      root.querySelector('[data-back]').onclick = () => goStepBack(2);
+      root.querySelector('[data-next]').onclick = () => { navDir = 'fwd'; buzz(); step = 4; renderStep(); };
+      return;
+    }
+
+    if (step === 4) {
+      root.innerHTML = `${quizTop(true, 4)}
+        <div class="${stageCls}">
+          <h1 class="m-h1">Jak jste na tom s výběrem vánočního dárku?</h1>
+          <div class="m-opts">${INTENT_OPTS.map((o, i) => optBtn(o, i, `data-i="${i}"`)).join('')}</div>
+        </div>`;
+      root.querySelector('[data-back]').onclick = () => goStepBack(3);
+      root.querySelectorAll('[data-i]').forEach(b => b.onclick = () => pickAndNext(b, () => {
+        intent = INTENT_OPTS[+b.dataset.i].val;
+        syncState();
+        window.__mfQuizSend?.('answer', '4 / 7 (' + intent + ')');
+        track('intent', intent);
+        step = 5;
+        renderStep();
+      }));
+      return;
+    }
+
+    if (step === 5) {
+      root.innerHTML = `${quizTop(true, 5)}
+        <div class="${stageCls}">
+          <h1 class="m-h1">V jaké cenové hladině dárek hledáte?</h1>
+          <p class="m-sub">Doporučíme variantu, která přesně sedí do vašeho rozpočtu.</p>
+          <div class="m-opts">${BUDGET_OPTS.map((o, i) => optBtn(o, i, `data-b="${i}"`)).join('')}</div>
+        </div>`;
+      root.querySelector('[data-back]').onclick = () => goStepBack(4);
+      root.querySelectorAll('[data-b]').forEach(b => b.onclick = () => pickAndNext(b, () => {
+        budget = BUDGET_OPTS[+b.dataset.b].val;
+        syncState();
+        window.__mfQuizSend?.('answer', '5 / 7 (' + budget + ')');
+        track('budget', budget);
+        step = 6;
+        renderStep();
+      }));
+      return;
+    }
+
+    if (step === 6) {
+      root.innerHTML = `${quizTop(true, 6)}
+        <div class="${stageCls}">
+          <h1 class="m-h1">Kdy potřebujete mít dárek vyřešený?</h1>
+          <div class="m-opts">${DELIVERY_OPTS.map((o, i) => optBtn(o, i, `data-d="${i}"`)).join('')}</div>
+        </div>`;
+      root.querySelector('[data-back]').onclick = () => goStepBack(5);
+      root.querySelectorAll('[data-d]').forEach(b => b.onclick = () => pickAndNext(b, () => {
+        delivery = DELIVERY_OPTS[+b.dataset.d].val;
+        syncState();
+        window.__mfQuizSend?.('answer', '6 / 7 (' + delivery + ')');
+        track('delivery', delivery);
+        step = 7;
+        renderStep();
+      }));
+      return;
+    }
+
+    if (step === 7) {
+      root.innerHTML = `${quizTop(true, 6)}
+        <div class="${stageCls}">
+          <span class="m-tag">Poslední otázka</span>
+          <h1 class="m-h1">Co potřebujete vědět, než se rozhodnete?</h1>
+          <div class="m-opts">
+            ${OBJECTION_OPTS.map((o, i) => `<label class="m-chk" style="--i:${i}">
+              <span class="m-ico">${ic(o.ico)}</span>
+              <span class="m-txt"><strong>${esc(objTitle(o))}</strong>${o.sub ? `<small>${esc(o.sub)}</small>` : ''}</span>
+              <input type="checkbox" value="${o.val}" ${selectedObjections.includes(o.val) ? 'checked' : ''}>
+            </label>`).join('')}
+          </div>
+          <button type="button" class="m-btn m-btn-grad" data-eval>Ukázat můj tip na dárek →</button>
+        </div>`;
+      root.querySelector('[data-back]').onclick = () => goStepBack(6);
+      const boxes = [...root.querySelectorAll('.m-chk input')];
+      boxes.forEach(box => box.onchange = () => { buzz(); selectedObjections = boxes.filter(x => x.checked).map(x => x.value); });
+      root.querySelector('[data-eval]').onclick = () => {
+        selectedObjections = boxes.filter(x => x.checked).map(x => x.value);
+        syncState();
+        window.__mfQuizSend?.('answer', `7 / 7 (${selectedObjections.join(',') || 'none'})`);
+        track('objection', selectedObjections.join(','));
+        buzz();
+        runSynthesis();
+      };
+    }
+  }
+
+  /* ---------- Vyhodnocení: zhasne se, svítící moduly se poskládají kolem loga ---------- */
+  function runSynthesis() {
+    step = 8;
+    recommended = primaryPain === 'together'
+      ? (budget === BUDGET.mid ? 'psanickoMD' : budget === BUDGET.top ? 'combo' : 'balicek')
+      : (budget === BUDGET.mid ? 'psanicko' : budget === BUDGET.top ? 'combo' : 'balicek');
+    state.baseVariant = state.activeVariant = recommended;
+    state.book = false;
+    state.answers.effect = EFFECT.thermo;
+    state.walletMaterial = state.clutchMaterial = EFFECT.thermo;
+    syncState();
+    saveResultLocal();
+
+    const painObj = PAINS.find(p => p.id === primaryPain);
+    const firstObj = OBJECTION_OPTS.find(o => o.val === selectedObjections[0]);
+    const budgetText = budget === BUDGET.mid ? '500 až 1 000 Kč' : budget === BUDGET.top ? '1 500 Kč a více' : '1 000 až 1 500 Kč';
+    const rows = [
+      painObj ? `Řešíme: ${painObj.title}` : 'Hledáme: originální dárek pod stromeček',
+      firstObj ? `Ověřujeme: ${objTitle(firstObj)}` : 'Ověřujeme: Tvoření bez pomoci dospělého',
+      `Vybíráme řešení v hladině ${budgetText}`
+    ];
+
+    document.body.classList.add('night');
+    setHue(10);
+    window.scrollTo(0, 0);
+    root.innerHTML = `<div class="m-synth stage-fade">
+        <div class="m-ring" aria-hidden="true">
+          <div class="m-ring-in">${[0, 1, 2, 3, 4, 5, 6].map(i => `<svg style="--i:${i};--a:${Math.round(i * 360 / 7)}deg" viewBox="0 0 40 40"><use href="#flw" width="40" height="40"/></svg>`).join('')}</div>
+          <img src="assets/logo.png" alt="">
+        </div>
+        <h1>Skládáme vánoční tip na míru…</h1>
+        <div class="m-bar"><i id="synthBar"></i></div>
+        <ul class="m-synth-list">${rows.map((r, i) => `<li id="sr${i}"><b>✓</b><span>${esc(r)}</span></li>`).join('')}</ul>
+      </div>`;
+
+    const start = performance.now();
+    const DUR = REDUCE ? 600 : 2300;
+    function tick(now) {
+      const t = Math.min(1, (now - start) / DUR);
+      const bar = document.getElementById('synthBar');
+      if (bar) bar.style.width = Math.round(12 + (1 - Math.pow(1 - t, 2)) * 88) + '%';
+      rows.forEach((_, i) => { const el = document.getElementById('sr' + i); if (el && t > .3 + i * .2) el.classList.add('on'); });
+      if (t < 1) requestAnimationFrame(tick);
+      else {
+        window.__mfMarkUrl?.('quiz-finished');
+        window.__mfQuizSend?.('result', intent === 'buy' ? 'přímá nabídka' : 'personalizovaná nabídka');
+        track('result', intent);
+        setTimeout(() => { renderResultCard(); setView('resultScreen'); }, REDUCE ? 0 : 250);
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* ---------- Drobnosti výsledku ---------- */
+  function sparkBurst(anchor) {
+    if (REDUCE || !anchor) return;
+    const r = anchor.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const cols = ['#8754ce', '#db49ca', '#f05564', '#ff8a3d', '#f5c04a'];
+    for (let i = 0; i < 18; i++) {
+      const s = document.createElement('i');
+      const ang = (Math.PI * 2 * i) / 18 + Math.random() * .3, dist = 60 + Math.random() * 70;
+      s.className = 'spark';
+      s.style.left = cx + 'px'; s.style.top = cy + 'px';
+      s.style.setProperty('--c', cols[i % cols.length]);
+      s.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+      s.style.setProperty('--dy', Math.sin(ang) * dist + 'px');
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1100);
+    }
+  }
+  function countUp(el, from, to) {
+    if (!el || REDUCE || !from || from === to) return;
+    const t0 = performance.now(), D = 520;
+    const frame = (now) => { const t = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - t, 3); el.textContent = money(Math.round(from + (to - from) * e)); if (t < 1) requestAnimationFrame(frame); };
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- Výsledková karta ---------- */
+  function renderResult(resetScroll = true) {
+    step = 9;
+    state.view = 'resultScreen';
+    root.hidden = false;
+    document.body.classList.remove('mf-order', 'night');
+    setHue(0);
+
+    const v = state.activeVariant;
+    const vo = isVoucher(v);
+    const base = baseOf(v);
+    const now = PRICES[v].now;
+    const old = PRICES[v].old;
+    const save = saving(v);
+    const painKey = sellingPain();
+    const copy = RESULT_COPY[painKey] || RESULT_COPY.creativity;
+    const claimSet = PAIN_CLAIMS[primaryPain] || PAIN_CLAIMS.none;
+    const mainScore = ratings[claimSet[0][0]] || 0, secKey = claimSet[1][0], secScore = ratings[secKey] || 0;
+    const lead = (primaryPain && mainScore >= 4 && STRONG_LEAD[primaryPain]) ? STRONG_LEAD[primaryPain] : copy.lead;
+    const secReact = secScore >= 4 ? SEC_REACT[secKey] : null;
+
+    const g = galleryFor(v, currentColor());
+    let slides = (g.slides || [g.hero]).filter(x => x && x.src).slice(0, 5);
+    if (!vo) {
+      const parts = PARTS[v] || [];
+      if (parts.length === 2 && materialFor('wallet') !== materialFor('clutch')) {
+        slides = [{ src: P + MAT[materialFor('wallet')].w }, { src: P + MAT[materialFor('clutch')].c }, { src: P + 'sada-krabicka.webp' }, { src: P + 'sada-knizka.webp' }];
+      } else if (parts.length) {
+        const gg = galleryFor(v, materialFor(parts[0]));
+        slides = (gg.slides || [gg.hero]).filter(x => x && x.src).slice(0, 5);
+      }
+    }
+
+    // Společné tvoření: rodič chce čas s dcerou, nebo vybral sadu pro dvě
+    const together = primaryPain === 'together' || /2$|MD$/.test(v);
+    // Fotky podle zvoleného materiálu a produktu
+    const ps = { 'Svítí ve tmě': 'svitici', 'Mění barvu na dotek': 'termo', 'Klasická černá': 'cerne' }[materialFor((PARTS[v] || ['wallet'])[0])] || 'termo';
+    const isWallet = base === 'penezenka';
+    const handImg = isWallet ? (ps === 'termo' ? 'penezenka-oranzova-v-ruce.webp' : `penezenka-${ps}-v-ruce.webp`) : `psanicko-${ps}-v-ruce.webp`;
+    const fxImg = ps === 'cerne' ? 'sada-knizka.webp' : `${isWallet ? 'penezenka' : 'psanicko'}-${ps}-efekt.webp`;
+    // Videa jen bez zvuku, spouští se sama, když jsou vidět
+    const vid = (f, p) => `<video class="r-vid" muted loop playsinline preload="metadata" poster="${P}${p}" src="assets/videos/${f}"></video>`;
+    const demoVideo = base === 'psanicko' ? vid('produkt-psanicko-detail.mp4', 'produkt-psanicko-detail-poster.webp') : vid('produkt-penezenka-ukazka.mp4', 'produkt-penezenka-video-poster.webp');
+    const magicMedia = ps === 'svitici' ? `<img src="${P}${isWallet ? 'penezenka' : 'psanicko'}-svitici-efekt.webp" alt="Materiál svítí ve tmě" loading="lazy">` : vid('produkt-zmena-barvy-voda.mp4', 'produkt-zmena-barvy-voda-poster.webp');
+    const T = (one, both) => together ? both : one;
+    const funText = T('Dílky se do sebe jen jednoduše spojí. Žádné lepidlo, nůžky ani 3D tiskárna. Zvládnou to holky už od 8 let.', 'Dílky se do sebe jen jednoduše spojí. Žádné lepidlo, nůžky ani 3D tiskárna. Tvoříte a povídáte si zároveň.');
+    const trustText = T('Ano, není to dekorace na poličku. Výsledkem je pružná a odolná peněženka nebo psaníčko, které reálně nosí do školy i mezi kamarádky.', 'Ano, není to dekorace na poličku. Výsledkem jsou pružné a odolné doplňky, které opravdu nosíte a které vám to odpoledne připomenou.');
+    const magicText = 'Dílky jsou vytištěné na 3D tiskárně ze speciálních materiálů. Jeden na dotek ruky mění barvu, druhý se po nasvícení rozzáří ve tmě.';
+    const brandText = 'Jsme český designérský tým z Prahy. Sady navrhujeme a vyrábíme v České republice. Reportáž o nás vysílala Česká televize (ČT :D) a psal o nás Wired.';
+    const ctLink = '<a href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener" class="r-ct-link">▶ Pustit reportáž České televize</a>';
+
+    const PROOF_MODULES = {
+      fun: { q: T('Bude ji to bavit a zvládne to sama?', 'Bude nás to bavit a zvládneme to spolu?'), title: T('Podle jednoduchého návodu to zvládne úplně sama', 'Podle jednoduchého návodu to spolu zvládnete hravě'),
+        body: `${demoVideo}<p>${funText}</p>`, faq: `<p>${funText}</p>` },
+      trust: { q: T('Využije to i po Vánocích?', 'Využijeme to i po Vánocích?'), title: T('Doplněk, který bude hrdě nosit i po Vánocích', 'Doplňky, které vám budou společné odpoledne připomínat'),
+        body: `<img src="${P}${handImg}" alt="Hotový doplněk v ruce" loading="lazy"><p>${trustText}</p>`, faq: `<p>${trustText}</p>` },
+      value: { q: T('Co přesně v dárkové krabičce dostane?', 'Co přesně v dárkové krabičce dostaneme?'), title: 'V krabičce je vše: dílky, náhradní díly i interaktivní knížka',
+        body: `<img src="${P}produkt-balicek-novy.webp" alt="Otevřená dárková krabička Makeful" loading="lazy"><ul class="r-checks">${contentsOf(v).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`,
+        faq: `<ul class="r-checks">${contentsOf(v).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` },
+      magic: { q: 'V čem je to jiné než běžné věci z obchodu?', title: 'Materiál, který mění barvu nebo svítí ve tmě. V obchodě ho nenajdete.',
+        body: `${magicMedia}<p>${magicText}</p>`, faq: `<p>${magicText}</p>` },
+      brand: { q: 'Kdo za projektem Makeful stojí?', title: 'Česká značka z Prahy, o které vysílala reportáž Česká televize',
+        body: `<img src="${P}makeful-nase-mise.png" alt="Zakladatelky Makeful s hotovými peněženkami" loading="lazy"><p>${brandText}</p>${ctLink}`, faq: `<p>${brandText}</p>${ctLink}` }
+    };
+    let activeProofKeys = selectedObjections.length ? selectedObjections.slice() : ['fun', 'value'];
+    if (secReact) activeProofKeys = [secReact.proof, ...activeProofKeys.filter(k => k !== secReact.proof)];
+    const primaryProofs = activeProofKeys.map(k => PROOF_MODULES[k]).filter(Boolean);
+    const secondaryProofs = Object.keys(PROOF_MODULES).filter(k => !activeProofKeys.includes(k)).map(k => PROOF_MODULES[k]);
+
+    const budgetExplain = v === 'psanicko'
+      ? 'Vybráno pro vaši cenovou hladinu 500 až 1 000 Kč.'
+      : v === 'combo'
+        ? 'Vybráno pro vaši cenovou hladinu nad 1 500 Kč (sada a živý workshop).'
+        : 'Vybráno pro vaši cenovou hladinu 1 000 až 1 500 Kč.';
+
+    const coreTiers = primaryPain === 'together' ? ['psanickoMD', 'balicek', 'combo'] : ['psanicko', 'balicek', 'combo'];
+    const extraTiers = ['penezenka', 'voucher', 'psanickoMD', 'psanicko', 'balicek2'].filter(k => !coreTiers.includes(k));
+    const tiersToShow = showAllTiers ? [...coreTiers, ...extraTiers] : coreTiers;
+    const tierName = TIER_NAMES[v] || PRODUCT_DATA[v].title;
+
+    root.innerHTML = `${resultTop()}
+      <div class="r-wrap ${resetScroll ? 'stage-fade' : ''}">
+
+        <h1 class="r-h1">${esc(copy.h1)}</h1>
+        <p class="r-lead">${esc(lead)}</p>
+
+        <section class="r-concept" aria-label="Jak to funguje">
+          <h2 class="r-concept-head">${T('Kreativní sada, ze které si sama poskládá originální doplněk', 'Kreativní sada, ze které si spolu poskládáte originální doplňky')}</h2>
+          <p class="r-concept-intro"><strong>Makeful</strong> je česká kreativní sada, která spojuje vlastní tvoření a moderní 3D tisk. Nepotřebujete lepidlo, nůžky ani vlastní 3D tiskárnu:</p>
+          <div class="r-steps">
+            <div class="r-step"><img src="${P}sada-kombo-${ps}.webp" alt="Dárková krabička s ohebnými 3D dílky"><div><strong>${T('1. Rozbalí ohebné 3D dílky', '1. Rozbalíte ohebné 3D dílky')}</strong><span>${T('V dárkové krabičce najde měkké, pružné dílky vyrobené v Česku.', 'V dárkové krabičce najdete měkké, pružné dílky vyrobené v Česku.')}</span></div></div>
+            <div class="r-step"><img src="${P}${isWallet ? `penezenka-${ps}-mesh.webp` : `psanicko-${ps}-predek.webp`}" alt="Poskládaný doplněk"><div><strong>${T('2. Sama si poskládá vlastní doplněk', '2. Spolu si poskládáte vlastní doplňky')}</strong><span>${T('Dílky se do sebe jednoduše spojují. Vznikne opravdová peněženka nebo psaníčko, které nosí.', 'Dílky se do sebe jednoduše spojují. Vzniknou opravdové doplňky, které budete nosit.')}</span></div></div>
+            <div class="r-step"><img src="${P}${fxImg}" alt="Efekt materiálu"><div><strong>3. Materiál reaguje na dotek + knížka</strong><span>${T('Doplněk mění barvu nebo svítí ve tmě a interaktivní knížka ji zabaví úkoly na další týdny.', 'Doplněk mění barvu nebo svítí ve tmě a interaktivní knížka vás zabaví úkoly na další týdny.')}</span></div></div>
+          </div>
+        </section>
+
+        ${primaryProofs.map(b => `<section class="r-sec r-reveal"><h2>${esc(b.title)}</h2><div class="r-box">${b.body}</div></section>`).join('')}
+
+        <section class="r-sec r-reveal" id="rOffer">
+          <h2>${T('Originální sada pro vaši výjimečnou dceru', 'Originální sada pro vaše společné tvoření')}</h2>
+          <div class="r-card">
+            <div class="r-gal-wrap${matFlash ? ' flash' : ''}">
+              <div class="r-gallery" id="rGal">${slides.map((s, i) => `<div><img src="${esc(s.src)}" alt="${esc(tierName)}" ${i > 0 ? 'loading="lazy"' : ''}></div>`).join('')}</div>
+              <span class="r-save-ribbon">Sleva ${fmt(save)}</span>
+            </div>
+            <div class="r-thumbs">${slides.map((s, i) => `<button type="button" class="${i === 0 ? 'on' : ''}" data-slide="${i}" aria-label="Fotka ${i + 1}"><img src="${esc(s.src)}" alt=""></button>`).join('')}</div>
+
+            <div class="r-card-body">
+              <div>
+                <h3>${esc(tierName)}</h3>
+                <p class="r-card-desc">${esc(tierDesc(v))}</p>
+              </div>
+              <div class="r-price-line">
+                <s>${money(old)}</s>
+                <strong data-price>${money(now)}</strong>
+                <span>Ušetříte ${fmt(save)}</span>
+              </div>
+
+              ${vo ? '' : (PARTS[v] || []).map(part => `
+                <div>
+                  <span class="r-mat-lbl">Výběr materiálu pro ${part === 'wallet' ? 'peněženku' : 'psaníčko'}</span>
+                  <div class="r-mat-grid">
+                    ${[EFFECT.thermo, EFFECT.glow, EFFECT.black].map(m => `
+                      <button type="button" data-part="${part}" data-mat="${esc(m)}" aria-pressed="${materialFor(part) === m}">
+                        ${esc(MAT[m].short)}
+                      </button>`).join('')}
+                  </div>
+                </div>`).join('')}
+
+              ${hasClutch(v) ? `
+                <label class="r-name-box">
+                  <span>${TWO_PCS[v] ? 'Jména na psaníčka (zdarma)' : 'Jméno dcery na psaníčko (zdarma)'}</span>
+                  <input id="rNameInp" type="text" maxlength="60" autocomplete="off" autocapitalize="words" value="${esc(state.name || '')}" placeholder="${TWO_PCS[v] ? 'Např. Ema a Klára' : 'Např. Anička'}">
+                </label>` : ''}
+
+              <button type="button" class="m-btn m-btn-grad" data-order data-main-cta>Koupit se slevou ${fmt(save)} →</button>
+              <p class="r-mini r-mini-ic">${ic('truck')}${esc(DELIVERY_LINE[delivery] || DELIVERY_LINE.christmas)}</p>
+              ${intent === 'consider' ? `<button type="button" class="m-link" data-later style="padding:4px 0">Zatím si jen dělám přehled: poslat výběr na e-mail</button>` : ''}
+            </div>
+          </div>
+        </section>
+
+        <div class="r-proof r-reveal">
+          <div class="r-proof-top">
+            <span><span class="r-stars">★★★★★</span> 9/10 spokojenost rodičů</span>
+            <span class="r-proof-cz">Česká značka</span>
+          </div>
+          <p>„Naši Aničku to hrozně moc bavilo, nemohla o tom přestat mluvit!“</p>
+          <div class="r-media-bar">
+            <span>Znáte z ČT :D · Wired · HN</span>
+            <a href="https://decko.ceskatelevize.cz/video/i1151928" target="_blank" rel="noopener">Reportáž ČT ▶</a>
+          </div>
+        </div>
+
+        <section class="r-sec r-reveal">
+          <h2>${T('Na rozdíl od běžných dárků ji tohle opravdu chytne', 'Na rozdíl od běžných dárků vás tohle opravdu spojí')}</h2>
+          <div class="r-vs">
+            <div class="r-vs-no"><span class="r-vs-head">Běžné dárky a pokusy</span><ul>${copy.vsNo.map(x => `<li>${x}</li>`).join('')}</ul></div>
+            <div class="r-vs-yes"><span class="r-vs-head">Kreativní sada Makeful</span><ul>${copy.vsYes.map(x => `<li>${x}</li>`).join('')}</ul></div>
+          </div>
+        </section>
+
+        <section class="r-sec r-reveal">
+          <h2>Další informace před nákupem</h2>
+          ${secondaryProofs.map(b => `<details class="r-details"><summary>${esc(b.q)}</summary><div class="r-details-body">${b.faq}</div></details>`).join('')}
+          <details class="r-details"><summary>Co když se jí dárek nebude líbit?</summary><p>V pokladně si můžete za 22 Kč přidat prodloužené vrácení o 30 dní navíc, takže dárek v klidu vrátíte i po Vánocích.</p></details>
+          <details class="r-details"><summary>Jak můžu zaplatit?</summary><p>Kartou online (včetně Apple Pay a Google Pay), bankovním převodem i benefitními kartami Edenred a Up.</p></details>
+        </section>
+
+        <section class="r-sec r-reveal" id="rTiers">
+          <h2>Vyberte si menší, nebo větší variantu</h2>
+          <div class="r-tiers">
+            ${tiersToShow.map(k => `<button type="button" class="r-tier" data-var="${k}" aria-pressed="${k === v}">
+              <img src="${heroOf(k)}" alt="" loading="lazy">
+              <span><strong>${esc(TIER_NAMES[k])}</strong><small>${esc(tierDesc(k))}</small></span>
+              <span class="r-tier-price"><s>${money(PRICES[k].old)}</s><b>${money(PRICES[k].now)}</b></span>
+            </button>`).join('')}
+          </div>
+          <button type="button" class="m-link" data-more-tiers>${showAllTiers ? 'Skrýt doplňkové varianty' : 'Zobrazit i sadu od 488 Kč, vouchery a sady pro dvě ↓'}</button>
+        </section>
+
+        <p class="r-mini r-footer">Potřebujete poradit? Zavolejte <a href="tel:+420735820576">735 820 576</a> · <button type="button" data-restart>Projít průvodce znovu</button></p>
+      </div>
+
+      <div class="r-bottom" id="rBottom">
+        <div class="r-bottom-in">
+          <div class="r-bottom-price"><s>${money(old)}</s><strong data-price>${money(now)}</strong></div>
+          <button type="button" class="m-btn m-btn-grad" data-order>Koupit →</button>
+        </div>
+      </div>`;
+
+    // Cena se po změně varianty dopočítá před očima
+    root.querySelectorAll('[data-price]').forEach(el => countUp(el, shownPrice, now));
+    shownPrice = now;
+    matFlash = false;
+
+    root.querySelector('[data-back]').onclick = () => goStepBack(7);
+
+    const gal = document.getElementById('rGal');
+    const thumbs = [...root.querySelectorAll('[data-slide]')];
+    thumbs.forEach(b => b.onclick = () => gal.scrollTo({ left: gal.children[+b.dataset.slide].offsetLeft - gal.children[0].offsetLeft, behavior: 'smooth' }));
+    gal.addEventListener('scroll', () => {
+      const i = Math.round(gal.scrollLeft / Math.max(1, gal.clientWidth));
+      thumbs.forEach((t, k) => t.classList.toggle('on', k === i));
+    }, { passive: true });
+
+    root.querySelectorAll('[data-mat]').forEach(b => b.onclick = () => {
+      const y = window.scrollY;
+      state[b.dataset.part + 'Material'] = b.dataset.mat;
+      state.answers.effect = b.dataset.mat;
+      saveResultLocal();
+      buzz();
+      matFlash = true;
+      renderResultCard();
+      renderResult(false);
+      window.scrollTo(0, y);
+    });
+
+    const nameInp = document.getElementById('rNameInp');
+    if (nameInp) {
+      nameInp.oninput = () => {
+        state.name = nameInp.value.replace(/\s+/g, ' ').trimStart().slice(0, 60);
+        saveResultLocal();
+      };
+    }
+
+    root.querySelectorAll('[data-var]').forEach(b => b.onclick = () => {
+      if (b.dataset.var === state.activeVariant) return;
+      const y = window.scrollY;
+      state.activeVariant = b.dataset.var;
+      state.book = false;
+      saveResultLocal();
+      buzz();
+      window.__mfQuizSend?.('variant', 'změna varianty: ' + state.activeVariant);
+      renderResultCard();
+      renderResult(false);
+      window.scrollTo(0, y);
+    });
+
+    root.querySelector('[data-more-tiers]').onclick = () => { const y = window.scrollY; showAllTiers = !showAllTiers; renderResult(false); window.scrollTo(0, y); };
+
+    const laterBtn = root.querySelector('[data-later]');
+    if (laterBtn) laterBtn.onclick = () => window.__mfOpenLater?.();
+
+    root.querySelectorAll('[data-restart]').forEach(b => b.onclick = () => {
+      try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+      step = 0; navDir = 'fwd'; primaryPain = ''; ratings = {}; intent = ''; budget = ''; delivery = ''; selectedObjections = []; isRestored = false; lastFlowerIdx = -1; shownPrice = 0; firstReveal = true;
+      restartQuiz();
+      renderStep();
+    });
+
+    root.querySelectorAll('[data-order]').forEach(b => b.onclick = () => document.getElementById('resultOrderBtn').click());
+    // Videa: bez zvuku, hrají jen když jsou vidět, klepnutím pauza
+    if (vidObserver) vidObserver.disconnect();
+    vidObserver = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { const el = e.target; if (e.isIntersecting && !el.dataset.paused) { el.muted = true; el.play().catch(() => {}); } else el.pause(); }), { threshold: .5 }) : null;
+    root.querySelectorAll('video.r-vid').forEach(el => {
+      el.muted = true; el.defaultMuted = true;
+      if (vidObserver) vidObserver.observe(el);
+      el.addEventListener('click', () => { if (el.paused) { delete el.dataset.paused; el.muted = true; el.play().catch(() => {}); } else { el.dataset.paused = '1'; el.pause(); } });
+    });
+
+    // Spodní lišta vyjede, jen když hlavní tlačítko na kartě není vidět
+    const bar = document.getElementById('rBottom'), mainCta = root.querySelector('[data-main-cta]');
+    if (barObserver) barObserver.disconnect();
+    if ('IntersectionObserver' in window && mainCta) {
+      barObserver = new IntersectionObserver(es => es.forEach(e => bar.classList.toggle('show', !e.isIntersecting)), { threshold: 0 });
+      barObserver.observe(mainCta);
+    } else bar.classList.add('show');
+
+    if (resetScroll) window.scrollTo(0, 0);
+    if (firstReveal && resetScroll) { firstReveal = false; setTimeout(() => sparkBurst(root.querySelector('.r-h1')), 380); }
+  }
+
+  // Napojení na pokladnu a tlačítko zpět
+  const origSetView = setView;
+  setView = function (id) {
+    origSetView(id);
+    if (id === 'orderScreen' || id === 'doneScreen') {
+      document.body.classList.add('mf-order');
+      document.body.classList.remove('night');
+      root.hidden = true;
+      if (barObserver) barObserver.disconnect();
+    } else if (id === 'resultScreen') {
+      renderResult();
+    } else {
+      renderStep();
+    }
+  };
+  goBack = function () {
+    if (state.view === 'orderScreen') { setView('resultScreen'); return; }
+    if (state.view === 'resultScreen' && window.__mfAskLater && window.__mfAskLater()) return;
+    if (step > 0 && step < 8) { goStepBack(step - 1); }
+    else if (step === 9) { goStepBack(7); }
+  };
+
+  // Start
+  if (window.__mfOffer && PRICES[OFFER]) {
+    state.baseVariant = state.activeVariant = OFFER;
+    intent = 'buy';
+    renderResult();
+  } else {
+    let saved = null;
+    try {
+      let c = new URLSearchParams(location.search).get('vysledek');
+      if (c && c.length < 1200) {
+        c = c.replace(/-/g, '+').replace(/_/g, '/'); while (c.length % 4) c += '=';
+        const o = JSON.parse(decodeURIComponent(escape(atob(c))));
+        if (o && o.v === 2 && o.c && typeof o.c === 'object' && PRICES[o.var]) {
+          saved = { answers: { budget: o.c.budget || '', effect: o.ef || '', codes: o.c }, name: typeof o.n === 'string' ? o.n.slice(0, 60) : '', variant: o.var, walletMaterial: o.wm, clutchMaterial: o.cm, at: Date.now() };
+          syncFromSaved = true;
+        }
+      }
+    } catch (e) {}
+    if (!saved) try {
+      const d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+      if (d && d.answers && d.at && Date.now() - d.at < 60 * 24 * 3600 * 1000) saved = d;
+    } catch (e) {}
+    if (saved && saved.variant && PRICES[saved.variant]) {
+      state.answers = saved.answers;
+      state.name = saved.name || '';
+      state.baseVariant = state.activeVariant = saved.variant;
+      state.walletMaterial = MAT[saved.walletMaterial] ? saved.walletMaterial : EFFECT.thermo;
+      state.clutchMaterial = MAT[saved.clutchMaterial] ? saved.clutchMaterial : EFFECT.thermo;
+      const cd = saved.answers.codes || {};
+      primaryPain = cd.primaryPain || '';
+      intent = cd.intent || 'consider';
+      budget = cd.budget || saved.answers.budget || BUDGET.high;
+      delivery = cd.delivery || 'christmas';
+      selectedObjections = Array.isArray(cd.objections) ? cd.objections : [];
+      ratings = cd.ratings && typeof cd.ratings === 'object' ? cd.ratings : {};
+      isRestored = true;
+      if (syncFromSaved) { syncState(); saveResultLocal(); }
+      window.__mfSetKrok?.('vysledek');
+      renderResultCard();
+      setView('resultScreen');
+    } else {
+      renderStep();
+    }
+  }
 })();
 </script>
 <script src="assets/ai-label.js?v=20261125f" defer></script>
