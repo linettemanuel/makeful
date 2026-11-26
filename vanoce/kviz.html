@@ -40,7 +40,7 @@
       --sans: "Figtree", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --spring: cubic-bezier(.22, 1, .36, 1);
       --bounce: cubic-bezier(.34, 1.56, .64, 1);
-      --glass: rgba(255, 255, 255, .78);
+      --glass: rgba(255, 255, 255, .88);
       --lift: 0 10px 30px rgba(110, 45, 150, .08);
     }
 
@@ -101,7 +101,7 @@
     /* ===== Horní řádek kvízu: zpět + skládající se květinové moduly ===== */
     #newUI { padding-bottom: 18px; }
     .m-top { display: grid; grid-template-columns: 42px 1fr 42px; align-items: center; gap: 8px; height: 60px; margin-bottom: 8px; }
-    .m-back { width: 42px; height: 42px; border: 0; border-radius: 14px; background: rgba(255, 255, 255, .72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 2px 12px rgba(31, 18, 51, .07); display: grid; place-items: center; cursor: pointer; color: var(--ink); transition: transform .25s var(--bounce); }
+    .m-back { width: 42px; height: 42px; border: 0; border-radius: 14px; background: rgba(255, 255, 255, .9); box-shadow: 0 2px 12px rgba(31, 18, 51, .07); display: grid; place-items: center; cursor: pointer; color: var(--ink); transition: transform .25s var(--bounce); }
     .m-back:active { transform: scale(.88); }
     .m-back svg { width: 18px; height: 18px; }
     .m-flowers { display: flex; justify-content: center; align-items: center; gap: 5px; }
@@ -142,7 +142,6 @@
       text-align: left; padding: 8px 12px 8px 8px; min-height: 52px;
       border: 2px solid transparent; border-radius: 16px;
       background: linear-gradient(var(--glass), var(--glass)) padding-box, linear-gradient(#fff, #fff) border-box;
-      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
       box-shadow: var(--lift);
       cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
       animation: rise .6s var(--spring) backwards; animation-delay: calc(var(--i, 0) * 55ms + 90ms);
@@ -174,7 +173,7 @@
       display: flex; align-items: center; gap: 11px; padding: 8px 12px 8px 8px; min-height: 52px;
       border: 2px solid transparent; border-radius: 16px;
       background: linear-gradient(var(--glass), var(--glass)) padding-box, linear-gradient(#fff, #fff) border-box;
-      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: var(--lift);
+      box-shadow: var(--lift);
       cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
       animation: rise .6s var(--spring) backwards; animation-delay: calc(var(--i, 0) * 55ms + 90ms);
       transition: transform .25s var(--spring), box-shadow .3s ease;
@@ -481,6 +480,9 @@
     #orderScreen .sum { grid-template-columns: 48px 1fr; gap: 10px; padding: 8px; border-radius: 16px; }
     #orderScreen .sum img { width: 48px; height: 48px; border-radius: 11px; }
     #orderScreen .sum strong { font-size: 14px; }
+    .r-h1, .r-lead { position: relative; z-index: 2; }
+    .pay-btn span { gap: 8px; }
+    .pay-ico { width: 20px; height: 20px; flex: 0 0 20px; }
   </style>
 </head>
 <body>
@@ -716,8 +718,8 @@
       <fieldset class="fs">
         <legend>Platba</legend>
         <div class="pay-row">
-          <label class="pay-btn"><input type="radio" name="qpay" value="card" checked><span>Kartou</span></label>
-          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span>Převodem</span></label>
+          <label class="pay-btn"><input type="radio" name="qpay" value="card" checked><span><svg class="pay-ico" viewBox="0 0 24 24" fill="none" stroke="url(#icoGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>Kartou</span></label>
+          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span><svg class="pay-ico" viewBox="0 0 24 24" fill="none" stroke="url(#icoGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 8h18z"/><path d="M5.5 11v6M10 11v6M14 11v6M18.5 11v6M3 20.5h18"/></svg>Převodem</span></label>
         </div>
       </fieldset>
       <div class="consents">
