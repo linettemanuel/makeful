@@ -272,6 +272,7 @@
     .r-steps { position: relative; display: grid; gap: 12px; }
     .r-step { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; padding: 6px 10px 6px 6px; border-radius: 15px; background: var(--soft); }
     .r-step img { width: 64px; height: 64px; border-radius: 11px; object-fit: cover; background: #fff; display: block; }
+    .r-step img.fit { object-fit: contain; padding: 3px; }
     .r-step strong { display: block; font-size: 14.5px; font-weight: 700; line-height: 1.3; }
     .r-step span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.42; color: var(--muted); }
 
@@ -2614,7 +2615,7 @@
     const ps = { 'Svítí ve tmě': 'svitici', 'Mění barvu na dotek': 'termo', 'Klasická černá': 'cerne' }[materialFor((PARTS[v] || ['wallet'])[0])] || 'termo';
     const isWallet = base === 'penezenka';
     const handImg = isWallet ? (ps === 'termo' ? 'penezenka-oranzova-v-ruce.webp' : `penezenka-${ps}-v-ruce.webp`) : `psanicko-${ps}-v-ruce.webp`;
-    const fxImg = ps === 'cerne' ? 'sada-knizka.webp' : `${isWallet ? 'penezenka' : 'psanicko'}-${ps}-efekt.webp`;
+    const doneImg = isWallet ? `penezenka-${ps}-hero.webp` : `psanicko-${ps}-predek.webp`;
     // Videa jen bez zvuku, spouští se sama, když jsou vidět
     const vid = (f, p) => `<video class="r-vid" muted loop playsinline preload="metadata" poster="${P}${p}" src="assets/videos/${f}"></video>`;
     const demoVideo = base === 'psanicko' ? vid('produkt-psanicko-detail.mp4', 'produkt-psanicko-detail-poster.webp') : vid('produkt-penezenka-ukazka.mp4', 'produkt-penezenka-video-poster.webp');
@@ -2632,12 +2633,12 @@
       trust: { q: T('Využije to i po Vánocích?', 'Využijeme to i po Vánocích?'), title: T('Doplněk, který bude hrdě nosit i po Vánocích', 'Doplňky, které vám budou společné odpoledne připomínat'),
         body: `<img src="${P}${handImg}" alt="Hotový doplněk v ruce" loading="lazy"><p>${trustText}</p>`, faq: `<p>${trustText}</p>` },
       value: { q: T('Co přesně v dárkové krabičce dostane?', 'Co přesně v dárkové krabičce dostaneme?'), title: 'V krabičce je vše: dílky, náhradní díly i interaktivní knížka',
-        body: `<img src="${P}produkt-balicek-novy.webp" alt="Otevřená dárková krabička Makeful" loading="lazy"><ul class="r-checks">${contentsOf(v).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`,
+        body: `<img src="${P}sada-krabicka.webp" alt="Dárková krabička Makeful" loading="lazy"><ul class="r-checks">${contentsOf(v).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`,
         faq: `<ul class="r-checks">${contentsOf(v).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` },
       magic: { q: 'V čem je to jiné než běžné věci z obchodu?', title: 'Materiál, který mění barvu nebo svítí ve tmě. V obchodě ho nenajdete.',
         body: `${magicMedia}<p>${magicText}</p>`, faq: `<p>${magicText}</p>` },
       brand: { q: 'Kdo za projektem Makeful stojí?', title: 'Česká značka z Prahy, o které vysílala reportáž Česká televize',
-        body: `<img src="${P}makeful-nase-mise.png" alt="Zakladatelky Makeful s hotovými peněženkami" loading="lazy"><p>${brandText}</p>${ctLink}`, faq: `<p>${brandText}</p>${ctLink}` }
+        body: `<p>${brandText}</p>${ctLink}`, faq: `<p>${brandText}</p>${ctLink}` }
     };
     let activeProofKeys = selectedObjections.length ? selectedObjections.slice() : ['fun', 'value'];
     if (secReact) activeProofKeys = [secReact.proof, ...activeProofKeys.filter(k => k !== secReact.proof)];
@@ -2665,9 +2666,9 @@
           <h2 class="r-concept-head">${T('Kreativní sada, ze které si sama poskládá originální doplněk', 'Kreativní sada, ze které si spolu poskládáte originální doplňky')}</h2>
           <p class="r-concept-intro"><strong>Makeful</strong> je česká kreativní sada, která spojuje vlastní tvoření a moderní 3D tisk. Nepotřebujete lepidlo, nůžky ani vlastní 3D tiskárnu:</p>
           <div class="r-steps">
-            <div class="r-step"><img src="${P}sada-kombo-${ps}.webp" alt="Dárková krabička s ohebnými 3D dílky"><div><strong>${T('1. Rozbalí ohebné 3D dílky', '1. Rozbalíte ohebné 3D dílky')}</strong><span>${T('V dárkové krabičce najde měkké, pružné dílky vyrobené v Česku.', 'V dárkové krabičce najdete měkké, pružné dílky vyrobené v Česku.')}</span></div></div>
-            <div class="r-step"><img src="${P}${isWallet ? `penezenka-${ps}-mesh.webp` : `psanicko-${ps}-predek.webp`}" alt="Poskládaný doplněk"><div><strong>${T('2. Sama si poskládá vlastní doplněk', '2. Spolu si poskládáte vlastní doplňky')}</strong><span>${T('Dílky se do sebe jednoduše spojují. Vznikne opravdová peněženka nebo psaníčko, které nosí.', 'Dílky se do sebe jednoduše spojují. Vzniknou opravdové doplňky, které budete nosit.')}</span></div></div>
-            <div class="r-step"><img src="${P}${fxImg}" alt="Efekt materiálu"><div><strong>3. Materiál reaguje na dotek + knížka</strong><span>${T('Doplněk mění barvu nebo svítí ve tmě a interaktivní knížka ji zabaví úkoly na další týdny.', 'Doplněk mění barvu nebo svítí ve tmě a interaktivní knížka vás zabaví úkoly na další týdny.')}</span></div></div>
+            <div class="r-step"><img src="${P}penezenka-${ps}-mesh.webp" alt="Rozložené ohebné 3D dílky" class="fit"><div><strong>${T('1. Rozbalí ohebné 3D dílky', '1. Rozbalíte ohebné 3D dílky')}</strong><span>${T('V dárkové krabičce najde měkké, pružné dílky vyrobené v Česku.', 'V dárkové krabičce najdete měkké, pružné dílky vyrobené v Česku.')}</span></div></div>
+            <div class="r-step"><img src="${P}${doneImg}" alt="Hotový doplněk" class="fit"><div><strong>${T('2. Sama si poskládá vlastní doplněk', '2. Spolu si poskládáte vlastní doplňky')}</strong><span>${T('Dílky se do sebe jednoduše spojují. Vznikne opravdová peněženka nebo psaníčko, které nosí.', 'Dílky se do sebe jednoduše spojují. Vzniknou opravdové doplňky, které budete nosit.')}</span></div></div>
+            <div class="r-step"><img src="${P}sada-knizka.webp" alt="Interaktivní knížka Budoucnost módy"><div><strong>3. Materiál reaguje na dotek + knížka</strong><span>${T('Doplněk mění barvu nebo svítí ve tmě a interaktivní knížka ji zabaví úkoly na další týdny.', 'Doplněk mění barvu nebo svítí ve tmě a interaktivní knížka vás zabaví úkoly na další týdny.')}</span></div></div>
           </div>
         </section>
 
