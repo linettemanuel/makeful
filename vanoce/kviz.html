@@ -483,6 +483,7 @@
     .r-h1, .r-lead { position: relative; z-index: 2; }
     .pay-btn span { gap: 8px; }
     .pay-ico { width: 20px; height: 20px; flex: 0 0 20px; }
+    #laterSheet a { color: var(--plum); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -2781,7 +2782,8 @@
     shownPrice = now;
     matFlash = false;
 
-    root.querySelector('[data-back]').onclick = () => goStepBack(7);
+    // Zpět z výsledku: nejdřív nabídka poslat výběr e-mailem (jednou za návštěvu)
+    root.querySelector('[data-back]').onclick = () => goBack();
 
     const gal = document.getElementById('rGal');
     const thumbs = [...root.querySelectorAll('[data-slide]')];
@@ -2875,7 +2877,7 @@
   };
   goBack = function () {
     if (state.view === 'orderScreen') { setView('resultScreen'); return; }
-    if (state.view === 'resultScreen' && window.__mfAskLater && window.__mfAskLater()) return;
+    if (state.view === 'resultScreen') { if (window.__mfAskLater && window.__mfAskLater()) return; goStepBack(7); return; }
     if (step > 0 && step < 8) { goStepBack(step - 1); }
     else if (step === 9) { goStepBack(7); }
   };
