@@ -1,0 +1,119 @@
+/* Makeful e-shop · stejný vzhled jako prodejní kvíz (kviz.html).
+   Načítá se jako poslední styl na stránce, přebíjí starší vrstvy v shop.css. */
+:root {
+  --ink: #1f1233; --text: #43355b; --muted: #6f6285; --line: rgba(31, 18, 51, .1);
+  --bg: #fbf6ff; --plum: #7a3fd6; --plum-deep: #5a26a8; --plum-soft: #f3e9ff; --berry: #d0389a;
+  --irid: linear-gradient(115deg, #8754ce 0%, #db49ca 34%, #f05564 64%, #ff8a3d 84%, #f5c04a 100%);
+  --cta: linear-gradient(115deg, #7a3fd6 0%, #c9389a 52%, #f0504f 100%);
+  --soft-bg: linear-gradient(135deg, #f4ebff 0%, #ffecf5 50%, #fff2e3 100%);
+  --display: "Manrope", "Figtree", system-ui, sans-serif;
+  --sans: "Figtree", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: var(--display);
+  --navy: var(--ink);
+  --spring: cubic-bezier(.22, 1, .36, 1);
+  --lift: 0 10px 30px rgba(110, 45, 150, .08);
+  --card-shadow: inset 0 0 0 1px #fff, 0 22px 54px rgba(110, 45, 150, .1);
+  --shadow: var(--card-shadow); --soft: var(--lift);
+}
+
+/* Pozadí: stejná měkká aura jako v kvízu */
+:root body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+:root body::before { content: ""; position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
+  background: radial-gradient(circle at 18% 12%, rgba(255, 214, 163, .55), transparent 38%),
+              radial-gradient(circle at 88% 30%, rgba(214, 178, 255, .55), transparent 40%),
+              radial-gradient(circle at 40% 92%, rgba(255, 182, 216, .5), transparent 42%);
+  filter: blur(30px); animation: mfDrift 24s ease-in-out infinite alternate; }
+@keyframes mfDrift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-3vmax, 4vmax) scale(1.05); } }
+:root :focus-visible { outline: 3px solid rgba(135, 84, 206, .55); outline-offset: 2px; }
+
+/* Písmo: nadpisy Manrope, text Figtree, žádné patkové písmo ani barevná slova v nadpisech */
+:root h1, :root h2, :root h3, :root h4 { font-family: var(--display); color: var(--ink); letter-spacing: -.02em; font-style: normal; }
+/* Velikosti nadpisů platí všude stejně (starší vrstvy je měnily po sekcích) */
+:root h1 { font-size: clamp(26px, 4.2vw, 42px) !important; line-height: 1.15 !important; font-weight: 800; }
+:root h2 { font-size: clamp(21px, 3vw, 30px) !important; line-height: 1.25 !important; font-weight: 800; }
+:root h3 { font-size: clamp(17px, 2vw, 20px) !important; line-height: 1.3 !important; font-weight: 700; }
+:root .grad { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: inherit; -webkit-text-fill-color: currentColor; font-style: normal; }
+:root p, :root li { font-weight: 400; }
+:root .hero-copy p, :root .hero-lead, :root .intro-copy, :root .section-heading p, :root .offer-group-lead,
+:root .product-card-body p, :root .detail-card p, :root .product-short-description { font-size: 15.5px; line-height: 1.55; font-weight: 400; color: var(--text); }
+:root strong, :root b { font-weight: 700; }
+
+/* Malé štítky nad nadpisy: jako štítek v kvízu, bez verzálek */
+:root .eyebrow, :root .card-kicker, :root .press-label, :root .variant-number, :root .preorder-pill, :root .combo-ribbon, :root .product-brand, :root .product-combo .product-label {
+  display: inline-flex; align-items: center; gap: 6px; width: max-content; max-width: 100%; padding: 4px 10px 4px 8px; border: 0; border-radius: 99px;
+  background: rgba(255, 255, 255, .8); box-shadow: inset 0 0 0 1px rgba(135, 84, 206, .16); color: var(--plum-deep);
+  font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+:root .eyebrow::before, :root .card-kicker::before, :root .product-brand::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--irid); flex: 0 0 auto; }
+:root .card-kicker { margin-bottom: 8px; }
+
+/* Hlavička a lišta s termínem */
+:root .site-header { background: rgba(251, 246, 255, .78); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(135, 84, 206, .1); }
+:root .nav-links { font-family: var(--sans); font-weight: 700; font-size: 14.5px; color: var(--ink); }
+:root .nav-links a:hover { color: var(--plum); }
+:root .hamburger { border: 0; background: #fff; box-shadow: var(--lift); }
+:root .preorder-bar, :root .mobile-sales .preorder-bar, :root .announcement { background: var(--cta); border: 0; color: #fff; }
+:root .preorder-bar p, :root .preorder-bar p strong, :root .announcement * { color: #fff; font-weight: 600; }
+:root .preorder-bar p strong { font-weight: 800; }
+
+/* Tlačítka: stejná jako v kvízu */
+:root .btn, :root .nav-cta, :root .product-add, :root .submit-btn { min-height: 48px; padding: 11px 20px; border-radius: 14px; font-family: var(--sans); font-size: 15.5px; font-weight: 700; letter-spacing: -.005em; text-transform: none; transition: transform .2s var(--spring), box-shadow .2s; }
+:root .btn:active, :root .nav-cta:active { transform: scale(.97); }
+:root .btn-primary, :root .nav-cta, :root .product-add, :root .submit-btn { color: #fff; background: var(--cta); border: 0; box-shadow: 0 14px 30px rgba(201, 56, 154, .28); }
+:root .btn-secondary, :root .btn-outline { color: var(--plum-deep); background: #fff; border: 0; box-shadow: inset 0 0 0 1.5px rgba(135, 84, 206, .28), var(--lift); }
+:root .nav-cta { min-height: 42px; padding: 8px 16px; font-size: 14.5px; }
+:root .text-link, :root .back-link { color: var(--plum); font-weight: 700; }
+
+/* Karty, panely a dlaždice: bílé, měkký stín, zaoblení jako v kvízu */
+:root .product-card, :root .offer-card, :root .sales-card, :root .detail-card, :root .option-panel, :root .form-card, :root .summary-card,
+:root .info-tile, :root .press-card, :root .benefit-panel, :root .mission-card, :root .legal-card, :root .contact-card,
+:root .how-step, :root .about-media-card, :root .about-video-card, :root .quick-add-dialog, :root .quiz-dialog {
+  border: 0; border-radius: 20px; background: rgba(255, 255, 255, .86); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); box-shadow: var(--card-shadow); }
+:root .product-card-top, :root .product-card-top.bundle, :root .product-card-top.voucher, :root .product-card-top.combo { background: var(--soft-bg); }
+:root .offer-badge { border-radius: 99px; background: var(--cta); color: #fff; font-family: var(--sans); font-weight: 800; letter-spacing: 0; text-transform: none; box-shadow: 0 8px 18px rgba(201, 56, 154, .28); }
+
+/* Odrážky s fajfkou */
+:root .product-points li, :root .set-overview-list li { font-size: 14.5px; line-height: 1.42; font-weight: 400; color: var(--text); }
+:root .product-points li::before { content: "✓"; background: var(--cta); color: #fff; font-size: 11px; font-weight: 900; }
+
+/* Ceny */
+:root .card-price, :root .price-line, :root .product-main-price, :root .detail-price, :root .summary-total strong { font-family: var(--display); color: var(--ink); letter-spacing: -.02em; }
+:root .card-price s, :root .price-line s, :root .product-main-price s { color: var(--muted); font-weight: 600; }
+
+/* Výběr materiálu, variant a plateb */
+:root .material-choice, :root .variant-choice, :root .choice, :root .payment-choice { border: 0; border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1.5px rgba(31, 18, 51, .1); }
+:root .material-choice:has(input:checked), :root .variant-choice:has(input:checked), :root .choice:has(input:checked), :root .payment-choice:has(input:checked) {
+  background: linear-gradient(#fff, #fff) padding-box, var(--irid) border-box; border: 2px solid transparent; box-shadow: 0 10px 24px rgba(135, 84, 206, .16); }
+:root input[type="checkbox"], :root input[type="radio"] { accent-color: var(--plum); }
+
+/* Formuláře */
+:root .field label, :root .option-row label, :root .product-label, :root .product-quantity label { font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--ink); }
+:root select, :root .field input, :root .field textarea, :root .product-info input[type="text"], :root .promo-row input {
+  min-height: 46px; border-radius: 12px; border: 0; background: #fff; box-shadow: inset 0 0 0 1.5px rgba(31, 18, 51, .12); color: var(--ink); font-size: 15px; }
+:root select:focus, :root .field input:focus, :root .field textarea:focus { box-shadow: inset 0 0 0 2px var(--plum), 0 0 0 4px rgba(135, 84, 206, .12); }
+
+/* Otázky a odpovědi: jako v kvízu */
+:root .faq-item, :root .product-accordion { border: 0; border-radius: 15px; background: rgba(255, 255, 255, .86); box-shadow: inset 0 0 0 1px #fff, 0 6px 20px rgba(110, 45, 150, .06); padding: 0 14px; }
+:root .faq-item summary, :root .product-accordion summary { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--ink); padding: 13px 34px 13px 0; }
+:root .faq-item summary::after, :root .product-accordion summary::after { content: "+"; position: absolute; right: 0; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 50%; display: grid; place-items: center; background: var(--plum-soft); color: var(--plum); font-size: 18px; font-weight: 700; line-height: 1; transform: none; transition: transform .35s var(--spring), background .3s, color .3s; border: 0; }
+:root .faq-item[open] summary::after, :root .product-accordion[open] summary::after { transform: rotate(45deg); background: var(--cta); color: #fff; }
+:root .faq-item p, :root .product-accordion p { font-size: 14.5px; line-height: 1.55; color: var(--text); font-weight: 400; }
+
+/* Patička */
+:root footer { background: rgba(255, 255, 255, .55); border-top: 1px solid rgba(135, 84, 206, .1); }
+:root .footer-links, :root .footer-contact { font-weight: 600; color: var(--muted); }
+
+/* Obrázky v kartách a galeriích */
+:root .offer-media, :root .card-media, :root .gallery-stage, :root .hero-art, :root .mission-photo { border-radius: 18px; }
+:root .notice { border: 0; border-radius: 14px; background: #fff4e6; color: #6b4a1e; font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) { :root body::before { animation: none; } }
+
+/* Karty nabídek na hlavní stránce */
+:root .card-price strong { font-family: var(--display); font-size: 24px; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+:root .card-price s { font-size: .62em; color: var(--muted); font-weight: 600; }
+:root .card-price span { font-size: 12px; color: var(--muted); }
+:root .product-actions .btn, :root .mobile-sales .product-actions .btn { font-size: 15px; padding: 0 14px; }
+:root .offer-group-title { font-size: clamp(20px, 2.6vw, 26px); font-weight: 800; }
+
+:root .product-brand { margin: 0 0 12px; }
+:root .press-strip { background: transparent; border: 0; box-shadow: none; }
