@@ -471,6 +471,16 @@
     }
       .order .is-invalid, .order input.is-invalid { border-color: #e5145f !important; background: #fff5f8 !important; }
     .consents .chk.is-invalid { border-radius: 12px; outline: 2px solid #e5145f; outline-offset: 4px; background: #fff5f8; }
+
+    /* Objednávka: nejdřív kontakt, doplňky jako tenké řádky, souhrn jen malý */
+    #orderScreen .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    #orderScreen .extras { display: grid; gap: 6px; }
+    #orderScreen .ret-line { padding: 8px 11px; border-radius: 11px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,.7); box-shadow: inset 0 0 0 1px var(--line); }
+    #orderScreen .ret-line b { font-weight: 700; color: var(--plum-deep); white-space: nowrap; }
+    #orderScreen .ret-line input { width: 19px; height: 19px; flex-basis: 19px; }
+    #orderScreen .sum { grid-template-columns: 48px 1fr; gap: 10px; padding: 8px; border-radius: 16px; }
+    #orderScreen .sum img { width: 48px; height: 48px; border-radius: 11px; }
+    #orderScreen .sum strong { font-size: 14px; }
   </style>
 </head>
 <body>
@@ -675,28 +685,10 @@
   <section class="view" id="orderScreen">
     <form id="quizOrderForm" class="order" novalidate>
       <div>
-        <p class="eyebrow">Poslední krok</p>
-        <h1 class="q-title">Kam dárek pošleme?</h1>
+                <h1 class="q-title">Kam dárek pošleme?</h1>
       </div>
-
-      <div class="sum">
-        <img id="sumImg" src="" alt="">
-        <div class="sum-body">
-          <strong id="sumTitle"></strong>
-          <span id="sumMeta"></span>
-          <span class="sum-price"><s id="sumOld"></s> <b id="sumNow"></b></span>
-        </div>
-      </div>
-      <details class="sum-contents" id="sumContentsBox" open>
-        <summary id="sumContentsTitle">Co je v balíčku</summary>
-        <ul class="bullets" id="sumContents"></ul>
-      </details>
-      <label class="ret-line"><input type="checkbox" id="sumRet"> <span>Prodloužené vrácení o 30 dní <b>+22 Kč</b></span></label>
-      <label class="ret-line upsell-line" id="upsellLine"><input type="checkbox" id="upsellChk"> <span id="upsellText"></span></label>
-      <label class="fld clutch-name" id="clutchNameFld" hidden><span id="clutchNameLbl">Jméno na psaníčko</span><input id="oClutchName" type="text" maxlength="60" autocomplete="off" placeholder="Např. Ema"></label>
-
       <fieldset class="fs">
-        <legend>Kontakt a doručení</legend>
+        <legend class="sr-only">Kontakt a doručení</legend>
         <label class="fld"><span>E-mail</span><input id="oEmail" type="email" autocomplete="email" inputmode="email" required placeholder="vas@email.cz"></label>
         <label class="fld"><span>Jméno a příjmení</span><input id="oName" type="text" autocomplete="name" required></label>
         <label class="fld"><span>Telefon</span><input id="oPhone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+420"></label>
@@ -708,18 +700,33 @@
         <details class="note"><summary>+ Přidat poznámku</summary><textarea id="oNote" rows="3"></textarea></details>
         <input id="oWebsite" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
       </fieldset>
-
+      <label class="fld clutch-name" id="clutchNameFld" hidden><span id="clutchNameLbl">Jméno na psaníčko</span><input id="oClutchName" type="text" maxlength="60" autocomplete="off" placeholder="Např. Ema"></label>
+      <div class="extras">
+        <label class="ret-line"><input type="checkbox" id="sumRet"> <span>Prodloužené vrácení o 30 dní <b>+22 Kč</b></span></label>
+        <label class="ret-line upsell-line" id="upsellLine"><input type="checkbox" id="upsellChk"> <span id="upsellText"></span></label>
+      </div>
+      <div class="sum">
+        <img id="sumImg" src="" alt="">
+        <div class="sum-body">
+          <strong id="sumTitle"></strong>
+          <span id="sumMeta"></span>
+          <span class="sum-price"><s id="sumOld"></s> <b id="sumNow"></b></span>
+        </div>
+      </div>
       <fieldset class="fs">
         <legend>Platba</legend>
         <div class="pay-row">
-          <label class="pay-btn"><input type="radio" name="qpay" value="card" checked><span>💳 Kartou</span></label>
-          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span>🏦 Převodem</span></label>
+          <label class="pay-btn"><input type="radio" name="qpay" value="card" checked><span>Kartou</span></label>
+          <label class="pay-btn"><input type="radio" name="qpay" value="bank"><span>Převodem</span></label>
         </div>
       </fieldset>
-
       <div class="consents">
         <label class="chk"><input type="checkbox" id="oConsent" required><span>Seznámil/a jsem se s <a href="obchodni-podminky.html" target="_blank" rel="noopener">obchodními podmínkami</a> a <a href="ochrana-osobnich-udaju.html" target="_blank" rel="noopener">zásadami ochrany osobních údajů</a>. Beru na vědomí, že <strong>dárky se rozesílají ve dvou vlnách, v týdnu od 7. 12. 2026 a od 15. 12. 2026</strong>.</span></label>
       </div>
+      <details class="sum-contents" id="sumContentsBox" hidden>
+        <summary id="sumContentsTitle">Co je v balíčku</summary>
+        <ul class="bullets" id="sumContents"></ul>
+      </details>
       <p class="form-err" id="orderErr" hidden></p>
     </form>
     <div class="bottom-bar" id="orderBar"><div class="bottom-inner">
@@ -727,7 +734,7 @@
         <div class="price-now"><span class="tot-label">Celkem</span><strong id="orderTotal"></strong></div>
         <span>Doprava zdarma</span>
       </div>
-      <button class="cta" id="orderSubmit" type="button">Potvrdit objednávku zavazující k platbě</button>
+      <button class="cta" id="orderSubmit" type="button">Objednat a zaplatit</button>
     </div></div>
   </section>
 
@@ -2000,11 +2007,11 @@
           try{localStorage.removeItem(CART_KEY);localStorage.removeItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY+'-id');localStorage.removeItem('makeful-quiz-offer-2026')}catch(e){}
           setView('doneScreen');if(window.__mfMarkUrl)window.__mfMarkUrl('thank-you');return;
         }
-        sending=false;btn.disabled=false;btn.textContent='Potvrdit objednávku zavazující k platbě';
+        sending=false;btn.disabled=false;btn.textContent='Objednat a zaplatit';
         showErr(ERR[res.reason]||ERR.invalid);
       })
       .catch(function(){
-        clearTimeout(t);sending=false;btn.disabled=false;btn.textContent='Potvrdit objednávku zavazující k platbě';
+        clearTimeout(t);sending=false;btn.disabled=false;btn.textContent='Objednat a zaplatit';
         showErr('Spojení se nepodařilo dokončit. Než objednávku odešlete znovu, podívejte se prosím do e-mailu. Pokud vám přišlo potvrzení, objednávka už je přijatá.');
       });
   });
