@@ -1791,8 +1791,9 @@
   // Jen pro nové návštěvy: kdo má uložený výsledek, už v tabulce řádek má (Make ho při „open“ nepřepíše).
   else{var hasSaved=false;try{hasSaved=!!localStorage.getItem('makeful-quiz-result-v8-2026')}catch(e){}
     // Otevření zapíšeme, až je stránka opravdu vidět (přednačtení stránky v aplikaci FB/IG se nepočítá)
-    if(!hasSaved){var opened=false,openNow=function(){if(opened||document.visibilityState==='hidden'||document.prerendering)return;opened=true;send('open','otevřel stránku');};
-      openNow();if(!opened){document.addEventListener('visibilitychange',openNow);document.addEventListener('prerenderingchange',openNow);}}}
+    // Kdo má uložený výsledek, vrátil se (typicky z kampaně MOF + BOF): zapíše se jen do sloupce „Návrat k výsledku“
+    var opened=false,openNow=function(){if(opened||document.visibilityState==='hidden'||document.prerendering)return;opened=true;if(hasSaved)send('back','vrátil se k výsledku');else send('open','otevřel stránku');};
+    openNow();if(!opened){document.addEventListener('visibilitychange',openNow);document.addEventListener('prerenderingchange',openNow);}}
 })();
 </script>
 
