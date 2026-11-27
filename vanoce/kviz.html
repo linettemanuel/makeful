@@ -2511,8 +2511,12 @@
   }
 
   /* ---------- Vyhodnocení: zhasne se, svítící moduly se poskládají kolem loga ---------- */
-  function runSynthesis() {
+  // Přímá nabídka bez otázek (odkaz s ?no-quiz): jen animace vyhodnocení a pak rovnou balíček za 1 188 Kč
+  const NO_QUIZ = /(^|[?&])no(-|_|%20|\+)?quiz(=|&|$)/i.test(location.search);
+  let viaNoQuiz = false;
+  function runSynthesis(opts = {}) {
     step = 8;
+    viaNoQuiz = !!opts.noQuiz;
     recommended = primaryPain === 'together'
       ? (budget === BUDGET.mid ? 'psanickoMD' : budget === BUDGET.top ? 'combo' : 'balicek')
       : (budget === BUDGET.mid ? 'psanicko' : budget === BUDGET.top ? 'combo' : 'balicek');
@@ -2521,12 +2525,13 @@
     state.answers.effect = EFFECT.thermo;
     state.walletMaterial = state.clutchMaterial = EFFECT.thermo;
     syncState();
+    if (opts.noQuiz) state.answers.primary_pain = 'Bez kvízu (rovnou nabídka)';
     saveResultLocal();
 
     const painObj = PAINS.find(p => p.id === primaryPain);
     const firstObj = OBJECTION_OPTS.find(o => o.val === selectedObjections[0]);
     const budgetText = budget === BUDGET.mid ? '500 až 1 000 Kč' : budget === BUDGET.top ? '1 500 Kč a více' : '1 000 až 1 500 Kč';
-    const rows = [
+    const rows = opts.rows || [
       painObj ? `Řešíme: ${painObj.title}` : 'Hledáme: originální dárek pod stromeček',
       firstObj ? `Ověřujeme: ${objTitle(firstObj)}` : 'Ověřujeme: Tvoření bez pomoci dospělého',
       `Vybíráme řešení v hladině ${budgetText}`
@@ -2540,13 +2545,13 @@
           <div class="m-ring-in">${[0, 1, 2, 3, 4, 5, 6].map(i => `<svg style="--i:${i};--a:${Math.round(i * 360 / 7)}deg" viewBox="0 0 40 40"><use href="#flw" width="40" height="40"/></svg>`).join('')}</div>
           <img src="assets/logo.png" alt="">
         </div>
-        <h1>Skládáme vánoční tip na míru…</h1>
+        <h1>${esc(opts.title || 'Skládáme vánoční tip na míru…')}</h1>
         <div class="m-bar"><i id="synthBar"></i></div>
         <ul class="m-synth-list">${rows.map((r, i) => `<li id="sr${i}"><b>✓</b><span>${esc(r)}</span></li>`).join('')}</ul>
       </div>`;
 
     const start = performance.now();
-    const DUR = REDUCE ? 600 : 2300;
+    const DUR = REDUCE ? 600 : (opts.dur || 2300);
     function tick(now) {
       const t = Math.min(1, (now - start) / DUR);
       const bar = document.getElementById('synthBar');
@@ -2555,7 +2560,7 @@
       if (t < 1) requestAnimationFrame(tick);
       else {
         window.__mfMarkUrl?.('quiz-finished');
-        window.__mfQuizSend?.('result', intent === 'buy' ? 'přímá nabídka' : 'personalizovaná nabídka');
+        window.__mfQuizSend?.('result', opts.noQuiz ? 'bez kvízu: nabídka' : intent === 'buy' ? 'přímá nabídka' : 'personalizovaná nabídka');
         track('result', intent);
         setTimeout(() => { renderResultCard(); setView('resultScreen'); }, REDUCE ? 0 : 250);
       }
@@ -2670,8 +2675,8 @@
     root.innerHTML = `${resultTop()}
       <div class="r-wrap ${resetScroll ? 'stage-fade' : ''}">
 
-        <h1 class="r-h1">${esc(copy.h1)}</h1>
-        <p class="r-lead">${esc(lead)}</p>
+        <h1 class="r-h1">${esc(viaNoQuiz ? 'Dárek, který pod stromečkem nikdo jiný mít nebude.' : copy.h1)}</h1>
+        <p class="r-lead">${esc(viaNoQuiz ? 'Sama si z něj poskládá originální peněženku i psaníčko, které mění barvu na dotek.' : lead)}</p>
 
         <section class="r-concept" aria-label="Jak to funguje">
           <h2 class="r-concept-head">${T('Kreativní sada, ze které si sama poskládá originální doplněk', 'Kreativní sada, ze které si spolu poskládáte originální doplňky')}</h2>
@@ -2878,7 +2883,7 @@
   };
   goBack = function () {
     if (state.view === 'orderScreen') { setView('resultScreen'); return; }
-    if (state.view === 'resultScreen') { if (window.__mfAskLater && window.__mfAskLater()) return; goStepBack(7); return; }
+    if (state.view === 'resultScreen') { if (window.__mfAskLater && window.__mfAskLater()) return; goStepBack(viaNoQuiz ? 0 : 7); return; }
     if (step > 0 && step < 8) { goStepBack(step - 1); }
     else if (step === 9) { goStepBack(7); }
   };
@@ -2905,7 +2910,7 @@
       const d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
       if (d && d.answers && d.at && Date.now() - d.at < 60 * 24 * 3600 * 1000) saved = d;
     } catch (e) {}
-    if (saved && saved.variant && PRICES[saved.variant]) {
+    if (!NO_QUIZ && saved && saved.variant && PRICES[saved.variant]) {
       state.answers = saved.answers;
       state.name = saved.name || '';
       state.baseVariant = state.activeVariant = saved.variant;
@@ -2923,6 +2928,14 @@
       window.__mfSetKrok?.('vysledek');
       renderResultCard();
       setView('resultScreen');
+    } else if (NO_QUIZ) {
+      primaryPain = 'none'; intent = 'consider'; budget = BUDGET.high; delivery = 'christmas'; selectedObjections = []; ratings = {};
+      runSynthesis({
+        noQuiz: true,
+        title: 'Hledáme neobyčejný dárek pro vaši kreativní holčičku…',
+        rows: ['Hledáme: dárek, který nikdo jiný mít nebude', 'Ověřujeme: zvládne to sama, bez pomoci dospělého', 'Vybíráme: kreativní balíček pod stromeček'],
+        dur: 3200
+      });
     } else {
       renderStep();
     }
